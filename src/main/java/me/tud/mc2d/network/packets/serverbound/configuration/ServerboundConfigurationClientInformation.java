@@ -1,17 +1,20 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
-import me.tud.mc2d.chat.ChatMode;
 import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.network.packets.PacketRegistry;
+import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
-import me.tud.mc2d.particle.ParticleStatus;
 import me.tud.mc2d.player.ClientInformation;
-import me.tud.mc2d.player.MainHand;
-import me.tud.mc2d.player.SkinPart;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 public class ServerboundConfigurationClientInformation implements ServerboundPacket {
 
     private static final int ID = 0x00;
+
+    @RegisterHandler(ConnectionState.CONFIGURATION)
+    public static void register(PacketRegistry.Group group) {
+        group.registerPacket(ID, ServerboundConfigurationClientInformation.class, ServerboundConfigurationClientInformation::new);
+    }
 
     private ClientInformation clientInformation;
 
