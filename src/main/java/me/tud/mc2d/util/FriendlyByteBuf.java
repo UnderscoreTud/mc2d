@@ -15,6 +15,9 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
+/**
+ * A byte buffer wrapping a Netty {@link ByteBuf} with additional utility methods for reading and writing various data types.
+ */
 public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
 
     private static final int SEGMENT_BITS = 0x7F;
@@ -22,18 +25,37 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
 
     private final ByteBuf buf;
 
+    /**
+     * Creates a new {@link FriendlyByteBuf} with the default initial capacity.
+     */
     public FriendlyByteBuf() {
         this(Unpooled.buffer());
     }
 
+    /**
+     * Creates a new {@link FriendlyByteBuf} with the specified initial capacity.
+     *
+     * @param initialCapacity The initial capacity of the buffer.
+     */
     public FriendlyByteBuf(int initialCapacity) {
         this(Unpooled.buffer(initialCapacity));
     }
 
+    /**
+     * Creates a new {@link FriendlyByteBuf} with the specified initial and maximum capacity.
+     *
+     * @param initialCapacity The initial capacity of the buffer.
+     * @param maxCapacity The maximum capacity of the buffer.
+     */
     public FriendlyByteBuf(int initialCapacity, int maxCapacity) {
         this(Unpooled.buffer(initialCapacity, maxCapacity));
     }
 
+    /**
+     * Creates a new {@link FriendlyByteBuf} wrapping the specified {@link ByteBuf}.
+     *
+     * @param buf The {@link ByteBuf} to wrap.
+     */
     public FriendlyByteBuf(ByteBuf buf) {
         this.buf = buf;
     }
@@ -248,9 +270,9 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
-     * Writes a <u>prefixed</u> string array to the buffer.
+     * Writes a <u>prefixed</u> short array to the buffer.
      *
-     * @param array The string array to write.
+     * @param array The short array to write.
      * @return This buffer.
      */
     public FriendlyByteBuf writeShortArray(short[] array) {
@@ -261,9 +283,9 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
-     * Reads a <u>prefixed</u> string array from the buffer.
+     * Reads a <u>prefixed</u> short array from the buffer.
      *
-     * @return The string array read from the buffer.
+     * @return The short array read from the buffer.
      */
     public short[] readShortArray() {
         int length = readVarInt();
