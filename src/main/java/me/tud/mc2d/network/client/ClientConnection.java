@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketFactory;
@@ -25,6 +26,8 @@ public class ClientConnection {
     private UUID uuid;
     private String username;
     private ClientInformation clientInformation;
+
+    private DataPack[] knownPacks;
 
     private String brand;
 
@@ -106,6 +109,16 @@ public class ClientConnection {
 
     public void clientInformation(ClientInformation clientInformation) {
         this.clientInformation = clientInformation;
+    }
+
+    public DataPack[] knownPacks() {
+        return knownPacks;
+    }
+
+    public void knownPacks(DataPack[] knownPacks) {
+        if (state != ConnectionState.CONFIGURATION)
+            throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
+        this.knownPacks = knownPacks;
     }
 
     public String brand() {

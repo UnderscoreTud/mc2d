@@ -9,6 +9,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioIoHandler;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.*;
@@ -17,6 +18,7 @@ import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.ClassUtils;
+import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
@@ -31,6 +33,7 @@ public class Server {
 
     public static final String VERSION_NAME = "1.21.5";
     public static final int PROTOCOL_VERSION = 770;
+    public static final DataPack CORE_PACK = new DataPack(NamespacedKey.minecraft("core"), VERSION_NAME);
 
     private final int port;
     private final ServerContext context;
