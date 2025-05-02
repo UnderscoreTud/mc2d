@@ -12,8 +12,8 @@ public class ServerboundLoginLoginAcknowledgedProcessor implements PacketProcess
     @Override
     public void process(ServerboundLoginLoginAcknowledged packet, ClientConnection connection) {
         connection.state(ConnectionState.CONFIGURATION);
-        // Server brand
-        // Feature flags
+        // TODO Clientbound Plugin Message (Optional, minecraft:brand with the server's brand)
+        // TODO Feature Flags (Optional)
         connection.sendPacket(new ClientboundConfigurationKnownPacks(Server.CORE_PACK));
     }
 

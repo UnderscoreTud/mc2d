@@ -9,9 +9,9 @@ public class ServerboundConfigurationKnownPacksProcessor implements PacketProces
     @Override
     public void process(ServerboundConfigurationKnownPacks packet, ClientConnection connection) {
         connection.knownPacks(packet.knownPacks());
-        // Registry Data (Multiple)
-        // Update Tags (Optional)
-        // Finish Configuration
+        // TODO Registry Data (Multiple)
+        // TODO Update Tags (Optional)
+        // TODO Finish Configuration
     }
 
 }
