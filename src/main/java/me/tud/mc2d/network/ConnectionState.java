@@ -8,7 +8,7 @@ public enum ConnectionState {
     CONFIGURATION,
     PLAY;
 
-    public static ConnectionState fromId(int id) {
+    public static ConnectionState fromID(int id) {
         return switch (id) {
             case 0 -> HANDSHAKING;
             case 1 -> STATUS;

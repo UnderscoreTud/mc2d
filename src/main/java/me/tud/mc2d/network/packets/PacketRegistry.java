@@ -69,21 +69,21 @@ public class PacketRegistry {
             return key;
         }
 
-        public <T extends Packet> void registerPacket(int packetId, Class<T> packetClass, Supplier<T> packetSupplier) {
+        public <T extends Packet> void registerPacket(int packetID, Class<T> packetClass, Supplier<T> packetSupplier) {
             if (classToIDMap.containsKey(packetClass))
                 throw new IllegalArgumentException("Packet class " + packetClass.getName() + " is already registered");
-            if (classToIDMap.containsValue(packetId))
-                throw new IllegalArgumentException("Packet ID " + packetId + " is already registered");
-            System.out.println("Registering packet " + packetClass.getName() + " with ID " + packetId + " in group " + key);
-            classToIDMap.put(packetClass, packetId);
+            if (classToIDMap.containsValue(packetID))
+                throw new IllegalArgumentException("Packet ID " + packetID + " is already registered");
+            System.out.println("Registering packet " + packetClass.getName() + " with ID " + packetID + " in group " + key);
+            classToIDMap.put(packetClass, packetID);
             packetSuppliers.put(packetClass, packetSupplier);
         }
 
         @Override
-        public Packet createPacket(int packetId, byte[] data) {
-            Class<? extends Packet> packetClass = classToIDMap.inverse().get(packetId);
+        public Packet createPacket(int packetID, byte[] data) {
+            Class<? extends Packet> packetClass = classToIDMap.inverse().get(packetID);
             if (packetClass == null)
-                throw new IllegalArgumentException("Packet ID " + packetId + " is not registered");
+                throw new IllegalArgumentException("Packet ID " + packetID + " is not registered");
             return createPacket(packetClass, data);
         }
 
