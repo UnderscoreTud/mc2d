@@ -8,6 +8,7 @@ import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketFactory;
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.player.ClientInformation;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
@@ -23,6 +24,7 @@ public class ClientConnection {
 
     private UUID uuid;
     private String username;
+    private ClientInformation clientInformation;
 
     private String brand;
 
@@ -96,6 +98,14 @@ public class ClientConnection {
         if (this.username != null)
             throw new IllegalStateException("Name already set");
         this.username = name;
+    }
+
+    public ClientInformation clientInformation() {
+        return clientInformation;
+    }
+
+    public void clientInformation(ClientInformation clientInformation) {
+        this.clientInformation = clientInformation;
     }
 
     public String brand() {

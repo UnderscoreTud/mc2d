@@ -590,6 +590,31 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
+     * Writes an enum to the buffer.
+     *
+     * @param value The enum to write.
+     * @return This buffer.
+     */
+    public FriendlyByteBuf writeEnum(Enum<?> value) {
+        writeVarInt(value.ordinal());
+        return this;
+    }
+
+    /**
+     * Reads an enum from the buffer.
+     *
+     * @param enumClass The class of the enum.
+     * @return The enum read from the buffer.
+     */
+    public <T extends Enum<T>> T readEnum(Class<T> enumClass) {
+        int ordinal = readVarInt();
+        T[] enumConstants = enumClass.getEnumConstants();
+        if (ordinal < 0 || ordinal >= enumConstants.length)
+            throw new IllegalArgumentException("Invalid enum ordinal: " + ordinal);
+        return enumConstants[ordinal];
+    }
+
+    /**
      * Writes a writable to the buffer.
      *
      * @param writable The writable to write.
