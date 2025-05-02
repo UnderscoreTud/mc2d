@@ -518,8 +518,7 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
      * @return This buffer.
      */
     public FriendlyByteBuf writeNamespacedKey(NamespacedKey key) {
-        writeString(key.namespace());
-        writeString(key.key());
+        writeString(key.toString());
         return this;
     }
 
@@ -529,7 +528,7 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
      * @return The namespaced key read from the buffer.
      */
     public NamespacedKey readNamespacedKey() {
-        return NamespacedKey.of(readString(), readString());
+        return NamespacedKey.parseSafe(readString()).orElse(null);
     }
 
     /**
