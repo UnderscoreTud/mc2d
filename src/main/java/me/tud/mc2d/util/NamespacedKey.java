@@ -50,7 +50,7 @@ public final class NamespacedKey implements Writable {
      * @return new namespaced key
      */
     @Contract("_, _ -> new")
-    public static NamespacedKey of(final String namespace, final String key) {
+    public static NamespacedKey of(@NamespacePattern final String namespace, @KeyPattern final String key) {
         Objects.requireNonNull(namespace, "Namespace can not be null");
         Objects.requireNonNull(key, "Key can not be null");
         if (!isValidNamespacedKey(namespace, key))
@@ -67,7 +67,7 @@ public final class NamespacedKey implements Writable {
      * @throws IllegalArgumentException if the input isn't a valid namespaced key
      */
     @Contract("_ -> new")
-    public static NamespacedKey parse(final String namespacedKey) {
+    public static NamespacedKey parse(@Pattern final String namespacedKey) {
         return parseNamespacedKey(namespacedKey)
                 .map(key -> NamespacedKey.of(key[0], key[1]))
                 .orElseThrow(() -> new IllegalArgumentException("The namespaced key '" + namespacedKey + "' "
@@ -81,7 +81,7 @@ public final class NamespacedKey implements Writable {
      * @return parsed NamespacedKey, or null if the input isn't a valid namespaced key
      */
     @Contract("_ -> new")
-    public static Optional<NamespacedKey> parseSafe(final String namespacedKey) {
+    public static Optional<NamespacedKey> parseSafe(@Pattern final String namespacedKey) {
         try {
             return Optional.of(parse(namespacedKey));
         } catch (Exception e) {
@@ -152,7 +152,7 @@ public final class NamespacedKey implements Writable {
      * @return a string array where the first value is the namespace and the second value is the namespace,
      * or null if that input doesn't have a separator character ':'
      */
-    static Optional<String[]> parseNamespacedKey(final String input) {
+    static Optional<String[]> parseNamespacedKey(@Pattern final String input) {
         Objects.requireNonNull(input, "Text to parse can not be null");
         final int separator = input.indexOf(':');
         if (separator == -1)
@@ -168,7 +168,7 @@ public final class NamespacedKey implements Writable {
      * @param key the key
      * @return whether the namespace and key follow their formats
      */
-    private static boolean isValidNamespacedKey(final String namespace, final String key) {
+    private static boolean isValidNamespacedKey(@NamespacePattern final String namespace, @KeyPattern final String key) {
         if (namespace.isEmpty() || key.isEmpty())
             return false;
         for (final char c : namespace.toCharArray()) {
@@ -204,5 +204,14 @@ public final class NamespacedKey implements Writable {
     public void write(FriendlyByteBuf buf) {
         buf.writeNamespacedKey(this);
     }
+
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_]+:[a-zA-Z0-9.-_/]+")
+    public @interface Pattern {}
+
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_]+")
+    public @interface NamespacePattern {}
+
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_/]+")
+    public @interface KeyPattern {}
 
 }
