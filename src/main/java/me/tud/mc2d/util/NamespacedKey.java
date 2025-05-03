@@ -68,6 +68,7 @@ public final class NamespacedKey implements Writable {
      */
     @Contract("_ -> new")
     public static NamespacedKey parse(@Pattern final String namespacedKey) {
+        //noinspection PatternValidation
         return parseNamespacedKey(namespacedKey)
                 .map(key -> NamespacedKey.of(key[0], key[1]))
                 .orElseThrow(() -> new IllegalArgumentException("The namespaced key '" + namespacedKey + "' "
@@ -95,7 +96,7 @@ public final class NamespacedKey implements Writable {
      * @return minecraft NamespacedKey
      */
     @Contract("_ -> new")
-    public static NamespacedKey minecraft(final String key) {
+    public static NamespacedKey minecraft(@KeyPattern final String key) {
         return NamespacedKey.of(MINECRAFT_NAMESPACE, key);
     }
 
@@ -105,7 +106,7 @@ public final class NamespacedKey implements Writable {
      * @return mc2d NamespacedKey
      */
     @Contract("_ -> new")
-    public static NamespacedKey mc2d(final String key) {
+    public static NamespacedKey mc2d(@KeyPattern final String key) {
         return NamespacedKey.of(MC2D_NAMESPACE, key);
     }
 
