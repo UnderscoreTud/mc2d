@@ -122,8 +122,9 @@ public class Server {
         if (running())
             throw new IllegalStateException("Server is already running");
 
-        bossGroup = new MultiThreadIoEventLoopGroup(NioIoHandler.newFactory());
-        workerGroup = new MultiThreadIoEventLoopGroup(NioIoHandler.newFactory());
+        IoHandlerFactory factory = NioIoHandler.newFactory();
+        bossGroup = new MultiThreadIoEventLoopGroup(factory);
+        workerGroup = new MultiThreadIoEventLoopGroup(factory);
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
