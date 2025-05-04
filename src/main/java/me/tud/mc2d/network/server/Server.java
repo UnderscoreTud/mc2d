@@ -19,6 +19,7 @@ import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
+import org.jetbrains.annotations.Nullable;
 import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
@@ -45,21 +46,21 @@ public class Server {
     private ChannelFuture bindFuture;
 
     public Server(int port) {
-        this(port, new ServerContext(), new ServerProperties());
+        this(port, null, null);
     }
 
     public Server(int port, ServerContext context) {
-        this(port, context, new ServerProperties());
+        this(port, context, null);
     }
 
     public Server(int port, ServerProperties properties) {
-        this(port, new ServerContext(), properties);
+        this(port, null, properties);
     }
 
-    public Server(int port, ServerContext context, ServerProperties properties) {
+    public Server(int port, @Nullable ServerContext context, @Nullable ServerProperties properties) {
         this.port = port;
-        this.context = context;
-        this.properties = properties;
+        this.context = context != null ? context : new ServerContext(this);
+        this.properties = properties != null ? properties : new ServerProperties();
     }
 
     public int port() {
