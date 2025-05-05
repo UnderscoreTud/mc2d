@@ -1,11 +1,12 @@
 package me.tud.mc2d.registry;
 
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 
 import java.util.function.Consumer;
 
-public non-sealed class BuiltInRegistry<T> extends Registry<T> {
+public non-sealed class BuiltInRegistry<T extends NBTSerializable> extends Registry<T> {
 
     private boolean frozen;
 

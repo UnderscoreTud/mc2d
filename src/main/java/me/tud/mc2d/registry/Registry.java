@@ -1,15 +1,22 @@
 package me.tud.mc2d.registry;
 
+import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
+import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
+import org.machinemc.nbt.NBTCompound;
 
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public sealed abstract class Registry<T> implements Iterable<T> permits BuiltInRegistry, DataDrivenRegistry {
+public sealed abstract class Registry<T extends NBTSerializable> implements Iterable<T>
+        permits BuiltInRegistry, DataDrivenRegistry {
 
     protected final Server server;
     protected final NamespacedKey key;
@@ -84,13 +91,18 @@ public sealed abstract class Registry<T> implements Iterable<T> permits BuiltInR
         return map.size();
     }
 
-    @UnmodifiableView
-    public Set<NamespacedKey> keys() {
+    public @Unmodifiable Collection<Entry> entries() {
+        List<Entry> entries = new ArrayList<>(map.size());
+        for (Map.Entry<NamespacedKey, T> entry : map.entrySet())
+            entries.add(new Entry(entry.getKey(), entry.getValue()));
+        return Collections.unmodifiableCollection(entries);
+    }
+
+    public @UnmodifiableView Set<NamespacedKey> keys() {
         return Collections.unmodifiableSet(map.keySet());
     }
 
-    @UnmodifiableView
-    public Collection<T> values() {
+    public @UnmodifiableView Collection<T> values() {
         return Collections.unmodifiableCollection(map.values());
     }
 
@@ -130,6 +142,38 @@ public sealed abstract class Registry<T> implements Iterable<T> permits BuiltInR
         Modifiable modifiable = new Modifiable();
         consumer.accept(modifiable);
         // push changes
+    }
+
+    public class Entry implements Writable {
+
+        private final NamespacedKey key;
+        private final T value;
+
+        public Entry(NamespacedKey key, T value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public NamespacedKey key() {
+            return key;
+        }
+
+        public T value() {
+            return value;
+        }
+
+        @Override
+        public void write(FriendlyByteBuf buf) {
+            buf.writeNamespacedKey(key);
+            buf.writeOptional(value().toNBT(), FriendlyByteBuf::writeNBT);
+        }
+
+        public static ClientboundConfigurationRegistryData.Entry read(FriendlyByteBuf buf) {
+            NamespacedKey id = buf.readNamespacedKey();
+            NBTCompound data = buf.readOptional(FriendlyByteBuf::readNBT).orElse(null);
+            return new ClientboundConfigurationRegistryData.Entry(id, data);
+        }
+
     }
 
     public class Modifiable {

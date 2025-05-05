@@ -1,15 +1,19 @@
 package me.tud.mc2d.util;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufConvertible;
-import io.netty.buffer.Unpooled;
+import io.netty.buffer.*;
 import io.netty.util.ReferenceCounted;
+import org.jetbrains.annotations.Nullable;
+import org.machinemc.nbt.NBT;
+import org.machinemc.nbt.NBTCompound;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.serialization.ComponentProperties;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -555,6 +559,34 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
+     * Writes a NBT compound to the buffer.
+     *
+     * @param nbt The NBT compound to write.
+     * @return This buffer.
+     */
+    public FriendlyByteBuf writeNBT(NBTCompound nbt) {
+        try (ByteBufOutputStream stream = new ByteBufOutputStream(buf)) {
+            nbt.writeRoot(stream, null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return this;
+    }
+
+    /**
+     * Reads a NBT compound from the buffer.
+     *
+     * @return The NBT compound read from the buffer.
+     */
+    public NBTCompound readNBT() {
+        try (ByteBufInputStream stream = new ByteBufInputStream(buf)) {
+            return NBTCompound.readRootCompound(stream, false);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * Writes a component to the buffer.
      *
      * @param component The component to write.
@@ -653,6 +685,34 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         for (int i = 0; i < length; i++)
             array[i] = readFunction.apply(this);
         return array;
+    }
+
+    /**
+     * Writes a <u>prefixed</u> optional value to the buffer.
+     *
+     * @param function The function to write the value.
+     * @return This buffer.
+     * @param <T> The type of the value.
+     */
+    public <T> Optional<T> readOptional(Function<FriendlyByteBuf, T> function) {
+        if (!readBoolean())
+            return Optional.empty();
+        return Optional.ofNullable(function.apply(this));
+    }
+
+    /**
+     * Writes a <u>prefixed</u> optional value to the buffer.
+     *
+     * @param value The value to write.
+     * @param consumer The function to write the value.
+     * @return This buffer.
+     * @param <T> The type of the value.
+     */
+    public <T> FriendlyByteBuf writeOptional(@Nullable T value, BiConsumer<FriendlyByteBuf, T> consumer) {
+        writeBoolean(value != null);
+        if (value != null)
+            consumer.accept(this, value);
+        return this;
     }
 
     /**
