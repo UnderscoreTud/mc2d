@@ -19,6 +19,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.13.0")
     implementation("org.machinemc:scriptive-core:1.3")
     implementation("org.machinemc:scriptive-gson:1.3")
+    implementation("org.machinemc:nbt-core:2.0.0")
+    implementation("org.machinemc:nbt-parser:2.0.0")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
