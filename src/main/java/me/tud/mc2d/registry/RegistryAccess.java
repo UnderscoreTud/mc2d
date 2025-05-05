@@ -9,7 +9,7 @@ import java.util.Map;
 public class RegistryAccess {
 
     private final Server server;
-    private final Map<RegistryKey<?>, Registry<?>> registries = new HashMap<>();
+    private final Map<RegistryKey<?, ?>, Registry<?>> registries = new HashMap<>();
 
     {
         // Register default registries
@@ -19,17 +19,19 @@ public class RegistryAccess {
         this.server = server;
     }
 
-    public <T> void register(RegistryKey<T> key, Registry<T> registry) {
+    public <T, R extends Registry<T>> void register(RegistryKey<T, R> key, R registry) {
+        if (registries.containsKey(key))
+            throw new IllegalArgumentException("Registry already registered: " + key);
         registries.put(key, registry);
     }
 
-    public <T> Registry<T> get(RegistryKey<T> key) {
+    public <T, R extends Registry<T>> R get(RegistryKey<T, R> key) {
         //noinspection unchecked
-        return (Registry<T>) registries.get(key);
+        return (R) registries.get(key);
     }
 
-    public <T> Registry<T> get(NamespacedKey key) {
-        return get(RegistryKey.of(key));
+    public <T, R extends Registry<T>> R get(NamespacedKey key) {
+        return get(RegistryKey.<T, R>of(key));
     }
 
     public Server server() {

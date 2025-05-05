@@ -9,11 +9,11 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public class Registry<T> implements Iterable<T> {
+public sealed abstract class Registry<T> implements Iterable<T> permits BuiltInRegistry, DataDrivenRegistry {
 
-    private final Server server;
-    private final NamespacedKey key;
-    private final Map<NamespacedKey, T> map = Collections.synchronizedMap(new LinkedHashMap<>());
+    protected final Server server;
+    protected final NamespacedKey key;
+    protected final Map<NamespacedKey, T> map = Collections.synchronizedMap(new LinkedHashMap<>());
 
     public Registry(Server server,  NamespacedKey key) {
         this.server = server;
@@ -119,13 +119,13 @@ public class Registry<T> implements Iterable<T> {
         return map.values().stream();
     }
 
-    public void modify(Consumer<Modifiable> consumer) {
+    protected void modify(Consumer<Modifiable> consumer) {
         // TODO check if server is in a state where modification is allowed
         Modifiable modifiable = new Modifiable();
         consumer.accept(modifiable);
     }
 
-    public void forceModify(Consumer<Modifiable> consumer) {
+    protected void forceModify(Consumer<Modifiable> consumer) {
         // TODO check if server is in a state where modification is allowed
         Modifiable modifiable = new Modifiable();
         consumer.accept(modifiable);
