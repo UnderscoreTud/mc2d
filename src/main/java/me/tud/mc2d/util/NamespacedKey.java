@@ -169,7 +169,7 @@ public final class NamespacedKey implements Writable {
      * @param key the key
      * @return whether the namespace and key follow their formats
      */
-    private static boolean isValidNamespacedKey(@NamespacePattern final String namespace, @KeyPattern final String key) {
+    private static boolean isValidNamespacedKey(final String namespace, final String key) {
         if (namespace.isEmpty() || key.isEmpty())
             return false;
         for (final char c : namespace.toCharArray()) {
