@@ -206,13 +206,13 @@ public final class NamespacedKey implements Writable {
         buf.writeNamespacedKey(this);
     }
 
-    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_]+:[a-zA-Z0-9.-_/]+")
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.\\-_]+:[a-zA-Z0-9.\\-_/]+")
     public @interface Pattern {}
 
-    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_]+")
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.\\-_]+")
     public @interface NamespacePattern {}
 
-    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.-_/]+")
+    @org.intellij.lang.annotations.Pattern("[a-zA-Z0-9.\\-_/]+")
     public @interface KeyPattern {}
 
 }
