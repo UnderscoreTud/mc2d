@@ -3,17 +3,15 @@ package me.tud.mc2d.network.packets;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class PacketDecoder extends ByteToMessageDecoder {
 
     private final PacketFactory packetFactory;
-
-    public PacketDecoder(PacketFactory packetFactory) {
-        this.packetFactory = packetFactory;
-    }
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {

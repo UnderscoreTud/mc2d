@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
@@ -14,6 +16,7 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
+@Data
 public class ClientConnection {
 
     private final Server server;
@@ -31,30 +34,9 @@ public class ClientConnection {
 
     private String brand;
 
-    public ClientConnection(Server server, Channel channel) {
-        this.server = server;
-        this.channel = channel;
-    }
-
-    public Server server() {
-        return server;
-    }
-
-    public Channel channel() {
-        return channel;
-    }
-
-    public ConnectionState state() {
-        return state;
-    }
-
     public void state(ConnectionState state) {
         System.out.println("State changed from " + this.state + " to " + state);
         this.state = state;
-    }
-
-    public int protocolVersion() {
-        return protocolVersion;
     }
 
     public void protocolVersion(int protocolVersion) {
@@ -63,18 +45,10 @@ public class ClientConnection {
         this.protocolVersion = protocolVersion;
     }
 
-    public String serverAddress() {
-        return serverAddress;
-    }
-
     public void serverAddress(String serverAddress) {
         if (this.serverAddress != null)
             throw new IllegalStateException("Server address already set");
         this.serverAddress = serverAddress;
-    }
-
-    public int serverPort() {
-        return serverPort;
     }
 
     public void serverPort(int serverPort) {
@@ -83,18 +57,10 @@ public class ClientConnection {
         this.serverPort = serverPort;
     }
 
-    public UUID uuid() {
-        return uuid;
-    }
-
     public void uuid(UUID uuid) {
         if (this.uuid != null)
             throw new IllegalStateException("UUID already set");
         this.uuid = uuid;
-    }
-
-    public String username() {
-        return username;
     }
 
     public void username(String name) {
@@ -103,30 +69,10 @@ public class ClientConnection {
         this.username = name;
     }
 
-    public ClientInformation clientInformation() {
-        return clientInformation;
-    }
-
-    public void clientInformation(ClientInformation clientInformation) {
-        this.clientInformation = clientInformation;
-    }
-
-    public DataPack[] knownPacks() {
-        return knownPacks;
-    }
-
     public void knownPacks(DataPack[] knownPacks) {
         if (state != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
         this.knownPacks = knownPacks;
-    }
-
-    public String brand() {
-        return brand;
-    }
-
-    public void brand(String brand) {
-        this.brand = brand;
     }
 
     public ChannelFuture sendPacket(byte[] data) {

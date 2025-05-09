@@ -1,11 +1,17 @@
 package me.tud.mc2d.network.packets.clientbound.status;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
+@Data
+@With
+@RequiredArgsConstructor
 public class ClientboundStatusPongResponse implements ClientboundPacket {
 
     private static final int ID = 0x01;
@@ -15,16 +21,10 @@ public class ClientboundStatusPongResponse implements ClientboundPacket {
         group.registerPacket(ID, ClientboundStatusPongResponse.class, ClientboundStatusPongResponse::new);
     }
 
-    private long timestamp;
+    private final long timestamp;
 
-    public ClientboundStatusPongResponse() {}
-
-    public ClientboundStatusPongResponse(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public long timestamp() {
-        return timestamp;
+    public ClientboundStatusPongResponse(FriendlyByteBuf buf) {
+        this(buf.readLong());
     }
 
     @Override
@@ -40,11 +40,6 @@ public class ClientboundStatusPongResponse implements ClientboundPacket {
     @Override
     public void serialize(FriendlyByteBuf buf) {
         buf.writeLong(timestamp);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        timestamp = buf.readLong();
     }
 
 }

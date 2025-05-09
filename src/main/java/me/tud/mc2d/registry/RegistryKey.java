@@ -1,11 +1,16 @@
 package me.tud.mc2d.registry;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class RegistryKey<T extends NBTSerializable, R extends Registry<T>> {
 
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
@@ -28,24 +33,10 @@ public class RegistryKey<T extends NBTSerializable, R extends Registry<T>> {
 
     private final NamespacedKey key;
 
-    private RegistryKey(NamespacedKey key) {
-        this.key = key;
-    }
-
-    public NamespacedKey key() {
-        return key;
-    }
-
-    @Override
-    public String toString() {
-        return "RegistryKey{" +
-            "key=" + key +
-            '}';
-    }
-
     private static <T extends NBTSerializable, R extends Registry<T>> RegistryKey<T, R> create(@NamespacedKey.KeyPattern String key) {
         RegistryKey<T, R> registryKey = new RegistryKey<>(NamespacedKey.minecraft(key));
         REGISTRY_KEYS.add(registryKey);
+        RegistryKey<NBTSerializable, BuiltInRegistry<NBTSerializable>> test = of(NamespacedKey.minecraft("test"));
         return registryKey;
     }
 

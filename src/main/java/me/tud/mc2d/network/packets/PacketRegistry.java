@@ -2,10 +2,16 @@ package me.tud.mc2d.network.packets;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import io.netty.buffer.Unpooled;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class PacketRegistry {
@@ -36,6 +42,7 @@ public class PacketRegistry {
         return new DynamicPacketFactory(keySupplier);
     }
 
+    @With
     public record Key(Packet.Direction direction, ConnectionState state) {
 
         public Key {
@@ -45,38 +52,27 @@ public class PacketRegistry {
                 throw new IllegalArgumentException("Connection state is null");
         }
 
-        public Key withDirection(Packet.Direction direction) {
-            return new Key(direction, this.state);
-        }
-
-        public Key withState(ConnectionState state) {
-            return new Key(this.direction, state);
-        }
-
     }
 
+    @RequiredArgsConstructor
     public static class Group implements PacketFactory {
 
-        private final Key key;
+        private final @Getter Key key;
         private final BiMap<Class<? extends Packet>, Integer> classToIDMap = HashBiMap.create();
-        private final Map<Class<? extends Packet>, Supplier<? extends Packet>> packetSuppliers = new HashMap<>();
+        private final Map<Class<? extends Packet>, Function<FriendlyByteBuf, ? extends Packet>> packetFactories = new HashMap<>();
 
-        private Group(Key key) {
-            this.key = key;
+        public <T extends Packet> void registerSimplePacket(int packetID, Class<T> packetClass, Supplier<T> packetSupplier) {
+            registerPacket(packetID, packetClass, buf -> packetSupplier.get());
         }
 
-        public Key key() {
-            return key;
-        }
-
-        public <T extends Packet> void registerPacket(int packetID, Class<T> packetClass, Supplier<T> packetSupplier) {
+        public <T extends Packet> void registerPacket(int packetID, Class<T> packetClass, Function<FriendlyByteBuf, T> packetSupplier) {
             if (classToIDMap.containsKey(packetClass))
                 throw new IllegalArgumentException("Packet class " + packetClass.getName() + " is already registered");
             if (classToIDMap.containsValue(packetID))
                 throw new IllegalArgumentException("Packet ID " + packetID + " is already registered");
             System.out.println("Registering packet " + packetClass.getName() + " with ID " + packetID + " in group " + key);
             classToIDMap.put(packetClass, packetID);
-            packetSuppliers.put(packetClass, packetSupplier);
+            packetFactories.put(packetClass, packetSupplier);
         }
 
         @Override
@@ -92,29 +88,25 @@ public class PacketRegistry {
             if (!classToIDMap.containsKey(packetClass))
                 throw new IllegalArgumentException("Packet class " + packetClass.getName() + " is not registered");
             //noinspection unchecked
-            Supplier<T> supplier = (Supplier<T>) packetSuppliers.get(packetClass);
-            if (supplier == null)
+            Function<FriendlyByteBuf, T> factory = (Function<FriendlyByteBuf, T>) packetFactories.get(packetClass);
+            if (factory == null)
                 throw new IllegalArgumentException("Packet supplier for class " + packetClass.getName() + " is not registered");
-            T packet = packetClass.cast(supplier.get());
+            FriendlyByteBuf buf = new FriendlyByteBuf(Unpooled.wrappedBuffer(data));
             try {
-                packet.deserialize(data);
+                return packetClass.cast(factory.apply(buf));
             } catch (Exception e) {
                 throw new RuntimeException("Failed to deserialize packet " + packetClass.getName(), e);
             }
-            return packet;
         }
 
     }
 
+    @RequiredArgsConstructor
     private class DynamicPacketFactory implements PacketFactory {
 
         private final Supplier<Key> keySupplier;
         private transient Key currentKey;
         private transient Group group;
-
-        private DynamicPacketFactory(Supplier<Key> keySupplier) {
-            this.keySupplier = keySupplier;
-        }
 
         @Override
         public Packet createPacket(int packetID, byte[] data) {

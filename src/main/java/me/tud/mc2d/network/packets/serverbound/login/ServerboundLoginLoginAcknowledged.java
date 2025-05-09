@@ -1,5 +1,6 @@
 package me.tud.mc2d.network.packets.serverbound.login;
 
+import lombok.Data;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
@@ -8,13 +9,14 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
+@Data
 public class ServerboundLoginLoginAcknowledged implements ServerboundPacket {
 
     private static final int ID = 0x03;
 
     @RegisterHandler(ConnectionState.LOGIN)
     public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundLoginLoginAcknowledged.class, ServerboundLoginLoginAcknowledged::new);
+        group.registerSimplePacket(ID, ServerboundLoginLoginAcknowledged.class, ServerboundLoginLoginAcknowledged::new);
     }
 
     @Override
@@ -29,8 +31,5 @@ public class ServerboundLoginLoginAcknowledged implements ServerboundPacket {
 
     @Override
     public void serialize(FriendlyByteBuf buf) {}
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {}
 
 }

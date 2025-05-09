@@ -1,5 +1,7 @@
 package me.tud.mc2d.registry;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.util.FriendlyByteBuf;
@@ -15,17 +17,13 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
+@RequiredArgsConstructor
 public sealed abstract class Registry<T extends NBTSerializable> implements Iterable<T>
         permits BuiltInRegistry, DataDrivenRegistry {
 
-    protected final Server server;
-    protected final NamespacedKey key;
+    protected final @Getter Server server;
+    protected final @Getter NamespacedKey key;
     protected final Map<NamespacedKey, T> map = Collections.synchronizedMap(new LinkedHashMap<>());
-
-    public Registry(Server server,  NamespacedKey key) {
-        this.server = server;
-        this.key = key;
-    }
 
     public T get(NamespacedKey key) {
         return map.get(key);
@@ -106,14 +104,6 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
         return Collections.unmodifiableCollection(map.values());
     }
 
-    public Server server() {
-        return server;
-    }
-
-    public NamespacedKey key() {
-        return key;
-    }
-
     public Iterator<NamespacedKey> keyIterator() {
         return map.keySet().iterator();
     }
@@ -144,23 +134,12 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
         // push changes
     }
 
+    @Getter
+    @RequiredArgsConstructor
     public class Entry implements Writable {
 
         private final NamespacedKey key;
         private final T value;
-
-        public Entry(NamespacedKey key, T value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public NamespacedKey key() {
-            return key;
-        }
-
-        public T value() {
-            return value;
-        }
 
         @Override
         public void write(FriendlyByteBuf buf) {

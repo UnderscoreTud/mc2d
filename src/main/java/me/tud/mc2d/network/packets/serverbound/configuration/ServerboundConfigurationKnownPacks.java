@@ -1,5 +1,8 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
@@ -7,6 +10,8 @@ import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
+@Data
+@With
 public class ServerboundConfigurationKnownPacks implements ServerboundPacket {
 
     private static final int ID = 0x07;
@@ -16,16 +21,14 @@ public class ServerboundConfigurationKnownPacks implements ServerboundPacket {
         group.registerPacket(ID, ServerboundConfigurationKnownPacks.class, ServerboundConfigurationKnownPacks::new);
     }
 
-    private DataPack[] knownPacks;
+    private final DataPack[] knownPacks;
 
-    public ServerboundConfigurationKnownPacks() {}
+    public ServerboundConfigurationKnownPacks(FriendlyByteBuf buf) {
+        this(buf.readArray(DataPack[]::new, DataPack::read));
+    }
 
     public ServerboundConfigurationKnownPacks(DataPack... knownPacks) {
         this.knownPacks = knownPacks;
-    }
-
-    public DataPack[] knownPacks() {
-        return knownPacks;
     }
 
     @Override
@@ -41,11 +44,6 @@ public class ServerboundConfigurationKnownPacks implements ServerboundPacket {
     @Override
     public void serialize(FriendlyByteBuf buf) {
         buf.writeArray(knownPacks, FriendlyByteBuf::write);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        knownPacks = buf.readArray(DataPack[]::new, DataPack::read);
     }
 
 }

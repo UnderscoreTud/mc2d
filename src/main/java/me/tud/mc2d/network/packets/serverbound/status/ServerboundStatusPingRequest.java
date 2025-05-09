@@ -1,11 +1,17 @@
 package me.tud.mc2d.network.packets.serverbound.status;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
+@Data
+@With
+@RequiredArgsConstructor
 public class ServerboundStatusPingRequest implements ServerboundPacket {
 
     private static final int ID = 0x01;
@@ -15,16 +21,10 @@ public class ServerboundStatusPingRequest implements ServerboundPacket {
         group.registerPacket(ID, ServerboundStatusPingRequest.class, ServerboundStatusPingRequest::new);
     }
 
-    private long timestamp;
+    private final long timestamp;
 
-    public ServerboundStatusPingRequest() {}
-
-    public ServerboundStatusPingRequest(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public long timestamp() {
-        return timestamp;
+    public ServerboundStatusPingRequest(FriendlyByteBuf buf) {
+        this(buf.readLong());
     }
 
     @Override
@@ -40,11 +40,6 @@ public class ServerboundStatusPingRequest implements ServerboundPacket {
     @Override
     public void serialize(FriendlyByteBuf buf) {
         buf.writeLong(timestamp);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        timestamp = buf.readLong();
     }
 
 }

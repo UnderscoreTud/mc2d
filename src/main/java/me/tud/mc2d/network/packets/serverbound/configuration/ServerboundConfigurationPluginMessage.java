@@ -1,5 +1,8 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
@@ -7,6 +10,9 @@ import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NamespacedKey;
 
+@Data
+@With
+@RequiredArgsConstructor
 public class ServerboundConfigurationPluginMessage implements ServerboundPacket {
 
     private static final int ID = 0x02;
@@ -16,22 +22,11 @@ public class ServerboundConfigurationPluginMessage implements ServerboundPacket 
         group.registerPacket(ID, ServerboundConfigurationPluginMessage.class, ServerboundConfigurationPluginMessage::new);
     }
 
-    private NamespacedKey channel;
-    private byte[] data;
+    private final NamespacedKey channel;
+    private final byte[] data;
 
-    public ServerboundConfigurationPluginMessage() {}
-
-    public ServerboundConfigurationPluginMessage(NamespacedKey channel, byte[] data) {
-        this.channel = channel;
-        this.data = data;
-    }
-
-    public NamespacedKey channel() {
-        return channel;
-    }
-
-    public byte[] data() {
-        return data;
+    public ServerboundConfigurationPluginMessage(FriendlyByteBuf buf) {
+        this(buf.readNamespacedKey(), buf.finish());
     }
 
     @Override
@@ -48,12 +43,6 @@ public class ServerboundConfigurationPluginMessage implements ServerboundPacket 
     public void serialize(FriendlyByteBuf buf) {
         buf.writeNamespacedKey(channel);
         buf.writeBytes(data);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        channel = buf.readNamespacedKey();
-        data = buf.finish();
     }
 
 }

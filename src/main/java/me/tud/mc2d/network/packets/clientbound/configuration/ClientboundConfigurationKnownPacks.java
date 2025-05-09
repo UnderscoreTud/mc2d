@@ -1,5 +1,8 @@
 package me.tud.mc2d.network.packets.clientbound.configuration;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
@@ -7,6 +10,8 @@ import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
+@Data
+@With
 public class ClientboundConfigurationKnownPacks implements ClientboundPacket {
 
     private static final int ID = 0x0E;
@@ -16,9 +21,11 @@ public class ClientboundConfigurationKnownPacks implements ClientboundPacket {
         group.registerPacket(ID, ClientboundConfigurationKnownPacks.class, ClientboundConfigurationKnownPacks::new);
     }
 
-    private DataPack[] knownPacks;
+    private final DataPack[] knownPacks;
 
-    public ClientboundConfigurationKnownPacks() {}
+    public ClientboundConfigurationKnownPacks(FriendlyByteBuf buf) {
+        this(buf.readArray(DataPack[]::new, DataPack::read));
+    }
 
     public ClientboundConfigurationKnownPacks(DataPack... knownPacks) {
         this.knownPacks = knownPacks;
@@ -37,11 +44,6 @@ public class ClientboundConfigurationKnownPacks implements ClientboundPacket {
     @Override
     public void serialize(FriendlyByteBuf buf) {
         buf.writeArray(knownPacks, FriendlyByteBuf::write);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        buf.readArray(DataPack[]::new, DataPack::read);
     }
 
 }

@@ -1,7 +1,11 @@
 package me.tud.mc2d.player;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Arrays;
 
+@RequiredArgsConstructor
 public enum SkinPart {
     CAPE(0x01),
     JACKET(0x02),
@@ -11,15 +15,7 @@ public enum SkinPart {
     RIGHT_PANT_LEG(0x20),
     HAT(0x40);
 
-    private final int id;
-
-    SkinPart(int id) {
-        this.id = id;
-    }
-
-    public int getID() {
-        return id;
-    }
+    private final @Getter int id;
 
     public static SkinPart fromID(int id) {
         for (SkinPart part : values()) {
@@ -32,14 +28,14 @@ public enum SkinPart {
     public static byte toBitmask(SkinPart... parts) {
         int bitmask = 0;
         for (SkinPart part : parts) {
-            bitmask |= part.getID();
+            bitmask |= part.id();
         }
         return (byte) bitmask;
     }
 
     public static SkinPart[] fromBitmask(int bitmask) {
         return Arrays.stream(SkinPart.values())
-                .filter(part -> (bitmask & part.getID()) != 0)
+                .filter(part -> (bitmask & part.id()) != 0)
                 .toArray(SkinPart[]::new);
     }
 

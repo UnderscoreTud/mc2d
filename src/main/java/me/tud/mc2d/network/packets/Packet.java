@@ -1,11 +1,8 @@
 package me.tud.mc2d.network.packets;
 
-import io.netty.buffer.Unpooled;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.Writable;
-
-import java.util.Arrays;
 
 public interface Packet extends Writable {
 
@@ -16,12 +13,6 @@ public interface Packet extends Writable {
     Direction direction();
 
     void serialize(FriendlyByteBuf buf);
-
-    default void deserialize(byte[] data) {
-        deserialize(new FriendlyByteBuf(Unpooled.wrappedBuffer(data)));
-    }
-
-    void deserialize(FriendlyByteBuf buf);
 
     @Override
     default void write(FriendlyByteBuf buf) {

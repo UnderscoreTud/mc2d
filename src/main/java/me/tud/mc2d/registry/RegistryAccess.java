@@ -1,5 +1,6 @@
 package me.tud.mc2d.registry;
 
+import lombok.Getter;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public class RegistryAccess {
 
-    private final Server server;
+    private final @Getter Server server;
     private final Map<RegistryKey<?, ?>, Registry<?>> registries = new HashMap<>();
 
     {
@@ -36,10 +37,6 @@ public class RegistryAccess {
 
     public <T extends NBTSerializable, R extends Registry<T>> R get(NamespacedKey key) {
         return get(RegistryKey.<T, R>of(key));
-    }
-
-    public Server server() {
-        return server;
     }
 
 }

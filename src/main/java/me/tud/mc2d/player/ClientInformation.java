@@ -1,16 +1,19 @@
 package me.tud.mc2d.player;
 
+import lombok.AccessLevel;
+import lombok.With;
 import me.tud.mc2d.chat.ChatMode;
 import me.tud.mc2d.particle.ParticleStatus;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.Writable;
 
+@With
 public record ClientInformation(
         String locale,
         byte viewDistance,
         ChatMode chatMode,
         boolean chatColors,
-        SkinPart[] skinParts,
+        @With(AccessLevel.NONE) SkinPart[] skinParts,
         MainHand mainHand,
         boolean enableTextFiltering,
         boolean enableServerListing,
@@ -31,120 +34,8 @@ public record ClientInformation(
                 .writeEnum(particleStatus);
     }
 
-    public ClientInformation withLocale(String locale) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withViewDistance(byte viewDistance) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withChatMode(ChatMode chatMode) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withChatColors(boolean chatColors) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
     public ClientInformation withSkinParts(SkinPart... skinParts) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withMainHand(MainHand mainHand) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withEnableTextFiltering(boolean enableTextFiltering) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withEnableServerListing(boolean enableServerListing) {
-        return new ClientInformation(
-                locale,
-                viewDistance,
-                chatMode,
-                chatColors,
-                skinParts,
-                mainHand,
-                enableTextFiltering,
-                enableServerListing,
-                particleStatus
-        );
-    }
-
-    public ClientInformation withParticleStatus(ParticleStatus particleStatus) {
-        return new ClientInformation(
+        return this.skinParts == skinParts ? this : new ClientInformation(
                 locale,
                 viewDistance,
                 chatMode,

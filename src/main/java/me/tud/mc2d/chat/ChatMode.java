@@ -1,20 +1,16 @@
 package me.tud.mc2d.chat;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public enum ChatMode {
 
     ENABLED(0),
     COMMANDS_ONLY(1),
     HIDDEN(2);
 
-    private final int id;
-
-    ChatMode(int id) {
-        this.id = id;
-    }
-
-    public int getID() {
-        return id;
-    }
+    private final @Getter int id;
 
     public static ChatMode fromID(int id) {
         for (ChatMode mode : values()) {

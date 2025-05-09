@@ -1,11 +1,14 @@
 package me.tud.mc2d.network.server;
 
 import com.google.gson.Gson;
+import lombok.With;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.registry.RegistryAccess;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
+import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
+@With
 public record ServerContext(
         Gson gson,
         ConnectionManager connectionManager,
@@ -15,6 +18,7 @@ public record ServerContext(
         ComponentSerializer componentSerializer
 ) {
 
+    // TODO this should not depend on the server
     public ServerContext(Server server) {
         this(
                 new Gson(),
@@ -24,6 +28,10 @@ public record ServerContext(
                 new RegistryAccess(server),
                 new ComponentSerializer()
         );
+    }
+
+    public JSONPropertiesSerializer jsonPropertiesSerializer() {
+        return new JSONPropertiesSerializer(gson);
     }
 
 }

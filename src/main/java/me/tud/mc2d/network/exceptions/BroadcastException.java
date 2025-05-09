@@ -1,18 +1,16 @@
 package me.tud.mc2d.network.exceptions;
 
+import lombok.Getter;
+
 import java.util.List;
 
 public class BroadcastException extends Exception {
 
-    private final List<Throwable> causes;
+    private final @Getter List<Throwable> causes;
 
     public BroadcastException(List<Throwable> causes) {
         super("One or more failures occurred during broadcast.");
         this.causes = causes;
-    }
-
-    public List<Throwable> causes() {
-        return causes;
     }
 
     @Override

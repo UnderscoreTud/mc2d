@@ -1,5 +1,8 @@
 package me.tud.mc2d.network.packets.clientbound.login;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
@@ -8,6 +11,9 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
+@Data
+@With
+@RequiredArgsConstructor
 public class ClientboundLoginLoginSuccess implements ClientboundPacket {
 
     private static final int ID = 0x02;
@@ -17,22 +23,12 @@ public class ClientboundLoginLoginSuccess implements ClientboundPacket {
         group.registerPacket(ID, ClientboundLoginLoginSuccess.class, ClientboundLoginLoginSuccess::new);
     }
 
-    public ClientboundLoginLoginSuccess() {}
+    private final UUID uuid;
+    private final String username;
 
-    public ClientboundLoginLoginSuccess(UUID uuid, String username) {
-        this.uuid = uuid;
-        this.username = username;
-    }
-
-    private UUID uuid;
-    private String username;
-
-    public UUID uuid() {
-        return uuid;
-    }
-
-    public String username() {
-        return username;
+    public ClientboundLoginLoginSuccess(FriendlyByteBuf buf) {
+        this(buf.readUUID(), buf.readString());
+        buf.readVarInt();
     }
 
     @Override
@@ -50,13 +46,6 @@ public class ClientboundLoginLoginSuccess implements ClientboundPacket {
         buf.writeUUID(uuid);
         buf.writeString(username);
         buf.writeVarInt(0);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        uuid = buf.readUUID();
-        username = buf.readString();
-        buf.readVarInt();
     }
 
 }

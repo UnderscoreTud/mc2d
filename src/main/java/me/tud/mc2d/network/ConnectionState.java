@@ -1,12 +1,18 @@
 package me.tud.mc2d.network;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public enum ConnectionState {
 
-    HANDSHAKING,
-    STATUS,
-    LOGIN,
-    CONFIGURATION,
-    PLAY;
+    HANDSHAKING(0),
+    STATUS(1),
+    LOGIN(2),
+    CONFIGURATION(3),
+    PLAY(4);
+
+    private final @Getter int id;
 
     public static ConnectionState fromID(int id) {
         return switch (id) {

@@ -1,5 +1,8 @@
 package me.tud.mc2d.network.packets.clientbound.configuration;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
@@ -11,6 +14,9 @@ import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 
+@Data
+@With
+@RequiredArgsConstructor
 public class ClientboundConfigurationRegistryData implements ClientboundPacket {
 
     private static final int ID = 0x07;
@@ -20,26 +26,17 @@ public class ClientboundConfigurationRegistryData implements ClientboundPacket {
         group.registerPacket(ID, ClientboundConfigurationRegistryData.class, ClientboundConfigurationRegistryData::new);
     }
 
-    private NamespacedKey registryID;
-    private Entry[] entries;
+    private final NamespacedKey registryID;
+    private final Entry[] entries;
 
-    public ClientboundConfigurationRegistryData() {}
+    public ClientboundConfigurationRegistryData(FriendlyByteBuf buf) {
+        this(buf.readNamespacedKey(), buf.readArray(Entry[]::new, Entry::read));
+    }
 
-    public ClientboundConfigurationRegistryData(
-            NamespacedKey registryID,
-            Registry<?>.Entry[] entries
-    ) {
+    public ClientboundConfigurationRegistryData(NamespacedKey registryID, Registry<?>.Entry[] entries) {
         this(registryID, new Entry[entries.length]);
         for (int i = 0; i < entries.length; i++)
             this.entries[i] = new Entry(entries[i].key(), entries[i].value().toNBT());
-    }
-
-    public ClientboundConfigurationRegistryData(
-            NamespacedKey registryID,
-            Entry[] entries
-    ) {
-        this.registryID = registryID;
-        this.entries = entries;
     }
 
     @Override
@@ -56,12 +53,6 @@ public class ClientboundConfigurationRegistryData implements ClientboundPacket {
     public void serialize(FriendlyByteBuf buf) {
         buf.writeNamespacedKey(registryID);
         buf.writeArray(entries, FriendlyByteBuf::write);
-    }
-
-    @Override
-    public void deserialize(FriendlyByteBuf buf) {
-        registryID = buf.readNamespacedKey();
-        entries = buf.readArray(Entry[]::new, Entry::read);
     }
 
     public record Entry(NamespacedKey id, @Nullable NBTCompound data) implements Writable {

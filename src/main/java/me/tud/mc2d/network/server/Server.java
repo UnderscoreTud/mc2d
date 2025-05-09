@@ -9,6 +9,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioIoHandler;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import lombok.Getter;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
@@ -36,10 +37,10 @@ public class Server {
     public static final int PROTOCOL_VERSION = 770;
     public static final DataPack CORE_PACK = new DataPack(NamespacedKey.minecraft("core"), VERSION_NAME);
 
-    private final int port;
-    private final ServerContext context;
-    private final ServerProperties properties;
-    private boolean initialized = false;
+    private final @Getter int port;
+    private final @Getter ServerContext context;
+    private final @Getter ServerProperties properties;
+    private @Getter boolean initialized = false;
 
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
@@ -63,18 +64,6 @@ public class Server {
         this.properties = properties != null ? properties : new ServerProperties();
     }
 
-    public int port() {
-        return port;
-    }
-
-    public ServerContext context() {
-        return context;
-    }
-
-    public ServerProperties properties() {
-        return properties;
-    }
-
     public boolean running() {
         return bindFuture != null && bindFuture.channel().isOpen();
     }
@@ -96,9 +85,8 @@ public class Server {
 
         TextComponent motd = properties.motd();
         if (motd != null) {
-            Gson gson = context.gson();
             ComponentSerializer componentSerializer = context.componentSerializer();
-            JSONPropertiesSerializer propertiesSerializer = new JSONPropertiesSerializer();
+            JSONPropertiesSerializer propertiesSerializer = context.jsonPropertiesSerializer();
             JsonElement description = JsonParser.parseString(componentSerializer.serialize(motd, propertiesSerializer));
             status.add("description", description);
         }
