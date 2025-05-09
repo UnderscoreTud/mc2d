@@ -18,7 +18,6 @@ public interface Packet extends Writable {
     void serialize(FriendlyByteBuf buf);
 
     default void deserialize(byte[] data) {
-        System.out.println(Arrays.toString(data));
         deserialize(new FriendlyByteBuf(Unpooled.wrappedBuffer(data)));
     }
 
