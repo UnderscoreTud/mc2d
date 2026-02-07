@@ -10,8 +10,6 @@ import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @Data
-@With
-@RequiredArgsConstructor
 public class ClientboundConfigurationFinishConfiguration implements ClientboundPacket {
 
     private static final int ID = 0x03;

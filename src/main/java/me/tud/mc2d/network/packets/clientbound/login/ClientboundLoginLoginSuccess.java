@@ -1,7 +1,5 @@
 package me.tud.mc2d.network.packets.clientbound.login;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.With;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
@@ -11,10 +9,8 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
-@Data
 @With
-@RequiredArgsConstructor
-public class ClientboundLoginLoginSuccess implements ClientboundPacket {
+public record ClientboundLoginLoginSuccess(UUID uuid, String username) implements ClientboundPacket {
 
     private static final int ID = 0x02;
 
@@ -22,9 +18,6 @@ public class ClientboundLoginLoginSuccess implements ClientboundPacket {
     public static void register(PacketRegistry.Group group) {
         group.registerPacket(ID, ClientboundLoginLoginSuccess.class, ClientboundLoginLoginSuccess::new);
     }
-
-    private final UUID uuid;
-    private final String username;
 
     public ClientboundLoginLoginSuccess(FriendlyByteBuf buf) {
         this(buf.readUUID(), buf.readString());

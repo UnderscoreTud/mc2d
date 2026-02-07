@@ -1,6 +1,5 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
-import lombok.Data;
 import lombok.With;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
@@ -9,9 +8,8 @@ import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
-@Data
 @With
-public class ServerboundConfigurationKnownPacks implements ServerboundPacket {
+public record ServerboundConfigurationKnownPacks(DataPack... knownPacks) implements ServerboundPacket {
 
     private static final int ID = 0x07;
 
@@ -20,14 +18,8 @@ public class ServerboundConfigurationKnownPacks implements ServerboundPacket {
         group.registerPacket(ID, ServerboundConfigurationKnownPacks.class, ServerboundConfigurationKnownPacks::new);
     }
 
-    private final DataPack[] knownPacks;
-
     public ServerboundConfigurationKnownPacks(FriendlyByteBuf buf) {
         this(buf.readArray(DataPack[]::new, DataPack::read));
-    }
-
-    public ServerboundConfigurationKnownPacks(DataPack... knownPacks) {
-        this.knownPacks = knownPacks;
     }
 
     @Override
