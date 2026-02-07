@@ -7,8 +7,6 @@ import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
-import java.util.UUID;
-
 @Data
 public class ServerboundLoginLoginAcknowledged implements ServerboundPacket {
 

@@ -16,11 +16,12 @@ dependencies {
     compileOnly("org.jetbrains:annotations:26.0.2")
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")
-    implementation("io.netty:netty-all:4.2.0.Final")
+    implementation("io.netty:netty-all:4.2.10.Final")
     implementation("com.google.guava:guava:33.4.8-jre")
     implementation("com.google.code.gson:gson:2.13.0")
     implementation("org.machinemc:scriptive-core:1.3")
     implementation("org.machinemc:scriptive-gson:1.3")
+    implementation("org.machinemc:scriptive-nbt:1.3")
     implementation("org.machinemc:nbt-core:2.0.0")
     implementation("org.machinemc:nbt-parser:2.0.0")
 

@@ -5,13 +5,12 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketFactory;
 import me.tud.mc2d.network.server.Server;
-import me.tud.mc2d.player.ClientInformation;
+import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;

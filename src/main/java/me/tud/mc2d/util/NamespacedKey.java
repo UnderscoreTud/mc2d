@@ -35,10 +35,10 @@ public final class NamespacedKey implements Writable {
             MINECRAFT_NAMESPACE = "minecraft",
             MC2D_NAMESPACE = "mc2d";
 
-    private final String namespace;
-    private final String key;
+    private final @NamespacePattern String namespace;
+    private final @KeyPattern String key;
 
-    NamespacedKey(final String namespace, final String key) {
+    NamespacedKey(final @NamespacePattern String namespace, final @KeyPattern String key) {
         this.namespace = Objects.requireNonNull(namespace, "Namespace can not be null");
         this.key = Objects.requireNonNull(key, "Key can not be null");
     }
@@ -119,14 +119,14 @@ public final class NamespacedKey implements Writable {
     /**
      * @return namespace of the namespaced key
      */
-    public String namespace() {
+    public @NamespacePattern String namespace() {
         return namespace;
     }
 
     /**
      * @return key of the namespaced key
      */
-    public String key() {
+    public @KeyPattern String key() {
         return key;
     }
 

@@ -1,7 +1,6 @@
 package me.tud.mc2d.network.packets.clientbound.configuration;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.With;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;

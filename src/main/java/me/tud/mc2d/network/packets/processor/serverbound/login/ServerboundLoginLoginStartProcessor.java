@@ -10,7 +10,7 @@ public class ServerboundLoginLoginStartProcessor implements PacketProcessor<Serv
     @Override
     public void process(ServerboundLoginLoginStart packet, ClientConnection connection) {
         connection.uuid(packet.uuid());
-        connection.username(packet.username());
+        connection.username(packet.name());
         connection.sendPacket(new ClientboundLoginLoginSuccess(connection.uuid(), connection.username()));
     }
 

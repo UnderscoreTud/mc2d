@@ -7,7 +7,7 @@ import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
-import me.tud.mc2d.player.ClientInformation;
+import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @Data

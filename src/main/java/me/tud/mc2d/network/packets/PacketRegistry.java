@@ -70,7 +70,8 @@ public class PacketRegistry {
                 throw new IllegalArgumentException("Packet class " + packetClass.getName() + " is already registered");
             if (classToIDMap.containsValue(packetID))
                 throw new IllegalArgumentException("Packet ID " + packetID + " is already registered");
-            System.out.println("Registering packet " + packetClass.getName() + " with ID " + packetID + " in group " + key);
+            System.out.println("Registering packet " + packetClass.getName() + " with ID " + packetID(packetID)
+                    + " in group " + key);
             classToIDMap.put(packetClass, packetID);
             packetFactories.put(packetClass, packetSupplier);
         }
@@ -79,7 +80,7 @@ public class PacketRegistry {
         public Packet createPacket(int packetID, byte[] data) {
             Class<? extends Packet> packetClass = classToIDMap.inverse().get(packetID);
             if (packetClass == null)
-                throw new IllegalArgumentException("Packet ID " + packetID + " is not registered");
+                throw new IllegalArgumentException("Packet ID " + packetID(packetID) + " in " + key + " is not registered");
             return createPacket(packetClass, data);
         }
 
@@ -97,6 +98,10 @@ public class PacketRegistry {
             } catch (Exception e) {
                 throw new RuntimeException("Failed to deserialize packet " + packetClass.getName(), e);
             }
+        }
+        
+        private static String packetID(int id) {
+            return id + String.format(" (0x%02X)", id);
         }
 
     }

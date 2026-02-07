@@ -23,10 +23,10 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
 
     protected final @Getter Server server;
     protected final @Getter NamespacedKey key;
-    protected final Map<NamespacedKey, T> map = Collections.synchronizedMap(new LinkedHashMap<>());
+    protected final Map<NamespacedKey, T> entries = Collections.synchronizedMap(new LinkedHashMap<>());
 
     public T get(NamespacedKey key) {
-        return map.get(key);
+        return entries.get(key);
     }
 
     public T getByID(int id) {
@@ -34,7 +34,7 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
     }
 
     public NamespacedKey getKey(T value) {
-        for (Map.Entry<NamespacedKey, T> entry : map.entrySet()) {
+        for (Map.Entry<NamespacedKey, T> entry : entries.entrySet()) {
             if (entry.getValue().equals(value))
                 return entry.getKey();
         }
@@ -46,10 +46,10 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
     }
 
     private Map.Entry<NamespacedKey, T> getEntryByID(int id) {
-        if (id < 0 || id >= map.size())
+        if (id < 0 || id >= entries.size())
             throw new IndexOutOfBoundsException("ID out of bounds: " + id);
         int currentID = 0;
-        for (Map.Entry<NamespacedKey, T> entry : map.entrySet()) {
+        for (Map.Entry<NamespacedKey, T> entry : entries.entrySet()) {
             if (currentID++ == id)
                 return entry;
         }
@@ -59,7 +59,7 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
 
     public int getID(T value) {
         int currentID = 0;
-        for (Map.Entry<NamespacedKey, T> entry : map.entrySet()) {
+        for (Map.Entry<NamespacedKey, T> entry : entries.entrySet()) {
             if (entry.getValue().equals(value))
                 return currentID;
             currentID++;
@@ -69,7 +69,7 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
 
     public int getID(NamespacedKey key) {
         int currentID = 0;
-        for (Map.Entry<NamespacedKey, T> entry : map.entrySet()) {
+        for (Map.Entry<NamespacedKey, T> entry : entries.entrySet()) {
             if (entry.getKey().equals(key))
                 return currentID;
             currentID++;
@@ -78,47 +78,47 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
     }
 
     public boolean contains(NamespacedKey key) {
-        return map.containsKey(key);
+        return entries.containsKey(key);
     }
 
     public boolean contains(T value) {
-        return map.containsValue(value);
+        return entries.containsValue(value);
     }
 
     public int size() {
-        return map.size();
+        return entries.size();
     }
 
     public @Unmodifiable Collection<Entry> entries() {
-        List<Entry> entries = new ArrayList<>(map.size());
-        for (Map.Entry<NamespacedKey, T> entry : map.entrySet())
+        List<Entry> entries = new ArrayList<>(this.entries.size());
+        for (Map.Entry<NamespacedKey, T> entry : this.entries.entrySet())
             entries.add(new Entry(entry.getKey(), entry.getValue()));
         return Collections.unmodifiableCollection(entries);
     }
 
     public @UnmodifiableView Set<NamespacedKey> keys() {
-        return Collections.unmodifiableSet(map.keySet());
+        return Collections.unmodifiableSet(entries.keySet());
     }
 
     public @UnmodifiableView Collection<T> values() {
-        return Collections.unmodifiableCollection(map.values());
+        return Collections.unmodifiableCollection(entries.values());
     }
 
     public Iterator<NamespacedKey> keyIterator() {
-        return map.keySet().iterator();
+        return entries.keySet().iterator();
     }
 
     @Override
     public @NotNull Iterator<T> iterator() {
-        return map.values().iterator();
+        return entries.values().iterator();
     }
 
     public Stream<NamespacedKey> keyStream() {
-        return map.keySet().stream();
+        return entries.keySet().stream();
     }
 
     public Stream<T> stream() {
-        return map.values().stream();
+        return entries.values().stream();
     }
 
     protected void modify(Consumer<Modifiable> consumer) {
@@ -158,23 +158,23 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
     public class Modifiable {
 
         public void register(NamespacedKey key, T value) {
-            if (map.containsKey(key))
+            if (entries.containsKey(key))
                 throw new IllegalArgumentException("Key already registered: " + key);
-            if (map.containsValue(value))
+            if (entries.containsValue(value))
                 throw new IllegalArgumentException("Value already registered: " + value);
-            map.put(key, value);
+            entries.put(key, value);
         }
 
         public void unregister(NamespacedKey key) {
-            map.remove(key);
+            entries.remove(key);
         }
 
         public void unregister(T value) {
-            map.values().remove(value);
+            entries.values().remove(value);
         }
 
         public void unregisterByID(int id) {
-            map.remove(Registry.this.getKeyByID(id));
+            entries.remove(Registry.this.getKeyByID(id));
         }
 
     }

@@ -1,4 +1,4 @@
-package me.tud.mc2d.player;
+package me.tud.mc2d.entity.player;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
