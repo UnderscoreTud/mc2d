@@ -18,11 +18,19 @@ public class PacketDecoder extends ByteToMessageDecoder {
         FriendlyByteBuf buf = new FriendlyByteBuf(in);
         int id = buf.readVarInt();
         byte[] data = buf.finish();
-        Packet packet = packetFactory.createPacket(id, data);
-        if (packet == null)
-            return;
-        System.out.println("INCOMING: " + packet.getClass().getSimpleName());
-        out.add(packet);
+        try {
+            Packet packet = packetFactory.createPacket(id, data);
+            if (packet == null)
+                return;
+            System.out.println("INCOMING: " + packet.getClass().getSimpleName());
+            out.add(packet);
+        } catch (IllegalArgumentException e) {
+            System.out.println("INCOMING: " + packetID(id) + " (unknown)");
+        }
+    }
+
+    private static String packetID(int id) {
+        return id + String.format(" (0x%02X)", id);
     }
 
     @Override

@@ -2,8 +2,8 @@ package me.tud.mc2d.util;
 
 import io.netty.buffer.*;
 import io.netty.util.ReferenceCounted;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.machinemc.nbt.NBT;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.serialization.ComponentProperties;
@@ -12,7 +12,6 @@ import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -515,6 +514,31 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         return value;
     }
 
+    public FriendlyByteBuf writeBlockPosition(BlockPosition position) {
+        writeLong((((long) position.x() & BlockPosition.PACKED_X_MASK) << 38)
+                | ((long) position.y() & BlockPosition.PACKED_Y_MASK)
+                | (((long) position.z() & BlockPosition.PACKED_Z_MASK) << 12));
+        return this;
+    }
+
+    public BlockPosition readBlockPosition() {
+        final long packedPos = readLong();
+        return new BlockPosition(
+                (int) (packedPos >> 38),
+                (int) ((packedPos << 52) >> 52),
+                (int) ((packedPos << 26) >> 38)
+        );
+    }
+    
+    public FriendlyByteBuf writeAngle(float angle) {
+        writeByte((byte) (angle * 256.0f / 360.0f));
+        return this;
+    }
+
+    public float readAngle() {
+        return readByte() * 360.0f / 256.0f;
+    }
+
     /**
      * Writes a namespaced key to the buffer.
      *
@@ -708,7 +732,7 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
      * @return This buffer.
      * @param <T> The type of the value.
      */
-    public <T> FriendlyByteBuf writeOptional(@Nullable T value, BiConsumer<FriendlyByteBuf, T> consumer) {
+    public <T> FriendlyByteBuf writeOptional(@Nullable T value, BiConsumer<FriendlyByteBuf, @NotNull T> consumer) {
         writeBoolean(value != null);
         if (value != null)
             consumer.accept(this, value);
