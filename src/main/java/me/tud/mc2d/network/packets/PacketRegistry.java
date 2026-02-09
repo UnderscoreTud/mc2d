@@ -99,7 +99,7 @@ public class PacketRegistry {
                 throw new RuntimeException("Failed to deserialize packet " + packetClass.getName(), e);
             }
         }
-        
+
         private static String packetID(int id) {
             return id + String.format(" (0x%02X)", id);
         }
