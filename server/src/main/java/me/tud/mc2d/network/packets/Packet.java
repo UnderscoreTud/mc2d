@@ -2,15 +2,24 @@ package me.tud.mc2d.network.packets;
 
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.util.Writable;
 
 public interface Packet extends Writable {
 
-    int id();
+    default int id() {
+        return info().id();
+    }
 
-    ConnectionState state();
+    default ConnectionState state() {
+        return info().state();
+    }
 
-    Direction direction();
+    default Direction direction() {
+        return info().direction();
+    }
+
+    Info info();
 
     void serialize(FriendlyByteBuf buf);
 
@@ -28,5 +37,7 @@ public interface Packet extends Writable {
         CLIENTBOUND,
         SERVERBOUND
     }
+
+    record Info(NamespacedKey resource, int id, ConnectionState state, Direction direction) {}
 
 }

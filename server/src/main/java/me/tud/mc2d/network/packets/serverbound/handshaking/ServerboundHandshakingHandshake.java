@@ -1,21 +1,22 @@
 package me.tud.mc2d.network.packets.serverbound.handshaking;
 
 import lombok.With;
+import me.tud.mc2d.generated.Packets;
 import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
 public record ServerboundHandshakingHandshake(int protocolVersion, String serverAddress, int serverPort,
-                                              ConnectionState nextState) implements ServerboundPacket {
+                                              ConnectionState nextState) implements Packet {
 
-    private static final int ID = 0x00;
+    private static final Packet.Info INFO = Packets.Handshake.Serverbound.INTENTION;
 
-    @RegisterHandler(ConnectionState.HANDSHAKING)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundHandshakingHandshake.class, ServerboundHandshakingHandshake::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundHandshakingHandshake.class, ServerboundHandshakingHandshake::new);
     }
 
     public ServerboundHandshakingHandshake(FriendlyByteBuf buf) {
@@ -23,13 +24,8 @@ public record ServerboundHandshakingHandshake(int protocolVersion, String server
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.HANDSHAKING;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

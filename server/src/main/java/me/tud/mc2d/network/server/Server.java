@@ -13,10 +13,8 @@ import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.*;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
@@ -168,7 +166,6 @@ public class Server {
                 RegisterHandler annotation = method.getAnnotation(RegisterHandler.class);
                 if (annotation == null) continue;
                 registerMethod = method;
-                state = annotation.value();
                 break;
             }
             if (registerMethod == null) {
@@ -178,10 +175,7 @@ public class Server {
             if (!validateRegisterMethod(registerMethod))
                 return;
             try {
-                if (ClientboundPacket.class.isAssignableFrom(cls))
-                    registerMethod.invoke(null, registry.group(Packet.Direction.CLIENTBOUND, state));
-                if (ServerboundPacket.class.isAssignableFrom(cls))
-                    registerMethod.invoke(null, registry.group(Packet.Direction.SERVERBOUND, state));
+                registerMethod.invoke(null, registry);
             } catch (Exception e) {
                 System.err.println("Failed to register packet " + cls.getName() + ": " + e.getMessage());
             }
@@ -193,8 +187,8 @@ public class Server {
             System.err.println("Register method must have exactly one parameter");
             return false;
         }
-        if (!PacketRegistry.Group.class.isAssignableFrom(method.getParameterTypes()[0])) {
-            System.err.println("Register method must have a Packet parameter");
+        if (!PacketRegistry.class.isAssignableFrom(method.getParameterTypes()[0])) {
+            System.err.println("Register method must have a PacketRegistry parameter");
             return false;
         }
         if (method.getReturnType() != void.class) {

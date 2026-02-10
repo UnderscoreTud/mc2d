@@ -1,20 +1,20 @@
 package me.tud.mc2d.network.packets.serverbound.status;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
-public record ServerboundStatusPingRequest(long timestamp) implements ServerboundPacket {
+public record ServerboundStatusPingRequest(long timestamp) implements Packet {
 
-    private static final int ID = 0x01;
+    private static final Packet.Info INFO = Packets.Status.Serverbound.PING_REQUEST;
 
-    @RegisterHandler(ConnectionState.STATUS)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundStatusPingRequest.class, ServerboundStatusPingRequest::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundStatusPingRequest.class, ServerboundStatusPingRequest::new);
     }
 
     public ServerboundStatusPingRequest(FriendlyByteBuf buf) {
@@ -22,13 +22,8 @@ public record ServerboundStatusPingRequest(long timestamp) implements Serverboun
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.STATUS;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

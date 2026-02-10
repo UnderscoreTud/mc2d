@@ -18,6 +18,15 @@ public class PacketRegistry {
 
     private final Map<Key, Group> registries = new HashMap<>();
 
+    public <T extends Packet> void registerSimplePacket(Packet.Info info, Class<T> packetClass, Supplier<T> packetSupplier) {
+        group(info.direction(), info.state()).registerSimplePacket(info.id(), packetClass, packetSupplier);
+    }
+
+    public <T extends Packet> void registerPacket(Packet.Info info, Class<T> packetClass, Function<FriendlyByteBuf, T> packetSupplier) {
+        group(info.direction(), info.state()).registerPacket(info.id(), packetClass, packetSupplier);
+    }
+
+
     public Group group(Packet.Direction direction, ConnectionState state) {
         return group(new Key(direction, state));
     }

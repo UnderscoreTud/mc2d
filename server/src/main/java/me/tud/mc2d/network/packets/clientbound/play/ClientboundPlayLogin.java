@@ -4,10 +4,10 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.With;
 import me.tud.mc2d.entity.player.GameMode;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.BlockPosition;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NamespacedKey;
@@ -16,13 +16,13 @@ import org.jetbrains.annotations.Nullable;
 @Data
 @With
 @RequiredArgsConstructor
-public class ClientboundPlayLogin implements ClientboundPacket {
+public class ClientboundPlayLogin implements Packet {
 
-    private static final int ID = 0x2B;
+    private static final Packet.Info INFO = Packets.Play.Clientbound.LOGIN;
 
-    @RegisterHandler(ConnectionState.PLAY)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundPlayLogin.class, ClientboundPlayLogin::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundPlayLogin.class, ClientboundPlayLogin::new);
     }
 
     private final int entityID;
@@ -74,13 +74,8 @@ public class ClientboundPlayLogin implements ClientboundPacket {
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.PLAY;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

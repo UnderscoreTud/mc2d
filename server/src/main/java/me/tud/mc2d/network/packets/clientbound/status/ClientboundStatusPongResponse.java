@@ -1,20 +1,20 @@
 package me.tud.mc2d.network.packets.clientbound.status;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
-public record ClientboundStatusPongResponse(long timestamp) implements ClientboundPacket {
+public record ClientboundStatusPongResponse(long timestamp) implements Packet {
 
-    private static final int ID = 0x01;
+    private static final Packet.Info INFO = Packets.Status.Clientbound.PONG_RESPONSE;
 
-    @RegisterHandler(ConnectionState.STATUS)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundStatusPongResponse.class, ClientboundStatusPongResponse::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundStatusPongResponse.class, ClientboundStatusPongResponse::new);
     }
 
     public ClientboundStatusPongResponse(FriendlyByteBuf buf) {
@@ -22,13 +22,8 @@ public record ClientboundStatusPongResponse(long timestamp) implements Clientbou
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.STATUS;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

@@ -1,22 +1,22 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
 public record ServerboundConfigurationClientInformation(ClientInformation clientInformation)
-        implements ServerboundPacket {
+        implements Packet {
 
-    private static final int ID = 0x00;
+    private static final Packet.Info INFO = Packets.Configuration.Serverbound.CLIENT_INFORMATION;
 
-    @RegisterHandler(ConnectionState.CONFIGURATION)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundConfigurationClientInformation.class, ServerboundConfigurationClientInformation::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundConfigurationClientInformation.class, ServerboundConfigurationClientInformation::new);
     }
 
     public ServerboundConfigurationClientInformation(FriendlyByteBuf buf) {
@@ -24,13 +24,8 @@ public record ServerboundConfigurationClientInformation(ClientInformation client
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.CONFIGURATION;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

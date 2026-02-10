@@ -1,32 +1,25 @@
 package me.tud.mc2d.network.packets.serverbound.play;
 
 import lombok.Data;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @Data
-public class ServerboundPlayClientTickEnd implements ServerboundPacket {
+public class ServerboundPlayClientTickEnd implements Packet {
 
-    private final static int ID = 0x0B;
+    private static final Packet.Info INFO = Packets.Play.Serverbound.CLIENT_TICK_END;
 
-    @RegisterHandler(ConnectionState.PLAY)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundPlayClientTickEnd.class, ServerboundPlayClientTickEnd::new);
-    }
-
-    public ServerboundPlayClientTickEnd(FriendlyByteBuf buf) {}
-
-    @Override
-    public int id() {
-        return ID;
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerSimplePacket(INFO, ServerboundPlayClientTickEnd.class, ServerboundPlayClientTickEnd::new);
     }
 
     @Override
-    public ConnectionState state() {
-        return ConnectionState.PLAY;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

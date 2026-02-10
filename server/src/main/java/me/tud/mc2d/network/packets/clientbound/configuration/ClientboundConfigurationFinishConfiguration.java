@@ -1,34 +1,29 @@
 package me.tud.mc2d.network.packets.clientbound.configuration;
 
 import lombok.Data;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @Data
-public class ClientboundConfigurationFinishConfiguration implements ClientboundPacket {
+public class ClientboundConfigurationFinishConfiguration implements Packet {
 
-    private static final int ID = 0x03;
+    private static final Packet.Info INFO = Packets.Configuration.Clientbound.FINISH_CONFIGURATION;
 
-    @RegisterHandler(ConnectionState.CONFIGURATION)
-    public static void register(PacketRegistry.Group group) {
-        group.registerSimplePacket(
-                ID,
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerSimplePacket(
+                INFO,
                 ClientboundConfigurationFinishConfiguration.class,
                 ClientboundConfigurationFinishConfiguration::new
         );
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.CONFIGURATION;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

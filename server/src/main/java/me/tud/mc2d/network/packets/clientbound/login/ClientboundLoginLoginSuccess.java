@@ -1,22 +1,22 @@
 package me.tud.mc2d.network.packets.clientbound.login;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
 @With
-public record ClientboundLoginLoginSuccess(UUID uuid, String username) implements ClientboundPacket {
+public record ClientboundLoginLoginSuccess(UUID uuid, String username) implements Packet {
 
-    private static final int ID = 0x02;
+    private static final Packet.Info INFO = Packets.Login.Clientbound.LOGIN_FINISHED;
 
-    @RegisterHandler(ConnectionState.LOGIN)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundLoginLoginSuccess.class, ClientboundLoginLoginSuccess::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundLoginLoginSuccess.class, ClientboundLoginLoginSuccess::new);
     }
 
     public ClientboundLoginLoginSuccess(FriendlyByteBuf buf) {
@@ -25,13 +25,8 @@ public record ClientboundLoginLoginSuccess(UUID uuid, String username) implement
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.LOGIN;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

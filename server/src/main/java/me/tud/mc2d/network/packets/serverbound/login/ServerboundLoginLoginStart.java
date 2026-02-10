@@ -1,22 +1,22 @@
 package me.tud.mc2d.network.packets.serverbound.login;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 import java.util.UUID;
 
 @With
-public record ServerboundLoginLoginStart(String name, UUID uuid) implements ServerboundPacket {
+public record ServerboundLoginLoginStart(String name, UUID uuid) implements Packet {
 
-    private static final int ID = 0x00;
+    private static final Packet.Info INFO = Packets.Login.Serverbound.HELLO;
 
-    @RegisterHandler(ConnectionState.LOGIN)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundLoginLoginStart.class, ServerboundLoginLoginStart::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundLoginLoginStart.class, ServerboundLoginLoginStart::new);
     }
 
     public ServerboundLoginLoginStart(FriendlyByteBuf buf) {
@@ -24,13 +24,8 @@ public record ServerboundLoginLoginStart(String name, UUID uuid) implements Serv
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.HANDSHAKING;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

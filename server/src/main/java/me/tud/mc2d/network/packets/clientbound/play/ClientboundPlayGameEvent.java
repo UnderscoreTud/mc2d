@@ -2,20 +2,20 @@ package me.tud.mc2d.network.packets.clientbound.play;
 
 import lombok.With;
 import me.tud.mc2d.gameevent.GameEvent;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
-public record ClientboundPlayGameEvent(GameEvent<?> gameEvent) implements ClientboundPacket {
+public record ClientboundPlayGameEvent(GameEvent<?> gameEvent) implements Packet {
 
-    public static int ID = 0x22;
+    public static final Packet.Info INFO = Packets.Play.Clientbound.GAME_EVENT;
 
-    @RegisterHandler(ConnectionState.PLAY)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundPlayGameEvent.class, ClientboundPlayGameEvent::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundPlayGameEvent.class, ClientboundPlayGameEvent::new);
     }
     
     public ClientboundPlayGameEvent(FriendlyByteBuf buf) {
@@ -23,13 +23,8 @@ public record ClientboundPlayGameEvent(GameEvent<?> gameEvent) implements Client
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.PLAY;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

@@ -1,28 +1,23 @@
 package me.tud.mc2d.network.packets.serverbound.status;
 
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
-public record ServerboundStatusStatusRequest() implements ServerboundPacket {
+public record ServerboundStatusStatusRequest() implements Packet {
 
-    public static final int ID = 0x00;
+    private static final Packet.Info INFO = Packets.Status.Serverbound.STATUS_REQUEST;
 
-    @RegisterHandler(ConnectionState.STATUS)
-    public static void register(PacketRegistry.Group group) {
-        group.registerSimplePacket(ID, ServerboundStatusStatusRequest.class, ServerboundStatusStatusRequest::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerSimplePacket(INFO, ServerboundStatusStatusRequest.class, ServerboundStatusStatusRequest::new);
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.STATUS;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

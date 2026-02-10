@@ -1,20 +1,20 @@
 package me.tud.mc2d.network.packets.clientbound.status;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
-public record ClientboundStatusStatusResponse(String jsonResponse) implements ClientboundPacket {
+public record ClientboundStatusStatusResponse(String jsonResponse) implements Packet {
 
-    private static final int ID = 0x00;
+    private static final Packet.Info INFO = Packets.Status.Clientbound.STATUS_RESPONSE;
 
-    @RegisterHandler(ConnectionState.STATUS)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundStatusStatusResponse.class, ClientboundStatusStatusResponse::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundStatusStatusResponse.class, ClientboundStatusStatusResponse::new);
     }
 
     public ClientboundStatusStatusResponse(FriendlyByteBuf buf) {
@@ -22,13 +22,8 @@ public record ClientboundStatusStatusResponse(String jsonResponse) implements Cl
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.STATUS;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

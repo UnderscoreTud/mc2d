@@ -1,30 +1,25 @@
 package me.tud.mc2d.network.packets.serverbound.login;
 
 import lombok.Data;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @Data
-public class ServerboundLoginLoginAcknowledged implements ServerboundPacket {
+public class ServerboundLoginLoginAcknowledged implements Packet {
 
-    private static final int ID = 0x03;
+    private static final Packet.Info INFO = Packets.Login.Serverbound.LOGIN_ACKNOWLEDGED;
 
-    @RegisterHandler(ConnectionState.LOGIN)
-    public static void register(PacketRegistry.Group group) {
-        group.registerSimplePacket(ID, ServerboundLoginLoginAcknowledged.class, ServerboundLoginLoginAcknowledged::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerSimplePacket(INFO, ServerboundLoginLoginAcknowledged.class, ServerboundLoginLoginAcknowledged::new);
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.HANDSHAKING;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

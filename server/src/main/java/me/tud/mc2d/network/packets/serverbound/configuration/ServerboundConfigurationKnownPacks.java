@@ -2,20 +2,20 @@ package me.tud.mc2d.network.packets.serverbound.configuration;
 
 import lombok.With;
 import me.tud.mc2d.datapack.DataPack;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 
 @With
-public record ServerboundConfigurationKnownPacks(DataPack... knownPacks) implements ServerboundPacket {
+public record ServerboundConfigurationKnownPacks(DataPack... knownPacks) implements Packet {
 
-    private static final int ID = 0x07;
+    private static final Packet.Info INFO = Packets.Configuration.Serverbound.SELECT_KNOWN_PACKS;
 
-    @RegisterHandler(ConnectionState.CONFIGURATION)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundConfigurationKnownPacks.class, ServerboundConfigurationKnownPacks::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundConfigurationKnownPacks.class, ServerboundConfigurationKnownPacks::new);
     }
 
     public ServerboundConfigurationKnownPacks(FriendlyByteBuf buf) {
@@ -23,13 +23,8 @@ public record ServerboundConfigurationKnownPacks(DataPack... knownPacks) impleme
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.CONFIGURATION;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

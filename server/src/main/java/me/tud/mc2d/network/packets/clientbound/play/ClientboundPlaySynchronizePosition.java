@@ -1,9 +1,9 @@
 package me.tud.mc2d.network.packets.clientbound.play;
 
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import org.joml.Vector3d;
 
@@ -11,13 +11,13 @@ import java.util.EnumSet;
 import java.util.Set;
 
 public record ClientboundPlaySynchronizePosition(int teleportID, Vector3d position, Vector3d velocity, float yaw, float pitch, Set<TeleportFlags> flags) 
-        implements ClientboundPacket {
+        implements Packet {
 
-    public static int ID = 0x41;
+    private static final Packet.Info INFO = Packets.Play.Clientbound.PLAYER_POSITION;
 
-    @RegisterHandler(ConnectionState.PLAY)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundPlaySynchronizePosition.class, ClientboundPlaySynchronizePosition::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundPlaySynchronizePosition.class, ClientboundPlaySynchronizePosition::new);
     }
 
     public ClientboundPlaySynchronizePosition(FriendlyByteBuf buf) {
@@ -31,13 +31,8 @@ public record ClientboundPlaySynchronizePosition(int teleportID, Vector3d positi
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.PLAY;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

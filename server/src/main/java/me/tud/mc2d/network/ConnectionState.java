@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ConnectionState {
 
-    HANDSHAKING(0),
+    HANDSHAKE(0),
     STATUS(1),
     LOGIN(2),
     CONFIGURATION(3),
@@ -16,7 +16,7 @@ public enum ConnectionState {
 
     public static ConnectionState fromID(int id) {
         return switch (id) {
-            case 0 -> HANDSHAKING;
+            case 0 -> HANDSHAKE;
             case 1 -> STATUS;
             case 2 -> LOGIN;
             case 3 -> CONFIGURATION;

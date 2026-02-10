@@ -1,21 +1,21 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NamespacedKey;
 
 @With
-public record ServerboundConfigurationPluginMessage(NamespacedKey channel, byte[] data) implements ServerboundPacket {
+public record ServerboundConfigurationPluginMessage(NamespacedKey channel, byte[] data) implements Packet {
 
-    private static final int ID = 0x02;
+    private static final Packet.Info INFO = Packets.Configuration.Serverbound.CUSTOM_PAYLOAD;
 
-    @RegisterHandler(ConnectionState.CONFIGURATION)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ServerboundConfigurationPluginMessage.class, ServerboundConfigurationPluginMessage::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ServerboundConfigurationPluginMessage.class, ServerboundConfigurationPluginMessage::new);
     }
 
     public ServerboundConfigurationPluginMessage(FriendlyByteBuf buf) {
@@ -23,13 +23,8 @@ public record ServerboundConfigurationPluginMessage(NamespacedKey channel, byte[
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.CONFIGURATION;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

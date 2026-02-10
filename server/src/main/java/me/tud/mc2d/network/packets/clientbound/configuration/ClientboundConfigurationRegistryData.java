@@ -1,10 +1,10 @@
 package me.tud.mc2d.network.packets.clientbound.configuration;
 
 import lombok.With;
-import me.tud.mc2d.network.ConnectionState;
+import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NamespacedKey;
@@ -14,13 +14,13 @@ import org.machinemc.nbt.NBTCompound;
 
 @With
 public record ClientboundConfigurationRegistryData(NamespacedKey registryID,
-                                                   Entry[] entries) implements ClientboundPacket {
+                                                   Entry[] entries) implements Packet {
 
-    private static final int ID = 0x07;
+    private static final Packet.Info INFO = Packets.Configuration.Clientbound.REGISTRY_DATA;
 
-    @RegisterHandler(ConnectionState.CONFIGURATION)
-    public static void register(PacketRegistry.Group group) {
-        group.registerPacket(ID, ClientboundConfigurationRegistryData.class, ClientboundConfigurationRegistryData::new);
+    @RegisterHandler
+    public static void register(PacketRegistry registry) {
+        registry.registerPacket(INFO, ClientboundConfigurationRegistryData.class, ClientboundConfigurationRegistryData::new);
     }
 
     public ClientboundConfigurationRegistryData(FriendlyByteBuf buf) {
@@ -34,13 +34,8 @@ public record ClientboundConfigurationRegistryData(NamespacedKey registryID,
     }
 
     @Override
-    public int id() {
-        return ID;
-    }
-
-    @Override
-    public ConnectionState state() {
-        return ConnectionState.CONFIGURATION;
+    public Packet.Info info() {
+        return INFO;
     }
 
     @Override

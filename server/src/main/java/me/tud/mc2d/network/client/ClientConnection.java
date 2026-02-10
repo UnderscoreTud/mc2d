@@ -20,7 +20,7 @@ public class ClientConnection {
 
     private final Server server;
     private final Channel channel;
-    private ConnectionState state = ConnectionState.HANDSHAKING;
+    private ConnectionState state = ConnectionState.HANDSHAKE;
     private int protocolVersion = -1;
     private String serverAddress;
     private int serverPort = -1;
