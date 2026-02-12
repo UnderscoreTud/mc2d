@@ -4,6 +4,7 @@ import com.palantir.javapoet.ClassName;
 
 public class Imports {
  
+    public static final ClassName DAMAGE_TYPE = ClassName.get("me.tud.mc2d.damage", "DamageType");
     public static final ClassName DIMENSION_TYPE = ClassName.get("me.tud.mc2d.dimension", "DimensionType");
     public static final ClassName SERVER = ClassName.get("me.tud.mc2d.network.server", "Server");
     public static final ClassName BUILT_IN_REGISTRY = ClassName.get("me.tud.mc2d.registry", "BuiltInRegistry");

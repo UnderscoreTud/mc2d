@@ -5,6 +5,7 @@ import com.palantir.javapoet.CodeBlock;
 
 import java.io.IOException;
 
+@FunctionalInterface
 public interface SimpleInstruction extends Instruction {
 
     void apply(CodeBlock.Builder builder, JsonReader reader) throws IOException;

@@ -26,6 +26,12 @@ val generateDimensionTypes = registerGeneratorTask(
     genOutDir
 )
 
+val generateDamageTypes = registerGeneratorTask(
+    "generateDamageTypes",
+    "me.tud.mc2d.generators.DamageTypesGenerator",
+    genOutDir
+)
+
 sourceSets.named("main") {
     java.srcDir(genOutDir)
 }
@@ -33,4 +39,5 @@ sourceSets.named("main") {
 tasks.withType<JavaCompile>().configureEach { 
     dependsOn(generatePacketIDs)
     dependsOn(generateDimensionTypes)
+    dependsOn(generateDamageTypes)
 }
