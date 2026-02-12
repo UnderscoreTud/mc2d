@@ -12,14 +12,18 @@ public non-sealed class DataDrivenRegistry<T extends NBTSerializable> extends Re
         super(server, key);
     }
 
-    @Override
-    public void modify(Consumer<Modifiable> consumer) {
-        super.modify(consumer);
+    public <R extends DataDrivenRegistry<T>> DataDrivenRegistry(Server server, RegistryKey<T, R> key) {
+        super(server, key.key());
     }
 
     @Override
-    public void forceModify(Consumer<Modifiable> consumer) {
-        super.forceModify(consumer);
+    public DataDrivenRegistry<T> modify(Consumer<Modifiable> consumer) {
+        return (DataDrivenRegistry<T>) super.modify(consumer);
+    }
+
+    @Override
+    public DataDrivenRegistry<T> forceModify(Consumer<Modifiable> consumer) {
+        return (DataDrivenRegistry<T>) super.forceModify(consumer);
     }
 
 }

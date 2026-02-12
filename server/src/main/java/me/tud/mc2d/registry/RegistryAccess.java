@@ -22,9 +22,37 @@ public class RegistryAccess {
     private final @Getter Server server;
     private final Map<RegistryKey<?, ?>, Registry<?>> registries = new HashMap<>();
 
-    {
-        dataDriven(RegistryKey.BIOME, Map.entry(NamespacedKey.minecraft("plains"), Biome.PLAINS));
-        dataDriven(RegistryKey.DAMAGE_TYPE,
+    private RegistryAccess(Server server) {
+        this.server = server;
+    }
+
+    public <T extends NBTSerializable, R extends Registry<T>> void register(RegistryKey<T, R> key, R registry) {
+        if (registries.containsKey(key))
+            throw new IllegalArgumentException("Registry already registered: " + key);
+        registries.put(key, registry);
+    }
+
+    public <T extends NBTSerializable, R extends Registry<T>> R get(RegistryKey<T, R> key) {
+        //noinspection unchecked
+        return (R) registries.get(key);
+    }
+
+    public <T extends NBTSerializable, R extends Registry<T>> R get(NamespacedKey key) {
+        return get(RegistryKey.<T, R>of(key));
+    }
+
+    public @UnmodifiableView Map<RegistryKey<?, ?>, Registry<?>> registries() {
+        return Collections.unmodifiableMap(registries);
+    }
+
+    public static RegistryAccess empty(Server server) {
+        return new RegistryAccess(server);
+    }
+
+    public static RegistryAccess createDefault(Server server) {
+        RegistryAccess access = new RegistryAccess(server);
+        access.dataDriven(RegistryKey.BIOME, Map.entry(NamespacedKey.minecraft("plains"), Biome.PLAINS));
+        access.dataDriven(RegistryKey.DAMAGE_TYPE,
                 Map.entry(NamespacedKey.minecraft("arrow"), DamageType.ARROW),
                 Map.entry(NamespacedKey.minecraft("bad_respawn_point"), DamageType.BAD_RESPAWN_POINT),
                 Map.entry(NamespacedKey.minecraft("cactus"), DamageType.CACTUS),
@@ -75,38 +103,16 @@ public class RegistryAccess {
                 Map.entry(NamespacedKey.minecraft("wither_skull"), DamageType.WITHER_SKULL),
                 Map.entry(NamespacedKey.minecraft("wither"), DamageType.WITHER)
         );
-        dataDriven(RegistryKey.DIMENSION_TYPE, Map.entry(NamespacedKey.minecraft("overworld"), DimensionType.OVERWORLD));
-        dataDriven(RegistryKey.CAT_VARIANT, Map.entry(NamespacedKey.minecraft("tabby"), MobVariant.CAT_TABBY));
-        dataDriven(RegistryKey.CHICKEN_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.CHICKEN_TEMPERATE));
-        dataDriven(RegistryKey.COW_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.COW_TEMPERATE));
-        dataDriven(RegistryKey.FROG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.FROG_TEMPERATE));
-        dataDriven(RegistryKey.PAINTING_VARIANT, Map.entry(NamespacedKey.minecraft("alban"), PaintingVariant.ALBAN));
-        dataDriven(RegistryKey.PIG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.PIG_TEMPERATE));
-        dataDriven(RegistryKey.WOLF_SOUND_VARIANT, Map.entry(NamespacedKey.minecraft("classic"), WolfSoundVariant.CLASSIC));
-        dataDriven(RegistryKey.WOLF_VARIANT, Map.entry(NamespacedKey.minecraft("ashen"), WolfVariant.ASHEN));
-    }
-
-    public RegistryAccess(Server server) {
-        this.server = server;
-    }
-
-    public <T extends NBTSerializable, R extends Registry<T>> void register(RegistryKey<T, R> key, R registry) {
-        if (registries.containsKey(key))
-            throw new IllegalArgumentException("Registry already registered: " + key);
-        registries.put(key, registry);
-    }
-
-    public <T extends NBTSerializable, R extends Registry<T>> R get(RegistryKey<T, R> key) {
-        //noinspection unchecked
-        return (R) registries.get(key);
-    }
-
-    public <T extends NBTSerializable, R extends Registry<T>> R get(NamespacedKey key) {
-        return get(RegistryKey.<T, R>of(key));
-    }
-
-    public @UnmodifiableView Map<RegistryKey<?, ?>, Registry<?>> registries() {
-        return Collections.unmodifiableMap(registries);
+        access.register(RegistryKey.DIMENSION_TYPE, DimensionType.createDefaultRegistry(server));
+        access.dataDriven(RegistryKey.CAT_VARIANT, Map.entry(NamespacedKey.minecraft("tabby"), MobVariant.CAT_TABBY));
+        access.dataDriven(RegistryKey.CHICKEN_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.CHICKEN_TEMPERATE));
+        access.dataDriven(RegistryKey.COW_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.COW_TEMPERATE));
+        access.dataDriven(RegistryKey.FROG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.FROG_TEMPERATE));
+        access.dataDriven(RegistryKey.PAINTING_VARIANT, Map.entry(NamespacedKey.minecraft("alban"), PaintingVariant.ALBAN));
+        access.dataDriven(RegistryKey.PIG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.PIG_TEMPERATE));
+        access.dataDriven(RegistryKey.WOLF_SOUND_VARIANT, Map.entry(NamespacedKey.minecraft("classic"), WolfSoundVariant.CLASSIC));
+        access.dataDriven(RegistryKey.WOLF_VARIANT, Map.entry(NamespacedKey.minecraft("ashen"), WolfVariant.ASHEN));
+        return access;
     }
 
     @SafeVarargs

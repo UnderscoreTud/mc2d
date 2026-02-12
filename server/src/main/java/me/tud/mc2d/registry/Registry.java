@@ -121,17 +121,18 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
         return entries.values().stream();
     }
 
-    protected void modify(Consumer<Modifiable> consumer) {
+    protected Registry<T> modify(Consumer<Modifiable> consumer) {
         // TODO check if server is in a state where modification is allowed
         Modifiable modifiable = new Modifiable();
         consumer.accept(modifiable);
+        return this;
     }
 
-    protected void forceModify(Consumer<Modifiable> consumer) {
+    protected Registry<T> forceModify(Consumer<Modifiable> consumer) {
         // TODO check if server is in a state where modification is allowed
         Modifiable modifiable = new Modifiable();
         consumer.accept(modifiable);
-        // push changes
+        return this;
     }
 
     @Getter

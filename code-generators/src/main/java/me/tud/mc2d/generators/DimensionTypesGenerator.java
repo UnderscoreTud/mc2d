@@ -1,10 +1,7 @@
 package me.tud.mc2d.generators;
 
 import com.google.gson.stream.JsonReader;
-import com.palantir.javapoet.ClassName;
-import com.palantir.javapoet.CodeBlock;
-import com.palantir.javapoet.FieldSpec;
-import com.palantir.javapoet.TypeSpec;
+import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.instruction.Instruction;
 import me.tud.mc2d.generators.instruction.Structure;
@@ -40,6 +37,10 @@ public class DimensionTypesGenerator extends FileGenerator {
     private static final String RESOURCE_LOCATION = "/dimension_type";
 
     private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.dimension", "DimensionTypes");
+    private static final ParameterizedTypeName DIMENSION_TYPE_REGISTRY = ParameterizedTypeName.get(
+            Imports.DATA_DRIVEN_REGISTRY,
+            Imports.DIMENSION_TYPE
+    );
 
     public static void main(String[] args) throws Exception {
         new DimensionTypesGenerator().run(args);
@@ -56,6 +57,10 @@ public class DimensionTypesGenerator extends FileGenerator {
                 .addPermittedSubclass(Imports.DIMENSION_TYPE)
                 .addAnnotation(generatedAnnotation())
                 .addMethod(PROTECTED_CONSTRUCTOR);
+
+        CodeBlock.Builder createDefaultMethodBlock = CodeBlock.builder()
+                .add("return new $T<>(server, $T.DIMENSION_TYPE).modify(registry -> {\n", Imports.DATA_DRIVEN_REGISTRY, Imports.REGISTRY_KEY)
+                .indent();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory.toPath(), "*.json")) {
             stream.forEach(path -> {
                 String entryName = path.getFileName().toString();
@@ -68,8 +73,19 @@ public class DimensionTypesGenerator extends FileGenerator {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                createDefaultMethodBlock.addStatement("registry.register($T.minecraft($S), $T.$L)",
+                        Imports.NAMESPACED_KEY, entryName,
+                        Imports.DIMENSION_TYPE, entryName.toUpperCase(Locale.ENGLISH));
             });
         }
+
+        createDefaultMethodBlock.unindent().add("});");
+        type.addMethod(MethodSpec.methodBuilder("createDefaultRegistry")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(DIMENSION_TYPE_REGISTRY)
+                .addParameter(Imports.SERVER, "server")
+                .addCode(createDefaultMethodBlock.build())
+                .build());
         return type.build();
     }
 

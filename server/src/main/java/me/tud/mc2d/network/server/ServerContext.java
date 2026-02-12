@@ -25,7 +25,7 @@ public record ServerContext(
                 new ConnectionManager(),
                 new PacketRegistry(),
                 new PacketProcessorRegistry(),
-                new RegistryAccess(server),
+                RegistryAccess.createDefault(server),
                 new ComponentSerializer()
         );
     }
