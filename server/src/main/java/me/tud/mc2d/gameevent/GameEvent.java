@@ -12,7 +12,8 @@ public record GameEvent<T>(GameEventType<T> type, T value) {
 
     public static <T> GameEvent<T> deserialize(FriendlyByteBuf buf) {
         GameEventType<T> type = GameEventType.fromID(buf.readByte());
-        return type.create(type.codec().decode(buf.readFloat()));
+        float encoded = buf.readFloat();
+        return type.create(type.codec().decode(encoded).expect("Unable to deserialize " + encoded + " as " + type));
     }
 
     @Getter

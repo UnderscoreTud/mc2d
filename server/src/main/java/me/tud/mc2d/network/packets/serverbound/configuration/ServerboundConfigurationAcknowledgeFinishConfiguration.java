@@ -1,7 +1,7 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
 import lombok.Data;
-import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;

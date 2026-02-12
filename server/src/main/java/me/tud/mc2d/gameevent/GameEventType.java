@@ -1,10 +1,9 @@
 package me.tud.mc2d.gameevent;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import me.tud.mc2d.entity.player.GameMode;
 import me.tud.mc2d.util.Codec;
+import me.tud.mc2d.util.Result;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,15 +23,15 @@ public class GameEventType<T> {
     public static GameEventType<Void> END_RAINING = id(2);
     public static GameEventType<GameMode> CHANGE_GAME_MODE = id(3, Codec.of(
             gameMode -> (float) gameMode.id(),
-            id -> GameMode.fromID(id.intValue())
+            id -> Result.ok(GameMode.fromID(id.intValue()))
     ));
     public static GameEventType<GameEvent.WinGame> WIN_GAME = id(4, Codec.of(
             winGame -> (float) winGame.id(),
-            id -> GameEvent.WinGame.fromID(id.intValue())
+            id -> Result.ok(GameEvent.WinGame.fromID(id.intValue()))
     ));
     public static GameEventType<GameEvent.DemoEvent> DEMO_EVENT = id(5, Codec.of(
             demoEvent -> (float) demoEvent.id(),
-            id -> GameEvent.DemoEvent.fromID(id.intValue())
+            id -> Result.ok(GameEvent.DemoEvent.fromID(id.intValue()))
     ));
     public static GameEventType<Void> ARROW_HIT_PLAYER = id(6);
     public static GameEventType<Float> RAIN_LEVEL_CHANGE = id(7, Codec.identity());
@@ -41,11 +40,11 @@ public class GameEventType<T> {
     public static GameEventType<Void> PLAY_ELDER_GUARDIAN_APPEARANCE = id(10);
     public static GameEventType<Boolean> ENABLE_RESPAWN_SCREEN = id(11, Codec.of(
             flag -> (float) (flag ? 0 : 1),
-            value -> value.intValue() == 0
+            value -> Result.ok(value.intValue() == 0)
     ));
     public static GameEventType<Boolean> LIMITED_CRAFTING = id(12, Codec.of(
             flag -> (float) (flag ? 1 : 0),
-            value -> value.intValue() == 1
+            value -> Result.ok(value.intValue() == 1)
     ));
     /**
      * Instructs the client to begin the waiting process for level chunks.
@@ -53,7 +52,7 @@ public class GameEventType<T> {
     public static GameEventType<Void> START_WAITING_FOR_CHUNKS = id(13);
 
     private final byte id;
-    private final Codec<T, Float> codec;
+    private final @ToString.Exclude @EqualsAndHashCode.Exclude Codec<T, Float> codec;
 
     public GameEvent<T> create(T value) {
         return new GameEvent<>(this, value);

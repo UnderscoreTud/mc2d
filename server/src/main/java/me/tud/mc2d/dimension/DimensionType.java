@@ -1,35 +1,15 @@
 package me.tud.mc2d.dimension;
 
 import lombok.Builder;
+import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 
 @Builder(toBuilder = true)
-public class DimensionType implements NBTSerializable {
-    
-    public static final DimensionType OVERWORLD = DimensionType.builder()
-            .fixedTime(null)
-            .hasSkylight(true)
-            .hasCeiling(false)
-            .ultrawarm(false)
-            .natural(true)
-            .coordinateScale(1.0)
-            .bedWorks(true)
-            .respawnAnchorWorks(false)
-            .minY(0)
-            .height(256)
-            .logicalHeight(256)
-            .infiniburn(NamespacedKey.minecraft("infiniburn_overworld"))
-            .effects(NamespacedKey.minecraft("overworld"))
-            .ambientLight(0.0f)
-            .piglinSafe(false)
-            .hasRaids(true)
-            .monsterSpawnLightLevel(7)
-            .monsterSpawnBlockLightLimit(0)
-            .build();
-    
+public final class DimensionType extends DimensionTypes implements NBTSerializable {
+
     private final @Nullable Long fixedTime;
     private final boolean hasSkylight, hasCeiling, ultrawarm, natural;
     private final double coordinateScale;
@@ -38,7 +18,8 @@ public class DimensionType implements NBTSerializable {
     private final NamespacedKey infiniburn, effects;
     private final float ambientLight;
     private boolean piglinSafe, hasRaids;
-    private final int monsterSpawnLightLevel, monsterSpawnBlockLightLimit;
+    private final IntProvider monsterSpawnLightLevel;
+    private final float monsterSpawnBlockLightLimit;
 
     @Override
     public NBTCompound toNBT() {
@@ -60,7 +41,7 @@ public class DimensionType implements NBTSerializable {
         compound.set("ambient_light", ambientLight);
         compound.set("piglin_safe", piglinSafe);
         compound.set("has_raids", hasRaids);
-        compound.set("monster_spawn_light_level", monsterSpawnLightLevel);
+        compound.set("monster_spawn_light_level", monsterSpawnLightLevel.toNBT());
         compound.set("monster_spawn_block_light_limit", monsterSpawnBlockLightLimit);
         return compound;
     }

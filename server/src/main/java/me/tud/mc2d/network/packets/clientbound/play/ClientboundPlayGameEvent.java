@@ -2,7 +2,7 @@ package me.tud.mc2d.network.packets.clientbound.play;
 
 import lombok.With;
 import me.tud.mc2d.gameevent.GameEvent;
-import me.tud.mc2d.generated.Packets;
+import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.PacketRegistry;
 import me.tud.mc2d.network.packets.RegisterHandler;
