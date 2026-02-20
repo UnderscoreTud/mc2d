@@ -1,26 +1,39 @@
-package me.tud.mc2d.network.packets.serverbound.configuration;
+package me.tud.mc2d.network.packets.pluginmessage.serverbound;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.tud.mc2d.network.packets.PacketIDMap;
 import me.tud.mc2d.network.packets.Packets;
+import me.tud.mc2d.network.packets.pluginmessage.PluginMessagePackets;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.paklet.CustomPacket;
 import org.machinemc.paklet.DataVisitor;
 import org.machinemc.paklet.Packet;
-import org.machinemc.paklet.metadata.DoNotPrefix;
+import org.machinemc.paklet.PacketID;
 import org.machinemc.paklet.serialization.SerializerContext;
 
 @Data
 @Packet(
-        id = Packets.Configuration.Serverbound.CUSTOM_PAYLOAD,
-        group = Packets.Configuration.Serverbound.NAME,
-        catalogue = Packets.Configuration.Serverbound.class
+        id = Packet.DYNAMIC_PACKET,
+        group = {
+                Packets.Configuration.Serverbound.NAME,
+                Packets.Play.Serverbound.NAME
+        },
+        catalogue = PluginMessagePackets.class
 )
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServerboundConfigurationPluginMessage implements ServerboundPacket, CustomPacket {
+public class ServerboundPluginMessage implements ServerboundPacket, CustomPacket {
+
+    @PacketID
+    private static int id() {
+        return PacketIDMap.compute(
+                Packets.Configuration.Serverbound.NAME, Packets.Configuration.Serverbound.CUSTOM_PAYLOAD,
+                Packets.Play.Serverbound.NAME, Packets.Play.Serverbound.CUSTOM_PAYLOAD
+        );
+    }
 
     private NamespacedKey channel;
     private byte[] data;

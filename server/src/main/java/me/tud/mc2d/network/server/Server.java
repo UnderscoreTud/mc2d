@@ -14,6 +14,8 @@ import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.*;
 import me.tud.mc2d.network.packets.lifecycle.LifeCyclePackets;
+import me.tud.mc2d.network.packets.pluginmessage.PluginMessagePackets;
+import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMessage;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serializers.MC2DNetworkSerializers;
@@ -36,7 +38,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 public class Server {
 
@@ -50,6 +51,7 @@ public class Server {
     private final @Getter int port;
     private final @Getter @Delegate ServerContext context;
     private final @Getter ServerProperties properties;
+    private @Getter String brand = "mc2d";
     private @Getter boolean initialized = false;
 
     private EventLoopGroup bossGroup;
@@ -107,6 +109,11 @@ public class Server {
 
         status.addProperty("enforcesSecureChat", false);
         return status;
+    }
+
+    public void brand(@Nullable String brand) {
+        this.brand = brand;
+        connectionManager().broadcast(ClientboundPluginMessage.brand(String.valueOf(brand)));
     }
 
     public void init() throws IOException {
@@ -193,6 +200,7 @@ public class Server {
         factory.addPackets(Packets.Play.Serverbound.class);
 
         factory.addPackets(LifeCyclePackets.class);
+        factory.addPackets(PluginMessagePackets.class);
     }
 
     public <P extends Packet> void registerPacketProcessors() throws IOException {

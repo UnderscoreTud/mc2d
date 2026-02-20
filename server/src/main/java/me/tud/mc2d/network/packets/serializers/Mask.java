@@ -8,7 +8,6 @@ import org.machinemc.paklet.serialization.SerializerContext;
 import org.machinemc.paklet.serialization.Supports;
 import org.machinemc.paklet.serialization.aliases.SerializerAlias;
 
-import java.beans.Visibility;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -46,7 +45,7 @@ public final class Mask {
             var serializer = context.serializerProvider().getFor(java.lang.Byte.class);
             return visitor.read(context, serializer);
         }
-    
+
     }
 
     @Supports({})
@@ -61,7 +60,7 @@ public final class Mask {
         protected int read(SerializerContext context, DataVisitor visitor) {
             return visitor.readInt();
         }
-    
+
     }
 
     @Supports({})
