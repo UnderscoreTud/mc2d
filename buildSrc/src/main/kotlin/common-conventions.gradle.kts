@@ -50,6 +50,10 @@ dependencies {
     implementation(libs.machinemc.nbt.parser)
 }
 
+tasks.withType<JavaCompile>().configureEach { 
+    options.release.set(25)
+}
+
 tasks.test {
     useJUnitPlatform()
 }

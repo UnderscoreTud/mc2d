@@ -10,10 +10,9 @@ public record GameEvent<T>(GameEventType<T> type, T value) {
         return type.codec().encode(value);
     }
 
-    public static <T> GameEvent<T> deserialize(FriendlyByteBuf buf) {
-        GameEventType<T> type = GameEventType.fromID(buf.readByte());
-        float encoded = buf.readFloat();
-        return type.create(type.codec().decode(encoded).expect("Unable to deserialize " + encoded + " as " + type));
+    public static <T> GameEvent<T> of(byte id, float value) {
+        GameEventType<T> type = GameEventType.fromID(id);
+        return type.create(type.codec().decode(value).expect("Invalid GameEvent: " + value + " as " + type));
     }
 
     @Getter

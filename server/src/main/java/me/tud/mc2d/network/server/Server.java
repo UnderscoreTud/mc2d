@@ -15,9 +15,17 @@ import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.*;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
+import me.tud.mc2d.network.packets.serializers.MC2DNetworkSerializers;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
+import org.machinemc.paklet.PacketFactoryImpl;
+import org.machinemc.paklet.SerializerProviderImpl;
+import org.machinemc.paklet.serialization.SerializerProvider;
+import org.machinemc.paklet.serialization.Serializers;
+import org.machinemc.paklet.serialization.VarIntSerializer;
+import org.machinemc.paklet.serialization.catalogue.DefaultSerializationRules;
+import org.machinemc.paklet.serialization.catalogue.DefaultSerializers;
 import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
@@ -111,29 +119,29 @@ public class Server {
         IoHandlerFactory factory = NioIoHandler.newFactory();
         bossGroup = new MultiThreadIoEventLoopGroup(factory);
         workerGroup = new MultiThreadIoEventLoopGroup(factory);
-        ServerBootstrap bootstrap = new ServerBootstrap();
-        bootstrap.group(bossGroup, workerGroup)
+        ServerBootstrap bootstrap = new ServerBootstrap()
+                .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) {
                         ClientConnection connection = new ClientConnection(Server.this, ch);
-                        ch.pipeline().addLast(
-                                new PacketLengthDecoder(),
-                                new PacketDecoder(context.packetRegistry().dynamicFactory(
-                                        Packet.Direction.SERVERBOUND,
-                                        connection::state
-                                )),
-                                new PacketInboundHandler(connection, context.packetProcessorRegistry()),
-                                new PacketEncoder(connection, context.packetProcessorRegistry())
-                        );
+                        ch.pipeline()
+                                .addLast("packet_length_decoder", new PacketLengthDecoder())
+                                .addLast("packet_decoder", new PacketDecoder(context.packetFactory(), connection::state))
+                                .addLast("packet_inbound_handler", new PacketInboundHandler(connection, context.packetProcessorRegistry()))
+
+                                .addLast("packet_length_encoder", new PacketLengthEncoder())
+                                .addLast("packet_encoder", new PacketEncoder(connection, context.packetFactory(), context.packetProcessorRegistry()))
+                        ;
                         context.connectionManager().addClient(connection);
-                        ch.closeFuture().addListener(future ->
+                        ch.closeFuture().addListener(_ ->
                                 context.connectionManager().removeClient(connection));
                     }
                 })
                 .option(ChannelOption.SO_BACKLOG, 128)
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+                .childOption(ChannelOption.SO_KEEPALIVE, true)
+                .childOption(ChannelOption.IP_TOS, 0b00011000); // 3 - throughput, 4 - low delay
         bindFuture = bootstrap.bind(port).addListener(future -> {
             if (future.isSuccess()) {
                 System.out.println("Server started on port " + port);
@@ -155,57 +163,28 @@ public class Server {
         });
     }
 
-    private void registerPackets() throws IOException {
-        PacketRegistry registry = context.packetRegistry();
-        ClassUtils.loadClasses("me.tud.mc2d.network.packets", cls -> {
-            if (!Packet.class.isAssignableFrom(cls) || cls.isInterface() || Modifier.isAbstract(cls.getModifiers()))
-                return;
-            Method registerMethod = null;
-            ConnectionState state = null;
-            for (Method method : cls.getDeclaredMethods()) {
-                RegisterHandler annotation = method.getAnnotation(RegisterHandler.class);
-                if (annotation == null) continue;
-                registerMethod = method;
-                break;
-            }
-            if (registerMethod == null) {
-                System.err.println("No register method found for packet " + cls.getName());
-                return;
-            }
-            if (!validateRegisterMethod(registerMethod))
-                return;
-            try {
-                registerMethod.invoke(null, registry);
-            } catch (Exception e) {
-                System.err.println("Failed to register packet " + cls.getName() + ": " + e.getMessage());
-            }
-        });
-    }
+    private void registerPackets() {
+        SerializerProvider provider = context.packetSerializerProvider();
 
-    private static boolean validateRegisterMethod(Method method) {
-        if (method.getParameterCount() != 1) {
-            System.err.println("Register method must have exactly one parameter");
-            return false;
-        }
-        if (!PacketRegistry.class.isAssignableFrom(method.getParameterTypes()[0])) {
-            System.err.println("Register method must have a PacketRegistry parameter");
-            return false;
-        }
-        if (method.getReturnType() != void.class) {
-            System.err.println("Register method must return void");
-            return false;
-        }
-        if (!Modifier.isStatic(method.getModifiers())) {
-            System.err.println("Register method must be static");
-            return false;
-        }
-        if (!Modifier.isPublic(method.getModifiers())) {
-            System.err.println("Register method must be public");
-            return false;
-        }
-        return true;
-    }
+        provider.addSerializers(DefaultSerializers.class);
+        provider.removeSerializer(Serializers.Integer.class);
+        provider.addSerializer(VarIntSerializer.class);
 
+        provider.addSerializers(new MC2DNetworkSerializers(context));
+
+        provider.addSerializationRules(DefaultSerializationRules.class);
+
+        org.machinemc.paklet.PacketFactory factory = context.packetFactory();
+        factory.addPackets(Packets.Handshake.Serverbound.class);
+        factory.addPackets(Packets.Status.Clientbound.class);
+        factory.addPackets(Packets.Status.Serverbound.class);
+        factory.addPackets(Packets.Login.Clientbound.class);
+        factory.addPackets(Packets.Login.Serverbound.class);
+        factory.addPackets(Packets.Configuration.Clientbound.class);
+        factory.addPackets(Packets.Configuration.Serverbound.class);
+        factory.addPackets(Packets.Play.Clientbound.class);
+        factory.addPackets(Packets.Play.Serverbound.class);
+    }
 
     public <P extends Packet> void registerPacketProcessors() throws IOException {
         PacketProcessorRegistry registry = context.packetProcessorRegistry();

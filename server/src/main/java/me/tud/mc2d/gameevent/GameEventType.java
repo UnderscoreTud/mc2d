@@ -59,7 +59,7 @@ public class GameEventType<T> {
     }
 
     private static <T> GameEventType<T> id(int id) {
-        return id(id, Codec.of(k -> 0f, f -> null));
+        return id(id, Codec.of(_ -> 0f, f -> null));
     }
 
     private static <T> GameEventType<T> id(int id, Codec<T, Float> codec) {
@@ -69,8 +69,11 @@ public class GameEventType<T> {
     }
 
     public static <T> GameEventType<T> fromID(byte id) {
+        GameEventType<?> type = ID_TO_TYPE_MAP.get(id);
+        if (type == null)
+            throw new IllegalArgumentException("Invalid game event type ID: " + id);
         //noinspection unchecked
-        return (GameEventType<T>) ID_TO_TYPE_MAP.get(id);
+        return (GameEventType<T>) type;
     }
 
 }

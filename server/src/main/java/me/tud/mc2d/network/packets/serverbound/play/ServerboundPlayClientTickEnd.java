@@ -2,27 +2,13 @@ package me.tud.mc2d.network.packets.serverbound.play;
 
 import lombok.Data;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
+import org.machinemc.paklet.Packet;
 
 @Data
-public class ServerboundPlayClientTickEnd implements Packet {
-
-    private static final Packet.Info INFO = Packets.Play.Serverbound.CLIENT_TICK_END;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerSimplePacket(INFO, ServerboundPlayClientTickEnd.class, ServerboundPlayClientTickEnd::new);
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {}
-
-}
+@Packet(
+        id = Packets.Play.Serverbound.CLIENT_TICK_END,
+        group = Packets.Play.Serverbound.NAME,
+        catalogue = Packets.Play.Serverbound.class
+)
+public class ServerboundPlayClientTickEnd implements ServerboundPacket {}

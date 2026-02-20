@@ -45,10 +45,25 @@ public final class BlockPosition implements Writable, Cloneable {
         buf.writeBlockPosition(this);
     }
 
+    public long pack() {
+        return (((long) x() & BlockPosition.PACKED_X_MASK) << 38)
+                | ((long) y() & BlockPosition.PACKED_Y_MASK)
+                | (((long) z() & BlockPosition.PACKED_Z_MASK) << 12);
+    }
+
     @Override
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     public BlockPosition clone() {
         return new BlockPosition(x, y, z);
+    }
+    
+    @Contract(value = "_ -> new", pure = true)
+    public static BlockPosition unpack(long packed) {
+        return new BlockPosition(
+                (int) (packed >> 38),
+                (int) ((packed << 52) >> 52),
+                (int) ((packed << 26) >> 38)
+        );
     }
 
 }

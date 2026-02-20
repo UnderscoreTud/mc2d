@@ -6,20 +6,27 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import org.machinemc.paklet.PacketFactory;
+import org.machinemc.paklet.netty.NettyDataVisitor;
 
 @RequiredArgsConstructor
 public class PacketEncoder extends MessageToByteEncoder<Packet> {
 
+    private static final Packet.Direction DIRECTION = Packet.Direction.CLIENTBOUND;
+
     private final ClientConnection connection;
+    private final PacketFactory factory;
     private final PacketProcessorRegistry processorRegistry;
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, Packet msg, ByteBuf out) {
-        System.out.println("OUTGOING: " + msg.getClass().getSimpleName());
-        processorRegistry.processPacket(msg, connection);
-        FriendlyByteBuf buf = new FriendlyByteBuf(out);
-        buf.write(msg);
+    protected void encode(ChannelHandlerContext ctx, Packet packet, ByteBuf out) {
+        System.out.println("OUTGOING: " + packet);
+        processorRegistry.processPacket(packet, connection);
+        try {
+            factory.write(packet, Packet.group(connection.state(), DIRECTION), new NettyDataVisitor(out));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -1,39 +1,24 @@
 package me.tud.mc2d.network.packets.clientbound.login;
 
-import lombok.With;
+import lombok.*;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
+import org.machinemc.paklet.Packet;
 
 import java.util.UUID;
 
-@With
-public record ClientboundLoginLoginSuccess(UUID uuid, String username) implements Packet {
+@Data
+@Packet(
+        id = Packets.Login.Clientbound.LOGIN_FINISHED,
+        group = Packets.Login.Clientbound.NAME,
+        catalogue = Packets.Login.Clientbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientboundLoginLoginSuccess implements ClientboundPacket {
 
-    private static final Packet.Info INFO = Packets.Login.Clientbound.LOGIN_FINISHED;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ClientboundLoginLoginSuccess.class, ClientboundLoginLoginSuccess::new);
-    }
-
-    public ClientboundLoginLoginSuccess(FriendlyByteBuf buf) {
-        this(buf.readUUID(), buf.readString());
-        buf.readVarInt();
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeUUID(uuid);
-        buf.writeString(username);
-        buf.writeVarInt(0);
-    }
+    private UUID uuid;
+    private String username;
+    private int properties;
 
 }

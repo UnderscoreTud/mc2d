@@ -1,34 +1,22 @@
 package me.tud.mc2d.network.packets.serverbound.status;
 
-import lombok.With;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
+import org.machinemc.paklet.Packet;
 
-@With
-public record ServerboundStatusPingRequest(long timestamp) implements Packet {
+@Data
+@Packet(
+        id = Packets.Status.Serverbound.PING_REQUEST,
+        group = Packets.Status.Serverbound.NAME,
+        catalogue = Packets.Status.Serverbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ServerboundStatusPingRequest implements ServerboundPacket {
 
-    private static final Packet.Info INFO = Packets.Status.Serverbound.PING_REQUEST;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ServerboundStatusPingRequest.class, ServerboundStatusPingRequest::new);
-    }
-
-    public ServerboundStatusPingRequest(FriendlyByteBuf buf) {
-        this(buf.readLong());
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeLong(timestamp);
-    }
+    private long timestamp;
 
 }

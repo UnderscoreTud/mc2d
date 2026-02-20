@@ -11,7 +11,7 @@ public class ServerboundLoginLoginStartProcessor implements PacketProcessor<Serv
     public void process(ServerboundLoginLoginStart packet, ClientConnection connection) {
         connection.uuid(packet.uuid());
         connection.username(packet.name());
-        connection.sendPacket(new ClientboundLoginLoginSuccess(connection.uuid(), connection.username()));
+        connection.sendPacket(new ClientboundLoginLoginSuccess(connection.uuid(), connection.username(), 0));
     }
 
 }

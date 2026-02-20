@@ -1,48 +1,30 @@
 package me.tud.mc2d.network.packets.clientbound.play;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import org.joml.Vector3d;
+import org.machinemc.paklet.Packet;
 
 import java.util.EnumSet;
 import java.util.Set;
 
-public record ClientboundPlaySynchronizePosition(int teleportID, Vector3d position, Vector3d velocity, float yaw, float pitch, Set<TeleportFlags> flags) 
-        implements Packet {
+@Data
+@Packet(
+        id = Packets.Play.Clientbound.PLAYER_POSITION,
+        group = Packets.Play.Clientbound.NAME,
+        catalogue = Packets.Play.Clientbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientboundPlaySynchronizePosition implements ClientboundPacket {
 
-    private static final Packet.Info INFO = Packets.Play.Clientbound.PLAYER_POSITION;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ClientboundPlaySynchronizePosition.class, ClientboundPlaySynchronizePosition::new);
-    }
-
-    public ClientboundPlaySynchronizePosition(FriendlyByteBuf buf) {
-        this(
-                buf.readVarInt(),
-                new Vector3d(buf.readDouble(), buf.readDouble(), buf.readDouble()),
-                new Vector3d(buf.readDouble(), buf.readDouble(), buf.readDouble()),
-                buf.readFloat(), buf.readFloat(),
-                TeleportFlags.unpack(buf.readInt())
-        );
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeVarInt(teleportID)
-                .writeDouble(position.x()).writeDouble(position.y()).writeDouble(position.z())
-                .writeDouble(velocity.x()).writeDouble(velocity.y()).writeDouble(velocity.z())
-                .writeFloat(yaw).writeFloat(pitch)
-                .writeInt(TeleportFlags.pack(flags));
-    }
+    private int teleportID;
+    private Vector3d position, velocity;
+    private float yaw, pitch;
+    private Set<TeleportFlags> flags;
 
     public enum TeleportFlags {
         RELATIVE_Y,

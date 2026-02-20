@@ -1,34 +1,22 @@
 package me.tud.mc2d.network.packets.clientbound.status;
 
-import lombok.With;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
+import org.machinemc.paklet.Packet;
 
-@With
-public record ClientboundStatusStatusResponse(String jsonResponse) implements Packet {
+@Data
+@Packet(
+        id = Packets.Status.Clientbound.STATUS_RESPONSE,
+        group = Packets.Status.Clientbound.NAME,
+        catalogue = Packets.Status.Clientbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientboundStatusStatusResponse implements ClientboundPacket {
 
-    private static final Packet.Info INFO = Packets.Status.Clientbound.STATUS_RESPONSE;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ClientboundStatusStatusResponse.class, ClientboundStatusStatusResponse::new);
-    }
-
-    public ClientboundStatusStatusResponse(FriendlyByteBuf buf) {
-        this(buf.readString());
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeString(jsonResponse);
-    }
+    private String jsonResponse;
 
 }

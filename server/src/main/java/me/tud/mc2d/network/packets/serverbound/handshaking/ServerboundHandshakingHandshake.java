@@ -1,39 +1,26 @@
 package me.tud.mc2d.network.packets.serverbound.handshaking;
 
-import lombok.With;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.ConnectionState;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
+import org.machinemc.paklet.Packet;
 
-@With
-public record ServerboundHandshakingHandshake(int protocolVersion, String serverAddress, int serverPort,
-                                              ConnectionState nextState) implements Packet {
+@Data
+@Packet(
+        id = Packets.Handshake.Serverbound.INTENTION,
+        group = Packets.Handshake.Serverbound.NAME,
+        catalogue = Packets.Handshake.Serverbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ServerboundHandshakingHandshake implements ServerboundPacket {
 
-    private static final Packet.Info INFO = Packets.Handshake.Serverbound.INTENTION;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ServerboundHandshakingHandshake.class, ServerboundHandshakingHandshake::new);
-    }
-
-    public ServerboundHandshakingHandshake(FriendlyByteBuf buf) {
-        this(buf.readVarInt(), buf.readString(), buf.readShort(), ConnectionState.values()[buf.readVarInt()]);
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeVarInt(protocolVersion);
-        buf.writeString(serverAddress);
-        buf.writeShort((short) serverPort);
-        buf.writeVarInt(nextState.ordinal());
-    }
+    private int protocolVersion;
+    private String serverAddress;
+    private short serverPort;
+    private ConnectionState nextState;
 
 }

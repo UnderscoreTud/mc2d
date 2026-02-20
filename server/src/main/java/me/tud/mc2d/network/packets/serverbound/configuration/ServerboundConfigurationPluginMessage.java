@@ -1,36 +1,40 @@
 package me.tud.mc2d.network.packets.serverbound.configuration;
 
-import lombok.With;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import me.tud.mc2d.util.NamespacedKey;
+import org.machinemc.paklet.CustomPacket;
+import org.machinemc.paklet.DataVisitor;
+import org.machinemc.paklet.Packet;
+import org.machinemc.paklet.metadata.DoNotPrefix;
+import org.machinemc.paklet.serialization.SerializerContext;
 
-@With
-public record ServerboundConfigurationPluginMessage(NamespacedKey channel, byte[] data) implements Packet {
+@Data
+@Packet(
+        id = Packets.Configuration.Serverbound.CUSTOM_PAYLOAD,
+        group = Packets.Configuration.Serverbound.NAME,
+        catalogue = Packets.Configuration.Serverbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ServerboundConfigurationPluginMessage implements ServerboundPacket, CustomPacket {
 
-    private static final Packet.Info INFO = Packets.Configuration.Serverbound.CUSTOM_PAYLOAD;
+    private NamespacedKey channel;
+    private byte[] data;
 
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ServerboundConfigurationPluginMessage.class, ServerboundConfigurationPluginMessage::new);
-    }
-
-    public ServerboundConfigurationPluginMessage(FriendlyByteBuf buf) {
-        this(buf.readNamespacedKey(), buf.finish());
+    @Override
+    public void construct(SerializerContext context, DataVisitor visitor) {
+        channel = context.serializerProvider().getFor(NamespacedKey.class).deserialize(context, visitor);
+        data = visitor.finish();
     }
 
     @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeNamespacedKey(channel);
-        buf.writeBytes(data);
+    public void deconstruct(SerializerContext context, DataVisitor visitor) {
+        visitor.write(context, context.serializerProvider().getFor(NamespacedKey.class), channel);
+        visitor.writeBytes(data);
     }
 
 }

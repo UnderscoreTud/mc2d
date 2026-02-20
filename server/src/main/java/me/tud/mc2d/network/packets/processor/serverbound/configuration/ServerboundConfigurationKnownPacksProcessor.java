@@ -15,16 +15,6 @@ public class ServerboundConfigurationKnownPacksProcessor implements PacketProces
     @Override
     public void process(ServerboundConfigurationKnownPacks packet, ClientConnection connection) {
         connection.knownPacks(packet.knownPacks());
-        RegistryAccess registryAccess = connection.server().context().registryAccess();
-        registryAccess.registries().forEach((key, registry) -> {
-            if (!(registry instanceof DataDrivenRegistry<?> dataDrivenRegistry))
-                return;
-            NamespacedKey registryID = key.key();
-            Registry<?>.Entry[] entries = dataDrivenRegistry.entries().toArray(new Registry.Entry[0]);
-            connection.sendPacket(new ClientboundConfigurationRegistryData(registryID, entries));
-        });
-        // TODO Update Tags (Optional)
-        connection.sendPacket(new ClientboundConfigurationFinishConfiguration());
     }
 
 }

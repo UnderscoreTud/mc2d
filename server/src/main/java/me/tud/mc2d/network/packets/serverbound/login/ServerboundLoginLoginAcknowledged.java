@@ -2,27 +2,13 @@ package me.tud.mc2d.network.packets.serverbound.login;
 
 import lombok.Data;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
+import org.machinemc.paklet.Packet;
 
 @Data
-public class ServerboundLoginLoginAcknowledged implements Packet {
-
-    private static final Packet.Info INFO = Packets.Login.Serverbound.LOGIN_ACKNOWLEDGED;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerSimplePacket(INFO, ServerboundLoginLoginAcknowledged.class, ServerboundLoginLoginAcknowledged::new);
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {}
-
-}
+@Packet(
+        id = Packets.Login.Serverbound.LOGIN_ACKNOWLEDGED,
+        group = Packets.Login.Serverbound.NAME,
+        catalogue = Packets.Login.Serverbound.class
+)
+public class ServerboundLoginLoginAcknowledged implements ServerboundPacket {}

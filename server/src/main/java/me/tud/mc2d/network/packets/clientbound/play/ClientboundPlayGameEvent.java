@@ -1,36 +1,40 @@
 package me.tud.mc2d.network.packets.clientbound.play;
 
-import lombok.With;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import me.tud.mc2d.gameevent.GameEvent;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
+import org.machinemc.paklet.CustomPacket;
+import org.machinemc.paklet.DataVisitor;
+import org.machinemc.paklet.Packet;
+import org.machinemc.paklet.serialization.SerializerContext;
 
-@With
-public record ClientboundPlayGameEvent(GameEvent<?> gameEvent) implements Packet {
+@Data
+@Packet(
+        id = Packets.Play.Clientbound.GAME_EVENT,
+        group = Packets.Play.Clientbound.NAME,
+        catalogue = Packets.Play.Clientbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientboundPlayGameEvent implements ClientboundPacket, CustomPacket {
 
-    public static final Packet.Info INFO = Packets.Play.Clientbound.GAME_EVENT;
+    private GameEvent<?> gameEvent;
 
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ClientboundPlayGameEvent.class, ClientboundPlayGameEvent::new);
-    }
-    
-    public ClientboundPlayGameEvent(FriendlyByteBuf buf) {
-        this(GameEvent.deserialize(buf));
+    @Override
+    public void construct(SerializerContext context, DataVisitor visitor) {
+        gameEvent = GameEvent.of(
+                visitor.read(context, context.serializerProvider().getFor(Byte.class)),
+                visitor.read(context, context.serializerProvider().getFor(Float.class))
+        );
     }
 
     @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeByte(gameEvent.type().id())
-                .writeFloat(gameEvent.asFloat());
+    public void deconstruct(SerializerContext context, DataVisitor visitor) {
+        visitor.write(context, context.serializerProvider().getFor(Byte.class), gameEvent.type().id());
+        visitor.write(context, context.serializerProvider().getFor(Float.class), gameEvent.asFloat());
     }
 
 }

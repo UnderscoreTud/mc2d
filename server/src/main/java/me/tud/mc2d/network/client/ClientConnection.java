@@ -8,10 +8,11 @@ import lombok.Data;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketFactory;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import org.machinemc.paklet.PacketFactory;
+import org.machinemc.paklet.netty.NettyDataVisitor;
 
 import java.util.UUID;
 
@@ -78,19 +79,13 @@ public class ClientConnection {
         return sendPacket(Unpooled.wrappedBuffer(data));
     }
 
-    public ChannelFuture sendPacket(ByteBuf buf) {
-        return sendPacket(new FriendlyByteBuf(buf));
+    public ChannelFuture sendPacket(FriendlyByteBuf buf) {
+        return sendPacket(buf.asByteBuf());
     }
 
-    public ChannelFuture sendPacket(FriendlyByteBuf buf) {
-        PacketFactory factory = server().context().packetRegistry().group(Packet.Direction.CLIENTBOUND, state);
-        int id = buf.readVarInt();
-        byte[] data = buf.finish();
-        Packet packet = factory.createPacket(id, data);
-        if (packet == null) {
-            // TODO better error
-            throw new RuntimeException();
-        }
+    public ChannelFuture sendPacket(ByteBuf buf) {
+        PacketFactory factory = server().context().packetFactory();
+        Packet packet = factory.create(Packet.group(state, Packet.Direction.CLIENTBOUND), new NettyDataVisitor(buf));
         return sendPacket(packet);
     }
 

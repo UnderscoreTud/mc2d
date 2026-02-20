@@ -1,34 +1,23 @@
 package me.tud.mc2d.network.packets.clientbound.status;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.With;
 import me.tud.mc2d.network.packets.Packets;
-import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.PacketRegistry;
-import me.tud.mc2d.network.packets.RegisterHandler;
-import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
+import org.machinemc.paklet.Packet;
 
-@With
-public record ClientboundStatusPongResponse(long timestamp) implements Packet {
+@Data
+@Packet(
+        id = Packets.Status.Clientbound.PONG_RESPONSE,
+        group = Packets.Status.Clientbound.NAME,
+        catalogue = Packets.Status.Clientbound.class
+)
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClientboundStatusPongResponse implements ClientboundPacket {
 
-    private static final Packet.Info INFO = Packets.Status.Clientbound.PONG_RESPONSE;
-
-    @RegisterHandler
-    public static void register(PacketRegistry registry) {
-        registry.registerPacket(INFO, ClientboundStatusPongResponse.class, ClientboundStatusPongResponse::new);
-    }
-
-    public ClientboundStatusPongResponse(FriendlyByteBuf buf) {
-        this(buf.readLong());
-    }
-
-    @Override
-    public Packet.Info info() {
-        return INFO;
-    }
-
-    @Override
-    public void serialize(FriendlyByteBuf buf) {
-        buf.writeLong(timestamp);
-    }
+    private long timestamp;
 
 }

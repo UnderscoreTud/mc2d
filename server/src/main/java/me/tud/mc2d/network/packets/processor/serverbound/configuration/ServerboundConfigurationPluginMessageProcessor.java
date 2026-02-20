@@ -7,6 +7,8 @@ import me.tud.mc2d.network.packets.serverbound.configuration.ServerboundConfigur
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NamespacedKey;
 
+import java.util.Arrays;
+
 public class ServerboundConfigurationPluginMessageProcessor implements PacketProcessor<ServerboundConfigurationPluginMessage> {
 
     private static final NamespacedKey BRAND = NamespacedKey.minecraft("brand");

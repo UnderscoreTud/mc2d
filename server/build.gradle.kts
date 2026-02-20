@@ -1,7 +1,22 @@
+import org.machinemc.paklet.plugin.PakletPlugin
+
 plugins {
     `common-conventions`
     application
 }
+
+buildscript {
+    repositories {
+        maven {
+            url = uri("https://repo.machinemc.org/releases")
+        }
+        dependencies {
+            classpath(libs.machinemc.paklet.plugin)
+        }
+    }
+}
+
+apply<PakletPlugin>()
 
 application {
     mainClass.set("me.tud.mc2d.Main")
@@ -9,6 +24,11 @@ application {
 
 dependencies {
     implementation(project(":common"))
+
+    implementation(libs.machinemc.paklet.api)
+    implementation(libs.machinemc.paklet.core)
+    annotationProcessor(libs.machinemc.paklet.processor)
+
     implementation(libs.netty)
 }
 

@@ -95,6 +95,17 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
+     * Writes a <u>non-prefixed</u> byte array to the buffer.
+     *
+     * @param buf The byte buffer to write.
+     * @return This buffer.
+     */
+    public FriendlyByteBuf writeBytes(ByteBuf buf) {
+        buf.writeBytes(buf);
+        return this;
+    }
+
+    /**
      * Reads a <u>non-prefixed</u> byte array from the buffer.
      *
      * @param length The length of the byte array to read.
@@ -760,6 +771,15 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     public byte[] finish() {
         byte[] bytes = new byte[buf.readableBytes()];
         buf.readBytes(bytes);
+        return bytes;
+    }
+
+    public byte[] bytes() {
+        int reader = buf.readerIndex();
+        buf.readerIndex(0);
+        byte[] bytes = new byte[buf.writerIndex()];
+        buf.readBytes(bytes);
+        buf.readerIndex(reader);
         return bytes;
     }
 

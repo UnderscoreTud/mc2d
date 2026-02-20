@@ -14,9 +14,6 @@ public class PacketsGenerator extends JsonFileGenerator {
     private static final String RESOURCE_LOCATION = "/packets.json";
 
     private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.network.packets", "Packets");
-    private static final ClassName PACKET_INFO_CLASS = ClassName.get("me.tud.mc2d.network.packets", "Packet", "Info");
-    private static final ClassName CONNECTION_STATE_CLASS = ClassName.get("me.tud.mc2d.network", "ConnectionState");
-    private static final ClassName PACKET_DIRECTION_CLASS = ClassName.get("me.tud.mc2d.network.packets", "Packet", "Direction");
 
     public static void main(String[] args) throws Exception {
         new PacketsGenerator().run(args);
@@ -56,6 +53,10 @@ public class PacketsGenerator extends JsonFileGenerator {
         String direction = reader.nextName();
         TypeSpec.Builder directionType = TypeSpec.classBuilder(StringUtils.capitalize(direction))
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
+                .addField(FieldSpec.builder(TypeName.get(String.class), "NAME")
+                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
+                        .initializer("$S", StringUtils.capitalize(state) + StringUtils.capitalize(direction))
+                        .build())
                 .addMethod(PRIVATE_CONSTRUCTOR);
         List<Map.Entry<String, Integer>> packets = new ArrayList<>();
         reader.beginObject();
@@ -75,16 +76,9 @@ public class PacketsGenerator extends JsonFileGenerator {
                     .substring("minecraft:".length())
                     .replaceAll("[^A-Za-z0-9_]", "_")
                     .toUpperCase(Locale.ENGLISH);
-            directionType.addField(FieldSpec.builder(PACKET_INFO_CLASS, fieldName)
+            directionType.addField(FieldSpec.builder(TypeName.INT, fieldName)
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
-                    .initializer(
-                            "new $T($T.parse($S), $L, $T.$L, $T.$L)",
-                            PACKET_INFO_CLASS,
-                            Imports.NAMESPACED_KEY, packet.getKey(),
-                            String.format("0x%02X", packet.getValue()),
-                            CONNECTION_STATE_CLASS, state.toUpperCase(Locale.ENGLISH),
-                            PACKET_DIRECTION_CLASS, direction.toUpperCase(Locale.ENGLISH)
-                    )
+                    .initializer("$L", String.format("0x%02X", packet.getValue()))
                     .build());
         }
         return directionType.build();
