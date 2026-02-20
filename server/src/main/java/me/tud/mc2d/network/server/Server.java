@@ -9,18 +9,18 @@ import io.netty.channel.nio.NioIoHandler;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.Getter;
+import lombok.experimental.Delegate;
 import me.tud.mc2d.datapack.DataPack;
-import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.*;
+import me.tud.mc2d.network.packets.lifecycle.LifeCyclePackets;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serializers.MC2DNetworkSerializers;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
-import org.machinemc.paklet.PacketFactoryImpl;
-import org.machinemc.paklet.SerializerProviderImpl;
+import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.serialization.SerializerProvider;
 import org.machinemc.paklet.serialization.Serializers;
 import org.machinemc.paklet.serialization.VarIntSerializer;
@@ -31,10 +31,12 @@ import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.concurrent.TimeUnit;
 
 public class Server {
 
@@ -42,8 +44,11 @@ public class Server {
     public static final int PROTOCOL_VERSION = 770;
     public static final DataPack CORE_PACK = new DataPack(NamespacedKey.minecraft("core"), VERSION_NAME);
 
+    public static final Duration READ_IDLE_TIMEOUT = Duration.of(30, ChronoUnit.SECONDS);
+    public static final Duration KEEP_ALIVE_FREQ = Duration.of(20, ChronoUnit.SECONDS);
+
     private final @Getter int port;
-    private final @Getter ServerContext context;
+    private final @Getter @Delegate ServerContext context;
     private final @Getter ServerProperties properties;
     private @Getter boolean initialized = false;
 
@@ -135,8 +140,10 @@ public class Server {
                                 .addLast("packet_encoder", new PacketEncoder(connection, context.packetFactory(), context.packetProcessorRegistry()))
                         ;
                         context.connectionManager().addClient(connection);
-                        ch.closeFuture().addListener(_ ->
-                                context.connectionManager().removeClient(connection));
+                        ch.closeFuture().addListener(_ -> {
+                            context.connectionManager().removeClient(connection);
+                            connection.cleanup();
+                        });
                     }
                 })
                 .option(ChannelOption.SO_BACKLOG, 128)
@@ -174,7 +181,7 @@ public class Server {
 
         provider.addSerializationRules(DefaultSerializationRules.class);
 
-        org.machinemc.paklet.PacketFactory factory = context.packetFactory();
+        PacketFactory factory = context.packetFactory();
         factory.addPackets(Packets.Handshake.Serverbound.class);
         factory.addPackets(Packets.Status.Clientbound.class);
         factory.addPackets(Packets.Status.Serverbound.class);
@@ -184,6 +191,8 @@ public class Server {
         factory.addPackets(Packets.Configuration.Serverbound.class);
         factory.addPackets(Packets.Play.Clientbound.class);
         factory.addPackets(Packets.Play.Serverbound.class);
+
+        factory.addPackets(LifeCyclePackets.class);
     }
 
     public <P extends Packet> void registerPacketProcessors() throws IOException {

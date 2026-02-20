@@ -25,6 +25,8 @@ application {
 dependencies {
     implementation(project(":common"))
 
+    implementation(libs.fastutil)
+
     implementation(libs.machinemc.paklet.api)
     implementation(libs.machinemc.paklet.core)
     annotationProcessor(libs.machinemc.paklet.processor)

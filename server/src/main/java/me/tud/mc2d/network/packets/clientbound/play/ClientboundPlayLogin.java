@@ -47,13 +47,11 @@ public class ClientboundPlayLogin implements ClientboundPacket, CustomPacket {
         var longSerializer = context.serializerProvider().getFor(Long.class);
         var booleanSerializer = context.serializerProvider().getFor(Boolean.class);
         var namespacedKeySerializer = context.serializerProvider().getFor(NamespacedKey.class);
+        var namespacedKeyArraySerializer = context.serializerProvider().getFor(NamespacedKey[].class);
         var blockPositionSerializer = context.serializerProvider().getFor(BlockPosition.class);
         entityID = visitor.readInt();
-        hardcore = visitor.read(context, booleanSerializer); 
-        int length = visitor.read(context, varIntSerializer);
-        dimensionNames = new NamespacedKey[length];
-        for (int i = 0; i < length; i++)
-            dimensionNames[i] = visitor.read(context, namespacedKeySerializer);
+        hardcore = visitor.read(context, booleanSerializer);
+        dimensionNames = visitor.read(context.withType(new Token<NamespacedKey[]>() {}), namespacedKeyArraySerializer);
         maxPlayers = visitor.read(context, varIntSerializer); 
         viewDistance = visitor.read(context, varIntSerializer); 
         simulationDistance = visitor.read(context, varIntSerializer); 
@@ -84,12 +82,11 @@ public class ClientboundPlayLogin implements ClientboundPacket, CustomPacket {
         var longSerializer = context.serializerProvider().getFor(Long.class);
         var booleanSerializer = context.serializerProvider().getFor(Boolean.class);
         var namespacedKeySerializer = context.serializerProvider().getFor(NamespacedKey.class);
+        var namespacedKeyArraySerializer = context.serializerProvider().getFor(NamespacedKey[].class);
         var blockPositionSerializer = context.serializerProvider().getFor(BlockPosition.class);
         visitor.writeInt(entityID);
         visitor.write(context, booleanSerializer, hardcore);
-        visitor.write(context, varIntSerializer, dimensionNames.length);
-        for (NamespacedKey dimensionName : dimensionNames)
-            visitor.write(context, namespacedKeySerializer, dimensionName);
+        visitor.write(context.withType(new Token<NamespacedKey[]>() {}), namespacedKeyArraySerializer, dimensionNames);
         visitor.write(context, varIntSerializer, maxPlayers);
         visitor.write(context, varIntSerializer, viewDistance);
         visitor.write(context, varIntSerializer, simulationDistance);

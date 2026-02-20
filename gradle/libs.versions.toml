@@ -2,6 +2,8 @@
 apache-commons-lang3 = "3.20.0"
 apache-commons-text = "1.15.0"
 
+fastutil = "8.5.18"
+
 gson = "2.13.0"
 
 guava = "33.5.0-jre"
@@ -25,6 +27,8 @@ netty = "4.2.10.Final"
 [libraries]
 apache-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "apache-commons-lang3" }
 apache-commons-text = { module = "org.apache.commons:commons-text", version.ref = "apache-commons-text" }
+
+fastutil = { module = "it.unimi.dsi:fastutil", version.ref = "fastutil" }
 
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 

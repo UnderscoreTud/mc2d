@@ -18,6 +18,10 @@ import me.tud.mc2d.Main;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.jar.JarEntry;
@@ -116,4 +120,24 @@ public final class ClassUtils {
         return classNames;
     }
 
+    public static <T> Class<T> asClass(Type type) {
+        //noinspection unchecked
+        return (Class<T>) switch (type) {
+            case Class<?> cls -> cls;
+            case ParameterizedType parameterized -> parameterized.getRawType();
+            case GenericArrayType arrayType -> {
+                List<Integer> dimensions = new LinkedList<>();
+                Type currentType = arrayType;
+                do {
+                    currentType = ((GenericArrayType) currentType).getGenericComponentType();
+                    dimensions.add(0);
+                } while (!(currentType instanceof ParameterizedType));
+                int[] dimensionsArray = new int[dimensions.size()];
+                for (int i = 0; i < dimensionsArray.length; i++)
+                    dimensionsArray[i] = dimensions.get(i);
+                yield Array.newInstance(asClass(currentType), dimensionsArray).getClass();
+            }
+            default -> throw new IllegalStateException("Unexpected type: " + type);
+        };
+    }
 }

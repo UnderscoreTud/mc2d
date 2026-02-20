@@ -8,13 +8,22 @@ import lombok.Data;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
+import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundDisconnect;
+import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundKeepAlive;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.entity.player.ClientInformation;
+import me.tud.mc2d.ticker.Tick;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
+import org.machinemc.scriptive.components.Component;
+import org.machinemc.scriptive.components.TranslationComponent;
 
+import java.time.Instant;
+import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 public class ClientConnection {
@@ -30,12 +39,19 @@ public class ClientConnection {
     private String username;
     private ClientInformation clientInformation;
 
+    private long keepAliveID;
+    private long keepAliveRequest;
+    private long keepAliveResponse;
+    private CompletableFuture<Void> keepAliveFuture;
+
     private DataPack[] knownPacks;
 
     private String brand;
 
     public void state(ConnectionState state) {
         System.out.println("State changed from " + this.state + " to " + state);
+        if (keepAliveFuture == null && (state == ConnectionState.CONFIGURATION || state == ConnectionState.PLAY))
+            startKeepAliveLoop();
         this.state = state;
     }
 
@@ -69,6 +85,37 @@ public class ClientConnection {
         this.username = name;
     }
 
+    public void disconnect() {
+        disconnect(TranslationComponent.of("multiplayer.disconnect.generic"));
+    }
+
+    public void disconnect(Component reason) {
+        sendPacket(new ClientboundDisconnect(reason));
+    }
+
+    public void startKeepAliveLoop() {
+        if (keepAliveFuture != null)
+            throw new IllegalStateException("Keep alive loop is already running.");
+        Random random = new Random();
+        keepAliveFuture = server.context().ticker().runRepeatedly(() -> {
+            if (state != ConnectionState.CONFIGURATION && state != ConnectionState.PLAY)
+                return;
+            if (keepAliveRequest - keepAliveResponse > Server.READ_IDLE_TIMEOUT.toMillis())
+                disconnect();
+            keepAliveID = random.nextLong();
+            keepAliveRequest = System.currentTimeMillis();
+            sendPacket(new ClientboundKeepAlive(keepAliveID));
+        }, Tick.of(Server.KEEP_ALIVE_FREQ), Tick.of(Server.KEEP_ALIVE_FREQ));
+    }
+
+    public void keepAlive() {
+        if (state != ConnectionState.CONFIGURATION && state != ConnectionState.PLAY)
+            throw new IllegalStateException("Keep alive is only supported in CONFIGURATION and PLAY connection states");
+        if (keepAliveResponse > keepAliveRequest) // Client already responded
+            return;
+        keepAliveResponse = System.currentTimeMillis();
+    }
+
     public void knownPacks(DataPack[] knownPacks) {
         if (state != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
@@ -91,6 +138,13 @@ public class ClientConnection {
 
     public ChannelFuture sendPacket(Packet packet) {
         return channel.writeAndFlush(packet);
+    }
+
+    public void cleanup() {
+        if (keepAliveFuture != null) {
+            keepAliveFuture.cancel(true);
+            keepAliveFuture = null;
+        }
     }
 
 }

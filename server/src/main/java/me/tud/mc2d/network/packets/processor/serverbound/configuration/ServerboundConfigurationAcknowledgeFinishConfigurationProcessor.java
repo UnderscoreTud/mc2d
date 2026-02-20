@@ -6,11 +6,15 @@ import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayGameEvent;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayLogin;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySynchronizePosition;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.serverbound.configuration.ServerboundConfigurationAcknowledgeFinishConfiguration;
 import me.tud.mc2d.registry.RegistryAccess;
 import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
+import org.joml.Vector3d;
+
+import java.util.Collections;
 
 public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
         implements PacketProcessor<ServerboundConfigurationAcknowledgeFinishConfiguration> {
@@ -33,7 +37,7 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
                 0,
                 NamespacedKey.minecraft("overworld"),
                 0,
-                GameMode.SURVIVAL,
+                GameMode.CREATIVE,
                 null,
                 false,
                 false,
@@ -44,7 +48,7 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
                 0,
                 false
         ));
-//        connection.sendPacket(new ClientboundPlaySynchronizePosition(0, new Vector3d(), new Vector3d(), 0, 0, Collections.emptySet()));
+        connection.sendPacket(new ClientboundPlaySynchronizePosition(0, new Vector3d(), new Vector3d(), 0, 0, Collections.emptySet()));
         connection.sendPacket(new ClientboundPlayGameEvent(GameEventType.START_WAITING_FOR_CHUNKS.create(null)));
     }
 

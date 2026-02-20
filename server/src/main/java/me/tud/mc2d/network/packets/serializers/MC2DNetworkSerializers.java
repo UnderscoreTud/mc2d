@@ -26,7 +26,9 @@ public final class MC2DNetworkSerializers implements DynamicCatalogue.Serializer
                 new JSONComponent.Serializer(context.componentProcessor()),
                 new NamespacedKeySerializer(),
                 new NBTCompoundSerializer(),
-                new ClientInformationSerializer()
+                new ClientInformationSerializer(),
+                new Vector3dSerializer(),
+                new Vector3fSerializer()
         );
     }
 
