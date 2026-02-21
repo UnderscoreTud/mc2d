@@ -8,7 +8,7 @@ import javax.annotation.processing.Generated;
  */
 @Generated(
         value = "me.tud.mc2d.generators.PacketsGenerator",
-        date = "2026-02-21T08:50:51.438130100Z"
+        date = "2026-02-21T10:02:13.735931Z"
 )
 public final class Packets {
     private Packets() {

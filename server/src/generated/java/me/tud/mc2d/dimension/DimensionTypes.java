@@ -9,7 +9,7 @@ import me.tud.mc2d.util.NamespacedKey;
 
 @Generated(
         value = "me.tud.mc2d.generators.DimensionTypesGenerator",
-        date = "2026-02-21T08:48:50.804726200Z"
+        date = "2026-02-21T10:02:13.634859600Z"
 )
 public sealed class DimensionTypes permits DimensionType {
     public static final DimensionType OVERWORLD = DimensionType.builder()

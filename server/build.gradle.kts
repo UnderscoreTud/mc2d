@@ -3,6 +3,7 @@ import org.machinemc.paklet.plugin.PakletPlugin
 plugins {
     `common-conventions`
     application
+    idea
 }
 
 buildscript {
@@ -34,32 +35,43 @@ dependencies {
     implementation(libs.netty)
 }
 
-val genOutDir: Directory = layout.projectDirectory.dir("src/main/generated")
+val genOutDir: Directory = layout.projectDirectory.dir("src/generated/java")
 
-val generatePacketIDs = registerGeneratorTask(
-    "generatePacketIDs",
-    "me.tud.mc2d.generators.PacketsGenerator",
-    genOutDir
+val generationTasks = arrayOf(
+    registerGeneratorTask(
+        "generatePacketIDs",
+        "me.tud.mc2d.generators.PacketsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateDimensionTypes",
+        "me.tud.mc2d.generators.DimensionTypesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateDamageTypes",
+        "me.tud.mc2d.generators.DamageTypesGenerator",
+        genOutDir
+    )
 )
 
-val generateDimensionTypes = registerGeneratorTask(
-    "generateDimensionTypes",
-    "me.tud.mc2d.generators.DimensionTypesGenerator",
-    genOutDir
-)
+var generateAllTask = tasks.register("generateAll") {
+    group = "code generation"
+    description = "Run all the code generation tasks"
 
-val generateDamageTypes = registerGeneratorTask(
-    "generateDamageTypes",
-    "me.tud.mc2d.generators.DamageTypesGenerator",
-    genOutDir
-)
+    dependsOn(generationTasks)
+}
 
 sourceSets.named("main") {
     java.srcDir(genOutDir)
 }
 
+idea {
+    module {
+        generatedSourceDirs.add(genOutDir.asFile)
+    }
+}
+
 tasks.withType<JavaCompile>().configureEach { 
-    dependsOn(generatePacketIDs)
-    dependsOn(generateDimensionTypes)
-    dependsOn(generateDamageTypes)
+    dependsOn(generateAllTask)
 }

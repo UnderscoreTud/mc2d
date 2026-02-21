@@ -4,7 +4,6 @@ import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.PathSensitivity
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.the
-import sun.jvmstat.monitor.MonitoredVmUtil.mainClass
 
 /**
  * Registers a generator task

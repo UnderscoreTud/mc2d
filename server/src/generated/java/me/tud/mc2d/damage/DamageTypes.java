@@ -8,7 +8,7 @@ import me.tud.mc2d.util.NamespacedKey;
 
 @Generated(
         value = "me.tud.mc2d.generators.DamageTypesGenerator",
-        date = "2026-02-21T08:48:50.940802100Z"
+        date = "2026-02-21T10:02:13.516810Z"
 )
 public sealed class DamageTypes permits DamageType {
     public static final DamageType ARROW = DamageType.builder()
