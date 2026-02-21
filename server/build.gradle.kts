@@ -34,7 +34,7 @@ dependencies {
     implementation(libs.netty)
 }
 
-val genOutDir: Provider<Directory> = layout.buildDirectory.dir("generated/sources/java/main")
+val genOutDir: Directory = layout.projectDirectory.dir("src/main/generated")
 
 val generatePacketIDs = registerGeneratorTask(
     "generatePacketIDs",

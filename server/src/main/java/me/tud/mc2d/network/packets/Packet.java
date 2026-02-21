@@ -5,7 +5,7 @@ import me.tud.mc2d.network.ConnectionState;
 public interface Packet {
 
     Direction direction();
-    
+
     static String group(ConnectionState state, Direction direction) {
         return switch (state) {
             case HANDSHAKE -> {

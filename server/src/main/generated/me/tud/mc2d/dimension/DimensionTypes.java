@@ -1,0 +1,108 @@
+package me.tud.mc2d.dimension;
+
+import javax.annotation.processing.Generated;
+import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.util.IntProvider;
+import me.tud.mc2d.util.NamespacedKey;
+
+@Generated(
+        value = "me.tud.mc2d.generators.DimensionTypesGenerator",
+        date = "2026-02-21T08:48:50.804726200Z"
+)
+public sealed class DimensionTypes permits DimensionType {
+    public static final DimensionType OVERWORLD = DimensionType.builder()
+            .ambientLight(0.0f)
+            .bedWorks(true)
+            .coordinateScale(1.0)
+            .effects(NamespacedKey.parse("minecraft:overworld"))
+            .hasCeiling(false)
+            .hasRaids(true)
+            .hasSkylight(true)
+            .height(384)
+            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_overworld"))
+            .logicalHeight(384)
+            .minY(-64)
+            .monsterSpawnBlockLightLimit(0)
+            .monsterSpawnLightLevel(new IntProvider.Uniform(0, 7))
+            .natural(true)
+            .piglinSafe(false)
+            .respawnAnchorWorks(false)
+            .ultrawarm(false)
+            .build();
+
+    public static final DimensionType OVERWORLD_CAVES = DimensionType.builder()
+            .ambientLight(0.0f)
+            .bedWorks(true)
+            .coordinateScale(1.0)
+            .effects(NamespacedKey.parse("minecraft:overworld"))
+            .hasCeiling(true)
+            .hasRaids(true)
+            .hasSkylight(true)
+            .height(384)
+            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_overworld"))
+            .logicalHeight(384)
+            .minY(-64)
+            .monsterSpawnBlockLightLimit(0)
+            .monsterSpawnLightLevel(new IntProvider.Uniform(0, 7))
+            .natural(true)
+            .piglinSafe(false)
+            .respawnAnchorWorks(false)
+            .ultrawarm(false)
+            .build();
+
+    public static final DimensionType THE_END = DimensionType.builder()
+            .ambientLight(0.0f)
+            .bedWorks(false)
+            .coordinateScale(1.0)
+            .effects(NamespacedKey.parse("minecraft:the_end"))
+            .fixedTime(6000L)
+            .hasCeiling(false)
+            .hasRaids(true)
+            .hasSkylight(false)
+            .height(256)
+            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_end"))
+            .logicalHeight(256)
+            .minY(0)
+            .monsterSpawnBlockLightLimit(0)
+            .monsterSpawnLightLevel(new IntProvider.Uniform(0, 7))
+            .natural(false)
+            .piglinSafe(false)
+            .respawnAnchorWorks(false)
+            .ultrawarm(false)
+            .build();
+
+    public static final DimensionType THE_NETHER = DimensionType.builder()
+            .ambientLight(0.1f)
+            .bedWorks(false)
+            .coordinateScale(8.0)
+            .effects(NamespacedKey.parse("minecraft:the_nether"))
+            .fixedTime(18000L)
+            .hasCeiling(true)
+            .hasRaids(false)
+            .hasSkylight(false)
+            .height(256)
+            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_nether"))
+            .logicalHeight(128)
+            .minY(0)
+            .monsterSpawnBlockLightLimit(15)
+            .monsterSpawnLightLevel(new IntProvider.Constant(7))
+            .natural(false)
+            .piglinSafe(true)
+            .respawnAnchorWorks(true)
+            .ultrawarm(true)
+            .build();
+
+    protected DimensionTypes() {
+    }
+
+    public static DataDrivenRegistry<DimensionType> createDefaultRegistry(Server server) {
+        return new DataDrivenRegistry<>(server, RegistryKey.DIMENSION_TYPE).modify(registry -> {
+            registry.register(NamespacedKey.minecraft("overworld"), DimensionType.OVERWORLD);
+            registry.register(NamespacedKey.minecraft("overworld_caves"), DimensionType.OVERWORLD_CAVES);
+            registry.register(NamespacedKey.minecraft("the_end"), DimensionType.THE_END);
+            registry.register(NamespacedKey.minecraft("the_nether"), DimensionType.THE_NETHER);
+        });
+    }
+}

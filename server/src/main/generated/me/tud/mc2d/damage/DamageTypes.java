@@ -1,0 +1,378 @@
+package me.tud.mc2d.damage;
+
+import javax.annotation.processing.Generated;
+import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.util.NamespacedKey;
+
+@Generated(
+        value = "me.tud.mc2d.generators.DamageTypesGenerator",
+        date = "2026-02-21T08:48:50.940802100Z"
+)
+public sealed class DamageTypes permits DamageType {
+    public static final DamageType ARROW = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("arrow")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType BAD_RESPAWN_POINT = DamageType.builder()
+            .deathMessageType(DamageType.DeathMessageType.INTENTIONAL_GAME_DESIGN)
+            .exhaustion(0.1f)
+            .messageID("badRespawnPoint")
+            .scaling(DamageType.Scaling.ALWAYS)
+            .build();
+
+    public static final DamageType CACTUS = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("cactus")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType CAMPFIRE = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("inFire")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType CRAMMING = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("cramming")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType DRAGON_BREATH = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("dragonBreath")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType DROWN = DamageType.builder()
+            .effects(DamageType.Effects.DROWNING)
+            .exhaustion(0.0f)
+            .messageID("drown")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType DRY_OUT = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("dryout")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType ENDER_PEARL = DamageType.builder()
+            .deathMessageType(DamageType.DeathMessageType.FALL_VARIANTS)
+            .exhaustion(0.0f)
+            .messageID("fall")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType EXPLOSION = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("explosion")
+            .scaling(DamageType.Scaling.ALWAYS)
+            .build();
+
+    public static final DamageType FALL = DamageType.builder()
+            .deathMessageType(DamageType.DeathMessageType.FALL_VARIANTS)
+            .exhaustion(0.0f)
+            .messageID("fall")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FALLING_ANVIL = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("anvil")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FALLING_BLOCK = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("fallingBlock")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FALLING_STALACTITE = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("fallingStalactite")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FIREBALL = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("fireball")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FIREWORKS = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("fireworks")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FLY_INTO_WALL = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("flyIntoWall")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType FREEZE = DamageType.builder()
+            .effects(DamageType.Effects.FREEZING)
+            .exhaustion(0.0f)
+            .messageID("freeze")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType GENERIC = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("generic")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType GENERIC_KILL = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("genericKill")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType HOT_FLOOR = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("hotFloor")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType INDIRECT_MAGIC = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("indirectMagic")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType IN_FIRE = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("inFire")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType IN_WALL = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("inWall")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType LAVA = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("lava")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType LIGHTNING_BOLT = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("lightningBolt")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType MACE_SMASH = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mace_smash")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType MAGIC = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("magic")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType MOB_ATTACK = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mob")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType MOB_ATTACK_NO_AGGRO = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mob")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType MOB_PROJECTILE = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mob")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType ON_FIRE = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.0f)
+            .messageID("onFire")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType OUTSIDE_BORDER = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("outsideBorder")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType OUT_OF_WORLD = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("outOfWorld")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType PLAYER_ATTACK = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("player")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType PLAYER_EXPLOSION = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("explosion.player")
+            .scaling(DamageType.Scaling.ALWAYS)
+            .build();
+
+    public static final DamageType SONIC_BOOM = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("sonic_boom")
+            .scaling(DamageType.Scaling.ALWAYS)
+            .build();
+
+    public static final DamageType SPIT = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mob")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType STALAGMITE = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("stalagmite")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType STARVE = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("starve")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType STING = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("sting")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType SWEET_BERRY_BUSH = DamageType.builder()
+            .effects(DamageType.Effects.POKING)
+            .exhaustion(0.1f)
+            .messageID("sweetBerryBush")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType THORNS = DamageType.builder()
+            .effects(DamageType.Effects.THORNS)
+            .exhaustion(0.1f)
+            .messageID("thorns")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType THROWN = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("thrown")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType TRIDENT = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("trident")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType UNATTRIBUTED_FIREBALL = DamageType.builder()
+            .effects(DamageType.Effects.BURNING)
+            .exhaustion(0.1f)
+            .messageID("onFire")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType WIND_CHARGE = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("mob")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType WITHER = DamageType.builder()
+            .exhaustion(0.0f)
+            .messageID("wither")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    public static final DamageType WITHER_SKULL = DamageType.builder()
+            .exhaustion(0.1f)
+            .messageID("witherSkull")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .build();
+
+    protected DamageTypes() {
+    }
+
+    public static DataDrivenRegistry<DamageType> createDefaultRegistry(Server server) {
+        return new DataDrivenRegistry<>(server, RegistryKey.DAMAGE_TYPE).modify(registry -> {
+            registry.register(NamespacedKey.minecraft("arrow"), DamageType.ARROW);
+            registry.register(NamespacedKey.minecraft("bad_respawn_point"), DamageType.BAD_RESPAWN_POINT);
+            registry.register(NamespacedKey.minecraft("cactus"), DamageType.CACTUS);
+            registry.register(NamespacedKey.minecraft("campfire"), DamageType.CAMPFIRE);
+            registry.register(NamespacedKey.minecraft("cramming"), DamageType.CRAMMING);
+            registry.register(NamespacedKey.minecraft("dragon_breath"), DamageType.DRAGON_BREATH);
+            registry.register(NamespacedKey.minecraft("drown"), DamageType.DROWN);
+            registry.register(NamespacedKey.minecraft("dry_out"), DamageType.DRY_OUT);
+            registry.register(NamespacedKey.minecraft("ender_pearl"), DamageType.ENDER_PEARL);
+            registry.register(NamespacedKey.minecraft("explosion"), DamageType.EXPLOSION);
+            registry.register(NamespacedKey.minecraft("fall"), DamageType.FALL);
+            registry.register(NamespacedKey.minecraft("falling_anvil"), DamageType.FALLING_ANVIL);
+            registry.register(NamespacedKey.minecraft("falling_block"), DamageType.FALLING_BLOCK);
+            registry.register(NamespacedKey.minecraft("falling_stalactite"), DamageType.FALLING_STALACTITE);
+            registry.register(NamespacedKey.minecraft("fireball"), DamageType.FIREBALL);
+            registry.register(NamespacedKey.minecraft("fireworks"), DamageType.FIREWORKS);
+            registry.register(NamespacedKey.minecraft("fly_into_wall"), DamageType.FLY_INTO_WALL);
+            registry.register(NamespacedKey.minecraft("freeze"), DamageType.FREEZE);
+            registry.register(NamespacedKey.minecraft("generic"), DamageType.GENERIC);
+            registry.register(NamespacedKey.minecraft("generic_kill"), DamageType.GENERIC_KILL);
+            registry.register(NamespacedKey.minecraft("hot_floor"), DamageType.HOT_FLOOR);
+            registry.register(NamespacedKey.minecraft("indirect_magic"), DamageType.INDIRECT_MAGIC);
+            registry.register(NamespacedKey.minecraft("in_fire"), DamageType.IN_FIRE);
+            registry.register(NamespacedKey.minecraft("in_wall"), DamageType.IN_WALL);
+            registry.register(NamespacedKey.minecraft("lava"), DamageType.LAVA);
+            registry.register(NamespacedKey.minecraft("lightning_bolt"), DamageType.LIGHTNING_BOLT);
+            registry.register(NamespacedKey.minecraft("mace_smash"), DamageType.MACE_SMASH);
+            registry.register(NamespacedKey.minecraft("magic"), DamageType.MAGIC);
+            registry.register(NamespacedKey.minecraft("mob_attack"), DamageType.MOB_ATTACK);
+            registry.register(NamespacedKey.minecraft("mob_attack_no_aggro"), DamageType.MOB_ATTACK_NO_AGGRO);
+            registry.register(NamespacedKey.minecraft("mob_projectile"), DamageType.MOB_PROJECTILE);
+            registry.register(NamespacedKey.minecraft("on_fire"), DamageType.ON_FIRE);
+            registry.register(NamespacedKey.minecraft("outside_border"), DamageType.OUTSIDE_BORDER);
+            registry.register(NamespacedKey.minecraft("out_of_world"), DamageType.OUT_OF_WORLD);
+            registry.register(NamespacedKey.minecraft("player_attack"), DamageType.PLAYER_ATTACK);
+            registry.register(NamespacedKey.minecraft("player_explosion"), DamageType.PLAYER_EXPLOSION);
+            registry.register(NamespacedKey.minecraft("sonic_boom"), DamageType.SONIC_BOOM);
+            registry.register(NamespacedKey.minecraft("spit"), DamageType.SPIT);
+            registry.register(NamespacedKey.minecraft("stalagmite"), DamageType.STALAGMITE);
+            registry.register(NamespacedKey.minecraft("starve"), DamageType.STARVE);
+            registry.register(NamespacedKey.minecraft("sting"), DamageType.STING);
+            registry.register(NamespacedKey.minecraft("sweet_berry_bush"), DamageType.SWEET_BERRY_BUSH);
+            registry.register(NamespacedKey.minecraft("thorns"), DamageType.THORNS);
+            registry.register(NamespacedKey.minecraft("thrown"), DamageType.THROWN);
+            registry.register(NamespacedKey.minecraft("trident"), DamageType.TRIDENT);
+            registry.register(NamespacedKey.minecraft("unattributed_fireball"), DamageType.UNATTRIBUTED_FIREBALL);
+            registry.register(NamespacedKey.minecraft("wind_charge"), DamageType.WIND_CHARGE);
+            registry.register(NamespacedKey.minecraft("wither"), DamageType.WITHER);
+            registry.register(NamespacedKey.minecraft("wither_skull"), DamageType.WITHER_SKULL);
+        });
+    }
+}
