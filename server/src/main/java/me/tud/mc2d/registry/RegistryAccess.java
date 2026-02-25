@@ -62,7 +62,7 @@ public class RegistryAccess {
         access.dataDriven(RegistryKey.CHICKEN_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.CHICKEN_TEMPERATE));
         access.dataDriven(RegistryKey.COW_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.COW_TEMPERATE));
         access.dataDriven(RegistryKey.FROG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.FROG_TEMPERATE));
-        access.dataDriven(RegistryKey.PAINTING_VARIANT, Map.entry(NamespacedKey.minecraft("alban"), PaintingVariant.ALBAN));
+        access.register(RegistryKey.PAINTING_VARIANT, PaintingVariant.createDefaultRegistry(server));
         access.dataDriven(RegistryKey.PIG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.PIG_TEMPERATE));
         access.dataDriven(RegistryKey.WOLF_SOUND_VARIANT, Map.entry(NamespacedKey.minecraft("classic"), WolfSoundVariant.CLASSIC));
         access.dataDriven(RegistryKey.WOLF_VARIANT, Map.entry(NamespacedKey.minecraft("ashen"), WolfVariant.ASHEN));

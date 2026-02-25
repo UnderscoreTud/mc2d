@@ -10,15 +10,7 @@ import org.machinemc.scriptive.serialization.NBTPropertiesSerializer;
 import org.machinemc.scriptive.style.ChatColor;
 
 @Builder(toBuilder = true)
-public class PaintingVariant implements NBTSerializable {
-    
-    public static final PaintingVariant ALBAN = PaintingVariant.builder()
-            .assetID(NamespacedKey.minecraft("alban"))
-            .author(TranslationComponent.of("painting.minecraft.alban.author").modify().color(ChatColor.GRAY).finish())
-            .title(TranslationComponent.of("painting.minecraft.alban.title").modify().color(ChatColor.YELLOW).finish())
-            .width(1)
-            .height(1)
-            .build();
+public final class PaintingVariant extends PaintingVariants implements NBTSerializable {
 
     private final NamespacedKey assetID;
     private final Component author, title;

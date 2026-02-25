@@ -1,0 +1,26 @@
+{
+  "asset_id": "minecraft:alban",
+  "author": {
+    "color": "gray",
+    "translate": "painting.minecraft.alban.author"
+  },
+  "height": 1,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.minecraft.alban.title",
+    "extra": [
+      {
+        "text": "hi!",
+        "color": "red",
+        "bold": true
+      },
+      {
+        "keybind": "lol",
+        "color": "#123456",
+        "italic": true
+      },
+      {"text": ""}
+    ]
+  },
+  "width": 1
+}

@@ -11,6 +11,7 @@ import me.tud.mc2d.generators.util.StringUtils;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Getter
@@ -19,13 +20,13 @@ public class Structure implements Instruction {
     private final ClassName source;
     private final Map<String, InstructionInfo> instructions;
     private final Type type;
-    private final boolean allowMissingKeys;
-    private final boolean ignoreUnknownKeys;
+    private final boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
 
     private Structure(Builder builder) {
         this.source = builder.source;
         this.instructions = builder.instructions;
         this.type = builder.type;
+        this.trimmed = builder.trimmed;
         this.allowMissingKeys = builder.allowMissingKeys;
         this.ignoreUnknownKeys = builder.ignoreUnknownKeys;
     }
@@ -39,7 +40,8 @@ public class Structure implements Instruction {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
-        type.begin(out, source);
+        if (!trimmed)
+            type.begin(out, source);
         Iterator<Map.Entry<String, InstructionInfo>> iterator = instructions.entrySet().iterator();
         boolean first = true;
         while (iterator.hasNext()) {
@@ -54,10 +56,15 @@ public class Structure implements Instruction {
             }
 
             InstructionInfo info = entry.getValue();
-            type.apply(ctx, info.keyTransformer.apply(key), child, out, info.instruction, first);
+            if (info.nameless) {
+                info.instruction.get().pushAndApply(ctx, info.keyTransformer.apply(key), child, out);
+            } else {
+                type.apply(ctx, info.keyTransformer.apply(key), child, out, info.instruction.get(), first);
+            }
             first = false;
         }
-        type.end(out);
+        if (!trimmed)
+            type.end(out);
 
         if (!unhandled.isEmpty() && !ignoreUnknownKeys)
             throw ctx.exception("Unrecognized key" + (unhandled.size() != 1 ? "s" : "") + ": " + unhandled);
@@ -73,8 +80,16 @@ public class Structure implements Instruction {
         }
     }
 
+    public static Structure.Builder builder(Class<?> source) {
+        return new Builder(ClassName.get(source));
+    }
+
     public static Structure.Builder builder(ClassName source) {
         return new Builder(source);
+    }
+
+    public static Structure.Builder constructor(Class<?> source) {
+        return new Builder(ClassName.get(source)).constructor();
     }
 
     public static Structure.Builder constructor(ClassName source) {
@@ -86,26 +101,50 @@ public class Structure implements Instruction {
         private final ClassName source;
         private final Map<String, InstructionInfo> instructions = new LinkedHashMap<>();
         private Type type = Type.BUILDER;
-        private boolean allowMissingKeys, ignoreUnknownKeys;
+        private boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
 
         private Builder(ClassName source) {
             this.source = source;
         }
 
         public Builder instruction(String key, Instruction instruction) {
+            return instruction(key, () -> instruction);
+        }
+
+        public Builder instruction(String key, Supplier<Instruction> instruction) {
             return instruction(key, StringUtils::snakeToCamel, instruction);
         }
 
         public Builder instruction(String key, Function<String, String> keyTransformer, Instruction instruction) {
+            return instruction(key, keyTransformer, () -> instruction);
+        }
+
+        public Builder instruction(String key, Function<String, String> keyTransformer, Supplier<Instruction> instruction) {
             Preconditions.checkNotNull(key, "key");
             Preconditions.checkNotNull(keyTransformer, "keyTransformer");
             Preconditions.checkNotNull(instruction, "instruction");
-            instructions.put(key, new InstructionInfo(instruction, keyTransformer));
+            instructions.put(key, new InstructionInfo(instruction, keyTransformer, false));
+            return this;
+        }
+
+        public Builder namelessInstruction(String key, Instruction instruction) {
+            return namelessInstruction(key, () -> instruction);
+        }
+
+        public Builder namelessInstruction(String key, Supplier<Instruction> instruction) {
+            Preconditions.checkNotNull(key, "key");
+            Preconditions.checkNotNull(instruction, "instruction");
+            instructions.put(key, new InstructionInfo(instruction, Function.identity(), true));
             return this;
         }
 
         public Builder constructor() {
             type = Type.CONSTRUCTOR;
+            return this;
+        }
+
+        public Builder trimmed() {
+            trimmed = true;
             return this;
         }
 
@@ -171,6 +210,6 @@ public class Structure implements Instruction {
 
     }
 
-    private record InstructionInfo(Instruction instruction, Function<String, String> keyTransformer) {}
+    private record InstructionInfo(Supplier<Instruction> instruction, Function<String, String> keyTransformer, boolean nameless) {}
 
 }

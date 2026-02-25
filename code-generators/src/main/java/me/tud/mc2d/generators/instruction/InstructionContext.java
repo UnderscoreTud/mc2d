@@ -48,6 +48,14 @@ public final class InstructionContext {
         return node.getNodeType() + "[" + string + "]";
     }
 
+    public InstructionException exception(Throwable cause) {
+        return new InstructionException(pointer(), contextString(), cause);
+    }
+
+    public InstructionException exception(String message, Throwable cause) {
+        return new InstructionException(pointer(), contextString(), message, cause);
+    }
+
     public InstructionException exception(String message) {
         return new InstructionException(pointer(), contextString(), message);
     }

@@ -34,6 +34,9 @@ public class DynamicInstruction implements Instruction {
         }
 
         String key = keyExtractor.apply((ObjectNode) node);
+        if (key == null)
+            throw ctx.exception("Unable to determine instruction based on " + ctx.describe(node));
+
         Supplier<Instruction> instruction = instructions.get(key);
 
         if (instruction == null) {
@@ -73,14 +76,14 @@ public class DynamicInstruction implements Instruction {
             return this;
         }
 
-        public Builder instruction(String key, Instruction instruction) {
+        public Builder path(String key, Instruction instruction) {
             Preconditions.checkNotNull(key, "key");
             Preconditions.checkNotNull(instruction, "instruction");
             instructions.put(key, () -> instruction);
             return this;
         }
 
-        public Builder instruction(String key, Supplier<Instruction> instruction) {
+        public Builder path(String key, Supplier<Instruction> instruction) {
             Preconditions.checkNotNull(key, "key");
             Preconditions.checkNotNull(instruction, "instruction");
             instructions.put(key, instruction);

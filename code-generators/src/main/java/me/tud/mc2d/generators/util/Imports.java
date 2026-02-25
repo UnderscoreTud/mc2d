@@ -6,6 +6,7 @@ public class Imports {
  
     public static final ClassName DAMAGE_TYPE = ClassName.get("me.tud.mc2d.damage", "DamageType");
     public static final ClassName DIMENSION_TYPE = ClassName.get("me.tud.mc2d.dimension", "DimensionType");
+    public static final ClassName PAINTING_VARIANT = ClassName.get("me.tud.mc2d.painting", "PaintingVariant");
     public static final ClassName BLOCK = ClassName.get("me.tud.mc2d.world.block", "Block");
     public static final ClassName BLOCK_DATA = ClassName.get("me.tud.mc2d.world.blockdata", "BlockData");
     public static final ClassName PROPERTY_VALUES = ClassName.get("me.tud.mc2d.world.blockdata", "PropertyValues");

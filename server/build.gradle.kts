@@ -54,6 +54,11 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generatePaintingVariants",
+        "me.tud.mc2d.generators.paintingvariants.PaintingVariantsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateBlocks",
         "me.tud.mc2d.generators.blocks.BlocksGenerator",
         genOutDir

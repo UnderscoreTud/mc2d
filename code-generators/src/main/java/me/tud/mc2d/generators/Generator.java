@@ -17,7 +17,7 @@ import java.net.URL;
 
 public abstract class Generator {
 
-    protected static final JsonMapper MAPPER = JsonMapper.builder()
+    public static final JsonMapper MAPPER = JsonMapper.builder()
             .enable(JsonParser.Feature.ALLOW_COMMENTS)
             .enable(JsonReadFeature.ALLOW_TRAILING_COMMA)
             .enable(JsonReadFeature.ALLOW_SINGLE_QUOTES)

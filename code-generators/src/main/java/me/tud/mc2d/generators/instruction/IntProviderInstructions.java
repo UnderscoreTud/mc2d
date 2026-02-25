@@ -8,12 +8,12 @@ final class IntProviderInstructions {
 
     public static final Instruction INT_PROVIDER = DynamicInstruction.builder()
             .basedOn("type")
-            .instruction("minecraft:constant", () -> IntProviderInstructions.CONSTANT)
-            .instruction("minecraft:uniform", () -> IntProviderInstructions.UNIFORM)
-            .instruction("minecraft:biased_to_bottom", () -> IntProviderInstructions.BIASED_TO_BOTTOM)
-            .instruction("minecraft:clamped", () -> IntProviderInstructions.CLAMPED)
-            .instruction("minecraft:clamped_normal", () -> IntProviderInstructions.CLAMPED_NORMAL)
-            .instruction("minecraft:weighted_list", () -> IntProviderInstructions.WEIGHTED_LIST)
+            .path("minecraft:constant", () -> IntProviderInstructions.CONSTANT)
+            .path("minecraft:uniform", () -> IntProviderInstructions.UNIFORM)
+            .path("minecraft:biased_to_bottom", () -> IntProviderInstructions.BIASED_TO_BOTTOM)
+            .path("minecraft:clamped", () -> IntProviderInstructions.CLAMPED)
+            .path("minecraft:clamped_normal", () -> IntProviderInstructions.CLAMPED_NORMAL)
+            .path("minecraft:weighted_list", () -> IntProviderInstructions.WEIGHTED_LIST)
             .orElse((ctx, node, out) -> {
                 if (!node.isInt())
                     throw ctx.exception("Unexpected value: " + ctx.describe(node));
