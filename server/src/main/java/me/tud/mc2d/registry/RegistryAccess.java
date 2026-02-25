@@ -27,18 +27,18 @@ public class RegistryAccess {
         this.server = server;
     }
 
-    public <T extends NBTSerializable, R extends Registry<T>> void register(RegistryKey<T, R> key, R registry) {
+    public <T, R extends Registry<T>> void register(RegistryKey<T, R> key, R registry) {
         if (registries.containsKey(key))
             throw new IllegalArgumentException("Registry already registered: " + key);
         registries.put(key, registry);
     }
 
-    public <T extends NBTSerializable, R extends Registry<T>> R get(RegistryKey<T, R> key) {
+    public <T, R extends Registry<T>> R get(RegistryKey<T, R> key) {
         //noinspection unchecked
         return (R) registries.get(key);
     }
 
-    public <T extends NBTSerializable, R extends Registry<T>> R get(NamespacedKey key) {
+    public <T, R extends Registry<T>> R get(NamespacedKey key) {
         return get(RegistryKey.<T, R>of(key));
     }
 

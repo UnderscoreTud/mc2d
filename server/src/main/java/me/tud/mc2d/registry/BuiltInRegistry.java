@@ -6,7 +6,7 @@ import me.tud.mc2d.util.NamespacedKey;
 
 import java.util.function.Consumer;
 
-public non-sealed class BuiltInRegistry<T extends NBTSerializable> extends Registry<T> {
+public non-sealed class BuiltInRegistry<T> extends Registry<T> {
 
     private boolean frozen;
 

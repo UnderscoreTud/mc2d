@@ -7,6 +7,7 @@ import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +33,7 @@ public class ClientboundConfigurationRegistryData implements ClientboundPacket, 
     private NamespacedKey registryID;
     private Entry[] entries;
 
-    public ClientboundConfigurationRegistryData(NamespacedKey registryID, Registry<?>.Entry[] entries) {
+    public ClientboundConfigurationRegistryData(NamespacedKey registryID, Registry<? extends NBTSerializable>.Entry[] entries) {
         this(registryID, new Entry[entries.length]);
         for (int i = 0; i < entries.length; i++)
             this.entries[i] = new Entry(entries[i].key(), entries[i].value().toNBT());

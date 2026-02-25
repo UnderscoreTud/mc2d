@@ -19,7 +19,7 @@ import java.util.List;
 
 @Data
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class RegistryKey<T extends NBTSerializable, R extends Registry<T>> {
+public class RegistryKey<T, R extends Registry<T>> {
 
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
 
@@ -43,13 +43,13 @@ public class RegistryKey<T extends NBTSerializable, R extends Registry<T>> {
 
     private final NamespacedKey key;
 
-    private static <T extends NBTSerializable, R extends Registry<T>> RegistryKey<T, R> create(@NamespacedKey.KeyPattern String key) {
+    private static <T, R extends Registry<T>> RegistryKey<T, R> create(@NamespacedKey.KeyPattern String key) {
         RegistryKey<T, R> registryKey = new RegistryKey<>(NamespacedKey.minecraft(key));
         REGISTRY_KEYS.add(registryKey);
         return registryKey;
     }
 
-    public static <T extends NBTSerializable, R extends Registry<T>> RegistryKey<T, R> of(NamespacedKey key) {
+    public static <T, R extends Registry<T>> RegistryKey<T, R> of(NamespacedKey key) {
         return new RegistryKey<>(key);
     }
 

@@ -2,23 +2,18 @@ package me.tud.mc2d.registry;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.server.Server;
-import me.tud.mc2d.util.FriendlyByteBuf;
-import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
-import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
-import org.machinemc.nbt.NBTCompound;
 
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
-public sealed abstract class Registry<T extends NBTSerializable> implements Iterable<T>
+public sealed abstract class Registry<T> implements Iterable<T>
         permits BuiltInRegistry, DataDrivenRegistry {
 
     protected final @Getter Server server;
@@ -137,22 +132,10 @@ public sealed abstract class Registry<T extends NBTSerializable> implements Iter
 
     @Getter
     @RequiredArgsConstructor
-    public class Entry implements Writable {
+    public class Entry {
 
         private final NamespacedKey key;
         private final T value;
-
-        @Override
-        public void write(FriendlyByteBuf buf) {
-            buf.writeNamespacedKey(key);
-            buf.writeOptional(value().toNBT(), FriendlyByteBuf::writeNBT);
-        }
-
-        public static ClientboundConfigurationRegistryData.Entry read(FriendlyByteBuf buf) {
-            NamespacedKey id = buf.readNamespacedKey();
-            NBTCompound data = buf.readOptional(FriendlyByteBuf::readNBT).orElse(null);
-            return new ClientboundConfigurationRegistryData.Entry(id, data);
-        }
 
     }
 
