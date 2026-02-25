@@ -2,6 +2,7 @@ package me.tud.mc2d.generators.dimensiontypes;
 
 import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.DataDrivenRegistryGenerator;
+import me.tud.mc2d.generators.instruction.Instructions;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.instruction.Structure;
 
@@ -20,7 +21,7 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("has_raids", BOOLEAN)
             .instruction("has_skylight", BOOLEAN)
             .instruction("height", INTEGER)
-            .instruction("infiniburn", HASHED_NAMESPACED_KEY)
+            .instruction("infiniburn", Instructions.tag("blocks"))
             .instruction("logical_height", INTEGER)
             .instruction("min_y", INTEGER)
             .instruction("monster_spawn_block_light_limit", INTEGER)

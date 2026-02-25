@@ -1,9 +1,12 @@
 package me.tud.mc2d.dimension;
 
 import lombok.Builder;
+import me.tud.mc2d.registry.Registry;
+import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 
@@ -15,7 +18,8 @@ public final class DimensionType extends DimensionTypes implements NBTSerializab
     private final double coordinateScale;
     private final boolean bedWorks, respawnAnchorWorks;
     private final int minY, height, logicalHeight;
-    private final NamespacedKey infiniburn, effects;
+    private final TagKey<Block<?>, ? extends Registry<Block<?>>> infiniburn;
+    private final NamespacedKey effects;
     private final float ambientLight;
     private boolean piglinSafe, hasRaids;
     private final IntProvider monsterSpawnLightLevel;
@@ -36,7 +40,7 @@ public final class DimensionType extends DimensionTypes implements NBTSerializab
         compound.set("min_y", minY);
         compound.set("height", height);
         compound.set("logical_height", logicalHeight);
-        compound.set("infiniburn", "#" + infiniburn);
+        compound.set("infiniburn", infiniburn.toString());
         compound.set("effects", effects.toString());
         compound.set("ambient_light", ambientLight);
         compound.set("piglin_safe", piglinSafe);

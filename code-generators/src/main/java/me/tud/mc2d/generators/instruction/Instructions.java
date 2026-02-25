@@ -16,10 +16,26 @@ public final class Instructions {
             DOUBLE = (_, node, out) -> out.add("$L", node.asDouble()),
             BOOLEAN = (_, node, out) -> out.add("$L", node.asBoolean()),
             STRING = (_, node, out) -> out.add("$S", node.asText()),
-            NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText()),
-            HASHED_NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText().substring(1));
+            NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText());
 
     public static final Instruction INT_PROVIDER = IntProviderInstructions.INT_PROVIDER;
+
+    public static Instruction tag(String registry) {
+        return (ctx, node, out) -> out.add(
+                "$T.of($T.$N, $T.parse($S))",
+                Imports.TAG_KEY,
+                Imports.REGISTRY_KEY,
+                registry.toUpperCase(Locale.ENGLISH),
+                Imports.NAMESPACED_KEY,
+                validateTag(ctx, node.asText())
+        );
+    }
+
+    private static String validateTag(InstructionContext ctx, String tag) {
+        if (tag.charAt(0) != '#')
+            throw ctx.exception("Could not parse " + tag + " as a tag");
+        return tag.substring(1);
+    }
 
     public static Instruction _enum(TypeName type) {
         return _enum(type, node -> node.asText().toUpperCase(Locale.ENGLISH));

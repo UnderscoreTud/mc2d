@@ -1,8 +1,10 @@
 package me.tud.mc2d.registry;
 
+import com.google.common.base.Preconditions;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
@@ -114,6 +116,15 @@ public sealed abstract class Registry<T> implements Iterable<T>
 
     public Stream<T> stream() {
         return entries.values().stream();
+    }
+
+    public TagKey<T, Registry<T>> createTag(@NamespacedKey.Pattern String key) {
+        Preconditions.checkNotNull(key, "key");
+        return createTag(NamespacedKey.parse(key));
+    }
+
+    public TagKey<T, Registry<T>> createTag(NamespacedKey key) {
+        return TagKey.<T, Registry<T>>of(RegistryKey.of(this.key), key);
     }
 
     protected Registry<T> modify(Consumer<Modifiable> consumer) {

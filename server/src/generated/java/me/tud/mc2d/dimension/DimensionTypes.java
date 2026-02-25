@@ -4,6 +4,7 @@ import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NamespacedKey;
 
@@ -21,7 +22,7 @@ public sealed class DimensionTypes permits DimensionType {
             .hasRaids(true)
             .hasSkylight(true)
             .height(384)
-            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_overworld"))
+            .infiniburn(TagKey.of(RegistryKey.BLOCKS, NamespacedKey.parse("minecraft:infiniburn_overworld")))
             .logicalHeight(384)
             .minY(-64)
             .monsterSpawnBlockLightLimit(0)
@@ -41,7 +42,7 @@ public sealed class DimensionTypes permits DimensionType {
             .hasRaids(true)
             .hasSkylight(true)
             .height(384)
-            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_overworld"))
+            .infiniburn(TagKey.of(RegistryKey.BLOCKS, NamespacedKey.parse("minecraft:infiniburn_overworld")))
             .logicalHeight(384)
             .minY(-64)
             .monsterSpawnBlockLightLimit(0)
@@ -62,7 +63,7 @@ public sealed class DimensionTypes permits DimensionType {
             .hasRaids(true)
             .hasSkylight(false)
             .height(256)
-            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_end"))
+            .infiniburn(TagKey.of(RegistryKey.BLOCKS, NamespacedKey.parse("minecraft:infiniburn_end")))
             .logicalHeight(256)
             .minY(0)
             .monsterSpawnBlockLightLimit(0)
@@ -83,7 +84,7 @@ public sealed class DimensionTypes permits DimensionType {
             .hasRaids(false)
             .hasSkylight(false)
             .height(256)
-            .infiniburn(NamespacedKey.parse("minecraft:infiniburn_nether"))
+            .infiniburn(TagKey.of(RegistryKey.BLOCKS, NamespacedKey.parse("minecraft:infiniburn_nether")))
             .logicalHeight(128)
             .minY(0)
             .monsterSpawnBlockLightLimit(15)
