@@ -42,5 +42,11 @@ public class JsonUtils {
             case END_OBJECT, END_ARRAY, END_DOCUMENT -> throw new UnsupportedOperationException(); 
         };
     }
-    
+
+    public static void exhaust(JsonReader reader) throws IOException {
+        while (reader.hasNext()) {
+            reader.skipValue();
+        }
+    }
+
 }

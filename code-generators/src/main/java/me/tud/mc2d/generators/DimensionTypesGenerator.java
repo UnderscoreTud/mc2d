@@ -32,12 +32,12 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.dimension", "DimensionTypes");
 
-    public static void main(String[] args) throws Exception {
-        new DimensionTypesGenerator().run(args);
+    static void main(String[] args) throws Exception {
+        new DimensionTypesGenerator().run(RESOURCE_LOCATION, args);
     }
 
     protected DimensionTypesGenerator() {
-        super(CLASS_NAME, RESOURCE_LOCATION, Imports.DIMENSION_TYPE, STRUCTURE);
+        super(CLASS_NAME, Imports.DIMENSION_TYPE, STRUCTURE);
     }
 
 }

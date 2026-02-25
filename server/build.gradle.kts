@@ -52,6 +52,11 @@ val generationTasks = arrayOf(
         "generateDamageTypes",
         "me.tud.mc2d.generators.DamageTypesGenerator",
         genOutDir
+    ),
+    registerGeneratorTask(
+        "generateBlockData",
+        "me.tud.mc2d.generators.blockdata.BlockDataGenerator",
+        genOutDir
     )
 )
 

@@ -6,7 +6,6 @@ import javax.annotation.processing.Generated;
 import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
-import java.time.Instant;
 
 public abstract class Generator<T> {
 
@@ -17,16 +16,8 @@ public abstract class Generator<T> {
     protected static final MethodSpec PROTECTED_CONSTRUCTOR = MethodSpec.constructorBuilder()
             .addModifiers(Modifier.PROTECTED)
             .build();
-    
-    protected final ClassName className;
-    protected final String resourceLocation;
 
-    protected Generator(ClassName className, String resourceLocation) {
-        this.className = className;
-        this.resourceLocation = resourceLocation;
-    }
-
-    public final void run(String[] args) throws Exception {
+    public final void run(String resourceLocation, String[] args) throws Exception {
         File outputDir = null;
 
         for (int i = 0; i < args.length; i++) {
@@ -37,37 +28,35 @@ public abstract class Generator<T> {
         if (outputDir == null)
             throw new IllegalArgumentException("Missing --output <dir>");
 
-        run(outputDir);
+        System.out.println("Running generator " + getClass().getName());
+        run(resourceLocation, outputDir);
     }
 
-    public void run(File outputDir) throws Exception {
-        T input = input();
+    public void run(String resourceLocation, File outputDir) throws Exception {
+        T input = input(resourceLocation);
         if (input == null)
             throw new IOException("Resource not found: " + resourceLocation);
         try {
-            TypeSpec generated = generate(input);
-            if (generated == null) {
-                System.err.println(getClass() + " didn't produce a generated class");
+            GeneratedType[] generated = generate(input);
+            if (generated == null || generated.length == 0) {
+                System.err.println("Generator " + getClass().getName()+ " didn't generate any classes");
                 return;
             }
-            JavaFile.builder(className.packageName(), generated)
-                    .indent("    ")
-                    .build().writeTo(outputDir);
+
+            for (GeneratedType generatedType : generated) {
+                JavaFile.builder(generatedType.packageName(), generatedType.type())
+                        .indent("    ")
+                        .skipJavaLangImports(true)
+                        .build().writeTo(outputDir);
+            }
         } finally {
             if (input instanceof AutoCloseable closeable)
                 closeable.close();
         }
     }
 
-    protected abstract T input();
+    protected abstract T input(String location);
 
-    public abstract TypeSpec generate(T t) throws IOException;
-
-    protected AnnotationSpec generatedAnnotation() {
-        return AnnotationSpec.builder(Generated.class)
-                .addMember("value", "$S", getClass().getName())
-                .addMember("date", "$S", Instant.now().toString())
-                .build();
-    }
+    public abstract GeneratedType[] generate(T t) throws IOException;
 
 }

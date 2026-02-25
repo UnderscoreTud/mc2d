@@ -7,13 +7,9 @@ import java.net.URL;
 
 public abstract class FileGenerator extends Generator<File> {
 
-    protected FileGenerator(ClassName className, String resourceLocation) {
-        super(className, resourceLocation);
-    }
-
     @Override
-    protected File input() {
-        URL resource = JsonFileGenerator.class.getResource(resourceLocation);
+    protected File input(String location) {
+        URL resource = JsonFileGenerator.class.getResource(location);
         if (resource == null)
             return null;
         return new File(resource.getFile());

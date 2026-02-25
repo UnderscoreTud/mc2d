@@ -8,7 +8,7 @@ import me.tud.mc2d.generators.util.Imports;
 public class DamageTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final Structure STRUCTURE = Structure.lenient()
-            .instruction("message_id", k -> "messageID", Instruction.STRING)
+            .instruction("message_id", _ -> "messageID", Instruction.STRING)
             .instruction("scaling", Instruction.enumInstruction(Imports.DAMAGE_TYPE.nestedClass("Scaling")))
             .instruction("exhaustion", Instruction.FLOAT)
             .instruction("effects", Instruction.enumInstruction(Imports.DAMAGE_TYPE.nestedClass("Effects")))
@@ -19,12 +19,12 @@ public class DamageTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.damage", "DamageTypes");
 
-    public static void main(String[] args) throws Exception {
-        new DamageTypesGenerator().run(args);
+    static void main(String[] args) throws Exception {
+        new DamageTypesGenerator().run(RESOURCE_LOCATION, args);
     }
 
     protected DamageTypesGenerator() {
-        super(CLASS_NAME, RESOURCE_LOCATION, Imports.DAMAGE_TYPE, STRUCTURE);
+        super(CLASS_NAME, Imports.DAMAGE_TYPE, STRUCTURE);
     }
 
 }

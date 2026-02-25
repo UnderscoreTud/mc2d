@@ -8,13 +8,9 @@ import java.io.InputStreamReader;
 
 public abstract class JsonFileGenerator extends Generator<JsonReader> {
 
-    protected JsonFileGenerator(ClassName className, String resourceLocation) {
-        super(className, resourceLocation);
-    }
-
     @Override
-    protected JsonReader input() {
-        InputStream in = JsonFileGenerator.class.getResourceAsStream(resourceLocation);
+    protected JsonReader input(String location) {
+        InputStream in = JsonFileGenerator.class.getResourceAsStream(location);
         if (in == null)
             return null;
         return new JsonReader(new InputStreamReader(in));

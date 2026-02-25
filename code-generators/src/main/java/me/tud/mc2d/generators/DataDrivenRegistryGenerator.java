@@ -18,26 +18,25 @@ import java.util.Locale;
 
 public class DataDrivenRegistryGenerator extends FileGenerator {
 
+    private final ClassName className;
     private final ClassName registryClass;
     private final Structure structure;
 
     protected DataDrivenRegistryGenerator(
             ClassName className,
-            String resourceLocation,
             ClassName registryClass,
             Structure structure
     ) {
-        super(className, resourceLocation);
+        this.className = className;
         this.registryClass = registryClass;
         this.structure = structure;
     }
 
     @Override
-    public TypeSpec generate(File directory) throws IOException {
+    public GeneratedType[] generate(File directory) throws IOException {
         TypeSpec.Builder type = TypeSpec.classBuilder(className)
                 .addModifiers(Modifier.PUBLIC, Modifier.SEALED)
                 .addPermittedSubclass(registryClass)
-                .addAnnotation(generatedAnnotation())
                 .addMethod(PROTECTED_CONSTRUCTOR);
 
         CodeBlock.Builder createDefaultMethodBlock = CodeBlock.builder()
@@ -73,7 +72,7 @@ public class DataDrivenRegistryGenerator extends FileGenerator {
                 .addParameter(Imports.SERVER, "server")
                 .addCode(createDefaultMethodBlock.build())
                 .build());
-        return type.build();
+        return new GeneratedType[]{new GeneratedType(getClass(), className.packageName(), type.build())};
     }
 
     private FieldSpec generateEntry(String name, JsonReader reader) throws IOException {
