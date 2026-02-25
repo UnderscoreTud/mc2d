@@ -1,4 +1,4 @@
-package me.tud.mc2d.generators.blockdata.property;
+package me.tud.mc2d.generators.blocks.blockdata.property;
 
 import com.palantir.javapoet.AnnotationSpec;
 import com.palantir.javapoet.CodeBlock;

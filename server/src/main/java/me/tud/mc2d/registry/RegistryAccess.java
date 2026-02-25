@@ -11,6 +11,7 @@ import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.Biome;
+import me.tud.mc2d.world.block.Blocks;
 import org.jetbrains.annotations.UnmodifiableView;
 
 import java.util.Collections;
@@ -51,6 +52,9 @@ public class RegistryAccess {
 
     public static RegistryAccess createDefault(Server server) {
         RegistryAccess access = new RegistryAccess(server);
+        
+        access.register(RegistryKey.BLOCKS, Blocks.createDefaultRegistry(server));
+
         access.dataDriven(RegistryKey.BIOME, Map.entry(NamespacedKey.minecraft("plains"), Biome.PLAINS));
         access.register(RegistryKey.DAMAGE_TYPE, DamageType.createDefaultRegistry(server));
         access.register(RegistryKey.DIMENSION_TYPE, DimensionType.createDefaultRegistry(server));

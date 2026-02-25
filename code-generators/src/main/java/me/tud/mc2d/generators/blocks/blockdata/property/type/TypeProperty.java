@@ -1,9 +1,9 @@
-package me.tud.mc2d.generators.blockdata.property.type;
+package me.tud.mc2d.generators.blocks.blockdata.property.type;
 
 import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.TypeName;
 import lombok.Getter;
-import me.tud.mc2d.generators.blockdata.property.Property;
+import me.tud.mc2d.generators.blocks.blockdata.property.Property;
 
 @Getter
 public abstract class TypeProperty extends Property {

@@ -1,12 +1,12 @@
-package me.tud.mc2d.generators.blockdata.property;
+package me.tud.mc2d.generators.blocks.blockdata.property;
 
 import com.google.common.base.Preconditions;
 import com.palantir.javapoet.*;
 import lombok.Getter;
 import me.tud.mc2d.generators.GeneratedType;
-import me.tud.mc2d.generators.blockdata.BlockData;
-import me.tud.mc2d.generators.blockdata.BlockDataGenerator;
-import me.tud.mc2d.generators.blockdata.property.type.TypeProperty;
+import me.tud.mc2d.generators.blocks.BlocksGenerator;
+import me.tud.mc2d.generators.blocks.blockdata.BlockData;
+import me.tud.mc2d.generators.blocks.blockdata.property.type.TypeProperty;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.util.StringUtils;
 import org.jetbrains.annotations.Nullable;
@@ -84,7 +84,7 @@ public abstract class Property {
     public GeneratedType[] generateShared() {
         ClassName interfaceName = interfaceName();
         TypeName type = type(null);
-        return new GeneratedType[]{new GeneratedType(BlockDataGenerator.class, PACKAGE, TypeSpec.interfaceBuilder(interfaceName)
+        return new GeneratedType[]{new GeneratedType(BlocksGenerator.class, PACKAGE, TypeSpec.interfaceBuilder(interfaceName)
                 .addModifiers(Modifier.PUBLIC)
                 .addMethod(getter(type).addModifiers(Modifier.ABSTRACT).build())
                 .addMethod(setter(type).addModifiers(Modifier.ABSTRACT).build())

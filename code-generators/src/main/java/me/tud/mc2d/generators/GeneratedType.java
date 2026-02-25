@@ -5,7 +5,7 @@ import com.palantir.javapoet.TypeSpec;
 
 import javax.annotation.processing.Generated;
 
-public record GeneratedType(Class<? extends Generator<?>> generator, String packageName, TypeSpec type) {
+public record GeneratedType(Class<? extends Generator> generator, String packageName, TypeSpec type) {
 
     public GeneratedType {
         type = type.toBuilder()
@@ -14,7 +14,7 @@ public record GeneratedType(Class<? extends Generator<?>> generator, String pack
                 .build();
     }
 
-    public static GeneratedType[] of(Class<? extends Generator<?>> generator, String packageName, TypeSpec[] types) {
+    public static GeneratedType[] of(Class<? extends Generator> generator, String packageName, TypeSpec[] types) {
         GeneratedType[] generatedTypes = new GeneratedType[types.length];
         for (int i = 0; i < types.length; i++)
             generatedTypes[i] = new GeneratedType(generator, packageName, types[i]);

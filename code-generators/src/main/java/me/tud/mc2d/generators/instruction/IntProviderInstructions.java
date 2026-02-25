@@ -1,71 +1,62 @@
 package me.tud.mc2d.generators.instruction;
 
-import com.palantir.javapoet.CodeBlock;
 import me.tud.mc2d.generators.util.Imports;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import static me.tud.mc2d.generators.instruction.Instructions.*;
 
-public final class IntProviderInstructions {
+final class IntProviderInstructions {
+
+    public static final Instruction INT_PROVIDER = DynamicInstruction.builder()
+            .basedOn("type")
+            .instruction("minecraft:constant", () -> IntProviderInstructions.CONSTANT)
+            .instruction("minecraft:uniform", () -> IntProviderInstructions.UNIFORM)
+            .instruction("minecraft:biased_to_bottom", () -> IntProviderInstructions.BIASED_TO_BOTTOM)
+            .instruction("minecraft:clamped", () -> IntProviderInstructions.CLAMPED)
+            .instruction("minecraft:clamped_normal", () -> IntProviderInstructions.CLAMPED_NORMAL)
+            .instruction("minecraft:weighted_list", () -> IntProviderInstructions.WEIGHTED_LIST)
+            .orElse((ctx, node, out) -> {
+                if (!node.isInt())
+                    throw ctx.exception("Unexpected value: " + ctx.describe(node));
+                out.add("new $T($L)", Imports.INT_PROVIDER.nestedClass("Constant"), node.asInt());
+            })
+            .build();
+
+    public static final Structure CONSTANT = Structure.constructor(Imports.INT_PROVIDER.nestedClass("Constant"))
+            .instruction("value", INTEGER)
+            .build();
+
+    public static final Structure UNIFORM = Structure.constructor(Imports.INT_PROVIDER.nestedClass("Uniform"))
+            .instruction("min_inclusive", INTEGER)
+            .instruction("max_inclusive", INTEGER)
+            .build();
+
+    public static final Structure BIASED_TO_BOTTOM = Structure.constructor(Imports.INT_PROVIDER.nestedClass("BiasedToBottom"))
+            .instruction("min_inclusive", INTEGER)
+            .instruction("max_inclusive", INTEGER)
+            .build();
+
+    public static final Structure CLAMPED = Structure.constructor(Imports.INT_PROVIDER.nestedClass("Clamped"))
+            .instruction("min_inclusive", INTEGER)
+            .instruction("max_inclusive", INTEGER)
+            .instruction("source", INT_PROVIDER)
+            .build();
+
+    public static final Structure CLAMPED_NORMAL = Structure.constructor(Imports.INT_PROVIDER.nestedClass("ClampedNormal"))
+            .instruction("mean", FLOAT)
+            .instruction("deviation", FLOAT)
+            .instruction("min_inclusive", INTEGER)
+            .instruction("max_inclusive", INTEGER)
+            .build();
+
+    private static final Structure WEIGHTED_LIST_ENTRY = Structure.constructor(Imports.INT_PROVIDER.nestedClass("WeightedList").nestedClass("Entry"))
+            .instruction("data", INT_PROVIDER)
+            .instruction("weight", INTEGER)
+            .build();
+
+    public static final Structure WEIGHTED_LIST = Structure.constructor(Imports.INT_PROVIDER.nestedClass("WeightedList"))
+            .instruction("distribution", list(WEIGHTED_LIST_ENTRY))
+            .build();
 
     private IntProviderInstructions() {}
-
-    public static void intProvider(CodeBlock.Builder builder, Object object) {
-        if (object instanceof Number number) {
-            builder.add("new $T($L)", Imports.INT_PROVIDER.nestedClass("Constant"), number.intValue());
-            return;
-        }
-
-        if (!(object instanceof Map<?, ?> map))
-            return;
-
-        if (!map.containsKey("type"))
-            return;
-        switch (String.valueOf(map.get("type")).toLowerCase(Locale.ENGLISH)) {
-            case "minecraft:constant" -> constantInt(builder, map);
-            case "minecraft:uniform" -> uniformInt(builder, map);
-            case "minecraft:biased_to_bottom" -> biasedToBottom(builder, map);
-            case "minecraft:clamped" -> clamped(builder, map);
-            case "minecraft:clamped_normal" -> clampedNormal(builder, map);
-            case "minecraft:weighted_list" -> weightedList(builder, map);
-        }
-    }
-
-    public static void constantInt(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($L)", Imports.INT_PROVIDER.nestedClass("Constant"), map.get("value"));
-    }
-
-    public static void uniformInt(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($L, $L)", Imports.INT_PROVIDER.nestedClass("Uniform"), map.get("min_inclusive"), map.get("max_inclusive"));
-    }
-
-    public static void biasedToBottom(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($L, $L)", Imports.INT_PROVIDER.nestedClass("BiasedToBottom"), map.get("min_inclusive"), map.get("max_inclusive"));
-    }
-
-    public static void clamped(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($L, $L, ", Imports.INT_PROVIDER.nestedClass("Clamped"), map.get("min_inclusive"), map.get("max_inclusive"));
-        intProvider(builder, map.get("source"));
-        builder.add(")");
-    }
-
-    public static void clampedNormal(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($L, $L, $L, $L)", Imports.INT_PROVIDER.nestedClass("ClampedNormal"), map.get("mean"), map.get("deviation"), map.get("min_inclusive"), map.get("max_inclusive"));
-    }
-
-    public static void weightedList(CodeBlock.Builder builder, Map<?, ?> map) {
-        builder.add("new $T($T.of(", Imports.INT_PROVIDER.nestedClass("WeightedList"), List.class);
-        Object[] distributions = (Object[]) map.get("distribution");
-        for (int i = 0; i < distributions.length; i++) {
-            if (i != 0)
-                builder.add(", ");
-            Map<?, ?> entry = (Map<?, ?>) distributions[i];
-            builder.add("new $T(", Imports.INT_PROVIDER.nestedClass("WeightedList").nestedClass("Entry"));
-            intProvider(builder, entry.get("data"));
-            builder.add(", $L)", entry.get("weight"));
-        }
-        builder.add("))");
-    }
 
 }

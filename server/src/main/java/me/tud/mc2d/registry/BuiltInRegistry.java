@@ -19,13 +19,13 @@ public non-sealed class BuiltInRegistry<T extends NBTSerializable> extends Regis
     }
 
     @Override
-    protected BuiltInRegistry<T> modify(Consumer<Modifiable> consumer) {
+    public BuiltInRegistry<T> modify(Consumer<Modifiable> consumer) {
         freeze();
         return (BuiltInRegistry<T>) super.modify(consumer);
     }
 
     @Override
-    protected BuiltInRegistry<T> forceModify(Consumer<Modifiable> consumer) {
+    public BuiltInRegistry<T> forceModify(Consumer<Modifiable> consumer) {
         freeze();
         return (BuiltInRegistry<T>) super.forceModify(consumer);
     }

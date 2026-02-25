@@ -1,9 +1,9 @@
-package me.tud.mc2d.generators.blockdata.property.type;
+package me.tud.mc2d.generators.blocks.blockdata.property.type;
 
 import com.google.common.base.Preconditions;
 import com.palantir.javapoet.*;
 import lombok.Getter;
-import me.tud.mc2d.generators.blockdata.property.Property;
+import me.tud.mc2d.generators.blocks.blockdata.property.Property;
 import me.tud.mc2d.generators.util.StringUtils;
 import org.jetbrains.annotations.Nullable;
 

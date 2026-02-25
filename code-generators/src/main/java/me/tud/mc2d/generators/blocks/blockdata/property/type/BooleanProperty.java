@@ -1,8 +1,8 @@
-package me.tud.mc2d.generators.blockdata.property.type;
+package me.tud.mc2d.generators.blocks.blockdata.property.type;
 
 import com.palantir.javapoet.CodeBlock;
 import com.palantir.javapoet.TypeName;
-import me.tud.mc2d.generators.blockdata.property.Property;
+import me.tud.mc2d.generators.blocks.blockdata.property.Property;
 import org.jetbrains.annotations.Nullable;
 
 public class BooleanProperty extends PrimitiveProperty {

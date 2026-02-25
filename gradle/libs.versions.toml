@@ -8,6 +8,8 @@ gson = "2.13.0"
 
 guava = "33.5.0-jre"
 
+jackson = "2.21.1"
+
 javapoet = "0.11.0"
 
 joml = "1.10.8"
@@ -33,6 +35,9 @@ fastutil = { module = "it.unimi.dsi:fastutil", version.ref = "fastutil" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
+
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 
 javapoet = { module = "com.palantir.javapoet:javapoet", version.ref = "javapoet" }
 

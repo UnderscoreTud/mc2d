@@ -4,6 +4,9 @@ plugins {
 
 dependencies {
     implementation(project(":common"))
+    implementation(libs.jackson.core)
+    implementation(libs.jackson.databind)
+
     implementation(libs.javapoet)
 }
 

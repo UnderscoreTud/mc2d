@@ -40,27 +40,27 @@ val genOutDir: Directory = layout.projectDirectory.dir("src/generated/java")
 val generationTasks = arrayOf(
     registerGeneratorTask(
         "generatePacketIDs",
-        "me.tud.mc2d.generators.PacketsGenerator",
+        "me.tud.mc2d.generators.packets.PacketsGenerator",
         genOutDir
     ),
     registerGeneratorTask(
         "generateDimensionTypes",
-        "me.tud.mc2d.generators.DimensionTypesGenerator",
+        "me.tud.mc2d.generators.dimensiontypes.DimensionTypesGenerator",
         genOutDir
     ),
     registerGeneratorTask(
         "generateDamageTypes",
-        "me.tud.mc2d.generators.DamageTypesGenerator",
+        "me.tud.mc2d.generators.damagetypes.DamageTypesGenerator",
         genOutDir
     ),
     registerGeneratorTask(
-        "generateBlockData",
-        "me.tud.mc2d.generators.blockdata.BlockDataGenerator",
+        "generateBlocks",
+        "me.tud.mc2d.generators.blocks.BlocksGenerator",
         genOutDir
     )
 )
 
-var generateAllTask = tasks.register("generateAll") {
+tasks.register("generateAll") {
     group = "code generation"
     description = "Run all the code generation tasks"
 
@@ -78,5 +78,5 @@ idea {
 }
 
 tasks.withType<JavaCompile>().configureEach { 
-    dependsOn(generateAllTask)
+    dependsOn(generationTasks)
 }

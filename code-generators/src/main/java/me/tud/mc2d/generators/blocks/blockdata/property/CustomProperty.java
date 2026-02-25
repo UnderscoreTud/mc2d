@@ -1,10 +1,10 @@
-package me.tud.mc2d.generators.blockdata.property;
+package me.tud.mc2d.generators.blocks.blockdata.property;
 
 import com.palantir.javapoet.*;
 import lombok.Getter;
 import me.tud.mc2d.generators.GeneratedType;
-import me.tud.mc2d.generators.blockdata.BlockData;
-import me.tud.mc2d.generators.blockdata.BlockDataGenerator;
+import me.tud.mc2d.generators.blocks.blockdata.BlockData;
+import me.tud.mc2d.generators.blocks.BlocksGenerator;
 import me.tud.mc2d.generators.util.StringUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.Nullable;
@@ -46,7 +46,7 @@ public class CustomProperty extends Property {
 
     @Override
     public GeneratedType[] generateShared() {
-        return ArrayUtils.add(super.generateShared(), new GeneratedType(BlockDataGenerator.class, PACKAGE, generateType(null)));
+        return ArrayUtils.add(super.generateShared(), new GeneratedType(BlocksGenerator.class, PACKAGE, generateType(null)));
     }
 
     private TypeSpec generateType(String source) {
@@ -102,7 +102,7 @@ public class CustomProperty extends Property {
     }
 
     @Override
-    public boolean canMerge(Property other) {
+    public boolean canMerge(me.tud.mc2d.generators.blocks.blockdata.property.Property other) {
         return other instanceof CustomProperty customProperty && Arrays.equals(possibleValues, customProperty.possibleValues);
     }
 

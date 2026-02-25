@@ -1,10 +1,10 @@
-package me.tud.mc2d.generators.blockdata.property.type;
+package me.tud.mc2d.generators.blocks.blockdata.property.type;
 
 import com.google.common.base.Preconditions;
 import com.palantir.javapoet.AnnotationSpec;
 import com.palantir.javapoet.CodeBlock;
 import com.palantir.javapoet.TypeName;
-import me.tud.mc2d.generators.blockdata.property.Property;
+import me.tud.mc2d.generators.blocks.blockdata.property.Property;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
