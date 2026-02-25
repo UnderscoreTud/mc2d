@@ -32,7 +32,7 @@ public class DataDrivenRegistryGenerator extends Generator {
         File directory = file(resource);
 
         TypeSpec.Builder type = TypeSpec.classBuilder(className)
-                .addModifiers(Modifier.PUBLIC, Modifier.SEALED)
+                .addModifiers(Modifier.SEALED)
                 .addPermittedSubclass(structure.source())
                 .addMethod(PROTECTED_CONSTRUCTOR);
 

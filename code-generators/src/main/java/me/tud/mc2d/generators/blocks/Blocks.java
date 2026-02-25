@@ -30,7 +30,7 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
 
     private GeneratedType generateBlocks(BlockIDProvider idProvider) {
         TypeSpec.Builder builder = TypeSpec.classBuilder(CLASS_NAME)
-                .addModifiers(Modifier.PUBLIC, Modifier.SEALED)
+                .addModifiers(Modifier.SEALED)
                 .addPermittedSubclass(Imports.BLOCK);
         CodeBlock.Builder createRegistryCode = CodeBlock.builder();
         createRegistryCode.add("return new $T<>(server, $T.BLOCKS).modify(modifiable -> {\n", Imports.BUILT_IN_REGISTRY, Imports.REGISTRY_KEY).indent();
