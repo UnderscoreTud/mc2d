@@ -1,6 +1,5 @@
 package me.tud.mc2d.generators.damagetypes;
 
-import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.DataDrivenRegistryGenerator;
 import me.tud.mc2d.generators.instruction.Structure;
 import me.tud.mc2d.generators.util.Imports;
@@ -20,14 +19,12 @@ public class DamageTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final String RESOURCE_LOCATION = "/damage_type";
 
-    private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.damage", "DamageTypes");
-
     static void main(String[] args) throws Exception {
         new DamageTypesGenerator().run(RESOURCE_LOCATION, args);
     }
 
     protected DamageTypesGenerator() {
-        super(CLASS_NAME, STRUCTURE);
+        super(STRUCTURE);
     }
 
 }

@@ -22,8 +22,8 @@ public class DataDrivenRegistryGenerator extends Generator {
     private final ClassName className;
     private final Structure structure;
 
-    protected DataDrivenRegistryGenerator(ClassName className, Structure structure) {
-        this.className = className;
+    protected DataDrivenRegistryGenerator(Structure structure) {
+        this.className = structure.source().peerClass(structure.source().simpleName() + "s");
         this.structure = structure;
     }
 

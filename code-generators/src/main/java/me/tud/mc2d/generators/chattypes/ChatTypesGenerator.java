@@ -1,9 +1,6 @@
 package me.tud.mc2d.generators.chattypes;
 
-import com.palantir.javapoet.ClassName;
 import me.tud.mc2d.generators.DataDrivenRegistryGenerator;
-import me.tud.mc2d.generators.instruction.Instruction;
-import me.tud.mc2d.generators.instruction.Instructions;
 import me.tud.mc2d.generators.instruction.Structure;
 import me.tud.mc2d.generators.util.Imports;
 
@@ -24,14 +21,12 @@ public class ChatTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final String RESOURCE_LOCATION = "/chat_type";
 
-    private static final ClassName CLASS_NAME = Imports.CHAT_TYPE.peerClass("ChatTypes");
-
     static void main(String[] args) throws Exception {
         new ChatTypesGenerator().run(RESOURCE_LOCATION, args);
     }
 
     protected ChatTypesGenerator() {
-        super(CLASS_NAME, STRUCTURE);
+        super(STRUCTURE);
     }
 
 }

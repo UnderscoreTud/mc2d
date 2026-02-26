@@ -1,6 +1,5 @@
 package me.tud.mc2d.generators.dimensiontypes;
 
-import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.DataDrivenRegistryGenerator;
 import me.tud.mc2d.generators.instruction.Instructions;
 import me.tud.mc2d.generators.util.Imports;
@@ -34,14 +33,12 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
 
     private static final String RESOURCE_LOCATION = "/dimension_type";
 
-    private static final ClassName CLASS_NAME = ClassName.get("me.tud.mc2d.dimension", "DimensionTypes");
-
     static void main(String[] args) throws Exception {
         new DimensionTypesGenerator().run(RESOURCE_LOCATION, args);
     }
 
     protected DimensionTypesGenerator() {
-        super(CLASS_NAME, STRUCTURE);
+        super(STRUCTURE);
     }
 
 }
