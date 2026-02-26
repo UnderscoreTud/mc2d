@@ -53,6 +53,7 @@ public class Biome implements NBTSerializable {
             Colour waterFogColor,
             Colour skyColor,
             @Nullable Colour foliageColor,
+            @Nullable Colour dryFoliageColor,
             @Nullable Colour grassColor,
             @Nullable GrassColorModifier grassColorModifier,
             @Nullable NBTCompound particle,
@@ -71,6 +72,8 @@ public class Biome implements NBTSerializable {
             compound.set("sky_color", skyColor.getRGB());
             if (foliageColor != null)
                 compound.set("foliage_color", foliageColor.getRGB());
+            if (dryFoliageColor != null)
+                compound.set("dry_foliage_color", dryFoliageColor.getRGB());
             if (grassColor != null)
                 compound.set("grass_color", grassColor.getRGB());
             if (grassColorModifier != null)

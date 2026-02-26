@@ -49,6 +49,11 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generateBannerPatterns",
+        "me.tud.mc2d.generators.bannerpatterns.BannerPatternsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateBlocks",
         "me.tud.mc2d.generators.blocks.BlocksGenerator",
         genOutDir
