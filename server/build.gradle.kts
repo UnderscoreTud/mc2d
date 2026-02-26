@@ -62,6 +62,11 @@ val generationTasks = arrayOf(
         "generateBlocks",
         "me.tud.mc2d.generators.blocks.BlocksGenerator",
         genOutDir
+    ),
+    registerGeneratorTask(
+        "generateItemss",
+        "me.tud.mc2d.generators.items.ItemsGenerator",
+        genOutDir
     )
 )
 

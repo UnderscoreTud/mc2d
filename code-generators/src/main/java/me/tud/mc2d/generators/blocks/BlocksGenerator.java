@@ -1,6 +1,5 @@
 package me.tud.mc2d.generators.blocks;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import me.tud.mc2d.generators.GeneratedType;
 import me.tud.mc2d.generators.Generator;
 
@@ -18,8 +17,7 @@ public class BlocksGenerator extends Generator {
     @Override
     public GeneratedType[] generate(String resource) throws IOException {
         Blocks blocks = MAPPER.readValue(stream(resource), Blocks.class);
-        JsonNode blockIDs = MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)).path("minecraft:block").path("entries");
-        return blocks.generate(key -> blockIDs.path(key).path("protocol_id").asInt());
+        return blocks.generate(MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
     }
 
 }

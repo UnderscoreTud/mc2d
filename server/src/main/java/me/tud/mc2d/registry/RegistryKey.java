@@ -8,6 +8,7 @@ import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
+import me.tud.mc2d.item.Item;
 import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
@@ -24,6 +25,7 @@ public class RegistryKey<T, R extends Registry<T>> {
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
 
     public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCKS = create("block");
+    public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEMS = create("item");
 
     public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> ARMOR_TRIM_MATERIAL = create("trim_material");
     public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> ARMOR_TRIM_PATTERN = create("trim_pattern");
