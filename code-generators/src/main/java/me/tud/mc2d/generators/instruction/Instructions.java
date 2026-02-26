@@ -36,7 +36,9 @@ public final class Instructions {
 
     public static final Instruction INT_PROVIDER = IntProviderInstructions.INT_PROVIDER;
 
-    public static final Instruction COMPONENT = ComponentInstructions.COMPONENT;
+    public static final Instruction
+            COMPONENT = ComponentInstructions.COMPONENT, 
+            TEXT_FORMAT = ComponentInstructions.TEXT_FORMAT;
 
     public static Instruction tag(String registry) {
         return (ctx, node, out) -> out.add(
@@ -67,6 +69,14 @@ public final class Instructions {
         return iterate(instruction, ", ");
     }
 
+    public static Instruction listOf(Instruction instruction) {
+        return (ctx, node, out) -> {
+            out.add("$T.of(\n", List.class).indent().indent();
+            iterate(instruction, ",\n").apply(ctx, node, out);
+            out.unindent().unindent().add("\n)");
+        };
+    }
+
     public static Instruction iterate(Instruction instruction) {
         return iterate(instruction, "");
     }
@@ -92,7 +102,7 @@ public final class Instructions {
         };
     }
 
-    public static Instruction map(Instruction keyInstruction, Instruction valueInstruction) {
+    public static Instruction mapOf(Instruction keyInstruction, Instruction valueInstruction) {
         return (ctx, node, out) -> {
             if (!node.isObject())
                 throw ctx.expected("an object", node);

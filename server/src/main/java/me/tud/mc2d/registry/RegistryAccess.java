@@ -1,6 +1,7 @@
 package me.tud.mc2d.registry;
 
 import lombok.Getter;
+import me.tud.mc2d.chat.ChatType;
 import me.tud.mc2d.damage.DamageType;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.MobVariant;
@@ -65,6 +66,7 @@ public class RegistryAccess {
         access.register(RegistryKey.DAMAGE_TYPE, DamageType.createDefaultRegistry(server));
         access.register(RegistryKey.DIMENSION_TYPE, DimensionType.createDefaultRegistry(server));
         access.dataDriven(RegistryKey.CAT_VARIANT, Map.entry(NamespacedKey.minecraft("tabby"), MobVariant.CAT_TABBY));
+        access.register(RegistryKey.CHAT_TYPE, ChatType.createDefaultRegistry(server));
         access.dataDriven(RegistryKey.CHICKEN_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.CHICKEN_TEMPERATE));
         access.dataDriven(RegistryKey.COW_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.COW_TEMPERATE));
         access.dataDriven(RegistryKey.FROG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.FROG_TEMPERATE));

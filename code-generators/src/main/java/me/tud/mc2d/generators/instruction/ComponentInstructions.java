@@ -7,15 +7,34 @@ import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.components.TranslationComponent;
 import org.machinemc.scriptive.events.ClickEvent;
 import org.machinemc.scriptive.events.HoverEvent;
+import org.machinemc.scriptive.style.ChatStyle;
+import org.machinemc.scriptive.style.TextFormat;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static me.tud.mc2d.generators.instruction.Instructions.*;
 
 final class ComponentInstructions {
+
+    private static final Map<String, String> KEY_TO_COMPONENT = new HashMap<>();
+
+    static {
+        TextComponent.empty().getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "text"));
+        TranslationComponent.of("").getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "translatable"));
+        KeybindComponent.of("").getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "keybind"));
+    }
+    
+    public static final Structure TEXT_FORMAT;
+
+    static {
+        Structure.Builder textFormatBuilder = Structure.constructor(TextFormat.class)
+                .allowMissingKeys()
+                .instruction("color", COLOR.orNull())
+                .instruction("font", STRING.orElse((_, _, out) -> out.add("($T) null", String.class)));
+        for (ChatStyle style : ChatStyle.values())
+            textFormatBuilder.instruction(style.getName(), _enum(ClassName.get(ChatStyle.class), _ -> style.getName().toUpperCase(Locale.ENGLISH)));
+        TEXT_FORMAT = textFormatBuilder.build();
+    }
 
     public static final Structure CLICK_EVENT = Structure.constructor(ClickEvent.class)
             .instruction("action", _enum(ClassName.get(ClickEvent.Action.class)))
@@ -80,14 +99,6 @@ final class ComponentInstructions {
                 out.add(")\n");
             }))
             .build();
-
-    private static final Map<String, String> KEY_TO_COMPONENT = new HashMap<>();
-
-    static {
-        TextComponent.empty().getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "text"));
-        TranslationComponent.of("").getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "translatable"));
-        KeybindComponent.of("").getUniqueKeys().forEach(key -> KEY_TO_COMPONENT.put(key, "keybind"));
-    }
 
     public static final DynamicInstruction COMPONENT = DynamicInstruction.builder()
             .basedOn(node -> {

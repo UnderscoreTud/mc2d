@@ -17,4 +17,20 @@ public interface Instruction {
         }
     }
 
+    default Instruction orElse(Instruction fallback) {
+        return (OptionalInstruction) (ctx, node, out) -> {
+            try {
+                if (!node.isMissingNode()) {
+                    apply(ctx, node, out);
+                    return;
+                }
+            } catch (InstructionException _) {}
+            fallback.apply(ctx, node, out);
+        };
+    }
+
+    default Instruction orNull() {
+        return orElse((_, _, out) -> out.add("null"));
+    }
+
 }

@@ -47,15 +47,20 @@ public class Structure implements Instruction {
         while (iterator.hasNext()) {
             Map.Entry<String, InstructionInfo> entry = iterator.next();
             String key = entry.getKey();
+            InstructionInfo info = entry.getValue();
+            Instruction instruction = info.instruction.get();
             unhandled.remove(key);
-            JsonNode child = node.get(key);
-            if (child == null) {
+            JsonNode child = node.path(key);
+            if (child.isMissingNode()) {
+                if (instruction instanceof OptionalInstruction) {
+                    type.apply(ctx, info.keyTransformer.apply(key), child, out, instruction, first);
+                    continue;
+                }
                 if (!allowMissingKeys)
                     throw ctx.exception("Missing required key: " + key);
                 continue;
             }
 
-            InstructionInfo info = entry.getValue();
             if (info.nameless) {
                 info.instruction.get().pushAndApply(ctx, info.keyTransformer.apply(key), child, out);
             } else {
@@ -210,6 +215,12 @@ public class Structure implements Instruction {
 
     }
 
-    private record InstructionInfo(Supplier<Instruction> instruction, Function<String, String> keyTransformer, boolean nameless) {}
+    private record InstructionInfo(Supplier<Instruction> instruction, Function<String, String> keyTransformer, boolean nameless) {
+
+        public boolean optional() {
+            return instruction.get() instanceof OptionalInstruction;
+        }
+
+    }
 
 }

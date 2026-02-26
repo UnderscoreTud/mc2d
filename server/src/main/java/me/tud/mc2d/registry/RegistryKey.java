@@ -3,6 +3,7 @@ package me.tud.mc2d.registry;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import me.tud.mc2d.chat.ChatType;
 import me.tud.mc2d.damage.DamageType;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.MobVariant;
@@ -34,7 +35,7 @@ public class RegistryKey<T, R extends Registry<T>> {
     public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> BANNER_PATTERN = create("banner_pattern");
     public static final RegistryKey<Biome, DataDrivenRegistry<Biome>> BIOME = create("worldgen/biome");
     public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> CAT_VARIANT = create("cat_variant");
-    public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> CHAT_TYPE = create("chat_type");
+    public static final RegistryKey<ChatType, DataDrivenRegistry<ChatType>> CHAT_TYPE = create("chat_type");
     public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> CHICKEN_VARIANT = create("chicken_variant");
     public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> COW_VARIANT = create("cow_variant");
     public static final RegistryKey<DamageType, DataDrivenRegistry<DamageType>> DAMAGE_TYPE = create("damage_type");

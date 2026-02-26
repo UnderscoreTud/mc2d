@@ -39,16 +39,6 @@ val genOutDir: Directory = layout.projectDirectory.dir("src/generated/java")
 
 val generationTasks = arrayOf(
     registerGeneratorTask(
-        "generatePacketIDs",
-        "me.tud.mc2d.generators.packets.PacketsGenerator",
-        genOutDir
-    ),
-    registerGeneratorTask(
-        "generateDimensionTypes",
-        "me.tud.mc2d.generators.dimensiontypes.DimensionTypesGenerator",
-        genOutDir
-    ),
-    registerGeneratorTask(
         "generateArmorTrimMaterials",
         "me.tud.mc2d.generators.armortrims.ArmorTrimMaterialsGenerator",
         genOutDir
@@ -59,8 +49,33 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generateBlocks",
+        "me.tud.mc2d.generators.blocks.BlocksGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateChatTypes",
+        "me.tud.mc2d.generators.chattypes.ChatTypesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateDamageTypes",
         "me.tud.mc2d.generators.damagetypes.DamageTypesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateDimensionTypes",
+        "me.tud.mc2d.generators.dimensiontypes.DimensionTypesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateItems",
+        "me.tud.mc2d.generators.items.ItemsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generatePacketIDs",
+        "me.tud.mc2d.generators.packets.PacketsGenerator",
         genOutDir
     ),
     registerGeneratorTask(
@@ -68,16 +83,6 @@ val generationTasks = arrayOf(
         "me.tud.mc2d.generators.paintingvariants.PaintingVariantsGenerator",
         genOutDir
     ),
-    registerGeneratorTask(
-        "generateBlocks",
-        "me.tud.mc2d.generators.blocks.BlocksGenerator",
-        genOutDir
-    ),
-    registerGeneratorTask(
-        "generateItemss",
-        "me.tud.mc2d.generators.items.ItemsGenerator",
-        genOutDir
-    )
 )
 
 tasks.register("generateAll") {

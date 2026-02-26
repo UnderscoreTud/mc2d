@@ -13,7 +13,7 @@ public class ArmorTrimMaterialsGenerator extends DataDrivenRegistryGenerator {
     private static final Structure STRUCTURE = Structure.builder(Imports.ARMOR_TRIM_MATERIAL)
             .allowMissingKeys()
             .instruction("asset_name", STRING)
-            .instruction("override_armor_assets", map(NAMESPACED_KEY, Instructions.STRING))
+            .instruction("override_armor_assets", mapOf(NAMESPACED_KEY, Instructions.STRING))
             .instruction("description", COMPONENT)
             .build();
 
