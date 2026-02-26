@@ -20,7 +20,8 @@ public final class PaintingVariant extends PaintingVariants implements NBTSerial
     public NBTCompound toNBT() {
         NBTCompound nbt = new NBTCompound();
         nbt.set("asset_id", assetID + "");
-        nbt.set("author", NBTPropertiesSerializer.get().serialize(author.getProperties()));
+        if (author != null)
+            nbt.set("author", NBTPropertiesSerializer.get().serialize(author.getProperties()));
         nbt.set("title", NBTPropertiesSerializer.get().serialize(title.getProperties()));
         nbt.set("width", width);
         nbt.set("height", height);

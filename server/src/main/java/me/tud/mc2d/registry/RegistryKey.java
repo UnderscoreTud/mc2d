@@ -9,6 +9,8 @@ import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
 import me.tud.mc2d.item.Item;
+import me.tud.mc2d.item.armortrim.ArmorTrimMaterial;
+import me.tud.mc2d.item.armortrim.ArmorTrimPattern;
 import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
@@ -27,8 +29,8 @@ public class RegistryKey<T, R extends Registry<T>> {
     public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCKS = create("block");
     public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEMS = create("item");
 
-    public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> ARMOR_TRIM_MATERIAL = create("trim_material");
-    public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> ARMOR_TRIM_PATTERN = create("trim_pattern");
+    public static final RegistryKey<ArmorTrimMaterial, DataDrivenRegistry<ArmorTrimMaterial>> ARMOR_TRIM_MATERIAL = create("trim_material");
+    public static final RegistryKey<ArmorTrimPattern, DataDrivenRegistry<ArmorTrimPattern>> ARMOR_TRIM_PATTERN = create("trim_pattern");
     public static final RegistryKey<NBTSerializable, DataDrivenRegistry<NBTSerializable>> BANNER_PATTERN = create("banner_pattern");
     public static final RegistryKey<Biome, DataDrivenRegistry<Biome>> BIOME = create("worldgen/biome");
     public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> CAT_VARIANT = create("cat_variant");

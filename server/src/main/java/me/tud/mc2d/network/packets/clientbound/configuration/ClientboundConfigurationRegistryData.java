@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.registry.Registry;
-import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
-import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.paklet.CustomPacket;
@@ -17,8 +15,6 @@ import org.machinemc.paklet.DataVisitor;
 import org.machinemc.paklet.Packet;
 import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerContext;
-
-import java.util.logging.Level;
 
 @Data
 @Packet(

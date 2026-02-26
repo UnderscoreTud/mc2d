@@ -49,6 +49,16 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generateArmorTrimMaterials",
+        "me.tud.mc2d.generators.armortrims.ArmorTrimMaterialsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
+        "generateArmorTrimPatterns",
+        "me.tud.mc2d.generators.armortrims.ArmorTrimPatternsGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateDamageTypes",
         "me.tud.mc2d.generators.damagetypes.DamageTypesGenerator",
         genOutDir

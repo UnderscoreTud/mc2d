@@ -1,6 +1,7 @@
 package me.tud.mc2d.registry;
 
 import com.google.common.base.Preconditions;
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.server.Server;
@@ -141,7 +142,7 @@ public sealed abstract class Registry<T> implements Iterable<T>
         return this;
     }
 
-    @Getter
+    @Data
     @RequiredArgsConstructor
     public class Entry {
 

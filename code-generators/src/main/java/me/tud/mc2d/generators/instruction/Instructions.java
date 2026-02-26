@@ -1,15 +1,10 @@
 package me.tud.mc2d.generators.instruction;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.palantir.javapoet.ClassName;
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.palantir.javapoet.TypeName;
 import me.tud.mc2d.generators.util.Imports;
-import org.machinemc.scriptive.components.Component;
-import org.machinemc.scriptive.components.KeybindComponent;
-import org.machinemc.scriptive.components.TextComponent;
-import org.machinemc.scriptive.components.TranslationComponent;
-import org.machinemc.scriptive.events.ClickEvent;
-import org.machinemc.scriptive.events.HoverEvent;
+import me.tud.mc2d.generators.util.StringUtils;
 import org.machinemc.scriptive.style.ChatColor;
 import org.machinemc.scriptive.style.HexColor;
 
@@ -25,7 +20,8 @@ public final class Instructions {
             DOUBLE = (_, node, out) -> out.add("$L", node.asDouble()),
             BOOLEAN = (_, node, out) -> out.add("$L", node.asBoolean()),
             STRING = (_, node, out) -> out.add("$S", node.asText()),
-            NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText());
+            NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText()),
+            ITEM = _enum(Imports.ITEM, node -> StringUtils.cleanNamespacedKey(node.asText().toUpperCase(Locale.ENGLISH)));
 
     public static final Instruction COLOR = (ctx, node, out) -> {
         if (!node.isTextual())
@@ -95,6 +91,33 @@ public final class Instructions {
             }
         };
     }
+
+    public static Instruction map(Instruction keyInstruction, Instruction valueInstruction) {
+        return (ctx, node, out) -> {
+            if (!node.isObject())
+                throw ctx.expected("an object", node);
+
+            out.add("$T.of(\n", Map.class).indent().indent();
+            int i = 0;
+            for (Map.Entry<String, JsonNode> entry : node.properties()) {
+                if (i != 0)
+                    out.add(",\n");
+                try {
+                    ctx.pushCtx("map");
+                    ctx.pushKey(entry.getKey());
+                    keyInstruction.apply(ctx, new TextNode(entry.getKey()), out);
+                    out.add(", ");
+                    valueInstruction.apply(ctx, entry.getValue(), out);
+                } finally {
+                    ctx.popCtx();
+                    ctx.pop();
+                }
+                i++;
+            }
+            out.unindent().unindent().add("\n)");
+        };
+    }
+
     private Instructions() {}
 
 }

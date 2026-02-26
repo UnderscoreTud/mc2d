@@ -4,6 +4,8 @@ import com.palantir.javapoet.ClassName;
 
 public class Imports {
  
+    public static final ClassName ARMOR_TRIM_MATERIAL = ClassName.get("me.tud.mc2d.item.armortrim", "ArmorTrimMaterial");
+    public static final ClassName ARMOR_TRIM_PATTERN = ClassName.get("me.tud.mc2d.item.armortrim", "ArmorTrimPattern");
     public static final ClassName DAMAGE_TYPE = ClassName.get("me.tud.mc2d.damage", "DamageType");
     public static final ClassName DIMENSION_TYPE = ClassName.get("me.tud.mc2d.dimension", "DimensionType");
     public static final ClassName PAINTING_VARIANT = ClassName.get("me.tud.mc2d.painting", "PaintingVariant");

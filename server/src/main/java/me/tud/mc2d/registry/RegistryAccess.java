@@ -7,6 +7,8 @@ import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
 import me.tud.mc2d.item.Item;
+import me.tud.mc2d.item.armortrim.ArmorTrimMaterial;
+import me.tud.mc2d.item.armortrim.ArmorTrimPattern;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.util.NBTSerializable;
@@ -57,6 +59,8 @@ public class RegistryAccess {
         access.register(RegistryKey.BLOCKS, Block.createDefaultRegistry(server));
         access.register(RegistryKey.ITEMS, Item.createDefaultRegistry(server));
 
+        access.register(RegistryKey.ARMOR_TRIM_MATERIAL, ArmorTrimMaterial.createDefaultRegistry(server));
+        access.register(RegistryKey.ARMOR_TRIM_PATTERN, ArmorTrimPattern.createDefaultRegistry(server));
         access.dataDriven(RegistryKey.BIOME, Map.entry(NamespacedKey.minecraft("plains"), Biome.PLAINS));
         access.register(RegistryKey.DAMAGE_TYPE, DamageType.createDefaultRegistry(server));
         access.register(RegistryKey.DIMENSION_TYPE, DimensionType.createDefaultRegistry(server));
