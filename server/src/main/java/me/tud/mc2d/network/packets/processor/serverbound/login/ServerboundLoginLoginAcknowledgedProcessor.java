@@ -29,14 +29,14 @@ public class ServerboundLoginLoginAcknowledgedProcessor implements PacketProcess
         List<DataPack> knownPacks = new ArrayList<>();
         knownPacks.add(Server.CORE_PACK);
         RegistryAccess registryAccess = connection.server().context().registryAccess();
-        for (RegistryKey<?, ?> registryKey : RegistryKey.values()) {
-            if (!(registryAccess.get(registryKey) instanceof DataDrivenRegistry<?> registry))
-                continue;
-            knownPacks.add(new DataPack(registry.key(), Server.VERSION_NAME));
+        registryAccess.registries().forEach((key, registry) -> {
+            if (!(registry instanceof DataDrivenRegistry<?>))
+                return;
+            knownPacks.add(new DataPack(key.key(), Server.VERSION_NAME));
             //noinspection unchecked
             Registry<? extends NBTSerializable>.Entry[] entries = registry.entries().toArray(new Registry.Entry[0]);
-            connection.sendPacket(new ClientboundConfigurationRegistryData(registryKey.key(), entries));
-        }
+            connection.sendPacket(new ClientboundConfigurationRegistryData(key.key(), entries));
+        });
         connection.sendPacket(new ClientboundConfigurationKnownPacks(knownPacks.toArray(new DataPack[0])));
         // TODO Update Tags (Optional)
         connection.sendPacket(new ClientboundConfigurationFinishConfiguration());
