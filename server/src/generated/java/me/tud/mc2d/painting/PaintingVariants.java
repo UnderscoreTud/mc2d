@@ -4,6 +4,7 @@ import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.components.KeybindComponent;
 import org.machinemc.scriptive.components.TextComponent;
@@ -666,6 +667,61 @@ sealed class PaintingVariants permits PaintingVariant {
             registry.register(NamespacedKey.minecraft("water"), PaintingVariant.WATER);
             registry.register(NamespacedKey.minecraft("wind"), PaintingVariant.WIND);
             registry.register(NamespacedKey.minecraft("wither"), PaintingVariant.WITHER);
+            registry.registerTag(NamespacedKey.minecraft("placeable"), Tags.PLACEABLE);
         });
+    }
+
+    public static final class Tags {
+        public static final Tag<PaintingVariant> PLACEABLE = Tag.builder(RegistryKey.PAINTING_VARIANT)
+                .resource(NamespacedKey.parse("minecraft:kebab"))
+                .resource(NamespacedKey.parse("minecraft:aztec"))
+                .resource(NamespacedKey.parse("minecraft:alban"))
+                .resource(NamespacedKey.parse("minecraft:aztec2"))
+                .resource(NamespacedKey.parse("minecraft:bomb"))
+                .resource(NamespacedKey.parse("minecraft:plant"))
+                .resource(NamespacedKey.parse("minecraft:wasteland"))
+                .resource(NamespacedKey.parse("minecraft:pool"))
+                .resource(NamespacedKey.parse("minecraft:courbet"))
+                .resource(NamespacedKey.parse("minecraft:sea"))
+                .resource(NamespacedKey.parse("minecraft:sunset"))
+                .resource(NamespacedKey.parse("minecraft:creebet"))
+                .resource(NamespacedKey.parse("minecraft:wanderer"))
+                .resource(NamespacedKey.parse("minecraft:graham"))
+                .resource(NamespacedKey.parse("minecraft:match"))
+                .resource(NamespacedKey.parse("minecraft:bust"))
+                .resource(NamespacedKey.parse("minecraft:stage"))
+                .resource(NamespacedKey.parse("minecraft:void"))
+                .resource(NamespacedKey.parse("minecraft:skull_and_roses"))
+                .resource(NamespacedKey.parse("minecraft:wither"))
+                .resource(NamespacedKey.parse("minecraft:fighters"))
+                .resource(NamespacedKey.parse("minecraft:pointer"))
+                .resource(NamespacedKey.parse("minecraft:pigscene"))
+                .resource(NamespacedKey.parse("minecraft:burning_skull"))
+                .resource(NamespacedKey.parse("minecraft:skeleton"))
+                .resource(NamespacedKey.parse("minecraft:donkey_kong"))
+                .resource(NamespacedKey.parse("minecraft:baroque"))
+                .resource(NamespacedKey.parse("minecraft:humble"))
+                .resource(NamespacedKey.parse("minecraft:meditative"))
+                .resource(NamespacedKey.parse("minecraft:prairie_ride"))
+                .resource(NamespacedKey.parse("minecraft:unpacked"))
+                .resource(NamespacedKey.parse("minecraft:backyard"))
+                .resource(NamespacedKey.parse("minecraft:bouquet"))
+                .resource(NamespacedKey.parse("minecraft:cavebird"))
+                .resource(NamespacedKey.parse("minecraft:changing"))
+                .resource(NamespacedKey.parse("minecraft:cotan"))
+                .resource(NamespacedKey.parse("minecraft:endboss"))
+                .resource(NamespacedKey.parse("minecraft:fern"))
+                .resource(NamespacedKey.parse("minecraft:finding"))
+                .resource(NamespacedKey.parse("minecraft:lowmist"))
+                .resource(NamespacedKey.parse("minecraft:orb"))
+                .resource(NamespacedKey.parse("minecraft:owlemons"))
+                .resource(NamespacedKey.parse("minecraft:passage"))
+                .resource(NamespacedKey.parse("minecraft:pond"))
+                .resource(NamespacedKey.parse("minecraft:sunflowers"))
+                .resource(NamespacedKey.parse("minecraft:tides"))
+                .build();
+
+        private Tags() {
+        }
     }
 }

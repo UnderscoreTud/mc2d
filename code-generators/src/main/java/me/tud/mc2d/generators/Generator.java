@@ -87,4 +87,11 @@ public abstract class Generator {
         return new File(url.getFile());
     }
 
+    protected static File fileOrNull(String resource) {
+        URL url = Generator.class.getResource(resource);
+        if (url == null)
+            return null;
+        return new File(url.getFile());
+    }
+
 }

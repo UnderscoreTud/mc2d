@@ -16,14 +16,14 @@ public class ArmorTrimMaterialsGenerator extends DataDrivenRegistryGenerator {
             .instruction("description", COMPONENT)
             .build();
 
-    private static final String RESOURCE_LOCATION = "/trim_material";
+    private static final String ID = "trim_material";
 
     static void main(String[] args) throws Exception {
-        new ArmorTrimMaterialsGenerator().run(RESOURCE_LOCATION, args);
+        new ArmorTrimMaterialsGenerator().run(args);
     }
 
     protected ArmorTrimMaterialsGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }

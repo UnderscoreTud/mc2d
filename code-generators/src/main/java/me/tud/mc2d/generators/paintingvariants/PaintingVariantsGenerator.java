@@ -17,14 +17,14 @@ public class PaintingVariantsGenerator extends DataDrivenRegistryGenerator {
             .instruction("height", INTEGER)
             .build();
 
-    private static final String RESOURCE_LOCATION = "/painting_variant";
+    private static final String ID = "painting_variant";
 
     static void main(String[] args) throws Exception {
-        new PaintingVariantsGenerator().run(RESOURCE_LOCATION, args);
+        new PaintingVariantsGenerator().run(args);
     }
 
     protected PaintingVariantsGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }

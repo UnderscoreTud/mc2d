@@ -1,5 +1,7 @@
 package me.tud.mc2d.generators.util;
 
+import org.jetbrains.annotations.Contract;
+
 import javax.lang.model.SourceVersion;
 import java.util.Arrays;
 import java.util.Locale;
@@ -58,6 +60,7 @@ public class StringUtils {
         return index != -1 ? namespacedKey.substring(index + 1) : namespacedKey;
     }
 
+    @Contract(value = "null -> null", pure = true)
     public static String defendIdentifier(String identifier) {
         if (identifier == null)
             return null;
@@ -65,7 +68,9 @@ public class StringUtils {
         if (identifier.isBlank())
             return "_".repeat(Math.max(1, identifier.length()));
 
-        if (Character.isDigit(identifier.charAt(0)) || SourceVersion.isKeyword(identifier))
+        identifier = identifier.replaceAll("[^\\p{javaJavaIdentifierPart}]", "_");
+
+        if (!Character.isJavaIdentifierStart(identifier.charAt(0)) || SourceVersion.isKeyword(identifier))
             return "_" + identifier;
 
         return identifier;

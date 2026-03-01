@@ -4,6 +4,7 @@ import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 
 /**
@@ -274,6 +275,97 @@ sealed class BannerPatterns permits BannerPattern {
             registry.register(NamespacedKey.minecraft("triangles_top"), BannerPattern.TRIANGLES_TOP);
             registry.register(NamespacedKey.minecraft("triangle_bottom"), BannerPattern.TRIANGLE_BOTTOM);
             registry.register(NamespacedKey.minecraft("triangle_top"), BannerPattern.TRIANGLE_TOP);
+            registry.registerTag(NamespacedKey.minecraft("no_item_required"), Tags.NO_ITEM_REQUIRED);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/bordure_indented"), Tags.PATTERN_ITEM_BORDURE_INDENTED);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/creeper"), Tags.PATTERN_ITEM_CREEPER);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/field_masoned"), Tags.PATTERN_ITEM_FIELD_MASONED);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/flow"), Tags.PATTERN_ITEM_FLOW);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/flower"), Tags.PATTERN_ITEM_FLOWER);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/globe"), Tags.PATTERN_ITEM_GLOBE);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/guster"), Tags.PATTERN_ITEM_GUSTER);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/mojang"), Tags.PATTERN_ITEM_MOJANG);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/piglin"), Tags.PATTERN_ITEM_PIGLIN);
+            registry.registerTag(NamespacedKey.minecraft("pattern_item/skull"), Tags.PATTERN_ITEM_SKULL);
         });
+    }
+
+    public static final class Tags {
+        public static final Tag<BannerPattern> NO_ITEM_REQUIRED = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:square_bottom_left"))
+                .resource(NamespacedKey.parse("minecraft:square_bottom_right"))
+                .resource(NamespacedKey.parse("minecraft:square_top_left"))
+                .resource(NamespacedKey.parse("minecraft:square_top_right"))
+                .resource(NamespacedKey.parse("minecraft:stripe_bottom"))
+                .resource(NamespacedKey.parse("minecraft:stripe_top"))
+                .resource(NamespacedKey.parse("minecraft:stripe_left"))
+                .resource(NamespacedKey.parse("minecraft:stripe_right"))
+                .resource(NamespacedKey.parse("minecraft:stripe_center"))
+                .resource(NamespacedKey.parse("minecraft:stripe_middle"))
+                .resource(NamespacedKey.parse("minecraft:stripe_downright"))
+                .resource(NamespacedKey.parse("minecraft:stripe_downleft"))
+                .resource(NamespacedKey.parse("minecraft:small_stripes"))
+                .resource(NamespacedKey.parse("minecraft:cross"))
+                .resource(NamespacedKey.parse("minecraft:straight_cross"))
+                .resource(NamespacedKey.parse("minecraft:triangle_bottom"))
+                .resource(NamespacedKey.parse("minecraft:triangle_top"))
+                .resource(NamespacedKey.parse("minecraft:triangles_bottom"))
+                .resource(NamespacedKey.parse("minecraft:triangles_top"))
+                .resource(NamespacedKey.parse("minecraft:diagonal_left"))
+                .resource(NamespacedKey.parse("minecraft:diagonal_up_right"))
+                .resource(NamespacedKey.parse("minecraft:diagonal_up_left"))
+                .resource(NamespacedKey.parse("minecraft:diagonal_right"))
+                .resource(NamespacedKey.parse("minecraft:circle"))
+                .resource(NamespacedKey.parse("minecraft:rhombus"))
+                .resource(NamespacedKey.parse("minecraft:half_vertical"))
+                .resource(NamespacedKey.parse("minecraft:half_horizontal"))
+                .resource(NamespacedKey.parse("minecraft:half_vertical_right"))
+                .resource(NamespacedKey.parse("minecraft:half_horizontal_bottom"))
+                .resource(NamespacedKey.parse("minecraft:border"))
+                .resource(NamespacedKey.parse("minecraft:gradient"))
+                .resource(NamespacedKey.parse("minecraft:gradient_up"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_BORDURE_INDENTED = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:curly_border"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_CREEPER = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:creeper"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_FIELD_MASONED = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:bricks"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_FLOW = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:flow"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_FLOWER = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:flower"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_GLOBE = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:globe"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_GUSTER = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:guster"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_MOJANG = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:mojang"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_PIGLIN = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:piglin"))
+                .build();
+
+        public static final Tag<BannerPattern> PATTERN_ITEM_SKULL = Tag.builder(RegistryKey.BANNER_PATTERN)
+                .resource(NamespacedKey.parse("minecraft:skull"))
+                .build();
+
+        private Tags() {
+        }
     }
 }

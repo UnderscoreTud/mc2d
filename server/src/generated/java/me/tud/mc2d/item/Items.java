@@ -4,6 +4,7 @@ import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.BuiltInRegistry;
 import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.block.Block;
 
@@ -2804,1404 +2805,3158 @@ sealed class Items permits Item {
 
     public static final Item OMINOUS_BOTTLE = new Item(1395, NamespacedKey.parse("minecraft:ominous_bottle"), null);
 
+    protected Items() {
+    }
+
     public static BuiltInRegistry<Item> createDefaultRegistry(Server server) {
-        return new BuiltInRegistry<>(server, RegistryKey.ITEMS).modify(modifiable -> {
-            modifiable.register(AIR.key(), AIR);
-            modifiable.register(STONE.key(), STONE);
-            modifiable.register(GRANITE.key(), GRANITE);
-            modifiable.register(POLISHED_GRANITE.key(), POLISHED_GRANITE);
-            modifiable.register(DIORITE.key(), DIORITE);
-            modifiable.register(POLISHED_DIORITE.key(), POLISHED_DIORITE);
-            modifiable.register(ANDESITE.key(), ANDESITE);
-            modifiable.register(POLISHED_ANDESITE.key(), POLISHED_ANDESITE);
-            modifiable.register(DEEPSLATE.key(), DEEPSLATE);
-            modifiable.register(COBBLED_DEEPSLATE.key(), COBBLED_DEEPSLATE);
-            modifiable.register(POLISHED_DEEPSLATE.key(), POLISHED_DEEPSLATE);
-            modifiable.register(CALCITE.key(), CALCITE);
-            modifiable.register(TUFF.key(), TUFF);
-            modifiable.register(TUFF_SLAB.key(), TUFF_SLAB);
-            modifiable.register(TUFF_STAIRS.key(), TUFF_STAIRS);
-            modifiable.register(TUFF_WALL.key(), TUFF_WALL);
-            modifiable.register(CHISELED_TUFF.key(), CHISELED_TUFF);
-            modifiable.register(POLISHED_TUFF.key(), POLISHED_TUFF);
-            modifiable.register(POLISHED_TUFF_SLAB.key(), POLISHED_TUFF_SLAB);
-            modifiable.register(POLISHED_TUFF_STAIRS.key(), POLISHED_TUFF_STAIRS);
-            modifiable.register(POLISHED_TUFF_WALL.key(), POLISHED_TUFF_WALL);
-            modifiable.register(TUFF_BRICKS.key(), TUFF_BRICKS);
-            modifiable.register(TUFF_BRICK_SLAB.key(), TUFF_BRICK_SLAB);
-            modifiable.register(TUFF_BRICK_STAIRS.key(), TUFF_BRICK_STAIRS);
-            modifiable.register(TUFF_BRICK_WALL.key(), TUFF_BRICK_WALL);
-            modifiable.register(CHISELED_TUFF_BRICKS.key(), CHISELED_TUFF_BRICKS);
-            modifiable.register(DRIPSTONE_BLOCK.key(), DRIPSTONE_BLOCK);
-            modifiable.register(GRASS_BLOCK.key(), GRASS_BLOCK);
-            modifiable.register(DIRT.key(), DIRT);
-            modifiable.register(COARSE_DIRT.key(), COARSE_DIRT);
-            modifiable.register(PODZOL.key(), PODZOL);
-            modifiable.register(ROOTED_DIRT.key(), ROOTED_DIRT);
-            modifiable.register(MUD.key(), MUD);
-            modifiable.register(CRIMSON_NYLIUM.key(), CRIMSON_NYLIUM);
-            modifiable.register(WARPED_NYLIUM.key(), WARPED_NYLIUM);
-            modifiable.register(COBBLESTONE.key(), COBBLESTONE);
-            modifiable.register(OAK_PLANKS.key(), OAK_PLANKS);
-            modifiable.register(SPRUCE_PLANKS.key(), SPRUCE_PLANKS);
-            modifiable.register(BIRCH_PLANKS.key(), BIRCH_PLANKS);
-            modifiable.register(JUNGLE_PLANKS.key(), JUNGLE_PLANKS);
-            modifiable.register(ACACIA_PLANKS.key(), ACACIA_PLANKS);
-            modifiable.register(CHERRY_PLANKS.key(), CHERRY_PLANKS);
-            modifiable.register(DARK_OAK_PLANKS.key(), DARK_OAK_PLANKS);
-            modifiable.register(PALE_OAK_PLANKS.key(), PALE_OAK_PLANKS);
-            modifiable.register(MANGROVE_PLANKS.key(), MANGROVE_PLANKS);
-            modifiable.register(BAMBOO_PLANKS.key(), BAMBOO_PLANKS);
-            modifiable.register(CRIMSON_PLANKS.key(), CRIMSON_PLANKS);
-            modifiable.register(WARPED_PLANKS.key(), WARPED_PLANKS);
-            modifiable.register(BAMBOO_MOSAIC.key(), BAMBOO_MOSAIC);
-            modifiable.register(OAK_SAPLING.key(), OAK_SAPLING);
-            modifiable.register(SPRUCE_SAPLING.key(), SPRUCE_SAPLING);
-            modifiable.register(BIRCH_SAPLING.key(), BIRCH_SAPLING);
-            modifiable.register(JUNGLE_SAPLING.key(), JUNGLE_SAPLING);
-            modifiable.register(ACACIA_SAPLING.key(), ACACIA_SAPLING);
-            modifiable.register(CHERRY_SAPLING.key(), CHERRY_SAPLING);
-            modifiable.register(DARK_OAK_SAPLING.key(), DARK_OAK_SAPLING);
-            modifiable.register(PALE_OAK_SAPLING.key(), PALE_OAK_SAPLING);
-            modifiable.register(MANGROVE_PROPAGULE.key(), MANGROVE_PROPAGULE);
-            modifiable.register(BEDROCK.key(), BEDROCK);
-            modifiable.register(SAND.key(), SAND);
-            modifiable.register(SUSPICIOUS_SAND.key(), SUSPICIOUS_SAND);
-            modifiable.register(SUSPICIOUS_GRAVEL.key(), SUSPICIOUS_GRAVEL);
-            modifiable.register(RED_SAND.key(), RED_SAND);
-            modifiable.register(GRAVEL.key(), GRAVEL);
-            modifiable.register(COAL_ORE.key(), COAL_ORE);
-            modifiable.register(DEEPSLATE_COAL_ORE.key(), DEEPSLATE_COAL_ORE);
-            modifiable.register(IRON_ORE.key(), IRON_ORE);
-            modifiable.register(DEEPSLATE_IRON_ORE.key(), DEEPSLATE_IRON_ORE);
-            modifiable.register(COPPER_ORE.key(), COPPER_ORE);
-            modifiable.register(DEEPSLATE_COPPER_ORE.key(), DEEPSLATE_COPPER_ORE);
-            modifiable.register(GOLD_ORE.key(), GOLD_ORE);
-            modifiable.register(DEEPSLATE_GOLD_ORE.key(), DEEPSLATE_GOLD_ORE);
-            modifiable.register(REDSTONE_ORE.key(), REDSTONE_ORE);
-            modifiable.register(DEEPSLATE_REDSTONE_ORE.key(), DEEPSLATE_REDSTONE_ORE);
-            modifiable.register(EMERALD_ORE.key(), EMERALD_ORE);
-            modifiable.register(DEEPSLATE_EMERALD_ORE.key(), DEEPSLATE_EMERALD_ORE);
-            modifiable.register(LAPIS_ORE.key(), LAPIS_ORE);
-            modifiable.register(DEEPSLATE_LAPIS_ORE.key(), DEEPSLATE_LAPIS_ORE);
-            modifiable.register(DIAMOND_ORE.key(), DIAMOND_ORE);
-            modifiable.register(DEEPSLATE_DIAMOND_ORE.key(), DEEPSLATE_DIAMOND_ORE);
-            modifiable.register(NETHER_GOLD_ORE.key(), NETHER_GOLD_ORE);
-            modifiable.register(NETHER_QUARTZ_ORE.key(), NETHER_QUARTZ_ORE);
-            modifiable.register(ANCIENT_DEBRIS.key(), ANCIENT_DEBRIS);
-            modifiable.register(COAL_BLOCK.key(), COAL_BLOCK);
-            modifiable.register(RAW_IRON_BLOCK.key(), RAW_IRON_BLOCK);
-            modifiable.register(RAW_COPPER_BLOCK.key(), RAW_COPPER_BLOCK);
-            modifiable.register(RAW_GOLD_BLOCK.key(), RAW_GOLD_BLOCK);
-            modifiable.register(HEAVY_CORE.key(), HEAVY_CORE);
-            modifiable.register(AMETHYST_BLOCK.key(), AMETHYST_BLOCK);
-            modifiable.register(BUDDING_AMETHYST.key(), BUDDING_AMETHYST);
-            modifiable.register(IRON_BLOCK.key(), IRON_BLOCK);
-            modifiable.register(COPPER_BLOCK.key(), COPPER_BLOCK);
-            modifiable.register(GOLD_BLOCK.key(), GOLD_BLOCK);
-            modifiable.register(DIAMOND_BLOCK.key(), DIAMOND_BLOCK);
-            modifiable.register(NETHERITE_BLOCK.key(), NETHERITE_BLOCK);
-            modifiable.register(EXPOSED_COPPER.key(), EXPOSED_COPPER);
-            modifiable.register(WEATHERED_COPPER.key(), WEATHERED_COPPER);
-            modifiable.register(OXIDIZED_COPPER.key(), OXIDIZED_COPPER);
-            modifiable.register(CHISELED_COPPER.key(), CHISELED_COPPER);
-            modifiable.register(EXPOSED_CHISELED_COPPER.key(), EXPOSED_CHISELED_COPPER);
-            modifiable.register(WEATHERED_CHISELED_COPPER.key(), WEATHERED_CHISELED_COPPER);
-            modifiable.register(OXIDIZED_CHISELED_COPPER.key(), OXIDIZED_CHISELED_COPPER);
-            modifiable.register(CUT_COPPER.key(), CUT_COPPER);
-            modifiable.register(EXPOSED_CUT_COPPER.key(), EXPOSED_CUT_COPPER);
-            modifiable.register(WEATHERED_CUT_COPPER.key(), WEATHERED_CUT_COPPER);
-            modifiable.register(OXIDIZED_CUT_COPPER.key(), OXIDIZED_CUT_COPPER);
-            modifiable.register(CUT_COPPER_STAIRS.key(), CUT_COPPER_STAIRS);
-            modifiable.register(EXPOSED_CUT_COPPER_STAIRS.key(), EXPOSED_CUT_COPPER_STAIRS);
-            modifiable.register(WEATHERED_CUT_COPPER_STAIRS.key(), WEATHERED_CUT_COPPER_STAIRS);
-            modifiable.register(OXIDIZED_CUT_COPPER_STAIRS.key(), OXIDIZED_CUT_COPPER_STAIRS);
-            modifiable.register(CUT_COPPER_SLAB.key(), CUT_COPPER_SLAB);
-            modifiable.register(EXPOSED_CUT_COPPER_SLAB.key(), EXPOSED_CUT_COPPER_SLAB);
-            modifiable.register(WEATHERED_CUT_COPPER_SLAB.key(), WEATHERED_CUT_COPPER_SLAB);
-            modifiable.register(OXIDIZED_CUT_COPPER_SLAB.key(), OXIDIZED_CUT_COPPER_SLAB);
-            modifiable.register(WAXED_COPPER_BLOCK.key(), WAXED_COPPER_BLOCK);
-            modifiable.register(WAXED_EXPOSED_COPPER.key(), WAXED_EXPOSED_COPPER);
-            modifiable.register(WAXED_WEATHERED_COPPER.key(), WAXED_WEATHERED_COPPER);
-            modifiable.register(WAXED_OXIDIZED_COPPER.key(), WAXED_OXIDIZED_COPPER);
-            modifiable.register(WAXED_CHISELED_COPPER.key(), WAXED_CHISELED_COPPER);
-            modifiable.register(WAXED_EXPOSED_CHISELED_COPPER.key(), WAXED_EXPOSED_CHISELED_COPPER);
-            modifiable.register(WAXED_WEATHERED_CHISELED_COPPER.key(), WAXED_WEATHERED_CHISELED_COPPER);
-            modifiable.register(WAXED_OXIDIZED_CHISELED_COPPER.key(), WAXED_OXIDIZED_CHISELED_COPPER);
-            modifiable.register(WAXED_CUT_COPPER.key(), WAXED_CUT_COPPER);
-            modifiable.register(WAXED_EXPOSED_CUT_COPPER.key(), WAXED_EXPOSED_CUT_COPPER);
-            modifiable.register(WAXED_WEATHERED_CUT_COPPER.key(), WAXED_WEATHERED_CUT_COPPER);
-            modifiable.register(WAXED_OXIDIZED_CUT_COPPER.key(), WAXED_OXIDIZED_CUT_COPPER);
-            modifiable.register(WAXED_CUT_COPPER_STAIRS.key(), WAXED_CUT_COPPER_STAIRS);
-            modifiable.register(WAXED_EXPOSED_CUT_COPPER_STAIRS.key(), WAXED_EXPOSED_CUT_COPPER_STAIRS);
-            modifiable.register(WAXED_WEATHERED_CUT_COPPER_STAIRS.key(), WAXED_WEATHERED_CUT_COPPER_STAIRS);
-            modifiable.register(WAXED_OXIDIZED_CUT_COPPER_STAIRS.key(), WAXED_OXIDIZED_CUT_COPPER_STAIRS);
-            modifiable.register(WAXED_CUT_COPPER_SLAB.key(), WAXED_CUT_COPPER_SLAB);
-            modifiable.register(WAXED_EXPOSED_CUT_COPPER_SLAB.key(), WAXED_EXPOSED_CUT_COPPER_SLAB);
-            modifiable.register(WAXED_WEATHERED_CUT_COPPER_SLAB.key(), WAXED_WEATHERED_CUT_COPPER_SLAB);
-            modifiable.register(WAXED_OXIDIZED_CUT_COPPER_SLAB.key(), WAXED_OXIDIZED_CUT_COPPER_SLAB);
-            modifiable.register(OAK_LOG.key(), OAK_LOG);
-            modifiable.register(SPRUCE_LOG.key(), SPRUCE_LOG);
-            modifiable.register(BIRCH_LOG.key(), BIRCH_LOG);
-            modifiable.register(JUNGLE_LOG.key(), JUNGLE_LOG);
-            modifiable.register(ACACIA_LOG.key(), ACACIA_LOG);
-            modifiable.register(CHERRY_LOG.key(), CHERRY_LOG);
-            modifiable.register(PALE_OAK_LOG.key(), PALE_OAK_LOG);
-            modifiable.register(DARK_OAK_LOG.key(), DARK_OAK_LOG);
-            modifiable.register(MANGROVE_LOG.key(), MANGROVE_LOG);
-            modifiable.register(MANGROVE_ROOTS.key(), MANGROVE_ROOTS);
-            modifiable.register(MUDDY_MANGROVE_ROOTS.key(), MUDDY_MANGROVE_ROOTS);
-            modifiable.register(CRIMSON_STEM.key(), CRIMSON_STEM);
-            modifiable.register(WARPED_STEM.key(), WARPED_STEM);
-            modifiable.register(BAMBOO_BLOCK.key(), BAMBOO_BLOCK);
-            modifiable.register(STRIPPED_OAK_LOG.key(), STRIPPED_OAK_LOG);
-            modifiable.register(STRIPPED_SPRUCE_LOG.key(), STRIPPED_SPRUCE_LOG);
-            modifiable.register(STRIPPED_BIRCH_LOG.key(), STRIPPED_BIRCH_LOG);
-            modifiable.register(STRIPPED_JUNGLE_LOG.key(), STRIPPED_JUNGLE_LOG);
-            modifiable.register(STRIPPED_ACACIA_LOG.key(), STRIPPED_ACACIA_LOG);
-            modifiable.register(STRIPPED_CHERRY_LOG.key(), STRIPPED_CHERRY_LOG);
-            modifiable.register(STRIPPED_DARK_OAK_LOG.key(), STRIPPED_DARK_OAK_LOG);
-            modifiable.register(STRIPPED_PALE_OAK_LOG.key(), STRIPPED_PALE_OAK_LOG);
-            modifiable.register(STRIPPED_MANGROVE_LOG.key(), STRIPPED_MANGROVE_LOG);
-            modifiable.register(STRIPPED_CRIMSON_STEM.key(), STRIPPED_CRIMSON_STEM);
-            modifiable.register(STRIPPED_WARPED_STEM.key(), STRIPPED_WARPED_STEM);
-            modifiable.register(STRIPPED_OAK_WOOD.key(), STRIPPED_OAK_WOOD);
-            modifiable.register(STRIPPED_SPRUCE_WOOD.key(), STRIPPED_SPRUCE_WOOD);
-            modifiable.register(STRIPPED_BIRCH_WOOD.key(), STRIPPED_BIRCH_WOOD);
-            modifiable.register(STRIPPED_JUNGLE_WOOD.key(), STRIPPED_JUNGLE_WOOD);
-            modifiable.register(STRIPPED_ACACIA_WOOD.key(), STRIPPED_ACACIA_WOOD);
-            modifiable.register(STRIPPED_CHERRY_WOOD.key(), STRIPPED_CHERRY_WOOD);
-            modifiable.register(STRIPPED_DARK_OAK_WOOD.key(), STRIPPED_DARK_OAK_WOOD);
-            modifiable.register(STRIPPED_PALE_OAK_WOOD.key(), STRIPPED_PALE_OAK_WOOD);
-            modifiable.register(STRIPPED_MANGROVE_WOOD.key(), STRIPPED_MANGROVE_WOOD);
-            modifiable.register(STRIPPED_CRIMSON_HYPHAE.key(), STRIPPED_CRIMSON_HYPHAE);
-            modifiable.register(STRIPPED_WARPED_HYPHAE.key(), STRIPPED_WARPED_HYPHAE);
-            modifiable.register(STRIPPED_BAMBOO_BLOCK.key(), STRIPPED_BAMBOO_BLOCK);
-            modifiable.register(OAK_WOOD.key(), OAK_WOOD);
-            modifiable.register(SPRUCE_WOOD.key(), SPRUCE_WOOD);
-            modifiable.register(BIRCH_WOOD.key(), BIRCH_WOOD);
-            modifiable.register(JUNGLE_WOOD.key(), JUNGLE_WOOD);
-            modifiable.register(ACACIA_WOOD.key(), ACACIA_WOOD);
-            modifiable.register(CHERRY_WOOD.key(), CHERRY_WOOD);
-            modifiable.register(PALE_OAK_WOOD.key(), PALE_OAK_WOOD);
-            modifiable.register(DARK_OAK_WOOD.key(), DARK_OAK_WOOD);
-            modifiable.register(MANGROVE_WOOD.key(), MANGROVE_WOOD);
-            modifiable.register(CRIMSON_HYPHAE.key(), CRIMSON_HYPHAE);
-            modifiable.register(WARPED_HYPHAE.key(), WARPED_HYPHAE);
-            modifiable.register(OAK_LEAVES.key(), OAK_LEAVES);
-            modifiable.register(SPRUCE_LEAVES.key(), SPRUCE_LEAVES);
-            modifiable.register(BIRCH_LEAVES.key(), BIRCH_LEAVES);
-            modifiable.register(JUNGLE_LEAVES.key(), JUNGLE_LEAVES);
-            modifiable.register(ACACIA_LEAVES.key(), ACACIA_LEAVES);
-            modifiable.register(CHERRY_LEAVES.key(), CHERRY_LEAVES);
-            modifiable.register(DARK_OAK_LEAVES.key(), DARK_OAK_LEAVES);
-            modifiable.register(PALE_OAK_LEAVES.key(), PALE_OAK_LEAVES);
-            modifiable.register(MANGROVE_LEAVES.key(), MANGROVE_LEAVES);
-            modifiable.register(AZALEA_LEAVES.key(), AZALEA_LEAVES);
-            modifiable.register(FLOWERING_AZALEA_LEAVES.key(), FLOWERING_AZALEA_LEAVES);
-            modifiable.register(SPONGE.key(), SPONGE);
-            modifiable.register(WET_SPONGE.key(), WET_SPONGE);
-            modifiable.register(GLASS.key(), GLASS);
-            modifiable.register(TINTED_GLASS.key(), TINTED_GLASS);
-            modifiable.register(LAPIS_BLOCK.key(), LAPIS_BLOCK);
-            modifiable.register(SANDSTONE.key(), SANDSTONE);
-            modifiable.register(CHISELED_SANDSTONE.key(), CHISELED_SANDSTONE);
-            modifiable.register(CUT_SANDSTONE.key(), CUT_SANDSTONE);
-            modifiable.register(COBWEB.key(), COBWEB);
-            modifiable.register(SHORT_GRASS.key(), SHORT_GRASS);
-            modifiable.register(FERN.key(), FERN);
-            modifiable.register(BUSH.key(), BUSH);
-            modifiable.register(AZALEA.key(), AZALEA);
-            modifiable.register(FLOWERING_AZALEA.key(), FLOWERING_AZALEA);
-            modifiable.register(DEAD_BUSH.key(), DEAD_BUSH);
-            modifiable.register(FIREFLY_BUSH.key(), FIREFLY_BUSH);
-            modifiable.register(SHORT_DRY_GRASS.key(), SHORT_DRY_GRASS);
-            modifiable.register(TALL_DRY_GRASS.key(), TALL_DRY_GRASS);
-            modifiable.register(SEAGRASS.key(), SEAGRASS);
-            modifiable.register(SEA_PICKLE.key(), SEA_PICKLE);
-            modifiable.register(WHITE_WOOL.key(), WHITE_WOOL);
-            modifiable.register(ORANGE_WOOL.key(), ORANGE_WOOL);
-            modifiable.register(MAGENTA_WOOL.key(), MAGENTA_WOOL);
-            modifiable.register(LIGHT_BLUE_WOOL.key(), LIGHT_BLUE_WOOL);
-            modifiable.register(YELLOW_WOOL.key(), YELLOW_WOOL);
-            modifiable.register(LIME_WOOL.key(), LIME_WOOL);
-            modifiable.register(PINK_WOOL.key(), PINK_WOOL);
-            modifiable.register(GRAY_WOOL.key(), GRAY_WOOL);
-            modifiable.register(LIGHT_GRAY_WOOL.key(), LIGHT_GRAY_WOOL);
-            modifiable.register(CYAN_WOOL.key(), CYAN_WOOL);
-            modifiable.register(PURPLE_WOOL.key(), PURPLE_WOOL);
-            modifiable.register(BLUE_WOOL.key(), BLUE_WOOL);
-            modifiable.register(BROWN_WOOL.key(), BROWN_WOOL);
-            modifiable.register(GREEN_WOOL.key(), GREEN_WOOL);
-            modifiable.register(RED_WOOL.key(), RED_WOOL);
-            modifiable.register(BLACK_WOOL.key(), BLACK_WOOL);
-            modifiable.register(DANDELION.key(), DANDELION);
-            modifiable.register(OPEN_EYEBLOSSOM.key(), OPEN_EYEBLOSSOM);
-            modifiable.register(CLOSED_EYEBLOSSOM.key(), CLOSED_EYEBLOSSOM);
-            modifiable.register(POPPY.key(), POPPY);
-            modifiable.register(BLUE_ORCHID.key(), BLUE_ORCHID);
-            modifiable.register(ALLIUM.key(), ALLIUM);
-            modifiable.register(AZURE_BLUET.key(), AZURE_BLUET);
-            modifiable.register(RED_TULIP.key(), RED_TULIP);
-            modifiable.register(ORANGE_TULIP.key(), ORANGE_TULIP);
-            modifiable.register(WHITE_TULIP.key(), WHITE_TULIP);
-            modifiable.register(PINK_TULIP.key(), PINK_TULIP);
-            modifiable.register(OXEYE_DAISY.key(), OXEYE_DAISY);
-            modifiable.register(CORNFLOWER.key(), CORNFLOWER);
-            modifiable.register(LILY_OF_THE_VALLEY.key(), LILY_OF_THE_VALLEY);
-            modifiable.register(WITHER_ROSE.key(), WITHER_ROSE);
-            modifiable.register(TORCHFLOWER.key(), TORCHFLOWER);
-            modifiable.register(PITCHER_PLANT.key(), PITCHER_PLANT);
-            modifiable.register(SPORE_BLOSSOM.key(), SPORE_BLOSSOM);
-            modifiable.register(BROWN_MUSHROOM.key(), BROWN_MUSHROOM);
-            modifiable.register(RED_MUSHROOM.key(), RED_MUSHROOM);
-            modifiable.register(CRIMSON_FUNGUS.key(), CRIMSON_FUNGUS);
-            modifiable.register(WARPED_FUNGUS.key(), WARPED_FUNGUS);
-            modifiable.register(CRIMSON_ROOTS.key(), CRIMSON_ROOTS);
-            modifiable.register(WARPED_ROOTS.key(), WARPED_ROOTS);
-            modifiable.register(NETHER_SPROUTS.key(), NETHER_SPROUTS);
-            modifiable.register(WEEPING_VINES.key(), WEEPING_VINES);
-            modifiable.register(TWISTING_VINES.key(), TWISTING_VINES);
-            modifiable.register(SUGAR_CANE.key(), SUGAR_CANE);
-            modifiable.register(KELP.key(), KELP);
-            modifiable.register(PINK_PETALS.key(), PINK_PETALS);
-            modifiable.register(WILDFLOWERS.key(), WILDFLOWERS);
-            modifiable.register(LEAF_LITTER.key(), LEAF_LITTER);
-            modifiable.register(MOSS_CARPET.key(), MOSS_CARPET);
-            modifiable.register(MOSS_BLOCK.key(), MOSS_BLOCK);
-            modifiable.register(PALE_MOSS_CARPET.key(), PALE_MOSS_CARPET);
-            modifiable.register(PALE_HANGING_MOSS.key(), PALE_HANGING_MOSS);
-            modifiable.register(PALE_MOSS_BLOCK.key(), PALE_MOSS_BLOCK);
-            modifiable.register(HANGING_ROOTS.key(), HANGING_ROOTS);
-            modifiable.register(BIG_DRIPLEAF.key(), BIG_DRIPLEAF);
-            modifiable.register(SMALL_DRIPLEAF.key(), SMALL_DRIPLEAF);
-            modifiable.register(BAMBOO.key(), BAMBOO);
-            modifiable.register(OAK_SLAB.key(), OAK_SLAB);
-            modifiable.register(SPRUCE_SLAB.key(), SPRUCE_SLAB);
-            modifiable.register(BIRCH_SLAB.key(), BIRCH_SLAB);
-            modifiable.register(JUNGLE_SLAB.key(), JUNGLE_SLAB);
-            modifiable.register(ACACIA_SLAB.key(), ACACIA_SLAB);
-            modifiable.register(CHERRY_SLAB.key(), CHERRY_SLAB);
-            modifiable.register(DARK_OAK_SLAB.key(), DARK_OAK_SLAB);
-            modifiable.register(PALE_OAK_SLAB.key(), PALE_OAK_SLAB);
-            modifiable.register(MANGROVE_SLAB.key(), MANGROVE_SLAB);
-            modifiable.register(BAMBOO_SLAB.key(), BAMBOO_SLAB);
-            modifiable.register(BAMBOO_MOSAIC_SLAB.key(), BAMBOO_MOSAIC_SLAB);
-            modifiable.register(CRIMSON_SLAB.key(), CRIMSON_SLAB);
-            modifiable.register(WARPED_SLAB.key(), WARPED_SLAB);
-            modifiable.register(STONE_SLAB.key(), STONE_SLAB);
-            modifiable.register(SMOOTH_STONE_SLAB.key(), SMOOTH_STONE_SLAB);
-            modifiable.register(SANDSTONE_SLAB.key(), SANDSTONE_SLAB);
-            modifiable.register(CUT_SANDSTONE_SLAB.key(), CUT_SANDSTONE_SLAB);
-            modifiable.register(PETRIFIED_OAK_SLAB.key(), PETRIFIED_OAK_SLAB);
-            modifiable.register(COBBLESTONE_SLAB.key(), COBBLESTONE_SLAB);
-            modifiable.register(BRICK_SLAB.key(), BRICK_SLAB);
-            modifiable.register(STONE_BRICK_SLAB.key(), STONE_BRICK_SLAB);
-            modifiable.register(MUD_BRICK_SLAB.key(), MUD_BRICK_SLAB);
-            modifiable.register(NETHER_BRICK_SLAB.key(), NETHER_BRICK_SLAB);
-            modifiable.register(QUARTZ_SLAB.key(), QUARTZ_SLAB);
-            modifiable.register(RED_SANDSTONE_SLAB.key(), RED_SANDSTONE_SLAB);
-            modifiable.register(CUT_RED_SANDSTONE_SLAB.key(), CUT_RED_SANDSTONE_SLAB);
-            modifiable.register(PURPUR_SLAB.key(), PURPUR_SLAB);
-            modifiable.register(PRISMARINE_SLAB.key(), PRISMARINE_SLAB);
-            modifiable.register(PRISMARINE_BRICK_SLAB.key(), PRISMARINE_BRICK_SLAB);
-            modifiable.register(DARK_PRISMARINE_SLAB.key(), DARK_PRISMARINE_SLAB);
-            modifiable.register(SMOOTH_QUARTZ.key(), SMOOTH_QUARTZ);
-            modifiable.register(SMOOTH_RED_SANDSTONE.key(), SMOOTH_RED_SANDSTONE);
-            modifiable.register(SMOOTH_SANDSTONE.key(), SMOOTH_SANDSTONE);
-            modifiable.register(SMOOTH_STONE.key(), SMOOTH_STONE);
-            modifiable.register(BRICKS.key(), BRICKS);
-            modifiable.register(BOOKSHELF.key(), BOOKSHELF);
-            modifiable.register(CHISELED_BOOKSHELF.key(), CHISELED_BOOKSHELF);
-            modifiable.register(DECORATED_POT.key(), DECORATED_POT);
-            modifiable.register(MOSSY_COBBLESTONE.key(), MOSSY_COBBLESTONE);
-            modifiable.register(OBSIDIAN.key(), OBSIDIAN);
-            modifiable.register(TORCH.key(), TORCH);
-            modifiable.register(END_ROD.key(), END_ROD);
-            modifiable.register(CHORUS_PLANT.key(), CHORUS_PLANT);
-            modifiable.register(CHORUS_FLOWER.key(), CHORUS_FLOWER);
-            modifiable.register(PURPUR_BLOCK.key(), PURPUR_BLOCK);
-            modifiable.register(PURPUR_PILLAR.key(), PURPUR_PILLAR);
-            modifiable.register(PURPUR_STAIRS.key(), PURPUR_STAIRS);
-            modifiable.register(SPAWNER.key(), SPAWNER);
-            modifiable.register(CREAKING_HEART.key(), CREAKING_HEART);
-            modifiable.register(CHEST.key(), CHEST);
-            modifiable.register(CRAFTING_TABLE.key(), CRAFTING_TABLE);
-            modifiable.register(FARMLAND.key(), FARMLAND);
-            modifiable.register(FURNACE.key(), FURNACE);
-            modifiable.register(LADDER.key(), LADDER);
-            modifiable.register(COBBLESTONE_STAIRS.key(), COBBLESTONE_STAIRS);
-            modifiable.register(SNOW.key(), SNOW);
-            modifiable.register(ICE.key(), ICE);
-            modifiable.register(SNOW_BLOCK.key(), SNOW_BLOCK);
-            modifiable.register(CACTUS.key(), CACTUS);
-            modifiable.register(CACTUS_FLOWER.key(), CACTUS_FLOWER);
-            modifiable.register(CLAY.key(), CLAY);
-            modifiable.register(JUKEBOX.key(), JUKEBOX);
-            modifiable.register(OAK_FENCE.key(), OAK_FENCE);
-            modifiable.register(SPRUCE_FENCE.key(), SPRUCE_FENCE);
-            modifiable.register(BIRCH_FENCE.key(), BIRCH_FENCE);
-            modifiable.register(JUNGLE_FENCE.key(), JUNGLE_FENCE);
-            modifiable.register(ACACIA_FENCE.key(), ACACIA_FENCE);
-            modifiable.register(CHERRY_FENCE.key(), CHERRY_FENCE);
-            modifiable.register(DARK_OAK_FENCE.key(), DARK_OAK_FENCE);
-            modifiable.register(PALE_OAK_FENCE.key(), PALE_OAK_FENCE);
-            modifiable.register(MANGROVE_FENCE.key(), MANGROVE_FENCE);
-            modifiable.register(BAMBOO_FENCE.key(), BAMBOO_FENCE);
-            modifiable.register(CRIMSON_FENCE.key(), CRIMSON_FENCE);
-            modifiable.register(WARPED_FENCE.key(), WARPED_FENCE);
-            modifiable.register(PUMPKIN.key(), PUMPKIN);
-            modifiable.register(CARVED_PUMPKIN.key(), CARVED_PUMPKIN);
-            modifiable.register(JACK_O_LANTERN.key(), JACK_O_LANTERN);
-            modifiable.register(NETHERRACK.key(), NETHERRACK);
-            modifiable.register(SOUL_SAND.key(), SOUL_SAND);
-            modifiable.register(SOUL_SOIL.key(), SOUL_SOIL);
-            modifiable.register(BASALT.key(), BASALT);
-            modifiable.register(POLISHED_BASALT.key(), POLISHED_BASALT);
-            modifiable.register(SMOOTH_BASALT.key(), SMOOTH_BASALT);
-            modifiable.register(SOUL_TORCH.key(), SOUL_TORCH);
-            modifiable.register(GLOWSTONE.key(), GLOWSTONE);
-            modifiable.register(INFESTED_STONE.key(), INFESTED_STONE);
-            modifiable.register(INFESTED_COBBLESTONE.key(), INFESTED_COBBLESTONE);
-            modifiable.register(INFESTED_STONE_BRICKS.key(), INFESTED_STONE_BRICKS);
-            modifiable.register(INFESTED_MOSSY_STONE_BRICKS.key(), INFESTED_MOSSY_STONE_BRICKS);
-            modifiable.register(INFESTED_CRACKED_STONE_BRICKS.key(), INFESTED_CRACKED_STONE_BRICKS);
-            modifiable.register(INFESTED_CHISELED_STONE_BRICKS.key(), INFESTED_CHISELED_STONE_BRICKS);
-            modifiable.register(INFESTED_DEEPSLATE.key(), INFESTED_DEEPSLATE);
-            modifiable.register(STONE_BRICKS.key(), STONE_BRICKS);
-            modifiable.register(MOSSY_STONE_BRICKS.key(), MOSSY_STONE_BRICKS);
-            modifiable.register(CRACKED_STONE_BRICKS.key(), CRACKED_STONE_BRICKS);
-            modifiable.register(CHISELED_STONE_BRICKS.key(), CHISELED_STONE_BRICKS);
-            modifiable.register(PACKED_MUD.key(), PACKED_MUD);
-            modifiable.register(MUD_BRICKS.key(), MUD_BRICKS);
-            modifiable.register(DEEPSLATE_BRICKS.key(), DEEPSLATE_BRICKS);
-            modifiable.register(CRACKED_DEEPSLATE_BRICKS.key(), CRACKED_DEEPSLATE_BRICKS);
-            modifiable.register(DEEPSLATE_TILES.key(), DEEPSLATE_TILES);
-            modifiable.register(CRACKED_DEEPSLATE_TILES.key(), CRACKED_DEEPSLATE_TILES);
-            modifiable.register(CHISELED_DEEPSLATE.key(), CHISELED_DEEPSLATE);
-            modifiable.register(REINFORCED_DEEPSLATE.key(), REINFORCED_DEEPSLATE);
-            modifiable.register(BROWN_MUSHROOM_BLOCK.key(), BROWN_MUSHROOM_BLOCK);
-            modifiable.register(RED_MUSHROOM_BLOCK.key(), RED_MUSHROOM_BLOCK);
-            modifiable.register(MUSHROOM_STEM.key(), MUSHROOM_STEM);
-            modifiable.register(IRON_BARS.key(), IRON_BARS);
-            modifiable.register(CHAIN.key(), CHAIN);
-            modifiable.register(GLASS_PANE.key(), GLASS_PANE);
-            modifiable.register(MELON.key(), MELON);
-            modifiable.register(VINE.key(), VINE);
-            modifiable.register(GLOW_LICHEN.key(), GLOW_LICHEN);
-            modifiable.register(RESIN_CLUMP.key(), RESIN_CLUMP);
-            modifiable.register(RESIN_BLOCK.key(), RESIN_BLOCK);
-            modifiable.register(RESIN_BRICKS.key(), RESIN_BRICKS);
-            modifiable.register(RESIN_BRICK_STAIRS.key(), RESIN_BRICK_STAIRS);
-            modifiable.register(RESIN_BRICK_SLAB.key(), RESIN_BRICK_SLAB);
-            modifiable.register(RESIN_BRICK_WALL.key(), RESIN_BRICK_WALL);
-            modifiable.register(CHISELED_RESIN_BRICKS.key(), CHISELED_RESIN_BRICKS);
-            modifiable.register(BRICK_STAIRS.key(), BRICK_STAIRS);
-            modifiable.register(STONE_BRICK_STAIRS.key(), STONE_BRICK_STAIRS);
-            modifiable.register(MUD_BRICK_STAIRS.key(), MUD_BRICK_STAIRS);
-            modifiable.register(MYCELIUM.key(), MYCELIUM);
-            modifiable.register(LILY_PAD.key(), LILY_PAD);
-            modifiable.register(NETHER_BRICKS.key(), NETHER_BRICKS);
-            modifiable.register(CRACKED_NETHER_BRICKS.key(), CRACKED_NETHER_BRICKS);
-            modifiable.register(CHISELED_NETHER_BRICKS.key(), CHISELED_NETHER_BRICKS);
-            modifiable.register(NETHER_BRICK_FENCE.key(), NETHER_BRICK_FENCE);
-            modifiable.register(NETHER_BRICK_STAIRS.key(), NETHER_BRICK_STAIRS);
-            modifiable.register(SCULK.key(), SCULK);
-            modifiable.register(SCULK_VEIN.key(), SCULK_VEIN);
-            modifiable.register(SCULK_CATALYST.key(), SCULK_CATALYST);
-            modifiable.register(SCULK_SHRIEKER.key(), SCULK_SHRIEKER);
-            modifiable.register(ENCHANTING_TABLE.key(), ENCHANTING_TABLE);
-            modifiable.register(END_PORTAL_FRAME.key(), END_PORTAL_FRAME);
-            modifiable.register(END_STONE.key(), END_STONE);
-            modifiable.register(END_STONE_BRICKS.key(), END_STONE_BRICKS);
-            modifiable.register(DRAGON_EGG.key(), DRAGON_EGG);
-            modifiable.register(SANDSTONE_STAIRS.key(), SANDSTONE_STAIRS);
-            modifiable.register(ENDER_CHEST.key(), ENDER_CHEST);
-            modifiable.register(EMERALD_BLOCK.key(), EMERALD_BLOCK);
-            modifiable.register(OAK_STAIRS.key(), OAK_STAIRS);
-            modifiable.register(SPRUCE_STAIRS.key(), SPRUCE_STAIRS);
-            modifiable.register(BIRCH_STAIRS.key(), BIRCH_STAIRS);
-            modifiable.register(JUNGLE_STAIRS.key(), JUNGLE_STAIRS);
-            modifiable.register(ACACIA_STAIRS.key(), ACACIA_STAIRS);
-            modifiable.register(CHERRY_STAIRS.key(), CHERRY_STAIRS);
-            modifiable.register(DARK_OAK_STAIRS.key(), DARK_OAK_STAIRS);
-            modifiable.register(PALE_OAK_STAIRS.key(), PALE_OAK_STAIRS);
-            modifiable.register(MANGROVE_STAIRS.key(), MANGROVE_STAIRS);
-            modifiable.register(BAMBOO_STAIRS.key(), BAMBOO_STAIRS);
-            modifiable.register(BAMBOO_MOSAIC_STAIRS.key(), BAMBOO_MOSAIC_STAIRS);
-            modifiable.register(CRIMSON_STAIRS.key(), CRIMSON_STAIRS);
-            modifiable.register(WARPED_STAIRS.key(), WARPED_STAIRS);
-            modifiable.register(COMMAND_BLOCK.key(), COMMAND_BLOCK);
-            modifiable.register(BEACON.key(), BEACON);
-            modifiable.register(COBBLESTONE_WALL.key(), COBBLESTONE_WALL);
-            modifiable.register(MOSSY_COBBLESTONE_WALL.key(), MOSSY_COBBLESTONE_WALL);
-            modifiable.register(BRICK_WALL.key(), BRICK_WALL);
-            modifiable.register(PRISMARINE_WALL.key(), PRISMARINE_WALL);
-            modifiable.register(RED_SANDSTONE_WALL.key(), RED_SANDSTONE_WALL);
-            modifiable.register(MOSSY_STONE_BRICK_WALL.key(), MOSSY_STONE_BRICK_WALL);
-            modifiable.register(GRANITE_WALL.key(), GRANITE_WALL);
-            modifiable.register(STONE_BRICK_WALL.key(), STONE_BRICK_WALL);
-            modifiable.register(MUD_BRICK_WALL.key(), MUD_BRICK_WALL);
-            modifiable.register(NETHER_BRICK_WALL.key(), NETHER_BRICK_WALL);
-            modifiable.register(ANDESITE_WALL.key(), ANDESITE_WALL);
-            modifiable.register(RED_NETHER_BRICK_WALL.key(), RED_NETHER_BRICK_WALL);
-            modifiable.register(SANDSTONE_WALL.key(), SANDSTONE_WALL);
-            modifiable.register(END_STONE_BRICK_WALL.key(), END_STONE_BRICK_WALL);
-            modifiable.register(DIORITE_WALL.key(), DIORITE_WALL);
-            modifiable.register(BLACKSTONE_WALL.key(), BLACKSTONE_WALL);
-            modifiable.register(POLISHED_BLACKSTONE_WALL.key(), POLISHED_BLACKSTONE_WALL);
-            modifiable.register(POLISHED_BLACKSTONE_BRICK_WALL.key(), POLISHED_BLACKSTONE_BRICK_WALL);
-            modifiable.register(COBBLED_DEEPSLATE_WALL.key(), COBBLED_DEEPSLATE_WALL);
-            modifiable.register(POLISHED_DEEPSLATE_WALL.key(), POLISHED_DEEPSLATE_WALL);
-            modifiable.register(DEEPSLATE_BRICK_WALL.key(), DEEPSLATE_BRICK_WALL);
-            modifiable.register(DEEPSLATE_TILE_WALL.key(), DEEPSLATE_TILE_WALL);
-            modifiable.register(ANVIL.key(), ANVIL);
-            modifiable.register(CHIPPED_ANVIL.key(), CHIPPED_ANVIL);
-            modifiable.register(DAMAGED_ANVIL.key(), DAMAGED_ANVIL);
-            modifiable.register(CHISELED_QUARTZ_BLOCK.key(), CHISELED_QUARTZ_BLOCK);
-            modifiable.register(QUARTZ_BLOCK.key(), QUARTZ_BLOCK);
-            modifiable.register(QUARTZ_BRICKS.key(), QUARTZ_BRICKS);
-            modifiable.register(QUARTZ_PILLAR.key(), QUARTZ_PILLAR);
-            modifiable.register(QUARTZ_STAIRS.key(), QUARTZ_STAIRS);
-            modifiable.register(WHITE_TERRACOTTA.key(), WHITE_TERRACOTTA);
-            modifiable.register(ORANGE_TERRACOTTA.key(), ORANGE_TERRACOTTA);
-            modifiable.register(MAGENTA_TERRACOTTA.key(), MAGENTA_TERRACOTTA);
-            modifiable.register(LIGHT_BLUE_TERRACOTTA.key(), LIGHT_BLUE_TERRACOTTA);
-            modifiable.register(YELLOW_TERRACOTTA.key(), YELLOW_TERRACOTTA);
-            modifiable.register(LIME_TERRACOTTA.key(), LIME_TERRACOTTA);
-            modifiable.register(PINK_TERRACOTTA.key(), PINK_TERRACOTTA);
-            modifiable.register(GRAY_TERRACOTTA.key(), GRAY_TERRACOTTA);
-            modifiable.register(LIGHT_GRAY_TERRACOTTA.key(), LIGHT_GRAY_TERRACOTTA);
-            modifiable.register(CYAN_TERRACOTTA.key(), CYAN_TERRACOTTA);
-            modifiable.register(PURPLE_TERRACOTTA.key(), PURPLE_TERRACOTTA);
-            modifiable.register(BLUE_TERRACOTTA.key(), BLUE_TERRACOTTA);
-            modifiable.register(BROWN_TERRACOTTA.key(), BROWN_TERRACOTTA);
-            modifiable.register(GREEN_TERRACOTTA.key(), GREEN_TERRACOTTA);
-            modifiable.register(RED_TERRACOTTA.key(), RED_TERRACOTTA);
-            modifiable.register(BLACK_TERRACOTTA.key(), BLACK_TERRACOTTA);
-            modifiable.register(BARRIER.key(), BARRIER);
-            modifiable.register(LIGHT.key(), LIGHT);
-            modifiable.register(HAY_BLOCK.key(), HAY_BLOCK);
-            modifiable.register(WHITE_CARPET.key(), WHITE_CARPET);
-            modifiable.register(ORANGE_CARPET.key(), ORANGE_CARPET);
-            modifiable.register(MAGENTA_CARPET.key(), MAGENTA_CARPET);
-            modifiable.register(LIGHT_BLUE_CARPET.key(), LIGHT_BLUE_CARPET);
-            modifiable.register(YELLOW_CARPET.key(), YELLOW_CARPET);
-            modifiable.register(LIME_CARPET.key(), LIME_CARPET);
-            modifiable.register(PINK_CARPET.key(), PINK_CARPET);
-            modifiable.register(GRAY_CARPET.key(), GRAY_CARPET);
-            modifiable.register(LIGHT_GRAY_CARPET.key(), LIGHT_GRAY_CARPET);
-            modifiable.register(CYAN_CARPET.key(), CYAN_CARPET);
-            modifiable.register(PURPLE_CARPET.key(), PURPLE_CARPET);
-            modifiable.register(BLUE_CARPET.key(), BLUE_CARPET);
-            modifiable.register(BROWN_CARPET.key(), BROWN_CARPET);
-            modifiable.register(GREEN_CARPET.key(), GREEN_CARPET);
-            modifiable.register(RED_CARPET.key(), RED_CARPET);
-            modifiable.register(BLACK_CARPET.key(), BLACK_CARPET);
-            modifiable.register(TERRACOTTA.key(), TERRACOTTA);
-            modifiable.register(PACKED_ICE.key(), PACKED_ICE);
-            modifiable.register(DIRT_PATH.key(), DIRT_PATH);
-            modifiable.register(SUNFLOWER.key(), SUNFLOWER);
-            modifiable.register(LILAC.key(), LILAC);
-            modifiable.register(ROSE_BUSH.key(), ROSE_BUSH);
-            modifiable.register(PEONY.key(), PEONY);
-            modifiable.register(TALL_GRASS.key(), TALL_GRASS);
-            modifiable.register(LARGE_FERN.key(), LARGE_FERN);
-            modifiable.register(WHITE_STAINED_GLASS.key(), WHITE_STAINED_GLASS);
-            modifiable.register(ORANGE_STAINED_GLASS.key(), ORANGE_STAINED_GLASS);
-            modifiable.register(MAGENTA_STAINED_GLASS.key(), MAGENTA_STAINED_GLASS);
-            modifiable.register(LIGHT_BLUE_STAINED_GLASS.key(), LIGHT_BLUE_STAINED_GLASS);
-            modifiable.register(YELLOW_STAINED_GLASS.key(), YELLOW_STAINED_GLASS);
-            modifiable.register(LIME_STAINED_GLASS.key(), LIME_STAINED_GLASS);
-            modifiable.register(PINK_STAINED_GLASS.key(), PINK_STAINED_GLASS);
-            modifiable.register(GRAY_STAINED_GLASS.key(), GRAY_STAINED_GLASS);
-            modifiable.register(LIGHT_GRAY_STAINED_GLASS.key(), LIGHT_GRAY_STAINED_GLASS);
-            modifiable.register(CYAN_STAINED_GLASS.key(), CYAN_STAINED_GLASS);
-            modifiable.register(PURPLE_STAINED_GLASS.key(), PURPLE_STAINED_GLASS);
-            modifiable.register(BLUE_STAINED_GLASS.key(), BLUE_STAINED_GLASS);
-            modifiable.register(BROWN_STAINED_GLASS.key(), BROWN_STAINED_GLASS);
-            modifiable.register(GREEN_STAINED_GLASS.key(), GREEN_STAINED_GLASS);
-            modifiable.register(RED_STAINED_GLASS.key(), RED_STAINED_GLASS);
-            modifiable.register(BLACK_STAINED_GLASS.key(), BLACK_STAINED_GLASS);
-            modifiable.register(WHITE_STAINED_GLASS_PANE.key(), WHITE_STAINED_GLASS_PANE);
-            modifiable.register(ORANGE_STAINED_GLASS_PANE.key(), ORANGE_STAINED_GLASS_PANE);
-            modifiable.register(MAGENTA_STAINED_GLASS_PANE.key(), MAGENTA_STAINED_GLASS_PANE);
-            modifiable.register(LIGHT_BLUE_STAINED_GLASS_PANE.key(), LIGHT_BLUE_STAINED_GLASS_PANE);
-            modifiable.register(YELLOW_STAINED_GLASS_PANE.key(), YELLOW_STAINED_GLASS_PANE);
-            modifiable.register(LIME_STAINED_GLASS_PANE.key(), LIME_STAINED_GLASS_PANE);
-            modifiable.register(PINK_STAINED_GLASS_PANE.key(), PINK_STAINED_GLASS_PANE);
-            modifiable.register(GRAY_STAINED_GLASS_PANE.key(), GRAY_STAINED_GLASS_PANE);
-            modifiable.register(LIGHT_GRAY_STAINED_GLASS_PANE.key(), LIGHT_GRAY_STAINED_GLASS_PANE);
-            modifiable.register(CYAN_STAINED_GLASS_PANE.key(), CYAN_STAINED_GLASS_PANE);
-            modifiable.register(PURPLE_STAINED_GLASS_PANE.key(), PURPLE_STAINED_GLASS_PANE);
-            modifiable.register(BLUE_STAINED_GLASS_PANE.key(), BLUE_STAINED_GLASS_PANE);
-            modifiable.register(BROWN_STAINED_GLASS_PANE.key(), BROWN_STAINED_GLASS_PANE);
-            modifiable.register(GREEN_STAINED_GLASS_PANE.key(), GREEN_STAINED_GLASS_PANE);
-            modifiable.register(RED_STAINED_GLASS_PANE.key(), RED_STAINED_GLASS_PANE);
-            modifiable.register(BLACK_STAINED_GLASS_PANE.key(), BLACK_STAINED_GLASS_PANE);
-            modifiable.register(PRISMARINE.key(), PRISMARINE);
-            modifiable.register(PRISMARINE_BRICKS.key(), PRISMARINE_BRICKS);
-            modifiable.register(DARK_PRISMARINE.key(), DARK_PRISMARINE);
-            modifiable.register(PRISMARINE_STAIRS.key(), PRISMARINE_STAIRS);
-            modifiable.register(PRISMARINE_BRICK_STAIRS.key(), PRISMARINE_BRICK_STAIRS);
-            modifiable.register(DARK_PRISMARINE_STAIRS.key(), DARK_PRISMARINE_STAIRS);
-            modifiable.register(SEA_LANTERN.key(), SEA_LANTERN);
-            modifiable.register(RED_SANDSTONE.key(), RED_SANDSTONE);
-            modifiable.register(CHISELED_RED_SANDSTONE.key(), CHISELED_RED_SANDSTONE);
-            modifiable.register(CUT_RED_SANDSTONE.key(), CUT_RED_SANDSTONE);
-            modifiable.register(RED_SANDSTONE_STAIRS.key(), RED_SANDSTONE_STAIRS);
-            modifiable.register(REPEATING_COMMAND_BLOCK.key(), REPEATING_COMMAND_BLOCK);
-            modifiable.register(CHAIN_COMMAND_BLOCK.key(), CHAIN_COMMAND_BLOCK);
-            modifiable.register(MAGMA_BLOCK.key(), MAGMA_BLOCK);
-            modifiable.register(NETHER_WART_BLOCK.key(), NETHER_WART_BLOCK);
-            modifiable.register(WARPED_WART_BLOCK.key(), WARPED_WART_BLOCK);
-            modifiable.register(RED_NETHER_BRICKS.key(), RED_NETHER_BRICKS);
-            modifiable.register(BONE_BLOCK.key(), BONE_BLOCK);
-            modifiable.register(STRUCTURE_VOID.key(), STRUCTURE_VOID);
-            modifiable.register(SHULKER_BOX.key(), SHULKER_BOX);
-            modifiable.register(WHITE_SHULKER_BOX.key(), WHITE_SHULKER_BOX);
-            modifiable.register(ORANGE_SHULKER_BOX.key(), ORANGE_SHULKER_BOX);
-            modifiable.register(MAGENTA_SHULKER_BOX.key(), MAGENTA_SHULKER_BOX);
-            modifiable.register(LIGHT_BLUE_SHULKER_BOX.key(), LIGHT_BLUE_SHULKER_BOX);
-            modifiable.register(YELLOW_SHULKER_BOX.key(), YELLOW_SHULKER_BOX);
-            modifiable.register(LIME_SHULKER_BOX.key(), LIME_SHULKER_BOX);
-            modifiable.register(PINK_SHULKER_BOX.key(), PINK_SHULKER_BOX);
-            modifiable.register(GRAY_SHULKER_BOX.key(), GRAY_SHULKER_BOX);
-            modifiable.register(LIGHT_GRAY_SHULKER_BOX.key(), LIGHT_GRAY_SHULKER_BOX);
-            modifiable.register(CYAN_SHULKER_BOX.key(), CYAN_SHULKER_BOX);
-            modifiable.register(PURPLE_SHULKER_BOX.key(), PURPLE_SHULKER_BOX);
-            modifiable.register(BLUE_SHULKER_BOX.key(), BLUE_SHULKER_BOX);
-            modifiable.register(BROWN_SHULKER_BOX.key(), BROWN_SHULKER_BOX);
-            modifiable.register(GREEN_SHULKER_BOX.key(), GREEN_SHULKER_BOX);
-            modifiable.register(RED_SHULKER_BOX.key(), RED_SHULKER_BOX);
-            modifiable.register(BLACK_SHULKER_BOX.key(), BLACK_SHULKER_BOX);
-            modifiable.register(WHITE_GLAZED_TERRACOTTA.key(), WHITE_GLAZED_TERRACOTTA);
-            modifiable.register(ORANGE_GLAZED_TERRACOTTA.key(), ORANGE_GLAZED_TERRACOTTA);
-            modifiable.register(MAGENTA_GLAZED_TERRACOTTA.key(), MAGENTA_GLAZED_TERRACOTTA);
-            modifiable.register(LIGHT_BLUE_GLAZED_TERRACOTTA.key(), LIGHT_BLUE_GLAZED_TERRACOTTA);
-            modifiable.register(YELLOW_GLAZED_TERRACOTTA.key(), YELLOW_GLAZED_TERRACOTTA);
-            modifiable.register(LIME_GLAZED_TERRACOTTA.key(), LIME_GLAZED_TERRACOTTA);
-            modifiable.register(PINK_GLAZED_TERRACOTTA.key(), PINK_GLAZED_TERRACOTTA);
-            modifiable.register(GRAY_GLAZED_TERRACOTTA.key(), GRAY_GLAZED_TERRACOTTA);
-            modifiable.register(LIGHT_GRAY_GLAZED_TERRACOTTA.key(), LIGHT_GRAY_GLAZED_TERRACOTTA);
-            modifiable.register(CYAN_GLAZED_TERRACOTTA.key(), CYAN_GLAZED_TERRACOTTA);
-            modifiable.register(PURPLE_GLAZED_TERRACOTTA.key(), PURPLE_GLAZED_TERRACOTTA);
-            modifiable.register(BLUE_GLAZED_TERRACOTTA.key(), BLUE_GLAZED_TERRACOTTA);
-            modifiable.register(BROWN_GLAZED_TERRACOTTA.key(), BROWN_GLAZED_TERRACOTTA);
-            modifiable.register(GREEN_GLAZED_TERRACOTTA.key(), GREEN_GLAZED_TERRACOTTA);
-            modifiable.register(RED_GLAZED_TERRACOTTA.key(), RED_GLAZED_TERRACOTTA);
-            modifiable.register(BLACK_GLAZED_TERRACOTTA.key(), BLACK_GLAZED_TERRACOTTA);
-            modifiable.register(WHITE_CONCRETE.key(), WHITE_CONCRETE);
-            modifiable.register(ORANGE_CONCRETE.key(), ORANGE_CONCRETE);
-            modifiable.register(MAGENTA_CONCRETE.key(), MAGENTA_CONCRETE);
-            modifiable.register(LIGHT_BLUE_CONCRETE.key(), LIGHT_BLUE_CONCRETE);
-            modifiable.register(YELLOW_CONCRETE.key(), YELLOW_CONCRETE);
-            modifiable.register(LIME_CONCRETE.key(), LIME_CONCRETE);
-            modifiable.register(PINK_CONCRETE.key(), PINK_CONCRETE);
-            modifiable.register(GRAY_CONCRETE.key(), GRAY_CONCRETE);
-            modifiable.register(LIGHT_GRAY_CONCRETE.key(), LIGHT_GRAY_CONCRETE);
-            modifiable.register(CYAN_CONCRETE.key(), CYAN_CONCRETE);
-            modifiable.register(PURPLE_CONCRETE.key(), PURPLE_CONCRETE);
-            modifiable.register(BLUE_CONCRETE.key(), BLUE_CONCRETE);
-            modifiable.register(BROWN_CONCRETE.key(), BROWN_CONCRETE);
-            modifiable.register(GREEN_CONCRETE.key(), GREEN_CONCRETE);
-            modifiable.register(RED_CONCRETE.key(), RED_CONCRETE);
-            modifiable.register(BLACK_CONCRETE.key(), BLACK_CONCRETE);
-            modifiable.register(WHITE_CONCRETE_POWDER.key(), WHITE_CONCRETE_POWDER);
-            modifiable.register(ORANGE_CONCRETE_POWDER.key(), ORANGE_CONCRETE_POWDER);
-            modifiable.register(MAGENTA_CONCRETE_POWDER.key(), MAGENTA_CONCRETE_POWDER);
-            modifiable.register(LIGHT_BLUE_CONCRETE_POWDER.key(), LIGHT_BLUE_CONCRETE_POWDER);
-            modifiable.register(YELLOW_CONCRETE_POWDER.key(), YELLOW_CONCRETE_POWDER);
-            modifiable.register(LIME_CONCRETE_POWDER.key(), LIME_CONCRETE_POWDER);
-            modifiable.register(PINK_CONCRETE_POWDER.key(), PINK_CONCRETE_POWDER);
-            modifiable.register(GRAY_CONCRETE_POWDER.key(), GRAY_CONCRETE_POWDER);
-            modifiable.register(LIGHT_GRAY_CONCRETE_POWDER.key(), LIGHT_GRAY_CONCRETE_POWDER);
-            modifiable.register(CYAN_CONCRETE_POWDER.key(), CYAN_CONCRETE_POWDER);
-            modifiable.register(PURPLE_CONCRETE_POWDER.key(), PURPLE_CONCRETE_POWDER);
-            modifiable.register(BLUE_CONCRETE_POWDER.key(), BLUE_CONCRETE_POWDER);
-            modifiable.register(BROWN_CONCRETE_POWDER.key(), BROWN_CONCRETE_POWDER);
-            modifiable.register(GREEN_CONCRETE_POWDER.key(), GREEN_CONCRETE_POWDER);
-            modifiable.register(RED_CONCRETE_POWDER.key(), RED_CONCRETE_POWDER);
-            modifiable.register(BLACK_CONCRETE_POWDER.key(), BLACK_CONCRETE_POWDER);
-            modifiable.register(TURTLE_EGG.key(), TURTLE_EGG);
-            modifiable.register(SNIFFER_EGG.key(), SNIFFER_EGG);
-            modifiable.register(DEAD_TUBE_CORAL_BLOCK.key(), DEAD_TUBE_CORAL_BLOCK);
-            modifiable.register(DEAD_BRAIN_CORAL_BLOCK.key(), DEAD_BRAIN_CORAL_BLOCK);
-            modifiable.register(DEAD_BUBBLE_CORAL_BLOCK.key(), DEAD_BUBBLE_CORAL_BLOCK);
-            modifiable.register(DEAD_FIRE_CORAL_BLOCK.key(), DEAD_FIRE_CORAL_BLOCK);
-            modifiable.register(DEAD_HORN_CORAL_BLOCK.key(), DEAD_HORN_CORAL_BLOCK);
-            modifiable.register(TUBE_CORAL_BLOCK.key(), TUBE_CORAL_BLOCK);
-            modifiable.register(BRAIN_CORAL_BLOCK.key(), BRAIN_CORAL_BLOCK);
-            modifiable.register(BUBBLE_CORAL_BLOCK.key(), BUBBLE_CORAL_BLOCK);
-            modifiable.register(FIRE_CORAL_BLOCK.key(), FIRE_CORAL_BLOCK);
-            modifiable.register(HORN_CORAL_BLOCK.key(), HORN_CORAL_BLOCK);
-            modifiable.register(TUBE_CORAL.key(), TUBE_CORAL);
-            modifiable.register(BRAIN_CORAL.key(), BRAIN_CORAL);
-            modifiable.register(BUBBLE_CORAL.key(), BUBBLE_CORAL);
-            modifiable.register(FIRE_CORAL.key(), FIRE_CORAL);
-            modifiable.register(HORN_CORAL.key(), HORN_CORAL);
-            modifiable.register(DEAD_BRAIN_CORAL.key(), DEAD_BRAIN_CORAL);
-            modifiable.register(DEAD_BUBBLE_CORAL.key(), DEAD_BUBBLE_CORAL);
-            modifiable.register(DEAD_FIRE_CORAL.key(), DEAD_FIRE_CORAL);
-            modifiable.register(DEAD_HORN_CORAL.key(), DEAD_HORN_CORAL);
-            modifiable.register(DEAD_TUBE_CORAL.key(), DEAD_TUBE_CORAL);
-            modifiable.register(TUBE_CORAL_FAN.key(), TUBE_CORAL_FAN);
-            modifiable.register(BRAIN_CORAL_FAN.key(), BRAIN_CORAL_FAN);
-            modifiable.register(BUBBLE_CORAL_FAN.key(), BUBBLE_CORAL_FAN);
-            modifiable.register(FIRE_CORAL_FAN.key(), FIRE_CORAL_FAN);
-            modifiable.register(HORN_CORAL_FAN.key(), HORN_CORAL_FAN);
-            modifiable.register(DEAD_TUBE_CORAL_FAN.key(), DEAD_TUBE_CORAL_FAN);
-            modifiable.register(DEAD_BRAIN_CORAL_FAN.key(), DEAD_BRAIN_CORAL_FAN);
-            modifiable.register(DEAD_BUBBLE_CORAL_FAN.key(), DEAD_BUBBLE_CORAL_FAN);
-            modifiable.register(DEAD_FIRE_CORAL_FAN.key(), DEAD_FIRE_CORAL_FAN);
-            modifiable.register(DEAD_HORN_CORAL_FAN.key(), DEAD_HORN_CORAL_FAN);
-            modifiable.register(BLUE_ICE.key(), BLUE_ICE);
-            modifiable.register(CONDUIT.key(), CONDUIT);
-            modifiable.register(POLISHED_GRANITE_STAIRS.key(), POLISHED_GRANITE_STAIRS);
-            modifiable.register(SMOOTH_RED_SANDSTONE_STAIRS.key(), SMOOTH_RED_SANDSTONE_STAIRS);
-            modifiable.register(MOSSY_STONE_BRICK_STAIRS.key(), MOSSY_STONE_BRICK_STAIRS);
-            modifiable.register(POLISHED_DIORITE_STAIRS.key(), POLISHED_DIORITE_STAIRS);
-            modifiable.register(MOSSY_COBBLESTONE_STAIRS.key(), MOSSY_COBBLESTONE_STAIRS);
-            modifiable.register(END_STONE_BRICK_STAIRS.key(), END_STONE_BRICK_STAIRS);
-            modifiable.register(STONE_STAIRS.key(), STONE_STAIRS);
-            modifiable.register(SMOOTH_SANDSTONE_STAIRS.key(), SMOOTH_SANDSTONE_STAIRS);
-            modifiable.register(SMOOTH_QUARTZ_STAIRS.key(), SMOOTH_QUARTZ_STAIRS);
-            modifiable.register(GRANITE_STAIRS.key(), GRANITE_STAIRS);
-            modifiable.register(ANDESITE_STAIRS.key(), ANDESITE_STAIRS);
-            modifiable.register(RED_NETHER_BRICK_STAIRS.key(), RED_NETHER_BRICK_STAIRS);
-            modifiable.register(POLISHED_ANDESITE_STAIRS.key(), POLISHED_ANDESITE_STAIRS);
-            modifiable.register(DIORITE_STAIRS.key(), DIORITE_STAIRS);
-            modifiable.register(COBBLED_DEEPSLATE_STAIRS.key(), COBBLED_DEEPSLATE_STAIRS);
-            modifiable.register(POLISHED_DEEPSLATE_STAIRS.key(), POLISHED_DEEPSLATE_STAIRS);
-            modifiable.register(DEEPSLATE_BRICK_STAIRS.key(), DEEPSLATE_BRICK_STAIRS);
-            modifiable.register(DEEPSLATE_TILE_STAIRS.key(), DEEPSLATE_TILE_STAIRS);
-            modifiable.register(POLISHED_GRANITE_SLAB.key(), POLISHED_GRANITE_SLAB);
-            modifiable.register(SMOOTH_RED_SANDSTONE_SLAB.key(), SMOOTH_RED_SANDSTONE_SLAB);
-            modifiable.register(MOSSY_STONE_BRICK_SLAB.key(), MOSSY_STONE_BRICK_SLAB);
-            modifiable.register(POLISHED_DIORITE_SLAB.key(), POLISHED_DIORITE_SLAB);
-            modifiable.register(MOSSY_COBBLESTONE_SLAB.key(), MOSSY_COBBLESTONE_SLAB);
-            modifiable.register(END_STONE_BRICK_SLAB.key(), END_STONE_BRICK_SLAB);
-            modifiable.register(SMOOTH_SANDSTONE_SLAB.key(), SMOOTH_SANDSTONE_SLAB);
-            modifiable.register(SMOOTH_QUARTZ_SLAB.key(), SMOOTH_QUARTZ_SLAB);
-            modifiable.register(GRANITE_SLAB.key(), GRANITE_SLAB);
-            modifiable.register(ANDESITE_SLAB.key(), ANDESITE_SLAB);
-            modifiable.register(RED_NETHER_BRICK_SLAB.key(), RED_NETHER_BRICK_SLAB);
-            modifiable.register(POLISHED_ANDESITE_SLAB.key(), POLISHED_ANDESITE_SLAB);
-            modifiable.register(DIORITE_SLAB.key(), DIORITE_SLAB);
-            modifiable.register(COBBLED_DEEPSLATE_SLAB.key(), COBBLED_DEEPSLATE_SLAB);
-            modifiable.register(POLISHED_DEEPSLATE_SLAB.key(), POLISHED_DEEPSLATE_SLAB);
-            modifiable.register(DEEPSLATE_BRICK_SLAB.key(), DEEPSLATE_BRICK_SLAB);
-            modifiable.register(DEEPSLATE_TILE_SLAB.key(), DEEPSLATE_TILE_SLAB);
-            modifiable.register(SCAFFOLDING.key(), SCAFFOLDING);
-            modifiable.register(REDSTONE.key(), REDSTONE);
-            modifiable.register(REDSTONE_TORCH.key(), REDSTONE_TORCH);
-            modifiable.register(REDSTONE_BLOCK.key(), REDSTONE_BLOCK);
-            modifiable.register(REPEATER.key(), REPEATER);
-            modifiable.register(COMPARATOR.key(), COMPARATOR);
-            modifiable.register(PISTON.key(), PISTON);
-            modifiable.register(STICKY_PISTON.key(), STICKY_PISTON);
-            modifiable.register(SLIME_BLOCK.key(), SLIME_BLOCK);
-            modifiable.register(HONEY_BLOCK.key(), HONEY_BLOCK);
-            modifiable.register(OBSERVER.key(), OBSERVER);
-            modifiable.register(HOPPER.key(), HOPPER);
-            modifiable.register(DISPENSER.key(), DISPENSER);
-            modifiable.register(DROPPER.key(), DROPPER);
-            modifiable.register(LECTERN.key(), LECTERN);
-            modifiable.register(TARGET.key(), TARGET);
-            modifiable.register(LEVER.key(), LEVER);
-            modifiable.register(LIGHTNING_ROD.key(), LIGHTNING_ROD);
-            modifiable.register(DAYLIGHT_DETECTOR.key(), DAYLIGHT_DETECTOR);
-            modifiable.register(SCULK_SENSOR.key(), SCULK_SENSOR);
-            modifiable.register(CALIBRATED_SCULK_SENSOR.key(), CALIBRATED_SCULK_SENSOR);
-            modifiable.register(TRIPWIRE_HOOK.key(), TRIPWIRE_HOOK);
-            modifiable.register(TRAPPED_CHEST.key(), TRAPPED_CHEST);
-            modifiable.register(TNT.key(), TNT);
-            modifiable.register(REDSTONE_LAMP.key(), REDSTONE_LAMP);
-            modifiable.register(NOTE_BLOCK.key(), NOTE_BLOCK);
-            modifiable.register(STONE_BUTTON.key(), STONE_BUTTON);
-            modifiable.register(POLISHED_BLACKSTONE_BUTTON.key(), POLISHED_BLACKSTONE_BUTTON);
-            modifiable.register(OAK_BUTTON.key(), OAK_BUTTON);
-            modifiable.register(SPRUCE_BUTTON.key(), SPRUCE_BUTTON);
-            modifiable.register(BIRCH_BUTTON.key(), BIRCH_BUTTON);
-            modifiable.register(JUNGLE_BUTTON.key(), JUNGLE_BUTTON);
-            modifiable.register(ACACIA_BUTTON.key(), ACACIA_BUTTON);
-            modifiable.register(CHERRY_BUTTON.key(), CHERRY_BUTTON);
-            modifiable.register(DARK_OAK_BUTTON.key(), DARK_OAK_BUTTON);
-            modifiable.register(PALE_OAK_BUTTON.key(), PALE_OAK_BUTTON);
-            modifiable.register(MANGROVE_BUTTON.key(), MANGROVE_BUTTON);
-            modifiable.register(BAMBOO_BUTTON.key(), BAMBOO_BUTTON);
-            modifiable.register(CRIMSON_BUTTON.key(), CRIMSON_BUTTON);
-            modifiable.register(WARPED_BUTTON.key(), WARPED_BUTTON);
-            modifiable.register(STONE_PRESSURE_PLATE.key(), STONE_PRESSURE_PLATE);
-            modifiable.register(POLISHED_BLACKSTONE_PRESSURE_PLATE.key(), POLISHED_BLACKSTONE_PRESSURE_PLATE);
-            modifiable.register(LIGHT_WEIGHTED_PRESSURE_PLATE.key(), LIGHT_WEIGHTED_PRESSURE_PLATE);
-            modifiable.register(HEAVY_WEIGHTED_PRESSURE_PLATE.key(), HEAVY_WEIGHTED_PRESSURE_PLATE);
-            modifiable.register(OAK_PRESSURE_PLATE.key(), OAK_PRESSURE_PLATE);
-            modifiable.register(SPRUCE_PRESSURE_PLATE.key(), SPRUCE_PRESSURE_PLATE);
-            modifiable.register(BIRCH_PRESSURE_PLATE.key(), BIRCH_PRESSURE_PLATE);
-            modifiable.register(JUNGLE_PRESSURE_PLATE.key(), JUNGLE_PRESSURE_PLATE);
-            modifiable.register(ACACIA_PRESSURE_PLATE.key(), ACACIA_PRESSURE_PLATE);
-            modifiable.register(CHERRY_PRESSURE_PLATE.key(), CHERRY_PRESSURE_PLATE);
-            modifiable.register(DARK_OAK_PRESSURE_PLATE.key(), DARK_OAK_PRESSURE_PLATE);
-            modifiable.register(PALE_OAK_PRESSURE_PLATE.key(), PALE_OAK_PRESSURE_PLATE);
-            modifiable.register(MANGROVE_PRESSURE_PLATE.key(), MANGROVE_PRESSURE_PLATE);
-            modifiable.register(BAMBOO_PRESSURE_PLATE.key(), BAMBOO_PRESSURE_PLATE);
-            modifiable.register(CRIMSON_PRESSURE_PLATE.key(), CRIMSON_PRESSURE_PLATE);
-            modifiable.register(WARPED_PRESSURE_PLATE.key(), WARPED_PRESSURE_PLATE);
-            modifiable.register(IRON_DOOR.key(), IRON_DOOR);
-            modifiable.register(OAK_DOOR.key(), OAK_DOOR);
-            modifiable.register(SPRUCE_DOOR.key(), SPRUCE_DOOR);
-            modifiable.register(BIRCH_DOOR.key(), BIRCH_DOOR);
-            modifiable.register(JUNGLE_DOOR.key(), JUNGLE_DOOR);
-            modifiable.register(ACACIA_DOOR.key(), ACACIA_DOOR);
-            modifiable.register(CHERRY_DOOR.key(), CHERRY_DOOR);
-            modifiable.register(DARK_OAK_DOOR.key(), DARK_OAK_DOOR);
-            modifiable.register(PALE_OAK_DOOR.key(), PALE_OAK_DOOR);
-            modifiable.register(MANGROVE_DOOR.key(), MANGROVE_DOOR);
-            modifiable.register(BAMBOO_DOOR.key(), BAMBOO_DOOR);
-            modifiable.register(CRIMSON_DOOR.key(), CRIMSON_DOOR);
-            modifiable.register(WARPED_DOOR.key(), WARPED_DOOR);
-            modifiable.register(COPPER_DOOR.key(), COPPER_DOOR);
-            modifiable.register(EXPOSED_COPPER_DOOR.key(), EXPOSED_COPPER_DOOR);
-            modifiable.register(WEATHERED_COPPER_DOOR.key(), WEATHERED_COPPER_DOOR);
-            modifiable.register(OXIDIZED_COPPER_DOOR.key(), OXIDIZED_COPPER_DOOR);
-            modifiable.register(WAXED_COPPER_DOOR.key(), WAXED_COPPER_DOOR);
-            modifiable.register(WAXED_EXPOSED_COPPER_DOOR.key(), WAXED_EXPOSED_COPPER_DOOR);
-            modifiable.register(WAXED_WEATHERED_COPPER_DOOR.key(), WAXED_WEATHERED_COPPER_DOOR);
-            modifiable.register(WAXED_OXIDIZED_COPPER_DOOR.key(), WAXED_OXIDIZED_COPPER_DOOR);
-            modifiable.register(IRON_TRAPDOOR.key(), IRON_TRAPDOOR);
-            modifiable.register(OAK_TRAPDOOR.key(), OAK_TRAPDOOR);
-            modifiable.register(SPRUCE_TRAPDOOR.key(), SPRUCE_TRAPDOOR);
-            modifiable.register(BIRCH_TRAPDOOR.key(), BIRCH_TRAPDOOR);
-            modifiable.register(JUNGLE_TRAPDOOR.key(), JUNGLE_TRAPDOOR);
-            modifiable.register(ACACIA_TRAPDOOR.key(), ACACIA_TRAPDOOR);
-            modifiable.register(CHERRY_TRAPDOOR.key(), CHERRY_TRAPDOOR);
-            modifiable.register(DARK_OAK_TRAPDOOR.key(), DARK_OAK_TRAPDOOR);
-            modifiable.register(PALE_OAK_TRAPDOOR.key(), PALE_OAK_TRAPDOOR);
-            modifiable.register(MANGROVE_TRAPDOOR.key(), MANGROVE_TRAPDOOR);
-            modifiable.register(BAMBOO_TRAPDOOR.key(), BAMBOO_TRAPDOOR);
-            modifiable.register(CRIMSON_TRAPDOOR.key(), CRIMSON_TRAPDOOR);
-            modifiable.register(WARPED_TRAPDOOR.key(), WARPED_TRAPDOOR);
-            modifiable.register(COPPER_TRAPDOOR.key(), COPPER_TRAPDOOR);
-            modifiable.register(EXPOSED_COPPER_TRAPDOOR.key(), EXPOSED_COPPER_TRAPDOOR);
-            modifiable.register(WEATHERED_COPPER_TRAPDOOR.key(), WEATHERED_COPPER_TRAPDOOR);
-            modifiable.register(OXIDIZED_COPPER_TRAPDOOR.key(), OXIDIZED_COPPER_TRAPDOOR);
-            modifiable.register(WAXED_COPPER_TRAPDOOR.key(), WAXED_COPPER_TRAPDOOR);
-            modifiable.register(WAXED_EXPOSED_COPPER_TRAPDOOR.key(), WAXED_EXPOSED_COPPER_TRAPDOOR);
-            modifiable.register(WAXED_WEATHERED_COPPER_TRAPDOOR.key(), WAXED_WEATHERED_COPPER_TRAPDOOR);
-            modifiable.register(WAXED_OXIDIZED_COPPER_TRAPDOOR.key(), WAXED_OXIDIZED_COPPER_TRAPDOOR);
-            modifiable.register(OAK_FENCE_GATE.key(), OAK_FENCE_GATE);
-            modifiable.register(SPRUCE_FENCE_GATE.key(), SPRUCE_FENCE_GATE);
-            modifiable.register(BIRCH_FENCE_GATE.key(), BIRCH_FENCE_GATE);
-            modifiable.register(JUNGLE_FENCE_GATE.key(), JUNGLE_FENCE_GATE);
-            modifiable.register(ACACIA_FENCE_GATE.key(), ACACIA_FENCE_GATE);
-            modifiable.register(CHERRY_FENCE_GATE.key(), CHERRY_FENCE_GATE);
-            modifiable.register(DARK_OAK_FENCE_GATE.key(), DARK_OAK_FENCE_GATE);
-            modifiable.register(PALE_OAK_FENCE_GATE.key(), PALE_OAK_FENCE_GATE);
-            modifiable.register(MANGROVE_FENCE_GATE.key(), MANGROVE_FENCE_GATE);
-            modifiable.register(BAMBOO_FENCE_GATE.key(), BAMBOO_FENCE_GATE);
-            modifiable.register(CRIMSON_FENCE_GATE.key(), CRIMSON_FENCE_GATE);
-            modifiable.register(WARPED_FENCE_GATE.key(), WARPED_FENCE_GATE);
-            modifiable.register(POWERED_RAIL.key(), POWERED_RAIL);
-            modifiable.register(DETECTOR_RAIL.key(), DETECTOR_RAIL);
-            modifiable.register(RAIL.key(), RAIL);
-            modifiable.register(ACTIVATOR_RAIL.key(), ACTIVATOR_RAIL);
-            modifiable.register(SADDLE.key(), SADDLE);
-            modifiable.register(MINECART.key(), MINECART);
-            modifiable.register(CHEST_MINECART.key(), CHEST_MINECART);
-            modifiable.register(FURNACE_MINECART.key(), FURNACE_MINECART);
-            modifiable.register(TNT_MINECART.key(), TNT_MINECART);
-            modifiable.register(HOPPER_MINECART.key(), HOPPER_MINECART);
-            modifiable.register(CARROT_ON_A_STICK.key(), CARROT_ON_A_STICK);
-            modifiable.register(WARPED_FUNGUS_ON_A_STICK.key(), WARPED_FUNGUS_ON_A_STICK);
-            modifiable.register(PHANTOM_MEMBRANE.key(), PHANTOM_MEMBRANE);
-            modifiable.register(ELYTRA.key(), ELYTRA);
-            modifiable.register(OAK_BOAT.key(), OAK_BOAT);
-            modifiable.register(OAK_CHEST_BOAT.key(), OAK_CHEST_BOAT);
-            modifiable.register(SPRUCE_BOAT.key(), SPRUCE_BOAT);
-            modifiable.register(SPRUCE_CHEST_BOAT.key(), SPRUCE_CHEST_BOAT);
-            modifiable.register(BIRCH_BOAT.key(), BIRCH_BOAT);
-            modifiable.register(BIRCH_CHEST_BOAT.key(), BIRCH_CHEST_BOAT);
-            modifiable.register(JUNGLE_BOAT.key(), JUNGLE_BOAT);
-            modifiable.register(JUNGLE_CHEST_BOAT.key(), JUNGLE_CHEST_BOAT);
-            modifiable.register(ACACIA_BOAT.key(), ACACIA_BOAT);
-            modifiable.register(ACACIA_CHEST_BOAT.key(), ACACIA_CHEST_BOAT);
-            modifiable.register(CHERRY_BOAT.key(), CHERRY_BOAT);
-            modifiable.register(CHERRY_CHEST_BOAT.key(), CHERRY_CHEST_BOAT);
-            modifiable.register(DARK_OAK_BOAT.key(), DARK_OAK_BOAT);
-            modifiable.register(DARK_OAK_CHEST_BOAT.key(), DARK_OAK_CHEST_BOAT);
-            modifiable.register(PALE_OAK_BOAT.key(), PALE_OAK_BOAT);
-            modifiable.register(PALE_OAK_CHEST_BOAT.key(), PALE_OAK_CHEST_BOAT);
-            modifiable.register(MANGROVE_BOAT.key(), MANGROVE_BOAT);
-            modifiable.register(MANGROVE_CHEST_BOAT.key(), MANGROVE_CHEST_BOAT);
-            modifiable.register(BAMBOO_RAFT.key(), BAMBOO_RAFT);
-            modifiable.register(BAMBOO_CHEST_RAFT.key(), BAMBOO_CHEST_RAFT);
-            modifiable.register(STRUCTURE_BLOCK.key(), STRUCTURE_BLOCK);
-            modifiable.register(JIGSAW.key(), JIGSAW);
-            modifiable.register(TEST_BLOCK.key(), TEST_BLOCK);
-            modifiable.register(TEST_INSTANCE_BLOCK.key(), TEST_INSTANCE_BLOCK);
-            modifiable.register(TURTLE_HELMET.key(), TURTLE_HELMET);
-            modifiable.register(TURTLE_SCUTE.key(), TURTLE_SCUTE);
-            modifiable.register(ARMADILLO_SCUTE.key(), ARMADILLO_SCUTE);
-            modifiable.register(WOLF_ARMOR.key(), WOLF_ARMOR);
-            modifiable.register(FLINT_AND_STEEL.key(), FLINT_AND_STEEL);
-            modifiable.register(BOWL.key(), BOWL);
-            modifiable.register(APPLE.key(), APPLE);
-            modifiable.register(BOW.key(), BOW);
-            modifiable.register(ARROW.key(), ARROW);
-            modifiable.register(COAL.key(), COAL);
-            modifiable.register(CHARCOAL.key(), CHARCOAL);
-            modifiable.register(DIAMOND.key(), DIAMOND);
-            modifiable.register(EMERALD.key(), EMERALD);
-            modifiable.register(LAPIS_LAZULI.key(), LAPIS_LAZULI);
-            modifiable.register(QUARTZ.key(), QUARTZ);
-            modifiable.register(AMETHYST_SHARD.key(), AMETHYST_SHARD);
-            modifiable.register(RAW_IRON.key(), RAW_IRON);
-            modifiable.register(IRON_INGOT.key(), IRON_INGOT);
-            modifiable.register(RAW_COPPER.key(), RAW_COPPER);
-            modifiable.register(COPPER_INGOT.key(), COPPER_INGOT);
-            modifiable.register(RAW_GOLD.key(), RAW_GOLD);
-            modifiable.register(GOLD_INGOT.key(), GOLD_INGOT);
-            modifiable.register(NETHERITE_INGOT.key(), NETHERITE_INGOT);
-            modifiable.register(NETHERITE_SCRAP.key(), NETHERITE_SCRAP);
-            modifiable.register(WOODEN_SWORD.key(), WOODEN_SWORD);
-            modifiable.register(WOODEN_SHOVEL.key(), WOODEN_SHOVEL);
-            modifiable.register(WOODEN_PICKAXE.key(), WOODEN_PICKAXE);
-            modifiable.register(WOODEN_AXE.key(), WOODEN_AXE);
-            modifiable.register(WOODEN_HOE.key(), WOODEN_HOE);
-            modifiable.register(STONE_SWORD.key(), STONE_SWORD);
-            modifiable.register(STONE_SHOVEL.key(), STONE_SHOVEL);
-            modifiable.register(STONE_PICKAXE.key(), STONE_PICKAXE);
-            modifiable.register(STONE_AXE.key(), STONE_AXE);
-            modifiable.register(STONE_HOE.key(), STONE_HOE);
-            modifiable.register(GOLDEN_SWORD.key(), GOLDEN_SWORD);
-            modifiable.register(GOLDEN_SHOVEL.key(), GOLDEN_SHOVEL);
-            modifiable.register(GOLDEN_PICKAXE.key(), GOLDEN_PICKAXE);
-            modifiable.register(GOLDEN_AXE.key(), GOLDEN_AXE);
-            modifiable.register(GOLDEN_HOE.key(), GOLDEN_HOE);
-            modifiable.register(IRON_SWORD.key(), IRON_SWORD);
-            modifiable.register(IRON_SHOVEL.key(), IRON_SHOVEL);
-            modifiable.register(IRON_PICKAXE.key(), IRON_PICKAXE);
-            modifiable.register(IRON_AXE.key(), IRON_AXE);
-            modifiable.register(IRON_HOE.key(), IRON_HOE);
-            modifiable.register(DIAMOND_SWORD.key(), DIAMOND_SWORD);
-            modifiable.register(DIAMOND_SHOVEL.key(), DIAMOND_SHOVEL);
-            modifiable.register(DIAMOND_PICKAXE.key(), DIAMOND_PICKAXE);
-            modifiable.register(DIAMOND_AXE.key(), DIAMOND_AXE);
-            modifiable.register(DIAMOND_HOE.key(), DIAMOND_HOE);
-            modifiable.register(NETHERITE_SWORD.key(), NETHERITE_SWORD);
-            modifiable.register(NETHERITE_SHOVEL.key(), NETHERITE_SHOVEL);
-            modifiable.register(NETHERITE_PICKAXE.key(), NETHERITE_PICKAXE);
-            modifiable.register(NETHERITE_AXE.key(), NETHERITE_AXE);
-            modifiable.register(NETHERITE_HOE.key(), NETHERITE_HOE);
-            modifiable.register(STICK.key(), STICK);
-            modifiable.register(MUSHROOM_STEW.key(), MUSHROOM_STEW);
-            modifiable.register(STRING.key(), STRING);
-            modifiable.register(FEATHER.key(), FEATHER);
-            modifiable.register(GUNPOWDER.key(), GUNPOWDER);
-            modifiable.register(WHEAT_SEEDS.key(), WHEAT_SEEDS);
-            modifiable.register(WHEAT.key(), WHEAT);
-            modifiable.register(BREAD.key(), BREAD);
-            modifiable.register(LEATHER_HELMET.key(), LEATHER_HELMET);
-            modifiable.register(LEATHER_CHESTPLATE.key(), LEATHER_CHESTPLATE);
-            modifiable.register(LEATHER_LEGGINGS.key(), LEATHER_LEGGINGS);
-            modifiable.register(LEATHER_BOOTS.key(), LEATHER_BOOTS);
-            modifiable.register(CHAINMAIL_HELMET.key(), CHAINMAIL_HELMET);
-            modifiable.register(CHAINMAIL_CHESTPLATE.key(), CHAINMAIL_CHESTPLATE);
-            modifiable.register(CHAINMAIL_LEGGINGS.key(), CHAINMAIL_LEGGINGS);
-            modifiable.register(CHAINMAIL_BOOTS.key(), CHAINMAIL_BOOTS);
-            modifiable.register(IRON_HELMET.key(), IRON_HELMET);
-            modifiable.register(IRON_CHESTPLATE.key(), IRON_CHESTPLATE);
-            modifiable.register(IRON_LEGGINGS.key(), IRON_LEGGINGS);
-            modifiable.register(IRON_BOOTS.key(), IRON_BOOTS);
-            modifiable.register(DIAMOND_HELMET.key(), DIAMOND_HELMET);
-            modifiable.register(DIAMOND_CHESTPLATE.key(), DIAMOND_CHESTPLATE);
-            modifiable.register(DIAMOND_LEGGINGS.key(), DIAMOND_LEGGINGS);
-            modifiable.register(DIAMOND_BOOTS.key(), DIAMOND_BOOTS);
-            modifiable.register(GOLDEN_HELMET.key(), GOLDEN_HELMET);
-            modifiable.register(GOLDEN_CHESTPLATE.key(), GOLDEN_CHESTPLATE);
-            modifiable.register(GOLDEN_LEGGINGS.key(), GOLDEN_LEGGINGS);
-            modifiable.register(GOLDEN_BOOTS.key(), GOLDEN_BOOTS);
-            modifiable.register(NETHERITE_HELMET.key(), NETHERITE_HELMET);
-            modifiable.register(NETHERITE_CHESTPLATE.key(), NETHERITE_CHESTPLATE);
-            modifiable.register(NETHERITE_LEGGINGS.key(), NETHERITE_LEGGINGS);
-            modifiable.register(NETHERITE_BOOTS.key(), NETHERITE_BOOTS);
-            modifiable.register(FLINT.key(), FLINT);
-            modifiable.register(PORKCHOP.key(), PORKCHOP);
-            modifiable.register(COOKED_PORKCHOP.key(), COOKED_PORKCHOP);
-            modifiable.register(PAINTING.key(), PAINTING);
-            modifiable.register(GOLDEN_APPLE.key(), GOLDEN_APPLE);
-            modifiable.register(ENCHANTED_GOLDEN_APPLE.key(), ENCHANTED_GOLDEN_APPLE);
-            modifiable.register(OAK_SIGN.key(), OAK_SIGN);
-            modifiable.register(SPRUCE_SIGN.key(), SPRUCE_SIGN);
-            modifiable.register(BIRCH_SIGN.key(), BIRCH_SIGN);
-            modifiable.register(JUNGLE_SIGN.key(), JUNGLE_SIGN);
-            modifiable.register(ACACIA_SIGN.key(), ACACIA_SIGN);
-            modifiable.register(CHERRY_SIGN.key(), CHERRY_SIGN);
-            modifiable.register(DARK_OAK_SIGN.key(), DARK_OAK_SIGN);
-            modifiable.register(PALE_OAK_SIGN.key(), PALE_OAK_SIGN);
-            modifiable.register(MANGROVE_SIGN.key(), MANGROVE_SIGN);
-            modifiable.register(BAMBOO_SIGN.key(), BAMBOO_SIGN);
-            modifiable.register(CRIMSON_SIGN.key(), CRIMSON_SIGN);
-            modifiable.register(WARPED_SIGN.key(), WARPED_SIGN);
-            modifiable.register(OAK_HANGING_SIGN.key(), OAK_HANGING_SIGN);
-            modifiable.register(SPRUCE_HANGING_SIGN.key(), SPRUCE_HANGING_SIGN);
-            modifiable.register(BIRCH_HANGING_SIGN.key(), BIRCH_HANGING_SIGN);
-            modifiable.register(JUNGLE_HANGING_SIGN.key(), JUNGLE_HANGING_SIGN);
-            modifiable.register(ACACIA_HANGING_SIGN.key(), ACACIA_HANGING_SIGN);
-            modifiable.register(CHERRY_HANGING_SIGN.key(), CHERRY_HANGING_SIGN);
-            modifiable.register(DARK_OAK_HANGING_SIGN.key(), DARK_OAK_HANGING_SIGN);
-            modifiable.register(PALE_OAK_HANGING_SIGN.key(), PALE_OAK_HANGING_SIGN);
-            modifiable.register(MANGROVE_HANGING_SIGN.key(), MANGROVE_HANGING_SIGN);
-            modifiable.register(BAMBOO_HANGING_SIGN.key(), BAMBOO_HANGING_SIGN);
-            modifiable.register(CRIMSON_HANGING_SIGN.key(), CRIMSON_HANGING_SIGN);
-            modifiable.register(WARPED_HANGING_SIGN.key(), WARPED_HANGING_SIGN);
-            modifiable.register(BUCKET.key(), BUCKET);
-            modifiable.register(WATER_BUCKET.key(), WATER_BUCKET);
-            modifiable.register(LAVA_BUCKET.key(), LAVA_BUCKET);
-            modifiable.register(POWDER_SNOW_BUCKET.key(), POWDER_SNOW_BUCKET);
-            modifiable.register(SNOWBALL.key(), SNOWBALL);
-            modifiable.register(LEATHER.key(), LEATHER);
-            modifiable.register(MILK_BUCKET.key(), MILK_BUCKET);
-            modifiable.register(PUFFERFISH_BUCKET.key(), PUFFERFISH_BUCKET);
-            modifiable.register(SALMON_BUCKET.key(), SALMON_BUCKET);
-            modifiable.register(COD_BUCKET.key(), COD_BUCKET);
-            modifiable.register(TROPICAL_FISH_BUCKET.key(), TROPICAL_FISH_BUCKET);
-            modifiable.register(AXOLOTL_BUCKET.key(), AXOLOTL_BUCKET);
-            modifiable.register(TADPOLE_BUCKET.key(), TADPOLE_BUCKET);
-            modifiable.register(BRICK.key(), BRICK);
-            modifiable.register(CLAY_BALL.key(), CLAY_BALL);
-            modifiable.register(DRIED_KELP_BLOCK.key(), DRIED_KELP_BLOCK);
-            modifiable.register(PAPER.key(), PAPER);
-            modifiable.register(BOOK.key(), BOOK);
-            modifiable.register(SLIME_BALL.key(), SLIME_BALL);
-            modifiable.register(EGG.key(), EGG);
-            modifiable.register(BLUE_EGG.key(), BLUE_EGG);
-            modifiable.register(BROWN_EGG.key(), BROWN_EGG);
-            modifiable.register(COMPASS.key(), COMPASS);
-            modifiable.register(RECOVERY_COMPASS.key(), RECOVERY_COMPASS);
-            modifiable.register(BUNDLE.key(), BUNDLE);
-            modifiable.register(WHITE_BUNDLE.key(), WHITE_BUNDLE);
-            modifiable.register(ORANGE_BUNDLE.key(), ORANGE_BUNDLE);
-            modifiable.register(MAGENTA_BUNDLE.key(), MAGENTA_BUNDLE);
-            modifiable.register(LIGHT_BLUE_BUNDLE.key(), LIGHT_BLUE_BUNDLE);
-            modifiable.register(YELLOW_BUNDLE.key(), YELLOW_BUNDLE);
-            modifiable.register(LIME_BUNDLE.key(), LIME_BUNDLE);
-            modifiable.register(PINK_BUNDLE.key(), PINK_BUNDLE);
-            modifiable.register(GRAY_BUNDLE.key(), GRAY_BUNDLE);
-            modifiable.register(LIGHT_GRAY_BUNDLE.key(), LIGHT_GRAY_BUNDLE);
-            modifiable.register(CYAN_BUNDLE.key(), CYAN_BUNDLE);
-            modifiable.register(PURPLE_BUNDLE.key(), PURPLE_BUNDLE);
-            modifiable.register(BLUE_BUNDLE.key(), BLUE_BUNDLE);
-            modifiable.register(BROWN_BUNDLE.key(), BROWN_BUNDLE);
-            modifiable.register(GREEN_BUNDLE.key(), GREEN_BUNDLE);
-            modifiable.register(RED_BUNDLE.key(), RED_BUNDLE);
-            modifiable.register(BLACK_BUNDLE.key(), BLACK_BUNDLE);
-            modifiable.register(FISHING_ROD.key(), FISHING_ROD);
-            modifiable.register(CLOCK.key(), CLOCK);
-            modifiable.register(SPYGLASS.key(), SPYGLASS);
-            modifiable.register(GLOWSTONE_DUST.key(), GLOWSTONE_DUST);
-            modifiable.register(COD.key(), COD);
-            modifiable.register(SALMON.key(), SALMON);
-            modifiable.register(TROPICAL_FISH.key(), TROPICAL_FISH);
-            modifiable.register(PUFFERFISH.key(), PUFFERFISH);
-            modifiable.register(COOKED_COD.key(), COOKED_COD);
-            modifiable.register(COOKED_SALMON.key(), COOKED_SALMON);
-            modifiable.register(INK_SAC.key(), INK_SAC);
-            modifiable.register(GLOW_INK_SAC.key(), GLOW_INK_SAC);
-            modifiable.register(COCOA_BEANS.key(), COCOA_BEANS);
-            modifiable.register(WHITE_DYE.key(), WHITE_DYE);
-            modifiable.register(ORANGE_DYE.key(), ORANGE_DYE);
-            modifiable.register(MAGENTA_DYE.key(), MAGENTA_DYE);
-            modifiable.register(LIGHT_BLUE_DYE.key(), LIGHT_BLUE_DYE);
-            modifiable.register(YELLOW_DYE.key(), YELLOW_DYE);
-            modifiable.register(LIME_DYE.key(), LIME_DYE);
-            modifiable.register(PINK_DYE.key(), PINK_DYE);
-            modifiable.register(GRAY_DYE.key(), GRAY_DYE);
-            modifiable.register(LIGHT_GRAY_DYE.key(), LIGHT_GRAY_DYE);
-            modifiable.register(CYAN_DYE.key(), CYAN_DYE);
-            modifiable.register(PURPLE_DYE.key(), PURPLE_DYE);
-            modifiable.register(BLUE_DYE.key(), BLUE_DYE);
-            modifiable.register(BROWN_DYE.key(), BROWN_DYE);
-            modifiable.register(GREEN_DYE.key(), GREEN_DYE);
-            modifiable.register(RED_DYE.key(), RED_DYE);
-            modifiable.register(BLACK_DYE.key(), BLACK_DYE);
-            modifiable.register(BONE_MEAL.key(), BONE_MEAL);
-            modifiable.register(BONE.key(), BONE);
-            modifiable.register(SUGAR.key(), SUGAR);
-            modifiable.register(CAKE.key(), CAKE);
-            modifiable.register(WHITE_BED.key(), WHITE_BED);
-            modifiable.register(ORANGE_BED.key(), ORANGE_BED);
-            modifiable.register(MAGENTA_BED.key(), MAGENTA_BED);
-            modifiable.register(LIGHT_BLUE_BED.key(), LIGHT_BLUE_BED);
-            modifiable.register(YELLOW_BED.key(), YELLOW_BED);
-            modifiable.register(LIME_BED.key(), LIME_BED);
-            modifiable.register(PINK_BED.key(), PINK_BED);
-            modifiable.register(GRAY_BED.key(), GRAY_BED);
-            modifiable.register(LIGHT_GRAY_BED.key(), LIGHT_GRAY_BED);
-            modifiable.register(CYAN_BED.key(), CYAN_BED);
-            modifiable.register(PURPLE_BED.key(), PURPLE_BED);
-            modifiable.register(BLUE_BED.key(), BLUE_BED);
-            modifiable.register(BROWN_BED.key(), BROWN_BED);
-            modifiable.register(GREEN_BED.key(), GREEN_BED);
-            modifiable.register(RED_BED.key(), RED_BED);
-            modifiable.register(BLACK_BED.key(), BLACK_BED);
-            modifiable.register(COOKIE.key(), COOKIE);
-            modifiable.register(CRAFTER.key(), CRAFTER);
-            modifiable.register(FILLED_MAP.key(), FILLED_MAP);
-            modifiable.register(SHEARS.key(), SHEARS);
-            modifiable.register(MELON_SLICE.key(), MELON_SLICE);
-            modifiable.register(DRIED_KELP.key(), DRIED_KELP);
-            modifiable.register(PUMPKIN_SEEDS.key(), PUMPKIN_SEEDS);
-            modifiable.register(MELON_SEEDS.key(), MELON_SEEDS);
-            modifiable.register(BEEF.key(), BEEF);
-            modifiable.register(COOKED_BEEF.key(), COOKED_BEEF);
-            modifiable.register(CHICKEN.key(), CHICKEN);
-            modifiable.register(COOKED_CHICKEN.key(), COOKED_CHICKEN);
-            modifiable.register(ROTTEN_FLESH.key(), ROTTEN_FLESH);
-            modifiable.register(ENDER_PEARL.key(), ENDER_PEARL);
-            modifiable.register(BLAZE_ROD.key(), BLAZE_ROD);
-            modifiable.register(GHAST_TEAR.key(), GHAST_TEAR);
-            modifiable.register(GOLD_NUGGET.key(), GOLD_NUGGET);
-            modifiable.register(NETHER_WART.key(), NETHER_WART);
-            modifiable.register(GLASS_BOTTLE.key(), GLASS_BOTTLE);
-            modifiable.register(POTION.key(), POTION);
-            modifiable.register(SPIDER_EYE.key(), SPIDER_EYE);
-            modifiable.register(FERMENTED_SPIDER_EYE.key(), FERMENTED_SPIDER_EYE);
-            modifiable.register(BLAZE_POWDER.key(), BLAZE_POWDER);
-            modifiable.register(MAGMA_CREAM.key(), MAGMA_CREAM);
-            modifiable.register(BREWING_STAND.key(), BREWING_STAND);
-            modifiable.register(CAULDRON.key(), CAULDRON);
-            modifiable.register(ENDER_EYE.key(), ENDER_EYE);
-            modifiable.register(GLISTERING_MELON_SLICE.key(), GLISTERING_MELON_SLICE);
-            modifiable.register(ARMADILLO_SPAWN_EGG.key(), ARMADILLO_SPAWN_EGG);
-            modifiable.register(ALLAY_SPAWN_EGG.key(), ALLAY_SPAWN_EGG);
-            modifiable.register(AXOLOTL_SPAWN_EGG.key(), AXOLOTL_SPAWN_EGG);
-            modifiable.register(BAT_SPAWN_EGG.key(), BAT_SPAWN_EGG);
-            modifiable.register(BEE_SPAWN_EGG.key(), BEE_SPAWN_EGG);
-            modifiable.register(BLAZE_SPAWN_EGG.key(), BLAZE_SPAWN_EGG);
-            modifiable.register(BOGGED_SPAWN_EGG.key(), BOGGED_SPAWN_EGG);
-            modifiable.register(BREEZE_SPAWN_EGG.key(), BREEZE_SPAWN_EGG);
-            modifiable.register(CAT_SPAWN_EGG.key(), CAT_SPAWN_EGG);
-            modifiable.register(CAMEL_SPAWN_EGG.key(), CAMEL_SPAWN_EGG);
-            modifiable.register(CAVE_SPIDER_SPAWN_EGG.key(), CAVE_SPIDER_SPAWN_EGG);
-            modifiable.register(CHICKEN_SPAWN_EGG.key(), CHICKEN_SPAWN_EGG);
-            modifiable.register(COD_SPAWN_EGG.key(), COD_SPAWN_EGG);
-            modifiable.register(COW_SPAWN_EGG.key(), COW_SPAWN_EGG);
-            modifiable.register(CREEPER_SPAWN_EGG.key(), CREEPER_SPAWN_EGG);
-            modifiable.register(DOLPHIN_SPAWN_EGG.key(), DOLPHIN_SPAWN_EGG);
-            modifiable.register(DONKEY_SPAWN_EGG.key(), DONKEY_SPAWN_EGG);
-            modifiable.register(DROWNED_SPAWN_EGG.key(), DROWNED_SPAWN_EGG);
-            modifiable.register(ELDER_GUARDIAN_SPAWN_EGG.key(), ELDER_GUARDIAN_SPAWN_EGG);
-            modifiable.register(ENDER_DRAGON_SPAWN_EGG.key(), ENDER_DRAGON_SPAWN_EGG);
-            modifiable.register(ENDERMAN_SPAWN_EGG.key(), ENDERMAN_SPAWN_EGG);
-            modifiable.register(ENDERMITE_SPAWN_EGG.key(), ENDERMITE_SPAWN_EGG);
-            modifiable.register(EVOKER_SPAWN_EGG.key(), EVOKER_SPAWN_EGG);
-            modifiable.register(FOX_SPAWN_EGG.key(), FOX_SPAWN_EGG);
-            modifiable.register(FROG_SPAWN_EGG.key(), FROG_SPAWN_EGG);
-            modifiable.register(GHAST_SPAWN_EGG.key(), GHAST_SPAWN_EGG);
-            modifiable.register(GLOW_SQUID_SPAWN_EGG.key(), GLOW_SQUID_SPAWN_EGG);
-            modifiable.register(GOAT_SPAWN_EGG.key(), GOAT_SPAWN_EGG);
-            modifiable.register(GUARDIAN_SPAWN_EGG.key(), GUARDIAN_SPAWN_EGG);
-            modifiable.register(HOGLIN_SPAWN_EGG.key(), HOGLIN_SPAWN_EGG);
-            modifiable.register(HORSE_SPAWN_EGG.key(), HORSE_SPAWN_EGG);
-            modifiable.register(HUSK_SPAWN_EGG.key(), HUSK_SPAWN_EGG);
-            modifiable.register(IRON_GOLEM_SPAWN_EGG.key(), IRON_GOLEM_SPAWN_EGG);
-            modifiable.register(LLAMA_SPAWN_EGG.key(), LLAMA_SPAWN_EGG);
-            modifiable.register(MAGMA_CUBE_SPAWN_EGG.key(), MAGMA_CUBE_SPAWN_EGG);
-            modifiable.register(MOOSHROOM_SPAWN_EGG.key(), MOOSHROOM_SPAWN_EGG);
-            modifiable.register(MULE_SPAWN_EGG.key(), MULE_SPAWN_EGG);
-            modifiable.register(OCELOT_SPAWN_EGG.key(), OCELOT_SPAWN_EGG);
-            modifiable.register(PANDA_SPAWN_EGG.key(), PANDA_SPAWN_EGG);
-            modifiable.register(PARROT_SPAWN_EGG.key(), PARROT_SPAWN_EGG);
-            modifiable.register(PHANTOM_SPAWN_EGG.key(), PHANTOM_SPAWN_EGG);
-            modifiable.register(PIG_SPAWN_EGG.key(), PIG_SPAWN_EGG);
-            modifiable.register(PIGLIN_SPAWN_EGG.key(), PIGLIN_SPAWN_EGG);
-            modifiable.register(PIGLIN_BRUTE_SPAWN_EGG.key(), PIGLIN_BRUTE_SPAWN_EGG);
-            modifiable.register(PILLAGER_SPAWN_EGG.key(), PILLAGER_SPAWN_EGG);
-            modifiable.register(POLAR_BEAR_SPAWN_EGG.key(), POLAR_BEAR_SPAWN_EGG);
-            modifiable.register(PUFFERFISH_SPAWN_EGG.key(), PUFFERFISH_SPAWN_EGG);
-            modifiable.register(RABBIT_SPAWN_EGG.key(), RABBIT_SPAWN_EGG);
-            modifiable.register(RAVAGER_SPAWN_EGG.key(), RAVAGER_SPAWN_EGG);
-            modifiable.register(SALMON_SPAWN_EGG.key(), SALMON_SPAWN_EGG);
-            modifiable.register(SHEEP_SPAWN_EGG.key(), SHEEP_SPAWN_EGG);
-            modifiable.register(SHULKER_SPAWN_EGG.key(), SHULKER_SPAWN_EGG);
-            modifiable.register(SILVERFISH_SPAWN_EGG.key(), SILVERFISH_SPAWN_EGG);
-            modifiable.register(SKELETON_SPAWN_EGG.key(), SKELETON_SPAWN_EGG);
-            modifiable.register(SKELETON_HORSE_SPAWN_EGG.key(), SKELETON_HORSE_SPAWN_EGG);
-            modifiable.register(SLIME_SPAWN_EGG.key(), SLIME_SPAWN_EGG);
-            modifiable.register(SNIFFER_SPAWN_EGG.key(), SNIFFER_SPAWN_EGG);
-            modifiable.register(SNOW_GOLEM_SPAWN_EGG.key(), SNOW_GOLEM_SPAWN_EGG);
-            modifiable.register(SPIDER_SPAWN_EGG.key(), SPIDER_SPAWN_EGG);
-            modifiable.register(SQUID_SPAWN_EGG.key(), SQUID_SPAWN_EGG);
-            modifiable.register(STRAY_SPAWN_EGG.key(), STRAY_SPAWN_EGG);
-            modifiable.register(STRIDER_SPAWN_EGG.key(), STRIDER_SPAWN_EGG);
-            modifiable.register(TADPOLE_SPAWN_EGG.key(), TADPOLE_SPAWN_EGG);
-            modifiable.register(TRADER_LLAMA_SPAWN_EGG.key(), TRADER_LLAMA_SPAWN_EGG);
-            modifiable.register(TROPICAL_FISH_SPAWN_EGG.key(), TROPICAL_FISH_SPAWN_EGG);
-            modifiable.register(TURTLE_SPAWN_EGG.key(), TURTLE_SPAWN_EGG);
-            modifiable.register(VEX_SPAWN_EGG.key(), VEX_SPAWN_EGG);
-            modifiable.register(VILLAGER_SPAWN_EGG.key(), VILLAGER_SPAWN_EGG);
-            modifiable.register(VINDICATOR_SPAWN_EGG.key(), VINDICATOR_SPAWN_EGG);
-            modifiable.register(WANDERING_TRADER_SPAWN_EGG.key(), WANDERING_TRADER_SPAWN_EGG);
-            modifiable.register(WARDEN_SPAWN_EGG.key(), WARDEN_SPAWN_EGG);
-            modifiable.register(WITCH_SPAWN_EGG.key(), WITCH_SPAWN_EGG);
-            modifiable.register(WITHER_SPAWN_EGG.key(), WITHER_SPAWN_EGG);
-            modifiable.register(WITHER_SKELETON_SPAWN_EGG.key(), WITHER_SKELETON_SPAWN_EGG);
-            modifiable.register(WOLF_SPAWN_EGG.key(), WOLF_SPAWN_EGG);
-            modifiable.register(ZOGLIN_SPAWN_EGG.key(), ZOGLIN_SPAWN_EGG);
-            modifiable.register(CREAKING_SPAWN_EGG.key(), CREAKING_SPAWN_EGG);
-            modifiable.register(ZOMBIE_SPAWN_EGG.key(), ZOMBIE_SPAWN_EGG);
-            modifiable.register(ZOMBIE_HORSE_SPAWN_EGG.key(), ZOMBIE_HORSE_SPAWN_EGG);
-            modifiable.register(ZOMBIE_VILLAGER_SPAWN_EGG.key(), ZOMBIE_VILLAGER_SPAWN_EGG);
-            modifiable.register(ZOMBIFIED_PIGLIN_SPAWN_EGG.key(), ZOMBIFIED_PIGLIN_SPAWN_EGG);
-            modifiable.register(EXPERIENCE_BOTTLE.key(), EXPERIENCE_BOTTLE);
-            modifiable.register(FIRE_CHARGE.key(), FIRE_CHARGE);
-            modifiable.register(WIND_CHARGE.key(), WIND_CHARGE);
-            modifiable.register(WRITABLE_BOOK.key(), WRITABLE_BOOK);
-            modifiable.register(WRITTEN_BOOK.key(), WRITTEN_BOOK);
-            modifiable.register(BREEZE_ROD.key(), BREEZE_ROD);
-            modifiable.register(MACE.key(), MACE);
-            modifiable.register(ITEM_FRAME.key(), ITEM_FRAME);
-            modifiable.register(GLOW_ITEM_FRAME.key(), GLOW_ITEM_FRAME);
-            modifiable.register(FLOWER_POT.key(), FLOWER_POT);
-            modifiable.register(CARROT.key(), CARROT);
-            modifiable.register(POTATO.key(), POTATO);
-            modifiable.register(BAKED_POTATO.key(), BAKED_POTATO);
-            modifiable.register(POISONOUS_POTATO.key(), POISONOUS_POTATO);
-            modifiable.register(MAP.key(), MAP);
-            modifiable.register(GOLDEN_CARROT.key(), GOLDEN_CARROT);
-            modifiable.register(SKELETON_SKULL.key(), SKELETON_SKULL);
-            modifiable.register(WITHER_SKELETON_SKULL.key(), WITHER_SKELETON_SKULL);
-            modifiable.register(PLAYER_HEAD.key(), PLAYER_HEAD);
-            modifiable.register(ZOMBIE_HEAD.key(), ZOMBIE_HEAD);
-            modifiable.register(CREEPER_HEAD.key(), CREEPER_HEAD);
-            modifiable.register(DRAGON_HEAD.key(), DRAGON_HEAD);
-            modifiable.register(PIGLIN_HEAD.key(), PIGLIN_HEAD);
-            modifiable.register(NETHER_STAR.key(), NETHER_STAR);
-            modifiable.register(PUMPKIN_PIE.key(), PUMPKIN_PIE);
-            modifiable.register(FIREWORK_ROCKET.key(), FIREWORK_ROCKET);
-            modifiable.register(FIREWORK_STAR.key(), FIREWORK_STAR);
-            modifiable.register(ENCHANTED_BOOK.key(), ENCHANTED_BOOK);
-            modifiable.register(NETHER_BRICK.key(), NETHER_BRICK);
-            modifiable.register(RESIN_BRICK.key(), RESIN_BRICK);
-            modifiable.register(PRISMARINE_SHARD.key(), PRISMARINE_SHARD);
-            modifiable.register(PRISMARINE_CRYSTALS.key(), PRISMARINE_CRYSTALS);
-            modifiable.register(RABBIT.key(), RABBIT);
-            modifiable.register(COOKED_RABBIT.key(), COOKED_RABBIT);
-            modifiable.register(RABBIT_STEW.key(), RABBIT_STEW);
-            modifiable.register(RABBIT_FOOT.key(), RABBIT_FOOT);
-            modifiable.register(RABBIT_HIDE.key(), RABBIT_HIDE);
-            modifiable.register(ARMOR_STAND.key(), ARMOR_STAND);
-            modifiable.register(IRON_HORSE_ARMOR.key(), IRON_HORSE_ARMOR);
-            modifiable.register(GOLDEN_HORSE_ARMOR.key(), GOLDEN_HORSE_ARMOR);
-            modifiable.register(DIAMOND_HORSE_ARMOR.key(), DIAMOND_HORSE_ARMOR);
-            modifiable.register(LEATHER_HORSE_ARMOR.key(), LEATHER_HORSE_ARMOR);
-            modifiable.register(LEAD.key(), LEAD);
-            modifiable.register(NAME_TAG.key(), NAME_TAG);
-            modifiable.register(COMMAND_BLOCK_MINECART.key(), COMMAND_BLOCK_MINECART);
-            modifiable.register(MUTTON.key(), MUTTON);
-            modifiable.register(COOKED_MUTTON.key(), COOKED_MUTTON);
-            modifiable.register(WHITE_BANNER.key(), WHITE_BANNER);
-            modifiable.register(ORANGE_BANNER.key(), ORANGE_BANNER);
-            modifiable.register(MAGENTA_BANNER.key(), MAGENTA_BANNER);
-            modifiable.register(LIGHT_BLUE_BANNER.key(), LIGHT_BLUE_BANNER);
-            modifiable.register(YELLOW_BANNER.key(), YELLOW_BANNER);
-            modifiable.register(LIME_BANNER.key(), LIME_BANNER);
-            modifiable.register(PINK_BANNER.key(), PINK_BANNER);
-            modifiable.register(GRAY_BANNER.key(), GRAY_BANNER);
-            modifiable.register(LIGHT_GRAY_BANNER.key(), LIGHT_GRAY_BANNER);
-            modifiable.register(CYAN_BANNER.key(), CYAN_BANNER);
-            modifiable.register(PURPLE_BANNER.key(), PURPLE_BANNER);
-            modifiable.register(BLUE_BANNER.key(), BLUE_BANNER);
-            modifiable.register(BROWN_BANNER.key(), BROWN_BANNER);
-            modifiable.register(GREEN_BANNER.key(), GREEN_BANNER);
-            modifiable.register(RED_BANNER.key(), RED_BANNER);
-            modifiable.register(BLACK_BANNER.key(), BLACK_BANNER);
-            modifiable.register(END_CRYSTAL.key(), END_CRYSTAL);
-            modifiable.register(CHORUS_FRUIT.key(), CHORUS_FRUIT);
-            modifiable.register(POPPED_CHORUS_FRUIT.key(), POPPED_CHORUS_FRUIT);
-            modifiable.register(TORCHFLOWER_SEEDS.key(), TORCHFLOWER_SEEDS);
-            modifiable.register(PITCHER_POD.key(), PITCHER_POD);
-            modifiable.register(BEETROOT.key(), BEETROOT);
-            modifiable.register(BEETROOT_SEEDS.key(), BEETROOT_SEEDS);
-            modifiable.register(BEETROOT_SOUP.key(), BEETROOT_SOUP);
-            modifiable.register(DRAGON_BREATH.key(), DRAGON_BREATH);
-            modifiable.register(SPLASH_POTION.key(), SPLASH_POTION);
-            modifiable.register(SPECTRAL_ARROW.key(), SPECTRAL_ARROW);
-            modifiable.register(TIPPED_ARROW.key(), TIPPED_ARROW);
-            modifiable.register(LINGERING_POTION.key(), LINGERING_POTION);
-            modifiable.register(SHIELD.key(), SHIELD);
-            modifiable.register(TOTEM_OF_UNDYING.key(), TOTEM_OF_UNDYING);
-            modifiable.register(SHULKER_SHELL.key(), SHULKER_SHELL);
-            modifiable.register(IRON_NUGGET.key(), IRON_NUGGET);
-            modifiable.register(KNOWLEDGE_BOOK.key(), KNOWLEDGE_BOOK);
-            modifiable.register(DEBUG_STICK.key(), DEBUG_STICK);
-            modifiable.register(MUSIC_DISC_13.key(), MUSIC_DISC_13);
-            modifiable.register(MUSIC_DISC_CAT.key(), MUSIC_DISC_CAT);
-            modifiable.register(MUSIC_DISC_BLOCKS.key(), MUSIC_DISC_BLOCKS);
-            modifiable.register(MUSIC_DISC_CHIRP.key(), MUSIC_DISC_CHIRP);
-            modifiable.register(MUSIC_DISC_CREATOR.key(), MUSIC_DISC_CREATOR);
-            modifiable.register(MUSIC_DISC_CREATOR_MUSIC_BOX.key(), MUSIC_DISC_CREATOR_MUSIC_BOX);
-            modifiable.register(MUSIC_DISC_FAR.key(), MUSIC_DISC_FAR);
-            modifiable.register(MUSIC_DISC_MALL.key(), MUSIC_DISC_MALL);
-            modifiable.register(MUSIC_DISC_MELLOHI.key(), MUSIC_DISC_MELLOHI);
-            modifiable.register(MUSIC_DISC_STAL.key(), MUSIC_DISC_STAL);
-            modifiable.register(MUSIC_DISC_STRAD.key(), MUSIC_DISC_STRAD);
-            modifiable.register(MUSIC_DISC_WARD.key(), MUSIC_DISC_WARD);
-            modifiable.register(MUSIC_DISC_11.key(), MUSIC_DISC_11);
-            modifiable.register(MUSIC_DISC_WAIT.key(), MUSIC_DISC_WAIT);
-            modifiable.register(MUSIC_DISC_OTHERSIDE.key(), MUSIC_DISC_OTHERSIDE);
-            modifiable.register(MUSIC_DISC_RELIC.key(), MUSIC_DISC_RELIC);
-            modifiable.register(MUSIC_DISC_5.key(), MUSIC_DISC_5);
-            modifiable.register(MUSIC_DISC_PIGSTEP.key(), MUSIC_DISC_PIGSTEP);
-            modifiable.register(MUSIC_DISC_PRECIPICE.key(), MUSIC_DISC_PRECIPICE);
-            modifiable.register(DISC_FRAGMENT_5.key(), DISC_FRAGMENT_5);
-            modifiable.register(TRIDENT.key(), TRIDENT);
-            modifiable.register(NAUTILUS_SHELL.key(), NAUTILUS_SHELL);
-            modifiable.register(HEART_OF_THE_SEA.key(), HEART_OF_THE_SEA);
-            modifiable.register(CROSSBOW.key(), CROSSBOW);
-            modifiable.register(SUSPICIOUS_STEW.key(), SUSPICIOUS_STEW);
-            modifiable.register(LOOM.key(), LOOM);
-            modifiable.register(FLOWER_BANNER_PATTERN.key(), FLOWER_BANNER_PATTERN);
-            modifiable.register(CREEPER_BANNER_PATTERN.key(), CREEPER_BANNER_PATTERN);
-            modifiable.register(SKULL_BANNER_PATTERN.key(), SKULL_BANNER_PATTERN);
-            modifiable.register(MOJANG_BANNER_PATTERN.key(), MOJANG_BANNER_PATTERN);
-            modifiable.register(GLOBE_BANNER_PATTERN.key(), GLOBE_BANNER_PATTERN);
-            modifiable.register(PIGLIN_BANNER_PATTERN.key(), PIGLIN_BANNER_PATTERN);
-            modifiable.register(FLOW_BANNER_PATTERN.key(), FLOW_BANNER_PATTERN);
-            modifiable.register(GUSTER_BANNER_PATTERN.key(), GUSTER_BANNER_PATTERN);
-            modifiable.register(FIELD_MASONED_BANNER_PATTERN.key(), FIELD_MASONED_BANNER_PATTERN);
-            modifiable.register(BORDURE_INDENTED_BANNER_PATTERN.key(), BORDURE_INDENTED_BANNER_PATTERN);
-            modifiable.register(GOAT_HORN.key(), GOAT_HORN);
-            modifiable.register(COMPOSTER.key(), COMPOSTER);
-            modifiable.register(BARREL.key(), BARREL);
-            modifiable.register(SMOKER.key(), SMOKER);
-            modifiable.register(BLAST_FURNACE.key(), BLAST_FURNACE);
-            modifiable.register(CARTOGRAPHY_TABLE.key(), CARTOGRAPHY_TABLE);
-            modifiable.register(FLETCHING_TABLE.key(), FLETCHING_TABLE);
-            modifiable.register(GRINDSTONE.key(), GRINDSTONE);
-            modifiable.register(SMITHING_TABLE.key(), SMITHING_TABLE);
-            modifiable.register(STONECUTTER.key(), STONECUTTER);
-            modifiable.register(BELL.key(), BELL);
-            modifiable.register(LANTERN.key(), LANTERN);
-            modifiable.register(SOUL_LANTERN.key(), SOUL_LANTERN);
-            modifiable.register(SWEET_BERRIES.key(), SWEET_BERRIES);
-            modifiable.register(GLOW_BERRIES.key(), GLOW_BERRIES);
-            modifiable.register(CAMPFIRE.key(), CAMPFIRE);
-            modifiable.register(SOUL_CAMPFIRE.key(), SOUL_CAMPFIRE);
-            modifiable.register(SHROOMLIGHT.key(), SHROOMLIGHT);
-            modifiable.register(HONEYCOMB.key(), HONEYCOMB);
-            modifiable.register(BEE_NEST.key(), BEE_NEST);
-            modifiable.register(BEEHIVE.key(), BEEHIVE);
-            modifiable.register(HONEY_BOTTLE.key(), HONEY_BOTTLE);
-            modifiable.register(HONEYCOMB_BLOCK.key(), HONEYCOMB_BLOCK);
-            modifiable.register(LODESTONE.key(), LODESTONE);
-            modifiable.register(CRYING_OBSIDIAN.key(), CRYING_OBSIDIAN);
-            modifiable.register(BLACKSTONE.key(), BLACKSTONE);
-            modifiable.register(BLACKSTONE_SLAB.key(), BLACKSTONE_SLAB);
-            modifiable.register(BLACKSTONE_STAIRS.key(), BLACKSTONE_STAIRS);
-            modifiable.register(GILDED_BLACKSTONE.key(), GILDED_BLACKSTONE);
-            modifiable.register(POLISHED_BLACKSTONE.key(), POLISHED_BLACKSTONE);
-            modifiable.register(POLISHED_BLACKSTONE_SLAB.key(), POLISHED_BLACKSTONE_SLAB);
-            modifiable.register(POLISHED_BLACKSTONE_STAIRS.key(), POLISHED_BLACKSTONE_STAIRS);
-            modifiable.register(CHISELED_POLISHED_BLACKSTONE.key(), CHISELED_POLISHED_BLACKSTONE);
-            modifiable.register(POLISHED_BLACKSTONE_BRICKS.key(), POLISHED_BLACKSTONE_BRICKS);
-            modifiable.register(POLISHED_BLACKSTONE_BRICK_SLAB.key(), POLISHED_BLACKSTONE_BRICK_SLAB);
-            modifiable.register(POLISHED_BLACKSTONE_BRICK_STAIRS.key(), POLISHED_BLACKSTONE_BRICK_STAIRS);
-            modifiable.register(CRACKED_POLISHED_BLACKSTONE_BRICKS.key(), CRACKED_POLISHED_BLACKSTONE_BRICKS);
-            modifiable.register(RESPAWN_ANCHOR.key(), RESPAWN_ANCHOR);
-            modifiable.register(CANDLE.key(), CANDLE);
-            modifiable.register(WHITE_CANDLE.key(), WHITE_CANDLE);
-            modifiable.register(ORANGE_CANDLE.key(), ORANGE_CANDLE);
-            modifiable.register(MAGENTA_CANDLE.key(), MAGENTA_CANDLE);
-            modifiable.register(LIGHT_BLUE_CANDLE.key(), LIGHT_BLUE_CANDLE);
-            modifiable.register(YELLOW_CANDLE.key(), YELLOW_CANDLE);
-            modifiable.register(LIME_CANDLE.key(), LIME_CANDLE);
-            modifiable.register(PINK_CANDLE.key(), PINK_CANDLE);
-            modifiable.register(GRAY_CANDLE.key(), GRAY_CANDLE);
-            modifiable.register(LIGHT_GRAY_CANDLE.key(), LIGHT_GRAY_CANDLE);
-            modifiable.register(CYAN_CANDLE.key(), CYAN_CANDLE);
-            modifiable.register(PURPLE_CANDLE.key(), PURPLE_CANDLE);
-            modifiable.register(BLUE_CANDLE.key(), BLUE_CANDLE);
-            modifiable.register(BROWN_CANDLE.key(), BROWN_CANDLE);
-            modifiable.register(GREEN_CANDLE.key(), GREEN_CANDLE);
-            modifiable.register(RED_CANDLE.key(), RED_CANDLE);
-            modifiable.register(BLACK_CANDLE.key(), BLACK_CANDLE);
-            modifiable.register(SMALL_AMETHYST_BUD.key(), SMALL_AMETHYST_BUD);
-            modifiable.register(MEDIUM_AMETHYST_BUD.key(), MEDIUM_AMETHYST_BUD);
-            modifiable.register(LARGE_AMETHYST_BUD.key(), LARGE_AMETHYST_BUD);
-            modifiable.register(AMETHYST_CLUSTER.key(), AMETHYST_CLUSTER);
-            modifiable.register(POINTED_DRIPSTONE.key(), POINTED_DRIPSTONE);
-            modifiable.register(OCHRE_FROGLIGHT.key(), OCHRE_FROGLIGHT);
-            modifiable.register(VERDANT_FROGLIGHT.key(), VERDANT_FROGLIGHT);
-            modifiable.register(PEARLESCENT_FROGLIGHT.key(), PEARLESCENT_FROGLIGHT);
-            modifiable.register(FROGSPAWN.key(), FROGSPAWN);
-            modifiable.register(ECHO_SHARD.key(), ECHO_SHARD);
-            modifiable.register(BRUSH.key(), BRUSH);
-            modifiable.register(NETHERITE_UPGRADE_SMITHING_TEMPLATE.key(), NETHERITE_UPGRADE_SMITHING_TEMPLATE);
-            modifiable.register(SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE.key(), SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(DUNE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), DUNE_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(COAST_ARMOR_TRIM_SMITHING_TEMPLATE.key(), COAST_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(WILD_ARMOR_TRIM_SMITHING_TEMPLATE.key(), WILD_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(WARD_ARMOR_TRIM_SMITHING_TEMPLATE.key(), WARD_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(EYE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), EYE_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(VEX_ARMOR_TRIM_SMITHING_TEMPLATE.key(), VEX_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(TIDE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), TIDE_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE.key(), SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(RIB_ARMOR_TRIM_SMITHING_TEMPLATE.key(), RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(RAISER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), RAISER_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(HOST_ARMOR_TRIM_SMITHING_TEMPLATE.key(), HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(FLOW_ARMOR_TRIM_SMITHING_TEMPLATE.key(), FLOW_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(BOLT_ARMOR_TRIM_SMITHING_TEMPLATE.key(), BOLT_ARMOR_TRIM_SMITHING_TEMPLATE);
-            modifiable.register(ANGLER_POTTERY_SHERD.key(), ANGLER_POTTERY_SHERD);
-            modifiable.register(ARCHER_POTTERY_SHERD.key(), ARCHER_POTTERY_SHERD);
-            modifiable.register(ARMS_UP_POTTERY_SHERD.key(), ARMS_UP_POTTERY_SHERD);
-            modifiable.register(BLADE_POTTERY_SHERD.key(), BLADE_POTTERY_SHERD);
-            modifiable.register(BREWER_POTTERY_SHERD.key(), BREWER_POTTERY_SHERD);
-            modifiable.register(BURN_POTTERY_SHERD.key(), BURN_POTTERY_SHERD);
-            modifiable.register(DANGER_POTTERY_SHERD.key(), DANGER_POTTERY_SHERD);
-            modifiable.register(EXPLORER_POTTERY_SHERD.key(), EXPLORER_POTTERY_SHERD);
-            modifiable.register(FLOW_POTTERY_SHERD.key(), FLOW_POTTERY_SHERD);
-            modifiable.register(FRIEND_POTTERY_SHERD.key(), FRIEND_POTTERY_SHERD);
-            modifiable.register(GUSTER_POTTERY_SHERD.key(), GUSTER_POTTERY_SHERD);
-            modifiable.register(HEART_POTTERY_SHERD.key(), HEART_POTTERY_SHERD);
-            modifiable.register(HEARTBREAK_POTTERY_SHERD.key(), HEARTBREAK_POTTERY_SHERD);
-            modifiable.register(HOWL_POTTERY_SHERD.key(), HOWL_POTTERY_SHERD);
-            modifiable.register(MINER_POTTERY_SHERD.key(), MINER_POTTERY_SHERD);
-            modifiable.register(MOURNER_POTTERY_SHERD.key(), MOURNER_POTTERY_SHERD);
-            modifiable.register(PLENTY_POTTERY_SHERD.key(), PLENTY_POTTERY_SHERD);
-            modifiable.register(PRIZE_POTTERY_SHERD.key(), PRIZE_POTTERY_SHERD);
-            modifiable.register(SCRAPE_POTTERY_SHERD.key(), SCRAPE_POTTERY_SHERD);
-            modifiable.register(SHEAF_POTTERY_SHERD.key(), SHEAF_POTTERY_SHERD);
-            modifiable.register(SHELTER_POTTERY_SHERD.key(), SHELTER_POTTERY_SHERD);
-            modifiable.register(SKULL_POTTERY_SHERD.key(), SKULL_POTTERY_SHERD);
-            modifiable.register(SNORT_POTTERY_SHERD.key(), SNORT_POTTERY_SHERD);
-            modifiable.register(COPPER_GRATE.key(), COPPER_GRATE);
-            modifiable.register(EXPOSED_COPPER_GRATE.key(), EXPOSED_COPPER_GRATE);
-            modifiable.register(WEATHERED_COPPER_GRATE.key(), WEATHERED_COPPER_GRATE);
-            modifiable.register(OXIDIZED_COPPER_GRATE.key(), OXIDIZED_COPPER_GRATE);
-            modifiable.register(WAXED_COPPER_GRATE.key(), WAXED_COPPER_GRATE);
-            modifiable.register(WAXED_EXPOSED_COPPER_GRATE.key(), WAXED_EXPOSED_COPPER_GRATE);
-            modifiable.register(WAXED_WEATHERED_COPPER_GRATE.key(), WAXED_WEATHERED_COPPER_GRATE);
-            modifiable.register(WAXED_OXIDIZED_COPPER_GRATE.key(), WAXED_OXIDIZED_COPPER_GRATE);
-            modifiable.register(COPPER_BULB.key(), COPPER_BULB);
-            modifiable.register(EXPOSED_COPPER_BULB.key(), EXPOSED_COPPER_BULB);
-            modifiable.register(WEATHERED_COPPER_BULB.key(), WEATHERED_COPPER_BULB);
-            modifiable.register(OXIDIZED_COPPER_BULB.key(), OXIDIZED_COPPER_BULB);
-            modifiable.register(WAXED_COPPER_BULB.key(), WAXED_COPPER_BULB);
-            modifiable.register(WAXED_EXPOSED_COPPER_BULB.key(), WAXED_EXPOSED_COPPER_BULB);
-            modifiable.register(WAXED_WEATHERED_COPPER_BULB.key(), WAXED_WEATHERED_COPPER_BULB);
-            modifiable.register(WAXED_OXIDIZED_COPPER_BULB.key(), WAXED_OXIDIZED_COPPER_BULB);
-            modifiable.register(TRIAL_SPAWNER.key(), TRIAL_SPAWNER);
-            modifiable.register(TRIAL_KEY.key(), TRIAL_KEY);
-            modifiable.register(OMINOUS_TRIAL_KEY.key(), OMINOUS_TRIAL_KEY);
-            modifiable.register(VAULT.key(), VAULT);
-            modifiable.register(OMINOUS_BOTTLE.key(), OMINOUS_BOTTLE);
+        return new BuiltInRegistry<>(server, RegistryKey.ITEM).modify(registry -> {
+            registry.register(Item.AIR.key(), Item.AIR);
+            registry.register(Item.STONE.key(), Item.STONE);
+            registry.register(Item.GRANITE.key(), Item.GRANITE);
+            registry.register(Item.POLISHED_GRANITE.key(), Item.POLISHED_GRANITE);
+            registry.register(Item.DIORITE.key(), Item.DIORITE);
+            registry.register(Item.POLISHED_DIORITE.key(), Item.POLISHED_DIORITE);
+            registry.register(Item.ANDESITE.key(), Item.ANDESITE);
+            registry.register(Item.POLISHED_ANDESITE.key(), Item.POLISHED_ANDESITE);
+            registry.register(Item.DEEPSLATE.key(), Item.DEEPSLATE);
+            registry.register(Item.COBBLED_DEEPSLATE.key(), Item.COBBLED_DEEPSLATE);
+            registry.register(Item.POLISHED_DEEPSLATE.key(), Item.POLISHED_DEEPSLATE);
+            registry.register(Item.CALCITE.key(), Item.CALCITE);
+            registry.register(Item.TUFF.key(), Item.TUFF);
+            registry.register(Item.TUFF_SLAB.key(), Item.TUFF_SLAB);
+            registry.register(Item.TUFF_STAIRS.key(), Item.TUFF_STAIRS);
+            registry.register(Item.TUFF_WALL.key(), Item.TUFF_WALL);
+            registry.register(Item.CHISELED_TUFF.key(), Item.CHISELED_TUFF);
+            registry.register(Item.POLISHED_TUFF.key(), Item.POLISHED_TUFF);
+            registry.register(Item.POLISHED_TUFF_SLAB.key(), Item.POLISHED_TUFF_SLAB);
+            registry.register(Item.POLISHED_TUFF_STAIRS.key(), Item.POLISHED_TUFF_STAIRS);
+            registry.register(Item.POLISHED_TUFF_WALL.key(), Item.POLISHED_TUFF_WALL);
+            registry.register(Item.TUFF_BRICKS.key(), Item.TUFF_BRICKS);
+            registry.register(Item.TUFF_BRICK_SLAB.key(), Item.TUFF_BRICK_SLAB);
+            registry.register(Item.TUFF_BRICK_STAIRS.key(), Item.TUFF_BRICK_STAIRS);
+            registry.register(Item.TUFF_BRICK_WALL.key(), Item.TUFF_BRICK_WALL);
+            registry.register(Item.CHISELED_TUFF_BRICKS.key(), Item.CHISELED_TUFF_BRICKS);
+            registry.register(Item.DRIPSTONE_BLOCK.key(), Item.DRIPSTONE_BLOCK);
+            registry.register(Item.GRASS_BLOCK.key(), Item.GRASS_BLOCK);
+            registry.register(Item.DIRT.key(), Item.DIRT);
+            registry.register(Item.COARSE_DIRT.key(), Item.COARSE_DIRT);
+            registry.register(Item.PODZOL.key(), Item.PODZOL);
+            registry.register(Item.ROOTED_DIRT.key(), Item.ROOTED_DIRT);
+            registry.register(Item.MUD.key(), Item.MUD);
+            registry.register(Item.CRIMSON_NYLIUM.key(), Item.CRIMSON_NYLIUM);
+            registry.register(Item.WARPED_NYLIUM.key(), Item.WARPED_NYLIUM);
+            registry.register(Item.COBBLESTONE.key(), Item.COBBLESTONE);
+            registry.register(Item.OAK_PLANKS.key(), Item.OAK_PLANKS);
+            registry.register(Item.SPRUCE_PLANKS.key(), Item.SPRUCE_PLANKS);
+            registry.register(Item.BIRCH_PLANKS.key(), Item.BIRCH_PLANKS);
+            registry.register(Item.JUNGLE_PLANKS.key(), Item.JUNGLE_PLANKS);
+            registry.register(Item.ACACIA_PLANKS.key(), Item.ACACIA_PLANKS);
+            registry.register(Item.CHERRY_PLANKS.key(), Item.CHERRY_PLANKS);
+            registry.register(Item.DARK_OAK_PLANKS.key(), Item.DARK_OAK_PLANKS);
+            registry.register(Item.PALE_OAK_PLANKS.key(), Item.PALE_OAK_PLANKS);
+            registry.register(Item.MANGROVE_PLANKS.key(), Item.MANGROVE_PLANKS);
+            registry.register(Item.BAMBOO_PLANKS.key(), Item.BAMBOO_PLANKS);
+            registry.register(Item.CRIMSON_PLANKS.key(), Item.CRIMSON_PLANKS);
+            registry.register(Item.WARPED_PLANKS.key(), Item.WARPED_PLANKS);
+            registry.register(Item.BAMBOO_MOSAIC.key(), Item.BAMBOO_MOSAIC);
+            registry.register(Item.OAK_SAPLING.key(), Item.OAK_SAPLING);
+            registry.register(Item.SPRUCE_SAPLING.key(), Item.SPRUCE_SAPLING);
+            registry.register(Item.BIRCH_SAPLING.key(), Item.BIRCH_SAPLING);
+            registry.register(Item.JUNGLE_SAPLING.key(), Item.JUNGLE_SAPLING);
+            registry.register(Item.ACACIA_SAPLING.key(), Item.ACACIA_SAPLING);
+            registry.register(Item.CHERRY_SAPLING.key(), Item.CHERRY_SAPLING);
+            registry.register(Item.DARK_OAK_SAPLING.key(), Item.DARK_OAK_SAPLING);
+            registry.register(Item.PALE_OAK_SAPLING.key(), Item.PALE_OAK_SAPLING);
+            registry.register(Item.MANGROVE_PROPAGULE.key(), Item.MANGROVE_PROPAGULE);
+            registry.register(Item.BEDROCK.key(), Item.BEDROCK);
+            registry.register(Item.SAND.key(), Item.SAND);
+            registry.register(Item.SUSPICIOUS_SAND.key(), Item.SUSPICIOUS_SAND);
+            registry.register(Item.SUSPICIOUS_GRAVEL.key(), Item.SUSPICIOUS_GRAVEL);
+            registry.register(Item.RED_SAND.key(), Item.RED_SAND);
+            registry.register(Item.GRAVEL.key(), Item.GRAVEL);
+            registry.register(Item.COAL_ORE.key(), Item.COAL_ORE);
+            registry.register(Item.DEEPSLATE_COAL_ORE.key(), Item.DEEPSLATE_COAL_ORE);
+            registry.register(Item.IRON_ORE.key(), Item.IRON_ORE);
+            registry.register(Item.DEEPSLATE_IRON_ORE.key(), Item.DEEPSLATE_IRON_ORE);
+            registry.register(Item.COPPER_ORE.key(), Item.COPPER_ORE);
+            registry.register(Item.DEEPSLATE_COPPER_ORE.key(), Item.DEEPSLATE_COPPER_ORE);
+            registry.register(Item.GOLD_ORE.key(), Item.GOLD_ORE);
+            registry.register(Item.DEEPSLATE_GOLD_ORE.key(), Item.DEEPSLATE_GOLD_ORE);
+            registry.register(Item.REDSTONE_ORE.key(), Item.REDSTONE_ORE);
+            registry.register(Item.DEEPSLATE_REDSTONE_ORE.key(), Item.DEEPSLATE_REDSTONE_ORE);
+            registry.register(Item.EMERALD_ORE.key(), Item.EMERALD_ORE);
+            registry.register(Item.DEEPSLATE_EMERALD_ORE.key(), Item.DEEPSLATE_EMERALD_ORE);
+            registry.register(Item.LAPIS_ORE.key(), Item.LAPIS_ORE);
+            registry.register(Item.DEEPSLATE_LAPIS_ORE.key(), Item.DEEPSLATE_LAPIS_ORE);
+            registry.register(Item.DIAMOND_ORE.key(), Item.DIAMOND_ORE);
+            registry.register(Item.DEEPSLATE_DIAMOND_ORE.key(), Item.DEEPSLATE_DIAMOND_ORE);
+            registry.register(Item.NETHER_GOLD_ORE.key(), Item.NETHER_GOLD_ORE);
+            registry.register(Item.NETHER_QUARTZ_ORE.key(), Item.NETHER_QUARTZ_ORE);
+            registry.register(Item.ANCIENT_DEBRIS.key(), Item.ANCIENT_DEBRIS);
+            registry.register(Item.COAL_BLOCK.key(), Item.COAL_BLOCK);
+            registry.register(Item.RAW_IRON_BLOCK.key(), Item.RAW_IRON_BLOCK);
+            registry.register(Item.RAW_COPPER_BLOCK.key(), Item.RAW_COPPER_BLOCK);
+            registry.register(Item.RAW_GOLD_BLOCK.key(), Item.RAW_GOLD_BLOCK);
+            registry.register(Item.HEAVY_CORE.key(), Item.HEAVY_CORE);
+            registry.register(Item.AMETHYST_BLOCK.key(), Item.AMETHYST_BLOCK);
+            registry.register(Item.BUDDING_AMETHYST.key(), Item.BUDDING_AMETHYST);
+            registry.register(Item.IRON_BLOCK.key(), Item.IRON_BLOCK);
+            registry.register(Item.COPPER_BLOCK.key(), Item.COPPER_BLOCK);
+            registry.register(Item.GOLD_BLOCK.key(), Item.GOLD_BLOCK);
+            registry.register(Item.DIAMOND_BLOCK.key(), Item.DIAMOND_BLOCK);
+            registry.register(Item.NETHERITE_BLOCK.key(), Item.NETHERITE_BLOCK);
+            registry.register(Item.EXPOSED_COPPER.key(), Item.EXPOSED_COPPER);
+            registry.register(Item.WEATHERED_COPPER.key(), Item.WEATHERED_COPPER);
+            registry.register(Item.OXIDIZED_COPPER.key(), Item.OXIDIZED_COPPER);
+            registry.register(Item.CHISELED_COPPER.key(), Item.CHISELED_COPPER);
+            registry.register(Item.EXPOSED_CHISELED_COPPER.key(), Item.EXPOSED_CHISELED_COPPER);
+            registry.register(Item.WEATHERED_CHISELED_COPPER.key(), Item.WEATHERED_CHISELED_COPPER);
+            registry.register(Item.OXIDIZED_CHISELED_COPPER.key(), Item.OXIDIZED_CHISELED_COPPER);
+            registry.register(Item.CUT_COPPER.key(), Item.CUT_COPPER);
+            registry.register(Item.EXPOSED_CUT_COPPER.key(), Item.EXPOSED_CUT_COPPER);
+            registry.register(Item.WEATHERED_CUT_COPPER.key(), Item.WEATHERED_CUT_COPPER);
+            registry.register(Item.OXIDIZED_CUT_COPPER.key(), Item.OXIDIZED_CUT_COPPER);
+            registry.register(Item.CUT_COPPER_STAIRS.key(), Item.CUT_COPPER_STAIRS);
+            registry.register(Item.EXPOSED_CUT_COPPER_STAIRS.key(), Item.EXPOSED_CUT_COPPER_STAIRS);
+            registry.register(Item.WEATHERED_CUT_COPPER_STAIRS.key(), Item.WEATHERED_CUT_COPPER_STAIRS);
+            registry.register(Item.OXIDIZED_CUT_COPPER_STAIRS.key(), Item.OXIDIZED_CUT_COPPER_STAIRS);
+            registry.register(Item.CUT_COPPER_SLAB.key(), Item.CUT_COPPER_SLAB);
+            registry.register(Item.EXPOSED_CUT_COPPER_SLAB.key(), Item.EXPOSED_CUT_COPPER_SLAB);
+            registry.register(Item.WEATHERED_CUT_COPPER_SLAB.key(), Item.WEATHERED_CUT_COPPER_SLAB);
+            registry.register(Item.OXIDIZED_CUT_COPPER_SLAB.key(), Item.OXIDIZED_CUT_COPPER_SLAB);
+            registry.register(Item.WAXED_COPPER_BLOCK.key(), Item.WAXED_COPPER_BLOCK);
+            registry.register(Item.WAXED_EXPOSED_COPPER.key(), Item.WAXED_EXPOSED_COPPER);
+            registry.register(Item.WAXED_WEATHERED_COPPER.key(), Item.WAXED_WEATHERED_COPPER);
+            registry.register(Item.WAXED_OXIDIZED_COPPER.key(), Item.WAXED_OXIDIZED_COPPER);
+            registry.register(Item.WAXED_CHISELED_COPPER.key(), Item.WAXED_CHISELED_COPPER);
+            registry.register(Item.WAXED_EXPOSED_CHISELED_COPPER.key(), Item.WAXED_EXPOSED_CHISELED_COPPER);
+            registry.register(Item.WAXED_WEATHERED_CHISELED_COPPER.key(), Item.WAXED_WEATHERED_CHISELED_COPPER);
+            registry.register(Item.WAXED_OXIDIZED_CHISELED_COPPER.key(), Item.WAXED_OXIDIZED_CHISELED_COPPER);
+            registry.register(Item.WAXED_CUT_COPPER.key(), Item.WAXED_CUT_COPPER);
+            registry.register(Item.WAXED_EXPOSED_CUT_COPPER.key(), Item.WAXED_EXPOSED_CUT_COPPER);
+            registry.register(Item.WAXED_WEATHERED_CUT_COPPER.key(), Item.WAXED_WEATHERED_CUT_COPPER);
+            registry.register(Item.WAXED_OXIDIZED_CUT_COPPER.key(), Item.WAXED_OXIDIZED_CUT_COPPER);
+            registry.register(Item.WAXED_CUT_COPPER_STAIRS.key(), Item.WAXED_CUT_COPPER_STAIRS);
+            registry.register(Item.WAXED_EXPOSED_CUT_COPPER_STAIRS.key(), Item.WAXED_EXPOSED_CUT_COPPER_STAIRS);
+            registry.register(Item.WAXED_WEATHERED_CUT_COPPER_STAIRS.key(), Item.WAXED_WEATHERED_CUT_COPPER_STAIRS);
+            registry.register(Item.WAXED_OXIDIZED_CUT_COPPER_STAIRS.key(), Item.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+            registry.register(Item.WAXED_CUT_COPPER_SLAB.key(), Item.WAXED_CUT_COPPER_SLAB);
+            registry.register(Item.WAXED_EXPOSED_CUT_COPPER_SLAB.key(), Item.WAXED_EXPOSED_CUT_COPPER_SLAB);
+            registry.register(Item.WAXED_WEATHERED_CUT_COPPER_SLAB.key(), Item.WAXED_WEATHERED_CUT_COPPER_SLAB);
+            registry.register(Item.WAXED_OXIDIZED_CUT_COPPER_SLAB.key(), Item.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+            registry.register(Item.OAK_LOG.key(), Item.OAK_LOG);
+            registry.register(Item.SPRUCE_LOG.key(), Item.SPRUCE_LOG);
+            registry.register(Item.BIRCH_LOG.key(), Item.BIRCH_LOG);
+            registry.register(Item.JUNGLE_LOG.key(), Item.JUNGLE_LOG);
+            registry.register(Item.ACACIA_LOG.key(), Item.ACACIA_LOG);
+            registry.register(Item.CHERRY_LOG.key(), Item.CHERRY_LOG);
+            registry.register(Item.PALE_OAK_LOG.key(), Item.PALE_OAK_LOG);
+            registry.register(Item.DARK_OAK_LOG.key(), Item.DARK_OAK_LOG);
+            registry.register(Item.MANGROVE_LOG.key(), Item.MANGROVE_LOG);
+            registry.register(Item.MANGROVE_ROOTS.key(), Item.MANGROVE_ROOTS);
+            registry.register(Item.MUDDY_MANGROVE_ROOTS.key(), Item.MUDDY_MANGROVE_ROOTS);
+            registry.register(Item.CRIMSON_STEM.key(), Item.CRIMSON_STEM);
+            registry.register(Item.WARPED_STEM.key(), Item.WARPED_STEM);
+            registry.register(Item.BAMBOO_BLOCK.key(), Item.BAMBOO_BLOCK);
+            registry.register(Item.STRIPPED_OAK_LOG.key(), Item.STRIPPED_OAK_LOG);
+            registry.register(Item.STRIPPED_SPRUCE_LOG.key(), Item.STRIPPED_SPRUCE_LOG);
+            registry.register(Item.STRIPPED_BIRCH_LOG.key(), Item.STRIPPED_BIRCH_LOG);
+            registry.register(Item.STRIPPED_JUNGLE_LOG.key(), Item.STRIPPED_JUNGLE_LOG);
+            registry.register(Item.STRIPPED_ACACIA_LOG.key(), Item.STRIPPED_ACACIA_LOG);
+            registry.register(Item.STRIPPED_CHERRY_LOG.key(), Item.STRIPPED_CHERRY_LOG);
+            registry.register(Item.STRIPPED_DARK_OAK_LOG.key(), Item.STRIPPED_DARK_OAK_LOG);
+            registry.register(Item.STRIPPED_PALE_OAK_LOG.key(), Item.STRIPPED_PALE_OAK_LOG);
+            registry.register(Item.STRIPPED_MANGROVE_LOG.key(), Item.STRIPPED_MANGROVE_LOG);
+            registry.register(Item.STRIPPED_CRIMSON_STEM.key(), Item.STRIPPED_CRIMSON_STEM);
+            registry.register(Item.STRIPPED_WARPED_STEM.key(), Item.STRIPPED_WARPED_STEM);
+            registry.register(Item.STRIPPED_OAK_WOOD.key(), Item.STRIPPED_OAK_WOOD);
+            registry.register(Item.STRIPPED_SPRUCE_WOOD.key(), Item.STRIPPED_SPRUCE_WOOD);
+            registry.register(Item.STRIPPED_BIRCH_WOOD.key(), Item.STRIPPED_BIRCH_WOOD);
+            registry.register(Item.STRIPPED_JUNGLE_WOOD.key(), Item.STRIPPED_JUNGLE_WOOD);
+            registry.register(Item.STRIPPED_ACACIA_WOOD.key(), Item.STRIPPED_ACACIA_WOOD);
+            registry.register(Item.STRIPPED_CHERRY_WOOD.key(), Item.STRIPPED_CHERRY_WOOD);
+            registry.register(Item.STRIPPED_DARK_OAK_WOOD.key(), Item.STRIPPED_DARK_OAK_WOOD);
+            registry.register(Item.STRIPPED_PALE_OAK_WOOD.key(), Item.STRIPPED_PALE_OAK_WOOD);
+            registry.register(Item.STRIPPED_MANGROVE_WOOD.key(), Item.STRIPPED_MANGROVE_WOOD);
+            registry.register(Item.STRIPPED_CRIMSON_HYPHAE.key(), Item.STRIPPED_CRIMSON_HYPHAE);
+            registry.register(Item.STRIPPED_WARPED_HYPHAE.key(), Item.STRIPPED_WARPED_HYPHAE);
+            registry.register(Item.STRIPPED_BAMBOO_BLOCK.key(), Item.STRIPPED_BAMBOO_BLOCK);
+            registry.register(Item.OAK_WOOD.key(), Item.OAK_WOOD);
+            registry.register(Item.SPRUCE_WOOD.key(), Item.SPRUCE_WOOD);
+            registry.register(Item.BIRCH_WOOD.key(), Item.BIRCH_WOOD);
+            registry.register(Item.JUNGLE_WOOD.key(), Item.JUNGLE_WOOD);
+            registry.register(Item.ACACIA_WOOD.key(), Item.ACACIA_WOOD);
+            registry.register(Item.CHERRY_WOOD.key(), Item.CHERRY_WOOD);
+            registry.register(Item.PALE_OAK_WOOD.key(), Item.PALE_OAK_WOOD);
+            registry.register(Item.DARK_OAK_WOOD.key(), Item.DARK_OAK_WOOD);
+            registry.register(Item.MANGROVE_WOOD.key(), Item.MANGROVE_WOOD);
+            registry.register(Item.CRIMSON_HYPHAE.key(), Item.CRIMSON_HYPHAE);
+            registry.register(Item.WARPED_HYPHAE.key(), Item.WARPED_HYPHAE);
+            registry.register(Item.OAK_LEAVES.key(), Item.OAK_LEAVES);
+            registry.register(Item.SPRUCE_LEAVES.key(), Item.SPRUCE_LEAVES);
+            registry.register(Item.BIRCH_LEAVES.key(), Item.BIRCH_LEAVES);
+            registry.register(Item.JUNGLE_LEAVES.key(), Item.JUNGLE_LEAVES);
+            registry.register(Item.ACACIA_LEAVES.key(), Item.ACACIA_LEAVES);
+            registry.register(Item.CHERRY_LEAVES.key(), Item.CHERRY_LEAVES);
+            registry.register(Item.DARK_OAK_LEAVES.key(), Item.DARK_OAK_LEAVES);
+            registry.register(Item.PALE_OAK_LEAVES.key(), Item.PALE_OAK_LEAVES);
+            registry.register(Item.MANGROVE_LEAVES.key(), Item.MANGROVE_LEAVES);
+            registry.register(Item.AZALEA_LEAVES.key(), Item.AZALEA_LEAVES);
+            registry.register(Item.FLOWERING_AZALEA_LEAVES.key(), Item.FLOWERING_AZALEA_LEAVES);
+            registry.register(Item.SPONGE.key(), Item.SPONGE);
+            registry.register(Item.WET_SPONGE.key(), Item.WET_SPONGE);
+            registry.register(Item.GLASS.key(), Item.GLASS);
+            registry.register(Item.TINTED_GLASS.key(), Item.TINTED_GLASS);
+            registry.register(Item.LAPIS_BLOCK.key(), Item.LAPIS_BLOCK);
+            registry.register(Item.SANDSTONE.key(), Item.SANDSTONE);
+            registry.register(Item.CHISELED_SANDSTONE.key(), Item.CHISELED_SANDSTONE);
+            registry.register(Item.CUT_SANDSTONE.key(), Item.CUT_SANDSTONE);
+            registry.register(Item.COBWEB.key(), Item.COBWEB);
+            registry.register(Item.SHORT_GRASS.key(), Item.SHORT_GRASS);
+            registry.register(Item.FERN.key(), Item.FERN);
+            registry.register(Item.BUSH.key(), Item.BUSH);
+            registry.register(Item.AZALEA.key(), Item.AZALEA);
+            registry.register(Item.FLOWERING_AZALEA.key(), Item.FLOWERING_AZALEA);
+            registry.register(Item.DEAD_BUSH.key(), Item.DEAD_BUSH);
+            registry.register(Item.FIREFLY_BUSH.key(), Item.FIREFLY_BUSH);
+            registry.register(Item.SHORT_DRY_GRASS.key(), Item.SHORT_DRY_GRASS);
+            registry.register(Item.TALL_DRY_GRASS.key(), Item.TALL_DRY_GRASS);
+            registry.register(Item.SEAGRASS.key(), Item.SEAGRASS);
+            registry.register(Item.SEA_PICKLE.key(), Item.SEA_PICKLE);
+            registry.register(Item.WHITE_WOOL.key(), Item.WHITE_WOOL);
+            registry.register(Item.ORANGE_WOOL.key(), Item.ORANGE_WOOL);
+            registry.register(Item.MAGENTA_WOOL.key(), Item.MAGENTA_WOOL);
+            registry.register(Item.LIGHT_BLUE_WOOL.key(), Item.LIGHT_BLUE_WOOL);
+            registry.register(Item.YELLOW_WOOL.key(), Item.YELLOW_WOOL);
+            registry.register(Item.LIME_WOOL.key(), Item.LIME_WOOL);
+            registry.register(Item.PINK_WOOL.key(), Item.PINK_WOOL);
+            registry.register(Item.GRAY_WOOL.key(), Item.GRAY_WOOL);
+            registry.register(Item.LIGHT_GRAY_WOOL.key(), Item.LIGHT_GRAY_WOOL);
+            registry.register(Item.CYAN_WOOL.key(), Item.CYAN_WOOL);
+            registry.register(Item.PURPLE_WOOL.key(), Item.PURPLE_WOOL);
+            registry.register(Item.BLUE_WOOL.key(), Item.BLUE_WOOL);
+            registry.register(Item.BROWN_WOOL.key(), Item.BROWN_WOOL);
+            registry.register(Item.GREEN_WOOL.key(), Item.GREEN_WOOL);
+            registry.register(Item.RED_WOOL.key(), Item.RED_WOOL);
+            registry.register(Item.BLACK_WOOL.key(), Item.BLACK_WOOL);
+            registry.register(Item.DANDELION.key(), Item.DANDELION);
+            registry.register(Item.OPEN_EYEBLOSSOM.key(), Item.OPEN_EYEBLOSSOM);
+            registry.register(Item.CLOSED_EYEBLOSSOM.key(), Item.CLOSED_EYEBLOSSOM);
+            registry.register(Item.POPPY.key(), Item.POPPY);
+            registry.register(Item.BLUE_ORCHID.key(), Item.BLUE_ORCHID);
+            registry.register(Item.ALLIUM.key(), Item.ALLIUM);
+            registry.register(Item.AZURE_BLUET.key(), Item.AZURE_BLUET);
+            registry.register(Item.RED_TULIP.key(), Item.RED_TULIP);
+            registry.register(Item.ORANGE_TULIP.key(), Item.ORANGE_TULIP);
+            registry.register(Item.WHITE_TULIP.key(), Item.WHITE_TULIP);
+            registry.register(Item.PINK_TULIP.key(), Item.PINK_TULIP);
+            registry.register(Item.OXEYE_DAISY.key(), Item.OXEYE_DAISY);
+            registry.register(Item.CORNFLOWER.key(), Item.CORNFLOWER);
+            registry.register(Item.LILY_OF_THE_VALLEY.key(), Item.LILY_OF_THE_VALLEY);
+            registry.register(Item.WITHER_ROSE.key(), Item.WITHER_ROSE);
+            registry.register(Item.TORCHFLOWER.key(), Item.TORCHFLOWER);
+            registry.register(Item.PITCHER_PLANT.key(), Item.PITCHER_PLANT);
+            registry.register(Item.SPORE_BLOSSOM.key(), Item.SPORE_BLOSSOM);
+            registry.register(Item.BROWN_MUSHROOM.key(), Item.BROWN_MUSHROOM);
+            registry.register(Item.RED_MUSHROOM.key(), Item.RED_MUSHROOM);
+            registry.register(Item.CRIMSON_FUNGUS.key(), Item.CRIMSON_FUNGUS);
+            registry.register(Item.WARPED_FUNGUS.key(), Item.WARPED_FUNGUS);
+            registry.register(Item.CRIMSON_ROOTS.key(), Item.CRIMSON_ROOTS);
+            registry.register(Item.WARPED_ROOTS.key(), Item.WARPED_ROOTS);
+            registry.register(Item.NETHER_SPROUTS.key(), Item.NETHER_SPROUTS);
+            registry.register(Item.WEEPING_VINES.key(), Item.WEEPING_VINES);
+            registry.register(Item.TWISTING_VINES.key(), Item.TWISTING_VINES);
+            registry.register(Item.SUGAR_CANE.key(), Item.SUGAR_CANE);
+            registry.register(Item.KELP.key(), Item.KELP);
+            registry.register(Item.PINK_PETALS.key(), Item.PINK_PETALS);
+            registry.register(Item.WILDFLOWERS.key(), Item.WILDFLOWERS);
+            registry.register(Item.LEAF_LITTER.key(), Item.LEAF_LITTER);
+            registry.register(Item.MOSS_CARPET.key(), Item.MOSS_CARPET);
+            registry.register(Item.MOSS_BLOCK.key(), Item.MOSS_BLOCK);
+            registry.register(Item.PALE_MOSS_CARPET.key(), Item.PALE_MOSS_CARPET);
+            registry.register(Item.PALE_HANGING_MOSS.key(), Item.PALE_HANGING_MOSS);
+            registry.register(Item.PALE_MOSS_BLOCK.key(), Item.PALE_MOSS_BLOCK);
+            registry.register(Item.HANGING_ROOTS.key(), Item.HANGING_ROOTS);
+            registry.register(Item.BIG_DRIPLEAF.key(), Item.BIG_DRIPLEAF);
+            registry.register(Item.SMALL_DRIPLEAF.key(), Item.SMALL_DRIPLEAF);
+            registry.register(Item.BAMBOO.key(), Item.BAMBOO);
+            registry.register(Item.OAK_SLAB.key(), Item.OAK_SLAB);
+            registry.register(Item.SPRUCE_SLAB.key(), Item.SPRUCE_SLAB);
+            registry.register(Item.BIRCH_SLAB.key(), Item.BIRCH_SLAB);
+            registry.register(Item.JUNGLE_SLAB.key(), Item.JUNGLE_SLAB);
+            registry.register(Item.ACACIA_SLAB.key(), Item.ACACIA_SLAB);
+            registry.register(Item.CHERRY_SLAB.key(), Item.CHERRY_SLAB);
+            registry.register(Item.DARK_OAK_SLAB.key(), Item.DARK_OAK_SLAB);
+            registry.register(Item.PALE_OAK_SLAB.key(), Item.PALE_OAK_SLAB);
+            registry.register(Item.MANGROVE_SLAB.key(), Item.MANGROVE_SLAB);
+            registry.register(Item.BAMBOO_SLAB.key(), Item.BAMBOO_SLAB);
+            registry.register(Item.BAMBOO_MOSAIC_SLAB.key(), Item.BAMBOO_MOSAIC_SLAB);
+            registry.register(Item.CRIMSON_SLAB.key(), Item.CRIMSON_SLAB);
+            registry.register(Item.WARPED_SLAB.key(), Item.WARPED_SLAB);
+            registry.register(Item.STONE_SLAB.key(), Item.STONE_SLAB);
+            registry.register(Item.SMOOTH_STONE_SLAB.key(), Item.SMOOTH_STONE_SLAB);
+            registry.register(Item.SANDSTONE_SLAB.key(), Item.SANDSTONE_SLAB);
+            registry.register(Item.CUT_SANDSTONE_SLAB.key(), Item.CUT_SANDSTONE_SLAB);
+            registry.register(Item.PETRIFIED_OAK_SLAB.key(), Item.PETRIFIED_OAK_SLAB);
+            registry.register(Item.COBBLESTONE_SLAB.key(), Item.COBBLESTONE_SLAB);
+            registry.register(Item.BRICK_SLAB.key(), Item.BRICK_SLAB);
+            registry.register(Item.STONE_BRICK_SLAB.key(), Item.STONE_BRICK_SLAB);
+            registry.register(Item.MUD_BRICK_SLAB.key(), Item.MUD_BRICK_SLAB);
+            registry.register(Item.NETHER_BRICK_SLAB.key(), Item.NETHER_BRICK_SLAB);
+            registry.register(Item.QUARTZ_SLAB.key(), Item.QUARTZ_SLAB);
+            registry.register(Item.RED_SANDSTONE_SLAB.key(), Item.RED_SANDSTONE_SLAB);
+            registry.register(Item.CUT_RED_SANDSTONE_SLAB.key(), Item.CUT_RED_SANDSTONE_SLAB);
+            registry.register(Item.PURPUR_SLAB.key(), Item.PURPUR_SLAB);
+            registry.register(Item.PRISMARINE_SLAB.key(), Item.PRISMARINE_SLAB);
+            registry.register(Item.PRISMARINE_BRICK_SLAB.key(), Item.PRISMARINE_BRICK_SLAB);
+            registry.register(Item.DARK_PRISMARINE_SLAB.key(), Item.DARK_PRISMARINE_SLAB);
+            registry.register(Item.SMOOTH_QUARTZ.key(), Item.SMOOTH_QUARTZ);
+            registry.register(Item.SMOOTH_RED_SANDSTONE.key(), Item.SMOOTH_RED_SANDSTONE);
+            registry.register(Item.SMOOTH_SANDSTONE.key(), Item.SMOOTH_SANDSTONE);
+            registry.register(Item.SMOOTH_STONE.key(), Item.SMOOTH_STONE);
+            registry.register(Item.BRICKS.key(), Item.BRICKS);
+            registry.register(Item.BOOKSHELF.key(), Item.BOOKSHELF);
+            registry.register(Item.CHISELED_BOOKSHELF.key(), Item.CHISELED_BOOKSHELF);
+            registry.register(Item.DECORATED_POT.key(), Item.DECORATED_POT);
+            registry.register(Item.MOSSY_COBBLESTONE.key(), Item.MOSSY_COBBLESTONE);
+            registry.register(Item.OBSIDIAN.key(), Item.OBSIDIAN);
+            registry.register(Item.TORCH.key(), Item.TORCH);
+            registry.register(Item.END_ROD.key(), Item.END_ROD);
+            registry.register(Item.CHORUS_PLANT.key(), Item.CHORUS_PLANT);
+            registry.register(Item.CHORUS_FLOWER.key(), Item.CHORUS_FLOWER);
+            registry.register(Item.PURPUR_BLOCK.key(), Item.PURPUR_BLOCK);
+            registry.register(Item.PURPUR_PILLAR.key(), Item.PURPUR_PILLAR);
+            registry.register(Item.PURPUR_STAIRS.key(), Item.PURPUR_STAIRS);
+            registry.register(Item.SPAWNER.key(), Item.SPAWNER);
+            registry.register(Item.CREAKING_HEART.key(), Item.CREAKING_HEART);
+            registry.register(Item.CHEST.key(), Item.CHEST);
+            registry.register(Item.CRAFTING_TABLE.key(), Item.CRAFTING_TABLE);
+            registry.register(Item.FARMLAND.key(), Item.FARMLAND);
+            registry.register(Item.FURNACE.key(), Item.FURNACE);
+            registry.register(Item.LADDER.key(), Item.LADDER);
+            registry.register(Item.COBBLESTONE_STAIRS.key(), Item.COBBLESTONE_STAIRS);
+            registry.register(Item.SNOW.key(), Item.SNOW);
+            registry.register(Item.ICE.key(), Item.ICE);
+            registry.register(Item.SNOW_BLOCK.key(), Item.SNOW_BLOCK);
+            registry.register(Item.CACTUS.key(), Item.CACTUS);
+            registry.register(Item.CACTUS_FLOWER.key(), Item.CACTUS_FLOWER);
+            registry.register(Item.CLAY.key(), Item.CLAY);
+            registry.register(Item.JUKEBOX.key(), Item.JUKEBOX);
+            registry.register(Item.OAK_FENCE.key(), Item.OAK_FENCE);
+            registry.register(Item.SPRUCE_FENCE.key(), Item.SPRUCE_FENCE);
+            registry.register(Item.BIRCH_FENCE.key(), Item.BIRCH_FENCE);
+            registry.register(Item.JUNGLE_FENCE.key(), Item.JUNGLE_FENCE);
+            registry.register(Item.ACACIA_FENCE.key(), Item.ACACIA_FENCE);
+            registry.register(Item.CHERRY_FENCE.key(), Item.CHERRY_FENCE);
+            registry.register(Item.DARK_OAK_FENCE.key(), Item.DARK_OAK_FENCE);
+            registry.register(Item.PALE_OAK_FENCE.key(), Item.PALE_OAK_FENCE);
+            registry.register(Item.MANGROVE_FENCE.key(), Item.MANGROVE_FENCE);
+            registry.register(Item.BAMBOO_FENCE.key(), Item.BAMBOO_FENCE);
+            registry.register(Item.CRIMSON_FENCE.key(), Item.CRIMSON_FENCE);
+            registry.register(Item.WARPED_FENCE.key(), Item.WARPED_FENCE);
+            registry.register(Item.PUMPKIN.key(), Item.PUMPKIN);
+            registry.register(Item.CARVED_PUMPKIN.key(), Item.CARVED_PUMPKIN);
+            registry.register(Item.JACK_O_LANTERN.key(), Item.JACK_O_LANTERN);
+            registry.register(Item.NETHERRACK.key(), Item.NETHERRACK);
+            registry.register(Item.SOUL_SAND.key(), Item.SOUL_SAND);
+            registry.register(Item.SOUL_SOIL.key(), Item.SOUL_SOIL);
+            registry.register(Item.BASALT.key(), Item.BASALT);
+            registry.register(Item.POLISHED_BASALT.key(), Item.POLISHED_BASALT);
+            registry.register(Item.SMOOTH_BASALT.key(), Item.SMOOTH_BASALT);
+            registry.register(Item.SOUL_TORCH.key(), Item.SOUL_TORCH);
+            registry.register(Item.GLOWSTONE.key(), Item.GLOWSTONE);
+            registry.register(Item.INFESTED_STONE.key(), Item.INFESTED_STONE);
+            registry.register(Item.INFESTED_COBBLESTONE.key(), Item.INFESTED_COBBLESTONE);
+            registry.register(Item.INFESTED_STONE_BRICKS.key(), Item.INFESTED_STONE_BRICKS);
+            registry.register(Item.INFESTED_MOSSY_STONE_BRICKS.key(), Item.INFESTED_MOSSY_STONE_BRICKS);
+            registry.register(Item.INFESTED_CRACKED_STONE_BRICKS.key(), Item.INFESTED_CRACKED_STONE_BRICKS);
+            registry.register(Item.INFESTED_CHISELED_STONE_BRICKS.key(), Item.INFESTED_CHISELED_STONE_BRICKS);
+            registry.register(Item.INFESTED_DEEPSLATE.key(), Item.INFESTED_DEEPSLATE);
+            registry.register(Item.STONE_BRICKS.key(), Item.STONE_BRICKS);
+            registry.register(Item.MOSSY_STONE_BRICKS.key(), Item.MOSSY_STONE_BRICKS);
+            registry.register(Item.CRACKED_STONE_BRICKS.key(), Item.CRACKED_STONE_BRICKS);
+            registry.register(Item.CHISELED_STONE_BRICKS.key(), Item.CHISELED_STONE_BRICKS);
+            registry.register(Item.PACKED_MUD.key(), Item.PACKED_MUD);
+            registry.register(Item.MUD_BRICKS.key(), Item.MUD_BRICKS);
+            registry.register(Item.DEEPSLATE_BRICKS.key(), Item.DEEPSLATE_BRICKS);
+            registry.register(Item.CRACKED_DEEPSLATE_BRICKS.key(), Item.CRACKED_DEEPSLATE_BRICKS);
+            registry.register(Item.DEEPSLATE_TILES.key(), Item.DEEPSLATE_TILES);
+            registry.register(Item.CRACKED_DEEPSLATE_TILES.key(), Item.CRACKED_DEEPSLATE_TILES);
+            registry.register(Item.CHISELED_DEEPSLATE.key(), Item.CHISELED_DEEPSLATE);
+            registry.register(Item.REINFORCED_DEEPSLATE.key(), Item.REINFORCED_DEEPSLATE);
+            registry.register(Item.BROWN_MUSHROOM_BLOCK.key(), Item.BROWN_MUSHROOM_BLOCK);
+            registry.register(Item.RED_MUSHROOM_BLOCK.key(), Item.RED_MUSHROOM_BLOCK);
+            registry.register(Item.MUSHROOM_STEM.key(), Item.MUSHROOM_STEM);
+            registry.register(Item.IRON_BARS.key(), Item.IRON_BARS);
+            registry.register(Item.CHAIN.key(), Item.CHAIN);
+            registry.register(Item.GLASS_PANE.key(), Item.GLASS_PANE);
+            registry.register(Item.MELON.key(), Item.MELON);
+            registry.register(Item.VINE.key(), Item.VINE);
+            registry.register(Item.GLOW_LICHEN.key(), Item.GLOW_LICHEN);
+            registry.register(Item.RESIN_CLUMP.key(), Item.RESIN_CLUMP);
+            registry.register(Item.RESIN_BLOCK.key(), Item.RESIN_BLOCK);
+            registry.register(Item.RESIN_BRICKS.key(), Item.RESIN_BRICKS);
+            registry.register(Item.RESIN_BRICK_STAIRS.key(), Item.RESIN_BRICK_STAIRS);
+            registry.register(Item.RESIN_BRICK_SLAB.key(), Item.RESIN_BRICK_SLAB);
+            registry.register(Item.RESIN_BRICK_WALL.key(), Item.RESIN_BRICK_WALL);
+            registry.register(Item.CHISELED_RESIN_BRICKS.key(), Item.CHISELED_RESIN_BRICKS);
+            registry.register(Item.BRICK_STAIRS.key(), Item.BRICK_STAIRS);
+            registry.register(Item.STONE_BRICK_STAIRS.key(), Item.STONE_BRICK_STAIRS);
+            registry.register(Item.MUD_BRICK_STAIRS.key(), Item.MUD_BRICK_STAIRS);
+            registry.register(Item.MYCELIUM.key(), Item.MYCELIUM);
+            registry.register(Item.LILY_PAD.key(), Item.LILY_PAD);
+            registry.register(Item.NETHER_BRICKS.key(), Item.NETHER_BRICKS);
+            registry.register(Item.CRACKED_NETHER_BRICKS.key(), Item.CRACKED_NETHER_BRICKS);
+            registry.register(Item.CHISELED_NETHER_BRICKS.key(), Item.CHISELED_NETHER_BRICKS);
+            registry.register(Item.NETHER_BRICK_FENCE.key(), Item.NETHER_BRICK_FENCE);
+            registry.register(Item.NETHER_BRICK_STAIRS.key(), Item.NETHER_BRICK_STAIRS);
+            registry.register(Item.SCULK.key(), Item.SCULK);
+            registry.register(Item.SCULK_VEIN.key(), Item.SCULK_VEIN);
+            registry.register(Item.SCULK_CATALYST.key(), Item.SCULK_CATALYST);
+            registry.register(Item.SCULK_SHRIEKER.key(), Item.SCULK_SHRIEKER);
+            registry.register(Item.ENCHANTING_TABLE.key(), Item.ENCHANTING_TABLE);
+            registry.register(Item.END_PORTAL_FRAME.key(), Item.END_PORTAL_FRAME);
+            registry.register(Item.END_STONE.key(), Item.END_STONE);
+            registry.register(Item.END_STONE_BRICKS.key(), Item.END_STONE_BRICKS);
+            registry.register(Item.DRAGON_EGG.key(), Item.DRAGON_EGG);
+            registry.register(Item.SANDSTONE_STAIRS.key(), Item.SANDSTONE_STAIRS);
+            registry.register(Item.ENDER_CHEST.key(), Item.ENDER_CHEST);
+            registry.register(Item.EMERALD_BLOCK.key(), Item.EMERALD_BLOCK);
+            registry.register(Item.OAK_STAIRS.key(), Item.OAK_STAIRS);
+            registry.register(Item.SPRUCE_STAIRS.key(), Item.SPRUCE_STAIRS);
+            registry.register(Item.BIRCH_STAIRS.key(), Item.BIRCH_STAIRS);
+            registry.register(Item.JUNGLE_STAIRS.key(), Item.JUNGLE_STAIRS);
+            registry.register(Item.ACACIA_STAIRS.key(), Item.ACACIA_STAIRS);
+            registry.register(Item.CHERRY_STAIRS.key(), Item.CHERRY_STAIRS);
+            registry.register(Item.DARK_OAK_STAIRS.key(), Item.DARK_OAK_STAIRS);
+            registry.register(Item.PALE_OAK_STAIRS.key(), Item.PALE_OAK_STAIRS);
+            registry.register(Item.MANGROVE_STAIRS.key(), Item.MANGROVE_STAIRS);
+            registry.register(Item.BAMBOO_STAIRS.key(), Item.BAMBOO_STAIRS);
+            registry.register(Item.BAMBOO_MOSAIC_STAIRS.key(), Item.BAMBOO_MOSAIC_STAIRS);
+            registry.register(Item.CRIMSON_STAIRS.key(), Item.CRIMSON_STAIRS);
+            registry.register(Item.WARPED_STAIRS.key(), Item.WARPED_STAIRS);
+            registry.register(Item.COMMAND_BLOCK.key(), Item.COMMAND_BLOCK);
+            registry.register(Item.BEACON.key(), Item.BEACON);
+            registry.register(Item.COBBLESTONE_WALL.key(), Item.COBBLESTONE_WALL);
+            registry.register(Item.MOSSY_COBBLESTONE_WALL.key(), Item.MOSSY_COBBLESTONE_WALL);
+            registry.register(Item.BRICK_WALL.key(), Item.BRICK_WALL);
+            registry.register(Item.PRISMARINE_WALL.key(), Item.PRISMARINE_WALL);
+            registry.register(Item.RED_SANDSTONE_WALL.key(), Item.RED_SANDSTONE_WALL);
+            registry.register(Item.MOSSY_STONE_BRICK_WALL.key(), Item.MOSSY_STONE_BRICK_WALL);
+            registry.register(Item.GRANITE_WALL.key(), Item.GRANITE_WALL);
+            registry.register(Item.STONE_BRICK_WALL.key(), Item.STONE_BRICK_WALL);
+            registry.register(Item.MUD_BRICK_WALL.key(), Item.MUD_BRICK_WALL);
+            registry.register(Item.NETHER_BRICK_WALL.key(), Item.NETHER_BRICK_WALL);
+            registry.register(Item.ANDESITE_WALL.key(), Item.ANDESITE_WALL);
+            registry.register(Item.RED_NETHER_BRICK_WALL.key(), Item.RED_NETHER_BRICK_WALL);
+            registry.register(Item.SANDSTONE_WALL.key(), Item.SANDSTONE_WALL);
+            registry.register(Item.END_STONE_BRICK_WALL.key(), Item.END_STONE_BRICK_WALL);
+            registry.register(Item.DIORITE_WALL.key(), Item.DIORITE_WALL);
+            registry.register(Item.BLACKSTONE_WALL.key(), Item.BLACKSTONE_WALL);
+            registry.register(Item.POLISHED_BLACKSTONE_WALL.key(), Item.POLISHED_BLACKSTONE_WALL);
+            registry.register(Item.POLISHED_BLACKSTONE_BRICK_WALL.key(), Item.POLISHED_BLACKSTONE_BRICK_WALL);
+            registry.register(Item.COBBLED_DEEPSLATE_WALL.key(), Item.COBBLED_DEEPSLATE_WALL);
+            registry.register(Item.POLISHED_DEEPSLATE_WALL.key(), Item.POLISHED_DEEPSLATE_WALL);
+            registry.register(Item.DEEPSLATE_BRICK_WALL.key(), Item.DEEPSLATE_BRICK_WALL);
+            registry.register(Item.DEEPSLATE_TILE_WALL.key(), Item.DEEPSLATE_TILE_WALL);
+            registry.register(Item.ANVIL.key(), Item.ANVIL);
+            registry.register(Item.CHIPPED_ANVIL.key(), Item.CHIPPED_ANVIL);
+            registry.register(Item.DAMAGED_ANVIL.key(), Item.DAMAGED_ANVIL);
+            registry.register(Item.CHISELED_QUARTZ_BLOCK.key(), Item.CHISELED_QUARTZ_BLOCK);
+            registry.register(Item.QUARTZ_BLOCK.key(), Item.QUARTZ_BLOCK);
+            registry.register(Item.QUARTZ_BRICKS.key(), Item.QUARTZ_BRICKS);
+            registry.register(Item.QUARTZ_PILLAR.key(), Item.QUARTZ_PILLAR);
+            registry.register(Item.QUARTZ_STAIRS.key(), Item.QUARTZ_STAIRS);
+            registry.register(Item.WHITE_TERRACOTTA.key(), Item.WHITE_TERRACOTTA);
+            registry.register(Item.ORANGE_TERRACOTTA.key(), Item.ORANGE_TERRACOTTA);
+            registry.register(Item.MAGENTA_TERRACOTTA.key(), Item.MAGENTA_TERRACOTTA);
+            registry.register(Item.LIGHT_BLUE_TERRACOTTA.key(), Item.LIGHT_BLUE_TERRACOTTA);
+            registry.register(Item.YELLOW_TERRACOTTA.key(), Item.YELLOW_TERRACOTTA);
+            registry.register(Item.LIME_TERRACOTTA.key(), Item.LIME_TERRACOTTA);
+            registry.register(Item.PINK_TERRACOTTA.key(), Item.PINK_TERRACOTTA);
+            registry.register(Item.GRAY_TERRACOTTA.key(), Item.GRAY_TERRACOTTA);
+            registry.register(Item.LIGHT_GRAY_TERRACOTTA.key(), Item.LIGHT_GRAY_TERRACOTTA);
+            registry.register(Item.CYAN_TERRACOTTA.key(), Item.CYAN_TERRACOTTA);
+            registry.register(Item.PURPLE_TERRACOTTA.key(), Item.PURPLE_TERRACOTTA);
+            registry.register(Item.BLUE_TERRACOTTA.key(), Item.BLUE_TERRACOTTA);
+            registry.register(Item.BROWN_TERRACOTTA.key(), Item.BROWN_TERRACOTTA);
+            registry.register(Item.GREEN_TERRACOTTA.key(), Item.GREEN_TERRACOTTA);
+            registry.register(Item.RED_TERRACOTTA.key(), Item.RED_TERRACOTTA);
+            registry.register(Item.BLACK_TERRACOTTA.key(), Item.BLACK_TERRACOTTA);
+            registry.register(Item.BARRIER.key(), Item.BARRIER);
+            registry.register(Item.LIGHT.key(), Item.LIGHT);
+            registry.register(Item.HAY_BLOCK.key(), Item.HAY_BLOCK);
+            registry.register(Item.WHITE_CARPET.key(), Item.WHITE_CARPET);
+            registry.register(Item.ORANGE_CARPET.key(), Item.ORANGE_CARPET);
+            registry.register(Item.MAGENTA_CARPET.key(), Item.MAGENTA_CARPET);
+            registry.register(Item.LIGHT_BLUE_CARPET.key(), Item.LIGHT_BLUE_CARPET);
+            registry.register(Item.YELLOW_CARPET.key(), Item.YELLOW_CARPET);
+            registry.register(Item.LIME_CARPET.key(), Item.LIME_CARPET);
+            registry.register(Item.PINK_CARPET.key(), Item.PINK_CARPET);
+            registry.register(Item.GRAY_CARPET.key(), Item.GRAY_CARPET);
+            registry.register(Item.LIGHT_GRAY_CARPET.key(), Item.LIGHT_GRAY_CARPET);
+            registry.register(Item.CYAN_CARPET.key(), Item.CYAN_CARPET);
+            registry.register(Item.PURPLE_CARPET.key(), Item.PURPLE_CARPET);
+            registry.register(Item.BLUE_CARPET.key(), Item.BLUE_CARPET);
+            registry.register(Item.BROWN_CARPET.key(), Item.BROWN_CARPET);
+            registry.register(Item.GREEN_CARPET.key(), Item.GREEN_CARPET);
+            registry.register(Item.RED_CARPET.key(), Item.RED_CARPET);
+            registry.register(Item.BLACK_CARPET.key(), Item.BLACK_CARPET);
+            registry.register(Item.TERRACOTTA.key(), Item.TERRACOTTA);
+            registry.register(Item.PACKED_ICE.key(), Item.PACKED_ICE);
+            registry.register(Item.DIRT_PATH.key(), Item.DIRT_PATH);
+            registry.register(Item.SUNFLOWER.key(), Item.SUNFLOWER);
+            registry.register(Item.LILAC.key(), Item.LILAC);
+            registry.register(Item.ROSE_BUSH.key(), Item.ROSE_BUSH);
+            registry.register(Item.PEONY.key(), Item.PEONY);
+            registry.register(Item.TALL_GRASS.key(), Item.TALL_GRASS);
+            registry.register(Item.LARGE_FERN.key(), Item.LARGE_FERN);
+            registry.register(Item.WHITE_STAINED_GLASS.key(), Item.WHITE_STAINED_GLASS);
+            registry.register(Item.ORANGE_STAINED_GLASS.key(), Item.ORANGE_STAINED_GLASS);
+            registry.register(Item.MAGENTA_STAINED_GLASS.key(), Item.MAGENTA_STAINED_GLASS);
+            registry.register(Item.LIGHT_BLUE_STAINED_GLASS.key(), Item.LIGHT_BLUE_STAINED_GLASS);
+            registry.register(Item.YELLOW_STAINED_GLASS.key(), Item.YELLOW_STAINED_GLASS);
+            registry.register(Item.LIME_STAINED_GLASS.key(), Item.LIME_STAINED_GLASS);
+            registry.register(Item.PINK_STAINED_GLASS.key(), Item.PINK_STAINED_GLASS);
+            registry.register(Item.GRAY_STAINED_GLASS.key(), Item.GRAY_STAINED_GLASS);
+            registry.register(Item.LIGHT_GRAY_STAINED_GLASS.key(), Item.LIGHT_GRAY_STAINED_GLASS);
+            registry.register(Item.CYAN_STAINED_GLASS.key(), Item.CYAN_STAINED_GLASS);
+            registry.register(Item.PURPLE_STAINED_GLASS.key(), Item.PURPLE_STAINED_GLASS);
+            registry.register(Item.BLUE_STAINED_GLASS.key(), Item.BLUE_STAINED_GLASS);
+            registry.register(Item.BROWN_STAINED_GLASS.key(), Item.BROWN_STAINED_GLASS);
+            registry.register(Item.GREEN_STAINED_GLASS.key(), Item.GREEN_STAINED_GLASS);
+            registry.register(Item.RED_STAINED_GLASS.key(), Item.RED_STAINED_GLASS);
+            registry.register(Item.BLACK_STAINED_GLASS.key(), Item.BLACK_STAINED_GLASS);
+            registry.register(Item.WHITE_STAINED_GLASS_PANE.key(), Item.WHITE_STAINED_GLASS_PANE);
+            registry.register(Item.ORANGE_STAINED_GLASS_PANE.key(), Item.ORANGE_STAINED_GLASS_PANE);
+            registry.register(Item.MAGENTA_STAINED_GLASS_PANE.key(), Item.MAGENTA_STAINED_GLASS_PANE);
+            registry.register(Item.LIGHT_BLUE_STAINED_GLASS_PANE.key(), Item.LIGHT_BLUE_STAINED_GLASS_PANE);
+            registry.register(Item.YELLOW_STAINED_GLASS_PANE.key(), Item.YELLOW_STAINED_GLASS_PANE);
+            registry.register(Item.LIME_STAINED_GLASS_PANE.key(), Item.LIME_STAINED_GLASS_PANE);
+            registry.register(Item.PINK_STAINED_GLASS_PANE.key(), Item.PINK_STAINED_GLASS_PANE);
+            registry.register(Item.GRAY_STAINED_GLASS_PANE.key(), Item.GRAY_STAINED_GLASS_PANE);
+            registry.register(Item.LIGHT_GRAY_STAINED_GLASS_PANE.key(), Item.LIGHT_GRAY_STAINED_GLASS_PANE);
+            registry.register(Item.CYAN_STAINED_GLASS_PANE.key(), Item.CYAN_STAINED_GLASS_PANE);
+            registry.register(Item.PURPLE_STAINED_GLASS_PANE.key(), Item.PURPLE_STAINED_GLASS_PANE);
+            registry.register(Item.BLUE_STAINED_GLASS_PANE.key(), Item.BLUE_STAINED_GLASS_PANE);
+            registry.register(Item.BROWN_STAINED_GLASS_PANE.key(), Item.BROWN_STAINED_GLASS_PANE);
+            registry.register(Item.GREEN_STAINED_GLASS_PANE.key(), Item.GREEN_STAINED_GLASS_PANE);
+            registry.register(Item.RED_STAINED_GLASS_PANE.key(), Item.RED_STAINED_GLASS_PANE);
+            registry.register(Item.BLACK_STAINED_GLASS_PANE.key(), Item.BLACK_STAINED_GLASS_PANE);
+            registry.register(Item.PRISMARINE.key(), Item.PRISMARINE);
+            registry.register(Item.PRISMARINE_BRICKS.key(), Item.PRISMARINE_BRICKS);
+            registry.register(Item.DARK_PRISMARINE.key(), Item.DARK_PRISMARINE);
+            registry.register(Item.PRISMARINE_STAIRS.key(), Item.PRISMARINE_STAIRS);
+            registry.register(Item.PRISMARINE_BRICK_STAIRS.key(), Item.PRISMARINE_BRICK_STAIRS);
+            registry.register(Item.DARK_PRISMARINE_STAIRS.key(), Item.DARK_PRISMARINE_STAIRS);
+            registry.register(Item.SEA_LANTERN.key(), Item.SEA_LANTERN);
+            registry.register(Item.RED_SANDSTONE.key(), Item.RED_SANDSTONE);
+            registry.register(Item.CHISELED_RED_SANDSTONE.key(), Item.CHISELED_RED_SANDSTONE);
+            registry.register(Item.CUT_RED_SANDSTONE.key(), Item.CUT_RED_SANDSTONE);
+            registry.register(Item.RED_SANDSTONE_STAIRS.key(), Item.RED_SANDSTONE_STAIRS);
+            registry.register(Item.REPEATING_COMMAND_BLOCK.key(), Item.REPEATING_COMMAND_BLOCK);
+            registry.register(Item.CHAIN_COMMAND_BLOCK.key(), Item.CHAIN_COMMAND_BLOCK);
+            registry.register(Item.MAGMA_BLOCK.key(), Item.MAGMA_BLOCK);
+            registry.register(Item.NETHER_WART_BLOCK.key(), Item.NETHER_WART_BLOCK);
+            registry.register(Item.WARPED_WART_BLOCK.key(), Item.WARPED_WART_BLOCK);
+            registry.register(Item.RED_NETHER_BRICKS.key(), Item.RED_NETHER_BRICKS);
+            registry.register(Item.BONE_BLOCK.key(), Item.BONE_BLOCK);
+            registry.register(Item.STRUCTURE_VOID.key(), Item.STRUCTURE_VOID);
+            registry.register(Item.SHULKER_BOX.key(), Item.SHULKER_BOX);
+            registry.register(Item.WHITE_SHULKER_BOX.key(), Item.WHITE_SHULKER_BOX);
+            registry.register(Item.ORANGE_SHULKER_BOX.key(), Item.ORANGE_SHULKER_BOX);
+            registry.register(Item.MAGENTA_SHULKER_BOX.key(), Item.MAGENTA_SHULKER_BOX);
+            registry.register(Item.LIGHT_BLUE_SHULKER_BOX.key(), Item.LIGHT_BLUE_SHULKER_BOX);
+            registry.register(Item.YELLOW_SHULKER_BOX.key(), Item.YELLOW_SHULKER_BOX);
+            registry.register(Item.LIME_SHULKER_BOX.key(), Item.LIME_SHULKER_BOX);
+            registry.register(Item.PINK_SHULKER_BOX.key(), Item.PINK_SHULKER_BOX);
+            registry.register(Item.GRAY_SHULKER_BOX.key(), Item.GRAY_SHULKER_BOX);
+            registry.register(Item.LIGHT_GRAY_SHULKER_BOX.key(), Item.LIGHT_GRAY_SHULKER_BOX);
+            registry.register(Item.CYAN_SHULKER_BOX.key(), Item.CYAN_SHULKER_BOX);
+            registry.register(Item.PURPLE_SHULKER_BOX.key(), Item.PURPLE_SHULKER_BOX);
+            registry.register(Item.BLUE_SHULKER_BOX.key(), Item.BLUE_SHULKER_BOX);
+            registry.register(Item.BROWN_SHULKER_BOX.key(), Item.BROWN_SHULKER_BOX);
+            registry.register(Item.GREEN_SHULKER_BOX.key(), Item.GREEN_SHULKER_BOX);
+            registry.register(Item.RED_SHULKER_BOX.key(), Item.RED_SHULKER_BOX);
+            registry.register(Item.BLACK_SHULKER_BOX.key(), Item.BLACK_SHULKER_BOX);
+            registry.register(Item.WHITE_GLAZED_TERRACOTTA.key(), Item.WHITE_GLAZED_TERRACOTTA);
+            registry.register(Item.ORANGE_GLAZED_TERRACOTTA.key(), Item.ORANGE_GLAZED_TERRACOTTA);
+            registry.register(Item.MAGENTA_GLAZED_TERRACOTTA.key(), Item.MAGENTA_GLAZED_TERRACOTTA);
+            registry.register(Item.LIGHT_BLUE_GLAZED_TERRACOTTA.key(), Item.LIGHT_BLUE_GLAZED_TERRACOTTA);
+            registry.register(Item.YELLOW_GLAZED_TERRACOTTA.key(), Item.YELLOW_GLAZED_TERRACOTTA);
+            registry.register(Item.LIME_GLAZED_TERRACOTTA.key(), Item.LIME_GLAZED_TERRACOTTA);
+            registry.register(Item.PINK_GLAZED_TERRACOTTA.key(), Item.PINK_GLAZED_TERRACOTTA);
+            registry.register(Item.GRAY_GLAZED_TERRACOTTA.key(), Item.GRAY_GLAZED_TERRACOTTA);
+            registry.register(Item.LIGHT_GRAY_GLAZED_TERRACOTTA.key(), Item.LIGHT_GRAY_GLAZED_TERRACOTTA);
+            registry.register(Item.CYAN_GLAZED_TERRACOTTA.key(), Item.CYAN_GLAZED_TERRACOTTA);
+            registry.register(Item.PURPLE_GLAZED_TERRACOTTA.key(), Item.PURPLE_GLAZED_TERRACOTTA);
+            registry.register(Item.BLUE_GLAZED_TERRACOTTA.key(), Item.BLUE_GLAZED_TERRACOTTA);
+            registry.register(Item.BROWN_GLAZED_TERRACOTTA.key(), Item.BROWN_GLAZED_TERRACOTTA);
+            registry.register(Item.GREEN_GLAZED_TERRACOTTA.key(), Item.GREEN_GLAZED_TERRACOTTA);
+            registry.register(Item.RED_GLAZED_TERRACOTTA.key(), Item.RED_GLAZED_TERRACOTTA);
+            registry.register(Item.BLACK_GLAZED_TERRACOTTA.key(), Item.BLACK_GLAZED_TERRACOTTA);
+            registry.register(Item.WHITE_CONCRETE.key(), Item.WHITE_CONCRETE);
+            registry.register(Item.ORANGE_CONCRETE.key(), Item.ORANGE_CONCRETE);
+            registry.register(Item.MAGENTA_CONCRETE.key(), Item.MAGENTA_CONCRETE);
+            registry.register(Item.LIGHT_BLUE_CONCRETE.key(), Item.LIGHT_BLUE_CONCRETE);
+            registry.register(Item.YELLOW_CONCRETE.key(), Item.YELLOW_CONCRETE);
+            registry.register(Item.LIME_CONCRETE.key(), Item.LIME_CONCRETE);
+            registry.register(Item.PINK_CONCRETE.key(), Item.PINK_CONCRETE);
+            registry.register(Item.GRAY_CONCRETE.key(), Item.GRAY_CONCRETE);
+            registry.register(Item.LIGHT_GRAY_CONCRETE.key(), Item.LIGHT_GRAY_CONCRETE);
+            registry.register(Item.CYAN_CONCRETE.key(), Item.CYAN_CONCRETE);
+            registry.register(Item.PURPLE_CONCRETE.key(), Item.PURPLE_CONCRETE);
+            registry.register(Item.BLUE_CONCRETE.key(), Item.BLUE_CONCRETE);
+            registry.register(Item.BROWN_CONCRETE.key(), Item.BROWN_CONCRETE);
+            registry.register(Item.GREEN_CONCRETE.key(), Item.GREEN_CONCRETE);
+            registry.register(Item.RED_CONCRETE.key(), Item.RED_CONCRETE);
+            registry.register(Item.BLACK_CONCRETE.key(), Item.BLACK_CONCRETE);
+            registry.register(Item.WHITE_CONCRETE_POWDER.key(), Item.WHITE_CONCRETE_POWDER);
+            registry.register(Item.ORANGE_CONCRETE_POWDER.key(), Item.ORANGE_CONCRETE_POWDER);
+            registry.register(Item.MAGENTA_CONCRETE_POWDER.key(), Item.MAGENTA_CONCRETE_POWDER);
+            registry.register(Item.LIGHT_BLUE_CONCRETE_POWDER.key(), Item.LIGHT_BLUE_CONCRETE_POWDER);
+            registry.register(Item.YELLOW_CONCRETE_POWDER.key(), Item.YELLOW_CONCRETE_POWDER);
+            registry.register(Item.LIME_CONCRETE_POWDER.key(), Item.LIME_CONCRETE_POWDER);
+            registry.register(Item.PINK_CONCRETE_POWDER.key(), Item.PINK_CONCRETE_POWDER);
+            registry.register(Item.GRAY_CONCRETE_POWDER.key(), Item.GRAY_CONCRETE_POWDER);
+            registry.register(Item.LIGHT_GRAY_CONCRETE_POWDER.key(), Item.LIGHT_GRAY_CONCRETE_POWDER);
+            registry.register(Item.CYAN_CONCRETE_POWDER.key(), Item.CYAN_CONCRETE_POWDER);
+            registry.register(Item.PURPLE_CONCRETE_POWDER.key(), Item.PURPLE_CONCRETE_POWDER);
+            registry.register(Item.BLUE_CONCRETE_POWDER.key(), Item.BLUE_CONCRETE_POWDER);
+            registry.register(Item.BROWN_CONCRETE_POWDER.key(), Item.BROWN_CONCRETE_POWDER);
+            registry.register(Item.GREEN_CONCRETE_POWDER.key(), Item.GREEN_CONCRETE_POWDER);
+            registry.register(Item.RED_CONCRETE_POWDER.key(), Item.RED_CONCRETE_POWDER);
+            registry.register(Item.BLACK_CONCRETE_POWDER.key(), Item.BLACK_CONCRETE_POWDER);
+            registry.register(Item.TURTLE_EGG.key(), Item.TURTLE_EGG);
+            registry.register(Item.SNIFFER_EGG.key(), Item.SNIFFER_EGG);
+            registry.register(Item.DEAD_TUBE_CORAL_BLOCK.key(), Item.DEAD_TUBE_CORAL_BLOCK);
+            registry.register(Item.DEAD_BRAIN_CORAL_BLOCK.key(), Item.DEAD_BRAIN_CORAL_BLOCK);
+            registry.register(Item.DEAD_BUBBLE_CORAL_BLOCK.key(), Item.DEAD_BUBBLE_CORAL_BLOCK);
+            registry.register(Item.DEAD_FIRE_CORAL_BLOCK.key(), Item.DEAD_FIRE_CORAL_BLOCK);
+            registry.register(Item.DEAD_HORN_CORAL_BLOCK.key(), Item.DEAD_HORN_CORAL_BLOCK);
+            registry.register(Item.TUBE_CORAL_BLOCK.key(), Item.TUBE_CORAL_BLOCK);
+            registry.register(Item.BRAIN_CORAL_BLOCK.key(), Item.BRAIN_CORAL_BLOCK);
+            registry.register(Item.BUBBLE_CORAL_BLOCK.key(), Item.BUBBLE_CORAL_BLOCK);
+            registry.register(Item.FIRE_CORAL_BLOCK.key(), Item.FIRE_CORAL_BLOCK);
+            registry.register(Item.HORN_CORAL_BLOCK.key(), Item.HORN_CORAL_BLOCK);
+            registry.register(Item.TUBE_CORAL.key(), Item.TUBE_CORAL);
+            registry.register(Item.BRAIN_CORAL.key(), Item.BRAIN_CORAL);
+            registry.register(Item.BUBBLE_CORAL.key(), Item.BUBBLE_CORAL);
+            registry.register(Item.FIRE_CORAL.key(), Item.FIRE_CORAL);
+            registry.register(Item.HORN_CORAL.key(), Item.HORN_CORAL);
+            registry.register(Item.DEAD_BRAIN_CORAL.key(), Item.DEAD_BRAIN_CORAL);
+            registry.register(Item.DEAD_BUBBLE_CORAL.key(), Item.DEAD_BUBBLE_CORAL);
+            registry.register(Item.DEAD_FIRE_CORAL.key(), Item.DEAD_FIRE_CORAL);
+            registry.register(Item.DEAD_HORN_CORAL.key(), Item.DEAD_HORN_CORAL);
+            registry.register(Item.DEAD_TUBE_CORAL.key(), Item.DEAD_TUBE_CORAL);
+            registry.register(Item.TUBE_CORAL_FAN.key(), Item.TUBE_CORAL_FAN);
+            registry.register(Item.BRAIN_CORAL_FAN.key(), Item.BRAIN_CORAL_FAN);
+            registry.register(Item.BUBBLE_CORAL_FAN.key(), Item.BUBBLE_CORAL_FAN);
+            registry.register(Item.FIRE_CORAL_FAN.key(), Item.FIRE_CORAL_FAN);
+            registry.register(Item.HORN_CORAL_FAN.key(), Item.HORN_CORAL_FAN);
+            registry.register(Item.DEAD_TUBE_CORAL_FAN.key(), Item.DEAD_TUBE_CORAL_FAN);
+            registry.register(Item.DEAD_BRAIN_CORAL_FAN.key(), Item.DEAD_BRAIN_CORAL_FAN);
+            registry.register(Item.DEAD_BUBBLE_CORAL_FAN.key(), Item.DEAD_BUBBLE_CORAL_FAN);
+            registry.register(Item.DEAD_FIRE_CORAL_FAN.key(), Item.DEAD_FIRE_CORAL_FAN);
+            registry.register(Item.DEAD_HORN_CORAL_FAN.key(), Item.DEAD_HORN_CORAL_FAN);
+            registry.register(Item.BLUE_ICE.key(), Item.BLUE_ICE);
+            registry.register(Item.CONDUIT.key(), Item.CONDUIT);
+            registry.register(Item.POLISHED_GRANITE_STAIRS.key(), Item.POLISHED_GRANITE_STAIRS);
+            registry.register(Item.SMOOTH_RED_SANDSTONE_STAIRS.key(), Item.SMOOTH_RED_SANDSTONE_STAIRS);
+            registry.register(Item.MOSSY_STONE_BRICK_STAIRS.key(), Item.MOSSY_STONE_BRICK_STAIRS);
+            registry.register(Item.POLISHED_DIORITE_STAIRS.key(), Item.POLISHED_DIORITE_STAIRS);
+            registry.register(Item.MOSSY_COBBLESTONE_STAIRS.key(), Item.MOSSY_COBBLESTONE_STAIRS);
+            registry.register(Item.END_STONE_BRICK_STAIRS.key(), Item.END_STONE_BRICK_STAIRS);
+            registry.register(Item.STONE_STAIRS.key(), Item.STONE_STAIRS);
+            registry.register(Item.SMOOTH_SANDSTONE_STAIRS.key(), Item.SMOOTH_SANDSTONE_STAIRS);
+            registry.register(Item.SMOOTH_QUARTZ_STAIRS.key(), Item.SMOOTH_QUARTZ_STAIRS);
+            registry.register(Item.GRANITE_STAIRS.key(), Item.GRANITE_STAIRS);
+            registry.register(Item.ANDESITE_STAIRS.key(), Item.ANDESITE_STAIRS);
+            registry.register(Item.RED_NETHER_BRICK_STAIRS.key(), Item.RED_NETHER_BRICK_STAIRS);
+            registry.register(Item.POLISHED_ANDESITE_STAIRS.key(), Item.POLISHED_ANDESITE_STAIRS);
+            registry.register(Item.DIORITE_STAIRS.key(), Item.DIORITE_STAIRS);
+            registry.register(Item.COBBLED_DEEPSLATE_STAIRS.key(), Item.COBBLED_DEEPSLATE_STAIRS);
+            registry.register(Item.POLISHED_DEEPSLATE_STAIRS.key(), Item.POLISHED_DEEPSLATE_STAIRS);
+            registry.register(Item.DEEPSLATE_BRICK_STAIRS.key(), Item.DEEPSLATE_BRICK_STAIRS);
+            registry.register(Item.DEEPSLATE_TILE_STAIRS.key(), Item.DEEPSLATE_TILE_STAIRS);
+            registry.register(Item.POLISHED_GRANITE_SLAB.key(), Item.POLISHED_GRANITE_SLAB);
+            registry.register(Item.SMOOTH_RED_SANDSTONE_SLAB.key(), Item.SMOOTH_RED_SANDSTONE_SLAB);
+            registry.register(Item.MOSSY_STONE_BRICK_SLAB.key(), Item.MOSSY_STONE_BRICK_SLAB);
+            registry.register(Item.POLISHED_DIORITE_SLAB.key(), Item.POLISHED_DIORITE_SLAB);
+            registry.register(Item.MOSSY_COBBLESTONE_SLAB.key(), Item.MOSSY_COBBLESTONE_SLAB);
+            registry.register(Item.END_STONE_BRICK_SLAB.key(), Item.END_STONE_BRICK_SLAB);
+            registry.register(Item.SMOOTH_SANDSTONE_SLAB.key(), Item.SMOOTH_SANDSTONE_SLAB);
+            registry.register(Item.SMOOTH_QUARTZ_SLAB.key(), Item.SMOOTH_QUARTZ_SLAB);
+            registry.register(Item.GRANITE_SLAB.key(), Item.GRANITE_SLAB);
+            registry.register(Item.ANDESITE_SLAB.key(), Item.ANDESITE_SLAB);
+            registry.register(Item.RED_NETHER_BRICK_SLAB.key(), Item.RED_NETHER_BRICK_SLAB);
+            registry.register(Item.POLISHED_ANDESITE_SLAB.key(), Item.POLISHED_ANDESITE_SLAB);
+            registry.register(Item.DIORITE_SLAB.key(), Item.DIORITE_SLAB);
+            registry.register(Item.COBBLED_DEEPSLATE_SLAB.key(), Item.COBBLED_DEEPSLATE_SLAB);
+            registry.register(Item.POLISHED_DEEPSLATE_SLAB.key(), Item.POLISHED_DEEPSLATE_SLAB);
+            registry.register(Item.DEEPSLATE_BRICK_SLAB.key(), Item.DEEPSLATE_BRICK_SLAB);
+            registry.register(Item.DEEPSLATE_TILE_SLAB.key(), Item.DEEPSLATE_TILE_SLAB);
+            registry.register(Item.SCAFFOLDING.key(), Item.SCAFFOLDING);
+            registry.register(Item.REDSTONE.key(), Item.REDSTONE);
+            registry.register(Item.REDSTONE_TORCH.key(), Item.REDSTONE_TORCH);
+            registry.register(Item.REDSTONE_BLOCK.key(), Item.REDSTONE_BLOCK);
+            registry.register(Item.REPEATER.key(), Item.REPEATER);
+            registry.register(Item.COMPARATOR.key(), Item.COMPARATOR);
+            registry.register(Item.PISTON.key(), Item.PISTON);
+            registry.register(Item.STICKY_PISTON.key(), Item.STICKY_PISTON);
+            registry.register(Item.SLIME_BLOCK.key(), Item.SLIME_BLOCK);
+            registry.register(Item.HONEY_BLOCK.key(), Item.HONEY_BLOCK);
+            registry.register(Item.OBSERVER.key(), Item.OBSERVER);
+            registry.register(Item.HOPPER.key(), Item.HOPPER);
+            registry.register(Item.DISPENSER.key(), Item.DISPENSER);
+            registry.register(Item.DROPPER.key(), Item.DROPPER);
+            registry.register(Item.LECTERN.key(), Item.LECTERN);
+            registry.register(Item.TARGET.key(), Item.TARGET);
+            registry.register(Item.LEVER.key(), Item.LEVER);
+            registry.register(Item.LIGHTNING_ROD.key(), Item.LIGHTNING_ROD);
+            registry.register(Item.DAYLIGHT_DETECTOR.key(), Item.DAYLIGHT_DETECTOR);
+            registry.register(Item.SCULK_SENSOR.key(), Item.SCULK_SENSOR);
+            registry.register(Item.CALIBRATED_SCULK_SENSOR.key(), Item.CALIBRATED_SCULK_SENSOR);
+            registry.register(Item.TRIPWIRE_HOOK.key(), Item.TRIPWIRE_HOOK);
+            registry.register(Item.TRAPPED_CHEST.key(), Item.TRAPPED_CHEST);
+            registry.register(Item.TNT.key(), Item.TNT);
+            registry.register(Item.REDSTONE_LAMP.key(), Item.REDSTONE_LAMP);
+            registry.register(Item.NOTE_BLOCK.key(), Item.NOTE_BLOCK);
+            registry.register(Item.STONE_BUTTON.key(), Item.STONE_BUTTON);
+            registry.register(Item.POLISHED_BLACKSTONE_BUTTON.key(), Item.POLISHED_BLACKSTONE_BUTTON);
+            registry.register(Item.OAK_BUTTON.key(), Item.OAK_BUTTON);
+            registry.register(Item.SPRUCE_BUTTON.key(), Item.SPRUCE_BUTTON);
+            registry.register(Item.BIRCH_BUTTON.key(), Item.BIRCH_BUTTON);
+            registry.register(Item.JUNGLE_BUTTON.key(), Item.JUNGLE_BUTTON);
+            registry.register(Item.ACACIA_BUTTON.key(), Item.ACACIA_BUTTON);
+            registry.register(Item.CHERRY_BUTTON.key(), Item.CHERRY_BUTTON);
+            registry.register(Item.DARK_OAK_BUTTON.key(), Item.DARK_OAK_BUTTON);
+            registry.register(Item.PALE_OAK_BUTTON.key(), Item.PALE_OAK_BUTTON);
+            registry.register(Item.MANGROVE_BUTTON.key(), Item.MANGROVE_BUTTON);
+            registry.register(Item.BAMBOO_BUTTON.key(), Item.BAMBOO_BUTTON);
+            registry.register(Item.CRIMSON_BUTTON.key(), Item.CRIMSON_BUTTON);
+            registry.register(Item.WARPED_BUTTON.key(), Item.WARPED_BUTTON);
+            registry.register(Item.STONE_PRESSURE_PLATE.key(), Item.STONE_PRESSURE_PLATE);
+            registry.register(Item.POLISHED_BLACKSTONE_PRESSURE_PLATE.key(), Item.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+            registry.register(Item.LIGHT_WEIGHTED_PRESSURE_PLATE.key(), Item.LIGHT_WEIGHTED_PRESSURE_PLATE);
+            registry.register(Item.HEAVY_WEIGHTED_PRESSURE_PLATE.key(), Item.HEAVY_WEIGHTED_PRESSURE_PLATE);
+            registry.register(Item.OAK_PRESSURE_PLATE.key(), Item.OAK_PRESSURE_PLATE);
+            registry.register(Item.SPRUCE_PRESSURE_PLATE.key(), Item.SPRUCE_PRESSURE_PLATE);
+            registry.register(Item.BIRCH_PRESSURE_PLATE.key(), Item.BIRCH_PRESSURE_PLATE);
+            registry.register(Item.JUNGLE_PRESSURE_PLATE.key(), Item.JUNGLE_PRESSURE_PLATE);
+            registry.register(Item.ACACIA_PRESSURE_PLATE.key(), Item.ACACIA_PRESSURE_PLATE);
+            registry.register(Item.CHERRY_PRESSURE_PLATE.key(), Item.CHERRY_PRESSURE_PLATE);
+            registry.register(Item.DARK_OAK_PRESSURE_PLATE.key(), Item.DARK_OAK_PRESSURE_PLATE);
+            registry.register(Item.PALE_OAK_PRESSURE_PLATE.key(), Item.PALE_OAK_PRESSURE_PLATE);
+            registry.register(Item.MANGROVE_PRESSURE_PLATE.key(), Item.MANGROVE_PRESSURE_PLATE);
+            registry.register(Item.BAMBOO_PRESSURE_PLATE.key(), Item.BAMBOO_PRESSURE_PLATE);
+            registry.register(Item.CRIMSON_PRESSURE_PLATE.key(), Item.CRIMSON_PRESSURE_PLATE);
+            registry.register(Item.WARPED_PRESSURE_PLATE.key(), Item.WARPED_PRESSURE_PLATE);
+            registry.register(Item.IRON_DOOR.key(), Item.IRON_DOOR);
+            registry.register(Item.OAK_DOOR.key(), Item.OAK_DOOR);
+            registry.register(Item.SPRUCE_DOOR.key(), Item.SPRUCE_DOOR);
+            registry.register(Item.BIRCH_DOOR.key(), Item.BIRCH_DOOR);
+            registry.register(Item.JUNGLE_DOOR.key(), Item.JUNGLE_DOOR);
+            registry.register(Item.ACACIA_DOOR.key(), Item.ACACIA_DOOR);
+            registry.register(Item.CHERRY_DOOR.key(), Item.CHERRY_DOOR);
+            registry.register(Item.DARK_OAK_DOOR.key(), Item.DARK_OAK_DOOR);
+            registry.register(Item.PALE_OAK_DOOR.key(), Item.PALE_OAK_DOOR);
+            registry.register(Item.MANGROVE_DOOR.key(), Item.MANGROVE_DOOR);
+            registry.register(Item.BAMBOO_DOOR.key(), Item.BAMBOO_DOOR);
+            registry.register(Item.CRIMSON_DOOR.key(), Item.CRIMSON_DOOR);
+            registry.register(Item.WARPED_DOOR.key(), Item.WARPED_DOOR);
+            registry.register(Item.COPPER_DOOR.key(), Item.COPPER_DOOR);
+            registry.register(Item.EXPOSED_COPPER_DOOR.key(), Item.EXPOSED_COPPER_DOOR);
+            registry.register(Item.WEATHERED_COPPER_DOOR.key(), Item.WEATHERED_COPPER_DOOR);
+            registry.register(Item.OXIDIZED_COPPER_DOOR.key(), Item.OXIDIZED_COPPER_DOOR);
+            registry.register(Item.WAXED_COPPER_DOOR.key(), Item.WAXED_COPPER_DOOR);
+            registry.register(Item.WAXED_EXPOSED_COPPER_DOOR.key(), Item.WAXED_EXPOSED_COPPER_DOOR);
+            registry.register(Item.WAXED_WEATHERED_COPPER_DOOR.key(), Item.WAXED_WEATHERED_COPPER_DOOR);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_DOOR.key(), Item.WAXED_OXIDIZED_COPPER_DOOR);
+            registry.register(Item.IRON_TRAPDOOR.key(), Item.IRON_TRAPDOOR);
+            registry.register(Item.OAK_TRAPDOOR.key(), Item.OAK_TRAPDOOR);
+            registry.register(Item.SPRUCE_TRAPDOOR.key(), Item.SPRUCE_TRAPDOOR);
+            registry.register(Item.BIRCH_TRAPDOOR.key(), Item.BIRCH_TRAPDOOR);
+            registry.register(Item.JUNGLE_TRAPDOOR.key(), Item.JUNGLE_TRAPDOOR);
+            registry.register(Item.ACACIA_TRAPDOOR.key(), Item.ACACIA_TRAPDOOR);
+            registry.register(Item.CHERRY_TRAPDOOR.key(), Item.CHERRY_TRAPDOOR);
+            registry.register(Item.DARK_OAK_TRAPDOOR.key(), Item.DARK_OAK_TRAPDOOR);
+            registry.register(Item.PALE_OAK_TRAPDOOR.key(), Item.PALE_OAK_TRAPDOOR);
+            registry.register(Item.MANGROVE_TRAPDOOR.key(), Item.MANGROVE_TRAPDOOR);
+            registry.register(Item.BAMBOO_TRAPDOOR.key(), Item.BAMBOO_TRAPDOOR);
+            registry.register(Item.CRIMSON_TRAPDOOR.key(), Item.CRIMSON_TRAPDOOR);
+            registry.register(Item.WARPED_TRAPDOOR.key(), Item.WARPED_TRAPDOOR);
+            registry.register(Item.COPPER_TRAPDOOR.key(), Item.COPPER_TRAPDOOR);
+            registry.register(Item.EXPOSED_COPPER_TRAPDOOR.key(), Item.EXPOSED_COPPER_TRAPDOOR);
+            registry.register(Item.WEATHERED_COPPER_TRAPDOOR.key(), Item.WEATHERED_COPPER_TRAPDOOR);
+            registry.register(Item.OXIDIZED_COPPER_TRAPDOOR.key(), Item.OXIDIZED_COPPER_TRAPDOOR);
+            registry.register(Item.WAXED_COPPER_TRAPDOOR.key(), Item.WAXED_COPPER_TRAPDOOR);
+            registry.register(Item.WAXED_EXPOSED_COPPER_TRAPDOOR.key(), Item.WAXED_EXPOSED_COPPER_TRAPDOOR);
+            registry.register(Item.WAXED_WEATHERED_COPPER_TRAPDOOR.key(), Item.WAXED_WEATHERED_COPPER_TRAPDOOR);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_TRAPDOOR.key(), Item.WAXED_OXIDIZED_COPPER_TRAPDOOR);
+            registry.register(Item.OAK_FENCE_GATE.key(), Item.OAK_FENCE_GATE);
+            registry.register(Item.SPRUCE_FENCE_GATE.key(), Item.SPRUCE_FENCE_GATE);
+            registry.register(Item.BIRCH_FENCE_GATE.key(), Item.BIRCH_FENCE_GATE);
+            registry.register(Item.JUNGLE_FENCE_GATE.key(), Item.JUNGLE_FENCE_GATE);
+            registry.register(Item.ACACIA_FENCE_GATE.key(), Item.ACACIA_FENCE_GATE);
+            registry.register(Item.CHERRY_FENCE_GATE.key(), Item.CHERRY_FENCE_GATE);
+            registry.register(Item.DARK_OAK_FENCE_GATE.key(), Item.DARK_OAK_FENCE_GATE);
+            registry.register(Item.PALE_OAK_FENCE_GATE.key(), Item.PALE_OAK_FENCE_GATE);
+            registry.register(Item.MANGROVE_FENCE_GATE.key(), Item.MANGROVE_FENCE_GATE);
+            registry.register(Item.BAMBOO_FENCE_GATE.key(), Item.BAMBOO_FENCE_GATE);
+            registry.register(Item.CRIMSON_FENCE_GATE.key(), Item.CRIMSON_FENCE_GATE);
+            registry.register(Item.WARPED_FENCE_GATE.key(), Item.WARPED_FENCE_GATE);
+            registry.register(Item.POWERED_RAIL.key(), Item.POWERED_RAIL);
+            registry.register(Item.DETECTOR_RAIL.key(), Item.DETECTOR_RAIL);
+            registry.register(Item.RAIL.key(), Item.RAIL);
+            registry.register(Item.ACTIVATOR_RAIL.key(), Item.ACTIVATOR_RAIL);
+            registry.register(Item.SADDLE.key(), Item.SADDLE);
+            registry.register(Item.MINECART.key(), Item.MINECART);
+            registry.register(Item.CHEST_MINECART.key(), Item.CHEST_MINECART);
+            registry.register(Item.FURNACE_MINECART.key(), Item.FURNACE_MINECART);
+            registry.register(Item.TNT_MINECART.key(), Item.TNT_MINECART);
+            registry.register(Item.HOPPER_MINECART.key(), Item.HOPPER_MINECART);
+            registry.register(Item.CARROT_ON_A_STICK.key(), Item.CARROT_ON_A_STICK);
+            registry.register(Item.WARPED_FUNGUS_ON_A_STICK.key(), Item.WARPED_FUNGUS_ON_A_STICK);
+            registry.register(Item.PHANTOM_MEMBRANE.key(), Item.PHANTOM_MEMBRANE);
+            registry.register(Item.ELYTRA.key(), Item.ELYTRA);
+            registry.register(Item.OAK_BOAT.key(), Item.OAK_BOAT);
+            registry.register(Item.OAK_CHEST_BOAT.key(), Item.OAK_CHEST_BOAT);
+            registry.register(Item.SPRUCE_BOAT.key(), Item.SPRUCE_BOAT);
+            registry.register(Item.SPRUCE_CHEST_BOAT.key(), Item.SPRUCE_CHEST_BOAT);
+            registry.register(Item.BIRCH_BOAT.key(), Item.BIRCH_BOAT);
+            registry.register(Item.BIRCH_CHEST_BOAT.key(), Item.BIRCH_CHEST_BOAT);
+            registry.register(Item.JUNGLE_BOAT.key(), Item.JUNGLE_BOAT);
+            registry.register(Item.JUNGLE_CHEST_BOAT.key(), Item.JUNGLE_CHEST_BOAT);
+            registry.register(Item.ACACIA_BOAT.key(), Item.ACACIA_BOAT);
+            registry.register(Item.ACACIA_CHEST_BOAT.key(), Item.ACACIA_CHEST_BOAT);
+            registry.register(Item.CHERRY_BOAT.key(), Item.CHERRY_BOAT);
+            registry.register(Item.CHERRY_CHEST_BOAT.key(), Item.CHERRY_CHEST_BOAT);
+            registry.register(Item.DARK_OAK_BOAT.key(), Item.DARK_OAK_BOAT);
+            registry.register(Item.DARK_OAK_CHEST_BOAT.key(), Item.DARK_OAK_CHEST_BOAT);
+            registry.register(Item.PALE_OAK_BOAT.key(), Item.PALE_OAK_BOAT);
+            registry.register(Item.PALE_OAK_CHEST_BOAT.key(), Item.PALE_OAK_CHEST_BOAT);
+            registry.register(Item.MANGROVE_BOAT.key(), Item.MANGROVE_BOAT);
+            registry.register(Item.MANGROVE_CHEST_BOAT.key(), Item.MANGROVE_CHEST_BOAT);
+            registry.register(Item.BAMBOO_RAFT.key(), Item.BAMBOO_RAFT);
+            registry.register(Item.BAMBOO_CHEST_RAFT.key(), Item.BAMBOO_CHEST_RAFT);
+            registry.register(Item.STRUCTURE_BLOCK.key(), Item.STRUCTURE_BLOCK);
+            registry.register(Item.JIGSAW.key(), Item.JIGSAW);
+            registry.register(Item.TEST_BLOCK.key(), Item.TEST_BLOCK);
+            registry.register(Item.TEST_INSTANCE_BLOCK.key(), Item.TEST_INSTANCE_BLOCK);
+            registry.register(Item.TURTLE_HELMET.key(), Item.TURTLE_HELMET);
+            registry.register(Item.TURTLE_SCUTE.key(), Item.TURTLE_SCUTE);
+            registry.register(Item.ARMADILLO_SCUTE.key(), Item.ARMADILLO_SCUTE);
+            registry.register(Item.WOLF_ARMOR.key(), Item.WOLF_ARMOR);
+            registry.register(Item.FLINT_AND_STEEL.key(), Item.FLINT_AND_STEEL);
+            registry.register(Item.BOWL.key(), Item.BOWL);
+            registry.register(Item.APPLE.key(), Item.APPLE);
+            registry.register(Item.BOW.key(), Item.BOW);
+            registry.register(Item.ARROW.key(), Item.ARROW);
+            registry.register(Item.COAL.key(), Item.COAL);
+            registry.register(Item.CHARCOAL.key(), Item.CHARCOAL);
+            registry.register(Item.DIAMOND.key(), Item.DIAMOND);
+            registry.register(Item.EMERALD.key(), Item.EMERALD);
+            registry.register(Item.LAPIS_LAZULI.key(), Item.LAPIS_LAZULI);
+            registry.register(Item.QUARTZ.key(), Item.QUARTZ);
+            registry.register(Item.AMETHYST_SHARD.key(), Item.AMETHYST_SHARD);
+            registry.register(Item.RAW_IRON.key(), Item.RAW_IRON);
+            registry.register(Item.IRON_INGOT.key(), Item.IRON_INGOT);
+            registry.register(Item.RAW_COPPER.key(), Item.RAW_COPPER);
+            registry.register(Item.COPPER_INGOT.key(), Item.COPPER_INGOT);
+            registry.register(Item.RAW_GOLD.key(), Item.RAW_GOLD);
+            registry.register(Item.GOLD_INGOT.key(), Item.GOLD_INGOT);
+            registry.register(Item.NETHERITE_INGOT.key(), Item.NETHERITE_INGOT);
+            registry.register(Item.NETHERITE_SCRAP.key(), Item.NETHERITE_SCRAP);
+            registry.register(Item.WOODEN_SWORD.key(), Item.WOODEN_SWORD);
+            registry.register(Item.WOODEN_SHOVEL.key(), Item.WOODEN_SHOVEL);
+            registry.register(Item.WOODEN_PICKAXE.key(), Item.WOODEN_PICKAXE);
+            registry.register(Item.WOODEN_AXE.key(), Item.WOODEN_AXE);
+            registry.register(Item.WOODEN_HOE.key(), Item.WOODEN_HOE);
+            registry.register(Item.STONE_SWORD.key(), Item.STONE_SWORD);
+            registry.register(Item.STONE_SHOVEL.key(), Item.STONE_SHOVEL);
+            registry.register(Item.STONE_PICKAXE.key(), Item.STONE_PICKAXE);
+            registry.register(Item.STONE_AXE.key(), Item.STONE_AXE);
+            registry.register(Item.STONE_HOE.key(), Item.STONE_HOE);
+            registry.register(Item.GOLDEN_SWORD.key(), Item.GOLDEN_SWORD);
+            registry.register(Item.GOLDEN_SHOVEL.key(), Item.GOLDEN_SHOVEL);
+            registry.register(Item.GOLDEN_PICKAXE.key(), Item.GOLDEN_PICKAXE);
+            registry.register(Item.GOLDEN_AXE.key(), Item.GOLDEN_AXE);
+            registry.register(Item.GOLDEN_HOE.key(), Item.GOLDEN_HOE);
+            registry.register(Item.IRON_SWORD.key(), Item.IRON_SWORD);
+            registry.register(Item.IRON_SHOVEL.key(), Item.IRON_SHOVEL);
+            registry.register(Item.IRON_PICKAXE.key(), Item.IRON_PICKAXE);
+            registry.register(Item.IRON_AXE.key(), Item.IRON_AXE);
+            registry.register(Item.IRON_HOE.key(), Item.IRON_HOE);
+            registry.register(Item.DIAMOND_SWORD.key(), Item.DIAMOND_SWORD);
+            registry.register(Item.DIAMOND_SHOVEL.key(), Item.DIAMOND_SHOVEL);
+            registry.register(Item.DIAMOND_PICKAXE.key(), Item.DIAMOND_PICKAXE);
+            registry.register(Item.DIAMOND_AXE.key(), Item.DIAMOND_AXE);
+            registry.register(Item.DIAMOND_HOE.key(), Item.DIAMOND_HOE);
+            registry.register(Item.NETHERITE_SWORD.key(), Item.NETHERITE_SWORD);
+            registry.register(Item.NETHERITE_SHOVEL.key(), Item.NETHERITE_SHOVEL);
+            registry.register(Item.NETHERITE_PICKAXE.key(), Item.NETHERITE_PICKAXE);
+            registry.register(Item.NETHERITE_AXE.key(), Item.NETHERITE_AXE);
+            registry.register(Item.NETHERITE_HOE.key(), Item.NETHERITE_HOE);
+            registry.register(Item.STICK.key(), Item.STICK);
+            registry.register(Item.MUSHROOM_STEW.key(), Item.MUSHROOM_STEW);
+            registry.register(Item.STRING.key(), Item.STRING);
+            registry.register(Item.FEATHER.key(), Item.FEATHER);
+            registry.register(Item.GUNPOWDER.key(), Item.GUNPOWDER);
+            registry.register(Item.WHEAT_SEEDS.key(), Item.WHEAT_SEEDS);
+            registry.register(Item.WHEAT.key(), Item.WHEAT);
+            registry.register(Item.BREAD.key(), Item.BREAD);
+            registry.register(Item.LEATHER_HELMET.key(), Item.LEATHER_HELMET);
+            registry.register(Item.LEATHER_CHESTPLATE.key(), Item.LEATHER_CHESTPLATE);
+            registry.register(Item.LEATHER_LEGGINGS.key(), Item.LEATHER_LEGGINGS);
+            registry.register(Item.LEATHER_BOOTS.key(), Item.LEATHER_BOOTS);
+            registry.register(Item.CHAINMAIL_HELMET.key(), Item.CHAINMAIL_HELMET);
+            registry.register(Item.CHAINMAIL_CHESTPLATE.key(), Item.CHAINMAIL_CHESTPLATE);
+            registry.register(Item.CHAINMAIL_LEGGINGS.key(), Item.CHAINMAIL_LEGGINGS);
+            registry.register(Item.CHAINMAIL_BOOTS.key(), Item.CHAINMAIL_BOOTS);
+            registry.register(Item.IRON_HELMET.key(), Item.IRON_HELMET);
+            registry.register(Item.IRON_CHESTPLATE.key(), Item.IRON_CHESTPLATE);
+            registry.register(Item.IRON_LEGGINGS.key(), Item.IRON_LEGGINGS);
+            registry.register(Item.IRON_BOOTS.key(), Item.IRON_BOOTS);
+            registry.register(Item.DIAMOND_HELMET.key(), Item.DIAMOND_HELMET);
+            registry.register(Item.DIAMOND_CHESTPLATE.key(), Item.DIAMOND_CHESTPLATE);
+            registry.register(Item.DIAMOND_LEGGINGS.key(), Item.DIAMOND_LEGGINGS);
+            registry.register(Item.DIAMOND_BOOTS.key(), Item.DIAMOND_BOOTS);
+            registry.register(Item.GOLDEN_HELMET.key(), Item.GOLDEN_HELMET);
+            registry.register(Item.GOLDEN_CHESTPLATE.key(), Item.GOLDEN_CHESTPLATE);
+            registry.register(Item.GOLDEN_LEGGINGS.key(), Item.GOLDEN_LEGGINGS);
+            registry.register(Item.GOLDEN_BOOTS.key(), Item.GOLDEN_BOOTS);
+            registry.register(Item.NETHERITE_HELMET.key(), Item.NETHERITE_HELMET);
+            registry.register(Item.NETHERITE_CHESTPLATE.key(), Item.NETHERITE_CHESTPLATE);
+            registry.register(Item.NETHERITE_LEGGINGS.key(), Item.NETHERITE_LEGGINGS);
+            registry.register(Item.NETHERITE_BOOTS.key(), Item.NETHERITE_BOOTS);
+            registry.register(Item.FLINT.key(), Item.FLINT);
+            registry.register(Item.PORKCHOP.key(), Item.PORKCHOP);
+            registry.register(Item.COOKED_PORKCHOP.key(), Item.COOKED_PORKCHOP);
+            registry.register(Item.PAINTING.key(), Item.PAINTING);
+            registry.register(Item.GOLDEN_APPLE.key(), Item.GOLDEN_APPLE);
+            registry.register(Item.ENCHANTED_GOLDEN_APPLE.key(), Item.ENCHANTED_GOLDEN_APPLE);
+            registry.register(Item.OAK_SIGN.key(), Item.OAK_SIGN);
+            registry.register(Item.SPRUCE_SIGN.key(), Item.SPRUCE_SIGN);
+            registry.register(Item.BIRCH_SIGN.key(), Item.BIRCH_SIGN);
+            registry.register(Item.JUNGLE_SIGN.key(), Item.JUNGLE_SIGN);
+            registry.register(Item.ACACIA_SIGN.key(), Item.ACACIA_SIGN);
+            registry.register(Item.CHERRY_SIGN.key(), Item.CHERRY_SIGN);
+            registry.register(Item.DARK_OAK_SIGN.key(), Item.DARK_OAK_SIGN);
+            registry.register(Item.PALE_OAK_SIGN.key(), Item.PALE_OAK_SIGN);
+            registry.register(Item.MANGROVE_SIGN.key(), Item.MANGROVE_SIGN);
+            registry.register(Item.BAMBOO_SIGN.key(), Item.BAMBOO_SIGN);
+            registry.register(Item.CRIMSON_SIGN.key(), Item.CRIMSON_SIGN);
+            registry.register(Item.WARPED_SIGN.key(), Item.WARPED_SIGN);
+            registry.register(Item.OAK_HANGING_SIGN.key(), Item.OAK_HANGING_SIGN);
+            registry.register(Item.SPRUCE_HANGING_SIGN.key(), Item.SPRUCE_HANGING_SIGN);
+            registry.register(Item.BIRCH_HANGING_SIGN.key(), Item.BIRCH_HANGING_SIGN);
+            registry.register(Item.JUNGLE_HANGING_SIGN.key(), Item.JUNGLE_HANGING_SIGN);
+            registry.register(Item.ACACIA_HANGING_SIGN.key(), Item.ACACIA_HANGING_SIGN);
+            registry.register(Item.CHERRY_HANGING_SIGN.key(), Item.CHERRY_HANGING_SIGN);
+            registry.register(Item.DARK_OAK_HANGING_SIGN.key(), Item.DARK_OAK_HANGING_SIGN);
+            registry.register(Item.PALE_OAK_HANGING_SIGN.key(), Item.PALE_OAK_HANGING_SIGN);
+            registry.register(Item.MANGROVE_HANGING_SIGN.key(), Item.MANGROVE_HANGING_SIGN);
+            registry.register(Item.BAMBOO_HANGING_SIGN.key(), Item.BAMBOO_HANGING_SIGN);
+            registry.register(Item.CRIMSON_HANGING_SIGN.key(), Item.CRIMSON_HANGING_SIGN);
+            registry.register(Item.WARPED_HANGING_SIGN.key(), Item.WARPED_HANGING_SIGN);
+            registry.register(Item.BUCKET.key(), Item.BUCKET);
+            registry.register(Item.WATER_BUCKET.key(), Item.WATER_BUCKET);
+            registry.register(Item.LAVA_BUCKET.key(), Item.LAVA_BUCKET);
+            registry.register(Item.POWDER_SNOW_BUCKET.key(), Item.POWDER_SNOW_BUCKET);
+            registry.register(Item.SNOWBALL.key(), Item.SNOWBALL);
+            registry.register(Item.LEATHER.key(), Item.LEATHER);
+            registry.register(Item.MILK_BUCKET.key(), Item.MILK_BUCKET);
+            registry.register(Item.PUFFERFISH_BUCKET.key(), Item.PUFFERFISH_BUCKET);
+            registry.register(Item.SALMON_BUCKET.key(), Item.SALMON_BUCKET);
+            registry.register(Item.COD_BUCKET.key(), Item.COD_BUCKET);
+            registry.register(Item.TROPICAL_FISH_BUCKET.key(), Item.TROPICAL_FISH_BUCKET);
+            registry.register(Item.AXOLOTL_BUCKET.key(), Item.AXOLOTL_BUCKET);
+            registry.register(Item.TADPOLE_BUCKET.key(), Item.TADPOLE_BUCKET);
+            registry.register(Item.BRICK.key(), Item.BRICK);
+            registry.register(Item.CLAY_BALL.key(), Item.CLAY_BALL);
+            registry.register(Item.DRIED_KELP_BLOCK.key(), Item.DRIED_KELP_BLOCK);
+            registry.register(Item.PAPER.key(), Item.PAPER);
+            registry.register(Item.BOOK.key(), Item.BOOK);
+            registry.register(Item.SLIME_BALL.key(), Item.SLIME_BALL);
+            registry.register(Item.EGG.key(), Item.EGG);
+            registry.register(Item.BLUE_EGG.key(), Item.BLUE_EGG);
+            registry.register(Item.BROWN_EGG.key(), Item.BROWN_EGG);
+            registry.register(Item.COMPASS.key(), Item.COMPASS);
+            registry.register(Item.RECOVERY_COMPASS.key(), Item.RECOVERY_COMPASS);
+            registry.register(Item.BUNDLE.key(), Item.BUNDLE);
+            registry.register(Item.WHITE_BUNDLE.key(), Item.WHITE_BUNDLE);
+            registry.register(Item.ORANGE_BUNDLE.key(), Item.ORANGE_BUNDLE);
+            registry.register(Item.MAGENTA_BUNDLE.key(), Item.MAGENTA_BUNDLE);
+            registry.register(Item.LIGHT_BLUE_BUNDLE.key(), Item.LIGHT_BLUE_BUNDLE);
+            registry.register(Item.YELLOW_BUNDLE.key(), Item.YELLOW_BUNDLE);
+            registry.register(Item.LIME_BUNDLE.key(), Item.LIME_BUNDLE);
+            registry.register(Item.PINK_BUNDLE.key(), Item.PINK_BUNDLE);
+            registry.register(Item.GRAY_BUNDLE.key(), Item.GRAY_BUNDLE);
+            registry.register(Item.LIGHT_GRAY_BUNDLE.key(), Item.LIGHT_GRAY_BUNDLE);
+            registry.register(Item.CYAN_BUNDLE.key(), Item.CYAN_BUNDLE);
+            registry.register(Item.PURPLE_BUNDLE.key(), Item.PURPLE_BUNDLE);
+            registry.register(Item.BLUE_BUNDLE.key(), Item.BLUE_BUNDLE);
+            registry.register(Item.BROWN_BUNDLE.key(), Item.BROWN_BUNDLE);
+            registry.register(Item.GREEN_BUNDLE.key(), Item.GREEN_BUNDLE);
+            registry.register(Item.RED_BUNDLE.key(), Item.RED_BUNDLE);
+            registry.register(Item.BLACK_BUNDLE.key(), Item.BLACK_BUNDLE);
+            registry.register(Item.FISHING_ROD.key(), Item.FISHING_ROD);
+            registry.register(Item.CLOCK.key(), Item.CLOCK);
+            registry.register(Item.SPYGLASS.key(), Item.SPYGLASS);
+            registry.register(Item.GLOWSTONE_DUST.key(), Item.GLOWSTONE_DUST);
+            registry.register(Item.COD.key(), Item.COD);
+            registry.register(Item.SALMON.key(), Item.SALMON);
+            registry.register(Item.TROPICAL_FISH.key(), Item.TROPICAL_FISH);
+            registry.register(Item.PUFFERFISH.key(), Item.PUFFERFISH);
+            registry.register(Item.COOKED_COD.key(), Item.COOKED_COD);
+            registry.register(Item.COOKED_SALMON.key(), Item.COOKED_SALMON);
+            registry.register(Item.INK_SAC.key(), Item.INK_SAC);
+            registry.register(Item.GLOW_INK_SAC.key(), Item.GLOW_INK_SAC);
+            registry.register(Item.COCOA_BEANS.key(), Item.COCOA_BEANS);
+            registry.register(Item.WHITE_DYE.key(), Item.WHITE_DYE);
+            registry.register(Item.ORANGE_DYE.key(), Item.ORANGE_DYE);
+            registry.register(Item.MAGENTA_DYE.key(), Item.MAGENTA_DYE);
+            registry.register(Item.LIGHT_BLUE_DYE.key(), Item.LIGHT_BLUE_DYE);
+            registry.register(Item.YELLOW_DYE.key(), Item.YELLOW_DYE);
+            registry.register(Item.LIME_DYE.key(), Item.LIME_DYE);
+            registry.register(Item.PINK_DYE.key(), Item.PINK_DYE);
+            registry.register(Item.GRAY_DYE.key(), Item.GRAY_DYE);
+            registry.register(Item.LIGHT_GRAY_DYE.key(), Item.LIGHT_GRAY_DYE);
+            registry.register(Item.CYAN_DYE.key(), Item.CYAN_DYE);
+            registry.register(Item.PURPLE_DYE.key(), Item.PURPLE_DYE);
+            registry.register(Item.BLUE_DYE.key(), Item.BLUE_DYE);
+            registry.register(Item.BROWN_DYE.key(), Item.BROWN_DYE);
+            registry.register(Item.GREEN_DYE.key(), Item.GREEN_DYE);
+            registry.register(Item.RED_DYE.key(), Item.RED_DYE);
+            registry.register(Item.BLACK_DYE.key(), Item.BLACK_DYE);
+            registry.register(Item.BONE_MEAL.key(), Item.BONE_MEAL);
+            registry.register(Item.BONE.key(), Item.BONE);
+            registry.register(Item.SUGAR.key(), Item.SUGAR);
+            registry.register(Item.CAKE.key(), Item.CAKE);
+            registry.register(Item.WHITE_BED.key(), Item.WHITE_BED);
+            registry.register(Item.ORANGE_BED.key(), Item.ORANGE_BED);
+            registry.register(Item.MAGENTA_BED.key(), Item.MAGENTA_BED);
+            registry.register(Item.LIGHT_BLUE_BED.key(), Item.LIGHT_BLUE_BED);
+            registry.register(Item.YELLOW_BED.key(), Item.YELLOW_BED);
+            registry.register(Item.LIME_BED.key(), Item.LIME_BED);
+            registry.register(Item.PINK_BED.key(), Item.PINK_BED);
+            registry.register(Item.GRAY_BED.key(), Item.GRAY_BED);
+            registry.register(Item.LIGHT_GRAY_BED.key(), Item.LIGHT_GRAY_BED);
+            registry.register(Item.CYAN_BED.key(), Item.CYAN_BED);
+            registry.register(Item.PURPLE_BED.key(), Item.PURPLE_BED);
+            registry.register(Item.BLUE_BED.key(), Item.BLUE_BED);
+            registry.register(Item.BROWN_BED.key(), Item.BROWN_BED);
+            registry.register(Item.GREEN_BED.key(), Item.GREEN_BED);
+            registry.register(Item.RED_BED.key(), Item.RED_BED);
+            registry.register(Item.BLACK_BED.key(), Item.BLACK_BED);
+            registry.register(Item.COOKIE.key(), Item.COOKIE);
+            registry.register(Item.CRAFTER.key(), Item.CRAFTER);
+            registry.register(Item.FILLED_MAP.key(), Item.FILLED_MAP);
+            registry.register(Item.SHEARS.key(), Item.SHEARS);
+            registry.register(Item.MELON_SLICE.key(), Item.MELON_SLICE);
+            registry.register(Item.DRIED_KELP.key(), Item.DRIED_KELP);
+            registry.register(Item.PUMPKIN_SEEDS.key(), Item.PUMPKIN_SEEDS);
+            registry.register(Item.MELON_SEEDS.key(), Item.MELON_SEEDS);
+            registry.register(Item.BEEF.key(), Item.BEEF);
+            registry.register(Item.COOKED_BEEF.key(), Item.COOKED_BEEF);
+            registry.register(Item.CHICKEN.key(), Item.CHICKEN);
+            registry.register(Item.COOKED_CHICKEN.key(), Item.COOKED_CHICKEN);
+            registry.register(Item.ROTTEN_FLESH.key(), Item.ROTTEN_FLESH);
+            registry.register(Item.ENDER_PEARL.key(), Item.ENDER_PEARL);
+            registry.register(Item.BLAZE_ROD.key(), Item.BLAZE_ROD);
+            registry.register(Item.GHAST_TEAR.key(), Item.GHAST_TEAR);
+            registry.register(Item.GOLD_NUGGET.key(), Item.GOLD_NUGGET);
+            registry.register(Item.NETHER_WART.key(), Item.NETHER_WART);
+            registry.register(Item.GLASS_BOTTLE.key(), Item.GLASS_BOTTLE);
+            registry.register(Item.POTION.key(), Item.POTION);
+            registry.register(Item.SPIDER_EYE.key(), Item.SPIDER_EYE);
+            registry.register(Item.FERMENTED_SPIDER_EYE.key(), Item.FERMENTED_SPIDER_EYE);
+            registry.register(Item.BLAZE_POWDER.key(), Item.BLAZE_POWDER);
+            registry.register(Item.MAGMA_CREAM.key(), Item.MAGMA_CREAM);
+            registry.register(Item.BREWING_STAND.key(), Item.BREWING_STAND);
+            registry.register(Item.CAULDRON.key(), Item.CAULDRON);
+            registry.register(Item.ENDER_EYE.key(), Item.ENDER_EYE);
+            registry.register(Item.GLISTERING_MELON_SLICE.key(), Item.GLISTERING_MELON_SLICE);
+            registry.register(Item.ARMADILLO_SPAWN_EGG.key(), Item.ARMADILLO_SPAWN_EGG);
+            registry.register(Item.ALLAY_SPAWN_EGG.key(), Item.ALLAY_SPAWN_EGG);
+            registry.register(Item.AXOLOTL_SPAWN_EGG.key(), Item.AXOLOTL_SPAWN_EGG);
+            registry.register(Item.BAT_SPAWN_EGG.key(), Item.BAT_SPAWN_EGG);
+            registry.register(Item.BEE_SPAWN_EGG.key(), Item.BEE_SPAWN_EGG);
+            registry.register(Item.BLAZE_SPAWN_EGG.key(), Item.BLAZE_SPAWN_EGG);
+            registry.register(Item.BOGGED_SPAWN_EGG.key(), Item.BOGGED_SPAWN_EGG);
+            registry.register(Item.BREEZE_SPAWN_EGG.key(), Item.BREEZE_SPAWN_EGG);
+            registry.register(Item.CAT_SPAWN_EGG.key(), Item.CAT_SPAWN_EGG);
+            registry.register(Item.CAMEL_SPAWN_EGG.key(), Item.CAMEL_SPAWN_EGG);
+            registry.register(Item.CAVE_SPIDER_SPAWN_EGG.key(), Item.CAVE_SPIDER_SPAWN_EGG);
+            registry.register(Item.CHICKEN_SPAWN_EGG.key(), Item.CHICKEN_SPAWN_EGG);
+            registry.register(Item.COD_SPAWN_EGG.key(), Item.COD_SPAWN_EGG);
+            registry.register(Item.COW_SPAWN_EGG.key(), Item.COW_SPAWN_EGG);
+            registry.register(Item.CREEPER_SPAWN_EGG.key(), Item.CREEPER_SPAWN_EGG);
+            registry.register(Item.DOLPHIN_SPAWN_EGG.key(), Item.DOLPHIN_SPAWN_EGG);
+            registry.register(Item.DONKEY_SPAWN_EGG.key(), Item.DONKEY_SPAWN_EGG);
+            registry.register(Item.DROWNED_SPAWN_EGG.key(), Item.DROWNED_SPAWN_EGG);
+            registry.register(Item.ELDER_GUARDIAN_SPAWN_EGG.key(), Item.ELDER_GUARDIAN_SPAWN_EGG);
+            registry.register(Item.ENDER_DRAGON_SPAWN_EGG.key(), Item.ENDER_DRAGON_SPAWN_EGG);
+            registry.register(Item.ENDERMAN_SPAWN_EGG.key(), Item.ENDERMAN_SPAWN_EGG);
+            registry.register(Item.ENDERMITE_SPAWN_EGG.key(), Item.ENDERMITE_SPAWN_EGG);
+            registry.register(Item.EVOKER_SPAWN_EGG.key(), Item.EVOKER_SPAWN_EGG);
+            registry.register(Item.FOX_SPAWN_EGG.key(), Item.FOX_SPAWN_EGG);
+            registry.register(Item.FROG_SPAWN_EGG.key(), Item.FROG_SPAWN_EGG);
+            registry.register(Item.GHAST_SPAWN_EGG.key(), Item.GHAST_SPAWN_EGG);
+            registry.register(Item.GLOW_SQUID_SPAWN_EGG.key(), Item.GLOW_SQUID_SPAWN_EGG);
+            registry.register(Item.GOAT_SPAWN_EGG.key(), Item.GOAT_SPAWN_EGG);
+            registry.register(Item.GUARDIAN_SPAWN_EGG.key(), Item.GUARDIAN_SPAWN_EGG);
+            registry.register(Item.HOGLIN_SPAWN_EGG.key(), Item.HOGLIN_SPAWN_EGG);
+            registry.register(Item.HORSE_SPAWN_EGG.key(), Item.HORSE_SPAWN_EGG);
+            registry.register(Item.HUSK_SPAWN_EGG.key(), Item.HUSK_SPAWN_EGG);
+            registry.register(Item.IRON_GOLEM_SPAWN_EGG.key(), Item.IRON_GOLEM_SPAWN_EGG);
+            registry.register(Item.LLAMA_SPAWN_EGG.key(), Item.LLAMA_SPAWN_EGG);
+            registry.register(Item.MAGMA_CUBE_SPAWN_EGG.key(), Item.MAGMA_CUBE_SPAWN_EGG);
+            registry.register(Item.MOOSHROOM_SPAWN_EGG.key(), Item.MOOSHROOM_SPAWN_EGG);
+            registry.register(Item.MULE_SPAWN_EGG.key(), Item.MULE_SPAWN_EGG);
+            registry.register(Item.OCELOT_SPAWN_EGG.key(), Item.OCELOT_SPAWN_EGG);
+            registry.register(Item.PANDA_SPAWN_EGG.key(), Item.PANDA_SPAWN_EGG);
+            registry.register(Item.PARROT_SPAWN_EGG.key(), Item.PARROT_SPAWN_EGG);
+            registry.register(Item.PHANTOM_SPAWN_EGG.key(), Item.PHANTOM_SPAWN_EGG);
+            registry.register(Item.PIG_SPAWN_EGG.key(), Item.PIG_SPAWN_EGG);
+            registry.register(Item.PIGLIN_SPAWN_EGG.key(), Item.PIGLIN_SPAWN_EGG);
+            registry.register(Item.PIGLIN_BRUTE_SPAWN_EGG.key(), Item.PIGLIN_BRUTE_SPAWN_EGG);
+            registry.register(Item.PILLAGER_SPAWN_EGG.key(), Item.PILLAGER_SPAWN_EGG);
+            registry.register(Item.POLAR_BEAR_SPAWN_EGG.key(), Item.POLAR_BEAR_SPAWN_EGG);
+            registry.register(Item.PUFFERFISH_SPAWN_EGG.key(), Item.PUFFERFISH_SPAWN_EGG);
+            registry.register(Item.RABBIT_SPAWN_EGG.key(), Item.RABBIT_SPAWN_EGG);
+            registry.register(Item.RAVAGER_SPAWN_EGG.key(), Item.RAVAGER_SPAWN_EGG);
+            registry.register(Item.SALMON_SPAWN_EGG.key(), Item.SALMON_SPAWN_EGG);
+            registry.register(Item.SHEEP_SPAWN_EGG.key(), Item.SHEEP_SPAWN_EGG);
+            registry.register(Item.SHULKER_SPAWN_EGG.key(), Item.SHULKER_SPAWN_EGG);
+            registry.register(Item.SILVERFISH_SPAWN_EGG.key(), Item.SILVERFISH_SPAWN_EGG);
+            registry.register(Item.SKELETON_SPAWN_EGG.key(), Item.SKELETON_SPAWN_EGG);
+            registry.register(Item.SKELETON_HORSE_SPAWN_EGG.key(), Item.SKELETON_HORSE_SPAWN_EGG);
+            registry.register(Item.SLIME_SPAWN_EGG.key(), Item.SLIME_SPAWN_EGG);
+            registry.register(Item.SNIFFER_SPAWN_EGG.key(), Item.SNIFFER_SPAWN_EGG);
+            registry.register(Item.SNOW_GOLEM_SPAWN_EGG.key(), Item.SNOW_GOLEM_SPAWN_EGG);
+            registry.register(Item.SPIDER_SPAWN_EGG.key(), Item.SPIDER_SPAWN_EGG);
+            registry.register(Item.SQUID_SPAWN_EGG.key(), Item.SQUID_SPAWN_EGG);
+            registry.register(Item.STRAY_SPAWN_EGG.key(), Item.STRAY_SPAWN_EGG);
+            registry.register(Item.STRIDER_SPAWN_EGG.key(), Item.STRIDER_SPAWN_EGG);
+            registry.register(Item.TADPOLE_SPAWN_EGG.key(), Item.TADPOLE_SPAWN_EGG);
+            registry.register(Item.TRADER_LLAMA_SPAWN_EGG.key(), Item.TRADER_LLAMA_SPAWN_EGG);
+            registry.register(Item.TROPICAL_FISH_SPAWN_EGG.key(), Item.TROPICAL_FISH_SPAWN_EGG);
+            registry.register(Item.TURTLE_SPAWN_EGG.key(), Item.TURTLE_SPAWN_EGG);
+            registry.register(Item.VEX_SPAWN_EGG.key(), Item.VEX_SPAWN_EGG);
+            registry.register(Item.VILLAGER_SPAWN_EGG.key(), Item.VILLAGER_SPAWN_EGG);
+            registry.register(Item.VINDICATOR_SPAWN_EGG.key(), Item.VINDICATOR_SPAWN_EGG);
+            registry.register(Item.WANDERING_TRADER_SPAWN_EGG.key(), Item.WANDERING_TRADER_SPAWN_EGG);
+            registry.register(Item.WARDEN_SPAWN_EGG.key(), Item.WARDEN_SPAWN_EGG);
+            registry.register(Item.WITCH_SPAWN_EGG.key(), Item.WITCH_SPAWN_EGG);
+            registry.register(Item.WITHER_SPAWN_EGG.key(), Item.WITHER_SPAWN_EGG);
+            registry.register(Item.WITHER_SKELETON_SPAWN_EGG.key(), Item.WITHER_SKELETON_SPAWN_EGG);
+            registry.register(Item.WOLF_SPAWN_EGG.key(), Item.WOLF_SPAWN_EGG);
+            registry.register(Item.ZOGLIN_SPAWN_EGG.key(), Item.ZOGLIN_SPAWN_EGG);
+            registry.register(Item.CREAKING_SPAWN_EGG.key(), Item.CREAKING_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_SPAWN_EGG.key(), Item.ZOMBIE_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_HORSE_SPAWN_EGG.key(), Item.ZOMBIE_HORSE_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_VILLAGER_SPAWN_EGG.key(), Item.ZOMBIE_VILLAGER_SPAWN_EGG);
+            registry.register(Item.ZOMBIFIED_PIGLIN_SPAWN_EGG.key(), Item.ZOMBIFIED_PIGLIN_SPAWN_EGG);
+            registry.register(Item.EXPERIENCE_BOTTLE.key(), Item.EXPERIENCE_BOTTLE);
+            registry.register(Item.FIRE_CHARGE.key(), Item.FIRE_CHARGE);
+            registry.register(Item.WIND_CHARGE.key(), Item.WIND_CHARGE);
+            registry.register(Item.WRITABLE_BOOK.key(), Item.WRITABLE_BOOK);
+            registry.register(Item.WRITTEN_BOOK.key(), Item.WRITTEN_BOOK);
+            registry.register(Item.BREEZE_ROD.key(), Item.BREEZE_ROD);
+            registry.register(Item.MACE.key(), Item.MACE);
+            registry.register(Item.ITEM_FRAME.key(), Item.ITEM_FRAME);
+            registry.register(Item.GLOW_ITEM_FRAME.key(), Item.GLOW_ITEM_FRAME);
+            registry.register(Item.FLOWER_POT.key(), Item.FLOWER_POT);
+            registry.register(Item.CARROT.key(), Item.CARROT);
+            registry.register(Item.POTATO.key(), Item.POTATO);
+            registry.register(Item.BAKED_POTATO.key(), Item.BAKED_POTATO);
+            registry.register(Item.POISONOUS_POTATO.key(), Item.POISONOUS_POTATO);
+            registry.register(Item.MAP.key(), Item.MAP);
+            registry.register(Item.GOLDEN_CARROT.key(), Item.GOLDEN_CARROT);
+            registry.register(Item.SKELETON_SKULL.key(), Item.SKELETON_SKULL);
+            registry.register(Item.WITHER_SKELETON_SKULL.key(), Item.WITHER_SKELETON_SKULL);
+            registry.register(Item.PLAYER_HEAD.key(), Item.PLAYER_HEAD);
+            registry.register(Item.ZOMBIE_HEAD.key(), Item.ZOMBIE_HEAD);
+            registry.register(Item.CREEPER_HEAD.key(), Item.CREEPER_HEAD);
+            registry.register(Item.DRAGON_HEAD.key(), Item.DRAGON_HEAD);
+            registry.register(Item.PIGLIN_HEAD.key(), Item.PIGLIN_HEAD);
+            registry.register(Item.NETHER_STAR.key(), Item.NETHER_STAR);
+            registry.register(Item.PUMPKIN_PIE.key(), Item.PUMPKIN_PIE);
+            registry.register(Item.FIREWORK_ROCKET.key(), Item.FIREWORK_ROCKET);
+            registry.register(Item.FIREWORK_STAR.key(), Item.FIREWORK_STAR);
+            registry.register(Item.ENCHANTED_BOOK.key(), Item.ENCHANTED_BOOK);
+            registry.register(Item.NETHER_BRICK.key(), Item.NETHER_BRICK);
+            registry.register(Item.RESIN_BRICK.key(), Item.RESIN_BRICK);
+            registry.register(Item.PRISMARINE_SHARD.key(), Item.PRISMARINE_SHARD);
+            registry.register(Item.PRISMARINE_CRYSTALS.key(), Item.PRISMARINE_CRYSTALS);
+            registry.register(Item.RABBIT.key(), Item.RABBIT);
+            registry.register(Item.COOKED_RABBIT.key(), Item.COOKED_RABBIT);
+            registry.register(Item.RABBIT_STEW.key(), Item.RABBIT_STEW);
+            registry.register(Item.RABBIT_FOOT.key(), Item.RABBIT_FOOT);
+            registry.register(Item.RABBIT_HIDE.key(), Item.RABBIT_HIDE);
+            registry.register(Item.ARMOR_STAND.key(), Item.ARMOR_STAND);
+            registry.register(Item.IRON_HORSE_ARMOR.key(), Item.IRON_HORSE_ARMOR);
+            registry.register(Item.GOLDEN_HORSE_ARMOR.key(), Item.GOLDEN_HORSE_ARMOR);
+            registry.register(Item.DIAMOND_HORSE_ARMOR.key(), Item.DIAMOND_HORSE_ARMOR);
+            registry.register(Item.LEATHER_HORSE_ARMOR.key(), Item.LEATHER_HORSE_ARMOR);
+            registry.register(Item.LEAD.key(), Item.LEAD);
+            registry.register(Item.NAME_TAG.key(), Item.NAME_TAG);
+            registry.register(Item.COMMAND_BLOCK_MINECART.key(), Item.COMMAND_BLOCK_MINECART);
+            registry.register(Item.MUTTON.key(), Item.MUTTON);
+            registry.register(Item.COOKED_MUTTON.key(), Item.COOKED_MUTTON);
+            registry.register(Item.WHITE_BANNER.key(), Item.WHITE_BANNER);
+            registry.register(Item.ORANGE_BANNER.key(), Item.ORANGE_BANNER);
+            registry.register(Item.MAGENTA_BANNER.key(), Item.MAGENTA_BANNER);
+            registry.register(Item.LIGHT_BLUE_BANNER.key(), Item.LIGHT_BLUE_BANNER);
+            registry.register(Item.YELLOW_BANNER.key(), Item.YELLOW_BANNER);
+            registry.register(Item.LIME_BANNER.key(), Item.LIME_BANNER);
+            registry.register(Item.PINK_BANNER.key(), Item.PINK_BANNER);
+            registry.register(Item.GRAY_BANNER.key(), Item.GRAY_BANNER);
+            registry.register(Item.LIGHT_GRAY_BANNER.key(), Item.LIGHT_GRAY_BANNER);
+            registry.register(Item.CYAN_BANNER.key(), Item.CYAN_BANNER);
+            registry.register(Item.PURPLE_BANNER.key(), Item.PURPLE_BANNER);
+            registry.register(Item.BLUE_BANNER.key(), Item.BLUE_BANNER);
+            registry.register(Item.BROWN_BANNER.key(), Item.BROWN_BANNER);
+            registry.register(Item.GREEN_BANNER.key(), Item.GREEN_BANNER);
+            registry.register(Item.RED_BANNER.key(), Item.RED_BANNER);
+            registry.register(Item.BLACK_BANNER.key(), Item.BLACK_BANNER);
+            registry.register(Item.END_CRYSTAL.key(), Item.END_CRYSTAL);
+            registry.register(Item.CHORUS_FRUIT.key(), Item.CHORUS_FRUIT);
+            registry.register(Item.POPPED_CHORUS_FRUIT.key(), Item.POPPED_CHORUS_FRUIT);
+            registry.register(Item.TORCHFLOWER_SEEDS.key(), Item.TORCHFLOWER_SEEDS);
+            registry.register(Item.PITCHER_POD.key(), Item.PITCHER_POD);
+            registry.register(Item.BEETROOT.key(), Item.BEETROOT);
+            registry.register(Item.BEETROOT_SEEDS.key(), Item.BEETROOT_SEEDS);
+            registry.register(Item.BEETROOT_SOUP.key(), Item.BEETROOT_SOUP);
+            registry.register(Item.DRAGON_BREATH.key(), Item.DRAGON_BREATH);
+            registry.register(Item.SPLASH_POTION.key(), Item.SPLASH_POTION);
+            registry.register(Item.SPECTRAL_ARROW.key(), Item.SPECTRAL_ARROW);
+            registry.register(Item.TIPPED_ARROW.key(), Item.TIPPED_ARROW);
+            registry.register(Item.LINGERING_POTION.key(), Item.LINGERING_POTION);
+            registry.register(Item.SHIELD.key(), Item.SHIELD);
+            registry.register(Item.TOTEM_OF_UNDYING.key(), Item.TOTEM_OF_UNDYING);
+            registry.register(Item.SHULKER_SHELL.key(), Item.SHULKER_SHELL);
+            registry.register(Item.IRON_NUGGET.key(), Item.IRON_NUGGET);
+            registry.register(Item.KNOWLEDGE_BOOK.key(), Item.KNOWLEDGE_BOOK);
+            registry.register(Item.DEBUG_STICK.key(), Item.DEBUG_STICK);
+            registry.register(Item.MUSIC_DISC_13.key(), Item.MUSIC_DISC_13);
+            registry.register(Item.MUSIC_DISC_CAT.key(), Item.MUSIC_DISC_CAT);
+            registry.register(Item.MUSIC_DISC_BLOCKS.key(), Item.MUSIC_DISC_BLOCKS);
+            registry.register(Item.MUSIC_DISC_CHIRP.key(), Item.MUSIC_DISC_CHIRP);
+            registry.register(Item.MUSIC_DISC_CREATOR.key(), Item.MUSIC_DISC_CREATOR);
+            registry.register(Item.MUSIC_DISC_CREATOR_MUSIC_BOX.key(), Item.MUSIC_DISC_CREATOR_MUSIC_BOX);
+            registry.register(Item.MUSIC_DISC_FAR.key(), Item.MUSIC_DISC_FAR);
+            registry.register(Item.MUSIC_DISC_MALL.key(), Item.MUSIC_DISC_MALL);
+            registry.register(Item.MUSIC_DISC_MELLOHI.key(), Item.MUSIC_DISC_MELLOHI);
+            registry.register(Item.MUSIC_DISC_STAL.key(), Item.MUSIC_DISC_STAL);
+            registry.register(Item.MUSIC_DISC_STRAD.key(), Item.MUSIC_DISC_STRAD);
+            registry.register(Item.MUSIC_DISC_WARD.key(), Item.MUSIC_DISC_WARD);
+            registry.register(Item.MUSIC_DISC_11.key(), Item.MUSIC_DISC_11);
+            registry.register(Item.MUSIC_DISC_WAIT.key(), Item.MUSIC_DISC_WAIT);
+            registry.register(Item.MUSIC_DISC_OTHERSIDE.key(), Item.MUSIC_DISC_OTHERSIDE);
+            registry.register(Item.MUSIC_DISC_RELIC.key(), Item.MUSIC_DISC_RELIC);
+            registry.register(Item.MUSIC_DISC_5.key(), Item.MUSIC_DISC_5);
+            registry.register(Item.MUSIC_DISC_PIGSTEP.key(), Item.MUSIC_DISC_PIGSTEP);
+            registry.register(Item.MUSIC_DISC_PRECIPICE.key(), Item.MUSIC_DISC_PRECIPICE);
+            registry.register(Item.DISC_FRAGMENT_5.key(), Item.DISC_FRAGMENT_5);
+            registry.register(Item.TRIDENT.key(), Item.TRIDENT);
+            registry.register(Item.NAUTILUS_SHELL.key(), Item.NAUTILUS_SHELL);
+            registry.register(Item.HEART_OF_THE_SEA.key(), Item.HEART_OF_THE_SEA);
+            registry.register(Item.CROSSBOW.key(), Item.CROSSBOW);
+            registry.register(Item.SUSPICIOUS_STEW.key(), Item.SUSPICIOUS_STEW);
+            registry.register(Item.LOOM.key(), Item.LOOM);
+            registry.register(Item.FLOWER_BANNER_PATTERN.key(), Item.FLOWER_BANNER_PATTERN);
+            registry.register(Item.CREEPER_BANNER_PATTERN.key(), Item.CREEPER_BANNER_PATTERN);
+            registry.register(Item.SKULL_BANNER_PATTERN.key(), Item.SKULL_BANNER_PATTERN);
+            registry.register(Item.MOJANG_BANNER_PATTERN.key(), Item.MOJANG_BANNER_PATTERN);
+            registry.register(Item.GLOBE_BANNER_PATTERN.key(), Item.GLOBE_BANNER_PATTERN);
+            registry.register(Item.PIGLIN_BANNER_PATTERN.key(), Item.PIGLIN_BANNER_PATTERN);
+            registry.register(Item.FLOW_BANNER_PATTERN.key(), Item.FLOW_BANNER_PATTERN);
+            registry.register(Item.GUSTER_BANNER_PATTERN.key(), Item.GUSTER_BANNER_PATTERN);
+            registry.register(Item.FIELD_MASONED_BANNER_PATTERN.key(), Item.FIELD_MASONED_BANNER_PATTERN);
+            registry.register(Item.BORDURE_INDENTED_BANNER_PATTERN.key(), Item.BORDURE_INDENTED_BANNER_PATTERN);
+            registry.register(Item.GOAT_HORN.key(), Item.GOAT_HORN);
+            registry.register(Item.COMPOSTER.key(), Item.COMPOSTER);
+            registry.register(Item.BARREL.key(), Item.BARREL);
+            registry.register(Item.SMOKER.key(), Item.SMOKER);
+            registry.register(Item.BLAST_FURNACE.key(), Item.BLAST_FURNACE);
+            registry.register(Item.CARTOGRAPHY_TABLE.key(), Item.CARTOGRAPHY_TABLE);
+            registry.register(Item.FLETCHING_TABLE.key(), Item.FLETCHING_TABLE);
+            registry.register(Item.GRINDSTONE.key(), Item.GRINDSTONE);
+            registry.register(Item.SMITHING_TABLE.key(), Item.SMITHING_TABLE);
+            registry.register(Item.STONECUTTER.key(), Item.STONECUTTER);
+            registry.register(Item.BELL.key(), Item.BELL);
+            registry.register(Item.LANTERN.key(), Item.LANTERN);
+            registry.register(Item.SOUL_LANTERN.key(), Item.SOUL_LANTERN);
+            registry.register(Item.SWEET_BERRIES.key(), Item.SWEET_BERRIES);
+            registry.register(Item.GLOW_BERRIES.key(), Item.GLOW_BERRIES);
+            registry.register(Item.CAMPFIRE.key(), Item.CAMPFIRE);
+            registry.register(Item.SOUL_CAMPFIRE.key(), Item.SOUL_CAMPFIRE);
+            registry.register(Item.SHROOMLIGHT.key(), Item.SHROOMLIGHT);
+            registry.register(Item.HONEYCOMB.key(), Item.HONEYCOMB);
+            registry.register(Item.BEE_NEST.key(), Item.BEE_NEST);
+            registry.register(Item.BEEHIVE.key(), Item.BEEHIVE);
+            registry.register(Item.HONEY_BOTTLE.key(), Item.HONEY_BOTTLE);
+            registry.register(Item.HONEYCOMB_BLOCK.key(), Item.HONEYCOMB_BLOCK);
+            registry.register(Item.LODESTONE.key(), Item.LODESTONE);
+            registry.register(Item.CRYING_OBSIDIAN.key(), Item.CRYING_OBSIDIAN);
+            registry.register(Item.BLACKSTONE.key(), Item.BLACKSTONE);
+            registry.register(Item.BLACKSTONE_SLAB.key(), Item.BLACKSTONE_SLAB);
+            registry.register(Item.BLACKSTONE_STAIRS.key(), Item.BLACKSTONE_STAIRS);
+            registry.register(Item.GILDED_BLACKSTONE.key(), Item.GILDED_BLACKSTONE);
+            registry.register(Item.POLISHED_BLACKSTONE.key(), Item.POLISHED_BLACKSTONE);
+            registry.register(Item.POLISHED_BLACKSTONE_SLAB.key(), Item.POLISHED_BLACKSTONE_SLAB);
+            registry.register(Item.POLISHED_BLACKSTONE_STAIRS.key(), Item.POLISHED_BLACKSTONE_STAIRS);
+            registry.register(Item.CHISELED_POLISHED_BLACKSTONE.key(), Item.CHISELED_POLISHED_BLACKSTONE);
+            registry.register(Item.POLISHED_BLACKSTONE_BRICKS.key(), Item.POLISHED_BLACKSTONE_BRICKS);
+            registry.register(Item.POLISHED_BLACKSTONE_BRICK_SLAB.key(), Item.POLISHED_BLACKSTONE_BRICK_SLAB);
+            registry.register(Item.POLISHED_BLACKSTONE_BRICK_STAIRS.key(), Item.POLISHED_BLACKSTONE_BRICK_STAIRS);
+            registry.register(Item.CRACKED_POLISHED_BLACKSTONE_BRICKS.key(), Item.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+            registry.register(Item.RESPAWN_ANCHOR.key(), Item.RESPAWN_ANCHOR);
+            registry.register(Item.CANDLE.key(), Item.CANDLE);
+            registry.register(Item.WHITE_CANDLE.key(), Item.WHITE_CANDLE);
+            registry.register(Item.ORANGE_CANDLE.key(), Item.ORANGE_CANDLE);
+            registry.register(Item.MAGENTA_CANDLE.key(), Item.MAGENTA_CANDLE);
+            registry.register(Item.LIGHT_BLUE_CANDLE.key(), Item.LIGHT_BLUE_CANDLE);
+            registry.register(Item.YELLOW_CANDLE.key(), Item.YELLOW_CANDLE);
+            registry.register(Item.LIME_CANDLE.key(), Item.LIME_CANDLE);
+            registry.register(Item.PINK_CANDLE.key(), Item.PINK_CANDLE);
+            registry.register(Item.GRAY_CANDLE.key(), Item.GRAY_CANDLE);
+            registry.register(Item.LIGHT_GRAY_CANDLE.key(), Item.LIGHT_GRAY_CANDLE);
+            registry.register(Item.CYAN_CANDLE.key(), Item.CYAN_CANDLE);
+            registry.register(Item.PURPLE_CANDLE.key(), Item.PURPLE_CANDLE);
+            registry.register(Item.BLUE_CANDLE.key(), Item.BLUE_CANDLE);
+            registry.register(Item.BROWN_CANDLE.key(), Item.BROWN_CANDLE);
+            registry.register(Item.GREEN_CANDLE.key(), Item.GREEN_CANDLE);
+            registry.register(Item.RED_CANDLE.key(), Item.RED_CANDLE);
+            registry.register(Item.BLACK_CANDLE.key(), Item.BLACK_CANDLE);
+            registry.register(Item.SMALL_AMETHYST_BUD.key(), Item.SMALL_AMETHYST_BUD);
+            registry.register(Item.MEDIUM_AMETHYST_BUD.key(), Item.MEDIUM_AMETHYST_BUD);
+            registry.register(Item.LARGE_AMETHYST_BUD.key(), Item.LARGE_AMETHYST_BUD);
+            registry.register(Item.AMETHYST_CLUSTER.key(), Item.AMETHYST_CLUSTER);
+            registry.register(Item.POINTED_DRIPSTONE.key(), Item.POINTED_DRIPSTONE);
+            registry.register(Item.OCHRE_FROGLIGHT.key(), Item.OCHRE_FROGLIGHT);
+            registry.register(Item.VERDANT_FROGLIGHT.key(), Item.VERDANT_FROGLIGHT);
+            registry.register(Item.PEARLESCENT_FROGLIGHT.key(), Item.PEARLESCENT_FROGLIGHT);
+            registry.register(Item.FROGSPAWN.key(), Item.FROGSPAWN);
+            registry.register(Item.ECHO_SHARD.key(), Item.ECHO_SHARD);
+            registry.register(Item.BRUSH.key(), Item.BRUSH);
+            registry.register(Item.NETHERITE_UPGRADE_SMITHING_TEMPLATE.key(), Item.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+            registry.register(Item.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.COAST_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.COAST_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.WILD_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.WILD_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.WARD_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.WARD_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.EYE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.EYE_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.VEX_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.VEX_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.TIDE_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.RIB_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.RIB_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.RAISER_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.HOST_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.HOST_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE.key(), Item.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE);
+            registry.register(Item.ANGLER_POTTERY_SHERD.key(), Item.ANGLER_POTTERY_SHERD);
+            registry.register(Item.ARCHER_POTTERY_SHERD.key(), Item.ARCHER_POTTERY_SHERD);
+            registry.register(Item.ARMS_UP_POTTERY_SHERD.key(), Item.ARMS_UP_POTTERY_SHERD);
+            registry.register(Item.BLADE_POTTERY_SHERD.key(), Item.BLADE_POTTERY_SHERD);
+            registry.register(Item.BREWER_POTTERY_SHERD.key(), Item.BREWER_POTTERY_SHERD);
+            registry.register(Item.BURN_POTTERY_SHERD.key(), Item.BURN_POTTERY_SHERD);
+            registry.register(Item.DANGER_POTTERY_SHERD.key(), Item.DANGER_POTTERY_SHERD);
+            registry.register(Item.EXPLORER_POTTERY_SHERD.key(), Item.EXPLORER_POTTERY_SHERD);
+            registry.register(Item.FLOW_POTTERY_SHERD.key(), Item.FLOW_POTTERY_SHERD);
+            registry.register(Item.FRIEND_POTTERY_SHERD.key(), Item.FRIEND_POTTERY_SHERD);
+            registry.register(Item.GUSTER_POTTERY_SHERD.key(), Item.GUSTER_POTTERY_SHERD);
+            registry.register(Item.HEART_POTTERY_SHERD.key(), Item.HEART_POTTERY_SHERD);
+            registry.register(Item.HEARTBREAK_POTTERY_SHERD.key(), Item.HEARTBREAK_POTTERY_SHERD);
+            registry.register(Item.HOWL_POTTERY_SHERD.key(), Item.HOWL_POTTERY_SHERD);
+            registry.register(Item.MINER_POTTERY_SHERD.key(), Item.MINER_POTTERY_SHERD);
+            registry.register(Item.MOURNER_POTTERY_SHERD.key(), Item.MOURNER_POTTERY_SHERD);
+            registry.register(Item.PLENTY_POTTERY_SHERD.key(), Item.PLENTY_POTTERY_SHERD);
+            registry.register(Item.PRIZE_POTTERY_SHERD.key(), Item.PRIZE_POTTERY_SHERD);
+            registry.register(Item.SCRAPE_POTTERY_SHERD.key(), Item.SCRAPE_POTTERY_SHERD);
+            registry.register(Item.SHEAF_POTTERY_SHERD.key(), Item.SHEAF_POTTERY_SHERD);
+            registry.register(Item.SHELTER_POTTERY_SHERD.key(), Item.SHELTER_POTTERY_SHERD);
+            registry.register(Item.SKULL_POTTERY_SHERD.key(), Item.SKULL_POTTERY_SHERD);
+            registry.register(Item.SNORT_POTTERY_SHERD.key(), Item.SNORT_POTTERY_SHERD);
+            registry.register(Item.COPPER_GRATE.key(), Item.COPPER_GRATE);
+            registry.register(Item.EXPOSED_COPPER_GRATE.key(), Item.EXPOSED_COPPER_GRATE);
+            registry.register(Item.WEATHERED_COPPER_GRATE.key(), Item.WEATHERED_COPPER_GRATE);
+            registry.register(Item.OXIDIZED_COPPER_GRATE.key(), Item.OXIDIZED_COPPER_GRATE);
+            registry.register(Item.WAXED_COPPER_GRATE.key(), Item.WAXED_COPPER_GRATE);
+            registry.register(Item.WAXED_EXPOSED_COPPER_GRATE.key(), Item.WAXED_EXPOSED_COPPER_GRATE);
+            registry.register(Item.WAXED_WEATHERED_COPPER_GRATE.key(), Item.WAXED_WEATHERED_COPPER_GRATE);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_GRATE.key(), Item.WAXED_OXIDIZED_COPPER_GRATE);
+            registry.register(Item.COPPER_BULB.key(), Item.COPPER_BULB);
+            registry.register(Item.EXPOSED_COPPER_BULB.key(), Item.EXPOSED_COPPER_BULB);
+            registry.register(Item.WEATHERED_COPPER_BULB.key(), Item.WEATHERED_COPPER_BULB);
+            registry.register(Item.OXIDIZED_COPPER_BULB.key(), Item.OXIDIZED_COPPER_BULB);
+            registry.register(Item.WAXED_COPPER_BULB.key(), Item.WAXED_COPPER_BULB);
+            registry.register(Item.WAXED_EXPOSED_COPPER_BULB.key(), Item.WAXED_EXPOSED_COPPER_BULB);
+            registry.register(Item.WAXED_WEATHERED_COPPER_BULB.key(), Item.WAXED_WEATHERED_COPPER_BULB);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_BULB.key(), Item.WAXED_OXIDIZED_COPPER_BULB);
+            registry.register(Item.TRIAL_SPAWNER.key(), Item.TRIAL_SPAWNER);
+            registry.register(Item.TRIAL_KEY.key(), Item.TRIAL_KEY);
+            registry.register(Item.OMINOUS_TRIAL_KEY.key(), Item.OMINOUS_TRIAL_KEY);
+            registry.register(Item.VAULT.key(), Item.VAULT);
+            registry.register(Item.OMINOUS_BOTTLE.key(), Item.OMINOUS_BOTTLE);
+            registry.registerTag(NamespacedKey.minecraft("acacia_logs"), Tags.ACACIA_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("anvil"), Tags.ANVIL);
+            registry.registerTag(NamespacedKey.minecraft("armadillo_food"), Tags.ARMADILLO_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("arrows"), Tags.ARROWS);
+            registry.registerTag(NamespacedKey.minecraft("axes"), Tags.AXES);
+            registry.registerTag(NamespacedKey.minecraft("axolotl_food"), Tags.AXOLOTL_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("bamboo_blocks"), Tags.BAMBOO_BLOCKS);
+            registry.registerTag(NamespacedKey.minecraft("banners"), Tags.BANNERS);
+            registry.registerTag(NamespacedKey.minecraft("beacon_payment_items"), Tags.BEACON_PAYMENT_ITEMS);
+            registry.registerTag(NamespacedKey.minecraft("beds"), Tags.BEDS);
+            registry.registerTag(NamespacedKey.minecraft("bee_food"), Tags.BEE_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("birch_logs"), Tags.BIRCH_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("boats"), Tags.BOATS);
+            registry.registerTag(NamespacedKey.minecraft("book_cloning_target"), Tags.BOOK_CLONING_TARGET);
+            registry.registerTag(NamespacedKey.minecraft("bookshelf_books"), Tags.BOOKSHELF_BOOKS);
+            registry.registerTag(NamespacedKey.minecraft("breaks_decorated_pots"), Tags.BREAKS_DECORATED_POTS);
+            registry.registerTag(NamespacedKey.minecraft("brewing_fuel"), Tags.BREWING_FUEL);
+            registry.registerTag(NamespacedKey.minecraft("bundles"), Tags.BUNDLES);
+            registry.registerTag(NamespacedKey.minecraft("buttons"), Tags.BUTTONS);
+            registry.registerTag(NamespacedKey.minecraft("camel_food"), Tags.CAMEL_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("candles"), Tags.CANDLES);
+            registry.registerTag(NamespacedKey.minecraft("cat_food"), Tags.CAT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("cherry_logs"), Tags.CHERRY_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("chest_armor"), Tags.CHEST_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("chest_boats"), Tags.CHEST_BOATS);
+            registry.registerTag(NamespacedKey.minecraft("chicken_food"), Tags.CHICKEN_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("cluster_max_harvestables"), Tags.CLUSTER_MAX_HARVESTABLES);
+            registry.registerTag(NamespacedKey.minecraft("coal_ores"), Tags.COAL_ORES);
+            registry.registerTag(NamespacedKey.minecraft("coals"), Tags.COALS);
+            registry.registerTag(NamespacedKey.minecraft("compasses"), Tags.COMPASSES);
+            registry.registerTag(NamespacedKey.minecraft("completes_find_tree_tutorial"), Tags.COMPLETES_FIND_TREE_TUTORIAL);
+            registry.registerTag(NamespacedKey.minecraft("copper_ores"), Tags.COPPER_ORES);
+            registry.registerTag(NamespacedKey.minecraft("cow_food"), Tags.COW_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("creeper_drop_music_discs"), Tags.CREEPER_DROP_MUSIC_DISCS);
+            registry.registerTag(NamespacedKey.minecraft("creeper_igniters"), Tags.CREEPER_IGNITERS);
+            registry.registerTag(NamespacedKey.minecraft("crimson_stems"), Tags.CRIMSON_STEMS);
+            registry.registerTag(NamespacedKey.minecraft("dampens_vibrations"), Tags.DAMPENS_VIBRATIONS);
+            registry.registerTag(NamespacedKey.minecraft("dark_oak_logs"), Tags.DARK_OAK_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("decorated_pot_ingredients"), Tags.DECORATED_POT_INGREDIENTS);
+            registry.registerTag(NamespacedKey.minecraft("decorated_pot_sherds"), Tags.DECORATED_POT_SHERDS);
+            registry.registerTag(NamespacedKey.minecraft("diamond_ores"), Tags.DIAMOND_ORES);
+            registry.registerTag(NamespacedKey.minecraft("diamond_tool_materials"), Tags.DIAMOND_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("dirt"), Tags.DIRT);
+            registry.registerTag(NamespacedKey.minecraft("doors"), Tags.DOORS);
+            registry.registerTag(NamespacedKey.minecraft("drowned_preferred_weapons"), Tags.DROWNED_PREFERRED_WEAPONS);
+            registry.registerTag(NamespacedKey.minecraft("duplicates_allays"), Tags.DUPLICATES_ALLAYS);
+            registry.registerTag(NamespacedKey.minecraft("dyeable"), Tags.DYEABLE);
+            registry.registerTag(NamespacedKey.minecraft("eggs"), Tags.EGGS);
+            registry.registerTag(NamespacedKey.minecraft("emerald_ores"), Tags.EMERALD_ORES);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/armor"), Tags.ENCHANTABLE_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/bow"), Tags.ENCHANTABLE_BOW);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/chest_armor"), Tags.ENCHANTABLE_CHEST_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/crossbow"), Tags.ENCHANTABLE_CROSSBOW);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/durability"), Tags.ENCHANTABLE_DURABILITY);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/equippable"), Tags.ENCHANTABLE_EQUIPPABLE);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/fire_aspect"), Tags.ENCHANTABLE_FIRE_ASPECT);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/fishing"), Tags.ENCHANTABLE_FISHING);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/foot_armor"), Tags.ENCHANTABLE_FOOT_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/head_armor"), Tags.ENCHANTABLE_HEAD_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/leg_armor"), Tags.ENCHANTABLE_LEG_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/mace"), Tags.ENCHANTABLE_MACE);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/mining"), Tags.ENCHANTABLE_MINING);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/mining_loot"), Tags.ENCHANTABLE_MINING_LOOT);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/sharp_weapon"), Tags.ENCHANTABLE_SHARP_WEAPON);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/sword"), Tags.ENCHANTABLE_SWORD);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/trident"), Tags.ENCHANTABLE_TRIDENT);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/vanishing"), Tags.ENCHANTABLE_VANISHING);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/weapon"), Tags.ENCHANTABLE_WEAPON);
+            registry.registerTag(NamespacedKey.minecraft("fence_gates"), Tags.FENCE_GATES);
+            registry.registerTag(NamespacedKey.minecraft("fences"), Tags.FENCES);
+            registry.registerTag(NamespacedKey.minecraft("fishes"), Tags.FISHES);
+            registry.registerTag(NamespacedKey.minecraft("flowers"), Tags.FLOWERS);
+            registry.registerTag(NamespacedKey.minecraft("foot_armor"), Tags.FOOT_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("fox_food"), Tags.FOX_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("freeze_immune_wearables"), Tags.FREEZE_IMMUNE_WEARABLES);
+            registry.registerTag(NamespacedKey.minecraft("frog_food"), Tags.FROG_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("furnace_minecart_fuel"), Tags.FURNACE_MINECART_FUEL);
+            registry.registerTag(NamespacedKey.minecraft("gaze_disguise_equipment"), Tags.GAZE_DISGUISE_EQUIPMENT);
+            registry.registerTag(NamespacedKey.minecraft("goat_food"), Tags.GOAT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("gold_ores"), Tags.GOLD_ORES);
+            registry.registerTag(NamespacedKey.minecraft("gold_tool_materials"), Tags.GOLD_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("hanging_signs"), Tags.HANGING_SIGNS);
+            registry.registerTag(NamespacedKey.minecraft("head_armor"), Tags.HEAD_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("hoes"), Tags.HOES);
+            registry.registerTag(NamespacedKey.minecraft("hoglin_food"), Tags.HOGLIN_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("horse_food"), Tags.HORSE_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("horse_tempt_items"), Tags.HORSE_TEMPT_ITEMS);
+            registry.registerTag(NamespacedKey.minecraft("ignored_by_piglin_babies"), Tags.IGNORED_BY_PIGLIN_BABIES);
+            registry.registerTag(NamespacedKey.minecraft("iron_ores"), Tags.IRON_ORES);
+            registry.registerTag(NamespacedKey.minecraft("iron_tool_materials"), Tags.IRON_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("jungle_logs"), Tags.JUNGLE_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("lapis_ores"), Tags.LAPIS_ORES);
+            registry.registerTag(NamespacedKey.minecraft("leaves"), Tags.LEAVES);
+            registry.registerTag(NamespacedKey.minecraft("lectern_books"), Tags.LECTERN_BOOKS);
+            registry.registerTag(NamespacedKey.minecraft("leg_armor"), Tags.LEG_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("llama_food"), Tags.LLAMA_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("llama_tempt_items"), Tags.LLAMA_TEMPT_ITEMS);
+            registry.registerTag(NamespacedKey.minecraft("logs"), Tags.LOGS);
+            registry.registerTag(NamespacedKey.minecraft("logs_that_burn"), Tags.LOGS_THAT_BURN);
+            registry.registerTag(NamespacedKey.minecraft("mangrove_logs"), Tags.MANGROVE_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("map_invisibility_equipment"), Tags.MAP_INVISIBILITY_EQUIPMENT);
+            registry.registerTag(NamespacedKey.minecraft("meat"), Tags.MEAT);
+            registry.registerTag(NamespacedKey.minecraft("netherite_tool_materials"), Tags.NETHERITE_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("non_flammable_wood"), Tags.NON_FLAMMABLE_WOOD);
+            registry.registerTag(NamespacedKey.minecraft("noteblock_top_instruments"), Tags.NOTEBLOCK_TOP_INSTRUMENTS);
+            registry.registerTag(NamespacedKey.minecraft("oak_logs"), Tags.OAK_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("ocelot_food"), Tags.OCELOT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("pale_oak_logs"), Tags.PALE_OAK_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("panda_eats_from_ground"), Tags.PANDA_EATS_FROM_GROUND);
+            registry.registerTag(NamespacedKey.minecraft("panda_food"), Tags.PANDA_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("parrot_food"), Tags.PARROT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("parrot_poisonous_food"), Tags.PARROT_POISONOUS_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("pickaxes"), Tags.PICKAXES);
+            registry.registerTag(NamespacedKey.minecraft("pig_food"), Tags.PIG_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("piglin_food"), Tags.PIGLIN_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("piglin_loved"), Tags.PIGLIN_LOVED);
+            registry.registerTag(NamespacedKey.minecraft("piglin_preferred_weapons"), Tags.PIGLIN_PREFERRED_WEAPONS);
+            registry.registerTag(NamespacedKey.minecraft("piglin_repellents"), Tags.PIGLIN_REPELLENTS);
+            registry.registerTag(NamespacedKey.minecraft("piglin_safe_armor"), Tags.PIGLIN_SAFE_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("pillager_preferred_weapons"), Tags.PILLAGER_PREFERRED_WEAPONS);
+            registry.registerTag(NamespacedKey.minecraft("planks"), Tags.PLANKS);
+            registry.registerTag(NamespacedKey.minecraft("rabbit_food"), Tags.RABBIT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("rails"), Tags.RAILS);
+            registry.registerTag(NamespacedKey.minecraft("redstone_ores"), Tags.REDSTONE_ORES);
+            registry.registerTag(NamespacedKey.minecraft("repairs_chain_armor"), Tags.REPAIRS_CHAIN_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_diamond_armor"), Tags.REPAIRS_DIAMOND_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_gold_armor"), Tags.REPAIRS_GOLD_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_iron_armor"), Tags.REPAIRS_IRON_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_leather_armor"), Tags.REPAIRS_LEATHER_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_netherite_armor"), Tags.REPAIRS_NETHERITE_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_turtle_helmet"), Tags.REPAIRS_TURTLE_HELMET);
+            registry.registerTag(NamespacedKey.minecraft("repairs_wolf_armor"), Tags.REPAIRS_WOLF_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("sand"), Tags.SAND);
+            registry.registerTag(NamespacedKey.minecraft("saplings"), Tags.SAPLINGS);
+            registry.registerTag(NamespacedKey.minecraft("sheep_food"), Tags.SHEEP_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("shovels"), Tags.SHOVELS);
+            registry.registerTag(NamespacedKey.minecraft("shulker_boxes"), Tags.SHULKER_BOXES);
+            registry.registerTag(NamespacedKey.minecraft("signs"), Tags.SIGNS);
+            registry.registerTag(NamespacedKey.minecraft("skeleton_preferred_weapons"), Tags.SKELETON_PREFERRED_WEAPONS);
+            registry.registerTag(NamespacedKey.minecraft("skulls"), Tags.SKULLS);
+            registry.registerTag(NamespacedKey.minecraft("slabs"), Tags.SLABS);
+            registry.registerTag(NamespacedKey.minecraft("small_flowers"), Tags.SMALL_FLOWERS);
+            registry.registerTag(NamespacedKey.minecraft("smelts_to_glass"), Tags.SMELTS_TO_GLASS);
+            registry.registerTag(NamespacedKey.minecraft("sniffer_food"), Tags.SNIFFER_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("soul_fire_base_blocks"), Tags.SOUL_FIRE_BASE_BLOCKS);
+            registry.registerTag(NamespacedKey.minecraft("spruce_logs"), Tags.SPRUCE_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("stairs"), Tags.STAIRS);
+            registry.registerTag(NamespacedKey.minecraft("stone_bricks"), Tags.STONE_BRICKS);
+            registry.registerTag(NamespacedKey.minecraft("stone_buttons"), Tags.STONE_BUTTONS);
+            registry.registerTag(NamespacedKey.minecraft("stone_crafting_materials"), Tags.STONE_CRAFTING_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("stone_tool_materials"), Tags.STONE_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("strider_food"), Tags.STRIDER_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("strider_tempt_items"), Tags.STRIDER_TEMPT_ITEMS);
+            registry.registerTag(NamespacedKey.minecraft("swords"), Tags.SWORDS);
+            registry.registerTag(NamespacedKey.minecraft("terracotta"), Tags.TERRACOTTA);
+            registry.registerTag(NamespacedKey.minecraft("trapdoors"), Tags.TRAPDOORS);
+            registry.registerTag(NamespacedKey.minecraft("trim_materials"), Tags.TRIM_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("trimmable_armor"), Tags.TRIMMABLE_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("turtle_food"), Tags.TURTLE_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("villager_picks_up"), Tags.VILLAGER_PICKS_UP);
+            registry.registerTag(NamespacedKey.minecraft("villager_plantable_seeds"), Tags.VILLAGER_PLANTABLE_SEEDS);
+            registry.registerTag(NamespacedKey.minecraft("walls"), Tags.WALLS);
+            registry.registerTag(NamespacedKey.minecraft("warped_stems"), Tags.WARPED_STEMS);
+            registry.registerTag(NamespacedKey.minecraft("wart_blocks"), Tags.WART_BLOCKS);
+            registry.registerTag(NamespacedKey.minecraft("wither_skeleton_disliked_weapons"), Tags.WITHER_SKELETON_DISLIKED_WEAPONS);
+            registry.registerTag(NamespacedKey.minecraft("wolf_food"), Tags.WOLF_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("wooden_buttons"), Tags.WOODEN_BUTTONS);
+            registry.registerTag(NamespacedKey.minecraft("wooden_doors"), Tags.WOODEN_DOORS);
+            registry.registerTag(NamespacedKey.minecraft("wooden_fences"), Tags.WOODEN_FENCES);
+            registry.registerTag(NamespacedKey.minecraft("wooden_pressure_plates"), Tags.WOODEN_PRESSURE_PLATES);
+            registry.registerTag(NamespacedKey.minecraft("wooden_slabs"), Tags.WOODEN_SLABS);
+            registry.registerTag(NamespacedKey.minecraft("wooden_stairs"), Tags.WOODEN_STAIRS);
+            registry.registerTag(NamespacedKey.minecraft("wooden_tool_materials"), Tags.WOODEN_TOOL_MATERIALS);
+            registry.registerTag(NamespacedKey.minecraft("wooden_trapdoors"), Tags.WOODEN_TRAPDOORS);
+            registry.registerTag(NamespacedKey.minecraft("wool"), Tags.WOOL);
+            registry.registerTag(NamespacedKey.minecraft("wool_carpets"), Tags.WOOL_CARPETS);
         });
+    }
+
+    public static final class Tags {
+        public static final Tag<Item> ACACIA_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:acacia_log"))
+                .resource(NamespacedKey.parse("minecraft:acacia_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_acacia_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_acacia_wood"))
+                .build();
+
+        public static final Tag<Item> ANVIL = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:anvil"))
+                .resource(NamespacedKey.parse("minecraft:chipped_anvil"))
+                .resource(NamespacedKey.parse("minecraft:damaged_anvil"))
+                .build();
+
+        public static final Tag<Item> ARMADILLO_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:spider_eye"))
+                .build();
+
+        public static final Tag<Item> ARROWS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:arrow"))
+                .resource(NamespacedKey.parse("minecraft:tipped_arrow"))
+                .resource(NamespacedKey.parse("minecraft:spectral_arrow"))
+                .build();
+
+        public static final Tag<Item> AXES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_axe"))
+                .resource(NamespacedKey.parse("minecraft:stone_axe"))
+                .resource(NamespacedKey.parse("minecraft:golden_axe"))
+                .resource(NamespacedKey.parse("minecraft:netherite_axe"))
+                .resource(NamespacedKey.parse("minecraft:wooden_axe"))
+                .resource(NamespacedKey.parse("minecraft:iron_axe"))
+                .build();
+
+        public static final Tag<Item> AXOLOTL_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:tropical_fish_bucket"))
+                .build();
+
+        public static final Tag<Item> BAMBOO_BLOCKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bamboo_block"))
+                .resource(NamespacedKey.parse("minecraft:stripped_bamboo_block"))
+                .build();
+
+        public static final Tag<Item> BANNERS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:white_banner"))
+                .resource(NamespacedKey.parse("minecraft:orange_banner"))
+                .resource(NamespacedKey.parse("minecraft:magenta_banner"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_banner"))
+                .resource(NamespacedKey.parse("minecraft:yellow_banner"))
+                .resource(NamespacedKey.parse("minecraft:lime_banner"))
+                .resource(NamespacedKey.parse("minecraft:pink_banner"))
+                .resource(NamespacedKey.parse("minecraft:gray_banner"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_banner"))
+                .resource(NamespacedKey.parse("minecraft:cyan_banner"))
+                .resource(NamespacedKey.parse("minecraft:purple_banner"))
+                .resource(NamespacedKey.parse("minecraft:blue_banner"))
+                .resource(NamespacedKey.parse("minecraft:brown_banner"))
+                .resource(NamespacedKey.parse("minecraft:green_banner"))
+                .resource(NamespacedKey.parse("minecraft:red_banner"))
+                .resource(NamespacedKey.parse("minecraft:black_banner"))
+                .build();
+
+        public static final Tag<Item> BEACON_PAYMENT_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:netherite_ingot"))
+                .resource(NamespacedKey.parse("minecraft:emerald"))
+                .resource(NamespacedKey.parse("minecraft:diamond"))
+                .resource(NamespacedKey.parse("minecraft:gold_ingot"))
+                .resource(NamespacedKey.parse("minecraft:iron_ingot"))
+                .build();
+
+        public static final Tag<Item> BEDS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:red_bed"))
+                .resource(NamespacedKey.parse("minecraft:black_bed"))
+                .resource(NamespacedKey.parse("minecraft:blue_bed"))
+                .resource(NamespacedKey.parse("minecraft:brown_bed"))
+                .resource(NamespacedKey.parse("minecraft:cyan_bed"))
+                .resource(NamespacedKey.parse("minecraft:gray_bed"))
+                .resource(NamespacedKey.parse("minecraft:green_bed"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_bed"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_bed"))
+                .resource(NamespacedKey.parse("minecraft:lime_bed"))
+                .resource(NamespacedKey.parse("minecraft:magenta_bed"))
+                .resource(NamespacedKey.parse("minecraft:orange_bed"))
+                .resource(NamespacedKey.parse("minecraft:pink_bed"))
+                .resource(NamespacedKey.parse("minecraft:purple_bed"))
+                .resource(NamespacedKey.parse("minecraft:white_bed"))
+                .resource(NamespacedKey.parse("minecraft:yellow_bed"))
+                .build();
+
+        public static final Tag<Item> BEE_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:dandelion"))
+                .resource(NamespacedKey.parse("minecraft:open_eyeblossom"))
+                .resource(NamespacedKey.parse("minecraft:poppy"))
+                .resource(NamespacedKey.parse("minecraft:blue_orchid"))
+                .resource(NamespacedKey.parse("minecraft:allium"))
+                .resource(NamespacedKey.parse("minecraft:azure_bluet"))
+                .resource(NamespacedKey.parse("minecraft:red_tulip"))
+                .resource(NamespacedKey.parse("minecraft:orange_tulip"))
+                .resource(NamespacedKey.parse("minecraft:white_tulip"))
+                .resource(NamespacedKey.parse("minecraft:pink_tulip"))
+                .resource(NamespacedKey.parse("minecraft:oxeye_daisy"))
+                .resource(NamespacedKey.parse("minecraft:cornflower"))
+                .resource(NamespacedKey.parse("minecraft:lily_of_the_valley"))
+                .resource(NamespacedKey.parse("minecraft:wither_rose"))
+                .resource(NamespacedKey.parse("minecraft:torchflower"))
+                .resource(NamespacedKey.parse("minecraft:sunflower"))
+                .resource(NamespacedKey.parse("minecraft:lilac"))
+                .resource(NamespacedKey.parse("minecraft:peony"))
+                .resource(NamespacedKey.parse("minecraft:rose_bush"))
+                .resource(NamespacedKey.parse("minecraft:pitcher_plant"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea_leaves"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_propagule"))
+                .resource(NamespacedKey.parse("minecraft:cherry_leaves"))
+                .resource(NamespacedKey.parse("minecraft:pink_petals"))
+                .resource(NamespacedKey.parse("minecraft:wildflowers"))
+                .resource(NamespacedKey.parse("minecraft:chorus_flower"))
+                .resource(NamespacedKey.parse("minecraft:spore_blossom"))
+                .resource(NamespacedKey.parse("minecraft:cactus_flower"))
+                .build();
+
+        public static final Tag<Item> BIRCH_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:birch_log"))
+                .resource(NamespacedKey.parse("minecraft:birch_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_birch_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_birch_wood"))
+                .build();
+
+        public static final Tag<Item> BOATS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_boat"))
+                .resource(NamespacedKey.parse("minecraft:spruce_boat"))
+                .resource(NamespacedKey.parse("minecraft:birch_boat"))
+                .resource(NamespacedKey.parse("minecraft:jungle_boat"))
+                .resource(NamespacedKey.parse("minecraft:acacia_boat"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_boat"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_boat"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_boat"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_raft"))
+                .resource(NamespacedKey.parse("minecraft:cherry_boat"))
+                .tag(NamespacedKey.parse("minecraft:chest_boats"))
+                .build();
+
+        public static final Tag<Item> BOOK_CLONING_TARGET = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:writable_book"))
+                .build();
+
+        public static final Tag<Item> BOOKSHELF_BOOKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:book"))
+                .resource(NamespacedKey.parse("minecraft:written_book"))
+                .resource(NamespacedKey.parse("minecraft:enchanted_book"))
+                .resource(NamespacedKey.parse("minecraft:writable_book"))
+                .resource(NamespacedKey.parse("minecraft:knowledge_book"))
+                .build();
+
+        public static final Tag<Item> BREAKS_DECORATED_POTS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:swords"))
+                .tag(NamespacedKey.parse("minecraft:axes"))
+                .tag(NamespacedKey.parse("minecraft:pickaxes"))
+                .tag(NamespacedKey.parse("minecraft:shovels"))
+                .tag(NamespacedKey.parse("minecraft:hoes"))
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> BREWING_FUEL = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:blaze_powder"))
+                .build();
+
+        public static final Tag<Item> BUNDLES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bundle"))
+                .resource(NamespacedKey.parse("minecraft:black_bundle"))
+                .resource(NamespacedKey.parse("minecraft:blue_bundle"))
+                .resource(NamespacedKey.parse("minecraft:brown_bundle"))
+                .resource(NamespacedKey.parse("minecraft:cyan_bundle"))
+                .resource(NamespacedKey.parse("minecraft:gray_bundle"))
+                .resource(NamespacedKey.parse("minecraft:green_bundle"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_bundle"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_bundle"))
+                .resource(NamespacedKey.parse("minecraft:lime_bundle"))
+                .resource(NamespacedKey.parse("minecraft:magenta_bundle"))
+                .resource(NamespacedKey.parse("minecraft:orange_bundle"))
+                .resource(NamespacedKey.parse("minecraft:pink_bundle"))
+                .resource(NamespacedKey.parse("minecraft:purple_bundle"))
+                .resource(NamespacedKey.parse("minecraft:red_bundle"))
+                .resource(NamespacedKey.parse("minecraft:yellow_bundle"))
+                .resource(NamespacedKey.parse("minecraft:white_bundle"))
+                .build();
+
+        public static final Tag<Item> BUTTONS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_buttons"))
+                .tag(NamespacedKey.parse("minecraft:stone_buttons"))
+                .build();
+
+        public static final Tag<Item> CAMEL_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cactus"))
+                .build();
+
+        public static final Tag<Item> CANDLES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:candle"))
+                .resource(NamespacedKey.parse("minecraft:white_candle"))
+                .resource(NamespacedKey.parse("minecraft:orange_candle"))
+                .resource(NamespacedKey.parse("minecraft:magenta_candle"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_candle"))
+                .resource(NamespacedKey.parse("minecraft:yellow_candle"))
+                .resource(NamespacedKey.parse("minecraft:lime_candle"))
+                .resource(NamespacedKey.parse("minecraft:pink_candle"))
+                .resource(NamespacedKey.parse("minecraft:gray_candle"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_candle"))
+                .resource(NamespacedKey.parse("minecraft:cyan_candle"))
+                .resource(NamespacedKey.parse("minecraft:purple_candle"))
+                .resource(NamespacedKey.parse("minecraft:blue_candle"))
+                .resource(NamespacedKey.parse("minecraft:brown_candle"))
+                .resource(NamespacedKey.parse("minecraft:green_candle"))
+                .resource(NamespacedKey.parse("minecraft:red_candle"))
+                .resource(NamespacedKey.parse("minecraft:black_candle"))
+                .build();
+
+        public static final Tag<Item> CAT_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cod"))
+                .resource(NamespacedKey.parse("minecraft:salmon"))
+                .build();
+
+        public static final Tag<Item> CHERRY_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cherry_log"))
+                .resource(NamespacedKey.parse("minecraft:cherry_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_cherry_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_cherry_wood"))
+                .build();
+
+        public static final Tag<Item> CHEST_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:chainmail_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:golden_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:iron_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:diamond_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:netherite_chestplate"))
+                .build();
+
+        public static final Tag<Item> CHEST_BOATS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:spruce_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:birch_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:jungle_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:acacia_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_chest_boat"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_chest_raft"))
+                .resource(NamespacedKey.parse("minecraft:cherry_chest_boat"))
+                .build();
+
+        public static final Tag<Item> CHICKEN_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat_seeds"))
+                .resource(NamespacedKey.parse("minecraft:melon_seeds"))
+                .resource(NamespacedKey.parse("minecraft:pumpkin_seeds"))
+                .resource(NamespacedKey.parse("minecraft:beetroot_seeds"))
+                .resource(NamespacedKey.parse("minecraft:torchflower_seeds"))
+                .resource(NamespacedKey.parse("minecraft:pitcher_pod"))
+                .build();
+
+        public static final Tag<Item> CLUSTER_MAX_HARVESTABLES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:golden_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:iron_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:netherite_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:stone_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:wooden_pickaxe"))
+                .build();
+
+        public static final Tag<Item> COAL_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:coal_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_coal_ore"))
+                .build();
+
+        public static final Tag<Item> COALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:coal"))
+                .resource(NamespacedKey.parse("minecraft:charcoal"))
+                .build();
+
+        public static final Tag<Item> COMPASSES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:compass"))
+                .resource(NamespacedKey.parse("minecraft:recovery_compass"))
+                .build();
+
+        public static final Tag<Item> COMPLETES_FIND_TREE_TUTORIAL = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:logs"))
+                .tag(NamespacedKey.parse("minecraft:leaves"))
+                .tag(NamespacedKey.parse("minecraft:wart_blocks"))
+                .build();
+
+        public static final Tag<Item> COPPER_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_copper_ore"))
+                .build();
+
+        public static final Tag<Item> COW_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .build();
+
+        public static final Tag<Item> CREEPER_DROP_MUSIC_DISCS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:music_disc_13"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_cat"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_blocks"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_chirp"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_far"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_mall"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_mellohi"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_stal"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_strad"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_ward"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_11"))
+                .resource(NamespacedKey.parse("minecraft:music_disc_wait"))
+                .build();
+
+        public static final Tag<Item> CREEPER_IGNITERS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:flint_and_steel"))
+                .resource(NamespacedKey.parse("minecraft:fire_charge"))
+                .build();
+
+        public static final Tag<Item> CRIMSON_STEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:crimson_stem"))
+                .resource(NamespacedKey.parse("minecraft:stripped_crimson_stem"))
+                .resource(NamespacedKey.parse("minecraft:crimson_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:stripped_crimson_hyphae"))
+                .build();
+
+        public static final Tag<Item> DAMPENS_VIBRATIONS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wool"))
+                .tag(NamespacedKey.parse("minecraft:wool_carpets"))
+                .build();
+
+        public static final Tag<Item> DARK_OAK_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:dark_oak_log"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_dark_oak_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_dark_oak_wood"))
+                .build();
+
+        public static final Tag<Item> DECORATED_POT_INGREDIENTS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:brick"))
+                .tag(NamespacedKey.parse("minecraft:decorated_pot_sherds"))
+                .build();
+
+        public static final Tag<Item> DECORATED_POT_SHERDS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:angler_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:archer_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:arms_up_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:blade_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:brewer_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:burn_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:danger_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:explorer_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:friend_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:heart_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:heartbreak_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:howl_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:miner_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:mourner_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:plenty_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:prize_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:sheaf_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:shelter_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:skull_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:snort_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:flow_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:guster_pottery_sherd"))
+                .resource(NamespacedKey.parse("minecraft:scrape_pottery_sherd"))
+                .build();
+
+        public static final Tag<Item> DIAMOND_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_diamond_ore"))
+                .build();
+
+        public static final Tag<Item> DIAMOND_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond"))
+                .build();
+
+        public static final Tag<Item> DIRT = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:dirt"))
+                .resource(NamespacedKey.parse("minecraft:grass_block"))
+                .resource(NamespacedKey.parse("minecraft:podzol"))
+                .resource(NamespacedKey.parse("minecraft:coarse_dirt"))
+                .resource(NamespacedKey.parse("minecraft:mycelium"))
+                .resource(NamespacedKey.parse("minecraft:rooted_dirt"))
+                .resource(NamespacedKey.parse("minecraft:moss_block"))
+                .resource(NamespacedKey.parse("minecraft:pale_moss_block"))
+                .resource(NamespacedKey.parse("minecraft:mud"))
+                .resource(NamespacedKey.parse("minecraft:muddy_mangrove_roots"))
+                .build();
+
+        public static final Tag<Item> DOORS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_doors"))
+                .resource(NamespacedKey.parse("minecraft:copper_door"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_door"))
+                .resource(NamespacedKey.parse("minecraft:iron_door"))
+                .build();
+
+        public static final Tag<Item> DROWNED_PREFERRED_WEAPONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .build();
+
+        public static final Tag<Item> DUPLICATES_ALLAYS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:amethyst_shard"))
+                .build();
+
+        public static final Tag<Item> DYEABLE = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_helmet"))
+                .resource(NamespacedKey.parse("minecraft:leather_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:leather_leggings"))
+                .resource(NamespacedKey.parse("minecraft:leather_boots"))
+                .resource(NamespacedKey.parse("minecraft:leather_horse_armor"))
+                .resource(NamespacedKey.parse("minecraft:wolf_armor"))
+                .build();
+
+        public static final Tag<Item> EGGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:egg"))
+                .resource(NamespacedKey.parse("minecraft:blue_egg"))
+                .resource(NamespacedKey.parse("minecraft:brown_egg"))
+                .build();
+
+        public static final Tag<Item> EMERALD_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:emerald_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_emerald_ore"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:enchantable/foot_armor"))
+                .tag(NamespacedKey.parse("minecraft:enchantable/leg_armor"))
+                .tag(NamespacedKey.parse("minecraft:enchantable/chest_armor"))
+                .tag(NamespacedKey.parse("minecraft:enchantable/head_armor"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_BOW = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bow"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_CHEST_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:chest_armor"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_CROSSBOW = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_DURABILITY = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:foot_armor"))
+                .tag(NamespacedKey.parse("minecraft:leg_armor"))
+                .tag(NamespacedKey.parse("minecraft:chest_armor"))
+                .tag(NamespacedKey.parse("minecraft:head_armor"))
+                .resource(NamespacedKey.parse("minecraft:elytra"))
+                .resource(NamespacedKey.parse("minecraft:shield"))
+                .tag(NamespacedKey.parse("minecraft:swords"))
+                .tag(NamespacedKey.parse("minecraft:axes"))
+                .tag(NamespacedKey.parse("minecraft:pickaxes"))
+                .tag(NamespacedKey.parse("minecraft:shovels"))
+                .tag(NamespacedKey.parse("minecraft:hoes"))
+                .resource(NamespacedKey.parse("minecraft:bow"))
+                .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .resource(NamespacedKey.parse("minecraft:flint_and_steel"))
+                .resource(NamespacedKey.parse("minecraft:shears"))
+                .resource(NamespacedKey.parse("minecraft:brush"))
+                .resource(NamespacedKey.parse("minecraft:fishing_rod"))
+                .resource(NamespacedKey.parse("minecraft:carrot_on_a_stick"))
+                .resource(NamespacedKey.parse("minecraft:warped_fungus_on_a_stick"))
+                .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_EQUIPPABLE = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:foot_armor"))
+                .tag(NamespacedKey.parse("minecraft:leg_armor"))
+                .tag(NamespacedKey.parse("minecraft:chest_armor"))
+                .tag(NamespacedKey.parse("minecraft:head_armor"))
+                .resource(NamespacedKey.parse("minecraft:elytra"))
+                .tag(NamespacedKey.parse("minecraft:skulls"))
+                .resource(NamespacedKey.parse("minecraft:carved_pumpkin"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_FIRE_ASPECT = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:enchantable/sword"))
+                .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_FISHING = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:fishing_rod"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_FOOT_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:foot_armor"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_HEAD_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:head_armor"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_LEG_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:leg_armor"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_MACE = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_MINING = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:axes"))
+                .tag(NamespacedKey.parse("minecraft:pickaxes"))
+                .tag(NamespacedKey.parse("minecraft:shovels"))
+                .tag(NamespacedKey.parse("minecraft:hoes"))
+                .resource(NamespacedKey.parse("minecraft:shears"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_MINING_LOOT = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:axes"))
+                .tag(NamespacedKey.parse("minecraft:pickaxes"))
+                .tag(NamespacedKey.parse("minecraft:shovels"))
+                .tag(NamespacedKey.parse("minecraft:hoes"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_SHARP_WEAPON = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:swords"))
+                .tag(NamespacedKey.parse("minecraft:axes"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_SWORD = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:swords"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_TRIDENT = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_VANISHING = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:enchantable/durability"))
+                .resource(NamespacedKey.parse("minecraft:compass"))
+                .resource(NamespacedKey.parse("minecraft:carved_pumpkin"))
+                .tag(NamespacedKey.parse("minecraft:skulls"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_WEAPON = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:enchantable/sharp_weapon"))
+                .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> FENCE_GATES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:acacia_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:birch_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:jungle_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:oak_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:spruce_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:crimson_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:warped_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:cherry_fence_gate"))
+                .build();
+
+        public static final Tag<Item> FENCES = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_fences"))
+                .resource(NamespacedKey.parse("minecraft:nether_brick_fence"))
+                .build();
+
+        public static final Tag<Item> FISHES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cod"))
+                .resource(NamespacedKey.parse("minecraft:cooked_cod"))
+                .resource(NamespacedKey.parse("minecraft:salmon"))
+                .resource(NamespacedKey.parse("minecraft:cooked_salmon"))
+                .resource(NamespacedKey.parse("minecraft:pufferfish"))
+                .resource(NamespacedKey.parse("minecraft:tropical_fish"))
+                .build();
+
+        public static final Tag<Item> FLOWERS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:small_flowers"))
+                .resource(NamespacedKey.parse("minecraft:sunflower"))
+                .resource(NamespacedKey.parse("minecraft:lilac"))
+                .resource(NamespacedKey.parse("minecraft:peony"))
+                .resource(NamespacedKey.parse("minecraft:rose_bush"))
+                .resource(NamespacedKey.parse("minecraft:pitcher_plant"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea_leaves"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_propagule"))
+                .resource(NamespacedKey.parse("minecraft:cherry_leaves"))
+                .resource(NamespacedKey.parse("minecraft:pink_petals"))
+                .resource(NamespacedKey.parse("minecraft:wildflowers"))
+                .resource(NamespacedKey.parse("minecraft:chorus_flower"))
+                .resource(NamespacedKey.parse("minecraft:spore_blossom"))
+                .resource(NamespacedKey.parse("minecraft:cactus_flower"))
+                .build();
+
+        public static final Tag<Item> FOOT_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_boots"))
+                .resource(NamespacedKey.parse("minecraft:chainmail_boots"))
+                .resource(NamespacedKey.parse("minecraft:golden_boots"))
+                .resource(NamespacedKey.parse("minecraft:iron_boots"))
+                .resource(NamespacedKey.parse("minecraft:diamond_boots"))
+                .resource(NamespacedKey.parse("minecraft:netherite_boots"))
+                .build();
+
+        public static final Tag<Item> FOX_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:sweet_berries"))
+                .resource(NamespacedKey.parse("minecraft:glow_berries"))
+                .build();
+
+        public static final Tag<Item> FREEZE_IMMUNE_WEARABLES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_boots"))
+                .resource(NamespacedKey.parse("minecraft:leather_leggings"))
+                .resource(NamespacedKey.parse("minecraft:leather_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:leather_helmet"))
+                .resource(NamespacedKey.parse("minecraft:leather_horse_armor"))
+                .build();
+
+        public static final Tag<Item> FROG_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:slime_ball"))
+                .build();
+
+        public static final Tag<Item> FURNACE_MINECART_FUEL = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:coal"))
+                .resource(NamespacedKey.parse("minecraft:charcoal"))
+                .build();
+
+        public static final Tag<Item> GAZE_DISGUISE_EQUIPMENT = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:carved_pumpkin"))
+                .build();
+
+        public static final Tag<Item> GOAT_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .build();
+
+        public static final Tag<Item> GOLD_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:gold_ore"))
+                .resource(NamespacedKey.parse("minecraft:nether_gold_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_gold_ore"))
+                .build();
+
+        public static final Tag<Item> GOLD_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:gold_ingot"))
+                .build();
+
+        public static final Tag<Item> HANGING_SIGNS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:spruce_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:birch_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:acacia_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:cherry_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:jungle_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:crimson_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:warped_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_hanging_sign"))
+                .build();
+
+        public static final Tag<Item> HEAD_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_helmet"))
+                .resource(NamespacedKey.parse("minecraft:chainmail_helmet"))
+                .resource(NamespacedKey.parse("minecraft:golden_helmet"))
+                .resource(NamespacedKey.parse("minecraft:iron_helmet"))
+                .resource(NamespacedKey.parse("minecraft:diamond_helmet"))
+                .resource(NamespacedKey.parse("minecraft:netherite_helmet"))
+                .resource(NamespacedKey.parse("minecraft:turtle_helmet"))
+                .build();
+
+        public static final Tag<Item> HOES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_hoe"))
+                .resource(NamespacedKey.parse("minecraft:stone_hoe"))
+                .resource(NamespacedKey.parse("minecraft:golden_hoe"))
+                .resource(NamespacedKey.parse("minecraft:netherite_hoe"))
+                .resource(NamespacedKey.parse("minecraft:wooden_hoe"))
+                .resource(NamespacedKey.parse("minecraft:iron_hoe"))
+                .build();
+
+        public static final Tag<Item> HOGLIN_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:crimson_fungus"))
+                .build();
+
+        public static final Tag<Item> HORSE_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .resource(NamespacedKey.parse("minecraft:sugar"))
+                .resource(NamespacedKey.parse("minecraft:hay_block"))
+                .resource(NamespacedKey.parse("minecraft:apple"))
+                .resource(NamespacedKey.parse("minecraft:golden_carrot"))
+                .resource(NamespacedKey.parse("minecraft:golden_apple"))
+                .resource(NamespacedKey.parse("minecraft:enchanted_golden_apple"))
+                .build();
+
+        public static final Tag<Item> HORSE_TEMPT_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:golden_carrot"))
+                .resource(NamespacedKey.parse("minecraft:golden_apple"))
+                .resource(NamespacedKey.parse("minecraft:enchanted_golden_apple"))
+                .build();
+
+        public static final Tag<Item> IGNORED_BY_PIGLIN_BABIES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather"))
+                .build();
+
+        public static final Tag<Item> IRON_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_iron_ore"))
+                .build();
+
+        public static final Tag<Item> IRON_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_ingot"))
+                .build();
+
+        public static final Tag<Item> JUNGLE_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:jungle_log"))
+                .resource(NamespacedKey.parse("minecraft:jungle_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_jungle_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_jungle_wood"))
+                .build();
+
+        public static final Tag<Item> LAPIS_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:lapis_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_lapis_ore"))
+                .build();
+
+        public static final Tag<Item> LEAVES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:jungle_leaves"))
+                .resource(NamespacedKey.parse("minecraft:oak_leaves"))
+                .resource(NamespacedKey.parse("minecraft:spruce_leaves"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_leaves"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_leaves"))
+                .resource(NamespacedKey.parse("minecraft:acacia_leaves"))
+                .resource(NamespacedKey.parse("minecraft:birch_leaves"))
+                .resource(NamespacedKey.parse("minecraft:azalea_leaves"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea_leaves"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_leaves"))
+                .resource(NamespacedKey.parse("minecraft:cherry_leaves"))
+                .build();
+
+        public static final Tag<Item> LECTERN_BOOKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:written_book"))
+                .resource(NamespacedKey.parse("minecraft:writable_book"))
+                .build();
+
+        public static final Tag<Item> LEG_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather_leggings"))
+                .resource(NamespacedKey.parse("minecraft:chainmail_leggings"))
+                .resource(NamespacedKey.parse("minecraft:golden_leggings"))
+                .resource(NamespacedKey.parse("minecraft:iron_leggings"))
+                .resource(NamespacedKey.parse("minecraft:diamond_leggings"))
+                .resource(NamespacedKey.parse("minecraft:netherite_leggings"))
+                .build();
+
+        public static final Tag<Item> LLAMA_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .resource(NamespacedKey.parse("minecraft:hay_block"))
+                .build();
+
+        public static final Tag<Item> LLAMA_TEMPT_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:hay_block"))
+                .build();
+
+        public static final Tag<Item> LOGS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:logs_that_burn"))
+                .tag(NamespacedKey.parse("minecraft:crimson_stems"))
+                .tag(NamespacedKey.parse("minecraft:warped_stems"))
+                .build();
+
+        public static final Tag<Item> LOGS_THAT_BURN = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:dark_oak_logs"))
+                .tag(NamespacedKey.parse("minecraft:pale_oak_logs"))
+                .tag(NamespacedKey.parse("minecraft:oak_logs"))
+                .tag(NamespacedKey.parse("minecraft:acacia_logs"))
+                .tag(NamespacedKey.parse("minecraft:birch_logs"))
+                .tag(NamespacedKey.parse("minecraft:jungle_logs"))
+                .tag(NamespacedKey.parse("minecraft:spruce_logs"))
+                .tag(NamespacedKey.parse("minecraft:mangrove_logs"))
+                .tag(NamespacedKey.parse("minecraft:cherry_logs"))
+                .build();
+
+        public static final Tag<Item> MANGROVE_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:mangrove_log"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_mangrove_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_mangrove_wood"))
+                .build();
+
+        public static final Tag<Item> MAP_INVISIBILITY_EQUIPMENT = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:carved_pumpkin"))
+                .build();
+
+        public static final Tag<Item> MEAT = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:beef"))
+                .resource(NamespacedKey.parse("minecraft:chicken"))
+                .resource(NamespacedKey.parse("minecraft:cooked_beef"))
+                .resource(NamespacedKey.parse("minecraft:cooked_chicken"))
+                .resource(NamespacedKey.parse("minecraft:cooked_mutton"))
+                .resource(NamespacedKey.parse("minecraft:cooked_porkchop"))
+                .resource(NamespacedKey.parse("minecraft:cooked_rabbit"))
+                .resource(NamespacedKey.parse("minecraft:mutton"))
+                .resource(NamespacedKey.parse("minecraft:porkchop"))
+                .resource(NamespacedKey.parse("minecraft:rabbit"))
+                .resource(NamespacedKey.parse("minecraft:rotten_flesh"))
+                .build();
+
+        public static final Tag<Item> NETHERITE_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:netherite_ingot"))
+                .build();
+
+        public static final Tag<Item> NON_FLAMMABLE_WOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:warped_stem"))
+                .resource(NamespacedKey.parse("minecraft:stripped_warped_stem"))
+                .resource(NamespacedKey.parse("minecraft:warped_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:stripped_warped_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:crimson_stem"))
+                .resource(NamespacedKey.parse("minecraft:stripped_crimson_stem"))
+                .resource(NamespacedKey.parse("minecraft:crimson_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:stripped_crimson_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:crimson_planks"))
+                .resource(NamespacedKey.parse("minecraft:warped_planks"))
+                .resource(NamespacedKey.parse("minecraft:crimson_slab"))
+                .resource(NamespacedKey.parse("minecraft:warped_slab"))
+                .resource(NamespacedKey.parse("minecraft:crimson_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:warped_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:crimson_fence"))
+                .resource(NamespacedKey.parse("minecraft:warped_fence"))
+                .resource(NamespacedKey.parse("minecraft:crimson_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:warped_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:crimson_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:warped_fence_gate"))
+                .resource(NamespacedKey.parse("minecraft:crimson_stairs"))
+                .resource(NamespacedKey.parse("minecraft:warped_stairs"))
+                .resource(NamespacedKey.parse("minecraft:crimson_button"))
+                .resource(NamespacedKey.parse("minecraft:warped_button"))
+                .resource(NamespacedKey.parse("minecraft:crimson_door"))
+                .resource(NamespacedKey.parse("minecraft:warped_door"))
+                .resource(NamespacedKey.parse("minecraft:crimson_sign"))
+                .resource(NamespacedKey.parse("minecraft:warped_sign"))
+                .resource(NamespacedKey.parse("minecraft:warped_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:crimson_hanging_sign"))
+                .build();
+
+        public static final Tag<Item> NOTEBLOCK_TOP_INSTRUMENTS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:zombie_head"))
+                .resource(NamespacedKey.parse("minecraft:skeleton_skull"))
+                .resource(NamespacedKey.parse("minecraft:creeper_head"))
+                .resource(NamespacedKey.parse("minecraft:dragon_head"))
+                .resource(NamespacedKey.parse("minecraft:wither_skeleton_skull"))
+                .resource(NamespacedKey.parse("minecraft:piglin_head"))
+                .resource(NamespacedKey.parse("minecraft:player_head"))
+                .build();
+
+        public static final Tag<Item> OAK_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_log"))
+                .resource(NamespacedKey.parse("minecraft:oak_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_oak_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_oak_wood"))
+                .build();
+
+        public static final Tag<Item> OCELOT_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cod"))
+                .resource(NamespacedKey.parse("minecraft:salmon"))
+                .build();
+
+        public static final Tag<Item> PALE_OAK_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:pale_oak_log"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_pale_oak_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_pale_oak_wood"))
+                .build();
+
+        public static final Tag<Item> PANDA_EATS_FROM_GROUND = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:panda_food"))
+                .resource(NamespacedKey.parse("minecraft:cake"))
+                .build();
+
+        public static final Tag<Item> PANDA_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bamboo"))
+                .build();
+
+        public static final Tag<Item> PARROT_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat_seeds"))
+                .resource(NamespacedKey.parse("minecraft:melon_seeds"))
+                .resource(NamespacedKey.parse("minecraft:pumpkin_seeds"))
+                .resource(NamespacedKey.parse("minecraft:beetroot_seeds"))
+                .resource(NamespacedKey.parse("minecraft:torchflower_seeds"))
+                .resource(NamespacedKey.parse("minecraft:pitcher_pod"))
+                .build();
+
+        public static final Tag<Item> PARROT_POISONOUS_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cookie"))
+                .build();
+
+        public static final Tag<Item> PICKAXES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:stone_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:golden_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:netherite_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:wooden_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:iron_pickaxe"))
+                .build();
+
+        public static final Tag<Item> PIG_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:carrot"))
+                .resource(NamespacedKey.parse("minecraft:potato"))
+                .resource(NamespacedKey.parse("minecraft:beetroot"))
+                .build();
+
+        public static final Tag<Item> PIGLIN_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:porkchop"))
+                .resource(NamespacedKey.parse("minecraft:cooked_porkchop"))
+                .build();
+
+        public static final Tag<Item> PIGLIN_LOVED = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:gold_ores"))
+                .resource(NamespacedKey.parse("minecraft:gold_block"))
+                .resource(NamespacedKey.parse("minecraft:gilded_blackstone"))
+                .resource(NamespacedKey.parse("minecraft:light_weighted_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:gold_ingot"))
+                .resource(NamespacedKey.parse("minecraft:bell"))
+                .resource(NamespacedKey.parse("minecraft:clock"))
+                .resource(NamespacedKey.parse("minecraft:golden_carrot"))
+                .resource(NamespacedKey.parse("minecraft:glistering_melon_slice"))
+                .resource(NamespacedKey.parse("minecraft:golden_apple"))
+                .resource(NamespacedKey.parse("minecraft:enchanted_golden_apple"))
+                .resource(NamespacedKey.parse("minecraft:golden_helmet"))
+                .resource(NamespacedKey.parse("minecraft:golden_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:golden_leggings"))
+                .resource(NamespacedKey.parse("minecraft:golden_boots"))
+                .resource(NamespacedKey.parse("minecraft:golden_horse_armor"))
+                .resource(NamespacedKey.parse("minecraft:golden_sword"))
+                .resource(NamespacedKey.parse("minecraft:golden_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:golden_shovel"))
+                .resource(NamespacedKey.parse("minecraft:golden_axe"))
+                .resource(NamespacedKey.parse("minecraft:golden_hoe"))
+                .resource(NamespacedKey.parse("minecraft:raw_gold"))
+                .resource(NamespacedKey.parse("minecraft:raw_gold_block"))
+                .build();
+
+        public static final Tag<Item> PIGLIN_PREFERRED_WEAPONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .build();
+
+        public static final Tag<Item> PIGLIN_REPELLENTS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:soul_torch"))
+                .resource(NamespacedKey.parse("minecraft:soul_lantern"))
+                .resource(NamespacedKey.parse("minecraft:soul_campfire"))
+                .build();
+
+        public static final Tag<Item> PIGLIN_SAFE_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:golden_helmet"))
+                .resource(NamespacedKey.parse("minecraft:golden_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:golden_leggings"))
+                .resource(NamespacedKey.parse("minecraft:golden_boots"))
+                .build();
+
+        public static final Tag<Item> PILLAGER_PREFERRED_WEAPONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .build();
+
+        public static final Tag<Item> PLANKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_planks"))
+                .resource(NamespacedKey.parse("minecraft:spruce_planks"))
+                .resource(NamespacedKey.parse("minecraft:birch_planks"))
+                .resource(NamespacedKey.parse("minecraft:jungle_planks"))
+                .resource(NamespacedKey.parse("minecraft:acacia_planks"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_planks"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_planks"))
+                .resource(NamespacedKey.parse("minecraft:crimson_planks"))
+                .resource(NamespacedKey.parse("minecraft:warped_planks"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_planks"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_planks"))
+                .resource(NamespacedKey.parse("minecraft:cherry_planks"))
+                .build();
+
+        public static final Tag<Item> RABBIT_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:carrot"))
+                .resource(NamespacedKey.parse("minecraft:golden_carrot"))
+                .resource(NamespacedKey.parse("minecraft:dandelion"))
+                .build();
+
+        public static final Tag<Item> RAILS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:rail"))
+                .resource(NamespacedKey.parse("minecraft:powered_rail"))
+                .resource(NamespacedKey.parse("minecraft:detector_rail"))
+                .resource(NamespacedKey.parse("minecraft:activator_rail"))
+                .build();
+
+        public static final Tag<Item> REDSTONE_ORES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:redstone_ore"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_redstone_ore"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_CHAIN_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_ingot"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_DIAMOND_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_GOLD_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:gold_ingot"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_IRON_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_ingot"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_LEATHER_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:leather"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_NETHERITE_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:netherite_ingot"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_TURTLE_HELMET = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:turtle_scute"))
+                .build();
+
+        public static final Tag<Item> REPAIRS_WOLF_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:armadillo_scute"))
+                .build();
+
+        public static final Tag<Item> SAND = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:sand"))
+                .resource(NamespacedKey.parse("minecraft:red_sand"))
+                .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
+                .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
+                .build();
+
+        public static final Tag<Item> SAPLINGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_sapling"))
+                .resource(NamespacedKey.parse("minecraft:spruce_sapling"))
+                .resource(NamespacedKey.parse("minecraft:birch_sapling"))
+                .resource(NamespacedKey.parse("minecraft:jungle_sapling"))
+                .resource(NamespacedKey.parse("minecraft:acacia_sapling"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_sapling"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_sapling"))
+                .resource(NamespacedKey.parse("minecraft:azalea"))
+                .resource(NamespacedKey.parse("minecraft:flowering_azalea"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_propagule"))
+                .resource(NamespacedKey.parse("minecraft:cherry_sapling"))
+                .build();
+
+        public static final Tag<Item> SHEEP_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .build();
+
+        public static final Tag<Item> SHOVELS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_shovel"))
+                .resource(NamespacedKey.parse("minecraft:stone_shovel"))
+                .resource(NamespacedKey.parse("minecraft:golden_shovel"))
+                .resource(NamespacedKey.parse("minecraft:netherite_shovel"))
+                .resource(NamespacedKey.parse("minecraft:wooden_shovel"))
+                .resource(NamespacedKey.parse("minecraft:iron_shovel"))
+                .build();
+
+        public static final Tag<Item> SHULKER_BOXES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:black_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:blue_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:brown_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:cyan_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:gray_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:green_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:lime_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:magenta_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:orange_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:pink_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:purple_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:red_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:white_shulker_box"))
+                .resource(NamespacedKey.parse("minecraft:yellow_shulker_box"))
+                .build();
+
+        public static final Tag<Item> SIGNS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_sign"))
+                .resource(NamespacedKey.parse("minecraft:spruce_sign"))
+                .resource(NamespacedKey.parse("minecraft:birch_sign"))
+                .resource(NamespacedKey.parse("minecraft:acacia_sign"))
+                .resource(NamespacedKey.parse("minecraft:jungle_sign"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_sign"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_sign"))
+                .resource(NamespacedKey.parse("minecraft:crimson_sign"))
+                .resource(NamespacedKey.parse("minecraft:warped_sign"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_sign"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_sign"))
+                .resource(NamespacedKey.parse("minecraft:cherry_sign"))
+                .build();
+
+        public static final Tag<Item> SKELETON_PREFERRED_WEAPONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bow"))
+                .build();
+
+        public static final Tag<Item> SKULLS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:player_head"))
+                .resource(NamespacedKey.parse("minecraft:creeper_head"))
+                .resource(NamespacedKey.parse("minecraft:zombie_head"))
+                .resource(NamespacedKey.parse("minecraft:skeleton_skull"))
+                .resource(NamespacedKey.parse("minecraft:wither_skeleton_skull"))
+                .resource(NamespacedKey.parse("minecraft:dragon_head"))
+                .resource(NamespacedKey.parse("minecraft:piglin_head"))
+                .build();
+
+        public static final Tag<Item> SLABS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_slabs"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_mosaic_slab"))
+                .resource(NamespacedKey.parse("minecraft:stone_slab"))
+                .resource(NamespacedKey.parse("minecraft:smooth_stone_slab"))
+                .resource(NamespacedKey.parse("minecraft:stone_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:purpur_slab"))
+                .resource(NamespacedKey.parse("minecraft:quartz_slab"))
+                .resource(NamespacedKey.parse("minecraft:red_sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:cobblestone_slab"))
+                .resource(NamespacedKey.parse("minecraft:nether_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:petrified_oak_slab"))
+                .resource(NamespacedKey.parse("minecraft:prismarine_slab"))
+                .resource(NamespacedKey.parse("minecraft:prismarine_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:dark_prismarine_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_granite_slab"))
+                .resource(NamespacedKey.parse("minecraft:smooth_red_sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:mossy_stone_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_diorite_slab"))
+                .resource(NamespacedKey.parse("minecraft:mossy_cobblestone_slab"))
+                .resource(NamespacedKey.parse("minecraft:end_stone_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:smooth_sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:smooth_quartz_slab"))
+                .resource(NamespacedKey.parse("minecraft:granite_slab"))
+                .resource(NamespacedKey.parse("minecraft:andesite_slab"))
+                .resource(NamespacedKey.parse("minecraft:red_nether_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_andesite_slab"))
+                .resource(NamespacedKey.parse("minecraft:diorite_slab"))
+                .resource(NamespacedKey.parse("minecraft:cut_sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:cut_red_sandstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:blackstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_slab"))
+                .resource(NamespacedKey.parse("minecraft:cobbled_deepslate_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_deepslate_slab"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_tile_slab"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:waxed_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:weathered_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:exposed_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_slab"))
+                .resource(NamespacedKey.parse("minecraft:mud_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:tuff_slab"))
+                .resource(NamespacedKey.parse("minecraft:polished_tuff_slab"))
+                .resource(NamespacedKey.parse("minecraft:tuff_brick_slab"))
+                .resource(NamespacedKey.parse("minecraft:resin_brick_slab"))
+                .build();
+
+        public static final Tag<Item> SMALL_FLOWERS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:dandelion"))
+                .resource(NamespacedKey.parse("minecraft:open_eyeblossom"))
+                .resource(NamespacedKey.parse("minecraft:poppy"))
+                .resource(NamespacedKey.parse("minecraft:blue_orchid"))
+                .resource(NamespacedKey.parse("minecraft:allium"))
+                .resource(NamespacedKey.parse("minecraft:azure_bluet"))
+                .resource(NamespacedKey.parse("minecraft:red_tulip"))
+                .resource(NamespacedKey.parse("minecraft:orange_tulip"))
+                .resource(NamespacedKey.parse("minecraft:white_tulip"))
+                .resource(NamespacedKey.parse("minecraft:pink_tulip"))
+                .resource(NamespacedKey.parse("minecraft:oxeye_daisy"))
+                .resource(NamespacedKey.parse("minecraft:cornflower"))
+                .resource(NamespacedKey.parse("minecraft:lily_of_the_valley"))
+                .resource(NamespacedKey.parse("minecraft:wither_rose"))
+                .resource(NamespacedKey.parse("minecraft:torchflower"))
+                .resource(NamespacedKey.parse("minecraft:closed_eyeblossom"))
+                .build();
+
+        public static final Tag<Item> SMELTS_TO_GLASS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:sand"))
+                .resource(NamespacedKey.parse("minecraft:red_sand"))
+                .build();
+
+        public static final Tag<Item> SNIFFER_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:torchflower_seeds"))
+                .build();
+
+        public static final Tag<Item> SOUL_FIRE_BASE_BLOCKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:soul_sand"))
+                .resource(NamespacedKey.parse("minecraft:soul_soil"))
+                .build();
+
+        public static final Tag<Item> SPRUCE_LOGS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:spruce_log"))
+                .resource(NamespacedKey.parse("minecraft:spruce_wood"))
+                .resource(NamespacedKey.parse("minecraft:stripped_spruce_log"))
+                .resource(NamespacedKey.parse("minecraft:stripped_spruce_wood"))
+                .build();
+
+        public static final Tag<Item> STAIRS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_stairs"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"))
+                .resource(NamespacedKey.parse("minecraft:cobblestone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:sandstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:nether_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:stone_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:purpur_stairs"))
+                .resource(NamespacedKey.parse("minecraft:quartz_stairs"))
+                .resource(NamespacedKey.parse("minecraft:red_sandstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:prismarine_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:prismarine_stairs"))
+                .resource(NamespacedKey.parse("minecraft:dark_prismarine_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_granite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:smooth_red_sandstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:mossy_stone_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_diorite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:mossy_cobblestone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:end_stone_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:stone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:smooth_sandstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:smooth_quartz_stairs"))
+                .resource(NamespacedKey.parse("minecraft:granite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:andesite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:red_nether_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_andesite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:diorite_stairs"))
+                .resource(NamespacedKey.parse("minecraft:blackstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_stairs"))
+                .resource(NamespacedKey.parse("minecraft:cobbled_deepslate_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_deepslate_stairs"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_tile_stairs"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:weathered_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:exposed_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:waxed_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_stairs"))
+                .resource(NamespacedKey.parse("minecraft:mud_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:tuff_stairs"))
+                .resource(NamespacedKey.parse("minecraft:polished_tuff_stairs"))
+                .resource(NamespacedKey.parse("minecraft:tuff_brick_stairs"))
+                .resource(NamespacedKey.parse("minecraft:resin_brick_stairs"))
+                .build();
+
+        public static final Tag<Item> STONE_BRICKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:stone_bricks"))
+                .resource(NamespacedKey.parse("minecraft:mossy_stone_bricks"))
+                .resource(NamespacedKey.parse("minecraft:cracked_stone_bricks"))
+                .resource(NamespacedKey.parse("minecraft:chiseled_stone_bricks"))
+                .build();
+
+        public static final Tag<Item> STONE_BUTTONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:stone_button"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_button"))
+                .build();
+
+        public static final Tag<Item> STONE_CRAFTING_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cobblestone"))
+                .resource(NamespacedKey.parse("minecraft:blackstone"))
+                .resource(NamespacedKey.parse("minecraft:cobbled_deepslate"))
+                .build();
+
+        public static final Tag<Item> STONE_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cobblestone"))
+                .resource(NamespacedKey.parse("minecraft:blackstone"))
+                .resource(NamespacedKey.parse("minecraft:cobbled_deepslate"))
+                .build();
+
+        public static final Tag<Item> STRIDER_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:warped_fungus"))
+                .build();
+
+        public static final Tag<Item> STRIDER_TEMPT_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:strider_food"))
+                .resource(NamespacedKey.parse("minecraft:warped_fungus_on_a_stick"))
+                .build();
+
+        public static final Tag<Item> SWORDS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_sword"))
+                .resource(NamespacedKey.parse("minecraft:stone_sword"))
+                .resource(NamespacedKey.parse("minecraft:golden_sword"))
+                .resource(NamespacedKey.parse("minecraft:netherite_sword"))
+                .resource(NamespacedKey.parse("minecraft:wooden_sword"))
+                .resource(NamespacedKey.parse("minecraft:iron_sword"))
+                .build();
+
+        public static final Tag<Item> TERRACOTTA = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:terracotta"))
+                .resource(NamespacedKey.parse("minecraft:white_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:orange_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:magenta_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:yellow_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:lime_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:pink_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:gray_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:cyan_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:purple_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:blue_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:brown_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:green_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:red_terracotta"))
+                .resource(NamespacedKey.parse("minecraft:black_terracotta"))
+                .build();
+
+        public static final Tag<Item> TRAPDOORS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:wooden_trapdoors"))
+                .resource(NamespacedKey.parse("minecraft:iron_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"))
+                .build();
+
+        public static final Tag<Item> TRIM_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:amethyst_shard"))
+                .resource(NamespacedKey.parse("minecraft:copper_ingot"))
+                .resource(NamespacedKey.parse("minecraft:diamond"))
+                .resource(NamespacedKey.parse("minecraft:emerald"))
+                .resource(NamespacedKey.parse("minecraft:gold_ingot"))
+                .resource(NamespacedKey.parse("minecraft:iron_ingot"))
+                .resource(NamespacedKey.parse("minecraft:lapis_lazuli"))
+                .resource(NamespacedKey.parse("minecraft:netherite_ingot"))
+                .resource(NamespacedKey.parse("minecraft:quartz"))
+                .resource(NamespacedKey.parse("minecraft:redstone"))
+                .resource(NamespacedKey.parse("minecraft:resin_brick"))
+                .build();
+
+        public static final Tag<Item> TRIMMABLE_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:foot_armor"))
+                .tag(NamespacedKey.parse("minecraft:leg_armor"))
+                .tag(NamespacedKey.parse("minecraft:chest_armor"))
+                .tag(NamespacedKey.parse("minecraft:head_armor"))
+                .build();
+
+        public static final Tag<Item> TURTLE_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:seagrass"))
+                .build();
+
+        public static final Tag<Item> VILLAGER_PICKS_UP = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:villager_plantable_seeds"))
+                .resource(NamespacedKey.parse("minecraft:bread"))
+                .resource(NamespacedKey.parse("minecraft:wheat"))
+                .resource(NamespacedKey.parse("minecraft:beetroot"))
+                .build();
+
+        public static final Tag<Item> VILLAGER_PLANTABLE_SEEDS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:wheat_seeds"))
+                .resource(NamespacedKey.parse("minecraft:potato"))
+                .resource(NamespacedKey.parse("minecraft:carrot"))
+                .resource(NamespacedKey.parse("minecraft:beetroot_seeds"))
+                .resource(NamespacedKey.parse("minecraft:torchflower_seeds"))
+                .resource(NamespacedKey.parse("minecraft:pitcher_pod"))
+                .build();
+
+        public static final Tag<Item> WALLS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:cobblestone_wall"))
+                .resource(NamespacedKey.parse("minecraft:mossy_cobblestone_wall"))
+                .resource(NamespacedKey.parse("minecraft:brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:prismarine_wall"))
+                .resource(NamespacedKey.parse("minecraft:red_sandstone_wall"))
+                .resource(NamespacedKey.parse("minecraft:mossy_stone_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:granite_wall"))
+                .resource(NamespacedKey.parse("minecraft:stone_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:nether_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:andesite_wall"))
+                .resource(NamespacedKey.parse("minecraft:red_nether_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:sandstone_wall"))
+                .resource(NamespacedKey.parse("minecraft:end_stone_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:diorite_wall"))
+                .resource(NamespacedKey.parse("minecraft:blackstone_wall"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:polished_blackstone_wall"))
+                .resource(NamespacedKey.parse("minecraft:cobbled_deepslate_wall"))
+                .resource(NamespacedKey.parse("minecraft:polished_deepslate_wall"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_tile_wall"))
+                .resource(NamespacedKey.parse("minecraft:deepslate_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:mud_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:tuff_wall"))
+                .resource(NamespacedKey.parse("minecraft:polished_tuff_wall"))
+                .resource(NamespacedKey.parse("minecraft:tuff_brick_wall"))
+                .resource(NamespacedKey.parse("minecraft:resin_brick_wall"))
+                .build();
+
+        public static final Tag<Item> WARPED_STEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:warped_stem"))
+                .resource(NamespacedKey.parse("minecraft:stripped_warped_stem"))
+                .resource(NamespacedKey.parse("minecraft:warped_hyphae"))
+                .resource(NamespacedKey.parse("minecraft:stripped_warped_hyphae"))
+                .build();
+
+        public static final Tag<Item> WART_BLOCKS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:nether_wart_block"))
+                .resource(NamespacedKey.parse("minecraft:warped_wart_block"))
+                .build();
+
+        public static final Tag<Item> WITHER_SKELETON_DISLIKED_WEAPONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:bow"))
+                .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .build();
+
+        public static final Tag<Item> WOLF_FOOD = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:meat"))
+                .resource(NamespacedKey.parse("minecraft:cod"))
+                .resource(NamespacedKey.parse("minecraft:cooked_cod"))
+                .resource(NamespacedKey.parse("minecraft:salmon"))
+                .resource(NamespacedKey.parse("minecraft:cooked_salmon"))
+                .resource(NamespacedKey.parse("minecraft:tropical_fish"))
+                .resource(NamespacedKey.parse("minecraft:pufferfish"))
+                .resource(NamespacedKey.parse("minecraft:rabbit_stew"))
+                .build();
+
+        public static final Tag<Item> WOODEN_BUTTONS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_button"))
+                .resource(NamespacedKey.parse("minecraft:spruce_button"))
+                .resource(NamespacedKey.parse("minecraft:birch_button"))
+                .resource(NamespacedKey.parse("minecraft:jungle_button"))
+                .resource(NamespacedKey.parse("minecraft:acacia_button"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_button"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_button"))
+                .resource(NamespacedKey.parse("minecraft:crimson_button"))
+                .resource(NamespacedKey.parse("minecraft:warped_button"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_button"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_button"))
+                .resource(NamespacedKey.parse("minecraft:cherry_button"))
+                .build();
+
+        public static final Tag<Item> WOODEN_DOORS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_door"))
+                .resource(NamespacedKey.parse("minecraft:spruce_door"))
+                .resource(NamespacedKey.parse("minecraft:birch_door"))
+                .resource(NamespacedKey.parse("minecraft:jungle_door"))
+                .resource(NamespacedKey.parse("minecraft:acacia_door"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_door"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_door"))
+                .resource(NamespacedKey.parse("minecraft:crimson_door"))
+                .resource(NamespacedKey.parse("minecraft:warped_door"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_door"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_door"))
+                .resource(NamespacedKey.parse("minecraft:cherry_door"))
+                .build();
+
+        public static final Tag<Item> WOODEN_FENCES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_fence"))
+                .resource(NamespacedKey.parse("minecraft:acacia_fence"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_fence"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_fence"))
+                .resource(NamespacedKey.parse("minecraft:spruce_fence"))
+                .resource(NamespacedKey.parse("minecraft:birch_fence"))
+                .resource(NamespacedKey.parse("minecraft:jungle_fence"))
+                .resource(NamespacedKey.parse("minecraft:crimson_fence"))
+                .resource(NamespacedKey.parse("minecraft:warped_fence"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_fence"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_fence"))
+                .resource(NamespacedKey.parse("minecraft:cherry_fence"))
+                .build();
+
+        public static final Tag<Item> WOODEN_PRESSURE_PLATES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:spruce_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:birch_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:jungle_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:acacia_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:crimson_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:warped_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_pressure_plate"))
+                .resource(NamespacedKey.parse("minecraft:cherry_pressure_plate"))
+                .build();
+
+        public static final Tag<Item> WOODEN_SLABS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_slab"))
+                .resource(NamespacedKey.parse("minecraft:spruce_slab"))
+                .resource(NamespacedKey.parse("minecraft:birch_slab"))
+                .resource(NamespacedKey.parse("minecraft:jungle_slab"))
+                .resource(NamespacedKey.parse("minecraft:acacia_slab"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_slab"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_slab"))
+                .resource(NamespacedKey.parse("minecraft:crimson_slab"))
+                .resource(NamespacedKey.parse("minecraft:warped_slab"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_slab"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_slab"))
+                .resource(NamespacedKey.parse("minecraft:cherry_slab"))
+                .build();
+
+        public static final Tag<Item> WOODEN_STAIRS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:oak_stairs"))
+                .resource(NamespacedKey.parse("minecraft:spruce_stairs"))
+                .resource(NamespacedKey.parse("minecraft:birch_stairs"))
+                .resource(NamespacedKey.parse("minecraft:jungle_stairs"))
+                .resource(NamespacedKey.parse("minecraft:acacia_stairs"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_stairs"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_stairs"))
+                .resource(NamespacedKey.parse("minecraft:crimson_stairs"))
+                .resource(NamespacedKey.parse("minecraft:warped_stairs"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_stairs"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_stairs"))
+                .resource(NamespacedKey.parse("minecraft:cherry_stairs"))
+                .build();
+
+        public static final Tag<Item> WOODEN_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:planks"))
+                .build();
+
+        public static final Tag<Item> WOODEN_TRAPDOORS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:acacia_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:birch_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:jungle_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:oak_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:spruce_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:crimson_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:warped_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_trapdoor"))
+                .resource(NamespacedKey.parse("minecraft:cherry_trapdoor"))
+                .build();
+
+        public static final Tag<Item> WOOL = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:white_wool"))
+                .resource(NamespacedKey.parse("minecraft:orange_wool"))
+                .resource(NamespacedKey.parse("minecraft:magenta_wool"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_wool"))
+                .resource(NamespacedKey.parse("minecraft:yellow_wool"))
+                .resource(NamespacedKey.parse("minecraft:lime_wool"))
+                .resource(NamespacedKey.parse("minecraft:pink_wool"))
+                .resource(NamespacedKey.parse("minecraft:gray_wool"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_wool"))
+                .resource(NamespacedKey.parse("minecraft:cyan_wool"))
+                .resource(NamespacedKey.parse("minecraft:purple_wool"))
+                .resource(NamespacedKey.parse("minecraft:blue_wool"))
+                .resource(NamespacedKey.parse("minecraft:brown_wool"))
+                .resource(NamespacedKey.parse("minecraft:green_wool"))
+                .resource(NamespacedKey.parse("minecraft:red_wool"))
+                .resource(NamespacedKey.parse("minecraft:black_wool"))
+                .build();
+
+        public static final Tag<Item> WOOL_CARPETS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:white_carpet"))
+                .resource(NamespacedKey.parse("minecraft:orange_carpet"))
+                .resource(NamespacedKey.parse("minecraft:magenta_carpet"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_carpet"))
+                .resource(NamespacedKey.parse("minecraft:yellow_carpet"))
+                .resource(NamespacedKey.parse("minecraft:lime_carpet"))
+                .resource(NamespacedKey.parse("minecraft:pink_carpet"))
+                .resource(NamespacedKey.parse("minecraft:gray_carpet"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_carpet"))
+                .resource(NamespacedKey.parse("minecraft:cyan_carpet"))
+                .resource(NamespacedKey.parse("minecraft:purple_carpet"))
+                .resource(NamespacedKey.parse("minecraft:blue_carpet"))
+                .resource(NamespacedKey.parse("minecraft:brown_carpet"))
+                .resource(NamespacedKey.parse("minecraft:green_carpet"))
+                .resource(NamespacedKey.parse("minecraft:red_carpet"))
+                .resource(NamespacedKey.parse("minecraft:black_carpet"))
+                .build();
+
+        private Tags() {
+        }
     }
 }

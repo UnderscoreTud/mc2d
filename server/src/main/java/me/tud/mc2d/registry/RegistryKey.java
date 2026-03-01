@@ -14,7 +14,6 @@ import me.tud.mc2d.item.armortrim.ArmorTrimMaterial;
 import me.tud.mc2d.item.armortrim.ArmorTrimPattern;
 import me.tud.mc2d.item.banner.BannerPattern;
 import me.tud.mc2d.painting.PaintingVariant;
-import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.Biome;
 import me.tud.mc2d.world.block.Block;
@@ -28,8 +27,8 @@ public class RegistryKey<T, R extends Registry<T>> {
 
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
 
-    public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCKS = create("block");
-    public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEMS = create("item");
+    public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCK = create("block");
+    public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEM = create("item");
 
     public static final RegistryKey<ArmorTrimMaterial, DataDrivenRegistry<ArmorTrimMaterial>> ARMOR_TRIM_MATERIAL = create("trim_material");
     public static final RegistryKey<ArmorTrimPattern, DataDrivenRegistry<ArmorTrimPattern>> ARMOR_TRIM_PATTERN = create("trim_pattern");

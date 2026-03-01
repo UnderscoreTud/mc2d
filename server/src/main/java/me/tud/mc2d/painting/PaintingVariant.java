@@ -1,6 +1,8 @@
 package me.tud.mc2d.painting;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTCompound;
@@ -9,7 +11,9 @@ import org.machinemc.scriptive.components.TranslationComponent;
 import org.machinemc.scriptive.serialization.NBTPropertiesSerializer;
 import org.machinemc.scriptive.style.ChatColor;
 
+@Data
 @Builder(toBuilder = true)
+@EqualsAndHashCode(callSuper = false)
 public final class PaintingVariant extends PaintingVariants implements NBTSerializable {
 
     private final NamespacedKey assetID;

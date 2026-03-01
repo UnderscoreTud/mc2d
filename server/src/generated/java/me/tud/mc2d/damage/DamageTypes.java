@@ -4,6 +4,7 @@ import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.RegistryKey;
+import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 
 /**
@@ -373,6 +374,302 @@ sealed class DamageTypes permits DamageType {
             registry.register(NamespacedKey.minecraft("wind_charge"), DamageType.WIND_CHARGE);
             registry.register(NamespacedKey.minecraft("wither"), DamageType.WITHER);
             registry.register(NamespacedKey.minecraft("wither_skull"), DamageType.WITHER_SKULL);
+            registry.registerTag(NamespacedKey.minecraft("always_hurts_ender_dragons"), Tags.ALWAYS_HURTS_ENDER_DRAGONS);
+            registry.registerTag(NamespacedKey.minecraft("always_kills_armor_stands"), Tags.ALWAYS_KILLS_ARMOR_STANDS);
+            registry.registerTag(NamespacedKey.minecraft("always_most_significant_fall"), Tags.ALWAYS_MOST_SIGNIFICANT_FALL);
+            registry.registerTag(NamespacedKey.minecraft("always_triggers_silverfish"), Tags.ALWAYS_TRIGGERS_SILVERFISH);
+            registry.registerTag(NamespacedKey.minecraft("avoids_guardian_thorns"), Tags.AVOIDS_GUARDIAN_THORNS);
+            registry.registerTag(NamespacedKey.minecraft("burn_from_stepping"), Tags.BURN_FROM_STEPPING);
+            registry.registerTag(NamespacedKey.minecraft("burns_armor_stands"), Tags.BURNS_ARMOR_STANDS);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_armor"), Tags.BYPASSES_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_effects"), Tags.BYPASSES_EFFECTS);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_enchantments"), Tags.BYPASSES_ENCHANTMENTS);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_invulnerability"), Tags.BYPASSES_INVULNERABILITY);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_resistance"), Tags.BYPASSES_RESISTANCE);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_shield"), Tags.BYPASSES_SHIELD);
+            registry.registerTag(NamespacedKey.minecraft("bypasses_wolf_armor"), Tags.BYPASSES_WOLF_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("can_break_armor_stand"), Tags.CAN_BREAK_ARMOR_STAND);
+            registry.registerTag(NamespacedKey.minecraft("damages_helmet"), Tags.DAMAGES_HELMET);
+            registry.registerTag(NamespacedKey.minecraft("ignites_armor_stands"), Tags.IGNITES_ARMOR_STANDS);
+            registry.registerTag(NamespacedKey.minecraft("is_drowning"), Tags.IS_DROWNING);
+            registry.registerTag(NamespacedKey.minecraft("is_explosion"), Tags.IS_EXPLOSION);
+            registry.registerTag(NamespacedKey.minecraft("is_fall"), Tags.IS_FALL);
+            registry.registerTag(NamespacedKey.minecraft("is_fire"), Tags.IS_FIRE);
+            registry.registerTag(NamespacedKey.minecraft("is_freezing"), Tags.IS_FREEZING);
+            registry.registerTag(NamespacedKey.minecraft("is_lightning"), Tags.IS_LIGHTNING);
+            registry.registerTag(NamespacedKey.minecraft("is_player_attack"), Tags.IS_PLAYER_ATTACK);
+            registry.registerTag(NamespacedKey.minecraft("is_projectile"), Tags.IS_PROJECTILE);
+            registry.registerTag(NamespacedKey.minecraft("mace_smash"), Tags.MACE_SMASH);
+            registry.registerTag(NamespacedKey.minecraft("no_anger"), Tags.NO_ANGER);
+            registry.registerTag(NamespacedKey.minecraft("no_impact"), Tags.NO_IMPACT);
+            registry.registerTag(NamespacedKey.minecraft("no_knockback"), Tags.NO_KNOCKBACK);
+            registry.registerTag(NamespacedKey.minecraft("panic_causes"), Tags.PANIC_CAUSES);
+            registry.registerTag(NamespacedKey.minecraft("panic_environmental_causes"), Tags.PANIC_ENVIRONMENTAL_CAUSES);
+            registry.registerTag(NamespacedKey.minecraft("witch_resistant_to"), Tags.WITCH_RESISTANT_TO);
+            registry.registerTag(NamespacedKey.minecraft("wither_immune_to"), Tags.WITHER_IMMUNE_TO);
         });
+    }
+
+    public static final class Tags {
+        public static final Tag<DamageType> ALWAYS_HURTS_ENDER_DRAGONS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .tag(NamespacedKey.parse("minecraft:is_explosion"))
+                .build();
+
+        public static final Tag<DamageType> ALWAYS_KILLS_ARMOR_STANDS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:arrow"))
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .resource(NamespacedKey.parse("minecraft:fireball"))
+                .resource(NamespacedKey.parse("minecraft:wither_skull"))
+                .resource(NamespacedKey.parse("minecraft:wind_charge"))
+                .build();
+
+        public static final Tag<DamageType> ALWAYS_MOST_SIGNIFICANT_FALL = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:out_of_world"))
+                .build();
+
+        public static final Tag<DamageType> ALWAYS_TRIGGERS_SILVERFISH = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .build();
+
+        public static final Tag<DamageType> AVOIDS_GUARDIAN_THORNS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:thorns"))
+                .tag(NamespacedKey.parse("minecraft:is_explosion"))
+                .build();
+
+        public static final Tag<DamageType> BURN_FROM_STEPPING = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:campfire"))
+                .resource(NamespacedKey.parse("minecraft:hot_floor"))
+                .build();
+
+        public static final Tag<DamageType> BURNS_ARMOR_STANDS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:on_fire"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_ARMOR = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:on_fire"))
+                .resource(NamespacedKey.parse("minecraft:in_wall"))
+                .resource(NamespacedKey.parse("minecraft:cramming"))
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .resource(NamespacedKey.parse("minecraft:fly_into_wall"))
+                .resource(NamespacedKey.parse("minecraft:generic"))
+                .resource(NamespacedKey.parse("minecraft:wither"))
+                .resource(NamespacedKey.parse("minecraft:dragon_breath"))
+                .resource(NamespacedKey.parse("minecraft:starve"))
+                .resource(NamespacedKey.parse("minecraft:fall"))
+                .resource(NamespacedKey.parse("minecraft:ender_pearl"))
+                .resource(NamespacedKey.parse("minecraft:freeze"))
+                .resource(NamespacedKey.parse("minecraft:stalagmite"))
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:indirect_magic"))
+                .resource(NamespacedKey.parse("minecraft:out_of_world"))
+                .resource(NamespacedKey.parse("minecraft:generic_kill"))
+                .resource(NamespacedKey.parse("minecraft:sonic_boom"))
+                .resource(NamespacedKey.parse("minecraft:outside_border"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_EFFECTS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:starve"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_ENCHANTMENTS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:sonic_boom"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_INVULNERABILITY = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:out_of_world"))
+                .resource(NamespacedKey.parse("minecraft:generic_kill"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_RESISTANCE = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:out_of_world"))
+                .resource(NamespacedKey.parse("minecraft:generic_kill"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_SHIELD = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .tag(NamespacedKey.parse("minecraft:bypasses_armor"))
+                .resource(NamespacedKey.parse("minecraft:cactus"))
+                .resource(NamespacedKey.parse("minecraft:campfire"))
+                .resource(NamespacedKey.parse("minecraft:dry_out"))
+                .resource(NamespacedKey.parse("minecraft:falling_anvil"))
+                .resource(NamespacedKey.parse("minecraft:falling_stalactite"))
+                .resource(NamespacedKey.parse("minecraft:hot_floor"))
+                .resource(NamespacedKey.parse("minecraft:in_fire"))
+                .resource(NamespacedKey.parse("minecraft:lava"))
+                .resource(NamespacedKey.parse("minecraft:lightning_bolt"))
+                .resource(NamespacedKey.parse("minecraft:sweet_berry_bush"))
+                .build();
+
+        public static final Tag<DamageType> BYPASSES_WOLF_ARMOR = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .tag(NamespacedKey.parse("minecraft:bypasses_invulnerability"))
+                .resource(NamespacedKey.parse("minecraft:cramming"))
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .resource(NamespacedKey.parse("minecraft:dry_out"))
+                .resource(NamespacedKey.parse("minecraft:freeze"))
+                .resource(NamespacedKey.parse("minecraft:in_wall"))
+                .resource(NamespacedKey.parse("minecraft:indirect_magic"))
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:outside_border"))
+                .resource(NamespacedKey.parse("minecraft:starve"))
+                .resource(NamespacedKey.parse("minecraft:thorns"))
+                .resource(NamespacedKey.parse("minecraft:wither"))
+                .build();
+
+        public static final Tag<DamageType> CAN_BREAK_ARMOR_STAND = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:player_explosion"))
+                .tag(NamespacedKey.parse("minecraft:is_player_attack"))
+                .build();
+
+        public static final Tag<DamageType> DAMAGES_HELMET = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:falling_anvil"))
+                .resource(NamespacedKey.parse("minecraft:falling_block"))
+                .resource(NamespacedKey.parse("minecraft:falling_stalactite"))
+                .build();
+
+        public static final Tag<DamageType> IGNITES_ARMOR_STANDS = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:in_fire"))
+                .resource(NamespacedKey.parse("minecraft:campfire"))
+                .build();
+
+        public static final Tag<DamageType> IS_DROWNING = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .build();
+
+        public static final Tag<DamageType> IS_EXPLOSION = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:fireworks"))
+                .resource(NamespacedKey.parse("minecraft:explosion"))
+                .resource(NamespacedKey.parse("minecraft:player_explosion"))
+                .resource(NamespacedKey.parse("minecraft:bad_respawn_point"))
+                .build();
+
+        public static final Tag<DamageType> IS_FALL = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:fall"))
+                .resource(NamespacedKey.parse("minecraft:ender_pearl"))
+                .resource(NamespacedKey.parse("minecraft:stalagmite"))
+                .build();
+
+        public static final Tag<DamageType> IS_FIRE = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:in_fire"))
+                .resource(NamespacedKey.parse("minecraft:campfire"))
+                .resource(NamespacedKey.parse("minecraft:on_fire"))
+                .resource(NamespacedKey.parse("minecraft:lava"))
+                .resource(NamespacedKey.parse("minecraft:hot_floor"))
+                .resource(NamespacedKey.parse("minecraft:unattributed_fireball"))
+                .resource(NamespacedKey.parse("minecraft:fireball"))
+                .build();
+
+        public static final Tag<DamageType> IS_FREEZING = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:freeze"))
+                .build();
+
+        public static final Tag<DamageType> IS_LIGHTNING = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:lightning_bolt"))
+                .build();
+
+        public static final Tag<DamageType> IS_PLAYER_ATTACK = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:player_attack"))
+                .resource(NamespacedKey.parse("minecraft:mace_smash"))
+                .build();
+
+        public static final Tag<DamageType> IS_PROJECTILE = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:arrow"))
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .resource(NamespacedKey.parse("minecraft:mob_projectile"))
+                .resource(NamespacedKey.parse("minecraft:unattributed_fireball"))
+                .resource(NamespacedKey.parse("minecraft:fireball"))
+                .resource(NamespacedKey.parse("minecraft:wither_skull"))
+                .resource(NamespacedKey.parse("minecraft:thrown"))
+                .resource(NamespacedKey.parse("minecraft:wind_charge"))
+                .build();
+
+        public static final Tag<DamageType> MACE_SMASH = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:mace_smash"))
+                .build();
+
+        public static final Tag<DamageType> NO_ANGER = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:mob_attack_no_aggro"))
+                .build();
+
+        public static final Tag<DamageType> NO_IMPACT = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .build();
+
+        public static final Tag<DamageType> NO_KNOCKBACK = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:explosion"))
+                .resource(NamespacedKey.parse("minecraft:player_explosion"))
+                .resource(NamespacedKey.parse("minecraft:bad_respawn_point"))
+                .resource(NamespacedKey.parse("minecraft:in_fire"))
+                .resource(NamespacedKey.parse("minecraft:lightning_bolt"))
+                .resource(NamespacedKey.parse("minecraft:on_fire"))
+                .resource(NamespacedKey.parse("minecraft:lava"))
+                .resource(NamespacedKey.parse("minecraft:hot_floor"))
+                .resource(NamespacedKey.parse("minecraft:in_wall"))
+                .resource(NamespacedKey.parse("minecraft:cramming"))
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .resource(NamespacedKey.parse("minecraft:starve"))
+                .resource(NamespacedKey.parse("minecraft:cactus"))
+                .resource(NamespacedKey.parse("minecraft:fall"))
+                .resource(NamespacedKey.parse("minecraft:ender_pearl"))
+                .resource(NamespacedKey.parse("minecraft:fly_into_wall"))
+                .resource(NamespacedKey.parse("minecraft:out_of_world"))
+                .resource(NamespacedKey.parse("minecraft:generic"))
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:wither"))
+                .resource(NamespacedKey.parse("minecraft:dragon_breath"))
+                .resource(NamespacedKey.parse("minecraft:dry_out"))
+                .resource(NamespacedKey.parse("minecraft:sweet_berry_bush"))
+                .resource(NamespacedKey.parse("minecraft:freeze"))
+                .resource(NamespacedKey.parse("minecraft:stalagmite"))
+                .resource(NamespacedKey.parse("minecraft:outside_border"))
+                .resource(NamespacedKey.parse("minecraft:generic_kill"))
+                .resource(NamespacedKey.parse("minecraft:campfire"))
+                .build();
+
+        public static final Tag<DamageType> PANIC_CAUSES = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .tag(NamespacedKey.parse("minecraft:panic_environmental_causes"))
+                .resource(NamespacedKey.parse("minecraft:arrow"))
+                .resource(NamespacedKey.parse("minecraft:dragon_breath"))
+                .resource(NamespacedKey.parse("minecraft:explosion"))
+                .resource(NamespacedKey.parse("minecraft:fireball"))
+                .resource(NamespacedKey.parse("minecraft:fireworks"))
+                .resource(NamespacedKey.parse("minecraft:indirect_magic"))
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:mob_attack"))
+                .resource(NamespacedKey.parse("minecraft:mob_projectile"))
+                .resource(NamespacedKey.parse("minecraft:player_explosion"))
+                .resource(NamespacedKey.parse("minecraft:sonic_boom"))
+                .resource(NamespacedKey.parse("minecraft:sting"))
+                .resource(NamespacedKey.parse("minecraft:thrown"))
+                .resource(NamespacedKey.parse("minecraft:trident"))
+                .resource(NamespacedKey.parse("minecraft:unattributed_fireball"))
+                .resource(NamespacedKey.parse("minecraft:wind_charge"))
+                .resource(NamespacedKey.parse("minecraft:wither"))
+                .resource(NamespacedKey.parse("minecraft:wither_skull"))
+                .tag(NamespacedKey.parse("minecraft:is_player_attack"))
+                .build();
+
+        public static final Tag<DamageType> PANIC_ENVIRONMENTAL_CAUSES = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:cactus"))
+                .resource(NamespacedKey.parse("minecraft:freeze"))
+                .resource(NamespacedKey.parse("minecraft:hot_floor"))
+                .resource(NamespacedKey.parse("minecraft:in_fire"))
+                .resource(NamespacedKey.parse("minecraft:lava"))
+                .resource(NamespacedKey.parse("minecraft:lightning_bolt"))
+                .resource(NamespacedKey.parse("minecraft:on_fire"))
+                .build();
+
+        public static final Tag<DamageType> WITCH_RESISTANT_TO = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:magic"))
+                .resource(NamespacedKey.parse("minecraft:indirect_magic"))
+                .resource(NamespacedKey.parse("minecraft:sonic_boom"))
+                .resource(NamespacedKey.parse("minecraft:thorns"))
+                .build();
+
+        public static final Tag<DamageType> WITHER_IMMUNE_TO = Tag.builder(RegistryKey.DAMAGE_TYPE)
+                .resource(NamespacedKey.parse("minecraft:drown"))
+                .build();
+
+        private Tags() {
+        }
     }
 }

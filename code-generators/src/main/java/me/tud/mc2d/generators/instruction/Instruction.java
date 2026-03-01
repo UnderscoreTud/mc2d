@@ -33,4 +33,18 @@ public interface Instruction {
         return orElse((_, _, out) -> out.add("null"));
     }
 
+    default Instruction append(Instruction instruction) {
+        return (ctx, node, out) -> {
+            apply(ctx, node, out);
+            instruction.apply(ctx, node, out);
+        };
+    }
+
+    default Instruction append(String format, Object... args) {
+        return (ctx, node, out) -> {
+            apply(ctx, node, out);
+            out.add(format, args);
+        };
+    }
+
 }

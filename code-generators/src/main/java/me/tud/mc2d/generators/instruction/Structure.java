@@ -8,6 +8,7 @@ import com.palantir.javapoet.TypeName;
 import lombok.Getter;
 import me.tud.mc2d.generators.instruction.exception.InstructionException;
 import me.tud.mc2d.generators.util.StringUtils;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.Function;
@@ -19,12 +20,14 @@ public class Structure implements Instruction {
 
     private final ClassName source;
     private final Map<String, InstructionInfo> instructions;
+    private final @Nullable CodeBlock initializer;
     private final Type type;
     private final boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
 
     private Structure(Builder builder) {
         this.source = builder.source;
         this.instructions = builder.instructions;
+        this.initializer = builder.initializer;
         this.type = builder.type;
         this.trimmed = builder.trimmed;
         this.allowMissingKeys = builder.allowMissingKeys;
@@ -41,7 +44,7 @@ public class Structure implements Instruction {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
 
         if (!trimmed)
-            type.begin(out, source);
+            type.begin(out, source, initializer);
         Iterator<Map.Entry<String, InstructionInfo>> iterator = instructions.entrySet().iterator();
         boolean first = true;
         while (iterator.hasNext()) {
@@ -93,6 +96,14 @@ public class Structure implements Instruction {
         return new Builder(source);
     }
 
+    public static Structure.Builder builder(Class<?> source, @Nullable String format, Object... args) {
+        return new Builder(ClassName.get(source));
+    }
+
+    public static Structure.Builder builder(ClassName source, @Nullable String format, Object... args) {
+        return new Builder(source);
+    }
+
     public static Structure.Builder constructor(Class<?> source) {
         return new Builder(ClassName.get(source)).constructor();
     }
@@ -105,11 +116,21 @@ public class Structure implements Instruction {
 
         private final ClassName source;
         private final Map<String, InstructionInfo> instructions = new LinkedHashMap<>();
+        private CodeBlock initializer;
         private Type type = Type.BUILDER;
         private boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
 
         private Builder(ClassName source) {
             this.source = source;
+        }
+
+        public Builder initializer(String format, Object... args) {
+            return initializer(CodeBlock.builder().add(format, args).build());
+        }
+        
+        public Builder initializer(CodeBlock initializer) {
+            this.initializer = initializer;
+            return this;
         }
 
         public Builder instruction(String key, Instruction instruction) {
@@ -172,8 +193,11 @@ public class Structure implements Instruction {
     public enum Type {
         BUILDER {
             @Override
-            public void begin(CodeBlock.Builder builder, TypeName type) {
-                builder.add("$T.builder()\n", type).indent().indent();
+            public void begin(CodeBlock.Builder builder, TypeName type, @Nullable CodeBlock initializer) {
+                builder.add("$T.builder(", type);
+                if (initializer != null)
+                    builder.add(initializer);
+                builder.add(")\n").indent().indent();
             }
 
             @Override
@@ -190,7 +214,7 @@ public class Structure implements Instruction {
         },
         CONSTRUCTOR {
             @Override
-            public void begin(CodeBlock.Builder builder, TypeName type) {
+            public void begin(CodeBlock.Builder builder, TypeName type, @Nullable CodeBlock initializer) {
                 builder.add("new $T(", type);
             }
 
@@ -207,7 +231,7 @@ public class Structure implements Instruction {
             }
         };
 
-        public abstract void begin(CodeBlock.Builder builder, TypeName type); 
+        public abstract void begin(CodeBlock.Builder builder, TypeName type, @Nullable CodeBlock initializer); 
 
         public abstract void end(CodeBlock.Builder builder); 
 

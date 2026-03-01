@@ -21,6 +21,7 @@ public final class Instructions {
             BOOLEAN = (_, node, out) -> out.add("$L", node.asBoolean()),
             STRING = (_, node, out) -> out.add("$S", node.asText()),
             NAMESPACED_KEY = (_, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, node.asText()),
+            TAG_NAMESPACED_KEY = (ctx, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, validateTag(ctx, node.asText())),
             ITEM = _enum(Imports.ITEM, node -> StringUtils.cleanNamespacedKey(node.asText().toUpperCase(Locale.ENGLISH)));
 
     public static final Instruction COLOR = (ctx, node, out) -> {
@@ -39,6 +40,10 @@ public final class Instructions {
     public static final Instruction
             COMPONENT = ComponentInstructions.COMPONENT, 
             TEXT_FORMAT = ComponentInstructions.TEXT_FORMAT;
+
+    public static Instruction text(String format, Object... args) {
+        return (_, _, out) -> out.add(format, args);
+    }
 
     public static Instruction tag(String registry) {
         return (ctx, node, out) -> out.add(

@@ -1,23 +1,36 @@
 package me.tud.mc2d.generators.blocks;
 
+import com.palantir.javapoet.ParameterizedTypeName;
+import com.palantir.javapoet.WildcardTypeName;
+import me.tud.mc2d.generators.BuiltInRegistry;
 import me.tud.mc2d.generators.GeneratedType;
-import me.tud.mc2d.generators.Generator;
+import me.tud.mc2d.generators.blocks.blockdata.BlockData;
+import me.tud.mc2d.generators.blocks.blockdata.property.Property;
+import me.tud.mc2d.generators.util.Imports;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
+import java.util.List;
 
-public class BlocksGenerator extends Generator {
+public class BlocksGenerator extends BuiltInRegistry {
 
-    private static final String RESOURCE_LOCATION = "/blocks.json";
-    private static final String REGISTRIES_RESOURCE_LOCATION = "/registries.json";
+    protected BlocksGenerator() {
+        super("block", "blocks.json", Imports.BLOCK, ParameterizedTypeName.get(Imports.BLOCK, WildcardTypeName.subtypeOf(Object.class)));
+    }
 
     static void main(String[] args) throws Exception {
-        new BlocksGenerator().run(RESOURCE_LOCATION, args);
+        new BlocksGenerator().run(args);
     }
 
     @Override
-    public GeneratedType[] generate(String resource) throws IOException {
+    protected List<Blocks.Entry> entries(String resource) throws IOException {
         Blocks blocks = MAPPER.readValue(stream(resource), Blocks.class);
-        return blocks.generate(MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
+        return blocks.entries(this, MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
+    }
+
+    @Override
+    public GeneratedType[] generateExtra(String resource) {
+        return ArrayUtils.addAll(Property.generateSharedProperties(), BlockData.generateBlockData());
     }
 
 }

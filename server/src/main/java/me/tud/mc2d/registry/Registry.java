@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +23,7 @@ public sealed abstract class Registry<T> implements Iterable<T>
     protected final @Getter Server server;
     protected final @Getter NamespacedKey key;
     protected final Map<NamespacedKey, T> entries = Collections.synchronizedMap(new LinkedHashMap<>());
+    protected final Map<NamespacedKey, Tag<T>> tags = Collections.synchronizedMap(new HashMap<>());
 
     public T get(NamespacedKey key) {
         return entries.get(key);
@@ -119,6 +121,10 @@ public sealed abstract class Registry<T> implements Iterable<T>
         return entries.values().stream();
     }
 
+    public @UnmodifiableView Collection<Tag<T>> tags() {
+        return Collections.unmodifiableCollection(tags.values());
+    }
+
     public TagKey<T, Registry<T>> createTag(@NamespacedKey.Pattern String key) {
         Preconditions.checkNotNull(key, "key");
         return createTag(NamespacedKey.parse(key));
@@ -126,6 +132,34 @@ public sealed abstract class Registry<T> implements Iterable<T>
 
     public TagKey<T, Registry<T>> createTag(NamespacedKey key) {
         return TagKey.<T, Registry<T>>of(RegistryKey.of(this.key), key);
+    }
+
+    public boolean hasTag(TagKey<T, Registry<T>> key) {
+        return hasTag(key.key());
+    }
+
+    public boolean hasTag(NamespacedKey key) {
+        return tags.containsKey(key);
+    }
+
+    public Tag<T> getTag(TagKey<T, Registry<T>> key) {
+        return getTag(key.key());
+    }
+
+    public Tag<T> getTag(NamespacedKey key) {
+        return tags.get(key);
+    }
+
+    public Collection<T> getTagValues(TagKey<T, Registry<T>> key) {
+        return getTagValues(key.key());
+    }
+
+    public Collection<T> getTagValues(NamespacedKey key) {
+        return Optional.ofNullable(getTag(key)).map(tag -> tag.resolve(this)).orElseGet(Collections::emptyList);
+    }
+
+    public Collection<T> getTagValues(Tag<T> tag) {
+        return tag.resolve(this);
     }
 
     protected Registry<T> modify(Consumer<Modifiable> consumer) {
@@ -171,6 +205,18 @@ public sealed abstract class Registry<T> implements Iterable<T>
 
         public void unregisterByID(int id) {
             entries.remove(Registry.this.getKeyByID(id));
+        }
+
+        public void registerTag(NamespacedKey key, Tag<T> tag) {
+            tags.put(key, tag);
+        }
+
+        public void unregisterTag(NamespacedKey key) {
+            tags.remove(key);
+        }
+
+        public void unregisterTag(Tag<T> tag) {
+            tags.values().remove(tag);
         }
 
     }

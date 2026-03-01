@@ -17,14 +17,14 @@ public class DamageTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("death_message_type", _enum(Imports.DAMAGE_TYPE.nestedClass("DeathMessageType")))
             .build();
 
-    private static final String RESOURCE_LOCATION = "/damage_type";
+    private static final String ID = "damage_type";
 
     static void main(String[] args) throws Exception {
-        new DamageTypesGenerator().run(RESOURCE_LOCATION, args);
+        new DamageTypesGenerator().run(args);
     }
 
     protected DamageTypesGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }

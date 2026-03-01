@@ -13,14 +13,14 @@ public class BannerPatternsGenerator extends DataDrivenRegistryGenerator {
             .instruction("translation_key", STRING)
             .build();
 
-    private static final String RESOURCE_LOCATION = "/banner_pattern";
+    private static final String ID = "banner_pattern";
 
     static void main(String[] args) throws Exception {
-        new BannerPatternsGenerator().run(RESOURCE_LOCATION, args);
+        new BannerPatternsGenerator().run(args);
     }
 
     protected BannerPatternsGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }

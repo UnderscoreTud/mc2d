@@ -58,8 +58,8 @@ public class RegistryAccess {
     public static RegistryAccess createDefault(Server server) {
         RegistryAccess access = new RegistryAccess(server);
 
-        access.register(RegistryKey.BLOCKS, Block.createDefaultRegistry(server));
-        access.register(RegistryKey.ITEMS, Item.createDefaultRegistry(server));
+        access.register(RegistryKey.BLOCK, Block.createDefaultRegistry(server));
+        access.register(RegistryKey.ITEM, Item.createDefaultRegistry(server));
 
         access.register(RegistryKey.ARMOR_TRIM_MATERIAL, ArmorTrimMaterial.createDefaultRegistry(server));
         access.register(RegistryKey.ARMOR_TRIM_PATTERN, ArmorTrimPattern.createDefaultRegistry(server));

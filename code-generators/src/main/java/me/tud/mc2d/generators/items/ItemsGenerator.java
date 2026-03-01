@@ -1,23 +1,25 @@
 package me.tud.mc2d.generators.items;
 
-import me.tud.mc2d.generators.GeneratedType;
-import me.tud.mc2d.generators.Generator;
+import me.tud.mc2d.generators.BuiltInRegistry;
+import me.tud.mc2d.generators.util.Imports;
 
 import java.io.IOException;
+import java.util.List;
 
-public class ItemsGenerator extends Generator {
+public class ItemsGenerator extends BuiltInRegistry {
 
-    private static final String RESOURCE_LOCATION = "/items.json";
-    private static final String REGISTRIES_RESOURCE_LOCATION = "/registries.json";
+    protected ItemsGenerator() {
+        super("item", "items.json", Imports.ITEM);
+    }
 
     static void main(String[] args) throws Exception {
-        new ItemsGenerator().run(RESOURCE_LOCATION, args);
+        new ItemsGenerator().run(args);
     }
 
     @Override
-    public GeneratedType[] generate(String resource) throws IOException {
+    protected List<Items.Entry> entries(String resource) throws IOException {
         Items items = MAPPER.readValue(stream(resource), Items.class);
-        return new GeneratedType[]{items.generate(MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)))};
+        return items.entries(this, MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
     }
 
 }

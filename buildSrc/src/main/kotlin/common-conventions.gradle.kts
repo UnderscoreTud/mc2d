@@ -9,12 +9,6 @@ plugins {
 group = "me.tud.mc2d"
 version = "1.0-SNAPSHOT"
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(25))
-    }
-}
-
 repositories {
     mavenCentral()
     maven {
@@ -52,6 +46,12 @@ dependencies {
 
 tasks.withType<JavaCompile>().configureEach { 
     options.release.set(25)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(25))
+    }
 }
 
 tasks.test {

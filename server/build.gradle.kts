@@ -4,6 +4,7 @@ plugins {
     `common-conventions`
     application
     idea
+    id("com.gradleup.shadow") version "9.3.2"
 }
 
 buildscript {
@@ -21,6 +22,12 @@ apply<PakletPlugin>()
 
 application {
     mainClass.set("me.tud.mc2d.Main")
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "me.tud.mc2d.Main"
+    }
 }
 
 dependencies {

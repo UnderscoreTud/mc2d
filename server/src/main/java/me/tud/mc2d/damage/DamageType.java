@@ -1,13 +1,17 @@
 package me.tud.mc2d.damage;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import me.tud.mc2d.util.NBTSerializable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 
 import java.util.Locale;
 
+@Data
 @Builder(toBuilder = true)
+@EqualsAndHashCode(callSuper = true)
 public final class DamageType extends DamageTypes implements NBTSerializable {
 
     private final String messageID;

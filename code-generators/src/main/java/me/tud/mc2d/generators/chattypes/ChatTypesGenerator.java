@@ -19,14 +19,14 @@ public class ChatTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("narration", ELEMENT)
             .build();
 
-    private static final String RESOURCE_LOCATION = "/chat_type";
+    private static final String ID = "chat_type";
 
     static void main(String[] args) throws Exception {
-        new ChatTypesGenerator().run(RESOURCE_LOCATION, args);
+        new ChatTypesGenerator().run(args);
     }
 
     protected ChatTypesGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }

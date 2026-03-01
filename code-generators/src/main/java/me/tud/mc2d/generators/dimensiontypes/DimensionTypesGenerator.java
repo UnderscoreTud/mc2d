@@ -20,7 +20,7 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("has_raids", BOOLEAN)
             .instruction("has_skylight", BOOLEAN)
             .instruction("height", INTEGER)
-            .instruction("infiniburn", Instructions.tag("blocks"))
+            .instruction("infiniburn", Instructions.tag("block"))
             .instruction("logical_height", INTEGER)
             .instruction("min_y", INTEGER)
             .instruction("monster_spawn_block_light_limit", INTEGER)
@@ -31,14 +31,14 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("ultrawarm", BOOLEAN)
             .build();
 
-    private static final String RESOURCE_LOCATION = "/dimension_type";
+    private static final String ID = "dimension_type";
 
     static void main(String[] args) throws Exception {
-        new DimensionTypesGenerator().run(RESOURCE_LOCATION, args);
+        new DimensionTypesGenerator().run(args);
     }
 
     protected DimensionTypesGenerator() {
-        super(STRUCTURE);
+        super(ID, STRUCTURE);
     }
 
 }
