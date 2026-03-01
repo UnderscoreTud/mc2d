@@ -4,6 +4,7 @@ import lombok.*;
 import me.tud.mc2d.item.Item;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.blockdata.BlockData;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -15,10 +16,18 @@ public final class Block<T extends BlockData> extends Blocks {
     private final int id;
     private final NamespacedKey key;
     private final @Getter(AccessLevel.NONE) Supplier<T> blockDataSupplier;
-    private final Item itemRepresentation;
+    private final @Getter(AccessLevel.NONE) @Nullable Supplier<Item> itemRepresentationSupplier;
+
+    private transient Item itemRepresentation;
 
     public T createBlockData() {
         return blockDataSupplier.get();
+    }
+
+    public Item itemRepresentation() {
+        if (itemRepresentation == null)
+            itemRepresentation = itemRepresentationSupplier != null ? itemRepresentationSupplier.get() : null;
+        return itemRepresentation;
     }
 
 }

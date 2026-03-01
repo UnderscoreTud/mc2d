@@ -44,7 +44,7 @@ public record Items(@JsonAnySetter Map<String, Object> items) {
         public void writeField(CodeBlock.Builder out) {
             out.add("new $1T($3L, $2T.parse($4S), ", Imports.ITEM, Imports.NAMESPACED_KEY, id, name);
             if (registry.path(Blocks.REGISTRY_ID).path("entries").has(name)) {
-                out.add("$T.$N", Imports.BLOCK, fieldName());
+                out.add("() -> $T.$N", Imports.BLOCK, fieldName());
             } else {
                 out.add("null");
             }

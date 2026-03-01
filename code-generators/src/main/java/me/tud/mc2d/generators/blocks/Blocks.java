@@ -55,7 +55,7 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
         public void writeField(CodeBlock.Builder out) {
             out.add("new $1T<>($4L, $3T.parse($5S), () -> new $2T($6L), ", Imports.BLOCK, blockData.className(), Imports.NAMESPACED_KEY, id, name, block.states[0].id());
             if (registry.path(Items.REGISTRY_ID).path("entries").has(name)) {
-                out.add("$T.$N", Imports.ITEM, fieldName());
+                out.add("() -> $T.$N", Imports.ITEM, fieldName());
             } else {
                 out.add("null");
             }
