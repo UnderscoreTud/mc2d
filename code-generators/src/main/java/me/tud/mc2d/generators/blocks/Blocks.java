@@ -31,7 +31,7 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
                 .sorted(Comparator.comparingInt(entry -> entry.id))
                 .toList();
     }
-    
+
     public record Entry(
             BlocksGenerator generator, 
             String name, 

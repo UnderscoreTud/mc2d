@@ -4,7 +4,7 @@ import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.TypeName;
 import me.tud.mc2d.generators.util.Imports;
 
-public abstract class BuiltInRegistry extends RegistryGenerator {
+public abstract class BuiltInRegistry<E extends RegistryGenerator.Entry> extends RegistryGenerator<E> {
 
     protected static final String REGISTRIES_RESOURCE_LOCATION = "/registries.json";
 

@@ -12,7 +12,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.IOException;
 import java.util.List;
 
-public class BlocksGenerator extends BuiltInRegistry {
+public class BlocksGenerator extends BuiltInRegistry<Blocks.Entry> {
 
     protected BlocksGenerator() {
         super("block", "blocks.json", Imports.BLOCK, ParameterizedTypeName.get(Imports.BLOCK, WildcardTypeName.subtypeOf(Object.class)));
@@ -29,8 +29,8 @@ public class BlocksGenerator extends BuiltInRegistry {
     }
 
     @Override
-    public GeneratedType[] generateExtra(String resource) {
-        return ArrayUtils.addAll(Property.generateSharedProperties(), BlockData.generateBlockData());
+    public GeneratedType[] generateExtra(List<Blocks.Entry> entries, String resource) {
+        return ArrayUtils.addAll(Property.generateSharedProperties(), BlockData.generateBlockData(entries));
     }
 
 }

@@ -36,4 +36,9 @@ public class BlockData {
 
     public void load(Map<String, String> properties) {}
 
+    public static <T extends BlockData> T fromID(int id) {
+        //noinspection unchecked
+        return (T) BlockDataLookup.lookup(id);
+    }
+
 }

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Getter
-public abstract class RegistryGenerator extends Generator {
+public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> extends Generator {
 
     private final String id;
     private final String resource;
@@ -68,7 +68,7 @@ public abstract class RegistryGenerator extends Generator {
         run(resource, args);
     }
 
-    protected abstract List<? extends Entry> entries(String resource) throws IOException;
+    protected abstract List<E> entries(String resource) throws IOException;
 
     @Override
     public GeneratedType[] generate(String resource) throws IOException {
@@ -86,7 +86,8 @@ public abstract class RegistryGenerator extends Generator {
                 )
                 .indent();
 
-        for (Entry entry : entries(resource)) {
+        List<E> entries = entries(resource);
+        for (Entry entry : entries) {
             String fieldName = entry.fieldName();
             TypeName fieldType = entry.fieldType();
             FieldSpec.Builder field = FieldSpec.builder(fieldType != null ? fieldType : registrySource, fieldName)
@@ -113,14 +114,13 @@ public abstract class RegistryGenerator extends Generator {
                 .addCode(createDefaultMethodBlock.build())
                 .build());
 
-        System.out.println("GENERATED: " + className);
         return ArrayUtils.addAll(
                 new GeneratedType[]{new GeneratedType(getClass(), className().packageName(), type.build())},
-                generateExtra(resource)
+                generateExtra(entries, resource)
         );
     }
 
-    protected GeneratedType[] generateExtra(String resource) throws IOException {
+    protected GeneratedType[] generateExtra(List<E> entries, String resource) throws IOException {
         return new GeneratedType[0];
     }
 
