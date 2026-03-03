@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
 
@@ -19,8 +20,8 @@ public final class BrushableData extends BlockData {
     private @Range(from = 0, to = 3) int dusted = 0;
 
     @ApiStatus.Internal
-    public BrushableData(int startingID) {
-        super(startingID);
+    public BrushableData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 0, to = 3) int dusted() {
@@ -70,6 +71,6 @@ public final class BrushableData extends BlockData {
 
     @Override
     public String toString() {
-        return "BrushableData[dusted=" + String.valueOf(dusted).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[dusted=" + String.valueOf(dusted).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

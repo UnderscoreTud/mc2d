@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class TntData extends BlockData {
     private boolean unstable = false;
 
     @ApiStatus.Internal
-    public TntData(int startingID) {
-        super(startingID);
+    public TntData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean unstable() {
@@ -67,6 +68,6 @@ public final class TntData extends BlockData {
 
     @Override
     public String toString() {
-        return "TntData[unstable=" + String.valueOf(unstable).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[unstable=" + String.valueOf(unstable).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasSnowy;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class SnowyDirtData extends BlockData implements HasSnowy {
     private boolean snowy = false;
 
     @ApiStatus.Internal
-    public SnowyDirtData(int startingID) {
-        super(startingID);
+    public SnowyDirtData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class SnowyDirtData extends BlockData implements HasSnowy {
 
     @Override
     public String toString() {
-        return "SnowyDirtData[snowy=" + String.valueOf(snowy).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[snowy=" + String.valueOf(snowy).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class CoralFanData extends BlockData implements HasWaterlogged {
     private boolean waterlogged = true;
 
     @ApiStatus.Internal
-    public CoralFanData(int startingID) {
-        super(startingID);
+    public CoralFanData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class CoralFanData extends BlockData implements HasWaterlogged {
 
     @Override
     public String toString() {
-        return "CoralFanData[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class HangingMossData extends BlockData {
     private boolean tip = true;
 
     @ApiStatus.Internal
-    public HangingMossData(int startingID) {
-        super(startingID);
+    public HangingMossData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean tip() {
@@ -67,6 +68,6 @@ public final class HangingMossData extends BlockData {
 
     @Override
     public String toString() {
-        return "HangingMossData[tip=" + String.valueOf(tip).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[tip=" + String.valueOf(tip).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

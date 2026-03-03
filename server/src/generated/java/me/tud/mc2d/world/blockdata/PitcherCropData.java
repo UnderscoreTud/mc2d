@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -24,8 +25,8 @@ public final class PitcherCropData extends BlockData implements HasAge {
     private Half half = Half.LOWER;
 
     @ApiStatus.Internal
-    public PitcherCropData(int startingID) {
-        super(startingID);
+    public PitcherCropData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -103,7 +104,7 @@ public final class PitcherCropData extends BlockData implements HasAge {
 
     @Override
     public String toString() {
-        return "PitcherCropData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Half {

@@ -14,11 +14,12 @@ import java.util.function.Supplier;
 public final class Block<T extends BlockData> extends Blocks {
 
     private final int id;
+    private final int blockDataID;
     private final NamespacedKey key;
     private final @Getter(AccessLevel.NONE) Supplier<T> blockDataSupplier;
     private final @Getter(AccessLevel.NONE) @Nullable Supplier<Item> itemRepresentationSupplier;
 
-    private transient Item itemRepresentation;
+    private transient @ToString.Exclude @EqualsAndHashCode.Exclude Item itemRepresentation;
 
     public T createBlockData() {
         return blockDataSupplier.get();

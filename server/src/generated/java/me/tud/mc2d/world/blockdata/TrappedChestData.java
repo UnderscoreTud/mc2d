@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -34,8 +35,8 @@ public final class TrappedChestData extends BlockData implements HasFacing, HasW
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public TrappedChestData(int startingID) {
-        super(startingID);
+    public TrappedChestData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Type type() {
@@ -155,7 +156,7 @@ public final class TrappedChestData extends BlockData implements HasFacing, HasW
 
     @Override
     public String toString() {
-        return "TrappedChestData[type=" + String.valueOf(type).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[type=" + String.valueOf(type).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Type {

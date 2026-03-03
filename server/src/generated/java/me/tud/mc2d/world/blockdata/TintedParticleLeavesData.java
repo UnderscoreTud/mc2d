@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasDistance;
 import me.tud.mc2d.world.blockdata.properties.HasPersistent;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -30,8 +31,8 @@ public final class TintedParticleLeavesData extends BlockData implements HasDist
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public TintedParticleLeavesData(int startingID) {
-        super(startingID);
+    public TintedParticleLeavesData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -137,6 +138,6 @@ public final class TintedParticleLeavesData extends BlockData implements HasDist
 
     @Override
     public String toString() {
-        return "TintedParticleLeavesData[distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";persistent=" + String.valueOf(persistent).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";persistent=" + String.valueOf(persistent).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasHanging;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -23,8 +24,8 @@ public final class LanternData extends BlockData implements HasHanging, HasWater
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public LanternData(int startingID) {
-        super(startingID);
+    public LanternData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -102,6 +103,6 @@ public final class LanternData extends BlockData implements HasHanging, HasWater
 
     @Override
     public String toString() {
-        return "LanternData[hanging=" + String.valueOf(hanging).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[hanging=" + String.valueOf(hanging).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

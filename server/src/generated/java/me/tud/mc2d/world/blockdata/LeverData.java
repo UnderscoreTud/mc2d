@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.FaceProperty;
 import me.tud.mc2d.world.blockdata.properties.HasFace;
@@ -36,8 +37,8 @@ public final class LeverData extends BlockData implements HasFace, HasFacing, Ha
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public LeverData(int startingID) {
-        super(startingID);
+    public LeverData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -159,6 +160,6 @@ public final class LeverData extends BlockData implements HasFace, HasFacing, Ha
 
     @Override
     public String toString() {
-        return "LeverData[face=" + String.valueOf(face).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[face=" + String.valueOf(face).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

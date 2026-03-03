@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class WaterloggedTransparentData extends BlockData implements HasWa
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public WaterloggedTransparentData(int startingID) {
-        super(startingID);
+    public WaterloggedTransparentData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class WaterloggedTransparentData extends BlockData implements HasWa
 
     @Override
     public String toString() {
-        return "WaterloggedTransparentData[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

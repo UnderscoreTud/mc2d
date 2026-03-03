@@ -30,7 +30,7 @@ public class BlocksGenerator extends BuiltInRegistry<Blocks.Entry> {
 
     @Override
     public GeneratedType[] generateExtra(List<Blocks.Entry> entries, String resource) {
-        return ArrayUtils.addAll(Property.generateSharedProperties(), BlockData.generateBlockData(entries));
+        return ArrayUtils.addAll(Property.generateSharedProperties(), BlockData.generateBlockData());
     }
 
 }

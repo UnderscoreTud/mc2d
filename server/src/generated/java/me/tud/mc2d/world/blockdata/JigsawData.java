@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -18,8 +19,8 @@ public final class JigsawData extends BlockData {
     private Orientation orientation = Orientation.NORTH_UP;
 
     @ApiStatus.Internal
-    public JigsawData(int startingID) {
-        super(startingID);
+    public JigsawData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Orientation orientation() {
@@ -69,7 +70,7 @@ public final class JigsawData extends BlockData {
 
     @Override
     public String toString() {
-        return "JigsawData[orientation=" + String.valueOf(orientation).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[orientation=" + String.valueOf(orientation).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Orientation {

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
@@ -34,8 +35,8 @@ public final class BellData extends BlockData implements HasFacing, HasPowered {
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public BellData(int startingID) {
-        super(startingID);
+    public BellData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Attachment attachment() {
@@ -155,7 +156,7 @@ public final class BellData extends BlockData implements HasFacing, HasPowered {
 
     @Override
     public String toString() {
-        return "BellData[attachment=" + String.valueOf(attachment).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[attachment=" + String.valueOf(attachment).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Attachment {

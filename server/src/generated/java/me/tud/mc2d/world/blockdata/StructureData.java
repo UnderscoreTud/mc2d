@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -18,8 +19,8 @@ public final class StructureData extends BlockData {
     private Mode mode = Mode.LOAD;
 
     @ApiStatus.Internal
-    public StructureData(int startingID) {
-        super(startingID);
+    public StructureData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Mode mode() {
@@ -69,7 +70,7 @@ public final class StructureData extends BlockData {
 
     @Override
     public String toString() {
-        return "StructureData[mode=" + String.valueOf(mode).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[mode=" + String.valueOf(mode).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Mode {

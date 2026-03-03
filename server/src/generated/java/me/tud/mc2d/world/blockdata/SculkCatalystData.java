@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class SculkCatalystData extends BlockData {
     private boolean bloom = false;
 
     @ApiStatus.Internal
-    public SculkCatalystData(int startingID) {
-        super(startingID);
+    public SculkCatalystData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean bloom() {
@@ -67,6 +68,6 @@ public final class SculkCatalystData extends BlockData {
 
     @Override
     public String toString() {
-        return "SculkCatalystData[bloom=" + String.valueOf(bloom).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[bloom=" + String.valueOf(bloom).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

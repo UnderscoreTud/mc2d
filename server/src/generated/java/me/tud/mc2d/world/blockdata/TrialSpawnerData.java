@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasOminous;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -23,8 +24,8 @@ public final class TrialSpawnerData extends BlockData implements HasOminous {
     private TrialSpawnerState trialSpawnerState = TrialSpawnerState.INACTIVE;
 
     @ApiStatus.Internal
-    public TrialSpawnerData(int startingID) {
-        super(startingID);
+    public TrialSpawnerData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -101,7 +102,7 @@ public final class TrialSpawnerData extends BlockData implements HasOminous {
 
     @Override
     public String toString() {
-        return "TrialSpawnerData[ominous=" + String.valueOf(ominous).toLowerCase(Locale.ENGLISH) + ";trial_spawner_state=" + String.valueOf(trialSpawnerState).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[ominous=" + String.valueOf(ominous).toLowerCase(Locale.ENGLISH) + ";trial_spawner_state=" + String.valueOf(trialSpawnerState).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum TrialSpawnerState {

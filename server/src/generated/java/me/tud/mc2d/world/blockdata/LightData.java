@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasLevel;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -25,8 +26,8 @@ public final class LightData extends BlockData implements HasLevel, HasWaterlogg
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public LightData(int startingID) {
-        super(startingID);
+    public LightData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -105,6 +106,6 @@ public final class LightData extends BlockData implements HasLevel, HasWaterlogg
 
     @Override
     public String toString() {
-        return "LightData[level=" + String.valueOf(level).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[level=" + String.valueOf(level).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

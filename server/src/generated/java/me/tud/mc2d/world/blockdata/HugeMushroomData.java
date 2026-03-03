@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasDown;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -38,8 +39,8 @@ public final class HugeMushroomData extends BlockData implements HasDown {
     private boolean west = true;
 
     @ApiStatus.Internal
-    public HugeMushroomData(int startingID) {
-        super(startingID);
+    public HugeMushroomData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -215,6 +216,6 @@ public final class HugeMushroomData extends BlockData implements HasDown {
 
     @Override
     public String toString() {
-        return "HugeMushroomData[down=" + String.valueOf(down).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[down=" + String.valueOf(down).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

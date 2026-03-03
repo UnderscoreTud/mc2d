@@ -2,21 +2,15 @@ package me.tud.mc2d.generators.blocks.blockdata;
 
 import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.GeneratedType;
-import me.tud.mc2d.generators.Generator;
-import me.tud.mc2d.generators.blocks.Blocks;
 import me.tud.mc2d.generators.blocks.BlocksGenerator;
 import me.tud.mc2d.generators.blocks.blockdata.property.Property;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.util.StringUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.ApiStatus;
 
 import javax.lang.model.element.Modifier;
 import java.util.*;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-
-import static me.tud.mc2d.generators.Generator.PRIVATE_CONSTRUCTOR;
 
 public record BlockData(String name, ClassName className, String[] properties, Map<String, String> defaultValues) {
 
@@ -42,8 +36,9 @@ public record BlockData(String name, ClassName className, String[] properties, M
                 .addMethod(MethodSpec.constructorBuilder()
                         .addModifiers(Modifier.PUBLIC)
                         .addAnnotation(ApiStatus.Internal.class)
+                        .addParameter(ParameterizedTypeName.get(Imports.BLOCK, WildcardTypeName.subtypeOf(Object.class)), "blockType")
                         .addParameter(int.class, "startingID")
-                        .addStatement("super(startingID)")
+                        .addStatement("super(blockType, startingID)")
                         .build());
 
         CodeBlock.Builder offsetIDCode = CodeBlock.builder();
@@ -52,7 +47,7 @@ public record BlockData(String name, ClassName className, String[] properties, M
         CodeBlock.Builder loadFromStringCode = CodeBlock.builder();
 
         CodeBlock.Builder toStringCode = CodeBlock.builder();
-        toStringCode.add("return \"$N[", className.simpleName());
+        toStringCode.add("return blockType().key() + \"[");
 
         for (int i = 0, propertiesLength = properties.length; i < propertiesLength; i++) {
             Property property = properties[i];
@@ -130,72 +125,8 @@ public record BlockData(String name, ClassName className, String[] properties, M
         return BLOCK_DATA.getOrDefault(name, new BlockData("minecraft:block", new String[0], Collections.emptyMap()));
     }
     
-    public static GeneratedType[] generateBlockData(List<Blocks.Entry> entries) {
-        return ArrayUtils.add(
-                BLOCK_DATA.values().parallelStream().map(BlockData::generate).toArray(GeneratedType[]::new),
-                generateBlockDataLookup(entries)
-        );
-    }
-
-    private static GeneratedType generateBlockDataLookup(List<Blocks.Entry> entries) {
-        String lookupTableName = "LOOKUP_TABLE";
-        ClassName lookupClass = ClassName.get(PACKAGE, "BlockDataLookup");
-        ClassName infoClass = lookupClass.nestedClass("Info");
-        ParameterizedTypeName blockDataSupplierType = ParameterizedTypeName.get(
-                ClassName.get(Supplier.class),
-                Imports.BLOCK_DATA
-        );
-
-        TypeSpec.Builder builder = TypeSpec.classBuilder(lookupClass)
-                .addModifiers(Modifier.FINAL)
-                .addMethod(PRIVATE_CONSTRUCTOR)
-                .addMethod(MethodSpec.methodBuilder("lookup")
-                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                        .addParameter(int.class, "id")
-                        .returns(Imports.BLOCK_DATA)
-                        .addCode(CodeBlock.builder()
-                                .addStatement("int index = $T.binarySearch($N, new $T(id, null))", Arrays.class, lookupTableName, infoClass)
-                                .addStatement("index = index < 0 ? (-index - 2) : index")
-                                .beginControlFlow("if (index < 0)")
-                                .addStatement("throw new $T($S + $N)", IllegalArgumentException.class, "id smaller than first entry: ", "id")
-                                .endControlFlow()
-                                .addStatement("$T base = $N[index].factory.get()", Imports.BLOCK_DATA, lookupTableName)
-                                .addStatement("base.load(id)")
-                                .addStatement("return base")
-                                .build())
-                        .build())
-                .addType(TypeSpec.classBuilder(infoClass)
-                        .addModifiers(Modifier.PRIVATE, Modifier.STATIC)
-                        .addSuperinterface(ParameterizedTypeName.get(ClassName.get(Comparable.class), infoClass))
-                        .addField(int.class, "id", Modifier.PRIVATE, Modifier.FINAL)
-                        .addField(blockDataSupplierType, "factory", Modifier.PRIVATE, Modifier.FINAL)
-                        .addMethod(MethodSpec.constructorBuilder()
-                                .addModifiers(Modifier.PRIVATE)
-                                .addParameter(int.class, "id")
-                                .addParameter(blockDataSupplierType, "factory")
-                                .addCode(CodeBlock.builder()
-                                        .addStatement("this.$1N = $1N", "id")
-                                        .addStatement("this.$1N = $1N", "factory")
-                                        .build())
-                                .build())
-                        .addMethod(MethodSpec.methodBuilder("compareTo")
-                                .addAnnotation(Override.class)
-                                .addModifiers(Modifier.PUBLIC)
-                                .returns(int.class)
-                                .addParameter(infoClass, "other")
-                                .addCode("return $T.compare(id, other.id);", Integer.class)
-                                .build())
-                        .build());
-
-        CodeBlock.Builder lookupArray = CodeBlock.builder()
-                .add("{\n").indent().indent();
-        entries.forEach(entry -> lookupArray.add("new $1T($3L, () -> new $2T($3L)),\n",
-                infoClass, entry.blockData().className(), entry.block().states()[0].id()));
-        lookupArray.unindent().unindent().add("}");
-        builder.addField(FieldSpec.builder(ArrayTypeName.of(infoClass), lookupTableName, Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
-                .initializer(lookupArray.build())
-                .build());
-        return new GeneratedType(BlocksGenerator.class, lookupClass.packageName(), builder.build());
+    public static GeneratedType[] generateBlockData() {
+        return BLOCK_DATA.values().parallelStream().map(BlockData::generate).toArray(GeneratedType[]::new);
     }
 
 }

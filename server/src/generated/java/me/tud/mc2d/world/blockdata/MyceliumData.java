@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class MyceliumData extends BlockData {
     private boolean snowy = false;
 
     @ApiStatus.Internal
-    public MyceliumData(int startingID) {
-        super(startingID);
+    public MyceliumData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean snowy() {
@@ -67,6 +68,6 @@ public final class MyceliumData extends BlockData {
 
     @Override
     public String toString() {
-        return "MyceliumData[snowy=" + String.valueOf(snowy).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[snowy=" + String.valueOf(snowy).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

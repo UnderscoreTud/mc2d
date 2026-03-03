@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -27,8 +28,8 @@ public final class EndRodData extends BlockData implements HasFacing {
     private @BlockFace.Values({BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.UP, BlockFace.DOWN}) BlockFace facing = BlockFace.UP;
 
     @ApiStatus.Internal
-    public EndRodData(int startingID) {
-        super(startingID);
+    public EndRodData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -99,6 +100,6 @@ public final class EndRodData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "EndRodData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

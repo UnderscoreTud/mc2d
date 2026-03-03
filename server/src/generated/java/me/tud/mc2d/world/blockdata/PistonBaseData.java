@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -31,8 +32,8 @@ public final class PistonBaseData extends BlockData implements HasFacing {
     private @BlockFace.Values({BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST, BlockFace.UP, BlockFace.DOWN}) BlockFace facing = BlockFace.NORTH;
 
     @ApiStatus.Internal
-    public PistonBaseData(int startingID) {
-        super(startingID);
+    public PistonBaseData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean extended() {
@@ -128,6 +129,6 @@ public final class PistonBaseData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "PistonBaseData[extended=" + String.valueOf(extended).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[extended=" + String.valueOf(extended).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

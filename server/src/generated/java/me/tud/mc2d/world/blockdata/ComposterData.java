@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasLevel;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -20,8 +21,8 @@ public final class ComposterData extends BlockData implements HasLevel {
     private @Range(from = 0, to = 8) int level = 0;
 
     @ApiStatus.Internal
-    public ComposterData(int startingID) {
-        super(startingID);
+    public ComposterData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -73,6 +74,6 @@ public final class ComposterData extends BlockData implements HasLevel {
 
     @Override
     public String toString() {
-        return "ComposterData[level=" + String.valueOf(level).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[level=" + String.valueOf(level).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

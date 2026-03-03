@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasStage;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -20,8 +21,8 @@ public final class SaplingData extends BlockData implements HasStage {
     private @Range(from = 0, to = 1) int stage = 0;
 
     @ApiStatus.Internal
-    public SaplingData(int startingID) {
-        super(startingID);
+    public SaplingData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -73,6 +74,6 @@ public final class SaplingData extends BlockData implements HasStage {
 
     @Override
     public String toString() {
-        return "SaplingData[stage=" + String.valueOf(stage).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[stage=" + String.valueOf(stage).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

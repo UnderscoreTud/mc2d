@@ -1,5 +1,8 @@
 package me.tud.mc2d.item.banner;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
@@ -227,7 +230,59 @@ sealed class BannerPatterns permits BannerPattern {
             .translationKey("block.minecraft.banner.triangle_top")
             .build();
 
+    private static final BannerPattern[] VALUES = {
+            BASE,
+            BORDER,
+            BRICKS,
+            CIRCLE,
+            CREEPER,
+            CROSS,
+            CURLY_BORDER,
+            DIAGONAL_LEFT,
+            DIAGONAL_RIGHT,
+            DIAGONAL_UP_LEFT,
+            DIAGONAL_UP_RIGHT,
+            FLOW,
+            FLOWER,
+            GLOBE,
+            GRADIENT,
+            GRADIENT_UP,
+            GUSTER,
+            HALF_HORIZONTAL,
+            HALF_HORIZONTAL_BOTTOM,
+            HALF_VERTICAL,
+            HALF_VERTICAL_RIGHT,
+            MOJANG,
+            PIGLIN,
+            RHOMBUS,
+            SKULL,
+            SMALL_STRIPES,
+            SQUARE_BOTTOM_LEFT,
+            SQUARE_BOTTOM_RIGHT,
+            SQUARE_TOP_LEFT,
+            SQUARE_TOP_RIGHT,
+            STRAIGHT_CROSS,
+            STRIPE_BOTTOM,
+            STRIPE_CENTER,
+            STRIPE_DOWNLEFT,
+            STRIPE_DOWNRIGHT,
+            STRIPE_LEFT,
+            STRIPE_MIDDLE,
+            STRIPE_RIGHT,
+            STRIPE_TOP,
+            TRIANGLES_BOTTOM,
+            TRIANGLES_TOP,
+            TRIANGLE_BOTTOM,
+            TRIANGLE_TOP,
+    };
+
+    private static final List<BannerPattern> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected BannerPatterns() {
+    }
+
+    public static List<BannerPattern> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<BannerPattern> createDefaultRegistry(Server server) {

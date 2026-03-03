@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPower;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -20,8 +21,8 @@ public final class TargetData extends BlockData implements HasPower {
     private @Range(from = 0, to = 15) int power = 0;
 
     @ApiStatus.Internal
-    public TargetData(int startingID) {
-        super(startingID);
+    public TargetData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -73,6 +74,6 @@ public final class TargetData extends BlockData implements HasPower {
 
     @Override
     public String toString() {
-        return "TargetData[power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

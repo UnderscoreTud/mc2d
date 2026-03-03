@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
@@ -31,8 +32,8 @@ public final class CocoaData extends BlockData implements HasAge, HasFacing {
     private @BlockFace.Values({BlockFace.NORTH, BlockFace.SOUTH, BlockFace.WEST, BlockFace.EAST}) BlockFace facing = BlockFace.NORTH;
 
     @ApiStatus.Internal
-    public CocoaData(int startingID) {
-        super(startingID);
+    public CocoaData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -127,6 +128,6 @@ public final class CocoaData extends BlockData implements HasAge, HasFacing {
 
     @Override
     public String toString() {
-        return "CocoaData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

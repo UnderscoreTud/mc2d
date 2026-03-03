@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPower;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -29,8 +30,8 @@ public final class SculkSensorData extends BlockData implements HasPower, HasWat
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public SculkSensorData(int startingID) {
-        super(startingID);
+    public SculkSensorData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -135,7 +136,7 @@ public final class SculkSensorData extends BlockData implements HasPower, HasWat
 
     @Override
     public String toString() {
-        return "SculkSensorData[power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + ";sculk_sensor_phase=" + String.valueOf(sculkSensorPhase).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + ";sculk_sensor_phase=" + String.valueOf(sculkSensorPhase).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum SculkSensorPhase {

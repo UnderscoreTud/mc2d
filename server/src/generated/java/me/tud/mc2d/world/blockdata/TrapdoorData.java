@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasOpen;
@@ -47,8 +48,8 @@ public final class TrapdoorData extends BlockData implements HasFacing,
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public TrapdoorData(int startingID) {
-        super(startingID);
+    public TrapdoorData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -222,7 +223,7 @@ public final class TrapdoorData extends BlockData implements HasFacing,
 
     @Override
     public String toString() {
-        return "TrapdoorData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";open=" + String.valueOf(open).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";open=" + String.valueOf(open).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Half {

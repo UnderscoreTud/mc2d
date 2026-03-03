@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasOrientation;
 import me.tud.mc2d.world.blockdata.properties.HasTriggered;
 import me.tud.mc2d.world.blockdata.properties.OrientationProperty;
@@ -29,8 +30,8 @@ public final class CrafterData extends BlockData implements HasOrientation, HasT
     private boolean triggered = false;
 
     @ApiStatus.Internal
-    public CrafterData(int startingID) {
-        super(startingID);
+    public CrafterData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean crafting() {
@@ -134,6 +135,6 @@ public final class CrafterData extends BlockData implements HasOrientation, HasT
 
     @Override
     public String toString() {
-        return "CrafterData[crafting=" + String.valueOf(crafting).toLowerCase(Locale.ENGLISH) + ";orientation=" + String.valueOf(orientation).toLowerCase(Locale.ENGLISH) + ";triggered=" + String.valueOf(triggered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[crafting=" + String.valueOf(crafting).toLowerCase(Locale.ENGLISH) + ";orientation=" + String.valueOf(orientation).toLowerCase(Locale.ENGLISH) + ";triggered=" + String.valueOf(triggered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

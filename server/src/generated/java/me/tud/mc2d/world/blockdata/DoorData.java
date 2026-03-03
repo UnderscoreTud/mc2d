@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasHinge;
 import me.tud.mc2d.world.blockdata.properties.HasOpen;
@@ -43,8 +44,8 @@ public final class DoorData extends BlockData implements HasHinge, HasOpen {
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public DoorData(int startingID) {
-        super(startingID);
+    public DoorData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @BlockFace.Values({BlockFace.NORTH, BlockFace.SOUTH, BlockFace.WEST, BlockFace.EAST}) BlockFace facing(
@@ -215,7 +216,7 @@ public final class DoorData extends BlockData implements HasHinge, HasOpen {
 
     @Override
     public String toString() {
-        return "DoorData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";hinge=" + String.valueOf(hinge).toLowerCase(Locale.ENGLISH) + ";open=" + String.valueOf(open).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";hinge=" + String.valueOf(hinge).toLowerCase(Locale.ENGLISH) + ";open=" + String.valueOf(open).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Half {

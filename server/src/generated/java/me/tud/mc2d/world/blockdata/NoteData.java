@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -28,8 +29,8 @@ public final class NoteData extends BlockData implements HasPowered {
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public NoteData(int startingID) {
-        super(startingID);
+    public NoteData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Instrument instrument() {
@@ -132,7 +133,7 @@ public final class NoteData extends BlockData implements HasPowered {
 
     @Override
     public String toString() {
-        return "NoteData[instrument=" + String.valueOf(instrument).toLowerCase(Locale.ENGLISH) + ";note=" + String.valueOf(note).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[instrument=" + String.valueOf(instrument).toLowerCase(Locale.ENGLISH) + ";note=" + String.valueOf(note).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Instrument {

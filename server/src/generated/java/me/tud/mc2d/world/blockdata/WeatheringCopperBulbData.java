@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasLit;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import org.jetbrains.annotations.ApiStatus;
@@ -23,8 +24,8 @@ public final class WeatheringCopperBulbData extends BlockData implements HasLit,
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public WeatheringCopperBulbData(int startingID) {
-        super(startingID);
+    public WeatheringCopperBulbData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -102,6 +103,6 @@ public final class WeatheringCopperBulbData extends BlockData implements HasLit,
 
     @Override
     public String toString() {
-        return "WeatheringCopperBulbData[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

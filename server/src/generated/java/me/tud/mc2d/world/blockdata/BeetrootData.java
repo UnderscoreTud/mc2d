@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
 
@@ -19,8 +20,8 @@ public final class BeetrootData extends BlockData {
     private @Range(from = 0, to = 3) int age = 0;
 
     @ApiStatus.Internal
-    public BeetrootData(int startingID) {
-        super(startingID);
+    public BeetrootData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 0, to = 3) int age() {
@@ -70,6 +71,6 @@ public final class BeetrootData extends BlockData {
 
     @Override
     public String toString() {
-        return "BeetrootData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

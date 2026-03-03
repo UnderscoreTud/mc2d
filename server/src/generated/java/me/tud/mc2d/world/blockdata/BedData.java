@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -33,8 +34,8 @@ public final class BedData extends BlockData implements HasFacing {
     private Part part = Part.FOOT;
 
     @ApiStatus.Internal
-    public BedData(int startingID) {
-        super(startingID);
+    public BedData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -152,7 +153,7 @@ public final class BedData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "BedData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";occupied=" + String.valueOf(occupied).toLowerCase(Locale.ENGLISH) + ";part=" + String.valueOf(part).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";occupied=" + String.valueOf(occupied).toLowerCase(Locale.ENGLISH) + ";part=" + String.valueOf(part).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Part {

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class JukeboxData extends BlockData {
     private boolean hasRecord = false;
 
     @ApiStatus.Internal
-    public JukeboxData(int startingID) {
-        super(startingID);
+    public JukeboxData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean hasRecord() {
@@ -67,6 +68,6 @@ public final class JukeboxData extends BlockData {
 
     @Override
     public String toString() {
-        return "JukeboxData[has_record=" + String.valueOf(hasRecord).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[has_record=" + String.valueOf(hasRecord).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

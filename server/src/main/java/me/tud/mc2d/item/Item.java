@@ -16,7 +16,7 @@ public final class Item extends Items {
     private final NamespacedKey key;
     private final @Getter(AccessLevel.NONE) @Nullable Supplier<Block<?>> blockRepresentationSupplier;
 
-    private transient Block<?> blockRepresentation;
+    private transient @ToString.Exclude @EqualsAndHashCode.Exclude Block<?> blockRepresentation;
 
     public Block<?> blockRepresentation() {
         if (blockRepresentation == null)

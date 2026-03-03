@@ -1,5 +1,8 @@
 package me.tud.mc2d.damage;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
@@ -320,7 +323,65 @@ sealed class DamageTypes permits DamageType {
             .exhaustion(0.1f)
             .build();
 
+    private static final DamageType[] VALUES = {
+            ARROW,
+            BAD_RESPAWN_POINT,
+            CACTUS,
+            CAMPFIRE,
+            CRAMMING,
+            DRAGON_BREATH,
+            DROWN,
+            DRY_OUT,
+            ENDER_PEARL,
+            EXPLOSION,
+            FALL,
+            FALLING_ANVIL,
+            FALLING_BLOCK,
+            FALLING_STALACTITE,
+            FIREBALL,
+            FIREWORKS,
+            FLY_INTO_WALL,
+            FREEZE,
+            GENERIC,
+            GENERIC_KILL,
+            HOT_FLOOR,
+            INDIRECT_MAGIC,
+            IN_FIRE,
+            IN_WALL,
+            LAVA,
+            LIGHTNING_BOLT,
+            MACE_SMASH,
+            MAGIC,
+            MOB_ATTACK,
+            MOB_ATTACK_NO_AGGRO,
+            MOB_PROJECTILE,
+            ON_FIRE,
+            OUTSIDE_BORDER,
+            OUT_OF_WORLD,
+            PLAYER_ATTACK,
+            PLAYER_EXPLOSION,
+            SONIC_BOOM,
+            SPIT,
+            STALAGMITE,
+            STARVE,
+            STING,
+            SWEET_BERRY_BUSH,
+            THORNS,
+            THROWN,
+            TRIDENT,
+            UNATTRIBUTED_FIREBALL,
+            WIND_CHARGE,
+            WITHER,
+            WITHER_SKULL,
+    };
+
+    private static final List<DamageType> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected DamageTypes() {
+    }
+
+    public static List<DamageType> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<DamageType> createDefaultRegistry(Server server) {

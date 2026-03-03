@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasUp;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -38,8 +39,8 @@ public final class ChorusPlantData extends BlockData implements HasUp {
     private boolean west = false;
 
     @ApiStatus.Internal
-    public ChorusPlantData(int startingID) {
-        super(startingID);
+    public ChorusPlantData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean down() {
@@ -215,6 +216,6 @@ public final class ChorusPlantData extends BlockData implements HasUp {
 
     @Override
     public String toString() {
-        return "ChorusPlantData[down=" + String.valueOf(down).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[down=" + String.valueOf(down).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

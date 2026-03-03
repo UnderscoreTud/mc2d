@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -25,8 +26,8 @@ public final class BrewingStandData extends BlockData {
     private boolean hasBottle2 = false;
 
     @ApiStatus.Internal
-    public BrewingStandData(int startingID) {
-        super(startingID);
+    public BrewingStandData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean hasBottle0() {
@@ -125,6 +126,6 @@ public final class BrewingStandData extends BlockData {
 
     @Override
     public String toString() {
-        return "BrewingStandData[has_bottle_0=" + String.valueOf(hasBottle0).toLowerCase(Locale.ENGLISH) + ";has_bottle_1=" + String.valueOf(hasBottle1).toLowerCase(Locale.ENGLISH) + ";has_bottle_2=" + String.valueOf(hasBottle2).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[has_bottle_0=" + String.valueOf(hasBottle0).toLowerCase(Locale.ENGLISH) + ";has_bottle_1=" + String.valueOf(hasBottle1).toLowerCase(Locale.ENGLISH) + ";has_bottle_2=" + String.valueOf(hasBottle2).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

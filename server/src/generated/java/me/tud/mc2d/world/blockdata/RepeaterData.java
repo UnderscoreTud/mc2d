@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
@@ -39,8 +40,8 @@ public final class RepeaterData extends BlockData implements HasFacing, HasPower
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public RepeaterData(int startingID) {
-        super(startingID);
+    public RepeaterData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 1, to = 4) int delay() {
@@ -185,6 +186,6 @@ public final class RepeaterData extends BlockData implements HasFacing, HasPower
 
     @Override
     public String toString() {
-        return "RepeaterData[delay=" + String.valueOf(delay).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";locked=" + String.valueOf(locked).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[delay=" + String.valueOf(delay).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";locked=" + String.valueOf(locked).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

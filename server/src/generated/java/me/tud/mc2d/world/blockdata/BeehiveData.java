@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -30,8 +31,8 @@ public final class BeehiveData extends BlockData implements HasFacing {
     private @Range(from = 0, to = 5) int honeyLevel = 0;
 
     @ApiStatus.Internal
-    public BeehiveData(int startingID) {
-        super(startingID);
+    public BeehiveData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -124,6 +125,6 @@ public final class BeehiveData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "BeehiveData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";honey_level=" + String.valueOf(honeyLevel).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";honey_level=" + String.valueOf(honeyLevel).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

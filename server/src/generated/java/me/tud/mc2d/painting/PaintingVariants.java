@@ -1,5 +1,8 @@
 package me.tud.mc2d.painting;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
@@ -612,7 +615,66 @@ sealed class PaintingVariants permits PaintingVariant {
             .height(2)
             .build();
 
+    private static final PaintingVariant[] VALUES = {
+            ALBAN,
+            AZTEC,
+            AZTEC2,
+            BACKYARD,
+            BAROQUE,
+            BOMB,
+            BOUQUET,
+            BURNING_SKULL,
+            BUST,
+            CAVEBIRD,
+            CHANGING,
+            COTAN,
+            COURBET,
+            CREEBET,
+            DONKEY_KONG,
+            EARTH,
+            ENDBOSS,
+            FERN,
+            FIGHTERS,
+            FINDING,
+            FIRE,
+            GRAHAM,
+            HUMBLE,
+            KEBAB,
+            LOWMIST,
+            MATCH,
+            MEDITATIVE,
+            ORB,
+            OWLEMONS,
+            PASSAGE,
+            PIGSCENE,
+            PLANT,
+            POINTER,
+            POND,
+            POOL,
+            PRAIRIE_RIDE,
+            SEA,
+            SKELETON,
+            SKULL_AND_ROSES,
+            STAGE,
+            SUNFLOWERS,
+            SUNSET,
+            TIDES,
+            UNPACKED,
+            VOID,
+            WANDERER,
+            WASTELAND,
+            WATER,
+            WIND,
+            WITHER,
+    };
+
+    private static final List<PaintingVariant> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected PaintingVariants() {
+    }
+
+    public static List<PaintingVariant> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<PaintingVariant> createDefaultRegistry(Server server) {

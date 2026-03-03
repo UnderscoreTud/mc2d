@@ -1,5 +1,8 @@
 package me.tud.mc2d.dimension;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
@@ -95,7 +98,20 @@ sealed class DimensionTypes permits DimensionType {
             .ultrawarm(true)
             .build();
 
+    private static final DimensionType[] VALUES = {
+            OVERWORLD,
+            OVERWORLD_CAVES,
+            THE_END,
+            THE_NETHER,
+    };
+
+    private static final List<DimensionType> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected DimensionTypes() {
+    }
+
+    public static List<DimensionType> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<DimensionType> createDefaultRegistry(Server server) {

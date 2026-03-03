@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class CandleCakeData extends BlockData {
     private boolean lit = false;
 
     @ApiStatus.Internal
-    public CandleCakeData(int startingID) {
-        super(startingID);
+    public CandleCakeData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean lit() {
@@ -67,6 +68,6 @@ public final class CandleCakeData extends BlockData {
 
     @Override
     public String toString() {
-        return "CandleCakeData[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

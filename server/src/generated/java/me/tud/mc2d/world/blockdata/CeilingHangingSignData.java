@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAttached;
 import me.tud.mc2d.world.blockdata.properties.HasRotation;
 import org.jetbrains.annotations.ApiStatus;
@@ -29,8 +30,8 @@ public final class CeilingHangingSignData extends BlockData implements HasAttach
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public CeilingHangingSignData(int startingID) {
-        super(startingID);
+    public CeilingHangingSignData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -134,6 +135,6 @@ public final class CeilingHangingSignData extends BlockData implements HasAttach
 
     @Override
     public String toString() {
-        return "CeilingHangingSignData[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

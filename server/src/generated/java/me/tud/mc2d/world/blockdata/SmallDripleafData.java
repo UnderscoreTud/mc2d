@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -34,8 +35,8 @@ public final class SmallDripleafData extends BlockData implements HasFacing, Has
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public SmallDripleafData(int startingID) {
-        super(startingID);
+    public SmallDripleafData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -155,7 +156,7 @@ public final class SmallDripleafData extends BlockData implements HasFacing, Has
 
     @Override
     public String toString() {
-        return "SmallDripleafData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Half {

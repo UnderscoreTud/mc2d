@@ -1,5 +1,7 @@
 package me.tud.mc2d.chat;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
@@ -94,7 +96,23 @@ sealed class ChatTypes permits ChatType {
             ), null))
             .build();
 
+    private static final ChatType[] VALUES = {
+            CHAT,
+            EMOTE_COMMAND,
+            MSG_COMMAND_INCOMING,
+            MSG_COMMAND_OUTGOING,
+            SAY_COMMAND,
+            TEAM_MSG_COMMAND_INCOMING,
+            TEAM_MSG_COMMAND_OUTGOING,
+    };
+
+    private static final List<ChatType> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected ChatTypes() {
+    }
+
+    public static List<ChatType> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<ChatType> createDefaultRegistry(Server server) {

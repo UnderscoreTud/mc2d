@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -33,8 +34,8 @@ public final class VaultData extends BlockData implements HasFacing {
     private VaultState vaultState = VaultState.INACTIVE;
 
     @ApiStatus.Internal
-    public VaultData(int startingID) {
-        super(startingID);
+    public VaultData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -152,7 +153,7 @@ public final class VaultData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "VaultData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";ominous=" + String.valueOf(ominous).toLowerCase(Locale.ENGLISH) + ";vault_state=" + String.valueOf(vaultState).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";ominous=" + String.valueOf(ominous).toLowerCase(Locale.ENGLISH) + ";vault_state=" + String.valueOf(vaultState).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum VaultState {

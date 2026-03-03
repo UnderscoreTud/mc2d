@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -24,8 +25,8 @@ public final class StandingSignData extends BlockData implements HasWaterlogged 
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public StandingSignData(int startingID) {
-        super(startingID);
+    public StandingSignData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 0, to = 15) int rotation() {
@@ -102,6 +103,6 @@ public final class StandingSignData extends BlockData implements HasWaterlogged 
 
     @Override
     public String toString() {
-        return "StandingSignData[rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

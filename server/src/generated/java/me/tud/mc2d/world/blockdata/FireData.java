@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import me.tud.mc2d.world.blockdata.properties.HasUp;
 import org.jetbrains.annotations.ApiStatus;
@@ -41,8 +42,8 @@ public final class FireData extends BlockData implements HasAge, HasUp {
     private boolean west = false;
 
     @ApiStatus.Internal
-    public FireData(int startingID) {
-        super(startingID);
+    public FireData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -221,6 +222,6 @@ public final class FireData extends BlockData implements HasAge, HasUp {
 
     @Override
     public String toString() {
-        return "FireData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

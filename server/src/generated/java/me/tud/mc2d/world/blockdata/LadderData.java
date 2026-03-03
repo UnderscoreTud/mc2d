@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -30,8 +31,8 @@ public final class LadderData extends BlockData implements HasFacing, HasWaterlo
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public LadderData(int startingID) {
-        super(startingID);
+    public LadderData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -125,6 +126,6 @@ public final class LadderData extends BlockData implements HasFacing, HasWaterlo
 
     @Override
     public String toString() {
-        return "LadderData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

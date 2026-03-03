@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasBottom;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -35,8 +36,8 @@ public final class MossyCarpetData extends BlockData implements HasBottom {
     private West west = West.NONE;
 
     @ApiStatus.Internal
-    public MossyCarpetData(int startingID) {
-        super(startingID);
+    public MossyCarpetData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -191,7 +192,7 @@ public final class MossyCarpetData extends BlockData implements HasBottom {
 
     @Override
     public String toString() {
-        return "MossyCarpetData[bottom=" + String.valueOf(bottom).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[bottom=" + String.valueOf(bottom).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum East {

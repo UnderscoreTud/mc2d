@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -20,8 +21,8 @@ public final class SweetBerryBushData extends BlockData implements HasAge {
     private @Range(from = 0, to = 3) int age = 0;
 
     @ApiStatus.Internal
-    public SweetBerryBushData(int startingID) {
-        super(startingID);
+    public SweetBerryBushData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -73,6 +74,6 @@ public final class SweetBerryBushData extends BlockData implements HasAge {
 
     @Override
     public String toString() {
-        return "SweetBerryBushData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasAttached;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
@@ -35,8 +36,8 @@ public final class TripWireHookData extends BlockData implements HasAttached, Ha
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public TripWireHookData(int startingID) {
-        super(startingID);
+    public TripWireHookData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -157,6 +158,6 @@ public final class TripWireHookData extends BlockData implements HasAttached, Ha
 
     @Override
     public String toString() {
-        return "TripWireHookData[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

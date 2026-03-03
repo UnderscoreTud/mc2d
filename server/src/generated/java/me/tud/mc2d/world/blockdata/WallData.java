@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasUp;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -40,8 +41,8 @@ public final class WallData extends BlockData implements HasUp, HasWaterlogged {
     private West west = West.NONE;
 
     @ApiStatus.Internal
-    public WallData(int startingID) {
-        super(startingID);
+    public WallData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public East east() {
@@ -223,7 +224,7 @@ public final class WallData extends BlockData implements HasUp, HasWaterlogged {
 
     @Override
     public String toString() {
-        return "WallData[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";up=" + String.valueOf(up).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum East {

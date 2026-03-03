@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPower;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -36,8 +37,8 @@ public final class RedstoneWireData extends BlockData implements HasPower {
     private West west = West.NONE;
 
     @ApiStatus.Internal
-    public RedstoneWireData(int startingID) {
-        super(startingID);
+    public RedstoneWireData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public East east() {
@@ -193,7 +194,7 @@ public final class RedstoneWireData extends BlockData implements HasPower {
 
     @Override
     public String toString() {
-        return "RedstoneWireData[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum East {

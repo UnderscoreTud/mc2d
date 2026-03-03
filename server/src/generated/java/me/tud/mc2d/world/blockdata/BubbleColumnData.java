@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -17,8 +18,8 @@ public final class BubbleColumnData extends BlockData {
     private boolean drag = true;
 
     @ApiStatus.Internal
-    public BubbleColumnData(int startingID) {
-        super(startingID);
+    public BubbleColumnData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean drag() {
@@ -67,6 +68,6 @@ public final class BubbleColumnData extends BlockData {
 
     @Override
     public String toString() {
-        return "BubbleColumnData[drag=" + String.valueOf(drag).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[drag=" + String.valueOf(drag).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -1,5 +1,8 @@
 package me.tud.mc2d.item.armortrim;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
@@ -103,7 +106,27 @@ sealed class ArmorTrimMaterials permits ArmorTrimMaterial {
                     .finish())
             .build();
 
+    private static final ArmorTrimMaterial[] VALUES = {
+            AMETHYST,
+            COPPER,
+            DIAMOND,
+            EMERALD,
+            GOLD,
+            IRON,
+            LAPIS,
+            NETHERITE,
+            QUARTZ,
+            REDSTONE,
+            RESIN,
+    };
+
+    private static final List<ArmorTrimMaterial> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected ArmorTrimMaterials() {
+    }
+
+    public static List<ArmorTrimMaterial> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<ArmorTrimMaterial> createDefaultRegistry(Server server) {

@@ -77,6 +77,9 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
                 .addPermittedSubclass(registrySource)
                 .addMethod(PROTECTED_CONSTRUCTOR);
 
+        CodeBlock.Builder valuesArray = CodeBlock.builder()
+                .add("{\n").indent().indent();
+
         CodeBlock.Builder createDefaultMethodBlock = CodeBlock.builder()
                 .add(
                         "return new $T<>(server, $T.$N).modify(registry -> {\n",
@@ -97,6 +100,8 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
             field.initializer(builder.build());
             type.addField(field.build());
 
+            valuesArray.add("$N,\n", entry.fieldName());
+
             createDefaultMethodBlock.add("registry.register(");
             entry.writeKey(createDefaultMethodBlock);
             createDefaultMethodBlock.addStatement(", $T.$L)", registrySource, fieldName);
@@ -106,13 +111,33 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
         if (tags != null)
             type.addType(tags);
 
+        valuesArray.unindent().unindent().add("}");
         createDefaultMethodBlock.unindent().add("});");
-        type.addMethod(MethodSpec.methodBuilder("createDefaultRegistry")
-                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                .returns(ParameterizedTypeName.get(registryType, exactRegistrySource))
-                .addParameter(Imports.SERVER, "server")
-                .addCode(createDefaultMethodBlock.build())
-                .build());
+
+        TypeName arrayType = ArrayTypeName.of(exactRegistrySource);
+        TypeName listType = ParameterizedTypeName.get(ClassName.get(List.class), exactRegistrySource);
+
+        type
+                .addField(FieldSpec.builder(arrayType, "VALUES")
+                        .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
+                        .initializer(valuesArray.build())
+                        .build())
+                .addField(FieldSpec.builder(listType, "VALUES_LIST")
+                        .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
+                        .initializer("$T.unmodifiableList($T.asList(VALUES))", Collections.class, Arrays.class)
+                        .build())
+                .addMethod(MethodSpec.methodBuilder("values")
+                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                        .returns(listType)
+                        .addCode("return VALUES_LIST;")
+                        .build())
+                .addMethod(MethodSpec.methodBuilder("createDefaultRegistry")
+                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                        .returns(ParameterizedTypeName.get(registryType, exactRegistrySource))
+                        .addParameter(Imports.SERVER, "server")
+                        .addCode(createDefaultMethodBlock.build())
+                        .build());
+
 
         return ArrayUtils.addAll(
                 new GeneratedType[]{new GeneratedType(getClass(), className().packageName(), type.build())},

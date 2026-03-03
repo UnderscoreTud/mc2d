@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import me.tud.mc2d.world.blockdata.properties.HasStage;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -34,8 +35,8 @@ public final class MangrovePropaguleData extends BlockData implements HasAge, Ha
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public MangrovePropaguleData(int startingID) {
-        super(startingID);
+    public MangrovePropaguleData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -167,6 +168,6 @@ public final class MangrovePropaguleData extends BlockData implements HasAge, Ha
 
     @Override
     public String toString() {
-        return "MangrovePropaguleData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";hanging=" + String.valueOf(hanging).toLowerCase(Locale.ENGLISH) + ";stage=" + String.valueOf(stage).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";hanging=" + String.valueOf(hanging).toLowerCase(Locale.ENGLISH) + ";stage=" + String.valueOf(stage).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

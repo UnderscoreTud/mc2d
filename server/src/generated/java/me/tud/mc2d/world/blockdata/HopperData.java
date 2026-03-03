@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import org.jetbrains.annotations.ApiStatus;
@@ -30,8 +31,8 @@ public final class HopperData extends BlockData implements HasFacing {
     private @BlockFace.Values({BlockFace.DOWN, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.WEST, BlockFace.EAST}) BlockFace facing = BlockFace.DOWN;
 
     @ApiStatus.Internal
-    public HopperData(int startingID) {
-        super(startingID);
+    public HopperData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean enabled() {
@@ -125,6 +126,6 @@ public final class HopperData extends BlockData implements HasFacing {
 
     @Override
     public String toString() {
-        return "HopperData[enabled=" + String.valueOf(enabled).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[enabled=" + String.valueOf(enabled).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -23,8 +24,8 @@ public final class RailData extends BlockData implements HasWaterlogged {
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public RailData(int startingID) {
-        super(startingID);
+    public RailData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Shape shape() {
@@ -101,7 +102,7 @@ public final class RailData extends BlockData implements HasWaterlogged {
 
     @Override
     public String toString() {
-        return "RailData[shape=" + String.valueOf(shape).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[shape=" + String.valueOf(shape).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Shape {

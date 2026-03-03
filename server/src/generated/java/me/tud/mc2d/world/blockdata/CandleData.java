@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasLit;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -29,8 +30,8 @@ public final class CandleData extends BlockData implements HasLit, HasWaterlogge
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public CandleData(int startingID) {
-        super(startingID);
+    public CandleData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 1, to = 4) int candles() {
@@ -134,6 +135,6 @@ public final class CandleData extends BlockData implements HasLit, HasWaterlogge
 
     @Override
     public String toString() {
-        return "CandleData[candles=" + String.valueOf(candles).toLowerCase(Locale.ENGLISH) + ";lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[candles=" + String.valueOf(candles).toLowerCase(Locale.ENGLISH) + ";lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

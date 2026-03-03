@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasDistance;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -29,8 +30,8 @@ public final class ScaffoldingData extends BlockData implements HasDistance, Has
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public ScaffoldingData(int startingID) {
-        super(startingID);
+    public ScaffoldingData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean bottom() {
@@ -134,6 +135,6 @@ public final class ScaffoldingData extends BlockData implements HasDistance, Has
 
     @Override
     public String toString() {
-        return "ScaffoldingData[bottom=" + String.valueOf(bottom).toLowerCase(Locale.ENGLISH) + ";distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[bottom=" + String.valueOf(bottom).toLowerCase(Locale.ENGLISH) + ";distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

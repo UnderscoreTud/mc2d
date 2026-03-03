@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasAge;
 import me.tud.mc2d.world.blockdata.properties.HasBerries;
 import org.jetbrains.annotations.ApiStatus;
@@ -25,8 +26,8 @@ public final class CaveVinesData extends BlockData implements HasAge, HasBerries
     private boolean berries = false;
 
     @ApiStatus.Internal
-    public CaveVinesData(int startingID) {
-        super(startingID);
+    public CaveVinesData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -105,6 +106,6 @@ public final class CaveVinesData extends BlockData implements HasAge, HasBerries
 
     @Override
     public String toString() {
-        return "CaveVinesData[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";berries=" + String.valueOf(berries).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[age=" + String.valueOf(age).toLowerCase(Locale.ENGLISH) + ";berries=" + String.valueOf(berries).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

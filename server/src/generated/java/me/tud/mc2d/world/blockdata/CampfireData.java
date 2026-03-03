@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasLit;
@@ -39,8 +40,8 @@ public final class CampfireData extends BlockData implements HasFacing, HasLit, 
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public CampfireData(int startingID) {
-        super(startingID);
+    public CampfireData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -186,6 +187,6 @@ public final class CampfireData extends BlockData implements HasFacing, HasLit, 
 
     @Override
     public String toString() {
-        return "CampfireData[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";signal_fire=" + String.valueOf(signalFire).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + ";signal_fire=" + String.valueOf(signalFire).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
@@ -28,8 +29,8 @@ public final class UntintedParticleLeavesData extends BlockData implements HasWa
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public UntintedParticleLeavesData(int startingID) {
-        super(startingID);
+    public UntintedParticleLeavesData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 1, to = 7) int distance() {
@@ -131,6 +132,6 @@ public final class UntintedParticleLeavesData extends BlockData implements HasWa
 
     @Override
     public String toString() {
-        return "UntintedParticleLeavesData[distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";persistent=" + String.valueOf(persistent).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[distance=" + String.valueOf(distance).toLowerCase(Locale.ENGLISH) + ";persistent=" + String.valueOf(persistent).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

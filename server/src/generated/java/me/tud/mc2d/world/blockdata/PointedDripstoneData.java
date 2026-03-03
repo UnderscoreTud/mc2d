@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -27,8 +28,8 @@ public final class PointedDripstoneData extends BlockData implements HasWaterlog
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public PointedDripstoneData(int startingID) {
-        super(startingID);
+    public PointedDripstoneData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Thickness thickness() {
@@ -131,7 +132,7 @@ public final class PointedDripstoneData extends BlockData implements HasWaterlog
 
     @Override
     public String toString() {
-        return "PointedDripstoneData[thickness=" + String.valueOf(thickness).toLowerCase(Locale.ENGLISH) + ";vertical_direction=" + String.valueOf(verticalDirection).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[thickness=" + String.valueOf(thickness).toLowerCase(Locale.ENGLISH) + ";vertical_direction=" + String.valueOf(verticalDirection).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Thickness {

@@ -1,5 +1,8 @@
 package me.tud.mc2d.item.armortrim;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
@@ -138,7 +141,34 @@ sealed class ArmorTrimPatterns permits ArmorTrimPattern {
                     .finish())
             .build();
 
+    private static final ArmorTrimPattern[] VALUES = {
+            BOLT,
+            COAST,
+            DUNE,
+            EYE,
+            FLOW,
+            HOST,
+            RAISER,
+            RIB,
+            SENTRY,
+            SHAPER,
+            SILENCE,
+            SNOUT,
+            SPIRE,
+            TIDE,
+            VEX,
+            WARD,
+            WAYFINDER,
+            WILD,
+    };
+
+    private static final List<ArmorTrimPattern> VALUES_LIST = Collections.unmodifiableList(Arrays.asList(VALUES));
+
     protected ArmorTrimPatterns() {
+    }
+
+    public static List<ArmorTrimPattern> values() {
+        return VALUES_LIST;
     }
 
     public static DataDrivenRegistry<ArmorTrimPattern> createDefaultRegistry(Server server) {

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import me.tud.mc2d.world.blockdata.properties.HasRotation;
 import org.jetbrains.annotations.ApiStatus;
@@ -25,8 +26,8 @@ public final class WitherSkullData extends BlockData implements HasPowered, HasR
     private @Range(from = 0, to = 15) int rotation = 0;
 
     @ApiStatus.Internal
-    public WitherSkullData(int startingID) {
-        super(startingID);
+    public WitherSkullData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -105,6 +106,6 @@ public final class WitherSkullData extends BlockData implements HasPowered, HasR
 
     @Override
     public String toString() {
-        return "WitherSkullData[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";rotation=" + String.valueOf(rotation).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

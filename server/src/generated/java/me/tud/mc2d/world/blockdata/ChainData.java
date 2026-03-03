@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -23,8 +24,8 @@ public final class ChainData extends BlockData implements HasWaterlogged {
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public ChainData(int startingID) {
-        super(startingID);
+    public ChainData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Axis axis() {
@@ -101,7 +102,7 @@ public final class ChainData extends BlockData implements HasWaterlogged {
 
     @Override
     public String toString() {
-        return "ChainData[axis=" + String.valueOf(axis).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[axis=" + String.valueOf(axis).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Axis {

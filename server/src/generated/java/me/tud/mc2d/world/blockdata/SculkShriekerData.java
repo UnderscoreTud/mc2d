@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -26,8 +27,8 @@ public final class SculkShriekerData extends BlockData implements HasWaterlogged
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public SculkShriekerData(int startingID) {
-        super(startingID);
+    public SculkShriekerData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean canSummon() {
@@ -128,6 +129,6 @@ public final class SculkShriekerData extends BlockData implements HasWaterlogged
 
     @Override
     public String toString() {
-        return "SculkShriekerData[can_summon=" + String.valueOf(canSummon).toLowerCase(Locale.ENGLISH) + ";shrieking=" + String.valueOf(shrieking).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[can_summon=" + String.valueOf(canSummon).toLowerCase(Locale.ENGLISH) + ";shrieking=" + String.valueOf(shrieking).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

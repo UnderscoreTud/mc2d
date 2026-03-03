@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class PressurePlateData extends BlockData implements HasPowered {
     private boolean powered = false;
 
     @ApiStatus.Internal
-    public PressurePlateData(int startingID) {
-        super(startingID);
+    public PressurePlateData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class PressurePlateData extends BlockData implements HasPowered {
 
     @Override
     public String toString() {
-        return "PressurePlateData[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

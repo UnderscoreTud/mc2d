@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
 
@@ -23,8 +24,8 @@ public final class TurtleEggData extends BlockData {
     private @Range(from = 0, to = 2) int hatch = 0;
 
     @ApiStatus.Internal
-    public TurtleEggData(int startingID) {
-        super(startingID);
+    public TurtleEggData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 1, to = 4) int eggs() {
@@ -100,6 +101,6 @@ public final class TurtleEggData extends BlockData {
 
     @Override
     public String toString() {
-        return "TurtleEggData[eggs=" + String.valueOf(eggs).toLowerCase(Locale.ENGLISH) + ";hatch=" + String.valueOf(hatch).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[eggs=" + String.valueOf(eggs).toLowerCase(Locale.ENGLISH) + ";hatch=" + String.valueOf(hatch).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

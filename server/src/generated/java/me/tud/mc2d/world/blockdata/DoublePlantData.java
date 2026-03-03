@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -18,8 +19,8 @@ public final class DoublePlantData extends BlockData {
     private Half half = Half.LOWER;
 
     @ApiStatus.Internal
-    public DoublePlantData(int startingID) {
-        super(startingID);
+    public DoublePlantData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Half half() {
@@ -69,7 +70,7 @@ public final class DoublePlantData extends BlockData {
 
     @Override
     public String toString() {
-        return "DoublePlantData[half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[half=" + String.valueOf(half).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Half {

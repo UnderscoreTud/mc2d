@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
@@ -28,8 +29,8 @@ public final class DetectorRailData extends BlockData implements HasPowered, Has
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public DetectorRailData(int startingID) {
-        super(startingID);
+    public DetectorRailData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -133,7 +134,7 @@ public final class DetectorRailData extends BlockData implements HasPowered, Has
 
     @Override
     public String toString() {
-        return "DetectorRailData[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";shape=" + String.valueOf(shape).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";shape=" + String.valueOf(shape).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Shape {

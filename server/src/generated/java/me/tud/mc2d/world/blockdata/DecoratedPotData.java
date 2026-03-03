@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.properties.HasFacing;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
@@ -34,8 +35,8 @@ public final class DecoratedPotData extends BlockData implements HasFacing, HasW
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public DecoratedPotData(int startingID) {
-        super(startingID);
+    public DecoratedPotData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean cracked() {
@@ -154,6 +155,6 @@ public final class DecoratedPotData extends BlockData implements HasFacing, HasW
 
     @Override
     public String toString() {
-        return "DecoratedPotData[cracked=" + String.valueOf(cracked).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[cracked=" + String.valueOf(cracked).toLowerCase(Locale.ENGLISH) + ";facing=" + String.valueOf(facing).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class MangroveRootsData extends BlockData implements HasWaterlogged
     private boolean waterlogged = false;
 
     @ApiStatus.Internal
-    public MangroveRootsData(int startingID) {
-        super(startingID);
+    public MangroveRootsData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class MangroveRootsData extends BlockData implements HasWaterlogged
 
     @Override
     public String toString() {
-        return "MangroveRootsData[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

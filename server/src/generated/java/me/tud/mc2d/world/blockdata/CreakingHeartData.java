@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -26,8 +27,8 @@ public final class CreakingHeartData extends BlockData {
     private boolean natural = false;
 
     @ApiStatus.Internal
-    public CreakingHeartData(int startingID) {
-        super(startingID);
+    public CreakingHeartData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public Axis axis() {
@@ -128,7 +129,7 @@ public final class CreakingHeartData extends BlockData {
 
     @Override
     public String toString() {
-        return "CreakingHeartData[axis=" + String.valueOf(axis).toLowerCase(Locale.ENGLISH) + ";creaking_heart_state=" + String.valueOf(creakingHeartState).toLowerCase(Locale.ENGLISH) + ";natural=" + String.valueOf(natural).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[axis=" + String.valueOf(axis).toLowerCase(Locale.ENGLISH) + ";creaking_heart_state=" + String.valueOf(creakingHeartState).toLowerCase(Locale.ENGLISH) + ";natural=" + String.valueOf(natural).toLowerCase(Locale.ENGLISH) + "]";
     }
 
     public enum Axis {

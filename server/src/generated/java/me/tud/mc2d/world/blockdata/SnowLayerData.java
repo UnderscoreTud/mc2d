@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
 
@@ -19,8 +20,8 @@ public final class SnowLayerData extends BlockData {
     private @Range(from = 1, to = 8) int layers = 1;
 
     @ApiStatus.Internal
-    public SnowLayerData(int startingID) {
-        super(startingID);
+    public SnowLayerData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public @Range(from = 1, to = 8) int layers() {
@@ -70,6 +71,6 @@ public final class SnowLayerData extends BlockData {
 
     @Override
     public String toString() {
-        return "SnowLayerData[layers=" + String.valueOf(layers).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[layers=" + String.valueOf(layers).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Range;
 
@@ -23,8 +24,8 @@ public final class DaylightDetectorData extends BlockData {
     private @Range(from = 0, to = 15) int power = 0;
 
     @ApiStatus.Internal
-    public DaylightDetectorData(int startingID) {
-        super(startingID);
+    public DaylightDetectorData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean inverted() {
@@ -99,6 +100,6 @@ public final class DaylightDetectorData extends BlockData {
 
     @Override
     public String toString() {
-        return "DaylightDetectorData[inverted=" + String.valueOf(inverted).toLowerCase(Locale.ENGLISH) + ";power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[inverted=" + String.valueOf(inverted).toLowerCase(Locale.ENGLISH) + ";power=" + String.valueOf(power).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

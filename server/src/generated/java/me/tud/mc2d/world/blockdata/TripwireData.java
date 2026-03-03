@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasPowered;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -42,8 +43,8 @@ public final class TripwireData extends BlockData implements HasPowered {
     private boolean west = false;
 
     @ApiStatus.Internal
-    public TripwireData(int startingID) {
-        super(startingID);
+    public TripwireData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean attached() {
@@ -244,6 +245,6 @@ public final class TripwireData extends BlockData implements HasPowered {
 
     @Override
     public String toString() {
-        return "TripwireData[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";disarmed=" + String.valueOf(disarmed).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[attached=" + String.valueOf(attached).toLowerCase(Locale.ENGLISH) + ";disarmed=" + String.valueOf(disarmed).toLowerCase(Locale.ENGLISH) + ";east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";powered=" + String.valueOf(powered).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

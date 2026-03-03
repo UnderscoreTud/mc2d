@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasLit;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -18,8 +19,8 @@ public final class RedstoneTorchData extends BlockData implements HasLit {
     private boolean lit = true;
 
     @ApiStatus.Internal
-    public RedstoneTorchData(int startingID) {
-        super(startingID);
+    public RedstoneTorchData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     @Override
@@ -70,6 +71,6 @@ public final class RedstoneTorchData extends BlockData implements HasLit {
 
     @Override
     public String toString() {
-        return "RedstoneTorchData[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[lit=" + String.valueOf(lit).toLowerCase(Locale.ENGLISH) + "]";
     }
 }

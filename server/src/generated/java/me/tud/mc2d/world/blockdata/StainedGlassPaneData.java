@@ -3,6 +3,7 @@ package me.tud.mc2d.world.blockdata;
 import java.util.Locale;
 import java.util.Map;
 import javax.annotation.processing.Generated;
+import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.properties.HasWaterlogged;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -34,8 +35,8 @@ public final class StainedGlassPaneData extends BlockData implements HasWaterlog
     private boolean west = false;
 
     @ApiStatus.Internal
-    public StainedGlassPaneData(int startingID) {
-        super(startingID);
+    public StainedGlassPaneData(Block<?> blockType, int startingID) {
+        super(blockType, startingID);
     }
 
     public boolean east() {
@@ -186,6 +187,6 @@ public final class StainedGlassPaneData extends BlockData implements HasWaterlog
 
     @Override
     public String toString() {
-        return "StainedGlassPaneData[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
+        return blockType().key() + "[east=" + String.valueOf(east).toLowerCase(Locale.ENGLISH) + ";north=" + String.valueOf(north).toLowerCase(Locale.ENGLISH) + ";south=" + String.valueOf(south).toLowerCase(Locale.ENGLISH) + ";waterlogged=" + String.valueOf(waterlogged).toLowerCase(Locale.ENGLISH) + ";west=" + String.valueOf(west).toLowerCase(Locale.ENGLISH) + "]";
     }
 }
