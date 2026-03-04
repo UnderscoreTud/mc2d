@@ -12,7 +12,9 @@ import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.BlockData;
 import org.jetbrains.annotations.Range;
 
+import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.List;
 
 @Getter
 @ToString
@@ -26,6 +28,7 @@ public class Chunk {
     private final int minY, worldHeight;
 
     private final ChunkSection[] sections;
+    private final LightSection[] lightSections;
 
     public Chunk(Server server, DimensionType dimensionType, int x, int z) {
         this.server = server;
@@ -36,6 +39,15 @@ public class Chunk {
         this.sections = new ChunkSection[Math.ceilDiv(worldHeight, SECTION_DIMENSION)];
         for (int i = 0; i < sections.length; i++)
             sections[i] = new ChunkSection(this);
+        
+        this.lightSections = new LightSection[sections.length + 2]; // 2 extra sections;
+                                                                    // one section above the world
+                                                                    // and one section below the world
+        for (int i = 0; i < lightSections.length; i++) {
+            lightSections[i] = new LightSection();
+            lightSections[i].fillSkyLight((byte) 15);
+            lightSections[i].fillBlockLight((byte) 15);
+        }
     }
 
     public int maxY() {
@@ -47,15 +59,31 @@ public class Chunk {
     }
 
     public LightData lightData() {
-        // TODO proper implementation
-        return new LightData(
-                new BitSet(),
-                new BitSet(),
-                new BitSet(),
-                new BitSet(),
-                new byte[0][2048],
-                new byte[0][2048]
-        );
+        BitSet skyLightMask = new BitSet(lightSections.length);
+        BitSet blockLightMask = new BitSet(lightSections.length);
+        BitSet emptySkyLightMask = new BitSet(lightSections.length);
+        BitSet emptyBlockLightMask = new BitSet(lightSections.length);
+
+        List<byte[]> skyLights = new ArrayList<>();
+        List<byte[]> blockLights = new ArrayList<>();
+        for (int i = 0; i < lightSections.length; i++) {
+            LightSection section = lightSections[i];
+            if (section.skyLightEmpty()) {
+                emptySkyLightMask.set(i);
+            } else {
+                skyLightMask.set(i);
+                skyLights.add(section.skyLight().clone());
+            }
+
+            if (section.blockLightEmpty()) {
+                emptyBlockLightMask.set(i);
+            } else {
+                blockLightMask.set(i);
+                blockLights.add(section.blockLight().clone());
+            }
+        }
+
+        return new LightData(skyLightMask, blockLightMask, emptySkyLightMask, emptyBlockLightMask, skyLights, blockLights);
     }
 
     public ClientboundPlayChunkDataAndUpdateLight createChunkPacket() {
@@ -78,6 +106,41 @@ public class Chunk {
         sectionFromY(y).blockStates().set(x, localY(y), z, blockData);
     }
 
+    public void fillBlocks(Block<?> block) {
+        fillBlocks(block.createBlockData());
+    }
+
+    public void fillBlocks(BlockData blockData) {
+        for (ChunkSection section : sections)
+            section.blockStates().fill(blockData);
+    }
+
+    public byte getSkyLight(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
+        return lightSectionFromY(y).getSkyLight(x, localY(y + SECTION_DIMENSION), z);
+    }
+
+    public byte getBlockLight(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z) {
+        return lightSectionFromY(y).getBlockLight(x, localY(y + SECTION_DIMENSION), z);
+    }
+
+    public byte setSkyLight(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, byte level) {
+        return lightSectionFromY(y).setSkyLight(x, localY(y + SECTION_DIMENSION), z, level);
+    }
+
+    public byte setBlockLight(@Range(from = 0, to = 15) int x, int y, @Range(from = 0, to = 15) int z, byte level) {
+        return lightSectionFromY(y).setBlockLight(x, localY(y + SECTION_DIMENSION), z, level);
+    }
+
+    public void fillSkyLight(byte level) {
+        for (LightSection section : lightSections)
+            section.fillSkyLight(level);
+    }
+
+    public void fillBlockLight(byte level) {
+        for (LightSection section : lightSections)
+            section.fillBlockLight(level);
+    }
+
     private int localY(int y) {
         return (y - minY) % SECTION_DIMENSION;
     }
@@ -86,6 +149,12 @@ public class Chunk {
         Preconditions.checkArgument(y >= minY && y <= maxY(), "Y must be in [" + minY + ", " + maxY() + "], got " + y);
         int index = (y - minY) / SECTION_DIMENSION;
         return sections[index];
+    }
+
+    public LightSection lightSectionFromY(int y) {
+        Preconditions.checkArgument(y >= minY && y <= maxY(), "Y must be in [" + minY + ", " + maxY() + "], got " + y);
+        int index = (y - minY) / SECTION_DIMENSION + 1;
+        return lightSections[index];
     }
 
 }

@@ -4,14 +4,15 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.Writable;
 
 import java.util.BitSet;
+import java.util.List;
 
 public record LightData(
         BitSet skyLightMask,
         BitSet blockLightMask,
         BitSet emptySkyLightMask,
         BitSet emptyBlockLightMask,
-        byte[][] skyLight,
-        byte[][] blockLight
+        List<byte[]> skyLight,
+        List<byte[]> blockLight
 ) implements Writable {
 
     @Override
@@ -20,8 +21,8 @@ public record LightData(
                 .writeBitSet(blockLightMask)
                 .writeBitSet(emptySkyLightMask)
                 .writeBitSet(emptyBlockLightMask)
-                .writeArray(skyLight, FriendlyByteBuf::writeByteArray)
-                .writeArray(blockLight, FriendlyByteBuf::writeByteArray);
+                .writeCollection(skyLight, FriendlyByteBuf::writeByteArray)
+                .writeCollection(blockLight, FriendlyByteBuf::writeByteArray);
     }
 
 }

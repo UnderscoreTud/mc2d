@@ -12,9 +12,7 @@ import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
@@ -742,6 +740,37 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         for (int i = 0; i < length; i++)
             array[i] = readFunction.apply(this);
         return array;
+    }
+
+    /**
+     * Writes a <u>prefixed</u> collection to the buffer.
+     *
+     * @param collection The collection to write.
+     * @param writeFunction The function to write each element of the collection.
+     * @return This buffer.
+     * @param <T> The type of elements.
+     */
+    public <T> FriendlyByteBuf writeCollection(Collection<T> collection, BiConsumer<FriendlyByteBuf, T> writeFunction) {
+        writeVarInt(collection.size());
+        for (T element : collection)
+            writeFunction.accept(this, element);
+        return this;
+    }
+
+    /**
+     * Reads a <u>prefixed</u> list from the buffer.
+     *
+     * @param listGenerator The function to generate the list.
+     * @param readFunction The function to read each element of the list.
+     * @return The list read from the buffer.
+     * @param <T> The type of the list elements.
+     */
+    public <T> List<T> readList(IntFunction<List<T>> listGenerator, Function<FriendlyByteBuf, T> readFunction) {
+        int length = readVarInt();
+        List<T> list = listGenerator.apply(length);
+        for (int i = 0; i < length; i++)
+            list.add(readFunction.apply(this));
+        return list;
     }
 
     /**
