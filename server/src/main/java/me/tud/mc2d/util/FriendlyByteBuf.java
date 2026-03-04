@@ -12,6 +12,7 @@ import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.BitSet;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -459,6 +460,19 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
     }
 
     /**
+     * Writes an array of <a href="https://minecraft.wiki/w/Java_Edition_protocol/Data_types#Type:VarInt">var int</a> to the buffer.
+     *
+     * @param value The array of var int to write.
+     * @return This buffer.
+     */
+    public FriendlyByteBuf writeVarIntArray(int[] value) {
+        writeVarInt(value.length);
+        for (int i : value)
+            writeVarInt(i);
+        return this;
+    }
+
+    /**
      * Reads a <a href="https://minecraft.wiki/w/Java_Edition_protocol/Data_types#Type:VarInt">var int</a> from the buffer.
      *
      * @return The var int read from the buffer.
@@ -523,6 +537,14 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         }
 
         return value;
+    }
+
+    public FriendlyByteBuf writeBitSet(BitSet bitSet) {
+        return writeLongArray(bitSet.toLongArray());
+    }
+
+    public BitSet readBitSet() {
+        return BitSet.valueOf(readLongArray());
     }
 
     public FriendlyByteBuf writeBlockPosition(BlockPosition position) {

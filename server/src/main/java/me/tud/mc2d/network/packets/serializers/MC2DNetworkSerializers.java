@@ -20,15 +20,16 @@ public final class MC2DNetworkSerializers implements DynamicCatalogue.Serializer
     public Collection<Serializer<?>> provideSerializers() {
         return List.of(
                 new BlockPositionSerializer(),
+                new ClientInformationSerializer(),
                 new ComponentSerializer(context.componentProcessor()),
                 new ClientInformationSerializer(),
                 new DataPackSerializer(),
                 new JSONComponent.Serializer(context.componentProcessor()),
                 new NamespacedKeySerializer(),
                 new NBTCompoundSerializer(),
-                new ClientInformationSerializer(),
                 new Vector3dSerializer(),
-                new Vector3fSerializer()
+                new Vector3fSerializer(),
+                new WritableSerializer()
         );
     }
 

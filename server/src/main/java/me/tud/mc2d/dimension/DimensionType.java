@@ -1,6 +1,9 @@
 package me.tud.mc2d.dimension;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
@@ -10,6 +13,8 @@ import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 
+@Getter
+@ToString
 @Builder(toBuilder = true)
 public final class DimensionType extends DimensionTypes implements NBTSerializable {
 

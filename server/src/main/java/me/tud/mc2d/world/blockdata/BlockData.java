@@ -9,7 +9,7 @@ import java.util.*;
 
 public class BlockData {
 
-    private static final int MAX_ID;
+    public static final int MAX_ID;
 
     static {
         BlockData last = Block.values().getLast().createBlockData();

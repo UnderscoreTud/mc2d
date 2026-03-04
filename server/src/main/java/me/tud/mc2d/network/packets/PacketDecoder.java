@@ -28,10 +28,10 @@ public class PacketDecoder extends ByteToMessageDecoder {
             Packet packet = packetFactory.create(Packet.group(state.get(), DIRECTION), new NettyDataVisitor(in));
             Preconditions.checkState(packet.direction() == DIRECTION, "Decoded client-bound packet in server-bound context");
     
-            System.out.println("INCOMING: " + packet);
+//            System.out.println("INCOMING: " + packet);
             out.add(packet);
         } catch (Exception e) {
-            System.out.println("INCOMING: (unknown): " + e.getMessage());
+//            System.out.println("INCOMING: (unknown): " + e.getMessage());
         }
     }
 

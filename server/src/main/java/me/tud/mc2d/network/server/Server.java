@@ -19,15 +19,20 @@ import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMe
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serializers.MC2DNetworkSerializers;
+import me.tud.mc2d.network.packets.serializers.WritableSerializer;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
+import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.paklet.PacketFactory;
+import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerProvider;
 import org.machinemc.paklet.serialization.Serializers;
 import org.machinemc.paklet.serialization.VarIntSerializer;
 import org.machinemc.paklet.serialization.catalogue.DefaultSerializationRules;
 import org.machinemc.paklet.serialization.catalogue.DefaultSerializers;
+import org.machinemc.paklet.serialization.catalogue.DynamicCatalogue;
+import org.machinemc.paklet.serialization.rule.SerializationRule;
 import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
@@ -38,6 +43,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
+import java.util.List;
 
 public class Server {
 
@@ -186,6 +193,7 @@ public class Server {
 
         provider.addSerializers(new MC2DNetworkSerializers(context));
 
+        provider.addSerializationRule((p, clazz) -> clazz.isAssignableFrom(Writable.class) ? p.getFor(Writable.class) : null);
         provider.addSerializationRules(DefaultSerializationRules.class);
 
         PacketFactory factory = context.packetFactory();
