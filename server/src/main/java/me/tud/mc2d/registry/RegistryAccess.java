@@ -76,6 +76,7 @@ public class RegistryAccess {
         access.dataDriven(RegistryKey.PIG_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.PIG_TEMPERATE));
         access.dataDriven(RegistryKey.WOLF_SOUND_VARIANT, Map.entry(NamespacedKey.minecraft("classic"), WolfSoundVariant.CLASSIC));
         access.dataDriven(RegistryKey.WOLF_VARIANT, Map.entry(NamespacedKey.minecraft("ashen"), WolfVariant.ASHEN));
+        access.dataDriven(RegistryKey.ZOMBIE_NAUTILUS_VARIANT, Map.entry(NamespacedKey.minecraft("temperate"), MobVariant.ZOMBIE_NAUTILUS_TEMPERATE));
         return access;
     }
 

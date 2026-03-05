@@ -43,7 +43,7 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
                 0,
                 NamespacedKey.minecraft("overworld"),
                 0,
-                GameMode.CREATIVE,
+                GameMode.SPECTATOR,
                 null,
                 false,
                 false,

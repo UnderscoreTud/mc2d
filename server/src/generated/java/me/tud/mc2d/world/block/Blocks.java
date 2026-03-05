@@ -53,6 +53,8 @@ import me.tud.mc2d.world.blockdata.ComparatorData;
 import me.tud.mc2d.world.blockdata.ComposterData;
 import me.tud.mc2d.world.blockdata.ConduitData;
 import me.tud.mc2d.world.blockdata.CopperBulbBlockData;
+import me.tud.mc2d.world.blockdata.CopperChestData;
+import me.tud.mc2d.world.blockdata.CopperGolemStatueData;
 import me.tud.mc2d.world.blockdata.CoralFanData;
 import me.tud.mc2d.world.blockdata.CoralPlantData;
 import me.tud.mc2d.world.blockdata.CoralWallFanData;
@@ -65,6 +67,7 @@ import me.tud.mc2d.world.blockdata.DetectorRailData;
 import me.tud.mc2d.world.blockdata.DispenserData;
 import me.tud.mc2d.world.blockdata.DoorData;
 import me.tud.mc2d.world.blockdata.DoublePlantData;
+import me.tud.mc2d.world.blockdata.DriedGhastData;
 import me.tud.mc2d.world.blockdata.DropperData;
 import me.tud.mc2d.world.blockdata.EndPortalFrameData;
 import me.tud.mc2d.world.blockdata.EndRodData;
@@ -139,6 +142,7 @@ import me.tud.mc2d.world.blockdata.SculkSensorData;
 import me.tud.mc2d.world.blockdata.SculkShriekerData;
 import me.tud.mc2d.world.blockdata.SculkVeinData;
 import me.tud.mc2d.world.blockdata.SeaPickleData;
+import me.tud.mc2d.world.blockdata.ShelfData;
 import me.tud.mc2d.world.blockdata.ShulkerBoxData;
 import me.tud.mc2d.world.blockdata.SkullData;
 import me.tud.mc2d.world.blockdata.SlabData;
@@ -179,12 +183,18 @@ import me.tud.mc2d.world.blockdata.WallSignData;
 import me.tud.mc2d.world.blockdata.WallSkullData;
 import me.tud.mc2d.world.blockdata.WallTorchData;
 import me.tud.mc2d.world.blockdata.WaterloggedTransparentData;
+import me.tud.mc2d.world.blockdata.WeatheringCopperBarData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperBulbData;
+import me.tud.mc2d.world.blockdata.WeatheringCopperChainData;
+import me.tud.mc2d.world.blockdata.WeatheringCopperChestData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperDoorData;
+import me.tud.mc2d.world.blockdata.WeatheringCopperGolemStatueData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperGrateData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperSlabData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperStairData;
 import me.tud.mc2d.world.blockdata.WeatheringCopperTrapDoorData;
+import me.tud.mc2d.world.blockdata.WeatheringLanternData;
+import me.tud.mc2d.world.blockdata.WeatheringLightningRodData;
 import me.tud.mc2d.world.blockdata.WeepingVinesData;
 import me.tud.mc2d.world.blockdata.WeightedPressurePlateData;
 import me.tud.mc2d.world.blockdata.WitherSkullData;
@@ -553,1855 +563,1979 @@ sealed class Blocks permits Block {
 
     public static final Block<ChiseledBookShelfData> CHISELED_BOOKSHELF = new Block<>(178, 2143, NamespacedKey.parse("minecraft:chiseled_bookshelf"), () -> new ChiseledBookShelfData(Block.CHISELED_BOOKSHELF, 2143), () -> Item.CHISELED_BOOKSHELF);
 
-    public static final Block<BlockData> MOSSY_COBBLESTONE = new Block<>(179, 2399, NamespacedKey.parse("minecraft:mossy_cobblestone"), () -> new BlockData(Block.MOSSY_COBBLESTONE, 2399), () -> Item.MOSSY_COBBLESTONE);
+    public static final Block<ShelfData> ACACIA_SHELF = new Block<>(179, 2399, NamespacedKey.parse("minecraft:acacia_shelf"), () -> new ShelfData(Block.ACACIA_SHELF, 2399), () -> Item.ACACIA_SHELF);
 
-    public static final Block<BlockData> OBSIDIAN = new Block<>(180, 2400, NamespacedKey.parse("minecraft:obsidian"), () -> new BlockData(Block.OBSIDIAN, 2400), () -> Item.OBSIDIAN);
+    public static final Block<ShelfData> BAMBOO_SHELF = new Block<>(180, 2463, NamespacedKey.parse("minecraft:bamboo_shelf"), () -> new ShelfData(Block.BAMBOO_SHELF, 2463), () -> Item.BAMBOO_SHELF);
 
-    public static final Block<BlockData> TORCH = new Block<>(181, 2401, NamespacedKey.parse("minecraft:torch"), () -> new BlockData(Block.TORCH, 2401), () -> Item.TORCH);
+    public static final Block<ShelfData> BIRCH_SHELF = new Block<>(181, 2527, NamespacedKey.parse("minecraft:birch_shelf"), () -> new ShelfData(Block.BIRCH_SHELF, 2527), () -> Item.BIRCH_SHELF);
 
-    public static final Block<WallTorchData> WALL_TORCH = new Block<>(182, 2402, NamespacedKey.parse("minecraft:wall_torch"), () -> new WallTorchData(Block.WALL_TORCH, 2402), null);
+    public static final Block<ShelfData> CHERRY_SHELF = new Block<>(182, 2591, NamespacedKey.parse("minecraft:cherry_shelf"), () -> new ShelfData(Block.CHERRY_SHELF, 2591), () -> Item.CHERRY_SHELF);
 
-    public static final Block<FireData> FIRE = new Block<>(183, 2406, NamespacedKey.parse("minecraft:fire"), () -> new FireData(Block.FIRE, 2406), null);
+    public static final Block<ShelfData> CRIMSON_SHELF = new Block<>(183, 2655, NamespacedKey.parse("minecraft:crimson_shelf"), () -> new ShelfData(Block.CRIMSON_SHELF, 2655), () -> Item.CRIMSON_SHELF);
 
-    public static final Block<BlockData> SOUL_FIRE = new Block<>(184, 2918, NamespacedKey.parse("minecraft:soul_fire"), () -> new BlockData(Block.SOUL_FIRE, 2918), null);
+    public static final Block<ShelfData> DARK_OAK_SHELF = new Block<>(184, 2719, NamespacedKey.parse("minecraft:dark_oak_shelf"), () -> new ShelfData(Block.DARK_OAK_SHELF, 2719), () -> Item.DARK_OAK_SHELF);
 
-    public static final Block<BlockData> SPAWNER = new Block<>(185, 2919, NamespacedKey.parse("minecraft:spawner"), () -> new BlockData(Block.SPAWNER, 2919), () -> Item.SPAWNER);
+    public static final Block<ShelfData> JUNGLE_SHELF = new Block<>(185, 2783, NamespacedKey.parse("minecraft:jungle_shelf"), () -> new ShelfData(Block.JUNGLE_SHELF, 2783), () -> Item.JUNGLE_SHELF);
 
-    public static final Block<CreakingHeartData> CREAKING_HEART = new Block<>(186, 2920, NamespacedKey.parse("minecraft:creaking_heart"), () -> new CreakingHeartData(Block.CREAKING_HEART, 2920), () -> Item.CREAKING_HEART);
+    public static final Block<ShelfData> MANGROVE_SHELF = new Block<>(186, 2847, NamespacedKey.parse("minecraft:mangrove_shelf"), () -> new ShelfData(Block.MANGROVE_SHELF, 2847), () -> Item.MANGROVE_SHELF);
 
-    public static final Block<StairData> OAK_STAIRS = new Block<>(187, 2938, NamespacedKey.parse("minecraft:oak_stairs"), () -> new StairData(Block.OAK_STAIRS, 2938), () -> Item.OAK_STAIRS);
+    public static final Block<ShelfData> OAK_SHELF = new Block<>(187, 2911, NamespacedKey.parse("minecraft:oak_shelf"), () -> new ShelfData(Block.OAK_SHELF, 2911), () -> Item.OAK_SHELF);
 
-    public static final Block<ChestData> CHEST = new Block<>(188, 3018, NamespacedKey.parse("minecraft:chest"), () -> new ChestData(Block.CHEST, 3018), () -> Item.CHEST);
+    public static final Block<ShelfData> PALE_OAK_SHELF = new Block<>(188, 2975, NamespacedKey.parse("minecraft:pale_oak_shelf"), () -> new ShelfData(Block.PALE_OAK_SHELF, 2975), () -> Item.PALE_OAK_SHELF);
 
-    public static final Block<RedstoneWireData> REDSTONE_WIRE = new Block<>(189, 3042, NamespacedKey.parse("minecraft:redstone_wire"), () -> new RedstoneWireData(Block.REDSTONE_WIRE, 3042), null);
+    public static final Block<ShelfData> SPRUCE_SHELF = new Block<>(189, 3039, NamespacedKey.parse("minecraft:spruce_shelf"), () -> new ShelfData(Block.SPRUCE_SHELF, 3039), () -> Item.SPRUCE_SHELF);
 
-    public static final Block<BlockData> DIAMOND_ORE = new Block<>(190, 4338, NamespacedKey.parse("minecraft:diamond_ore"), () -> new BlockData(Block.DIAMOND_ORE, 4338), () -> Item.DIAMOND_ORE);
+    public static final Block<ShelfData> WARPED_SHELF = new Block<>(190, 3103, NamespacedKey.parse("minecraft:warped_shelf"), () -> new ShelfData(Block.WARPED_SHELF, 3103), () -> Item.WARPED_SHELF);
 
-    public static final Block<BlockData> DEEPSLATE_DIAMOND_ORE = new Block<>(191, 4339, NamespacedKey.parse("minecraft:deepslate_diamond_ore"), () -> new BlockData(Block.DEEPSLATE_DIAMOND_ORE, 4339), () -> Item.DEEPSLATE_DIAMOND_ORE);
+    public static final Block<BlockData> MOSSY_COBBLESTONE = new Block<>(191, 3167, NamespacedKey.parse("minecraft:mossy_cobblestone"), () -> new BlockData(Block.MOSSY_COBBLESTONE, 3167), () -> Item.MOSSY_COBBLESTONE);
 
-    public static final Block<BlockData> DIAMOND_BLOCK = new Block<>(192, 4340, NamespacedKey.parse("minecraft:diamond_block"), () -> new BlockData(Block.DIAMOND_BLOCK, 4340), () -> Item.DIAMOND_BLOCK);
+    public static final Block<BlockData> OBSIDIAN = new Block<>(192, 3168, NamespacedKey.parse("minecraft:obsidian"), () -> new BlockData(Block.OBSIDIAN, 3168), () -> Item.OBSIDIAN);
 
-    public static final Block<BlockData> CRAFTING_TABLE = new Block<>(193, 4341, NamespacedKey.parse("minecraft:crafting_table"), () -> new BlockData(Block.CRAFTING_TABLE, 4341), () -> Item.CRAFTING_TABLE);
+    public static final Block<BlockData> TORCH = new Block<>(193, 3169, NamespacedKey.parse("minecraft:torch"), () -> new BlockData(Block.TORCH, 3169), () -> Item.TORCH);
 
-    public static final Block<CropData> WHEAT = new Block<>(194, 4342, NamespacedKey.parse("minecraft:wheat"), () -> new CropData(Block.WHEAT, 4342), () -> Item.WHEAT);
+    public static final Block<WallTorchData> WALL_TORCH = new Block<>(194, 3170, NamespacedKey.parse("minecraft:wall_torch"), () -> new WallTorchData(Block.WALL_TORCH, 3170), null);
 
-    public static final Block<FarmData> FARMLAND = new Block<>(195, 4350, NamespacedKey.parse("minecraft:farmland"), () -> new FarmData(Block.FARMLAND, 4350), () -> Item.FARMLAND);
+    public static final Block<FireData> FIRE = new Block<>(195, 3174, NamespacedKey.parse("minecraft:fire"), () -> new FireData(Block.FIRE, 3174), null);
 
-    public static final Block<FurnaceData> FURNACE = new Block<>(196, 4358, NamespacedKey.parse("minecraft:furnace"), () -> new FurnaceData(Block.FURNACE, 4358), () -> Item.FURNACE);
+    public static final Block<BlockData> SOUL_FIRE = new Block<>(196, 3686, NamespacedKey.parse("minecraft:soul_fire"), () -> new BlockData(Block.SOUL_FIRE, 3686), null);
 
-    public static final Block<StandingSignData> OAK_SIGN = new Block<>(197, 4366, NamespacedKey.parse("minecraft:oak_sign"), () -> new StandingSignData(Block.OAK_SIGN, 4366), () -> Item.OAK_SIGN);
+    public static final Block<BlockData> SPAWNER = new Block<>(197, 3687, NamespacedKey.parse("minecraft:spawner"), () -> new BlockData(Block.SPAWNER, 3687), () -> Item.SPAWNER);
 
-    public static final Block<StandingSignData> SPRUCE_SIGN = new Block<>(198, 4398, NamespacedKey.parse("minecraft:spruce_sign"), () -> new StandingSignData(Block.SPRUCE_SIGN, 4398), () -> Item.SPRUCE_SIGN);
+    public static final Block<CreakingHeartData> CREAKING_HEART = new Block<>(198, 3688, NamespacedKey.parse("minecraft:creaking_heart"), () -> new CreakingHeartData(Block.CREAKING_HEART, 3688), () -> Item.CREAKING_HEART);
 
-    public static final Block<StandingSignData> BIRCH_SIGN = new Block<>(199, 4430, NamespacedKey.parse("minecraft:birch_sign"), () -> new StandingSignData(Block.BIRCH_SIGN, 4430), () -> Item.BIRCH_SIGN);
+    public static final Block<StairData> OAK_STAIRS = new Block<>(199, 3706, NamespacedKey.parse("minecraft:oak_stairs"), () -> new StairData(Block.OAK_STAIRS, 3706), () -> Item.OAK_STAIRS);
 
-    public static final Block<StandingSignData> ACACIA_SIGN = new Block<>(200, 4462, NamespacedKey.parse("minecraft:acacia_sign"), () -> new StandingSignData(Block.ACACIA_SIGN, 4462), () -> Item.ACACIA_SIGN);
+    public static final Block<ChestData> CHEST = new Block<>(200, 3786, NamespacedKey.parse("minecraft:chest"), () -> new ChestData(Block.CHEST, 3786), () -> Item.CHEST);
 
-    public static final Block<StandingSignData> CHERRY_SIGN = new Block<>(201, 4494, NamespacedKey.parse("minecraft:cherry_sign"), () -> new StandingSignData(Block.CHERRY_SIGN, 4494), () -> Item.CHERRY_SIGN);
+    public static final Block<RedstoneWireData> REDSTONE_WIRE = new Block<>(201, 3810, NamespacedKey.parse("minecraft:redstone_wire"), () -> new RedstoneWireData(Block.REDSTONE_WIRE, 3810), null);
 
-    public static final Block<StandingSignData> JUNGLE_SIGN = new Block<>(202, 4526, NamespacedKey.parse("minecraft:jungle_sign"), () -> new StandingSignData(Block.JUNGLE_SIGN, 4526), () -> Item.JUNGLE_SIGN);
+    public static final Block<BlockData> DIAMOND_ORE = new Block<>(202, 5106, NamespacedKey.parse("minecraft:diamond_ore"), () -> new BlockData(Block.DIAMOND_ORE, 5106), () -> Item.DIAMOND_ORE);
 
-    public static final Block<StandingSignData> DARK_OAK_SIGN = new Block<>(203, 4558, NamespacedKey.parse("minecraft:dark_oak_sign"), () -> new StandingSignData(Block.DARK_OAK_SIGN, 4558), () -> Item.DARK_OAK_SIGN);
+    public static final Block<BlockData> DEEPSLATE_DIAMOND_ORE = new Block<>(203, 5107, NamespacedKey.parse("minecraft:deepslate_diamond_ore"), () -> new BlockData(Block.DEEPSLATE_DIAMOND_ORE, 5107), () -> Item.DEEPSLATE_DIAMOND_ORE);
 
-    public static final Block<StandingSignData> PALE_OAK_SIGN = new Block<>(204, 4590, NamespacedKey.parse("minecraft:pale_oak_sign"), () -> new StandingSignData(Block.PALE_OAK_SIGN, 4590), () -> Item.PALE_OAK_SIGN);
+    public static final Block<BlockData> DIAMOND_BLOCK = new Block<>(204, 5108, NamespacedKey.parse("minecraft:diamond_block"), () -> new BlockData(Block.DIAMOND_BLOCK, 5108), () -> Item.DIAMOND_BLOCK);
 
-    public static final Block<StandingSignData> MANGROVE_SIGN = new Block<>(205, 4622, NamespacedKey.parse("minecraft:mangrove_sign"), () -> new StandingSignData(Block.MANGROVE_SIGN, 4622), () -> Item.MANGROVE_SIGN);
+    public static final Block<BlockData> CRAFTING_TABLE = new Block<>(205, 5109, NamespacedKey.parse("minecraft:crafting_table"), () -> new BlockData(Block.CRAFTING_TABLE, 5109), () -> Item.CRAFTING_TABLE);
 
-    public static final Block<StandingSignData> BAMBOO_SIGN = new Block<>(206, 4654, NamespacedKey.parse("minecraft:bamboo_sign"), () -> new StandingSignData(Block.BAMBOO_SIGN, 4654), () -> Item.BAMBOO_SIGN);
+    public static final Block<CropData> WHEAT = new Block<>(206, 5110, NamespacedKey.parse("minecraft:wheat"), () -> new CropData(Block.WHEAT, 5110), () -> Item.WHEAT);
 
-    public static final Block<DoorData> OAK_DOOR = new Block<>(207, 4686, NamespacedKey.parse("minecraft:oak_door"), () -> new DoorData(Block.OAK_DOOR, 4686), () -> Item.OAK_DOOR);
+    public static final Block<FarmData> FARMLAND = new Block<>(207, 5118, NamespacedKey.parse("minecraft:farmland"), () -> new FarmData(Block.FARMLAND, 5118), () -> Item.FARMLAND);
 
-    public static final Block<LadderData> LADDER = new Block<>(208, 4750, NamespacedKey.parse("minecraft:ladder"), () -> new LadderData(Block.LADDER, 4750), () -> Item.LADDER);
+    public static final Block<FurnaceData> FURNACE = new Block<>(208, 5126, NamespacedKey.parse("minecraft:furnace"), () -> new FurnaceData(Block.FURNACE, 5126), () -> Item.FURNACE);
 
-    public static final Block<RailData> RAIL = new Block<>(209, 4758, NamespacedKey.parse("minecraft:rail"), () -> new RailData(Block.RAIL, 4758), () -> Item.RAIL);
+    public static final Block<StandingSignData> OAK_SIGN = new Block<>(209, 5134, NamespacedKey.parse("minecraft:oak_sign"), () -> new StandingSignData(Block.OAK_SIGN, 5134), () -> Item.OAK_SIGN);
 
-    public static final Block<StairData> COBBLESTONE_STAIRS = new Block<>(210, 4778, NamespacedKey.parse("minecraft:cobblestone_stairs"), () -> new StairData(Block.COBBLESTONE_STAIRS, 4778), () -> Item.COBBLESTONE_STAIRS);
+    public static final Block<StandingSignData> SPRUCE_SIGN = new Block<>(210, 5166, NamespacedKey.parse("minecraft:spruce_sign"), () -> new StandingSignData(Block.SPRUCE_SIGN, 5166), () -> Item.SPRUCE_SIGN);
 
-    public static final Block<WallSignData> OAK_WALL_SIGN = new Block<>(211, 4858, NamespacedKey.parse("minecraft:oak_wall_sign"), () -> new WallSignData(Block.OAK_WALL_SIGN, 4858), null);
+    public static final Block<StandingSignData> BIRCH_SIGN = new Block<>(211, 5198, NamespacedKey.parse("minecraft:birch_sign"), () -> new StandingSignData(Block.BIRCH_SIGN, 5198), () -> Item.BIRCH_SIGN);
 
-    public static final Block<WallSignData> SPRUCE_WALL_SIGN = new Block<>(212, 4866, NamespacedKey.parse("minecraft:spruce_wall_sign"), () -> new WallSignData(Block.SPRUCE_WALL_SIGN, 4866), null);
+    public static final Block<StandingSignData> ACACIA_SIGN = new Block<>(212, 5230, NamespacedKey.parse("minecraft:acacia_sign"), () -> new StandingSignData(Block.ACACIA_SIGN, 5230), () -> Item.ACACIA_SIGN);
 
-    public static final Block<WallSignData> BIRCH_WALL_SIGN = new Block<>(213, 4874, NamespacedKey.parse("minecraft:birch_wall_sign"), () -> new WallSignData(Block.BIRCH_WALL_SIGN, 4874), null);
+    public static final Block<StandingSignData> CHERRY_SIGN = new Block<>(213, 5262, NamespacedKey.parse("minecraft:cherry_sign"), () -> new StandingSignData(Block.CHERRY_SIGN, 5262), () -> Item.CHERRY_SIGN);
 
-    public static final Block<WallSignData> ACACIA_WALL_SIGN = new Block<>(214, 4882, NamespacedKey.parse("minecraft:acacia_wall_sign"), () -> new WallSignData(Block.ACACIA_WALL_SIGN, 4882), null);
+    public static final Block<StandingSignData> JUNGLE_SIGN = new Block<>(214, 5294, NamespacedKey.parse("minecraft:jungle_sign"), () -> new StandingSignData(Block.JUNGLE_SIGN, 5294), () -> Item.JUNGLE_SIGN);
 
-    public static final Block<WallSignData> CHERRY_WALL_SIGN = new Block<>(215, 4890, NamespacedKey.parse("minecraft:cherry_wall_sign"), () -> new WallSignData(Block.CHERRY_WALL_SIGN, 4890), null);
+    public static final Block<StandingSignData> DARK_OAK_SIGN = new Block<>(215, 5326, NamespacedKey.parse("minecraft:dark_oak_sign"), () -> new StandingSignData(Block.DARK_OAK_SIGN, 5326), () -> Item.DARK_OAK_SIGN);
 
-    public static final Block<WallSignData> JUNGLE_WALL_SIGN = new Block<>(216, 4898, NamespacedKey.parse("minecraft:jungle_wall_sign"), () -> new WallSignData(Block.JUNGLE_WALL_SIGN, 4898), null);
+    public static final Block<StandingSignData> PALE_OAK_SIGN = new Block<>(216, 5358, NamespacedKey.parse("minecraft:pale_oak_sign"), () -> new StandingSignData(Block.PALE_OAK_SIGN, 5358), () -> Item.PALE_OAK_SIGN);
 
-    public static final Block<WallSignData> DARK_OAK_WALL_SIGN = new Block<>(217, 4906, NamespacedKey.parse("minecraft:dark_oak_wall_sign"), () -> new WallSignData(Block.DARK_OAK_WALL_SIGN, 4906), null);
+    public static final Block<StandingSignData> MANGROVE_SIGN = new Block<>(217, 5390, NamespacedKey.parse("minecraft:mangrove_sign"), () -> new StandingSignData(Block.MANGROVE_SIGN, 5390), () -> Item.MANGROVE_SIGN);
 
-    public static final Block<WallSignData> PALE_OAK_WALL_SIGN = new Block<>(218, 4914, NamespacedKey.parse("minecraft:pale_oak_wall_sign"), () -> new WallSignData(Block.PALE_OAK_WALL_SIGN, 4914), null);
+    public static final Block<StandingSignData> BAMBOO_SIGN = new Block<>(218, 5422, NamespacedKey.parse("minecraft:bamboo_sign"), () -> new StandingSignData(Block.BAMBOO_SIGN, 5422), () -> Item.BAMBOO_SIGN);
 
-    public static final Block<WallSignData> MANGROVE_WALL_SIGN = new Block<>(219, 4922, NamespacedKey.parse("minecraft:mangrove_wall_sign"), () -> new WallSignData(Block.MANGROVE_WALL_SIGN, 4922), null);
+    public static final Block<DoorData> OAK_DOOR = new Block<>(219, 5454, NamespacedKey.parse("minecraft:oak_door"), () -> new DoorData(Block.OAK_DOOR, 5454), () -> Item.OAK_DOOR);
 
-    public static final Block<WallSignData> BAMBOO_WALL_SIGN = new Block<>(220, 4930, NamespacedKey.parse("minecraft:bamboo_wall_sign"), () -> new WallSignData(Block.BAMBOO_WALL_SIGN, 4930), null);
+    public static final Block<LadderData> LADDER = new Block<>(220, 5518, NamespacedKey.parse("minecraft:ladder"), () -> new LadderData(Block.LADDER, 5518), () -> Item.LADDER);
 
-    public static final Block<CeilingHangingSignData> OAK_HANGING_SIGN = new Block<>(221, 4938, NamespacedKey.parse("minecraft:oak_hanging_sign"), () -> new CeilingHangingSignData(Block.OAK_HANGING_SIGN, 4938), () -> Item.OAK_HANGING_SIGN);
+    public static final Block<RailData> RAIL = new Block<>(221, 5526, NamespacedKey.parse("minecraft:rail"), () -> new RailData(Block.RAIL, 5526), () -> Item.RAIL);
 
-    public static final Block<CeilingHangingSignData> SPRUCE_HANGING_SIGN = new Block<>(222, 5002, NamespacedKey.parse("minecraft:spruce_hanging_sign"), () -> new CeilingHangingSignData(Block.SPRUCE_HANGING_SIGN, 5002), () -> Item.SPRUCE_HANGING_SIGN);
+    public static final Block<StairData> COBBLESTONE_STAIRS = new Block<>(222, 5546, NamespacedKey.parse("minecraft:cobblestone_stairs"), () -> new StairData(Block.COBBLESTONE_STAIRS, 5546), () -> Item.COBBLESTONE_STAIRS);
 
-    public static final Block<CeilingHangingSignData> BIRCH_HANGING_SIGN = new Block<>(223, 5066, NamespacedKey.parse("minecraft:birch_hanging_sign"), () -> new CeilingHangingSignData(Block.BIRCH_HANGING_SIGN, 5066), () -> Item.BIRCH_HANGING_SIGN);
+    public static final Block<WallSignData> OAK_WALL_SIGN = new Block<>(223, 5626, NamespacedKey.parse("minecraft:oak_wall_sign"), () -> new WallSignData(Block.OAK_WALL_SIGN, 5626), null);
 
-    public static final Block<CeilingHangingSignData> ACACIA_HANGING_SIGN = new Block<>(224, 5130, NamespacedKey.parse("minecraft:acacia_hanging_sign"), () -> new CeilingHangingSignData(Block.ACACIA_HANGING_SIGN, 5130), () -> Item.ACACIA_HANGING_SIGN);
+    public static final Block<WallSignData> SPRUCE_WALL_SIGN = new Block<>(224, 5634, NamespacedKey.parse("minecraft:spruce_wall_sign"), () -> new WallSignData(Block.SPRUCE_WALL_SIGN, 5634), null);
 
-    public static final Block<CeilingHangingSignData> CHERRY_HANGING_SIGN = new Block<>(225, 5194, NamespacedKey.parse("minecraft:cherry_hanging_sign"), () -> new CeilingHangingSignData(Block.CHERRY_HANGING_SIGN, 5194), () -> Item.CHERRY_HANGING_SIGN);
+    public static final Block<WallSignData> BIRCH_WALL_SIGN = new Block<>(225, 5642, NamespacedKey.parse("minecraft:birch_wall_sign"), () -> new WallSignData(Block.BIRCH_WALL_SIGN, 5642), null);
 
-    public static final Block<CeilingHangingSignData> JUNGLE_HANGING_SIGN = new Block<>(226, 5258, NamespacedKey.parse("minecraft:jungle_hanging_sign"), () -> new CeilingHangingSignData(Block.JUNGLE_HANGING_SIGN, 5258), () -> Item.JUNGLE_HANGING_SIGN);
+    public static final Block<WallSignData> ACACIA_WALL_SIGN = new Block<>(226, 5650, NamespacedKey.parse("minecraft:acacia_wall_sign"), () -> new WallSignData(Block.ACACIA_WALL_SIGN, 5650), null);
 
-    public static final Block<CeilingHangingSignData> DARK_OAK_HANGING_SIGN = new Block<>(227, 5322, NamespacedKey.parse("minecraft:dark_oak_hanging_sign"), () -> new CeilingHangingSignData(Block.DARK_OAK_HANGING_SIGN, 5322), () -> Item.DARK_OAK_HANGING_SIGN);
+    public static final Block<WallSignData> CHERRY_WALL_SIGN = new Block<>(227, 5658, NamespacedKey.parse("minecraft:cherry_wall_sign"), () -> new WallSignData(Block.CHERRY_WALL_SIGN, 5658), null);
 
-    public static final Block<CeilingHangingSignData> PALE_OAK_HANGING_SIGN = new Block<>(228, 5386, NamespacedKey.parse("minecraft:pale_oak_hanging_sign"), () -> new CeilingHangingSignData(Block.PALE_OAK_HANGING_SIGN, 5386), () -> Item.PALE_OAK_HANGING_SIGN);
+    public static final Block<WallSignData> JUNGLE_WALL_SIGN = new Block<>(228, 5666, NamespacedKey.parse("minecraft:jungle_wall_sign"), () -> new WallSignData(Block.JUNGLE_WALL_SIGN, 5666), null);
 
-    public static final Block<CeilingHangingSignData> CRIMSON_HANGING_SIGN = new Block<>(229, 5450, NamespacedKey.parse("minecraft:crimson_hanging_sign"), () -> new CeilingHangingSignData(Block.CRIMSON_HANGING_SIGN, 5450), () -> Item.CRIMSON_HANGING_SIGN);
+    public static final Block<WallSignData> DARK_OAK_WALL_SIGN = new Block<>(229, 5674, NamespacedKey.parse("minecraft:dark_oak_wall_sign"), () -> new WallSignData(Block.DARK_OAK_WALL_SIGN, 5674), null);
 
-    public static final Block<CeilingHangingSignData> WARPED_HANGING_SIGN = new Block<>(230, 5514, NamespacedKey.parse("minecraft:warped_hanging_sign"), () -> new CeilingHangingSignData(Block.WARPED_HANGING_SIGN, 5514), () -> Item.WARPED_HANGING_SIGN);
+    public static final Block<WallSignData> PALE_OAK_WALL_SIGN = new Block<>(230, 5682, NamespacedKey.parse("minecraft:pale_oak_wall_sign"), () -> new WallSignData(Block.PALE_OAK_WALL_SIGN, 5682), null);
 
-    public static final Block<CeilingHangingSignData> MANGROVE_HANGING_SIGN = new Block<>(231, 5578, NamespacedKey.parse("minecraft:mangrove_hanging_sign"), () -> new CeilingHangingSignData(Block.MANGROVE_HANGING_SIGN, 5578), () -> Item.MANGROVE_HANGING_SIGN);
+    public static final Block<WallSignData> MANGROVE_WALL_SIGN = new Block<>(231, 5690, NamespacedKey.parse("minecraft:mangrove_wall_sign"), () -> new WallSignData(Block.MANGROVE_WALL_SIGN, 5690), null);
 
-    public static final Block<CeilingHangingSignData> BAMBOO_HANGING_SIGN = new Block<>(232, 5642, NamespacedKey.parse("minecraft:bamboo_hanging_sign"), () -> new CeilingHangingSignData(Block.BAMBOO_HANGING_SIGN, 5642), () -> Item.BAMBOO_HANGING_SIGN);
+    public static final Block<WallSignData> BAMBOO_WALL_SIGN = new Block<>(232, 5698, NamespacedKey.parse("minecraft:bamboo_wall_sign"), () -> new WallSignData(Block.BAMBOO_WALL_SIGN, 5698), null);
 
-    public static final Block<WallHangingSignData> OAK_WALL_HANGING_SIGN = new Block<>(233, 5706, NamespacedKey.parse("minecraft:oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.OAK_WALL_HANGING_SIGN, 5706), null);
+    public static final Block<CeilingHangingSignData> OAK_HANGING_SIGN = new Block<>(233, 5706, NamespacedKey.parse("minecraft:oak_hanging_sign"), () -> new CeilingHangingSignData(Block.OAK_HANGING_SIGN, 5706), () -> Item.OAK_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> SPRUCE_WALL_HANGING_SIGN = new Block<>(234, 5714, NamespacedKey.parse("minecraft:spruce_wall_hanging_sign"), () -> new WallHangingSignData(Block.SPRUCE_WALL_HANGING_SIGN, 5714), null);
+    public static final Block<CeilingHangingSignData> SPRUCE_HANGING_SIGN = new Block<>(234, 5770, NamespacedKey.parse("minecraft:spruce_hanging_sign"), () -> new CeilingHangingSignData(Block.SPRUCE_HANGING_SIGN, 5770), () -> Item.SPRUCE_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> BIRCH_WALL_HANGING_SIGN = new Block<>(235, 5722, NamespacedKey.parse("minecraft:birch_wall_hanging_sign"), () -> new WallHangingSignData(Block.BIRCH_WALL_HANGING_SIGN, 5722), null);
+    public static final Block<CeilingHangingSignData> BIRCH_HANGING_SIGN = new Block<>(235, 5834, NamespacedKey.parse("minecraft:birch_hanging_sign"), () -> new CeilingHangingSignData(Block.BIRCH_HANGING_SIGN, 5834), () -> Item.BIRCH_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> ACACIA_WALL_HANGING_SIGN = new Block<>(236, 5730, NamespacedKey.parse("minecraft:acacia_wall_hanging_sign"), () -> new WallHangingSignData(Block.ACACIA_WALL_HANGING_SIGN, 5730), null);
+    public static final Block<CeilingHangingSignData> ACACIA_HANGING_SIGN = new Block<>(236, 5898, NamespacedKey.parse("minecraft:acacia_hanging_sign"), () -> new CeilingHangingSignData(Block.ACACIA_HANGING_SIGN, 5898), () -> Item.ACACIA_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> CHERRY_WALL_HANGING_SIGN = new Block<>(237, 5738, NamespacedKey.parse("minecraft:cherry_wall_hanging_sign"), () -> new WallHangingSignData(Block.CHERRY_WALL_HANGING_SIGN, 5738), null);
+    public static final Block<CeilingHangingSignData> CHERRY_HANGING_SIGN = new Block<>(237, 5962, NamespacedKey.parse("minecraft:cherry_hanging_sign"), () -> new CeilingHangingSignData(Block.CHERRY_HANGING_SIGN, 5962), () -> Item.CHERRY_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> JUNGLE_WALL_HANGING_SIGN = new Block<>(238, 5746, NamespacedKey.parse("minecraft:jungle_wall_hanging_sign"), () -> new WallHangingSignData(Block.JUNGLE_WALL_HANGING_SIGN, 5746), null);
+    public static final Block<CeilingHangingSignData> JUNGLE_HANGING_SIGN = new Block<>(238, 6026, NamespacedKey.parse("minecraft:jungle_hanging_sign"), () -> new CeilingHangingSignData(Block.JUNGLE_HANGING_SIGN, 6026), () -> Item.JUNGLE_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> DARK_OAK_WALL_HANGING_SIGN = new Block<>(239, 5754, NamespacedKey.parse("minecraft:dark_oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.DARK_OAK_WALL_HANGING_SIGN, 5754), null);
+    public static final Block<CeilingHangingSignData> DARK_OAK_HANGING_SIGN = new Block<>(239, 6090, NamespacedKey.parse("minecraft:dark_oak_hanging_sign"), () -> new CeilingHangingSignData(Block.DARK_OAK_HANGING_SIGN, 6090), () -> Item.DARK_OAK_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> PALE_OAK_WALL_HANGING_SIGN = new Block<>(240, 5762, NamespacedKey.parse("minecraft:pale_oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.PALE_OAK_WALL_HANGING_SIGN, 5762), null);
+    public static final Block<CeilingHangingSignData> PALE_OAK_HANGING_SIGN = new Block<>(240, 6154, NamespacedKey.parse("minecraft:pale_oak_hanging_sign"), () -> new CeilingHangingSignData(Block.PALE_OAK_HANGING_SIGN, 6154), () -> Item.PALE_OAK_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> MANGROVE_WALL_HANGING_SIGN = new Block<>(241, 5770, NamespacedKey.parse("minecraft:mangrove_wall_hanging_sign"), () -> new WallHangingSignData(Block.MANGROVE_WALL_HANGING_SIGN, 5770), null);
+    public static final Block<CeilingHangingSignData> CRIMSON_HANGING_SIGN = new Block<>(241, 6218, NamespacedKey.parse("minecraft:crimson_hanging_sign"), () -> new CeilingHangingSignData(Block.CRIMSON_HANGING_SIGN, 6218), () -> Item.CRIMSON_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> CRIMSON_WALL_HANGING_SIGN = new Block<>(242, 5778, NamespacedKey.parse("minecraft:crimson_wall_hanging_sign"), () -> new WallHangingSignData(Block.CRIMSON_WALL_HANGING_SIGN, 5778), null);
+    public static final Block<CeilingHangingSignData> WARPED_HANGING_SIGN = new Block<>(242, 6282, NamespacedKey.parse("minecraft:warped_hanging_sign"), () -> new CeilingHangingSignData(Block.WARPED_HANGING_SIGN, 6282), () -> Item.WARPED_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> WARPED_WALL_HANGING_SIGN = new Block<>(243, 5786, NamespacedKey.parse("minecraft:warped_wall_hanging_sign"), () -> new WallHangingSignData(Block.WARPED_WALL_HANGING_SIGN, 5786), null);
+    public static final Block<CeilingHangingSignData> MANGROVE_HANGING_SIGN = new Block<>(243, 6346, NamespacedKey.parse("minecraft:mangrove_hanging_sign"), () -> new CeilingHangingSignData(Block.MANGROVE_HANGING_SIGN, 6346), () -> Item.MANGROVE_HANGING_SIGN);
 
-    public static final Block<WallHangingSignData> BAMBOO_WALL_HANGING_SIGN = new Block<>(244, 5794, NamespacedKey.parse("minecraft:bamboo_wall_hanging_sign"), () -> new WallHangingSignData(Block.BAMBOO_WALL_HANGING_SIGN, 5794), null);
+    public static final Block<CeilingHangingSignData> BAMBOO_HANGING_SIGN = new Block<>(244, 6410, NamespacedKey.parse("minecraft:bamboo_hanging_sign"), () -> new CeilingHangingSignData(Block.BAMBOO_HANGING_SIGN, 6410), () -> Item.BAMBOO_HANGING_SIGN);
 
-    public static final Block<LeverData> LEVER = new Block<>(245, 5802, NamespacedKey.parse("minecraft:lever"), () -> new LeverData(Block.LEVER, 5802), () -> Item.LEVER);
+    public static final Block<WallHangingSignData> OAK_WALL_HANGING_SIGN = new Block<>(245, 6474, NamespacedKey.parse("minecraft:oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.OAK_WALL_HANGING_SIGN, 6474), null);
 
-    public static final Block<PressurePlateData> STONE_PRESSURE_PLATE = new Block<>(246, 5826, NamespacedKey.parse("minecraft:stone_pressure_plate"), () -> new PressurePlateData(Block.STONE_PRESSURE_PLATE, 5826), () -> Item.STONE_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> SPRUCE_WALL_HANGING_SIGN = new Block<>(246, 6482, NamespacedKey.parse("minecraft:spruce_wall_hanging_sign"), () -> new WallHangingSignData(Block.SPRUCE_WALL_HANGING_SIGN, 6482), null);
 
-    public static final Block<DoorData> IRON_DOOR = new Block<>(247, 5828, NamespacedKey.parse("minecraft:iron_door"), () -> new DoorData(Block.IRON_DOOR, 5828), () -> Item.IRON_DOOR);
+    public static final Block<WallHangingSignData> BIRCH_WALL_HANGING_SIGN = new Block<>(247, 6490, NamespacedKey.parse("minecraft:birch_wall_hanging_sign"), () -> new WallHangingSignData(Block.BIRCH_WALL_HANGING_SIGN, 6490), null);
 
-    public static final Block<PressurePlateData> OAK_PRESSURE_PLATE = new Block<>(248, 5892, NamespacedKey.parse("minecraft:oak_pressure_plate"), () -> new PressurePlateData(Block.OAK_PRESSURE_PLATE, 5892), () -> Item.OAK_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> ACACIA_WALL_HANGING_SIGN = new Block<>(248, 6498, NamespacedKey.parse("minecraft:acacia_wall_hanging_sign"), () -> new WallHangingSignData(Block.ACACIA_WALL_HANGING_SIGN, 6498), null);
 
-    public static final Block<PressurePlateData> SPRUCE_PRESSURE_PLATE = new Block<>(249, 5894, NamespacedKey.parse("minecraft:spruce_pressure_plate"), () -> new PressurePlateData(Block.SPRUCE_PRESSURE_PLATE, 5894), () -> Item.SPRUCE_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> CHERRY_WALL_HANGING_SIGN = new Block<>(249, 6506, NamespacedKey.parse("minecraft:cherry_wall_hanging_sign"), () -> new WallHangingSignData(Block.CHERRY_WALL_HANGING_SIGN, 6506), null);
 
-    public static final Block<PressurePlateData> BIRCH_PRESSURE_PLATE = new Block<>(250, 5896, NamespacedKey.parse("minecraft:birch_pressure_plate"), () -> new PressurePlateData(Block.BIRCH_PRESSURE_PLATE, 5896), () -> Item.BIRCH_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> JUNGLE_WALL_HANGING_SIGN = new Block<>(250, 6514, NamespacedKey.parse("minecraft:jungle_wall_hanging_sign"), () -> new WallHangingSignData(Block.JUNGLE_WALL_HANGING_SIGN, 6514), null);
 
-    public static final Block<PressurePlateData> JUNGLE_PRESSURE_PLATE = new Block<>(251, 5898, NamespacedKey.parse("minecraft:jungle_pressure_plate"), () -> new PressurePlateData(Block.JUNGLE_PRESSURE_PLATE, 5898), () -> Item.JUNGLE_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> DARK_OAK_WALL_HANGING_SIGN = new Block<>(251, 6522, NamespacedKey.parse("minecraft:dark_oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.DARK_OAK_WALL_HANGING_SIGN, 6522), null);
 
-    public static final Block<PressurePlateData> ACACIA_PRESSURE_PLATE = new Block<>(252, 5900, NamespacedKey.parse("minecraft:acacia_pressure_plate"), () -> new PressurePlateData(Block.ACACIA_PRESSURE_PLATE, 5900), () -> Item.ACACIA_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> PALE_OAK_WALL_HANGING_SIGN = new Block<>(252, 6530, NamespacedKey.parse("minecraft:pale_oak_wall_hanging_sign"), () -> new WallHangingSignData(Block.PALE_OAK_WALL_HANGING_SIGN, 6530), null);
 
-    public static final Block<PressurePlateData> CHERRY_PRESSURE_PLATE = new Block<>(253, 5902, NamespacedKey.parse("minecraft:cherry_pressure_plate"), () -> new PressurePlateData(Block.CHERRY_PRESSURE_PLATE, 5902), () -> Item.CHERRY_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> MANGROVE_WALL_HANGING_SIGN = new Block<>(253, 6538, NamespacedKey.parse("minecraft:mangrove_wall_hanging_sign"), () -> new WallHangingSignData(Block.MANGROVE_WALL_HANGING_SIGN, 6538), null);
 
-    public static final Block<PressurePlateData> DARK_OAK_PRESSURE_PLATE = new Block<>(254, 5904, NamespacedKey.parse("minecraft:dark_oak_pressure_plate"), () -> new PressurePlateData(Block.DARK_OAK_PRESSURE_PLATE, 5904), () -> Item.DARK_OAK_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> CRIMSON_WALL_HANGING_SIGN = new Block<>(254, 6546, NamespacedKey.parse("minecraft:crimson_wall_hanging_sign"), () -> new WallHangingSignData(Block.CRIMSON_WALL_HANGING_SIGN, 6546), null);
 
-    public static final Block<PressurePlateData> PALE_OAK_PRESSURE_PLATE = new Block<>(255, 5906, NamespacedKey.parse("minecraft:pale_oak_pressure_plate"), () -> new PressurePlateData(Block.PALE_OAK_PRESSURE_PLATE, 5906), () -> Item.PALE_OAK_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> WARPED_WALL_HANGING_SIGN = new Block<>(255, 6554, NamespacedKey.parse("minecraft:warped_wall_hanging_sign"), () -> new WallHangingSignData(Block.WARPED_WALL_HANGING_SIGN, 6554), null);
 
-    public static final Block<PressurePlateData> MANGROVE_PRESSURE_PLATE = new Block<>(256, 5908, NamespacedKey.parse("minecraft:mangrove_pressure_plate"), () -> new PressurePlateData(Block.MANGROVE_PRESSURE_PLATE, 5908), () -> Item.MANGROVE_PRESSURE_PLATE);
+    public static final Block<WallHangingSignData> BAMBOO_WALL_HANGING_SIGN = new Block<>(256, 6562, NamespacedKey.parse("minecraft:bamboo_wall_hanging_sign"), () -> new WallHangingSignData(Block.BAMBOO_WALL_HANGING_SIGN, 6562), null);
 
-    public static final Block<PressurePlateData> BAMBOO_PRESSURE_PLATE = new Block<>(257, 5910, NamespacedKey.parse("minecraft:bamboo_pressure_plate"), () -> new PressurePlateData(Block.BAMBOO_PRESSURE_PLATE, 5910), () -> Item.BAMBOO_PRESSURE_PLATE);
+    public static final Block<LeverData> LEVER = new Block<>(257, 6570, NamespacedKey.parse("minecraft:lever"), () -> new LeverData(Block.LEVER, 6570), () -> Item.LEVER);
 
-    public static final Block<RedstoneOreData> REDSTONE_ORE = new Block<>(258, 5912, NamespacedKey.parse("minecraft:redstone_ore"), () -> new RedstoneOreData(Block.REDSTONE_ORE, 5912), () -> Item.REDSTONE_ORE);
+    public static final Block<PressurePlateData> STONE_PRESSURE_PLATE = new Block<>(258, 6594, NamespacedKey.parse("minecraft:stone_pressure_plate"), () -> new PressurePlateData(Block.STONE_PRESSURE_PLATE, 6594), () -> Item.STONE_PRESSURE_PLATE);
 
-    public static final Block<RedstoneOreData> DEEPSLATE_REDSTONE_ORE = new Block<>(259, 5914, NamespacedKey.parse("minecraft:deepslate_redstone_ore"), () -> new RedstoneOreData(Block.DEEPSLATE_REDSTONE_ORE, 5914), () -> Item.DEEPSLATE_REDSTONE_ORE);
+    public static final Block<DoorData> IRON_DOOR = new Block<>(259, 6596, NamespacedKey.parse("minecraft:iron_door"), () -> new DoorData(Block.IRON_DOOR, 6596), () -> Item.IRON_DOOR);
 
-    public static final Block<RedstoneTorchData> REDSTONE_TORCH = new Block<>(260, 5916, NamespacedKey.parse("minecraft:redstone_torch"), () -> new RedstoneTorchData(Block.REDSTONE_TORCH, 5916), () -> Item.REDSTONE_TORCH);
+    public static final Block<PressurePlateData> OAK_PRESSURE_PLATE = new Block<>(260, 6660, NamespacedKey.parse("minecraft:oak_pressure_plate"), () -> new PressurePlateData(Block.OAK_PRESSURE_PLATE, 6660), () -> Item.OAK_PRESSURE_PLATE);
 
-    public static final Block<RedstoneWallTorchData> REDSTONE_WALL_TORCH = new Block<>(261, 5918, NamespacedKey.parse("minecraft:redstone_wall_torch"), () -> new RedstoneWallTorchData(Block.REDSTONE_WALL_TORCH, 5918), null);
+    public static final Block<PressurePlateData> SPRUCE_PRESSURE_PLATE = new Block<>(261, 6662, NamespacedKey.parse("minecraft:spruce_pressure_plate"), () -> new PressurePlateData(Block.SPRUCE_PRESSURE_PLATE, 6662), () -> Item.SPRUCE_PRESSURE_PLATE);
 
-    public static final Block<ButtonData> STONE_BUTTON = new Block<>(262, 5926, NamespacedKey.parse("minecraft:stone_button"), () -> new ButtonData(Block.STONE_BUTTON, 5926), () -> Item.STONE_BUTTON);
+    public static final Block<PressurePlateData> BIRCH_PRESSURE_PLATE = new Block<>(262, 6664, NamespacedKey.parse("minecraft:birch_pressure_plate"), () -> new PressurePlateData(Block.BIRCH_PRESSURE_PLATE, 6664), () -> Item.BIRCH_PRESSURE_PLATE);
 
-    public static final Block<SnowLayerData> SNOW = new Block<>(263, 5950, NamespacedKey.parse("minecraft:snow"), () -> new SnowLayerData(Block.SNOW, 5950), () -> Item.SNOW);
+    public static final Block<PressurePlateData> JUNGLE_PRESSURE_PLATE = new Block<>(263, 6666, NamespacedKey.parse("minecraft:jungle_pressure_plate"), () -> new PressurePlateData(Block.JUNGLE_PRESSURE_PLATE, 6666), () -> Item.JUNGLE_PRESSURE_PLATE);
 
-    public static final Block<BlockData> ICE = new Block<>(264, 5958, NamespacedKey.parse("minecraft:ice"), () -> new BlockData(Block.ICE, 5958), () -> Item.ICE);
+    public static final Block<PressurePlateData> ACACIA_PRESSURE_PLATE = new Block<>(264, 6668, NamespacedKey.parse("minecraft:acacia_pressure_plate"), () -> new PressurePlateData(Block.ACACIA_PRESSURE_PLATE, 6668), () -> Item.ACACIA_PRESSURE_PLATE);
 
-    public static final Block<BlockData> SNOW_BLOCK = new Block<>(265, 5959, NamespacedKey.parse("minecraft:snow_block"), () -> new BlockData(Block.SNOW_BLOCK, 5959), () -> Item.SNOW_BLOCK);
+    public static final Block<PressurePlateData> CHERRY_PRESSURE_PLATE = new Block<>(265, 6670, NamespacedKey.parse("minecraft:cherry_pressure_plate"), () -> new PressurePlateData(Block.CHERRY_PRESSURE_PLATE, 6670), () -> Item.CHERRY_PRESSURE_PLATE);
 
-    public static final Block<CactusData> CACTUS = new Block<>(266, 5960, NamespacedKey.parse("minecraft:cactus"), () -> new CactusData(Block.CACTUS, 5960), () -> Item.CACTUS);
+    public static final Block<PressurePlateData> DARK_OAK_PRESSURE_PLATE = new Block<>(266, 6672, NamespacedKey.parse("minecraft:dark_oak_pressure_plate"), () -> new PressurePlateData(Block.DARK_OAK_PRESSURE_PLATE, 6672), () -> Item.DARK_OAK_PRESSURE_PLATE);
 
-    public static final Block<BlockData> CACTUS_FLOWER = new Block<>(267, 5976, NamespacedKey.parse("minecraft:cactus_flower"), () -> new BlockData(Block.CACTUS_FLOWER, 5976), () -> Item.CACTUS_FLOWER);
+    public static final Block<PressurePlateData> PALE_OAK_PRESSURE_PLATE = new Block<>(267, 6674, NamespacedKey.parse("minecraft:pale_oak_pressure_plate"), () -> new PressurePlateData(Block.PALE_OAK_PRESSURE_PLATE, 6674), () -> Item.PALE_OAK_PRESSURE_PLATE);
 
-    public static final Block<BlockData> CLAY = new Block<>(268, 5977, NamespacedKey.parse("minecraft:clay"), () -> new BlockData(Block.CLAY, 5977), () -> Item.CLAY);
+    public static final Block<PressurePlateData> MANGROVE_PRESSURE_PLATE = new Block<>(268, 6676, NamespacedKey.parse("minecraft:mangrove_pressure_plate"), () -> new PressurePlateData(Block.MANGROVE_PRESSURE_PLATE, 6676), () -> Item.MANGROVE_PRESSURE_PLATE);
 
-    public static final Block<SugarCaneData> SUGAR_CANE = new Block<>(269, 5978, NamespacedKey.parse("minecraft:sugar_cane"), () -> new SugarCaneData(Block.SUGAR_CANE, 5978), () -> Item.SUGAR_CANE);
+    public static final Block<PressurePlateData> BAMBOO_PRESSURE_PLATE = new Block<>(269, 6678, NamespacedKey.parse("minecraft:bamboo_pressure_plate"), () -> new PressurePlateData(Block.BAMBOO_PRESSURE_PLATE, 6678), () -> Item.BAMBOO_PRESSURE_PLATE);
 
-    public static final Block<JukeboxData> JUKEBOX = new Block<>(270, 5994, NamespacedKey.parse("minecraft:jukebox"), () -> new JukeboxData(Block.JUKEBOX, 5994), () -> Item.JUKEBOX);
+    public static final Block<RedstoneOreData> REDSTONE_ORE = new Block<>(270, 6680, NamespacedKey.parse("minecraft:redstone_ore"), () -> new RedstoneOreData(Block.REDSTONE_ORE, 6680), () -> Item.REDSTONE_ORE);
 
-    public static final Block<FenceData> OAK_FENCE = new Block<>(271, 5996, NamespacedKey.parse("minecraft:oak_fence"), () -> new FenceData(Block.OAK_FENCE, 5996), () -> Item.OAK_FENCE);
+    public static final Block<RedstoneOreData> DEEPSLATE_REDSTONE_ORE = new Block<>(271, 6682, NamespacedKey.parse("minecraft:deepslate_redstone_ore"), () -> new RedstoneOreData(Block.DEEPSLATE_REDSTONE_ORE, 6682), () -> Item.DEEPSLATE_REDSTONE_ORE);
 
-    public static final Block<BlockData> NETHERRACK = new Block<>(272, 6028, NamespacedKey.parse("minecraft:netherrack"), () -> new BlockData(Block.NETHERRACK, 6028), () -> Item.NETHERRACK);
+    public static final Block<RedstoneTorchData> REDSTONE_TORCH = new Block<>(272, 6684, NamespacedKey.parse("minecraft:redstone_torch"), () -> new RedstoneTorchData(Block.REDSTONE_TORCH, 6684), () -> Item.REDSTONE_TORCH);
 
-    public static final Block<BlockData> SOUL_SAND = new Block<>(273, 6029, NamespacedKey.parse("minecraft:soul_sand"), () -> new BlockData(Block.SOUL_SAND, 6029), () -> Item.SOUL_SAND);
+    public static final Block<RedstoneWallTorchData> REDSTONE_WALL_TORCH = new Block<>(273, 6686, NamespacedKey.parse("minecraft:redstone_wall_torch"), () -> new RedstoneWallTorchData(Block.REDSTONE_WALL_TORCH, 6686), null);
 
-    public static final Block<BlockData> SOUL_SOIL = new Block<>(274, 6030, NamespacedKey.parse("minecraft:soul_soil"), () -> new BlockData(Block.SOUL_SOIL, 6030), () -> Item.SOUL_SOIL);
+    public static final Block<ButtonData> STONE_BUTTON = new Block<>(274, 6694, NamespacedKey.parse("minecraft:stone_button"), () -> new ButtonData(Block.STONE_BUTTON, 6694), () -> Item.STONE_BUTTON);
 
-    public static final Block<RotatedPillarData> BASALT = new Block<>(275, 6031, NamespacedKey.parse("minecraft:basalt"), () -> new RotatedPillarData(Block.BASALT, 6031), () -> Item.BASALT);
+    public static final Block<SnowLayerData> SNOW = new Block<>(275, 6718, NamespacedKey.parse("minecraft:snow"), () -> new SnowLayerData(Block.SNOW, 6718), () -> Item.SNOW);
 
-    public static final Block<RotatedPillarData> POLISHED_BASALT = new Block<>(276, 6034, NamespacedKey.parse("minecraft:polished_basalt"), () -> new RotatedPillarData(Block.POLISHED_BASALT, 6034), () -> Item.POLISHED_BASALT);
+    public static final Block<BlockData> ICE = new Block<>(276, 6726, NamespacedKey.parse("minecraft:ice"), () -> new BlockData(Block.ICE, 6726), () -> Item.ICE);
 
-    public static final Block<BlockData> SOUL_TORCH = new Block<>(277, 6037, NamespacedKey.parse("minecraft:soul_torch"), () -> new BlockData(Block.SOUL_TORCH, 6037), () -> Item.SOUL_TORCH);
+    public static final Block<BlockData> SNOW_BLOCK = new Block<>(277, 6727, NamespacedKey.parse("minecraft:snow_block"), () -> new BlockData(Block.SNOW_BLOCK, 6727), () -> Item.SNOW_BLOCK);
 
-    public static final Block<WallTorchData> SOUL_WALL_TORCH = new Block<>(278, 6038, NamespacedKey.parse("minecraft:soul_wall_torch"), () -> new WallTorchData(Block.SOUL_WALL_TORCH, 6038), null);
+    public static final Block<CactusData> CACTUS = new Block<>(278, 6728, NamespacedKey.parse("minecraft:cactus"), () -> new CactusData(Block.CACTUS, 6728), () -> Item.CACTUS);
 
-    public static final Block<BlockData> GLOWSTONE = new Block<>(279, 6042, NamespacedKey.parse("minecraft:glowstone"), () -> new BlockData(Block.GLOWSTONE, 6042), () -> Item.GLOWSTONE);
+    public static final Block<BlockData> CACTUS_FLOWER = new Block<>(279, 6744, NamespacedKey.parse("minecraft:cactus_flower"), () -> new BlockData(Block.CACTUS_FLOWER, 6744), () -> Item.CACTUS_FLOWER);
 
-    public static final Block<NetherPortalData> NETHER_PORTAL = new Block<>(280, 6043, NamespacedKey.parse("minecraft:nether_portal"), () -> new NetherPortalData(Block.NETHER_PORTAL, 6043), null);
+    public static final Block<BlockData> CLAY = new Block<>(280, 6745, NamespacedKey.parse("minecraft:clay"), () -> new BlockData(Block.CLAY, 6745), () -> Item.CLAY);
 
-    public static final Block<JackOLanternData> CARVED_PUMPKIN = new Block<>(281, 6045, NamespacedKey.parse("minecraft:carved_pumpkin"), () -> new JackOLanternData(Block.CARVED_PUMPKIN, 6045), () -> Item.CARVED_PUMPKIN);
+    public static final Block<SugarCaneData> SUGAR_CANE = new Block<>(281, 6746, NamespacedKey.parse("minecraft:sugar_cane"), () -> new SugarCaneData(Block.SUGAR_CANE, 6746), () -> Item.SUGAR_CANE);
 
-    public static final Block<JackOLanternData> JACK_O_LANTERN = new Block<>(282, 6049, NamespacedKey.parse("minecraft:jack_o_lantern"), () -> new JackOLanternData(Block.JACK_O_LANTERN, 6049), () -> Item.JACK_O_LANTERN);
+    public static final Block<JukeboxData> JUKEBOX = new Block<>(282, 6762, NamespacedKey.parse("minecraft:jukebox"), () -> new JukeboxData(Block.JUKEBOX, 6762), () -> Item.JUKEBOX);
 
-    public static final Block<CakeData> CAKE = new Block<>(283, 6053, NamespacedKey.parse("minecraft:cake"), () -> new CakeData(Block.CAKE, 6053), () -> Item.CAKE);
+    public static final Block<FenceData> OAK_FENCE = new Block<>(283, 6764, NamespacedKey.parse("minecraft:oak_fence"), () -> new FenceData(Block.OAK_FENCE, 6764), () -> Item.OAK_FENCE);
 
-    public static final Block<RepeaterData> REPEATER = new Block<>(284, 6060, NamespacedKey.parse("minecraft:repeater"), () -> new RepeaterData(Block.REPEATER, 6060), () -> Item.REPEATER);
+    public static final Block<BlockData> NETHERRACK = new Block<>(284, 6796, NamespacedKey.parse("minecraft:netherrack"), () -> new BlockData(Block.NETHERRACK, 6796), () -> Item.NETHERRACK);
 
-    public static final Block<BlockData> WHITE_STAINED_GLASS = new Block<>(285, 6124, NamespacedKey.parse("minecraft:white_stained_glass"), () -> new BlockData(Block.WHITE_STAINED_GLASS, 6124), () -> Item.WHITE_STAINED_GLASS);
+    public static final Block<BlockData> SOUL_SAND = new Block<>(285, 6797, NamespacedKey.parse("minecraft:soul_sand"), () -> new BlockData(Block.SOUL_SAND, 6797), () -> Item.SOUL_SAND);
 
-    public static final Block<BlockData> ORANGE_STAINED_GLASS = new Block<>(286, 6125, NamespacedKey.parse("minecraft:orange_stained_glass"), () -> new BlockData(Block.ORANGE_STAINED_GLASS, 6125), () -> Item.ORANGE_STAINED_GLASS);
+    public static final Block<BlockData> SOUL_SOIL = new Block<>(286, 6798, NamespacedKey.parse("minecraft:soul_soil"), () -> new BlockData(Block.SOUL_SOIL, 6798), () -> Item.SOUL_SOIL);
 
-    public static final Block<BlockData> MAGENTA_STAINED_GLASS = new Block<>(287, 6126, NamespacedKey.parse("minecraft:magenta_stained_glass"), () -> new BlockData(Block.MAGENTA_STAINED_GLASS, 6126), () -> Item.MAGENTA_STAINED_GLASS);
+    public static final Block<RotatedPillarData> BASALT = new Block<>(287, 6799, NamespacedKey.parse("minecraft:basalt"), () -> new RotatedPillarData(Block.BASALT, 6799), () -> Item.BASALT);
 
-    public static final Block<BlockData> LIGHT_BLUE_STAINED_GLASS = new Block<>(288, 6127, NamespacedKey.parse("minecraft:light_blue_stained_glass"), () -> new BlockData(Block.LIGHT_BLUE_STAINED_GLASS, 6127), () -> Item.LIGHT_BLUE_STAINED_GLASS);
+    public static final Block<RotatedPillarData> POLISHED_BASALT = new Block<>(288, 6802, NamespacedKey.parse("minecraft:polished_basalt"), () -> new RotatedPillarData(Block.POLISHED_BASALT, 6802), () -> Item.POLISHED_BASALT);
 
-    public static final Block<BlockData> YELLOW_STAINED_GLASS = new Block<>(289, 6128, NamespacedKey.parse("minecraft:yellow_stained_glass"), () -> new BlockData(Block.YELLOW_STAINED_GLASS, 6128), () -> Item.YELLOW_STAINED_GLASS);
+    public static final Block<BlockData> SOUL_TORCH = new Block<>(289, 6805, NamespacedKey.parse("minecraft:soul_torch"), () -> new BlockData(Block.SOUL_TORCH, 6805), () -> Item.SOUL_TORCH);
 
-    public static final Block<BlockData> LIME_STAINED_GLASS = new Block<>(290, 6129, NamespacedKey.parse("minecraft:lime_stained_glass"), () -> new BlockData(Block.LIME_STAINED_GLASS, 6129), () -> Item.LIME_STAINED_GLASS);
+    public static final Block<WallTorchData> SOUL_WALL_TORCH = new Block<>(290, 6806, NamespacedKey.parse("minecraft:soul_wall_torch"), () -> new WallTorchData(Block.SOUL_WALL_TORCH, 6806), null);
 
-    public static final Block<BlockData> PINK_STAINED_GLASS = new Block<>(291, 6130, NamespacedKey.parse("minecraft:pink_stained_glass"), () -> new BlockData(Block.PINK_STAINED_GLASS, 6130), () -> Item.PINK_STAINED_GLASS);
+    public static final Block<BlockData> COPPER_TORCH = new Block<>(291, 6810, NamespacedKey.parse("minecraft:copper_torch"), () -> new BlockData(Block.COPPER_TORCH, 6810), () -> Item.COPPER_TORCH);
 
-    public static final Block<BlockData> GRAY_STAINED_GLASS = new Block<>(292, 6131, NamespacedKey.parse("minecraft:gray_stained_glass"), () -> new BlockData(Block.GRAY_STAINED_GLASS, 6131), () -> Item.GRAY_STAINED_GLASS);
+    public static final Block<WallTorchData> COPPER_WALL_TORCH = new Block<>(292, 6811, NamespacedKey.parse("minecraft:copper_wall_torch"), () -> new WallTorchData(Block.COPPER_WALL_TORCH, 6811), null);
 
-    public static final Block<BlockData> LIGHT_GRAY_STAINED_GLASS = new Block<>(293, 6132, NamespacedKey.parse("minecraft:light_gray_stained_glass"), () -> new BlockData(Block.LIGHT_GRAY_STAINED_GLASS, 6132), () -> Item.LIGHT_GRAY_STAINED_GLASS);
+    public static final Block<BlockData> GLOWSTONE = new Block<>(293, 6815, NamespacedKey.parse("minecraft:glowstone"), () -> new BlockData(Block.GLOWSTONE, 6815), () -> Item.GLOWSTONE);
 
-    public static final Block<BlockData> CYAN_STAINED_GLASS = new Block<>(294, 6133, NamespacedKey.parse("minecraft:cyan_stained_glass"), () -> new BlockData(Block.CYAN_STAINED_GLASS, 6133), () -> Item.CYAN_STAINED_GLASS);
+    public static final Block<NetherPortalData> NETHER_PORTAL = new Block<>(294, 6816, NamespacedKey.parse("minecraft:nether_portal"), () -> new NetherPortalData(Block.NETHER_PORTAL, 6816), null);
 
-    public static final Block<BlockData> PURPLE_STAINED_GLASS = new Block<>(295, 6134, NamespacedKey.parse("minecraft:purple_stained_glass"), () -> new BlockData(Block.PURPLE_STAINED_GLASS, 6134), () -> Item.PURPLE_STAINED_GLASS);
+    public static final Block<JackOLanternData> CARVED_PUMPKIN = new Block<>(295, 6818, NamespacedKey.parse("minecraft:carved_pumpkin"), () -> new JackOLanternData(Block.CARVED_PUMPKIN, 6818), () -> Item.CARVED_PUMPKIN);
 
-    public static final Block<BlockData> BLUE_STAINED_GLASS = new Block<>(296, 6135, NamespacedKey.parse("minecraft:blue_stained_glass"), () -> new BlockData(Block.BLUE_STAINED_GLASS, 6135), () -> Item.BLUE_STAINED_GLASS);
+    public static final Block<JackOLanternData> JACK_O_LANTERN = new Block<>(296, 6822, NamespacedKey.parse("minecraft:jack_o_lantern"), () -> new JackOLanternData(Block.JACK_O_LANTERN, 6822), () -> Item.JACK_O_LANTERN);
 
-    public static final Block<BlockData> BROWN_STAINED_GLASS = new Block<>(297, 6136, NamespacedKey.parse("minecraft:brown_stained_glass"), () -> new BlockData(Block.BROWN_STAINED_GLASS, 6136), () -> Item.BROWN_STAINED_GLASS);
+    public static final Block<CakeData> CAKE = new Block<>(297, 6826, NamespacedKey.parse("minecraft:cake"), () -> new CakeData(Block.CAKE, 6826), () -> Item.CAKE);
 
-    public static final Block<BlockData> GREEN_STAINED_GLASS = new Block<>(298, 6137, NamespacedKey.parse("minecraft:green_stained_glass"), () -> new BlockData(Block.GREEN_STAINED_GLASS, 6137), () -> Item.GREEN_STAINED_GLASS);
+    public static final Block<RepeaterData> REPEATER = new Block<>(298, 6833, NamespacedKey.parse("minecraft:repeater"), () -> new RepeaterData(Block.REPEATER, 6833), () -> Item.REPEATER);
 
-    public static final Block<BlockData> RED_STAINED_GLASS = new Block<>(299, 6138, NamespacedKey.parse("minecraft:red_stained_glass"), () -> new BlockData(Block.RED_STAINED_GLASS, 6138), () -> Item.RED_STAINED_GLASS);
+    public static final Block<BlockData> WHITE_STAINED_GLASS = new Block<>(299, 6897, NamespacedKey.parse("minecraft:white_stained_glass"), () -> new BlockData(Block.WHITE_STAINED_GLASS, 6897), () -> Item.WHITE_STAINED_GLASS);
 
-    public static final Block<BlockData> BLACK_STAINED_GLASS = new Block<>(300, 6139, NamespacedKey.parse("minecraft:black_stained_glass"), () -> new BlockData(Block.BLACK_STAINED_GLASS, 6139), () -> Item.BLACK_STAINED_GLASS);
+    public static final Block<BlockData> ORANGE_STAINED_GLASS = new Block<>(300, 6898, NamespacedKey.parse("minecraft:orange_stained_glass"), () -> new BlockData(Block.ORANGE_STAINED_GLASS, 6898), () -> Item.ORANGE_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> OAK_TRAPDOOR = new Block<>(301, 6140, NamespacedKey.parse("minecraft:oak_trapdoor"), () -> new TrapdoorData(Block.OAK_TRAPDOOR, 6140), () -> Item.OAK_TRAPDOOR);
+    public static final Block<BlockData> MAGENTA_STAINED_GLASS = new Block<>(301, 6899, NamespacedKey.parse("minecraft:magenta_stained_glass"), () -> new BlockData(Block.MAGENTA_STAINED_GLASS, 6899), () -> Item.MAGENTA_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> SPRUCE_TRAPDOOR = new Block<>(302, 6204, NamespacedKey.parse("minecraft:spruce_trapdoor"), () -> new TrapdoorData(Block.SPRUCE_TRAPDOOR, 6204), () -> Item.SPRUCE_TRAPDOOR);
+    public static final Block<BlockData> LIGHT_BLUE_STAINED_GLASS = new Block<>(302, 6900, NamespacedKey.parse("minecraft:light_blue_stained_glass"), () -> new BlockData(Block.LIGHT_BLUE_STAINED_GLASS, 6900), () -> Item.LIGHT_BLUE_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> BIRCH_TRAPDOOR = new Block<>(303, 6268, NamespacedKey.parse("minecraft:birch_trapdoor"), () -> new TrapdoorData(Block.BIRCH_TRAPDOOR, 6268), () -> Item.BIRCH_TRAPDOOR);
+    public static final Block<BlockData> YELLOW_STAINED_GLASS = new Block<>(303, 6901, NamespacedKey.parse("minecraft:yellow_stained_glass"), () -> new BlockData(Block.YELLOW_STAINED_GLASS, 6901), () -> Item.YELLOW_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> JUNGLE_TRAPDOOR = new Block<>(304, 6332, NamespacedKey.parse("minecraft:jungle_trapdoor"), () -> new TrapdoorData(Block.JUNGLE_TRAPDOOR, 6332), () -> Item.JUNGLE_TRAPDOOR);
+    public static final Block<BlockData> LIME_STAINED_GLASS = new Block<>(304, 6902, NamespacedKey.parse("minecraft:lime_stained_glass"), () -> new BlockData(Block.LIME_STAINED_GLASS, 6902), () -> Item.LIME_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> ACACIA_TRAPDOOR = new Block<>(305, 6396, NamespacedKey.parse("minecraft:acacia_trapdoor"), () -> new TrapdoorData(Block.ACACIA_TRAPDOOR, 6396), () -> Item.ACACIA_TRAPDOOR);
+    public static final Block<BlockData> PINK_STAINED_GLASS = new Block<>(305, 6903, NamespacedKey.parse("minecraft:pink_stained_glass"), () -> new BlockData(Block.PINK_STAINED_GLASS, 6903), () -> Item.PINK_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> CHERRY_TRAPDOOR = new Block<>(306, 6460, NamespacedKey.parse("minecraft:cherry_trapdoor"), () -> new TrapdoorData(Block.CHERRY_TRAPDOOR, 6460), () -> Item.CHERRY_TRAPDOOR);
+    public static final Block<BlockData> GRAY_STAINED_GLASS = new Block<>(306, 6904, NamespacedKey.parse("minecraft:gray_stained_glass"), () -> new BlockData(Block.GRAY_STAINED_GLASS, 6904), () -> Item.GRAY_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> DARK_OAK_TRAPDOOR = new Block<>(307, 6524, NamespacedKey.parse("minecraft:dark_oak_trapdoor"), () -> new TrapdoorData(Block.DARK_OAK_TRAPDOOR, 6524), () -> Item.DARK_OAK_TRAPDOOR);
+    public static final Block<BlockData> LIGHT_GRAY_STAINED_GLASS = new Block<>(307, 6905, NamespacedKey.parse("minecraft:light_gray_stained_glass"), () -> new BlockData(Block.LIGHT_GRAY_STAINED_GLASS, 6905), () -> Item.LIGHT_GRAY_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> PALE_OAK_TRAPDOOR = new Block<>(308, 6588, NamespacedKey.parse("minecraft:pale_oak_trapdoor"), () -> new TrapdoorData(Block.PALE_OAK_TRAPDOOR, 6588), () -> Item.PALE_OAK_TRAPDOOR);
+    public static final Block<BlockData> CYAN_STAINED_GLASS = new Block<>(308, 6906, NamespacedKey.parse("minecraft:cyan_stained_glass"), () -> new BlockData(Block.CYAN_STAINED_GLASS, 6906), () -> Item.CYAN_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> MANGROVE_TRAPDOOR = new Block<>(309, 6652, NamespacedKey.parse("minecraft:mangrove_trapdoor"), () -> new TrapdoorData(Block.MANGROVE_TRAPDOOR, 6652), () -> Item.MANGROVE_TRAPDOOR);
+    public static final Block<BlockData> PURPLE_STAINED_GLASS = new Block<>(309, 6907, NamespacedKey.parse("minecraft:purple_stained_glass"), () -> new BlockData(Block.PURPLE_STAINED_GLASS, 6907), () -> Item.PURPLE_STAINED_GLASS);
 
-    public static final Block<TrapdoorData> BAMBOO_TRAPDOOR = new Block<>(310, 6716, NamespacedKey.parse("minecraft:bamboo_trapdoor"), () -> new TrapdoorData(Block.BAMBOO_TRAPDOOR, 6716), () -> Item.BAMBOO_TRAPDOOR);
+    public static final Block<BlockData> BLUE_STAINED_GLASS = new Block<>(310, 6908, NamespacedKey.parse("minecraft:blue_stained_glass"), () -> new BlockData(Block.BLUE_STAINED_GLASS, 6908), () -> Item.BLUE_STAINED_GLASS);
 
-    public static final Block<BlockData> STONE_BRICKS = new Block<>(311, 6780, NamespacedKey.parse("minecraft:stone_bricks"), () -> new BlockData(Block.STONE_BRICKS, 6780), () -> Item.STONE_BRICKS);
+    public static final Block<BlockData> BROWN_STAINED_GLASS = new Block<>(311, 6909, NamespacedKey.parse("minecraft:brown_stained_glass"), () -> new BlockData(Block.BROWN_STAINED_GLASS, 6909), () -> Item.BROWN_STAINED_GLASS);
 
-    public static final Block<BlockData> MOSSY_STONE_BRICKS = new Block<>(312, 6781, NamespacedKey.parse("minecraft:mossy_stone_bricks"), () -> new BlockData(Block.MOSSY_STONE_BRICKS, 6781), () -> Item.MOSSY_STONE_BRICKS);
+    public static final Block<BlockData> GREEN_STAINED_GLASS = new Block<>(312, 6910, NamespacedKey.parse("minecraft:green_stained_glass"), () -> new BlockData(Block.GREEN_STAINED_GLASS, 6910), () -> Item.GREEN_STAINED_GLASS);
 
-    public static final Block<BlockData> CRACKED_STONE_BRICKS = new Block<>(313, 6782, NamespacedKey.parse("minecraft:cracked_stone_bricks"), () -> new BlockData(Block.CRACKED_STONE_BRICKS, 6782), () -> Item.CRACKED_STONE_BRICKS);
+    public static final Block<BlockData> RED_STAINED_GLASS = new Block<>(313, 6911, NamespacedKey.parse("minecraft:red_stained_glass"), () -> new BlockData(Block.RED_STAINED_GLASS, 6911), () -> Item.RED_STAINED_GLASS);
 
-    public static final Block<BlockData> CHISELED_STONE_BRICKS = new Block<>(314, 6783, NamespacedKey.parse("minecraft:chiseled_stone_bricks"), () -> new BlockData(Block.CHISELED_STONE_BRICKS, 6783), () -> Item.CHISELED_STONE_BRICKS);
+    public static final Block<BlockData> BLACK_STAINED_GLASS = new Block<>(314, 6912, NamespacedKey.parse("minecraft:black_stained_glass"), () -> new BlockData(Block.BLACK_STAINED_GLASS, 6912), () -> Item.BLACK_STAINED_GLASS);
 
-    public static final Block<BlockData> PACKED_MUD = new Block<>(315, 6784, NamespacedKey.parse("minecraft:packed_mud"), () -> new BlockData(Block.PACKED_MUD, 6784), () -> Item.PACKED_MUD);
+    public static final Block<TrapdoorData> OAK_TRAPDOOR = new Block<>(315, 6913, NamespacedKey.parse("minecraft:oak_trapdoor"), () -> new TrapdoorData(Block.OAK_TRAPDOOR, 6913), () -> Item.OAK_TRAPDOOR);
 
-    public static final Block<BlockData> MUD_BRICKS = new Block<>(316, 6785, NamespacedKey.parse("minecraft:mud_bricks"), () -> new BlockData(Block.MUD_BRICKS, 6785), () -> Item.MUD_BRICKS);
+    public static final Block<TrapdoorData> SPRUCE_TRAPDOOR = new Block<>(316, 6977, NamespacedKey.parse("minecraft:spruce_trapdoor"), () -> new TrapdoorData(Block.SPRUCE_TRAPDOOR, 6977), () -> Item.SPRUCE_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_STONE = new Block<>(317, 6786, NamespacedKey.parse("minecraft:infested_stone"), () -> new BlockData(Block.INFESTED_STONE, 6786), () -> Item.INFESTED_STONE);
+    public static final Block<TrapdoorData> BIRCH_TRAPDOOR = new Block<>(317, 7041, NamespacedKey.parse("minecraft:birch_trapdoor"), () -> new TrapdoorData(Block.BIRCH_TRAPDOOR, 7041), () -> Item.BIRCH_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_COBBLESTONE = new Block<>(318, 6787, NamespacedKey.parse("minecraft:infested_cobblestone"), () -> new BlockData(Block.INFESTED_COBBLESTONE, 6787), () -> Item.INFESTED_COBBLESTONE);
+    public static final Block<TrapdoorData> JUNGLE_TRAPDOOR = new Block<>(318, 7105, NamespacedKey.parse("minecraft:jungle_trapdoor"), () -> new TrapdoorData(Block.JUNGLE_TRAPDOOR, 7105), () -> Item.JUNGLE_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_STONE_BRICKS = new Block<>(319, 6788, NamespacedKey.parse("minecraft:infested_stone_bricks"), () -> new BlockData(Block.INFESTED_STONE_BRICKS, 6788), () -> Item.INFESTED_STONE_BRICKS);
+    public static final Block<TrapdoorData> ACACIA_TRAPDOOR = new Block<>(319, 7169, NamespacedKey.parse("minecraft:acacia_trapdoor"), () -> new TrapdoorData(Block.ACACIA_TRAPDOOR, 7169), () -> Item.ACACIA_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_MOSSY_STONE_BRICKS = new Block<>(320, 6789, NamespacedKey.parse("minecraft:infested_mossy_stone_bricks"), () -> new BlockData(Block.INFESTED_MOSSY_STONE_BRICKS, 6789), () -> Item.INFESTED_MOSSY_STONE_BRICKS);
+    public static final Block<TrapdoorData> CHERRY_TRAPDOOR = new Block<>(320, 7233, NamespacedKey.parse("minecraft:cherry_trapdoor"), () -> new TrapdoorData(Block.CHERRY_TRAPDOOR, 7233), () -> Item.CHERRY_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_CRACKED_STONE_BRICKS = new Block<>(321, 6790, NamespacedKey.parse("minecraft:infested_cracked_stone_bricks"), () -> new BlockData(Block.INFESTED_CRACKED_STONE_BRICKS, 6790), () -> Item.INFESTED_CRACKED_STONE_BRICKS);
+    public static final Block<TrapdoorData> DARK_OAK_TRAPDOOR = new Block<>(321, 7297, NamespacedKey.parse("minecraft:dark_oak_trapdoor"), () -> new TrapdoorData(Block.DARK_OAK_TRAPDOOR, 7297), () -> Item.DARK_OAK_TRAPDOOR);
 
-    public static final Block<BlockData> INFESTED_CHISELED_STONE_BRICKS = new Block<>(322, 6791, NamespacedKey.parse("minecraft:infested_chiseled_stone_bricks"), () -> new BlockData(Block.INFESTED_CHISELED_STONE_BRICKS, 6791), () -> Item.INFESTED_CHISELED_STONE_BRICKS);
+    public static final Block<TrapdoorData> PALE_OAK_TRAPDOOR = new Block<>(322, 7361, NamespacedKey.parse("minecraft:pale_oak_trapdoor"), () -> new TrapdoorData(Block.PALE_OAK_TRAPDOOR, 7361), () -> Item.PALE_OAK_TRAPDOOR);
 
-    public static final Block<HugeMushroomData> BROWN_MUSHROOM_BLOCK = new Block<>(323, 6792, NamespacedKey.parse("minecraft:brown_mushroom_block"), () -> new HugeMushroomData(Block.BROWN_MUSHROOM_BLOCK, 6792), () -> Item.BROWN_MUSHROOM_BLOCK);
+    public static final Block<TrapdoorData> MANGROVE_TRAPDOOR = new Block<>(323, 7425, NamespacedKey.parse("minecraft:mangrove_trapdoor"), () -> new TrapdoorData(Block.MANGROVE_TRAPDOOR, 7425), () -> Item.MANGROVE_TRAPDOOR);
 
-    public static final Block<HugeMushroomData> RED_MUSHROOM_BLOCK = new Block<>(324, 6856, NamespacedKey.parse("minecraft:red_mushroom_block"), () -> new HugeMushroomData(Block.RED_MUSHROOM_BLOCK, 6856), () -> Item.RED_MUSHROOM_BLOCK);
+    public static final Block<TrapdoorData> BAMBOO_TRAPDOOR = new Block<>(324, 7489, NamespacedKey.parse("minecraft:bamboo_trapdoor"), () -> new TrapdoorData(Block.BAMBOO_TRAPDOOR, 7489), () -> Item.BAMBOO_TRAPDOOR);
 
-    public static final Block<HugeMushroomData> MUSHROOM_STEM = new Block<>(325, 6920, NamespacedKey.parse("minecraft:mushroom_stem"), () -> new HugeMushroomData(Block.MUSHROOM_STEM, 6920), () -> Item.MUSHROOM_STEM);
+    public static final Block<BlockData> STONE_BRICKS = new Block<>(325, 7553, NamespacedKey.parse("minecraft:stone_bricks"), () -> new BlockData(Block.STONE_BRICKS, 7553), () -> Item.STONE_BRICKS);
 
-    public static final Block<IronBarsData> IRON_BARS = new Block<>(326, 6984, NamespacedKey.parse("minecraft:iron_bars"), () -> new IronBarsData(Block.IRON_BARS, 6984), () -> Item.IRON_BARS);
+    public static final Block<BlockData> MOSSY_STONE_BRICKS = new Block<>(326, 7554, NamespacedKey.parse("minecraft:mossy_stone_bricks"), () -> new BlockData(Block.MOSSY_STONE_BRICKS, 7554), () -> Item.MOSSY_STONE_BRICKS);
 
-    public static final Block<ChainData> CHAIN = new Block<>(327, 7016, NamespacedKey.parse("minecraft:chain"), () -> new ChainData(Block.CHAIN, 7016), () -> Item.CHAIN);
+    public static final Block<BlockData> CRACKED_STONE_BRICKS = new Block<>(327, 7555, NamespacedKey.parse("minecraft:cracked_stone_bricks"), () -> new BlockData(Block.CRACKED_STONE_BRICKS, 7555), () -> Item.CRACKED_STONE_BRICKS);
 
-    public static final Block<IronBarsData> GLASS_PANE = new Block<>(328, 7022, NamespacedKey.parse("minecraft:glass_pane"), () -> new IronBarsData(Block.GLASS_PANE, 7022), () -> Item.GLASS_PANE);
+    public static final Block<BlockData> CHISELED_STONE_BRICKS = new Block<>(328, 7556, NamespacedKey.parse("minecraft:chiseled_stone_bricks"), () -> new BlockData(Block.CHISELED_STONE_BRICKS, 7556), () -> Item.CHISELED_STONE_BRICKS);
 
-    public static final Block<BlockData> PUMPKIN = new Block<>(329, 7054, NamespacedKey.parse("minecraft:pumpkin"), () -> new BlockData(Block.PUMPKIN, 7054), () -> Item.PUMPKIN);
+    public static final Block<BlockData> PACKED_MUD = new Block<>(329, 7557, NamespacedKey.parse("minecraft:packed_mud"), () -> new BlockData(Block.PACKED_MUD, 7557), () -> Item.PACKED_MUD);
 
-    public static final Block<BlockData> MELON = new Block<>(330, 7055, NamespacedKey.parse("minecraft:melon"), () -> new BlockData(Block.MELON, 7055), () -> Item.MELON);
+    public static final Block<BlockData> MUD_BRICKS = new Block<>(330, 7558, NamespacedKey.parse("minecraft:mud_bricks"), () -> new BlockData(Block.MUD_BRICKS, 7558), () -> Item.MUD_BRICKS);
 
-    public static final Block<AttachedStemData> ATTACHED_PUMPKIN_STEM = new Block<>(331, 7056, NamespacedKey.parse("minecraft:attached_pumpkin_stem"), () -> new AttachedStemData(Block.ATTACHED_PUMPKIN_STEM, 7056), null);
+    public static final Block<BlockData> INFESTED_STONE = new Block<>(331, 7559, NamespacedKey.parse("minecraft:infested_stone"), () -> new BlockData(Block.INFESTED_STONE, 7559), () -> Item.INFESTED_STONE);
 
-    public static final Block<AttachedStemData> ATTACHED_MELON_STEM = new Block<>(332, 7060, NamespacedKey.parse("minecraft:attached_melon_stem"), () -> new AttachedStemData(Block.ATTACHED_MELON_STEM, 7060), null);
+    public static final Block<BlockData> INFESTED_COBBLESTONE = new Block<>(332, 7560, NamespacedKey.parse("minecraft:infested_cobblestone"), () -> new BlockData(Block.INFESTED_COBBLESTONE, 7560), () -> Item.INFESTED_COBBLESTONE);
 
-    public static final Block<StemData> PUMPKIN_STEM = new Block<>(333, 7064, NamespacedKey.parse("minecraft:pumpkin_stem"), () -> new StemData(Block.PUMPKIN_STEM, 7064), null);
+    public static final Block<BlockData> INFESTED_STONE_BRICKS = new Block<>(333, 7561, NamespacedKey.parse("minecraft:infested_stone_bricks"), () -> new BlockData(Block.INFESTED_STONE_BRICKS, 7561), () -> Item.INFESTED_STONE_BRICKS);
 
-    public static final Block<StemData> MELON_STEM = new Block<>(334, 7072, NamespacedKey.parse("minecraft:melon_stem"), () -> new StemData(Block.MELON_STEM, 7072), null);
+    public static final Block<BlockData> INFESTED_MOSSY_STONE_BRICKS = new Block<>(334, 7562, NamespacedKey.parse("minecraft:infested_mossy_stone_bricks"), () -> new BlockData(Block.INFESTED_MOSSY_STONE_BRICKS, 7562), () -> Item.INFESTED_MOSSY_STONE_BRICKS);
 
-    public static final Block<VineData> VINE = new Block<>(335, 7080, NamespacedKey.parse("minecraft:vine"), () -> new VineData(Block.VINE, 7080), () -> Item.VINE);
+    public static final Block<BlockData> INFESTED_CRACKED_STONE_BRICKS = new Block<>(335, 7563, NamespacedKey.parse("minecraft:infested_cracked_stone_bricks"), () -> new BlockData(Block.INFESTED_CRACKED_STONE_BRICKS, 7563), () -> Item.INFESTED_CRACKED_STONE_BRICKS);
 
-    public static final Block<GlowLichenData> GLOW_LICHEN = new Block<>(336, 7112, NamespacedKey.parse("minecraft:glow_lichen"), () -> new GlowLichenData(Block.GLOW_LICHEN, 7112), () -> Item.GLOW_LICHEN);
+    public static final Block<BlockData> INFESTED_CHISELED_STONE_BRICKS = new Block<>(336, 7564, NamespacedKey.parse("minecraft:infested_chiseled_stone_bricks"), () -> new BlockData(Block.INFESTED_CHISELED_STONE_BRICKS, 7564), () -> Item.INFESTED_CHISELED_STONE_BRICKS);
 
-    public static final Block<MultifaceData> RESIN_CLUMP = new Block<>(337, 7240, NamespacedKey.parse("minecraft:resin_clump"), () -> new MultifaceData(Block.RESIN_CLUMP, 7240), () -> Item.RESIN_CLUMP);
+    public static final Block<HugeMushroomData> BROWN_MUSHROOM_BLOCK = new Block<>(337, 7565, NamespacedKey.parse("minecraft:brown_mushroom_block"), () -> new HugeMushroomData(Block.BROWN_MUSHROOM_BLOCK, 7565), () -> Item.BROWN_MUSHROOM_BLOCK);
 
-    public static final Block<FenceGateData> OAK_FENCE_GATE = new Block<>(338, 7368, NamespacedKey.parse("minecraft:oak_fence_gate"), () -> new FenceGateData(Block.OAK_FENCE_GATE, 7368), () -> Item.OAK_FENCE_GATE);
+    public static final Block<HugeMushroomData> RED_MUSHROOM_BLOCK = new Block<>(338, 7629, NamespacedKey.parse("minecraft:red_mushroom_block"), () -> new HugeMushroomData(Block.RED_MUSHROOM_BLOCK, 7629), () -> Item.RED_MUSHROOM_BLOCK);
 
-    public static final Block<StairData> BRICK_STAIRS = new Block<>(339, 7400, NamespacedKey.parse("minecraft:brick_stairs"), () -> new StairData(Block.BRICK_STAIRS, 7400), () -> Item.BRICK_STAIRS);
+    public static final Block<HugeMushroomData> MUSHROOM_STEM = new Block<>(339, 7693, NamespacedKey.parse("minecraft:mushroom_stem"), () -> new HugeMushroomData(Block.MUSHROOM_STEM, 7693), () -> Item.MUSHROOM_STEM);
 
-    public static final Block<StairData> STONE_BRICK_STAIRS = new Block<>(340, 7480, NamespacedKey.parse("minecraft:stone_brick_stairs"), () -> new StairData(Block.STONE_BRICK_STAIRS, 7480), () -> Item.STONE_BRICK_STAIRS);
+    public static final Block<IronBarsData> IRON_BARS = new Block<>(340, 7757, NamespacedKey.parse("minecraft:iron_bars"), () -> new IronBarsData(Block.IRON_BARS, 7757), () -> Item.IRON_BARS);
 
-    public static final Block<StairData> MUD_BRICK_STAIRS = new Block<>(341, 7560, NamespacedKey.parse("minecraft:mud_brick_stairs"), () -> new StairData(Block.MUD_BRICK_STAIRS, 7560), () -> Item.MUD_BRICK_STAIRS);
+    public static final Block<WeatheringCopperBarData> COPPER_BARS = new Block<>(341, 7789, NamespacedKey.parse("minecraft:copper_bars"), () -> new WeatheringCopperBarData(Block.COPPER_BARS, 7789), () -> Item.COPPER_BARS);
 
-    public static final Block<MyceliumData> MYCELIUM = new Block<>(342, 7640, NamespacedKey.parse("minecraft:mycelium"), () -> new MyceliumData(Block.MYCELIUM, 7640), () -> Item.MYCELIUM);
+    public static final Block<WeatheringCopperBarData> EXPOSED_COPPER_BARS = new Block<>(342, 7821, NamespacedKey.parse("minecraft:exposed_copper_bars"), () -> new WeatheringCopperBarData(Block.EXPOSED_COPPER_BARS, 7821), () -> Item.EXPOSED_COPPER_BARS);
 
-    public static final Block<BlockData> LILY_PAD = new Block<>(343, 7642, NamespacedKey.parse("minecraft:lily_pad"), () -> new BlockData(Block.LILY_PAD, 7642), () -> Item.LILY_PAD);
+    public static final Block<WeatheringCopperBarData> WEATHERED_COPPER_BARS = new Block<>(343, 7853, NamespacedKey.parse("minecraft:weathered_copper_bars"), () -> new WeatheringCopperBarData(Block.WEATHERED_COPPER_BARS, 7853), () -> Item.WEATHERED_COPPER_BARS);
 
-    public static final Block<BlockData> RESIN_BLOCK = new Block<>(344, 7643, NamespacedKey.parse("minecraft:resin_block"), () -> new BlockData(Block.RESIN_BLOCK, 7643), () -> Item.RESIN_BLOCK);
+    public static final Block<WeatheringCopperBarData> OXIDIZED_COPPER_BARS = new Block<>(344, 7885, NamespacedKey.parse("minecraft:oxidized_copper_bars"), () -> new WeatheringCopperBarData(Block.OXIDIZED_COPPER_BARS, 7885), () -> Item.OXIDIZED_COPPER_BARS);
 
-    public static final Block<BlockData> RESIN_BRICKS = new Block<>(345, 7644, NamespacedKey.parse("minecraft:resin_bricks"), () -> new BlockData(Block.RESIN_BRICKS, 7644), () -> Item.RESIN_BRICKS);
+    public static final Block<IronBarsData> WAXED_COPPER_BARS = new Block<>(345, 7917, NamespacedKey.parse("minecraft:waxed_copper_bars"), () -> new IronBarsData(Block.WAXED_COPPER_BARS, 7917), () -> Item.WAXED_COPPER_BARS);
 
-    public static final Block<StairData> RESIN_BRICK_STAIRS = new Block<>(346, 7645, NamespacedKey.parse("minecraft:resin_brick_stairs"), () -> new StairData(Block.RESIN_BRICK_STAIRS, 7645), () -> Item.RESIN_BRICK_STAIRS);
+    public static final Block<IronBarsData> WAXED_EXPOSED_COPPER_BARS = new Block<>(346, 7949, NamespacedKey.parse("minecraft:waxed_exposed_copper_bars"), () -> new IronBarsData(Block.WAXED_EXPOSED_COPPER_BARS, 7949), () -> Item.WAXED_EXPOSED_COPPER_BARS);
 
-    public static final Block<SlabData> RESIN_BRICK_SLAB = new Block<>(347, 7725, NamespacedKey.parse("minecraft:resin_brick_slab"), () -> new SlabData(Block.RESIN_BRICK_SLAB, 7725), () -> Item.RESIN_BRICK_SLAB);
+    public static final Block<IronBarsData> WAXED_WEATHERED_COPPER_BARS = new Block<>(347, 7981, NamespacedKey.parse("minecraft:waxed_weathered_copper_bars"), () -> new IronBarsData(Block.WAXED_WEATHERED_COPPER_BARS, 7981), () -> Item.WAXED_WEATHERED_COPPER_BARS);
 
-    public static final Block<WallData> RESIN_BRICK_WALL = new Block<>(348, 7731, NamespacedKey.parse("minecraft:resin_brick_wall"), () -> new WallData(Block.RESIN_BRICK_WALL, 7731), () -> Item.RESIN_BRICK_WALL);
+    public static final Block<IronBarsData> WAXED_OXIDIZED_COPPER_BARS = new Block<>(348, 8013, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bars"), () -> new IronBarsData(Block.WAXED_OXIDIZED_COPPER_BARS, 8013), () -> Item.WAXED_OXIDIZED_COPPER_BARS);
 
-    public static final Block<BlockData> CHISELED_RESIN_BRICKS = new Block<>(349, 8055, NamespacedKey.parse("minecraft:chiseled_resin_bricks"), () -> new BlockData(Block.CHISELED_RESIN_BRICKS, 8055), () -> Item.CHISELED_RESIN_BRICKS);
+    public static final Block<ChainData> IRON_CHAIN = new Block<>(349, 8045, NamespacedKey.parse("minecraft:iron_chain"), () -> new ChainData(Block.IRON_CHAIN, 8045), () -> Item.IRON_CHAIN);
 
-    public static final Block<BlockData> NETHER_BRICKS = new Block<>(350, 8056, NamespacedKey.parse("minecraft:nether_bricks"), () -> new BlockData(Block.NETHER_BRICKS, 8056), () -> Item.NETHER_BRICKS);
+    public static final Block<WeatheringCopperChainData> COPPER_CHAIN = new Block<>(350, 8051, NamespacedKey.parse("minecraft:copper_chain"), () -> new WeatheringCopperChainData(Block.COPPER_CHAIN, 8051), () -> Item.COPPER_CHAIN);
 
-    public static final Block<FenceData> NETHER_BRICK_FENCE = new Block<>(351, 8057, NamespacedKey.parse("minecraft:nether_brick_fence"), () -> new FenceData(Block.NETHER_BRICK_FENCE, 8057), () -> Item.NETHER_BRICK_FENCE);
+    public static final Block<WeatheringCopperChainData> EXPOSED_COPPER_CHAIN = new Block<>(351, 8057, NamespacedKey.parse("minecraft:exposed_copper_chain"), () -> new WeatheringCopperChainData(Block.EXPOSED_COPPER_CHAIN, 8057), () -> Item.EXPOSED_COPPER_CHAIN);
 
-    public static final Block<StairData> NETHER_BRICK_STAIRS = new Block<>(352, 8089, NamespacedKey.parse("minecraft:nether_brick_stairs"), () -> new StairData(Block.NETHER_BRICK_STAIRS, 8089), () -> Item.NETHER_BRICK_STAIRS);
+    public static final Block<WeatheringCopperChainData> WEATHERED_COPPER_CHAIN = new Block<>(352, 8063, NamespacedKey.parse("minecraft:weathered_copper_chain"), () -> new WeatheringCopperChainData(Block.WEATHERED_COPPER_CHAIN, 8063), () -> Item.WEATHERED_COPPER_CHAIN);
 
-    public static final Block<NetherWartData> NETHER_WART = new Block<>(353, 8169, NamespacedKey.parse("minecraft:nether_wart"), () -> new NetherWartData(Block.NETHER_WART, 8169), () -> Item.NETHER_WART);
+    public static final Block<WeatheringCopperChainData> OXIDIZED_COPPER_CHAIN = new Block<>(353, 8069, NamespacedKey.parse("minecraft:oxidized_copper_chain"), () -> new WeatheringCopperChainData(Block.OXIDIZED_COPPER_CHAIN, 8069), () -> Item.OXIDIZED_COPPER_CHAIN);
 
-    public static final Block<BlockData> ENCHANTING_TABLE = new Block<>(354, 8173, NamespacedKey.parse("minecraft:enchanting_table"), () -> new BlockData(Block.ENCHANTING_TABLE, 8173), () -> Item.ENCHANTING_TABLE);
+    public static final Block<ChainData> WAXED_COPPER_CHAIN = new Block<>(354, 8075, NamespacedKey.parse("minecraft:waxed_copper_chain"), () -> new ChainData(Block.WAXED_COPPER_CHAIN, 8075), () -> Item.WAXED_COPPER_CHAIN);
 
-    public static final Block<BrewingStandData> BREWING_STAND = new Block<>(355, 8174, NamespacedKey.parse("minecraft:brewing_stand"), () -> new BrewingStandData(Block.BREWING_STAND, 8174), () -> Item.BREWING_STAND);
+    public static final Block<ChainData> WAXED_EXPOSED_COPPER_CHAIN = new Block<>(355, 8081, NamespacedKey.parse("minecraft:waxed_exposed_copper_chain"), () -> new ChainData(Block.WAXED_EXPOSED_COPPER_CHAIN, 8081), () -> Item.WAXED_EXPOSED_COPPER_CHAIN);
 
-    public static final Block<BlockData> CAULDRON = new Block<>(356, 8182, NamespacedKey.parse("minecraft:cauldron"), () -> new BlockData(Block.CAULDRON, 8182), () -> Item.CAULDRON);
+    public static final Block<ChainData> WAXED_WEATHERED_COPPER_CHAIN = new Block<>(356, 8087, NamespacedKey.parse("minecraft:waxed_weathered_copper_chain"), () -> new ChainData(Block.WAXED_WEATHERED_COPPER_CHAIN, 8087), () -> Item.WAXED_WEATHERED_COPPER_CHAIN);
 
-    public static final Block<LayeredCauldronData> WATER_CAULDRON = new Block<>(357, 8183, NamespacedKey.parse("minecraft:water_cauldron"), () -> new LayeredCauldronData(Block.WATER_CAULDRON, 8183), null);
+    public static final Block<ChainData> WAXED_OXIDIZED_COPPER_CHAIN = new Block<>(357, 8093, NamespacedKey.parse("minecraft:waxed_oxidized_copper_chain"), () -> new ChainData(Block.WAXED_OXIDIZED_COPPER_CHAIN, 8093), () -> Item.WAXED_OXIDIZED_COPPER_CHAIN);
 
-    public static final Block<BlockData> LAVA_CAULDRON = new Block<>(358, 8186, NamespacedKey.parse("minecraft:lava_cauldron"), () -> new BlockData(Block.LAVA_CAULDRON, 8186), null);
+    public static final Block<IronBarsData> GLASS_PANE = new Block<>(358, 8099, NamespacedKey.parse("minecraft:glass_pane"), () -> new IronBarsData(Block.GLASS_PANE, 8099), () -> Item.GLASS_PANE);
 
-    public static final Block<LayeredCauldronData> POWDER_SNOW_CAULDRON = new Block<>(359, 8187, NamespacedKey.parse("minecraft:powder_snow_cauldron"), () -> new LayeredCauldronData(Block.POWDER_SNOW_CAULDRON, 8187), null);
+    public static final Block<BlockData> PUMPKIN = new Block<>(359, 8131, NamespacedKey.parse("minecraft:pumpkin"), () -> new BlockData(Block.PUMPKIN, 8131), () -> Item.PUMPKIN);
 
-    public static final Block<BlockData> END_PORTAL = new Block<>(360, 8190, NamespacedKey.parse("minecraft:end_portal"), () -> new BlockData(Block.END_PORTAL, 8190), null);
+    public static final Block<BlockData> MELON = new Block<>(360, 8132, NamespacedKey.parse("minecraft:melon"), () -> new BlockData(Block.MELON, 8132), () -> Item.MELON);
 
-    public static final Block<EndPortalFrameData> END_PORTAL_FRAME = new Block<>(361, 8191, NamespacedKey.parse("minecraft:end_portal_frame"), () -> new EndPortalFrameData(Block.END_PORTAL_FRAME, 8191), () -> Item.END_PORTAL_FRAME);
+    public static final Block<AttachedStemData> ATTACHED_PUMPKIN_STEM = new Block<>(361, 8133, NamespacedKey.parse("minecraft:attached_pumpkin_stem"), () -> new AttachedStemData(Block.ATTACHED_PUMPKIN_STEM, 8133), null);
 
-    public static final Block<BlockData> END_STONE = new Block<>(362, 8199, NamespacedKey.parse("minecraft:end_stone"), () -> new BlockData(Block.END_STONE, 8199), () -> Item.END_STONE);
+    public static final Block<AttachedStemData> ATTACHED_MELON_STEM = new Block<>(362, 8137, NamespacedKey.parse("minecraft:attached_melon_stem"), () -> new AttachedStemData(Block.ATTACHED_MELON_STEM, 8137), null);
 
-    public static final Block<BlockData> DRAGON_EGG = new Block<>(363, 8200, NamespacedKey.parse("minecraft:dragon_egg"), () -> new BlockData(Block.DRAGON_EGG, 8200), () -> Item.DRAGON_EGG);
+    public static final Block<StemData> PUMPKIN_STEM = new Block<>(363, 8141, NamespacedKey.parse("minecraft:pumpkin_stem"), () -> new StemData(Block.PUMPKIN_STEM, 8141), null);
 
-    public static final Block<RedstoneLampData> REDSTONE_LAMP = new Block<>(364, 8201, NamespacedKey.parse("minecraft:redstone_lamp"), () -> new RedstoneLampData(Block.REDSTONE_LAMP, 8201), () -> Item.REDSTONE_LAMP);
+    public static final Block<StemData> MELON_STEM = new Block<>(364, 8149, NamespacedKey.parse("minecraft:melon_stem"), () -> new StemData(Block.MELON_STEM, 8149), null);
 
-    public static final Block<CocoaData> COCOA = new Block<>(365, 8203, NamespacedKey.parse("minecraft:cocoa"), () -> new CocoaData(Block.COCOA, 8203), null);
+    public static final Block<VineData> VINE = new Block<>(365, 8157, NamespacedKey.parse("minecraft:vine"), () -> new VineData(Block.VINE, 8157), () -> Item.VINE);
 
-    public static final Block<StairData> SANDSTONE_STAIRS = new Block<>(366, 8215, NamespacedKey.parse("minecraft:sandstone_stairs"), () -> new StairData(Block.SANDSTONE_STAIRS, 8215), () -> Item.SANDSTONE_STAIRS);
+    public static final Block<GlowLichenData> GLOW_LICHEN = new Block<>(366, 8189, NamespacedKey.parse("minecraft:glow_lichen"), () -> new GlowLichenData(Block.GLOW_LICHEN, 8189), () -> Item.GLOW_LICHEN);
 
-    public static final Block<BlockData> EMERALD_ORE = new Block<>(367, 8295, NamespacedKey.parse("minecraft:emerald_ore"), () -> new BlockData(Block.EMERALD_ORE, 8295), () -> Item.EMERALD_ORE);
+    public static final Block<MultifaceData> RESIN_CLUMP = new Block<>(367, 8317, NamespacedKey.parse("minecraft:resin_clump"), () -> new MultifaceData(Block.RESIN_CLUMP, 8317), () -> Item.RESIN_CLUMP);
 
-    public static final Block<BlockData> DEEPSLATE_EMERALD_ORE = new Block<>(368, 8296, NamespacedKey.parse("minecraft:deepslate_emerald_ore"), () -> new BlockData(Block.DEEPSLATE_EMERALD_ORE, 8296), () -> Item.DEEPSLATE_EMERALD_ORE);
+    public static final Block<FenceGateData> OAK_FENCE_GATE = new Block<>(368, 8445, NamespacedKey.parse("minecraft:oak_fence_gate"), () -> new FenceGateData(Block.OAK_FENCE_GATE, 8445), () -> Item.OAK_FENCE_GATE);
 
-    public static final Block<EnderChestData> ENDER_CHEST = new Block<>(369, 8297, NamespacedKey.parse("minecraft:ender_chest"), () -> new EnderChestData(Block.ENDER_CHEST, 8297), () -> Item.ENDER_CHEST);
+    public static final Block<StairData> BRICK_STAIRS = new Block<>(369, 8477, NamespacedKey.parse("minecraft:brick_stairs"), () -> new StairData(Block.BRICK_STAIRS, 8477), () -> Item.BRICK_STAIRS);
 
-    public static final Block<TripWireHookData> TRIPWIRE_HOOK = new Block<>(370, 8305, NamespacedKey.parse("minecraft:tripwire_hook"), () -> new TripWireHookData(Block.TRIPWIRE_HOOK, 8305), () -> Item.TRIPWIRE_HOOK);
+    public static final Block<StairData> STONE_BRICK_STAIRS = new Block<>(370, 8557, NamespacedKey.parse("minecraft:stone_brick_stairs"), () -> new StairData(Block.STONE_BRICK_STAIRS, 8557), () -> Item.STONE_BRICK_STAIRS);
 
-    public static final Block<TripwireData> TRIPWIRE = new Block<>(371, 8321, NamespacedKey.parse("minecraft:tripwire"), () -> new TripwireData(Block.TRIPWIRE, 8321), null);
+    public static final Block<StairData> MUD_BRICK_STAIRS = new Block<>(371, 8637, NamespacedKey.parse("minecraft:mud_brick_stairs"), () -> new StairData(Block.MUD_BRICK_STAIRS, 8637), () -> Item.MUD_BRICK_STAIRS);
 
-    public static final Block<BlockData> EMERALD_BLOCK = new Block<>(372, 8449, NamespacedKey.parse("minecraft:emerald_block"), () -> new BlockData(Block.EMERALD_BLOCK, 8449), () -> Item.EMERALD_BLOCK);
+    public static final Block<MyceliumData> MYCELIUM = new Block<>(372, 8717, NamespacedKey.parse("minecraft:mycelium"), () -> new MyceliumData(Block.MYCELIUM, 8717), () -> Item.MYCELIUM);
 
-    public static final Block<StairData> SPRUCE_STAIRS = new Block<>(373, 8450, NamespacedKey.parse("minecraft:spruce_stairs"), () -> new StairData(Block.SPRUCE_STAIRS, 8450), () -> Item.SPRUCE_STAIRS);
+    public static final Block<BlockData> LILY_PAD = new Block<>(373, 8719, NamespacedKey.parse("minecraft:lily_pad"), () -> new BlockData(Block.LILY_PAD, 8719), () -> Item.LILY_PAD);
 
-    public static final Block<StairData> BIRCH_STAIRS = new Block<>(374, 8530, NamespacedKey.parse("minecraft:birch_stairs"), () -> new StairData(Block.BIRCH_STAIRS, 8530), () -> Item.BIRCH_STAIRS);
+    public static final Block<BlockData> RESIN_BLOCK = new Block<>(374, 8720, NamespacedKey.parse("minecraft:resin_block"), () -> new BlockData(Block.RESIN_BLOCK, 8720), () -> Item.RESIN_BLOCK);
 
-    public static final Block<StairData> JUNGLE_STAIRS = new Block<>(375, 8610, NamespacedKey.parse("minecraft:jungle_stairs"), () -> new StairData(Block.JUNGLE_STAIRS, 8610), () -> Item.JUNGLE_STAIRS);
+    public static final Block<BlockData> RESIN_BRICKS = new Block<>(375, 8721, NamespacedKey.parse("minecraft:resin_bricks"), () -> new BlockData(Block.RESIN_BRICKS, 8721), () -> Item.RESIN_BRICKS);
 
-    public static final Block<CommandData> COMMAND_BLOCK = new Block<>(376, 8690, NamespacedKey.parse("minecraft:command_block"), () -> new CommandData(Block.COMMAND_BLOCK, 8690), () -> Item.COMMAND_BLOCK);
+    public static final Block<StairData> RESIN_BRICK_STAIRS = new Block<>(376, 8722, NamespacedKey.parse("minecraft:resin_brick_stairs"), () -> new StairData(Block.RESIN_BRICK_STAIRS, 8722), () -> Item.RESIN_BRICK_STAIRS);
 
-    public static final Block<BlockData> BEACON = new Block<>(377, 8702, NamespacedKey.parse("minecraft:beacon"), () -> new BlockData(Block.BEACON, 8702), () -> Item.BEACON);
+    public static final Block<SlabData> RESIN_BRICK_SLAB = new Block<>(377, 8802, NamespacedKey.parse("minecraft:resin_brick_slab"), () -> new SlabData(Block.RESIN_BRICK_SLAB, 8802), () -> Item.RESIN_BRICK_SLAB);
 
-    public static final Block<WallData> COBBLESTONE_WALL = new Block<>(378, 8703, NamespacedKey.parse("minecraft:cobblestone_wall"), () -> new WallData(Block.COBBLESTONE_WALL, 8703), () -> Item.COBBLESTONE_WALL);
+    public static final Block<WallData> RESIN_BRICK_WALL = new Block<>(378, 8808, NamespacedKey.parse("minecraft:resin_brick_wall"), () -> new WallData(Block.RESIN_BRICK_WALL, 8808), () -> Item.RESIN_BRICK_WALL);
 
-    public static final Block<WallData> MOSSY_COBBLESTONE_WALL = new Block<>(379, 9027, NamespacedKey.parse("minecraft:mossy_cobblestone_wall"), () -> new WallData(Block.MOSSY_COBBLESTONE_WALL, 9027), () -> Item.MOSSY_COBBLESTONE_WALL);
+    public static final Block<BlockData> CHISELED_RESIN_BRICKS = new Block<>(379, 9132, NamespacedKey.parse("minecraft:chiseled_resin_bricks"), () -> new BlockData(Block.CHISELED_RESIN_BRICKS, 9132), () -> Item.CHISELED_RESIN_BRICKS);
 
-    public static final Block<BlockData> FLOWER_POT = new Block<>(380, 9351, NamespacedKey.parse("minecraft:flower_pot"), () -> new BlockData(Block.FLOWER_POT, 9351), () -> Item.FLOWER_POT);
+    public static final Block<BlockData> NETHER_BRICKS = new Block<>(380, 9133, NamespacedKey.parse("minecraft:nether_bricks"), () -> new BlockData(Block.NETHER_BRICKS, 9133), () -> Item.NETHER_BRICKS);
 
-    public static final Block<BlockData> POTTED_TORCHFLOWER = new Block<>(381, 9352, NamespacedKey.parse("minecraft:potted_torchflower"), () -> new BlockData(Block.POTTED_TORCHFLOWER, 9352), null);
+    public static final Block<FenceData> NETHER_BRICK_FENCE = new Block<>(381, 9134, NamespacedKey.parse("minecraft:nether_brick_fence"), () -> new FenceData(Block.NETHER_BRICK_FENCE, 9134), () -> Item.NETHER_BRICK_FENCE);
 
-    public static final Block<BlockData> POTTED_OAK_SAPLING = new Block<>(382, 9353, NamespacedKey.parse("minecraft:potted_oak_sapling"), () -> new BlockData(Block.POTTED_OAK_SAPLING, 9353), null);
+    public static final Block<StairData> NETHER_BRICK_STAIRS = new Block<>(382, 9166, NamespacedKey.parse("minecraft:nether_brick_stairs"), () -> new StairData(Block.NETHER_BRICK_STAIRS, 9166), () -> Item.NETHER_BRICK_STAIRS);
 
-    public static final Block<BlockData> POTTED_SPRUCE_SAPLING = new Block<>(383, 9354, NamespacedKey.parse("minecraft:potted_spruce_sapling"), () -> new BlockData(Block.POTTED_SPRUCE_SAPLING, 9354), null);
+    public static final Block<NetherWartData> NETHER_WART = new Block<>(383, 9246, NamespacedKey.parse("minecraft:nether_wart"), () -> new NetherWartData(Block.NETHER_WART, 9246), () -> Item.NETHER_WART);
 
-    public static final Block<BlockData> POTTED_BIRCH_SAPLING = new Block<>(384, 9355, NamespacedKey.parse("minecraft:potted_birch_sapling"), () -> new BlockData(Block.POTTED_BIRCH_SAPLING, 9355), null);
+    public static final Block<BlockData> ENCHANTING_TABLE = new Block<>(384, 9250, NamespacedKey.parse("minecraft:enchanting_table"), () -> new BlockData(Block.ENCHANTING_TABLE, 9250), () -> Item.ENCHANTING_TABLE);
 
-    public static final Block<BlockData> POTTED_JUNGLE_SAPLING = new Block<>(385, 9356, NamespacedKey.parse("minecraft:potted_jungle_sapling"), () -> new BlockData(Block.POTTED_JUNGLE_SAPLING, 9356), null);
+    public static final Block<BrewingStandData> BREWING_STAND = new Block<>(385, 9251, NamespacedKey.parse("minecraft:brewing_stand"), () -> new BrewingStandData(Block.BREWING_STAND, 9251), () -> Item.BREWING_STAND);
 
-    public static final Block<BlockData> POTTED_ACACIA_SAPLING = new Block<>(386, 9357, NamespacedKey.parse("minecraft:potted_acacia_sapling"), () -> new BlockData(Block.POTTED_ACACIA_SAPLING, 9357), null);
+    public static final Block<BlockData> CAULDRON = new Block<>(386, 9259, NamespacedKey.parse("minecraft:cauldron"), () -> new BlockData(Block.CAULDRON, 9259), () -> Item.CAULDRON);
 
-    public static final Block<BlockData> POTTED_CHERRY_SAPLING = new Block<>(387, 9358, NamespacedKey.parse("minecraft:potted_cherry_sapling"), () -> new BlockData(Block.POTTED_CHERRY_SAPLING, 9358), null);
+    public static final Block<LayeredCauldronData> WATER_CAULDRON = new Block<>(387, 9260, NamespacedKey.parse("minecraft:water_cauldron"), () -> new LayeredCauldronData(Block.WATER_CAULDRON, 9260), null);
 
-    public static final Block<BlockData> POTTED_DARK_OAK_SAPLING = new Block<>(388, 9359, NamespacedKey.parse("minecraft:potted_dark_oak_sapling"), () -> new BlockData(Block.POTTED_DARK_OAK_SAPLING, 9359), null);
+    public static final Block<BlockData> LAVA_CAULDRON = new Block<>(388, 9263, NamespacedKey.parse("minecraft:lava_cauldron"), () -> new BlockData(Block.LAVA_CAULDRON, 9263), null);
 
-    public static final Block<BlockData> POTTED_PALE_OAK_SAPLING = new Block<>(389, 9360, NamespacedKey.parse("minecraft:potted_pale_oak_sapling"), () -> new BlockData(Block.POTTED_PALE_OAK_SAPLING, 9360), null);
+    public static final Block<LayeredCauldronData> POWDER_SNOW_CAULDRON = new Block<>(389, 9264, NamespacedKey.parse("minecraft:powder_snow_cauldron"), () -> new LayeredCauldronData(Block.POWDER_SNOW_CAULDRON, 9264), null);
 
-    public static final Block<BlockData> POTTED_MANGROVE_PROPAGULE = new Block<>(390, 9361, NamespacedKey.parse("minecraft:potted_mangrove_propagule"), () -> new BlockData(Block.POTTED_MANGROVE_PROPAGULE, 9361), null);
+    public static final Block<BlockData> END_PORTAL = new Block<>(390, 9267, NamespacedKey.parse("minecraft:end_portal"), () -> new BlockData(Block.END_PORTAL, 9267), null);
 
-    public static final Block<BlockData> POTTED_FERN = new Block<>(391, 9362, NamespacedKey.parse("minecraft:potted_fern"), () -> new BlockData(Block.POTTED_FERN, 9362), null);
+    public static final Block<EndPortalFrameData> END_PORTAL_FRAME = new Block<>(391, 9268, NamespacedKey.parse("minecraft:end_portal_frame"), () -> new EndPortalFrameData(Block.END_PORTAL_FRAME, 9268), () -> Item.END_PORTAL_FRAME);
 
-    public static final Block<BlockData> POTTED_DANDELION = new Block<>(392, 9363, NamespacedKey.parse("minecraft:potted_dandelion"), () -> new BlockData(Block.POTTED_DANDELION, 9363), null);
+    public static final Block<BlockData> END_STONE = new Block<>(392, 9276, NamespacedKey.parse("minecraft:end_stone"), () -> new BlockData(Block.END_STONE, 9276), () -> Item.END_STONE);
 
-    public static final Block<BlockData> POTTED_POPPY = new Block<>(393, 9364, NamespacedKey.parse("minecraft:potted_poppy"), () -> new BlockData(Block.POTTED_POPPY, 9364), null);
+    public static final Block<BlockData> DRAGON_EGG = new Block<>(393, 9277, NamespacedKey.parse("minecraft:dragon_egg"), () -> new BlockData(Block.DRAGON_EGG, 9277), () -> Item.DRAGON_EGG);
 
-    public static final Block<BlockData> POTTED_BLUE_ORCHID = new Block<>(394, 9365, NamespacedKey.parse("minecraft:potted_blue_orchid"), () -> new BlockData(Block.POTTED_BLUE_ORCHID, 9365), null);
+    public static final Block<RedstoneLampData> REDSTONE_LAMP = new Block<>(394, 9278, NamespacedKey.parse("minecraft:redstone_lamp"), () -> new RedstoneLampData(Block.REDSTONE_LAMP, 9278), () -> Item.REDSTONE_LAMP);
 
-    public static final Block<BlockData> POTTED_ALLIUM = new Block<>(395, 9366, NamespacedKey.parse("minecraft:potted_allium"), () -> new BlockData(Block.POTTED_ALLIUM, 9366), null);
+    public static final Block<CocoaData> COCOA = new Block<>(395, 9280, NamespacedKey.parse("minecraft:cocoa"), () -> new CocoaData(Block.COCOA, 9280), null);
 
-    public static final Block<BlockData> POTTED_AZURE_BLUET = new Block<>(396, 9367, NamespacedKey.parse("minecraft:potted_azure_bluet"), () -> new BlockData(Block.POTTED_AZURE_BLUET, 9367), null);
+    public static final Block<StairData> SANDSTONE_STAIRS = new Block<>(396, 9292, NamespacedKey.parse("minecraft:sandstone_stairs"), () -> new StairData(Block.SANDSTONE_STAIRS, 9292), () -> Item.SANDSTONE_STAIRS);
 
-    public static final Block<BlockData> POTTED_RED_TULIP = new Block<>(397, 9368, NamespacedKey.parse("minecraft:potted_red_tulip"), () -> new BlockData(Block.POTTED_RED_TULIP, 9368), null);
+    public static final Block<BlockData> EMERALD_ORE = new Block<>(397, 9372, NamespacedKey.parse("minecraft:emerald_ore"), () -> new BlockData(Block.EMERALD_ORE, 9372), () -> Item.EMERALD_ORE);
 
-    public static final Block<BlockData> POTTED_ORANGE_TULIP = new Block<>(398, 9369, NamespacedKey.parse("minecraft:potted_orange_tulip"), () -> new BlockData(Block.POTTED_ORANGE_TULIP, 9369), null);
+    public static final Block<BlockData> DEEPSLATE_EMERALD_ORE = new Block<>(398, 9373, NamespacedKey.parse("minecraft:deepslate_emerald_ore"), () -> new BlockData(Block.DEEPSLATE_EMERALD_ORE, 9373), () -> Item.DEEPSLATE_EMERALD_ORE);
 
-    public static final Block<BlockData> POTTED_WHITE_TULIP = new Block<>(399, 9370, NamespacedKey.parse("minecraft:potted_white_tulip"), () -> new BlockData(Block.POTTED_WHITE_TULIP, 9370), null);
+    public static final Block<EnderChestData> ENDER_CHEST = new Block<>(399, 9374, NamespacedKey.parse("minecraft:ender_chest"), () -> new EnderChestData(Block.ENDER_CHEST, 9374), () -> Item.ENDER_CHEST);
 
-    public static final Block<BlockData> POTTED_PINK_TULIP = new Block<>(400, 9371, NamespacedKey.parse("minecraft:potted_pink_tulip"), () -> new BlockData(Block.POTTED_PINK_TULIP, 9371), null);
+    public static final Block<TripWireHookData> TRIPWIRE_HOOK = new Block<>(400, 9382, NamespacedKey.parse("minecraft:tripwire_hook"), () -> new TripWireHookData(Block.TRIPWIRE_HOOK, 9382), () -> Item.TRIPWIRE_HOOK);
 
-    public static final Block<BlockData> POTTED_OXEYE_DAISY = new Block<>(401, 9372, NamespacedKey.parse("minecraft:potted_oxeye_daisy"), () -> new BlockData(Block.POTTED_OXEYE_DAISY, 9372), null);
+    public static final Block<TripwireData> TRIPWIRE = new Block<>(401, 9398, NamespacedKey.parse("minecraft:tripwire"), () -> new TripwireData(Block.TRIPWIRE, 9398), null);
 
-    public static final Block<BlockData> POTTED_CORNFLOWER = new Block<>(402, 9373, NamespacedKey.parse("minecraft:potted_cornflower"), () -> new BlockData(Block.POTTED_CORNFLOWER, 9373), null);
+    public static final Block<BlockData> EMERALD_BLOCK = new Block<>(402, 9526, NamespacedKey.parse("minecraft:emerald_block"), () -> new BlockData(Block.EMERALD_BLOCK, 9526), () -> Item.EMERALD_BLOCK);
 
-    public static final Block<BlockData> POTTED_LILY_OF_THE_VALLEY = new Block<>(403, 9374, NamespacedKey.parse("minecraft:potted_lily_of_the_valley"), () -> new BlockData(Block.POTTED_LILY_OF_THE_VALLEY, 9374), null);
+    public static final Block<StairData> SPRUCE_STAIRS = new Block<>(403, 9527, NamespacedKey.parse("minecraft:spruce_stairs"), () -> new StairData(Block.SPRUCE_STAIRS, 9527), () -> Item.SPRUCE_STAIRS);
 
-    public static final Block<BlockData> POTTED_WITHER_ROSE = new Block<>(404, 9375, NamespacedKey.parse("minecraft:potted_wither_rose"), () -> new BlockData(Block.POTTED_WITHER_ROSE, 9375), null);
+    public static final Block<StairData> BIRCH_STAIRS = new Block<>(404, 9607, NamespacedKey.parse("minecraft:birch_stairs"), () -> new StairData(Block.BIRCH_STAIRS, 9607), () -> Item.BIRCH_STAIRS);
 
-    public static final Block<BlockData> POTTED_RED_MUSHROOM = new Block<>(405, 9376, NamespacedKey.parse("minecraft:potted_red_mushroom"), () -> new BlockData(Block.POTTED_RED_MUSHROOM, 9376), null);
+    public static final Block<StairData> JUNGLE_STAIRS = new Block<>(405, 9687, NamespacedKey.parse("minecraft:jungle_stairs"), () -> new StairData(Block.JUNGLE_STAIRS, 9687), () -> Item.JUNGLE_STAIRS);
 
-    public static final Block<BlockData> POTTED_BROWN_MUSHROOM = new Block<>(406, 9377, NamespacedKey.parse("minecraft:potted_brown_mushroom"), () -> new BlockData(Block.POTTED_BROWN_MUSHROOM, 9377), null);
+    public static final Block<CommandData> COMMAND_BLOCK = new Block<>(406, 9767, NamespacedKey.parse("minecraft:command_block"), () -> new CommandData(Block.COMMAND_BLOCK, 9767), () -> Item.COMMAND_BLOCK);
 
-    public static final Block<BlockData> POTTED_DEAD_BUSH = new Block<>(407, 9378, NamespacedKey.parse("minecraft:potted_dead_bush"), () -> new BlockData(Block.POTTED_DEAD_BUSH, 9378), null);
+    public static final Block<BlockData> BEACON = new Block<>(407, 9779, NamespacedKey.parse("minecraft:beacon"), () -> new BlockData(Block.BEACON, 9779), () -> Item.BEACON);
 
-    public static final Block<BlockData> POTTED_CACTUS = new Block<>(408, 9379, NamespacedKey.parse("minecraft:potted_cactus"), () -> new BlockData(Block.POTTED_CACTUS, 9379), null);
+    public static final Block<WallData> COBBLESTONE_WALL = new Block<>(408, 9780, NamespacedKey.parse("minecraft:cobblestone_wall"), () -> new WallData(Block.COBBLESTONE_WALL, 9780), () -> Item.COBBLESTONE_WALL);
 
-    public static final Block<CarrotData> CARROTS = new Block<>(409, 9380, NamespacedKey.parse("minecraft:carrots"), () -> new CarrotData(Block.CARROTS, 9380), null);
+    public static final Block<WallData> MOSSY_COBBLESTONE_WALL = new Block<>(409, 10104, NamespacedKey.parse("minecraft:mossy_cobblestone_wall"), () -> new WallData(Block.MOSSY_COBBLESTONE_WALL, 10104), () -> Item.MOSSY_COBBLESTONE_WALL);
 
-    public static final Block<PotatoData> POTATOES = new Block<>(410, 9388, NamespacedKey.parse("minecraft:potatoes"), () -> new PotatoData(Block.POTATOES, 9388), null);
+    public static final Block<BlockData> FLOWER_POT = new Block<>(410, 10428, NamespacedKey.parse("minecraft:flower_pot"), () -> new BlockData(Block.FLOWER_POT, 10428), () -> Item.FLOWER_POT);
 
-    public static final Block<ButtonData> OAK_BUTTON = new Block<>(411, 9396, NamespacedKey.parse("minecraft:oak_button"), () -> new ButtonData(Block.OAK_BUTTON, 9396), () -> Item.OAK_BUTTON);
+    public static final Block<BlockData> POTTED_TORCHFLOWER = new Block<>(411, 10429, NamespacedKey.parse("minecraft:potted_torchflower"), () -> new BlockData(Block.POTTED_TORCHFLOWER, 10429), null);
 
-    public static final Block<ButtonData> SPRUCE_BUTTON = new Block<>(412, 9420, NamespacedKey.parse("minecraft:spruce_button"), () -> new ButtonData(Block.SPRUCE_BUTTON, 9420), () -> Item.SPRUCE_BUTTON);
+    public static final Block<BlockData> POTTED_OAK_SAPLING = new Block<>(412, 10430, NamespacedKey.parse("minecraft:potted_oak_sapling"), () -> new BlockData(Block.POTTED_OAK_SAPLING, 10430), null);
 
-    public static final Block<ButtonData> BIRCH_BUTTON = new Block<>(413, 9444, NamespacedKey.parse("minecraft:birch_button"), () -> new ButtonData(Block.BIRCH_BUTTON, 9444), () -> Item.BIRCH_BUTTON);
+    public static final Block<BlockData> POTTED_SPRUCE_SAPLING = new Block<>(413, 10431, NamespacedKey.parse("minecraft:potted_spruce_sapling"), () -> new BlockData(Block.POTTED_SPRUCE_SAPLING, 10431), null);
 
-    public static final Block<ButtonData> JUNGLE_BUTTON = new Block<>(414, 9468, NamespacedKey.parse("minecraft:jungle_button"), () -> new ButtonData(Block.JUNGLE_BUTTON, 9468), () -> Item.JUNGLE_BUTTON);
+    public static final Block<BlockData> POTTED_BIRCH_SAPLING = new Block<>(414, 10432, NamespacedKey.parse("minecraft:potted_birch_sapling"), () -> new BlockData(Block.POTTED_BIRCH_SAPLING, 10432), null);
 
-    public static final Block<ButtonData> ACACIA_BUTTON = new Block<>(415, 9492, NamespacedKey.parse("minecraft:acacia_button"), () -> new ButtonData(Block.ACACIA_BUTTON, 9492), () -> Item.ACACIA_BUTTON);
+    public static final Block<BlockData> POTTED_JUNGLE_SAPLING = new Block<>(415, 10433, NamespacedKey.parse("minecraft:potted_jungle_sapling"), () -> new BlockData(Block.POTTED_JUNGLE_SAPLING, 10433), null);
 
-    public static final Block<ButtonData> CHERRY_BUTTON = new Block<>(416, 9516, NamespacedKey.parse("minecraft:cherry_button"), () -> new ButtonData(Block.CHERRY_BUTTON, 9516), () -> Item.CHERRY_BUTTON);
+    public static final Block<BlockData> POTTED_ACACIA_SAPLING = new Block<>(416, 10434, NamespacedKey.parse("minecraft:potted_acacia_sapling"), () -> new BlockData(Block.POTTED_ACACIA_SAPLING, 10434), null);
 
-    public static final Block<ButtonData> DARK_OAK_BUTTON = new Block<>(417, 9540, NamespacedKey.parse("minecraft:dark_oak_button"), () -> new ButtonData(Block.DARK_OAK_BUTTON, 9540), () -> Item.DARK_OAK_BUTTON);
+    public static final Block<BlockData> POTTED_CHERRY_SAPLING = new Block<>(417, 10435, NamespacedKey.parse("minecraft:potted_cherry_sapling"), () -> new BlockData(Block.POTTED_CHERRY_SAPLING, 10435), null);
 
-    public static final Block<ButtonData> PALE_OAK_BUTTON = new Block<>(418, 9564, NamespacedKey.parse("minecraft:pale_oak_button"), () -> new ButtonData(Block.PALE_OAK_BUTTON, 9564), () -> Item.PALE_OAK_BUTTON);
+    public static final Block<BlockData> POTTED_DARK_OAK_SAPLING = new Block<>(418, 10436, NamespacedKey.parse("minecraft:potted_dark_oak_sapling"), () -> new BlockData(Block.POTTED_DARK_OAK_SAPLING, 10436), null);
 
-    public static final Block<ButtonData> MANGROVE_BUTTON = new Block<>(419, 9588, NamespacedKey.parse("minecraft:mangrove_button"), () -> new ButtonData(Block.MANGROVE_BUTTON, 9588), () -> Item.MANGROVE_BUTTON);
+    public static final Block<BlockData> POTTED_PALE_OAK_SAPLING = new Block<>(419, 10437, NamespacedKey.parse("minecraft:potted_pale_oak_sapling"), () -> new BlockData(Block.POTTED_PALE_OAK_SAPLING, 10437), null);
 
-    public static final Block<ButtonData> BAMBOO_BUTTON = new Block<>(420, 9612, NamespacedKey.parse("minecraft:bamboo_button"), () -> new ButtonData(Block.BAMBOO_BUTTON, 9612), () -> Item.BAMBOO_BUTTON);
+    public static final Block<BlockData> POTTED_MANGROVE_PROPAGULE = new Block<>(420, 10438, NamespacedKey.parse("minecraft:potted_mangrove_propagule"), () -> new BlockData(Block.POTTED_MANGROVE_PROPAGULE, 10438), null);
 
-    public static final Block<SkullData> SKELETON_SKULL = new Block<>(421, 9636, NamespacedKey.parse("minecraft:skeleton_skull"), () -> new SkullData(Block.SKELETON_SKULL, 9636), () -> Item.SKELETON_SKULL);
+    public static final Block<BlockData> POTTED_FERN = new Block<>(421, 10439, NamespacedKey.parse("minecraft:potted_fern"), () -> new BlockData(Block.POTTED_FERN, 10439), null);
 
-    public static final Block<WallSkullData> SKELETON_WALL_SKULL = new Block<>(422, 9668, NamespacedKey.parse("minecraft:skeleton_wall_skull"), () -> new WallSkullData(Block.SKELETON_WALL_SKULL, 9668), null);
+    public static final Block<BlockData> POTTED_DANDELION = new Block<>(422, 10440, NamespacedKey.parse("minecraft:potted_dandelion"), () -> new BlockData(Block.POTTED_DANDELION, 10440), null);
 
-    public static final Block<WitherSkullData> WITHER_SKELETON_SKULL = new Block<>(423, 9676, NamespacedKey.parse("minecraft:wither_skeleton_skull"), () -> new WitherSkullData(Block.WITHER_SKELETON_SKULL, 9676), () -> Item.WITHER_SKELETON_SKULL);
+    public static final Block<BlockData> POTTED_POPPY = new Block<>(423, 10441, NamespacedKey.parse("minecraft:potted_poppy"), () -> new BlockData(Block.POTTED_POPPY, 10441), null);
 
-    public static final Block<WitherWallSkullData> WITHER_SKELETON_WALL_SKULL = new Block<>(424, 9708, NamespacedKey.parse("minecraft:wither_skeleton_wall_skull"), () -> new WitherWallSkullData(Block.WITHER_SKELETON_WALL_SKULL, 9708), null);
+    public static final Block<BlockData> POTTED_BLUE_ORCHID = new Block<>(424, 10442, NamespacedKey.parse("minecraft:potted_blue_orchid"), () -> new BlockData(Block.POTTED_BLUE_ORCHID, 10442), null);
 
-    public static final Block<SkullData> ZOMBIE_HEAD = new Block<>(425, 9716, NamespacedKey.parse("minecraft:zombie_head"), () -> new SkullData(Block.ZOMBIE_HEAD, 9716), () -> Item.ZOMBIE_HEAD);
+    public static final Block<BlockData> POTTED_ALLIUM = new Block<>(425, 10443, NamespacedKey.parse("minecraft:potted_allium"), () -> new BlockData(Block.POTTED_ALLIUM, 10443), null);
 
-    public static final Block<WallSkullData> ZOMBIE_WALL_HEAD = new Block<>(426, 9748, NamespacedKey.parse("minecraft:zombie_wall_head"), () -> new WallSkullData(Block.ZOMBIE_WALL_HEAD, 9748), null);
+    public static final Block<BlockData> POTTED_AZURE_BLUET = new Block<>(426, 10444, NamespacedKey.parse("minecraft:potted_azure_bluet"), () -> new BlockData(Block.POTTED_AZURE_BLUET, 10444), null);
 
-    public static final Block<PlayerHeadData> PLAYER_HEAD = new Block<>(427, 9756, NamespacedKey.parse("minecraft:player_head"), () -> new PlayerHeadData(Block.PLAYER_HEAD, 9756), () -> Item.PLAYER_HEAD);
+    public static final Block<BlockData> POTTED_RED_TULIP = new Block<>(427, 10445, NamespacedKey.parse("minecraft:potted_red_tulip"), () -> new BlockData(Block.POTTED_RED_TULIP, 10445), null);
 
-    public static final Block<PlayerWallHeadData> PLAYER_WALL_HEAD = new Block<>(428, 9788, NamespacedKey.parse("minecraft:player_wall_head"), () -> new PlayerWallHeadData(Block.PLAYER_WALL_HEAD, 9788), null);
+    public static final Block<BlockData> POTTED_ORANGE_TULIP = new Block<>(428, 10446, NamespacedKey.parse("minecraft:potted_orange_tulip"), () -> new BlockData(Block.POTTED_ORANGE_TULIP, 10446), null);
 
-    public static final Block<SkullData> CREEPER_HEAD = new Block<>(429, 9796, NamespacedKey.parse("minecraft:creeper_head"), () -> new SkullData(Block.CREEPER_HEAD, 9796), () -> Item.CREEPER_HEAD);
+    public static final Block<BlockData> POTTED_WHITE_TULIP = new Block<>(429, 10447, NamespacedKey.parse("minecraft:potted_white_tulip"), () -> new BlockData(Block.POTTED_WHITE_TULIP, 10447), null);
 
-    public static final Block<WallSkullData> CREEPER_WALL_HEAD = new Block<>(430, 9828, NamespacedKey.parse("minecraft:creeper_wall_head"), () -> new WallSkullData(Block.CREEPER_WALL_HEAD, 9828), null);
+    public static final Block<BlockData> POTTED_PINK_TULIP = new Block<>(430, 10448, NamespacedKey.parse("minecraft:potted_pink_tulip"), () -> new BlockData(Block.POTTED_PINK_TULIP, 10448), null);
 
-    public static final Block<SkullData> DRAGON_HEAD = new Block<>(431, 9836, NamespacedKey.parse("minecraft:dragon_head"), () -> new SkullData(Block.DRAGON_HEAD, 9836), () -> Item.DRAGON_HEAD);
+    public static final Block<BlockData> POTTED_OXEYE_DAISY = new Block<>(431, 10449, NamespacedKey.parse("minecraft:potted_oxeye_daisy"), () -> new BlockData(Block.POTTED_OXEYE_DAISY, 10449), null);
 
-    public static final Block<WallSkullData> DRAGON_WALL_HEAD = new Block<>(432, 9868, NamespacedKey.parse("minecraft:dragon_wall_head"), () -> new WallSkullData(Block.DRAGON_WALL_HEAD, 9868), null);
+    public static final Block<BlockData> POTTED_CORNFLOWER = new Block<>(432, 10450, NamespacedKey.parse("minecraft:potted_cornflower"), () -> new BlockData(Block.POTTED_CORNFLOWER, 10450), null);
 
-    public static final Block<SkullData> PIGLIN_HEAD = new Block<>(433, 9876, NamespacedKey.parse("minecraft:piglin_head"), () -> new SkullData(Block.PIGLIN_HEAD, 9876), () -> Item.PIGLIN_HEAD);
+    public static final Block<BlockData> POTTED_LILY_OF_THE_VALLEY = new Block<>(433, 10451, NamespacedKey.parse("minecraft:potted_lily_of_the_valley"), () -> new BlockData(Block.POTTED_LILY_OF_THE_VALLEY, 10451), null);
 
-    public static final Block<PiglinwallskullData> PIGLIN_WALL_HEAD = new Block<>(434, 9908, NamespacedKey.parse("minecraft:piglin_wall_head"), () -> new PiglinwallskullData(Block.PIGLIN_WALL_HEAD, 9908), null);
+    public static final Block<BlockData> POTTED_WITHER_ROSE = new Block<>(434, 10452, NamespacedKey.parse("minecraft:potted_wither_rose"), () -> new BlockData(Block.POTTED_WITHER_ROSE, 10452), null);
 
-    public static final Block<AnvilData> ANVIL = new Block<>(435, 9916, NamespacedKey.parse("minecraft:anvil"), () -> new AnvilData(Block.ANVIL, 9916), () -> Item.ANVIL);
+    public static final Block<BlockData> POTTED_RED_MUSHROOM = new Block<>(435, 10453, NamespacedKey.parse("minecraft:potted_red_mushroom"), () -> new BlockData(Block.POTTED_RED_MUSHROOM, 10453), null);
 
-    public static final Block<AnvilData> CHIPPED_ANVIL = new Block<>(436, 9920, NamespacedKey.parse("minecraft:chipped_anvil"), () -> new AnvilData(Block.CHIPPED_ANVIL, 9920), () -> Item.CHIPPED_ANVIL);
+    public static final Block<BlockData> POTTED_BROWN_MUSHROOM = new Block<>(436, 10454, NamespacedKey.parse("minecraft:potted_brown_mushroom"), () -> new BlockData(Block.POTTED_BROWN_MUSHROOM, 10454), null);
 
-    public static final Block<AnvilData> DAMAGED_ANVIL = new Block<>(437, 9924, NamespacedKey.parse("minecraft:damaged_anvil"), () -> new AnvilData(Block.DAMAGED_ANVIL, 9924), () -> Item.DAMAGED_ANVIL);
+    public static final Block<BlockData> POTTED_DEAD_BUSH = new Block<>(437, 10455, NamespacedKey.parse("minecraft:potted_dead_bush"), () -> new BlockData(Block.POTTED_DEAD_BUSH, 10455), null);
 
-    public static final Block<TrappedChestData> TRAPPED_CHEST = new Block<>(438, 9928, NamespacedKey.parse("minecraft:trapped_chest"), () -> new TrappedChestData(Block.TRAPPED_CHEST, 9928), () -> Item.TRAPPED_CHEST);
+    public static final Block<BlockData> POTTED_CACTUS = new Block<>(438, 10456, NamespacedKey.parse("minecraft:potted_cactus"), () -> new BlockData(Block.POTTED_CACTUS, 10456), null);
 
-    public static final Block<WeightedPressurePlateData> LIGHT_WEIGHTED_PRESSURE_PLATE = new Block<>(439, 9952, NamespacedKey.parse("minecraft:light_weighted_pressure_plate"), () -> new WeightedPressurePlateData(Block.LIGHT_WEIGHTED_PRESSURE_PLATE, 9952), () -> Item.LIGHT_WEIGHTED_PRESSURE_PLATE);
+    public static final Block<CarrotData> CARROTS = new Block<>(439, 10457, NamespacedKey.parse("minecraft:carrots"), () -> new CarrotData(Block.CARROTS, 10457), null);
 
-    public static final Block<WeightedPressurePlateData> HEAVY_WEIGHTED_PRESSURE_PLATE = new Block<>(440, 9968, NamespacedKey.parse("minecraft:heavy_weighted_pressure_plate"), () -> new WeightedPressurePlateData(Block.HEAVY_WEIGHTED_PRESSURE_PLATE, 9968), () -> Item.HEAVY_WEIGHTED_PRESSURE_PLATE);
+    public static final Block<PotatoData> POTATOES = new Block<>(440, 10465, NamespacedKey.parse("minecraft:potatoes"), () -> new PotatoData(Block.POTATOES, 10465), null);
 
-    public static final Block<ComparatorData> COMPARATOR = new Block<>(441, 9984, NamespacedKey.parse("minecraft:comparator"), () -> new ComparatorData(Block.COMPARATOR, 9984), () -> Item.COMPARATOR);
+    public static final Block<ButtonData> OAK_BUTTON = new Block<>(441, 10473, NamespacedKey.parse("minecraft:oak_button"), () -> new ButtonData(Block.OAK_BUTTON, 10473), () -> Item.OAK_BUTTON);
 
-    public static final Block<DaylightDetectorData> DAYLIGHT_DETECTOR = new Block<>(442, 10000, NamespacedKey.parse("minecraft:daylight_detector"), () -> new DaylightDetectorData(Block.DAYLIGHT_DETECTOR, 10000), () -> Item.DAYLIGHT_DETECTOR);
+    public static final Block<ButtonData> SPRUCE_BUTTON = new Block<>(442, 10497, NamespacedKey.parse("minecraft:spruce_button"), () -> new ButtonData(Block.SPRUCE_BUTTON, 10497), () -> Item.SPRUCE_BUTTON);
 
-    public static final Block<BlockData> REDSTONE_BLOCK = new Block<>(443, 10032, NamespacedKey.parse("minecraft:redstone_block"), () -> new BlockData(Block.REDSTONE_BLOCK, 10032), () -> Item.REDSTONE_BLOCK);
+    public static final Block<ButtonData> BIRCH_BUTTON = new Block<>(443, 10521, NamespacedKey.parse("minecraft:birch_button"), () -> new ButtonData(Block.BIRCH_BUTTON, 10521), () -> Item.BIRCH_BUTTON);
 
-    public static final Block<BlockData> NETHER_QUARTZ_ORE = new Block<>(444, 10033, NamespacedKey.parse("minecraft:nether_quartz_ore"), () -> new BlockData(Block.NETHER_QUARTZ_ORE, 10033), () -> Item.NETHER_QUARTZ_ORE);
+    public static final Block<ButtonData> JUNGLE_BUTTON = new Block<>(444, 10545, NamespacedKey.parse("minecraft:jungle_button"), () -> new ButtonData(Block.JUNGLE_BUTTON, 10545), () -> Item.JUNGLE_BUTTON);
 
-    public static final Block<HopperData> HOPPER = new Block<>(445, 10034, NamespacedKey.parse("minecraft:hopper"), () -> new HopperData(Block.HOPPER, 10034), () -> Item.HOPPER);
+    public static final Block<ButtonData> ACACIA_BUTTON = new Block<>(445, 10569, NamespacedKey.parse("minecraft:acacia_button"), () -> new ButtonData(Block.ACACIA_BUTTON, 10569), () -> Item.ACACIA_BUTTON);
 
-    public static final Block<BlockData> QUARTZ_BLOCK = new Block<>(446, 10044, NamespacedKey.parse("minecraft:quartz_block"), () -> new BlockData(Block.QUARTZ_BLOCK, 10044), () -> Item.QUARTZ_BLOCK);
+    public static final Block<ButtonData> CHERRY_BUTTON = new Block<>(446, 10593, NamespacedKey.parse("minecraft:cherry_button"), () -> new ButtonData(Block.CHERRY_BUTTON, 10593), () -> Item.CHERRY_BUTTON);
 
-    public static final Block<BlockData> CHISELED_QUARTZ_BLOCK = new Block<>(447, 10045, NamespacedKey.parse("minecraft:chiseled_quartz_block"), () -> new BlockData(Block.CHISELED_QUARTZ_BLOCK, 10045), () -> Item.CHISELED_QUARTZ_BLOCK);
+    public static final Block<ButtonData> DARK_OAK_BUTTON = new Block<>(447, 10617, NamespacedKey.parse("minecraft:dark_oak_button"), () -> new ButtonData(Block.DARK_OAK_BUTTON, 10617), () -> Item.DARK_OAK_BUTTON);
 
-    public static final Block<RotatedPillarData> QUARTZ_PILLAR = new Block<>(448, 10046, NamespacedKey.parse("minecraft:quartz_pillar"), () -> new RotatedPillarData(Block.QUARTZ_PILLAR, 10046), () -> Item.QUARTZ_PILLAR);
+    public static final Block<ButtonData> PALE_OAK_BUTTON = new Block<>(448, 10641, NamespacedKey.parse("minecraft:pale_oak_button"), () -> new ButtonData(Block.PALE_OAK_BUTTON, 10641), () -> Item.PALE_OAK_BUTTON);
 
-    public static final Block<StairData> QUARTZ_STAIRS = new Block<>(449, 10049, NamespacedKey.parse("minecraft:quartz_stairs"), () -> new StairData(Block.QUARTZ_STAIRS, 10049), () -> Item.QUARTZ_STAIRS);
+    public static final Block<ButtonData> MANGROVE_BUTTON = new Block<>(449, 10665, NamespacedKey.parse("minecraft:mangrove_button"), () -> new ButtonData(Block.MANGROVE_BUTTON, 10665), () -> Item.MANGROVE_BUTTON);
 
-    public static final Block<PoweredRailData> ACTIVATOR_RAIL = new Block<>(450, 10129, NamespacedKey.parse("minecraft:activator_rail"), () -> new PoweredRailData(Block.ACTIVATOR_RAIL, 10129), () -> Item.ACTIVATOR_RAIL);
+    public static final Block<ButtonData> BAMBOO_BUTTON = new Block<>(450, 10689, NamespacedKey.parse("minecraft:bamboo_button"), () -> new ButtonData(Block.BAMBOO_BUTTON, 10689), () -> Item.BAMBOO_BUTTON);
 
-    public static final Block<DropperData> DROPPER = new Block<>(451, 10153, NamespacedKey.parse("minecraft:dropper"), () -> new DropperData(Block.DROPPER, 10153), () -> Item.DROPPER);
+    public static final Block<SkullData> SKELETON_SKULL = new Block<>(451, 10713, NamespacedKey.parse("minecraft:skeleton_skull"), () -> new SkullData(Block.SKELETON_SKULL, 10713), () -> Item.SKELETON_SKULL);
 
-    public static final Block<BlockData> WHITE_TERRACOTTA = new Block<>(452, 10165, NamespacedKey.parse("minecraft:white_terracotta"), () -> new BlockData(Block.WHITE_TERRACOTTA, 10165), () -> Item.WHITE_TERRACOTTA);
+    public static final Block<WallSkullData> SKELETON_WALL_SKULL = new Block<>(452, 10745, NamespacedKey.parse("minecraft:skeleton_wall_skull"), () -> new WallSkullData(Block.SKELETON_WALL_SKULL, 10745), null);
 
-    public static final Block<BlockData> ORANGE_TERRACOTTA = new Block<>(453, 10166, NamespacedKey.parse("minecraft:orange_terracotta"), () -> new BlockData(Block.ORANGE_TERRACOTTA, 10166), () -> Item.ORANGE_TERRACOTTA);
+    public static final Block<WitherSkullData> WITHER_SKELETON_SKULL = new Block<>(453, 10753, NamespacedKey.parse("minecraft:wither_skeleton_skull"), () -> new WitherSkullData(Block.WITHER_SKELETON_SKULL, 10753), () -> Item.WITHER_SKELETON_SKULL);
 
-    public static final Block<BlockData> MAGENTA_TERRACOTTA = new Block<>(454, 10167, NamespacedKey.parse("minecraft:magenta_terracotta"), () -> new BlockData(Block.MAGENTA_TERRACOTTA, 10167), () -> Item.MAGENTA_TERRACOTTA);
+    public static final Block<WitherWallSkullData> WITHER_SKELETON_WALL_SKULL = new Block<>(454, 10785, NamespacedKey.parse("minecraft:wither_skeleton_wall_skull"), () -> new WitherWallSkullData(Block.WITHER_SKELETON_WALL_SKULL, 10785), null);
 
-    public static final Block<BlockData> LIGHT_BLUE_TERRACOTTA = new Block<>(455, 10168, NamespacedKey.parse("minecraft:light_blue_terracotta"), () -> new BlockData(Block.LIGHT_BLUE_TERRACOTTA, 10168), () -> Item.LIGHT_BLUE_TERRACOTTA);
+    public static final Block<SkullData> ZOMBIE_HEAD = new Block<>(455, 10793, NamespacedKey.parse("minecraft:zombie_head"), () -> new SkullData(Block.ZOMBIE_HEAD, 10793), () -> Item.ZOMBIE_HEAD);
 
-    public static final Block<BlockData> YELLOW_TERRACOTTA = new Block<>(456, 10169, NamespacedKey.parse("minecraft:yellow_terracotta"), () -> new BlockData(Block.YELLOW_TERRACOTTA, 10169), () -> Item.YELLOW_TERRACOTTA);
+    public static final Block<WallSkullData> ZOMBIE_WALL_HEAD = new Block<>(456, 10825, NamespacedKey.parse("minecraft:zombie_wall_head"), () -> new WallSkullData(Block.ZOMBIE_WALL_HEAD, 10825), null);
 
-    public static final Block<BlockData> LIME_TERRACOTTA = new Block<>(457, 10170, NamespacedKey.parse("minecraft:lime_terracotta"), () -> new BlockData(Block.LIME_TERRACOTTA, 10170), () -> Item.LIME_TERRACOTTA);
+    public static final Block<PlayerHeadData> PLAYER_HEAD = new Block<>(457, 10833, NamespacedKey.parse("minecraft:player_head"), () -> new PlayerHeadData(Block.PLAYER_HEAD, 10833), () -> Item.PLAYER_HEAD);
 
-    public static final Block<BlockData> PINK_TERRACOTTA = new Block<>(458, 10171, NamespacedKey.parse("minecraft:pink_terracotta"), () -> new BlockData(Block.PINK_TERRACOTTA, 10171), () -> Item.PINK_TERRACOTTA);
+    public static final Block<PlayerWallHeadData> PLAYER_WALL_HEAD = new Block<>(458, 10865, NamespacedKey.parse("minecraft:player_wall_head"), () -> new PlayerWallHeadData(Block.PLAYER_WALL_HEAD, 10865), null);
 
-    public static final Block<BlockData> GRAY_TERRACOTTA = new Block<>(459, 10172, NamespacedKey.parse("minecraft:gray_terracotta"), () -> new BlockData(Block.GRAY_TERRACOTTA, 10172), () -> Item.GRAY_TERRACOTTA);
+    public static final Block<SkullData> CREEPER_HEAD = new Block<>(459, 10873, NamespacedKey.parse("minecraft:creeper_head"), () -> new SkullData(Block.CREEPER_HEAD, 10873), () -> Item.CREEPER_HEAD);
 
-    public static final Block<BlockData> LIGHT_GRAY_TERRACOTTA = new Block<>(460, 10173, NamespacedKey.parse("minecraft:light_gray_terracotta"), () -> new BlockData(Block.LIGHT_GRAY_TERRACOTTA, 10173), () -> Item.LIGHT_GRAY_TERRACOTTA);
+    public static final Block<WallSkullData> CREEPER_WALL_HEAD = new Block<>(460, 10905, NamespacedKey.parse("minecraft:creeper_wall_head"), () -> new WallSkullData(Block.CREEPER_WALL_HEAD, 10905), null);
 
-    public static final Block<BlockData> CYAN_TERRACOTTA = new Block<>(461, 10174, NamespacedKey.parse("minecraft:cyan_terracotta"), () -> new BlockData(Block.CYAN_TERRACOTTA, 10174), () -> Item.CYAN_TERRACOTTA);
+    public static final Block<SkullData> DRAGON_HEAD = new Block<>(461, 10913, NamespacedKey.parse("minecraft:dragon_head"), () -> new SkullData(Block.DRAGON_HEAD, 10913), () -> Item.DRAGON_HEAD);
 
-    public static final Block<BlockData> PURPLE_TERRACOTTA = new Block<>(462, 10175, NamespacedKey.parse("minecraft:purple_terracotta"), () -> new BlockData(Block.PURPLE_TERRACOTTA, 10175), () -> Item.PURPLE_TERRACOTTA);
+    public static final Block<WallSkullData> DRAGON_WALL_HEAD = new Block<>(462, 10945, NamespacedKey.parse("minecraft:dragon_wall_head"), () -> new WallSkullData(Block.DRAGON_WALL_HEAD, 10945), null);
 
-    public static final Block<BlockData> BLUE_TERRACOTTA = new Block<>(463, 10176, NamespacedKey.parse("minecraft:blue_terracotta"), () -> new BlockData(Block.BLUE_TERRACOTTA, 10176), () -> Item.BLUE_TERRACOTTA);
+    public static final Block<SkullData> PIGLIN_HEAD = new Block<>(463, 10953, NamespacedKey.parse("minecraft:piglin_head"), () -> new SkullData(Block.PIGLIN_HEAD, 10953), () -> Item.PIGLIN_HEAD);
 
-    public static final Block<BlockData> BROWN_TERRACOTTA = new Block<>(464, 10177, NamespacedKey.parse("minecraft:brown_terracotta"), () -> new BlockData(Block.BROWN_TERRACOTTA, 10177), () -> Item.BROWN_TERRACOTTA);
+    public static final Block<PiglinwallskullData> PIGLIN_WALL_HEAD = new Block<>(464, 10985, NamespacedKey.parse("minecraft:piglin_wall_head"), () -> new PiglinwallskullData(Block.PIGLIN_WALL_HEAD, 10985), null);
 
-    public static final Block<BlockData> GREEN_TERRACOTTA = new Block<>(465, 10178, NamespacedKey.parse("minecraft:green_terracotta"), () -> new BlockData(Block.GREEN_TERRACOTTA, 10178), () -> Item.GREEN_TERRACOTTA);
+    public static final Block<AnvilData> ANVIL = new Block<>(465, 10993, NamespacedKey.parse("minecraft:anvil"), () -> new AnvilData(Block.ANVIL, 10993), () -> Item.ANVIL);
 
-    public static final Block<BlockData> RED_TERRACOTTA = new Block<>(466, 10179, NamespacedKey.parse("minecraft:red_terracotta"), () -> new BlockData(Block.RED_TERRACOTTA, 10179), () -> Item.RED_TERRACOTTA);
+    public static final Block<AnvilData> CHIPPED_ANVIL = new Block<>(466, 10997, NamespacedKey.parse("minecraft:chipped_anvil"), () -> new AnvilData(Block.CHIPPED_ANVIL, 10997), () -> Item.CHIPPED_ANVIL);
 
-    public static final Block<BlockData> BLACK_TERRACOTTA = new Block<>(467, 10180, NamespacedKey.parse("minecraft:black_terracotta"), () -> new BlockData(Block.BLACK_TERRACOTTA, 10180), () -> Item.BLACK_TERRACOTTA);
+    public static final Block<AnvilData> DAMAGED_ANVIL = new Block<>(467, 11001, NamespacedKey.parse("minecraft:damaged_anvil"), () -> new AnvilData(Block.DAMAGED_ANVIL, 11001), () -> Item.DAMAGED_ANVIL);
 
-    public static final Block<StainedGlassPaneData> WHITE_STAINED_GLASS_PANE = new Block<>(468, 10181, NamespacedKey.parse("minecraft:white_stained_glass_pane"), () -> new StainedGlassPaneData(Block.WHITE_STAINED_GLASS_PANE, 10181), () -> Item.WHITE_STAINED_GLASS_PANE);
+    public static final Block<TrappedChestData> TRAPPED_CHEST = new Block<>(468, 11005, NamespacedKey.parse("minecraft:trapped_chest"), () -> new TrappedChestData(Block.TRAPPED_CHEST, 11005), () -> Item.TRAPPED_CHEST);
 
-    public static final Block<StainedGlassPaneData> ORANGE_STAINED_GLASS_PANE = new Block<>(469, 10213, NamespacedKey.parse("minecraft:orange_stained_glass_pane"), () -> new StainedGlassPaneData(Block.ORANGE_STAINED_GLASS_PANE, 10213), () -> Item.ORANGE_STAINED_GLASS_PANE);
+    public static final Block<WeightedPressurePlateData> LIGHT_WEIGHTED_PRESSURE_PLATE = new Block<>(469, 11029, NamespacedKey.parse("minecraft:light_weighted_pressure_plate"), () -> new WeightedPressurePlateData(Block.LIGHT_WEIGHTED_PRESSURE_PLATE, 11029), () -> Item.LIGHT_WEIGHTED_PRESSURE_PLATE);
 
-    public static final Block<StainedGlassPaneData> MAGENTA_STAINED_GLASS_PANE = new Block<>(470, 10245, NamespacedKey.parse("minecraft:magenta_stained_glass_pane"), () -> new StainedGlassPaneData(Block.MAGENTA_STAINED_GLASS_PANE, 10245), () -> Item.MAGENTA_STAINED_GLASS_PANE);
+    public static final Block<WeightedPressurePlateData> HEAVY_WEIGHTED_PRESSURE_PLATE = new Block<>(470, 11045, NamespacedKey.parse("minecraft:heavy_weighted_pressure_plate"), () -> new WeightedPressurePlateData(Block.HEAVY_WEIGHTED_PRESSURE_PLATE, 11045), () -> Item.HEAVY_WEIGHTED_PRESSURE_PLATE);
 
-    public static final Block<StainedGlassPaneData> LIGHT_BLUE_STAINED_GLASS_PANE = new Block<>(471, 10277, NamespacedKey.parse("minecraft:light_blue_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIGHT_BLUE_STAINED_GLASS_PANE, 10277), () -> Item.LIGHT_BLUE_STAINED_GLASS_PANE);
+    public static final Block<ComparatorData> COMPARATOR = new Block<>(471, 11061, NamespacedKey.parse("minecraft:comparator"), () -> new ComparatorData(Block.COMPARATOR, 11061), () -> Item.COMPARATOR);
 
-    public static final Block<StainedGlassPaneData> YELLOW_STAINED_GLASS_PANE = new Block<>(472, 10309, NamespacedKey.parse("minecraft:yellow_stained_glass_pane"), () -> new StainedGlassPaneData(Block.YELLOW_STAINED_GLASS_PANE, 10309), () -> Item.YELLOW_STAINED_GLASS_PANE);
+    public static final Block<DaylightDetectorData> DAYLIGHT_DETECTOR = new Block<>(472, 11077, NamespacedKey.parse("minecraft:daylight_detector"), () -> new DaylightDetectorData(Block.DAYLIGHT_DETECTOR, 11077), () -> Item.DAYLIGHT_DETECTOR);
 
-    public static final Block<StainedGlassPaneData> LIME_STAINED_GLASS_PANE = new Block<>(473, 10341, NamespacedKey.parse("minecraft:lime_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIME_STAINED_GLASS_PANE, 10341), () -> Item.LIME_STAINED_GLASS_PANE);
+    public static final Block<BlockData> REDSTONE_BLOCK = new Block<>(473, 11109, NamespacedKey.parse("minecraft:redstone_block"), () -> new BlockData(Block.REDSTONE_BLOCK, 11109), () -> Item.REDSTONE_BLOCK);
 
-    public static final Block<StainedGlassPaneData> PINK_STAINED_GLASS_PANE = new Block<>(474, 10373, NamespacedKey.parse("minecraft:pink_stained_glass_pane"), () -> new StainedGlassPaneData(Block.PINK_STAINED_GLASS_PANE, 10373), () -> Item.PINK_STAINED_GLASS_PANE);
+    public static final Block<BlockData> NETHER_QUARTZ_ORE = new Block<>(474, 11110, NamespacedKey.parse("minecraft:nether_quartz_ore"), () -> new BlockData(Block.NETHER_QUARTZ_ORE, 11110), () -> Item.NETHER_QUARTZ_ORE);
 
-    public static final Block<StainedGlassPaneData> GRAY_STAINED_GLASS_PANE = new Block<>(475, 10405, NamespacedKey.parse("minecraft:gray_stained_glass_pane"), () -> new StainedGlassPaneData(Block.GRAY_STAINED_GLASS_PANE, 10405), () -> Item.GRAY_STAINED_GLASS_PANE);
+    public static final Block<HopperData> HOPPER = new Block<>(475, 11111, NamespacedKey.parse("minecraft:hopper"), () -> new HopperData(Block.HOPPER, 11111), () -> Item.HOPPER);
 
-    public static final Block<StainedGlassPaneData> LIGHT_GRAY_STAINED_GLASS_PANE = new Block<>(476, 10437, NamespacedKey.parse("minecraft:light_gray_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIGHT_GRAY_STAINED_GLASS_PANE, 10437), () -> Item.LIGHT_GRAY_STAINED_GLASS_PANE);
+    public static final Block<BlockData> QUARTZ_BLOCK = new Block<>(476, 11121, NamespacedKey.parse("minecraft:quartz_block"), () -> new BlockData(Block.QUARTZ_BLOCK, 11121), () -> Item.QUARTZ_BLOCK);
 
-    public static final Block<StainedGlassPaneData> CYAN_STAINED_GLASS_PANE = new Block<>(477, 10469, NamespacedKey.parse("minecraft:cyan_stained_glass_pane"), () -> new StainedGlassPaneData(Block.CYAN_STAINED_GLASS_PANE, 10469), () -> Item.CYAN_STAINED_GLASS_PANE);
+    public static final Block<BlockData> CHISELED_QUARTZ_BLOCK = new Block<>(477, 11122, NamespacedKey.parse("minecraft:chiseled_quartz_block"), () -> new BlockData(Block.CHISELED_QUARTZ_BLOCK, 11122), () -> Item.CHISELED_QUARTZ_BLOCK);
 
-    public static final Block<StainedGlassPaneData> PURPLE_STAINED_GLASS_PANE = new Block<>(478, 10501, NamespacedKey.parse("minecraft:purple_stained_glass_pane"), () -> new StainedGlassPaneData(Block.PURPLE_STAINED_GLASS_PANE, 10501), () -> Item.PURPLE_STAINED_GLASS_PANE);
+    public static final Block<RotatedPillarData> QUARTZ_PILLAR = new Block<>(478, 11123, NamespacedKey.parse("minecraft:quartz_pillar"), () -> new RotatedPillarData(Block.QUARTZ_PILLAR, 11123), () -> Item.QUARTZ_PILLAR);
 
-    public static final Block<StainedGlassPaneData> BLUE_STAINED_GLASS_PANE = new Block<>(479, 10533, NamespacedKey.parse("minecraft:blue_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BLUE_STAINED_GLASS_PANE, 10533), () -> Item.BLUE_STAINED_GLASS_PANE);
+    public static final Block<StairData> QUARTZ_STAIRS = new Block<>(479, 11126, NamespacedKey.parse("minecraft:quartz_stairs"), () -> new StairData(Block.QUARTZ_STAIRS, 11126), () -> Item.QUARTZ_STAIRS);
 
-    public static final Block<StainedGlassPaneData> BROWN_STAINED_GLASS_PANE = new Block<>(480, 10565, NamespacedKey.parse("minecraft:brown_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BROWN_STAINED_GLASS_PANE, 10565), () -> Item.BROWN_STAINED_GLASS_PANE);
+    public static final Block<PoweredRailData> ACTIVATOR_RAIL = new Block<>(480, 11206, NamespacedKey.parse("minecraft:activator_rail"), () -> new PoweredRailData(Block.ACTIVATOR_RAIL, 11206), () -> Item.ACTIVATOR_RAIL);
 
-    public static final Block<StainedGlassPaneData> GREEN_STAINED_GLASS_PANE = new Block<>(481, 10597, NamespacedKey.parse("minecraft:green_stained_glass_pane"), () -> new StainedGlassPaneData(Block.GREEN_STAINED_GLASS_PANE, 10597), () -> Item.GREEN_STAINED_GLASS_PANE);
+    public static final Block<DropperData> DROPPER = new Block<>(481, 11230, NamespacedKey.parse("minecraft:dropper"), () -> new DropperData(Block.DROPPER, 11230), () -> Item.DROPPER);
 
-    public static final Block<StainedGlassPaneData> RED_STAINED_GLASS_PANE = new Block<>(482, 10629, NamespacedKey.parse("minecraft:red_stained_glass_pane"), () -> new StainedGlassPaneData(Block.RED_STAINED_GLASS_PANE, 10629), () -> Item.RED_STAINED_GLASS_PANE);
+    public static final Block<BlockData> WHITE_TERRACOTTA = new Block<>(482, 11242, NamespacedKey.parse("minecraft:white_terracotta"), () -> new BlockData(Block.WHITE_TERRACOTTA, 11242), () -> Item.WHITE_TERRACOTTA);
 
-    public static final Block<StainedGlassPaneData> BLACK_STAINED_GLASS_PANE = new Block<>(483, 10661, NamespacedKey.parse("minecraft:black_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BLACK_STAINED_GLASS_PANE, 10661), () -> Item.BLACK_STAINED_GLASS_PANE);
+    public static final Block<BlockData> ORANGE_TERRACOTTA = new Block<>(483, 11243, NamespacedKey.parse("minecraft:orange_terracotta"), () -> new BlockData(Block.ORANGE_TERRACOTTA, 11243), () -> Item.ORANGE_TERRACOTTA);
 
-    public static final Block<StairData> ACACIA_STAIRS = new Block<>(484, 10693, NamespacedKey.parse("minecraft:acacia_stairs"), () -> new StairData(Block.ACACIA_STAIRS, 10693), () -> Item.ACACIA_STAIRS);
+    public static final Block<BlockData> MAGENTA_TERRACOTTA = new Block<>(484, 11244, NamespacedKey.parse("minecraft:magenta_terracotta"), () -> new BlockData(Block.MAGENTA_TERRACOTTA, 11244), () -> Item.MAGENTA_TERRACOTTA);
 
-    public static final Block<StairData> CHERRY_STAIRS = new Block<>(485, 10773, NamespacedKey.parse("minecraft:cherry_stairs"), () -> new StairData(Block.CHERRY_STAIRS, 10773), () -> Item.CHERRY_STAIRS);
+    public static final Block<BlockData> LIGHT_BLUE_TERRACOTTA = new Block<>(485, 11245, NamespacedKey.parse("minecraft:light_blue_terracotta"), () -> new BlockData(Block.LIGHT_BLUE_TERRACOTTA, 11245), () -> Item.LIGHT_BLUE_TERRACOTTA);
 
-    public static final Block<StairData> DARK_OAK_STAIRS = new Block<>(486, 10853, NamespacedKey.parse("minecraft:dark_oak_stairs"), () -> new StairData(Block.DARK_OAK_STAIRS, 10853), () -> Item.DARK_OAK_STAIRS);
+    public static final Block<BlockData> YELLOW_TERRACOTTA = new Block<>(486, 11246, NamespacedKey.parse("minecraft:yellow_terracotta"), () -> new BlockData(Block.YELLOW_TERRACOTTA, 11246), () -> Item.YELLOW_TERRACOTTA);
 
-    public static final Block<StairData> PALE_OAK_STAIRS = new Block<>(487, 10933, NamespacedKey.parse("minecraft:pale_oak_stairs"), () -> new StairData(Block.PALE_OAK_STAIRS, 10933), () -> Item.PALE_OAK_STAIRS);
+    public static final Block<BlockData> LIME_TERRACOTTA = new Block<>(487, 11247, NamespacedKey.parse("minecraft:lime_terracotta"), () -> new BlockData(Block.LIME_TERRACOTTA, 11247), () -> Item.LIME_TERRACOTTA);
 
-    public static final Block<StairData> MANGROVE_STAIRS = new Block<>(488, 11013, NamespacedKey.parse("minecraft:mangrove_stairs"), () -> new StairData(Block.MANGROVE_STAIRS, 11013), () -> Item.MANGROVE_STAIRS);
+    public static final Block<BlockData> PINK_TERRACOTTA = new Block<>(488, 11248, NamespacedKey.parse("minecraft:pink_terracotta"), () -> new BlockData(Block.PINK_TERRACOTTA, 11248), () -> Item.PINK_TERRACOTTA);
 
-    public static final Block<StairData> BAMBOO_STAIRS = new Block<>(489, 11093, NamespacedKey.parse("minecraft:bamboo_stairs"), () -> new StairData(Block.BAMBOO_STAIRS, 11093), () -> Item.BAMBOO_STAIRS);
+    public static final Block<BlockData> GRAY_TERRACOTTA = new Block<>(489, 11249, NamespacedKey.parse("minecraft:gray_terracotta"), () -> new BlockData(Block.GRAY_TERRACOTTA, 11249), () -> Item.GRAY_TERRACOTTA);
 
-    public static final Block<StairData> BAMBOO_MOSAIC_STAIRS = new Block<>(490, 11173, NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"), () -> new StairData(Block.BAMBOO_MOSAIC_STAIRS, 11173), () -> Item.BAMBOO_MOSAIC_STAIRS);
+    public static final Block<BlockData> LIGHT_GRAY_TERRACOTTA = new Block<>(490, 11250, NamespacedKey.parse("minecraft:light_gray_terracotta"), () -> new BlockData(Block.LIGHT_GRAY_TERRACOTTA, 11250), () -> Item.LIGHT_GRAY_TERRACOTTA);
 
-    public static final Block<BlockData> SLIME_BLOCK = new Block<>(491, 11253, NamespacedKey.parse("minecraft:slime_block"), () -> new BlockData(Block.SLIME_BLOCK, 11253), () -> Item.SLIME_BLOCK);
+    public static final Block<BlockData> CYAN_TERRACOTTA = new Block<>(491, 11251, NamespacedKey.parse("minecraft:cyan_terracotta"), () -> new BlockData(Block.CYAN_TERRACOTTA, 11251), () -> Item.CYAN_TERRACOTTA);
 
-    public static final Block<BarrierData> BARRIER = new Block<>(492, 11254, NamespacedKey.parse("minecraft:barrier"), () -> new BarrierData(Block.BARRIER, 11254), () -> Item.BARRIER);
+    public static final Block<BlockData> PURPLE_TERRACOTTA = new Block<>(492, 11252, NamespacedKey.parse("minecraft:purple_terracotta"), () -> new BlockData(Block.PURPLE_TERRACOTTA, 11252), () -> Item.PURPLE_TERRACOTTA);
 
-    public static final Block<LightData> LIGHT = new Block<>(493, 11256, NamespacedKey.parse("minecraft:light"), () -> new LightData(Block.LIGHT, 11256), () -> Item.LIGHT);
+    public static final Block<BlockData> BLUE_TERRACOTTA = new Block<>(493, 11253, NamespacedKey.parse("minecraft:blue_terracotta"), () -> new BlockData(Block.BLUE_TERRACOTTA, 11253), () -> Item.BLUE_TERRACOTTA);
 
-    public static final Block<TrapdoorData> IRON_TRAPDOOR = new Block<>(494, 11288, NamespacedKey.parse("minecraft:iron_trapdoor"), () -> new TrapdoorData(Block.IRON_TRAPDOOR, 11288), () -> Item.IRON_TRAPDOOR);
+    public static final Block<BlockData> BROWN_TERRACOTTA = new Block<>(494, 11254, NamespacedKey.parse("minecraft:brown_terracotta"), () -> new BlockData(Block.BROWN_TERRACOTTA, 11254), () -> Item.BROWN_TERRACOTTA);
 
-    public static final Block<BlockData> PRISMARINE = new Block<>(495, 11352, NamespacedKey.parse("minecraft:prismarine"), () -> new BlockData(Block.PRISMARINE, 11352), () -> Item.PRISMARINE);
+    public static final Block<BlockData> GREEN_TERRACOTTA = new Block<>(495, 11255, NamespacedKey.parse("minecraft:green_terracotta"), () -> new BlockData(Block.GREEN_TERRACOTTA, 11255), () -> Item.GREEN_TERRACOTTA);
 
-    public static final Block<BlockData> PRISMARINE_BRICKS = new Block<>(496, 11353, NamespacedKey.parse("minecraft:prismarine_bricks"), () -> new BlockData(Block.PRISMARINE_BRICKS, 11353), () -> Item.PRISMARINE_BRICKS);
+    public static final Block<BlockData> RED_TERRACOTTA = new Block<>(496, 11256, NamespacedKey.parse("minecraft:red_terracotta"), () -> new BlockData(Block.RED_TERRACOTTA, 11256), () -> Item.RED_TERRACOTTA);
 
-    public static final Block<BlockData> DARK_PRISMARINE = new Block<>(497, 11354, NamespacedKey.parse("minecraft:dark_prismarine"), () -> new BlockData(Block.DARK_PRISMARINE, 11354), () -> Item.DARK_PRISMARINE);
+    public static final Block<BlockData> BLACK_TERRACOTTA = new Block<>(497, 11257, NamespacedKey.parse("minecraft:black_terracotta"), () -> new BlockData(Block.BLACK_TERRACOTTA, 11257), () -> Item.BLACK_TERRACOTTA);
 
-    public static final Block<StairData> PRISMARINE_STAIRS = new Block<>(498, 11355, NamespacedKey.parse("minecraft:prismarine_stairs"), () -> new StairData(Block.PRISMARINE_STAIRS, 11355), () -> Item.PRISMARINE_STAIRS);
+    public static final Block<StainedGlassPaneData> WHITE_STAINED_GLASS_PANE = new Block<>(498, 11258, NamespacedKey.parse("minecraft:white_stained_glass_pane"), () -> new StainedGlassPaneData(Block.WHITE_STAINED_GLASS_PANE, 11258), () -> Item.WHITE_STAINED_GLASS_PANE);
 
-    public static final Block<StairData> PRISMARINE_BRICK_STAIRS = new Block<>(499, 11435, NamespacedKey.parse("minecraft:prismarine_brick_stairs"), () -> new StairData(Block.PRISMARINE_BRICK_STAIRS, 11435), () -> Item.PRISMARINE_BRICK_STAIRS);
+    public static final Block<StainedGlassPaneData> ORANGE_STAINED_GLASS_PANE = new Block<>(499, 11290, NamespacedKey.parse("minecraft:orange_stained_glass_pane"), () -> new StainedGlassPaneData(Block.ORANGE_STAINED_GLASS_PANE, 11290), () -> Item.ORANGE_STAINED_GLASS_PANE);
 
-    public static final Block<StairData> DARK_PRISMARINE_STAIRS = new Block<>(500, 11515, NamespacedKey.parse("minecraft:dark_prismarine_stairs"), () -> new StairData(Block.DARK_PRISMARINE_STAIRS, 11515), () -> Item.DARK_PRISMARINE_STAIRS);
+    public static final Block<StainedGlassPaneData> MAGENTA_STAINED_GLASS_PANE = new Block<>(500, 11322, NamespacedKey.parse("minecraft:magenta_stained_glass_pane"), () -> new StainedGlassPaneData(Block.MAGENTA_STAINED_GLASS_PANE, 11322), () -> Item.MAGENTA_STAINED_GLASS_PANE);
 
-    public static final Block<SlabData> PRISMARINE_SLAB = new Block<>(501, 11595, NamespacedKey.parse("minecraft:prismarine_slab"), () -> new SlabData(Block.PRISMARINE_SLAB, 11595), () -> Item.PRISMARINE_SLAB);
+    public static final Block<StainedGlassPaneData> LIGHT_BLUE_STAINED_GLASS_PANE = new Block<>(501, 11354, NamespacedKey.parse("minecraft:light_blue_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIGHT_BLUE_STAINED_GLASS_PANE, 11354), () -> Item.LIGHT_BLUE_STAINED_GLASS_PANE);
 
-    public static final Block<SlabData> PRISMARINE_BRICK_SLAB = new Block<>(502, 11601, NamespacedKey.parse("minecraft:prismarine_brick_slab"), () -> new SlabData(Block.PRISMARINE_BRICK_SLAB, 11601), () -> Item.PRISMARINE_BRICK_SLAB);
+    public static final Block<StainedGlassPaneData> YELLOW_STAINED_GLASS_PANE = new Block<>(502, 11386, NamespacedKey.parse("minecraft:yellow_stained_glass_pane"), () -> new StainedGlassPaneData(Block.YELLOW_STAINED_GLASS_PANE, 11386), () -> Item.YELLOW_STAINED_GLASS_PANE);
 
-    public static final Block<SlabData> DARK_PRISMARINE_SLAB = new Block<>(503, 11607, NamespacedKey.parse("minecraft:dark_prismarine_slab"), () -> new SlabData(Block.DARK_PRISMARINE_SLAB, 11607), () -> Item.DARK_PRISMARINE_SLAB);
+    public static final Block<StainedGlassPaneData> LIME_STAINED_GLASS_PANE = new Block<>(503, 11418, NamespacedKey.parse("minecraft:lime_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIME_STAINED_GLASS_PANE, 11418), () -> Item.LIME_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> SEA_LANTERN = new Block<>(504, 11613, NamespacedKey.parse("minecraft:sea_lantern"), () -> new BlockData(Block.SEA_LANTERN, 11613), () -> Item.SEA_LANTERN);
+    public static final Block<StainedGlassPaneData> PINK_STAINED_GLASS_PANE = new Block<>(504, 11450, NamespacedKey.parse("minecraft:pink_stained_glass_pane"), () -> new StainedGlassPaneData(Block.PINK_STAINED_GLASS_PANE, 11450), () -> Item.PINK_STAINED_GLASS_PANE);
 
-    public static final Block<HayData> HAY_BLOCK = new Block<>(505, 11614, NamespacedKey.parse("minecraft:hay_block"), () -> new HayData(Block.HAY_BLOCK, 11614), () -> Item.HAY_BLOCK);
+    public static final Block<StainedGlassPaneData> GRAY_STAINED_GLASS_PANE = new Block<>(505, 11482, NamespacedKey.parse("minecraft:gray_stained_glass_pane"), () -> new StainedGlassPaneData(Block.GRAY_STAINED_GLASS_PANE, 11482), () -> Item.GRAY_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> WHITE_CARPET = new Block<>(506, 11617, NamespacedKey.parse("minecraft:white_carpet"), () -> new BlockData(Block.WHITE_CARPET, 11617), () -> Item.WHITE_CARPET);
+    public static final Block<StainedGlassPaneData> LIGHT_GRAY_STAINED_GLASS_PANE = new Block<>(506, 11514, NamespacedKey.parse("minecraft:light_gray_stained_glass_pane"), () -> new StainedGlassPaneData(Block.LIGHT_GRAY_STAINED_GLASS_PANE, 11514), () -> Item.LIGHT_GRAY_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> ORANGE_CARPET = new Block<>(507, 11618, NamespacedKey.parse("minecraft:orange_carpet"), () -> new BlockData(Block.ORANGE_CARPET, 11618), () -> Item.ORANGE_CARPET);
+    public static final Block<StainedGlassPaneData> CYAN_STAINED_GLASS_PANE = new Block<>(507, 11546, NamespacedKey.parse("minecraft:cyan_stained_glass_pane"), () -> new StainedGlassPaneData(Block.CYAN_STAINED_GLASS_PANE, 11546), () -> Item.CYAN_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> MAGENTA_CARPET = new Block<>(508, 11619, NamespacedKey.parse("minecraft:magenta_carpet"), () -> new BlockData(Block.MAGENTA_CARPET, 11619), () -> Item.MAGENTA_CARPET);
+    public static final Block<StainedGlassPaneData> PURPLE_STAINED_GLASS_PANE = new Block<>(508, 11578, NamespacedKey.parse("minecraft:purple_stained_glass_pane"), () -> new StainedGlassPaneData(Block.PURPLE_STAINED_GLASS_PANE, 11578), () -> Item.PURPLE_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> LIGHT_BLUE_CARPET = new Block<>(509, 11620, NamespacedKey.parse("minecraft:light_blue_carpet"), () -> new BlockData(Block.LIGHT_BLUE_CARPET, 11620), () -> Item.LIGHT_BLUE_CARPET);
+    public static final Block<StainedGlassPaneData> BLUE_STAINED_GLASS_PANE = new Block<>(509, 11610, NamespacedKey.parse("minecraft:blue_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BLUE_STAINED_GLASS_PANE, 11610), () -> Item.BLUE_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> YELLOW_CARPET = new Block<>(510, 11621, NamespacedKey.parse("minecraft:yellow_carpet"), () -> new BlockData(Block.YELLOW_CARPET, 11621), () -> Item.YELLOW_CARPET);
+    public static final Block<StainedGlassPaneData> BROWN_STAINED_GLASS_PANE = new Block<>(510, 11642, NamespacedKey.parse("minecraft:brown_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BROWN_STAINED_GLASS_PANE, 11642), () -> Item.BROWN_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> LIME_CARPET = new Block<>(511, 11622, NamespacedKey.parse("minecraft:lime_carpet"), () -> new BlockData(Block.LIME_CARPET, 11622), () -> Item.LIME_CARPET);
+    public static final Block<StainedGlassPaneData> GREEN_STAINED_GLASS_PANE = new Block<>(511, 11674, NamespacedKey.parse("minecraft:green_stained_glass_pane"), () -> new StainedGlassPaneData(Block.GREEN_STAINED_GLASS_PANE, 11674), () -> Item.GREEN_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> PINK_CARPET = new Block<>(512, 11623, NamespacedKey.parse("minecraft:pink_carpet"), () -> new BlockData(Block.PINK_CARPET, 11623), () -> Item.PINK_CARPET);
+    public static final Block<StainedGlassPaneData> RED_STAINED_GLASS_PANE = new Block<>(512, 11706, NamespacedKey.parse("minecraft:red_stained_glass_pane"), () -> new StainedGlassPaneData(Block.RED_STAINED_GLASS_PANE, 11706), () -> Item.RED_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> GRAY_CARPET = new Block<>(513, 11624, NamespacedKey.parse("minecraft:gray_carpet"), () -> new BlockData(Block.GRAY_CARPET, 11624), () -> Item.GRAY_CARPET);
+    public static final Block<StainedGlassPaneData> BLACK_STAINED_GLASS_PANE = new Block<>(513, 11738, NamespacedKey.parse("minecraft:black_stained_glass_pane"), () -> new StainedGlassPaneData(Block.BLACK_STAINED_GLASS_PANE, 11738), () -> Item.BLACK_STAINED_GLASS_PANE);
 
-    public static final Block<BlockData> LIGHT_GRAY_CARPET = new Block<>(514, 11625, NamespacedKey.parse("minecraft:light_gray_carpet"), () -> new BlockData(Block.LIGHT_GRAY_CARPET, 11625), () -> Item.LIGHT_GRAY_CARPET);
+    public static final Block<StairData> ACACIA_STAIRS = new Block<>(514, 11770, NamespacedKey.parse("minecraft:acacia_stairs"), () -> new StairData(Block.ACACIA_STAIRS, 11770), () -> Item.ACACIA_STAIRS);
 
-    public static final Block<BlockData> CYAN_CARPET = new Block<>(515, 11626, NamespacedKey.parse("minecraft:cyan_carpet"), () -> new BlockData(Block.CYAN_CARPET, 11626), () -> Item.CYAN_CARPET);
+    public static final Block<StairData> CHERRY_STAIRS = new Block<>(515, 11850, NamespacedKey.parse("minecraft:cherry_stairs"), () -> new StairData(Block.CHERRY_STAIRS, 11850), () -> Item.CHERRY_STAIRS);
 
-    public static final Block<BlockData> PURPLE_CARPET = new Block<>(516, 11627, NamespacedKey.parse("minecraft:purple_carpet"), () -> new BlockData(Block.PURPLE_CARPET, 11627), () -> Item.PURPLE_CARPET);
+    public static final Block<StairData> DARK_OAK_STAIRS = new Block<>(516, 11930, NamespacedKey.parse("minecraft:dark_oak_stairs"), () -> new StairData(Block.DARK_OAK_STAIRS, 11930), () -> Item.DARK_OAK_STAIRS);
 
-    public static final Block<BlockData> BLUE_CARPET = new Block<>(517, 11628, NamespacedKey.parse("minecraft:blue_carpet"), () -> new BlockData(Block.BLUE_CARPET, 11628), () -> Item.BLUE_CARPET);
+    public static final Block<StairData> PALE_OAK_STAIRS = new Block<>(517, 12010, NamespacedKey.parse("minecraft:pale_oak_stairs"), () -> new StairData(Block.PALE_OAK_STAIRS, 12010), () -> Item.PALE_OAK_STAIRS);
 
-    public static final Block<BlockData> BROWN_CARPET = new Block<>(518, 11629, NamespacedKey.parse("minecraft:brown_carpet"), () -> new BlockData(Block.BROWN_CARPET, 11629), () -> Item.BROWN_CARPET);
+    public static final Block<StairData> MANGROVE_STAIRS = new Block<>(518, 12090, NamespacedKey.parse("minecraft:mangrove_stairs"), () -> new StairData(Block.MANGROVE_STAIRS, 12090), () -> Item.MANGROVE_STAIRS);
 
-    public static final Block<BlockData> GREEN_CARPET = new Block<>(519, 11630, NamespacedKey.parse("minecraft:green_carpet"), () -> new BlockData(Block.GREEN_CARPET, 11630), () -> Item.GREEN_CARPET);
+    public static final Block<StairData> BAMBOO_STAIRS = new Block<>(519, 12170, NamespacedKey.parse("minecraft:bamboo_stairs"), () -> new StairData(Block.BAMBOO_STAIRS, 12170), () -> Item.BAMBOO_STAIRS);
 
-    public static final Block<BlockData> RED_CARPET = new Block<>(520, 11631, NamespacedKey.parse("minecraft:red_carpet"), () -> new BlockData(Block.RED_CARPET, 11631), () -> Item.RED_CARPET);
+    public static final Block<StairData> BAMBOO_MOSAIC_STAIRS = new Block<>(520, 12250, NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"), () -> new StairData(Block.BAMBOO_MOSAIC_STAIRS, 12250), () -> Item.BAMBOO_MOSAIC_STAIRS);
 
-    public static final Block<BlockData> BLACK_CARPET = new Block<>(521, 11632, NamespacedKey.parse("minecraft:black_carpet"), () -> new BlockData(Block.BLACK_CARPET, 11632), () -> Item.BLACK_CARPET);
+    public static final Block<BlockData> SLIME_BLOCK = new Block<>(521, 12330, NamespacedKey.parse("minecraft:slime_block"), () -> new BlockData(Block.SLIME_BLOCK, 12330), () -> Item.SLIME_BLOCK);
 
-    public static final Block<BlockData> TERRACOTTA = new Block<>(522, 11633, NamespacedKey.parse("minecraft:terracotta"), () -> new BlockData(Block.TERRACOTTA, 11633), () -> Item.TERRACOTTA);
+    public static final Block<BarrierData> BARRIER = new Block<>(522, 12331, NamespacedKey.parse("minecraft:barrier"), () -> new BarrierData(Block.BARRIER, 12331), () -> Item.BARRIER);
 
-    public static final Block<BlockData> COAL_BLOCK = new Block<>(523, 11634, NamespacedKey.parse("minecraft:coal_block"), () -> new BlockData(Block.COAL_BLOCK, 11634), () -> Item.COAL_BLOCK);
+    public static final Block<LightData> LIGHT = new Block<>(523, 12333, NamespacedKey.parse("minecraft:light"), () -> new LightData(Block.LIGHT, 12333), () -> Item.LIGHT);
 
-    public static final Block<BlockData> PACKED_ICE = new Block<>(524, 11635, NamespacedKey.parse("minecraft:packed_ice"), () -> new BlockData(Block.PACKED_ICE, 11635), () -> Item.PACKED_ICE);
+    public static final Block<TrapdoorData> IRON_TRAPDOOR = new Block<>(524, 12365, NamespacedKey.parse("minecraft:iron_trapdoor"), () -> new TrapdoorData(Block.IRON_TRAPDOOR, 12365), () -> Item.IRON_TRAPDOOR);
 
-    public static final Block<TallFlowerData> SUNFLOWER = new Block<>(525, 11636, NamespacedKey.parse("minecraft:sunflower"), () -> new TallFlowerData(Block.SUNFLOWER, 11636), () -> Item.SUNFLOWER);
+    public static final Block<BlockData> PRISMARINE = new Block<>(525, 12429, NamespacedKey.parse("minecraft:prismarine"), () -> new BlockData(Block.PRISMARINE, 12429), () -> Item.PRISMARINE);
 
-    public static final Block<TallFlowerData> LILAC = new Block<>(526, 11638, NamespacedKey.parse("minecraft:lilac"), () -> new TallFlowerData(Block.LILAC, 11638), () -> Item.LILAC);
+    public static final Block<BlockData> PRISMARINE_BRICKS = new Block<>(526, 12430, NamespacedKey.parse("minecraft:prismarine_bricks"), () -> new BlockData(Block.PRISMARINE_BRICKS, 12430), () -> Item.PRISMARINE_BRICKS);
 
-    public static final Block<TallFlowerData> ROSE_BUSH = new Block<>(527, 11640, NamespacedKey.parse("minecraft:rose_bush"), () -> new TallFlowerData(Block.ROSE_BUSH, 11640), () -> Item.ROSE_BUSH);
+    public static final Block<BlockData> DARK_PRISMARINE = new Block<>(527, 12431, NamespacedKey.parse("minecraft:dark_prismarine"), () -> new BlockData(Block.DARK_PRISMARINE, 12431), () -> Item.DARK_PRISMARINE);
 
-    public static final Block<TallFlowerData> PEONY = new Block<>(528, 11642, NamespacedKey.parse("minecraft:peony"), () -> new TallFlowerData(Block.PEONY, 11642), () -> Item.PEONY);
+    public static final Block<StairData> PRISMARINE_STAIRS = new Block<>(528, 12432, NamespacedKey.parse("minecraft:prismarine_stairs"), () -> new StairData(Block.PRISMARINE_STAIRS, 12432), () -> Item.PRISMARINE_STAIRS);
 
-    public static final Block<DoublePlantData> TALL_GRASS = new Block<>(529, 11644, NamespacedKey.parse("minecraft:tall_grass"), () -> new DoublePlantData(Block.TALL_GRASS, 11644), () -> Item.TALL_GRASS);
+    public static final Block<StairData> PRISMARINE_BRICK_STAIRS = new Block<>(529, 12512, NamespacedKey.parse("minecraft:prismarine_brick_stairs"), () -> new StairData(Block.PRISMARINE_BRICK_STAIRS, 12512), () -> Item.PRISMARINE_BRICK_STAIRS);
 
-    public static final Block<DoublePlantData> LARGE_FERN = new Block<>(530, 11646, NamespacedKey.parse("minecraft:large_fern"), () -> new DoublePlantData(Block.LARGE_FERN, 11646), () -> Item.LARGE_FERN);
+    public static final Block<StairData> DARK_PRISMARINE_STAIRS = new Block<>(530, 12592, NamespacedKey.parse("minecraft:dark_prismarine_stairs"), () -> new StairData(Block.DARK_PRISMARINE_STAIRS, 12592), () -> Item.DARK_PRISMARINE_STAIRS);
 
-    public static final Block<BannerData> WHITE_BANNER = new Block<>(531, 11648, NamespacedKey.parse("minecraft:white_banner"), () -> new BannerData(Block.WHITE_BANNER, 11648), () -> Item.WHITE_BANNER);
+    public static final Block<SlabData> PRISMARINE_SLAB = new Block<>(531, 12672, NamespacedKey.parse("minecraft:prismarine_slab"), () -> new SlabData(Block.PRISMARINE_SLAB, 12672), () -> Item.PRISMARINE_SLAB);
 
-    public static final Block<BannerData> ORANGE_BANNER = new Block<>(532, 11664, NamespacedKey.parse("minecraft:orange_banner"), () -> new BannerData(Block.ORANGE_BANNER, 11664), () -> Item.ORANGE_BANNER);
+    public static final Block<SlabData> PRISMARINE_BRICK_SLAB = new Block<>(532, 12678, NamespacedKey.parse("minecraft:prismarine_brick_slab"), () -> new SlabData(Block.PRISMARINE_BRICK_SLAB, 12678), () -> Item.PRISMARINE_BRICK_SLAB);
 
-    public static final Block<BannerData> MAGENTA_BANNER = new Block<>(533, 11680, NamespacedKey.parse("minecraft:magenta_banner"), () -> new BannerData(Block.MAGENTA_BANNER, 11680), () -> Item.MAGENTA_BANNER);
+    public static final Block<SlabData> DARK_PRISMARINE_SLAB = new Block<>(533, 12684, NamespacedKey.parse("minecraft:dark_prismarine_slab"), () -> new SlabData(Block.DARK_PRISMARINE_SLAB, 12684), () -> Item.DARK_PRISMARINE_SLAB);
 
-    public static final Block<BannerData> LIGHT_BLUE_BANNER = new Block<>(534, 11696, NamespacedKey.parse("minecraft:light_blue_banner"), () -> new BannerData(Block.LIGHT_BLUE_BANNER, 11696), () -> Item.LIGHT_BLUE_BANNER);
+    public static final Block<BlockData> SEA_LANTERN = new Block<>(534, 12690, NamespacedKey.parse("minecraft:sea_lantern"), () -> new BlockData(Block.SEA_LANTERN, 12690), () -> Item.SEA_LANTERN);
 
-    public static final Block<BannerData> YELLOW_BANNER = new Block<>(535, 11712, NamespacedKey.parse("minecraft:yellow_banner"), () -> new BannerData(Block.YELLOW_BANNER, 11712), () -> Item.YELLOW_BANNER);
+    public static final Block<HayData> HAY_BLOCK = new Block<>(535, 12691, NamespacedKey.parse("minecraft:hay_block"), () -> new HayData(Block.HAY_BLOCK, 12691), () -> Item.HAY_BLOCK);
 
-    public static final Block<BannerData> LIME_BANNER = new Block<>(536, 11728, NamespacedKey.parse("minecraft:lime_banner"), () -> new BannerData(Block.LIME_BANNER, 11728), () -> Item.LIME_BANNER);
+    public static final Block<BlockData> WHITE_CARPET = new Block<>(536, 12694, NamespacedKey.parse("minecraft:white_carpet"), () -> new BlockData(Block.WHITE_CARPET, 12694), () -> Item.WHITE_CARPET);
 
-    public static final Block<BannerData> PINK_BANNER = new Block<>(537, 11744, NamespacedKey.parse("minecraft:pink_banner"), () -> new BannerData(Block.PINK_BANNER, 11744), () -> Item.PINK_BANNER);
+    public static final Block<BlockData> ORANGE_CARPET = new Block<>(537, 12695, NamespacedKey.parse("minecraft:orange_carpet"), () -> new BlockData(Block.ORANGE_CARPET, 12695), () -> Item.ORANGE_CARPET);
 
-    public static final Block<BannerData> GRAY_BANNER = new Block<>(538, 11760, NamespacedKey.parse("minecraft:gray_banner"), () -> new BannerData(Block.GRAY_BANNER, 11760), () -> Item.GRAY_BANNER);
+    public static final Block<BlockData> MAGENTA_CARPET = new Block<>(538, 12696, NamespacedKey.parse("minecraft:magenta_carpet"), () -> new BlockData(Block.MAGENTA_CARPET, 12696), () -> Item.MAGENTA_CARPET);
 
-    public static final Block<BannerData> LIGHT_GRAY_BANNER = new Block<>(539, 11776, NamespacedKey.parse("minecraft:light_gray_banner"), () -> new BannerData(Block.LIGHT_GRAY_BANNER, 11776), () -> Item.LIGHT_GRAY_BANNER);
+    public static final Block<BlockData> LIGHT_BLUE_CARPET = new Block<>(539, 12697, NamespacedKey.parse("minecraft:light_blue_carpet"), () -> new BlockData(Block.LIGHT_BLUE_CARPET, 12697), () -> Item.LIGHT_BLUE_CARPET);
 
-    public static final Block<BannerData> CYAN_BANNER = new Block<>(540, 11792, NamespacedKey.parse("minecraft:cyan_banner"), () -> new BannerData(Block.CYAN_BANNER, 11792), () -> Item.CYAN_BANNER);
+    public static final Block<BlockData> YELLOW_CARPET = new Block<>(540, 12698, NamespacedKey.parse("minecraft:yellow_carpet"), () -> new BlockData(Block.YELLOW_CARPET, 12698), () -> Item.YELLOW_CARPET);
 
-    public static final Block<BannerData> PURPLE_BANNER = new Block<>(541, 11808, NamespacedKey.parse("minecraft:purple_banner"), () -> new BannerData(Block.PURPLE_BANNER, 11808), () -> Item.PURPLE_BANNER);
+    public static final Block<BlockData> LIME_CARPET = new Block<>(541, 12699, NamespacedKey.parse("minecraft:lime_carpet"), () -> new BlockData(Block.LIME_CARPET, 12699), () -> Item.LIME_CARPET);
 
-    public static final Block<BannerData> BLUE_BANNER = new Block<>(542, 11824, NamespacedKey.parse("minecraft:blue_banner"), () -> new BannerData(Block.BLUE_BANNER, 11824), () -> Item.BLUE_BANNER);
+    public static final Block<BlockData> PINK_CARPET = new Block<>(542, 12700, NamespacedKey.parse("minecraft:pink_carpet"), () -> new BlockData(Block.PINK_CARPET, 12700), () -> Item.PINK_CARPET);
 
-    public static final Block<BannerData> BROWN_BANNER = new Block<>(543, 11840, NamespacedKey.parse("minecraft:brown_banner"), () -> new BannerData(Block.BROWN_BANNER, 11840), () -> Item.BROWN_BANNER);
+    public static final Block<BlockData> GRAY_CARPET = new Block<>(543, 12701, NamespacedKey.parse("minecraft:gray_carpet"), () -> new BlockData(Block.GRAY_CARPET, 12701), () -> Item.GRAY_CARPET);
 
-    public static final Block<BannerData> GREEN_BANNER = new Block<>(544, 11856, NamespacedKey.parse("minecraft:green_banner"), () -> new BannerData(Block.GREEN_BANNER, 11856), () -> Item.GREEN_BANNER);
+    public static final Block<BlockData> LIGHT_GRAY_CARPET = new Block<>(544, 12702, NamespacedKey.parse("minecraft:light_gray_carpet"), () -> new BlockData(Block.LIGHT_GRAY_CARPET, 12702), () -> Item.LIGHT_GRAY_CARPET);
 
-    public static final Block<BannerData> RED_BANNER = new Block<>(545, 11872, NamespacedKey.parse("minecraft:red_banner"), () -> new BannerData(Block.RED_BANNER, 11872), () -> Item.RED_BANNER);
+    public static final Block<BlockData> CYAN_CARPET = new Block<>(545, 12703, NamespacedKey.parse("minecraft:cyan_carpet"), () -> new BlockData(Block.CYAN_CARPET, 12703), () -> Item.CYAN_CARPET);
 
-    public static final Block<BannerData> BLACK_BANNER = new Block<>(546, 11888, NamespacedKey.parse("minecraft:black_banner"), () -> new BannerData(Block.BLACK_BANNER, 11888), () -> Item.BLACK_BANNER);
+    public static final Block<BlockData> PURPLE_CARPET = new Block<>(546, 12704, NamespacedKey.parse("minecraft:purple_carpet"), () -> new BlockData(Block.PURPLE_CARPET, 12704), () -> Item.PURPLE_CARPET);
 
-    public static final Block<WallBannerData> WHITE_WALL_BANNER = new Block<>(547, 11904, NamespacedKey.parse("minecraft:white_wall_banner"), () -> new WallBannerData(Block.WHITE_WALL_BANNER, 11904), null);
+    public static final Block<BlockData> BLUE_CARPET = new Block<>(547, 12705, NamespacedKey.parse("minecraft:blue_carpet"), () -> new BlockData(Block.BLUE_CARPET, 12705), () -> Item.BLUE_CARPET);
 
-    public static final Block<WallBannerData> ORANGE_WALL_BANNER = new Block<>(548, 11908, NamespacedKey.parse("minecraft:orange_wall_banner"), () -> new WallBannerData(Block.ORANGE_WALL_BANNER, 11908), null);
+    public static final Block<BlockData> BROWN_CARPET = new Block<>(548, 12706, NamespacedKey.parse("minecraft:brown_carpet"), () -> new BlockData(Block.BROWN_CARPET, 12706), () -> Item.BROWN_CARPET);
 
-    public static final Block<WallBannerData> MAGENTA_WALL_BANNER = new Block<>(549, 11912, NamespacedKey.parse("minecraft:magenta_wall_banner"), () -> new WallBannerData(Block.MAGENTA_WALL_BANNER, 11912), null);
+    public static final Block<BlockData> GREEN_CARPET = new Block<>(549, 12707, NamespacedKey.parse("minecraft:green_carpet"), () -> new BlockData(Block.GREEN_CARPET, 12707), () -> Item.GREEN_CARPET);
 
-    public static final Block<WallBannerData> LIGHT_BLUE_WALL_BANNER = new Block<>(550, 11916, NamespacedKey.parse("minecraft:light_blue_wall_banner"), () -> new WallBannerData(Block.LIGHT_BLUE_WALL_BANNER, 11916), null);
+    public static final Block<BlockData> RED_CARPET = new Block<>(550, 12708, NamespacedKey.parse("minecraft:red_carpet"), () -> new BlockData(Block.RED_CARPET, 12708), () -> Item.RED_CARPET);
 
-    public static final Block<WallBannerData> YELLOW_WALL_BANNER = new Block<>(551, 11920, NamespacedKey.parse("minecraft:yellow_wall_banner"), () -> new WallBannerData(Block.YELLOW_WALL_BANNER, 11920), null);
+    public static final Block<BlockData> BLACK_CARPET = new Block<>(551, 12709, NamespacedKey.parse("minecraft:black_carpet"), () -> new BlockData(Block.BLACK_CARPET, 12709), () -> Item.BLACK_CARPET);
 
-    public static final Block<WallBannerData> LIME_WALL_BANNER = new Block<>(552, 11924, NamespacedKey.parse("minecraft:lime_wall_banner"), () -> new WallBannerData(Block.LIME_WALL_BANNER, 11924), null);
+    public static final Block<BlockData> TERRACOTTA = new Block<>(552, 12710, NamespacedKey.parse("minecraft:terracotta"), () -> new BlockData(Block.TERRACOTTA, 12710), () -> Item.TERRACOTTA);
 
-    public static final Block<WallBannerData> PINK_WALL_BANNER = new Block<>(553, 11928, NamespacedKey.parse("minecraft:pink_wall_banner"), () -> new WallBannerData(Block.PINK_WALL_BANNER, 11928), null);
+    public static final Block<BlockData> COAL_BLOCK = new Block<>(553, 12711, NamespacedKey.parse("minecraft:coal_block"), () -> new BlockData(Block.COAL_BLOCK, 12711), () -> Item.COAL_BLOCK);
 
-    public static final Block<WallBannerData> GRAY_WALL_BANNER = new Block<>(554, 11932, NamespacedKey.parse("minecraft:gray_wall_banner"), () -> new WallBannerData(Block.GRAY_WALL_BANNER, 11932), null);
+    public static final Block<BlockData> PACKED_ICE = new Block<>(554, 12712, NamespacedKey.parse("minecraft:packed_ice"), () -> new BlockData(Block.PACKED_ICE, 12712), () -> Item.PACKED_ICE);
 
-    public static final Block<WallBannerData> LIGHT_GRAY_WALL_BANNER = new Block<>(555, 11936, NamespacedKey.parse("minecraft:light_gray_wall_banner"), () -> new WallBannerData(Block.LIGHT_GRAY_WALL_BANNER, 11936), null);
+    public static final Block<TallFlowerData> SUNFLOWER = new Block<>(555, 12713, NamespacedKey.parse("minecraft:sunflower"), () -> new TallFlowerData(Block.SUNFLOWER, 12713), () -> Item.SUNFLOWER);
 
-    public static final Block<WallBannerData> CYAN_WALL_BANNER = new Block<>(556, 11940, NamespacedKey.parse("minecraft:cyan_wall_banner"), () -> new WallBannerData(Block.CYAN_WALL_BANNER, 11940), null);
+    public static final Block<TallFlowerData> LILAC = new Block<>(556, 12715, NamespacedKey.parse("minecraft:lilac"), () -> new TallFlowerData(Block.LILAC, 12715), () -> Item.LILAC);
 
-    public static final Block<WallBannerData> PURPLE_WALL_BANNER = new Block<>(557, 11944, NamespacedKey.parse("minecraft:purple_wall_banner"), () -> new WallBannerData(Block.PURPLE_WALL_BANNER, 11944), null);
+    public static final Block<TallFlowerData> ROSE_BUSH = new Block<>(557, 12717, NamespacedKey.parse("minecraft:rose_bush"), () -> new TallFlowerData(Block.ROSE_BUSH, 12717), () -> Item.ROSE_BUSH);
 
-    public static final Block<WallBannerData> BLUE_WALL_BANNER = new Block<>(558, 11948, NamespacedKey.parse("minecraft:blue_wall_banner"), () -> new WallBannerData(Block.BLUE_WALL_BANNER, 11948), null);
+    public static final Block<TallFlowerData> PEONY = new Block<>(558, 12719, NamespacedKey.parse("minecraft:peony"), () -> new TallFlowerData(Block.PEONY, 12719), () -> Item.PEONY);
 
-    public static final Block<WallBannerData> BROWN_WALL_BANNER = new Block<>(559, 11952, NamespacedKey.parse("minecraft:brown_wall_banner"), () -> new WallBannerData(Block.BROWN_WALL_BANNER, 11952), null);
+    public static final Block<DoublePlantData> TALL_GRASS = new Block<>(559, 12721, NamespacedKey.parse("minecraft:tall_grass"), () -> new DoublePlantData(Block.TALL_GRASS, 12721), () -> Item.TALL_GRASS);
 
-    public static final Block<WallBannerData> GREEN_WALL_BANNER = new Block<>(560, 11956, NamespacedKey.parse("minecraft:green_wall_banner"), () -> new WallBannerData(Block.GREEN_WALL_BANNER, 11956), null);
+    public static final Block<DoublePlantData> LARGE_FERN = new Block<>(560, 12723, NamespacedKey.parse("minecraft:large_fern"), () -> new DoublePlantData(Block.LARGE_FERN, 12723), () -> Item.LARGE_FERN);
 
-    public static final Block<WallBannerData> RED_WALL_BANNER = new Block<>(561, 11960, NamespacedKey.parse("minecraft:red_wall_banner"), () -> new WallBannerData(Block.RED_WALL_BANNER, 11960), null);
+    public static final Block<BannerData> WHITE_BANNER = new Block<>(561, 12725, NamespacedKey.parse("minecraft:white_banner"), () -> new BannerData(Block.WHITE_BANNER, 12725), () -> Item.WHITE_BANNER);
 
-    public static final Block<WallBannerData> BLACK_WALL_BANNER = new Block<>(562, 11964, NamespacedKey.parse("minecraft:black_wall_banner"), () -> new WallBannerData(Block.BLACK_WALL_BANNER, 11964), null);
+    public static final Block<BannerData> ORANGE_BANNER = new Block<>(562, 12741, NamespacedKey.parse("minecraft:orange_banner"), () -> new BannerData(Block.ORANGE_BANNER, 12741), () -> Item.ORANGE_BANNER);
 
-    public static final Block<BlockData> RED_SANDSTONE = new Block<>(563, 11968, NamespacedKey.parse("minecraft:red_sandstone"), () -> new BlockData(Block.RED_SANDSTONE, 11968), () -> Item.RED_SANDSTONE);
+    public static final Block<BannerData> MAGENTA_BANNER = new Block<>(563, 12757, NamespacedKey.parse("minecraft:magenta_banner"), () -> new BannerData(Block.MAGENTA_BANNER, 12757), () -> Item.MAGENTA_BANNER);
 
-    public static final Block<BlockData> CHISELED_RED_SANDSTONE = new Block<>(564, 11969, NamespacedKey.parse("minecraft:chiseled_red_sandstone"), () -> new BlockData(Block.CHISELED_RED_SANDSTONE, 11969), () -> Item.CHISELED_RED_SANDSTONE);
+    public static final Block<BannerData> LIGHT_BLUE_BANNER = new Block<>(564, 12773, NamespacedKey.parse("minecraft:light_blue_banner"), () -> new BannerData(Block.LIGHT_BLUE_BANNER, 12773), () -> Item.LIGHT_BLUE_BANNER);
 
-    public static final Block<BlockData> CUT_RED_SANDSTONE = new Block<>(565, 11970, NamespacedKey.parse("minecraft:cut_red_sandstone"), () -> new BlockData(Block.CUT_RED_SANDSTONE, 11970), () -> Item.CUT_RED_SANDSTONE);
+    public static final Block<BannerData> YELLOW_BANNER = new Block<>(565, 12789, NamespacedKey.parse("minecraft:yellow_banner"), () -> new BannerData(Block.YELLOW_BANNER, 12789), () -> Item.YELLOW_BANNER);
 
-    public static final Block<StairData> RED_SANDSTONE_STAIRS = new Block<>(566, 11971, NamespacedKey.parse("minecraft:red_sandstone_stairs"), () -> new StairData(Block.RED_SANDSTONE_STAIRS, 11971), () -> Item.RED_SANDSTONE_STAIRS);
+    public static final Block<BannerData> LIME_BANNER = new Block<>(566, 12805, NamespacedKey.parse("minecraft:lime_banner"), () -> new BannerData(Block.LIME_BANNER, 12805), () -> Item.LIME_BANNER);
 
-    public static final Block<SlabData> OAK_SLAB = new Block<>(567, 12051, NamespacedKey.parse("minecraft:oak_slab"), () -> new SlabData(Block.OAK_SLAB, 12051), () -> Item.OAK_SLAB);
+    public static final Block<BannerData> PINK_BANNER = new Block<>(567, 12821, NamespacedKey.parse("minecraft:pink_banner"), () -> new BannerData(Block.PINK_BANNER, 12821), () -> Item.PINK_BANNER);
 
-    public static final Block<SlabData> SPRUCE_SLAB = new Block<>(568, 12057, NamespacedKey.parse("minecraft:spruce_slab"), () -> new SlabData(Block.SPRUCE_SLAB, 12057), () -> Item.SPRUCE_SLAB);
+    public static final Block<BannerData> GRAY_BANNER = new Block<>(568, 12837, NamespacedKey.parse("minecraft:gray_banner"), () -> new BannerData(Block.GRAY_BANNER, 12837), () -> Item.GRAY_BANNER);
 
-    public static final Block<SlabData> BIRCH_SLAB = new Block<>(569, 12063, NamespacedKey.parse("minecraft:birch_slab"), () -> new SlabData(Block.BIRCH_SLAB, 12063), () -> Item.BIRCH_SLAB);
+    public static final Block<BannerData> LIGHT_GRAY_BANNER = new Block<>(569, 12853, NamespacedKey.parse("minecraft:light_gray_banner"), () -> new BannerData(Block.LIGHT_GRAY_BANNER, 12853), () -> Item.LIGHT_GRAY_BANNER);
 
-    public static final Block<SlabData> JUNGLE_SLAB = new Block<>(570, 12069, NamespacedKey.parse("minecraft:jungle_slab"), () -> new SlabData(Block.JUNGLE_SLAB, 12069), () -> Item.JUNGLE_SLAB);
+    public static final Block<BannerData> CYAN_BANNER = new Block<>(570, 12869, NamespacedKey.parse("minecraft:cyan_banner"), () -> new BannerData(Block.CYAN_BANNER, 12869), () -> Item.CYAN_BANNER);
 
-    public static final Block<SlabData> ACACIA_SLAB = new Block<>(571, 12075, NamespacedKey.parse("minecraft:acacia_slab"), () -> new SlabData(Block.ACACIA_SLAB, 12075), () -> Item.ACACIA_SLAB);
+    public static final Block<BannerData> PURPLE_BANNER = new Block<>(571, 12885, NamespacedKey.parse("minecraft:purple_banner"), () -> new BannerData(Block.PURPLE_BANNER, 12885), () -> Item.PURPLE_BANNER);
 
-    public static final Block<SlabData> CHERRY_SLAB = new Block<>(572, 12081, NamespacedKey.parse("minecraft:cherry_slab"), () -> new SlabData(Block.CHERRY_SLAB, 12081), () -> Item.CHERRY_SLAB);
+    public static final Block<BannerData> BLUE_BANNER = new Block<>(572, 12901, NamespacedKey.parse("minecraft:blue_banner"), () -> new BannerData(Block.BLUE_BANNER, 12901), () -> Item.BLUE_BANNER);
 
-    public static final Block<SlabData> DARK_OAK_SLAB = new Block<>(573, 12087, NamespacedKey.parse("minecraft:dark_oak_slab"), () -> new SlabData(Block.DARK_OAK_SLAB, 12087), () -> Item.DARK_OAK_SLAB);
+    public static final Block<BannerData> BROWN_BANNER = new Block<>(573, 12917, NamespacedKey.parse("minecraft:brown_banner"), () -> new BannerData(Block.BROWN_BANNER, 12917), () -> Item.BROWN_BANNER);
 
-    public static final Block<SlabData> PALE_OAK_SLAB = new Block<>(574, 12093, NamespacedKey.parse("minecraft:pale_oak_slab"), () -> new SlabData(Block.PALE_OAK_SLAB, 12093), () -> Item.PALE_OAK_SLAB);
+    public static final Block<BannerData> GREEN_BANNER = new Block<>(574, 12933, NamespacedKey.parse("minecraft:green_banner"), () -> new BannerData(Block.GREEN_BANNER, 12933), () -> Item.GREEN_BANNER);
 
-    public static final Block<SlabData> MANGROVE_SLAB = new Block<>(575, 12099, NamespacedKey.parse("minecraft:mangrove_slab"), () -> new SlabData(Block.MANGROVE_SLAB, 12099), () -> Item.MANGROVE_SLAB);
+    public static final Block<BannerData> RED_BANNER = new Block<>(575, 12949, NamespacedKey.parse("minecraft:red_banner"), () -> new BannerData(Block.RED_BANNER, 12949), () -> Item.RED_BANNER);
 
-    public static final Block<SlabData> BAMBOO_SLAB = new Block<>(576, 12105, NamespacedKey.parse("minecraft:bamboo_slab"), () -> new SlabData(Block.BAMBOO_SLAB, 12105), () -> Item.BAMBOO_SLAB);
+    public static final Block<BannerData> BLACK_BANNER = new Block<>(576, 12965, NamespacedKey.parse("minecraft:black_banner"), () -> new BannerData(Block.BLACK_BANNER, 12965), () -> Item.BLACK_BANNER);
 
-    public static final Block<SlabData> BAMBOO_MOSAIC_SLAB = new Block<>(577, 12111, NamespacedKey.parse("minecraft:bamboo_mosaic_slab"), () -> new SlabData(Block.BAMBOO_MOSAIC_SLAB, 12111), () -> Item.BAMBOO_MOSAIC_SLAB);
+    public static final Block<WallBannerData> WHITE_WALL_BANNER = new Block<>(577, 12981, NamespacedKey.parse("minecraft:white_wall_banner"), () -> new WallBannerData(Block.WHITE_WALL_BANNER, 12981), null);
 
-    public static final Block<SlabData> STONE_SLAB = new Block<>(578, 12117, NamespacedKey.parse("minecraft:stone_slab"), () -> new SlabData(Block.STONE_SLAB, 12117), () -> Item.STONE_SLAB);
+    public static final Block<WallBannerData> ORANGE_WALL_BANNER = new Block<>(578, 12985, NamespacedKey.parse("minecraft:orange_wall_banner"), () -> new WallBannerData(Block.ORANGE_WALL_BANNER, 12985), null);
 
-    public static final Block<SlabData> SMOOTH_STONE_SLAB = new Block<>(579, 12123, NamespacedKey.parse("minecraft:smooth_stone_slab"), () -> new SlabData(Block.SMOOTH_STONE_SLAB, 12123), () -> Item.SMOOTH_STONE_SLAB);
+    public static final Block<WallBannerData> MAGENTA_WALL_BANNER = new Block<>(579, 12989, NamespacedKey.parse("minecraft:magenta_wall_banner"), () -> new WallBannerData(Block.MAGENTA_WALL_BANNER, 12989), null);
 
-    public static final Block<SlabData> SANDSTONE_SLAB = new Block<>(580, 12129, NamespacedKey.parse("minecraft:sandstone_slab"), () -> new SlabData(Block.SANDSTONE_SLAB, 12129), () -> Item.SANDSTONE_SLAB);
+    public static final Block<WallBannerData> LIGHT_BLUE_WALL_BANNER = new Block<>(580, 12993, NamespacedKey.parse("minecraft:light_blue_wall_banner"), () -> new WallBannerData(Block.LIGHT_BLUE_WALL_BANNER, 12993), null);
 
-    public static final Block<SlabData> CUT_SANDSTONE_SLAB = new Block<>(581, 12135, NamespacedKey.parse("minecraft:cut_sandstone_slab"), () -> new SlabData(Block.CUT_SANDSTONE_SLAB, 12135), () -> Item.CUT_SANDSTONE_SLAB);
+    public static final Block<WallBannerData> YELLOW_WALL_BANNER = new Block<>(581, 12997, NamespacedKey.parse("minecraft:yellow_wall_banner"), () -> new WallBannerData(Block.YELLOW_WALL_BANNER, 12997), null);
 
-    public static final Block<SlabData> PETRIFIED_OAK_SLAB = new Block<>(582, 12141, NamespacedKey.parse("minecraft:petrified_oak_slab"), () -> new SlabData(Block.PETRIFIED_OAK_SLAB, 12141), () -> Item.PETRIFIED_OAK_SLAB);
+    public static final Block<WallBannerData> LIME_WALL_BANNER = new Block<>(582, 13001, NamespacedKey.parse("minecraft:lime_wall_banner"), () -> new WallBannerData(Block.LIME_WALL_BANNER, 13001), null);
 
-    public static final Block<SlabData> COBBLESTONE_SLAB = new Block<>(583, 12147, NamespacedKey.parse("minecraft:cobblestone_slab"), () -> new SlabData(Block.COBBLESTONE_SLAB, 12147), () -> Item.COBBLESTONE_SLAB);
+    public static final Block<WallBannerData> PINK_WALL_BANNER = new Block<>(583, 13005, NamespacedKey.parse("minecraft:pink_wall_banner"), () -> new WallBannerData(Block.PINK_WALL_BANNER, 13005), null);
 
-    public static final Block<SlabData> BRICK_SLAB = new Block<>(584, 12153, NamespacedKey.parse("minecraft:brick_slab"), () -> new SlabData(Block.BRICK_SLAB, 12153), () -> Item.BRICK_SLAB);
+    public static final Block<WallBannerData> GRAY_WALL_BANNER = new Block<>(584, 13009, NamespacedKey.parse("minecraft:gray_wall_banner"), () -> new WallBannerData(Block.GRAY_WALL_BANNER, 13009), null);
 
-    public static final Block<SlabData> STONE_BRICK_SLAB = new Block<>(585, 12159, NamespacedKey.parse("minecraft:stone_brick_slab"), () -> new SlabData(Block.STONE_BRICK_SLAB, 12159), () -> Item.STONE_BRICK_SLAB);
+    public static final Block<WallBannerData> LIGHT_GRAY_WALL_BANNER = new Block<>(585, 13013, NamespacedKey.parse("minecraft:light_gray_wall_banner"), () -> new WallBannerData(Block.LIGHT_GRAY_WALL_BANNER, 13013), null);
 
-    public static final Block<SlabData> MUD_BRICK_SLAB = new Block<>(586, 12165, NamespacedKey.parse("minecraft:mud_brick_slab"), () -> new SlabData(Block.MUD_BRICK_SLAB, 12165), () -> Item.MUD_BRICK_SLAB);
+    public static final Block<WallBannerData> CYAN_WALL_BANNER = new Block<>(586, 13017, NamespacedKey.parse("minecraft:cyan_wall_banner"), () -> new WallBannerData(Block.CYAN_WALL_BANNER, 13017), null);
 
-    public static final Block<SlabData> NETHER_BRICK_SLAB = new Block<>(587, 12171, NamespacedKey.parse("minecraft:nether_brick_slab"), () -> new SlabData(Block.NETHER_BRICK_SLAB, 12171), () -> Item.NETHER_BRICK_SLAB);
+    public static final Block<WallBannerData> PURPLE_WALL_BANNER = new Block<>(587, 13021, NamespacedKey.parse("minecraft:purple_wall_banner"), () -> new WallBannerData(Block.PURPLE_WALL_BANNER, 13021), null);
 
-    public static final Block<SlabData> QUARTZ_SLAB = new Block<>(588, 12177, NamespacedKey.parse("minecraft:quartz_slab"), () -> new SlabData(Block.QUARTZ_SLAB, 12177), () -> Item.QUARTZ_SLAB);
+    public static final Block<WallBannerData> BLUE_WALL_BANNER = new Block<>(588, 13025, NamespacedKey.parse("minecraft:blue_wall_banner"), () -> new WallBannerData(Block.BLUE_WALL_BANNER, 13025), null);
 
-    public static final Block<SlabData> RED_SANDSTONE_SLAB = new Block<>(589, 12183, NamespacedKey.parse("minecraft:red_sandstone_slab"), () -> new SlabData(Block.RED_SANDSTONE_SLAB, 12183), () -> Item.RED_SANDSTONE_SLAB);
+    public static final Block<WallBannerData> BROWN_WALL_BANNER = new Block<>(589, 13029, NamespacedKey.parse("minecraft:brown_wall_banner"), () -> new WallBannerData(Block.BROWN_WALL_BANNER, 13029), null);
 
-    public static final Block<SlabData> CUT_RED_SANDSTONE_SLAB = new Block<>(590, 12189, NamespacedKey.parse("minecraft:cut_red_sandstone_slab"), () -> new SlabData(Block.CUT_RED_SANDSTONE_SLAB, 12189), () -> Item.CUT_RED_SANDSTONE_SLAB);
+    public static final Block<WallBannerData> GREEN_WALL_BANNER = new Block<>(590, 13033, NamespacedKey.parse("minecraft:green_wall_banner"), () -> new WallBannerData(Block.GREEN_WALL_BANNER, 13033), null);
 
-    public static final Block<SlabData> PURPUR_SLAB = new Block<>(591, 12195, NamespacedKey.parse("minecraft:purpur_slab"), () -> new SlabData(Block.PURPUR_SLAB, 12195), () -> Item.PURPUR_SLAB);
+    public static final Block<WallBannerData> RED_WALL_BANNER = new Block<>(591, 13037, NamespacedKey.parse("minecraft:red_wall_banner"), () -> new WallBannerData(Block.RED_WALL_BANNER, 13037), null);
 
-    public static final Block<BlockData> SMOOTH_STONE = new Block<>(592, 12201, NamespacedKey.parse("minecraft:smooth_stone"), () -> new BlockData(Block.SMOOTH_STONE, 12201), () -> Item.SMOOTH_STONE);
+    public static final Block<WallBannerData> BLACK_WALL_BANNER = new Block<>(592, 13041, NamespacedKey.parse("minecraft:black_wall_banner"), () -> new WallBannerData(Block.BLACK_WALL_BANNER, 13041), null);
 
-    public static final Block<BlockData> SMOOTH_SANDSTONE = new Block<>(593, 12202, NamespacedKey.parse("minecraft:smooth_sandstone"), () -> new BlockData(Block.SMOOTH_SANDSTONE, 12202), () -> Item.SMOOTH_SANDSTONE);
+    public static final Block<BlockData> RED_SANDSTONE = new Block<>(593, 13045, NamespacedKey.parse("minecraft:red_sandstone"), () -> new BlockData(Block.RED_SANDSTONE, 13045), () -> Item.RED_SANDSTONE);
 
-    public static final Block<BlockData> SMOOTH_QUARTZ = new Block<>(594, 12203, NamespacedKey.parse("minecraft:smooth_quartz"), () -> new BlockData(Block.SMOOTH_QUARTZ, 12203), () -> Item.SMOOTH_QUARTZ);
+    public static final Block<BlockData> CHISELED_RED_SANDSTONE = new Block<>(594, 13046, NamespacedKey.parse("minecraft:chiseled_red_sandstone"), () -> new BlockData(Block.CHISELED_RED_SANDSTONE, 13046), () -> Item.CHISELED_RED_SANDSTONE);
 
-    public static final Block<BlockData> SMOOTH_RED_SANDSTONE = new Block<>(595, 12204, NamespacedKey.parse("minecraft:smooth_red_sandstone"), () -> new BlockData(Block.SMOOTH_RED_SANDSTONE, 12204), () -> Item.SMOOTH_RED_SANDSTONE);
+    public static final Block<BlockData> CUT_RED_SANDSTONE = new Block<>(595, 13047, NamespacedKey.parse("minecraft:cut_red_sandstone"), () -> new BlockData(Block.CUT_RED_SANDSTONE, 13047), () -> Item.CUT_RED_SANDSTONE);
 
-    public static final Block<FenceGateData> SPRUCE_FENCE_GATE = new Block<>(596, 12205, NamespacedKey.parse("minecraft:spruce_fence_gate"), () -> new FenceGateData(Block.SPRUCE_FENCE_GATE, 12205), () -> Item.SPRUCE_FENCE_GATE);
+    public static final Block<StairData> RED_SANDSTONE_STAIRS = new Block<>(596, 13048, NamespacedKey.parse("minecraft:red_sandstone_stairs"), () -> new StairData(Block.RED_SANDSTONE_STAIRS, 13048), () -> Item.RED_SANDSTONE_STAIRS);
 
-    public static final Block<FenceGateData> BIRCH_FENCE_GATE = new Block<>(597, 12237, NamespacedKey.parse("minecraft:birch_fence_gate"), () -> new FenceGateData(Block.BIRCH_FENCE_GATE, 12237), () -> Item.BIRCH_FENCE_GATE);
+    public static final Block<SlabData> OAK_SLAB = new Block<>(597, 13128, NamespacedKey.parse("minecraft:oak_slab"), () -> new SlabData(Block.OAK_SLAB, 13128), () -> Item.OAK_SLAB);
 
-    public static final Block<FenceGateData> JUNGLE_FENCE_GATE = new Block<>(598, 12269, NamespacedKey.parse("minecraft:jungle_fence_gate"), () -> new FenceGateData(Block.JUNGLE_FENCE_GATE, 12269), () -> Item.JUNGLE_FENCE_GATE);
+    public static final Block<SlabData> SPRUCE_SLAB = new Block<>(598, 13134, NamespacedKey.parse("minecraft:spruce_slab"), () -> new SlabData(Block.SPRUCE_SLAB, 13134), () -> Item.SPRUCE_SLAB);
 
-    public static final Block<FenceGateData> ACACIA_FENCE_GATE = new Block<>(599, 12301, NamespacedKey.parse("minecraft:acacia_fence_gate"), () -> new FenceGateData(Block.ACACIA_FENCE_GATE, 12301), () -> Item.ACACIA_FENCE_GATE);
+    public static final Block<SlabData> BIRCH_SLAB = new Block<>(599, 13140, NamespacedKey.parse("minecraft:birch_slab"), () -> new SlabData(Block.BIRCH_SLAB, 13140), () -> Item.BIRCH_SLAB);
 
-    public static final Block<FenceGateData> CHERRY_FENCE_GATE = new Block<>(600, 12333, NamespacedKey.parse("minecraft:cherry_fence_gate"), () -> new FenceGateData(Block.CHERRY_FENCE_GATE, 12333), () -> Item.CHERRY_FENCE_GATE);
+    public static final Block<SlabData> JUNGLE_SLAB = new Block<>(600, 13146, NamespacedKey.parse("minecraft:jungle_slab"), () -> new SlabData(Block.JUNGLE_SLAB, 13146), () -> Item.JUNGLE_SLAB);
 
-    public static final Block<FenceGateData> DARK_OAK_FENCE_GATE = new Block<>(601, 12365, NamespacedKey.parse("minecraft:dark_oak_fence_gate"), () -> new FenceGateData(Block.DARK_OAK_FENCE_GATE, 12365), () -> Item.DARK_OAK_FENCE_GATE);
+    public static final Block<SlabData> ACACIA_SLAB = new Block<>(601, 13152, NamespacedKey.parse("minecraft:acacia_slab"), () -> new SlabData(Block.ACACIA_SLAB, 13152), () -> Item.ACACIA_SLAB);
 
-    public static final Block<FenceGateData> PALE_OAK_FENCE_GATE = new Block<>(602, 12397, NamespacedKey.parse("minecraft:pale_oak_fence_gate"), () -> new FenceGateData(Block.PALE_OAK_FENCE_GATE, 12397), () -> Item.PALE_OAK_FENCE_GATE);
+    public static final Block<SlabData> CHERRY_SLAB = new Block<>(602, 13158, NamespacedKey.parse("minecraft:cherry_slab"), () -> new SlabData(Block.CHERRY_SLAB, 13158), () -> Item.CHERRY_SLAB);
 
-    public static final Block<FenceGateData> MANGROVE_FENCE_GATE = new Block<>(603, 12429, NamespacedKey.parse("minecraft:mangrove_fence_gate"), () -> new FenceGateData(Block.MANGROVE_FENCE_GATE, 12429), () -> Item.MANGROVE_FENCE_GATE);
+    public static final Block<SlabData> DARK_OAK_SLAB = new Block<>(603, 13164, NamespacedKey.parse("minecraft:dark_oak_slab"), () -> new SlabData(Block.DARK_OAK_SLAB, 13164), () -> Item.DARK_OAK_SLAB);
 
-    public static final Block<FenceGateData> BAMBOO_FENCE_GATE = new Block<>(604, 12461, NamespacedKey.parse("minecraft:bamboo_fence_gate"), () -> new FenceGateData(Block.BAMBOO_FENCE_GATE, 12461), () -> Item.BAMBOO_FENCE_GATE);
+    public static final Block<SlabData> PALE_OAK_SLAB = new Block<>(604, 13170, NamespacedKey.parse("minecraft:pale_oak_slab"), () -> new SlabData(Block.PALE_OAK_SLAB, 13170), () -> Item.PALE_OAK_SLAB);
 
-    public static final Block<FenceData> SPRUCE_FENCE = new Block<>(605, 12493, NamespacedKey.parse("minecraft:spruce_fence"), () -> new FenceData(Block.SPRUCE_FENCE, 12493), () -> Item.SPRUCE_FENCE);
+    public static final Block<SlabData> MANGROVE_SLAB = new Block<>(605, 13176, NamespacedKey.parse("minecraft:mangrove_slab"), () -> new SlabData(Block.MANGROVE_SLAB, 13176), () -> Item.MANGROVE_SLAB);
 
-    public static final Block<FenceData> BIRCH_FENCE = new Block<>(606, 12525, NamespacedKey.parse("minecraft:birch_fence"), () -> new FenceData(Block.BIRCH_FENCE, 12525), () -> Item.BIRCH_FENCE);
+    public static final Block<SlabData> BAMBOO_SLAB = new Block<>(606, 13182, NamespacedKey.parse("minecraft:bamboo_slab"), () -> new SlabData(Block.BAMBOO_SLAB, 13182), () -> Item.BAMBOO_SLAB);
 
-    public static final Block<FenceData> JUNGLE_FENCE = new Block<>(607, 12557, NamespacedKey.parse("minecraft:jungle_fence"), () -> new FenceData(Block.JUNGLE_FENCE, 12557), () -> Item.JUNGLE_FENCE);
+    public static final Block<SlabData> BAMBOO_MOSAIC_SLAB = new Block<>(607, 13188, NamespacedKey.parse("minecraft:bamboo_mosaic_slab"), () -> new SlabData(Block.BAMBOO_MOSAIC_SLAB, 13188), () -> Item.BAMBOO_MOSAIC_SLAB);
 
-    public static final Block<FenceData> ACACIA_FENCE = new Block<>(608, 12589, NamespacedKey.parse("minecraft:acacia_fence"), () -> new FenceData(Block.ACACIA_FENCE, 12589), () -> Item.ACACIA_FENCE);
+    public static final Block<SlabData> STONE_SLAB = new Block<>(608, 13194, NamespacedKey.parse("minecraft:stone_slab"), () -> new SlabData(Block.STONE_SLAB, 13194), () -> Item.STONE_SLAB);
 
-    public static final Block<FenceData> CHERRY_FENCE = new Block<>(609, 12621, NamespacedKey.parse("minecraft:cherry_fence"), () -> new FenceData(Block.CHERRY_FENCE, 12621), () -> Item.CHERRY_FENCE);
+    public static final Block<SlabData> SMOOTH_STONE_SLAB = new Block<>(609, 13200, NamespacedKey.parse("minecraft:smooth_stone_slab"), () -> new SlabData(Block.SMOOTH_STONE_SLAB, 13200), () -> Item.SMOOTH_STONE_SLAB);
 
-    public static final Block<FenceData> DARK_OAK_FENCE = new Block<>(610, 12653, NamespacedKey.parse("minecraft:dark_oak_fence"), () -> new FenceData(Block.DARK_OAK_FENCE, 12653), () -> Item.DARK_OAK_FENCE);
+    public static final Block<SlabData> SANDSTONE_SLAB = new Block<>(610, 13206, NamespacedKey.parse("minecraft:sandstone_slab"), () -> new SlabData(Block.SANDSTONE_SLAB, 13206), () -> Item.SANDSTONE_SLAB);
 
-    public static final Block<FenceData> PALE_OAK_FENCE = new Block<>(611, 12685, NamespacedKey.parse("minecraft:pale_oak_fence"), () -> new FenceData(Block.PALE_OAK_FENCE, 12685), () -> Item.PALE_OAK_FENCE);
+    public static final Block<SlabData> CUT_SANDSTONE_SLAB = new Block<>(611, 13212, NamespacedKey.parse("minecraft:cut_sandstone_slab"), () -> new SlabData(Block.CUT_SANDSTONE_SLAB, 13212), () -> Item.CUT_SANDSTONE_SLAB);
 
-    public static final Block<FenceData> MANGROVE_FENCE = new Block<>(612, 12717, NamespacedKey.parse("minecraft:mangrove_fence"), () -> new FenceData(Block.MANGROVE_FENCE, 12717), () -> Item.MANGROVE_FENCE);
+    public static final Block<SlabData> PETRIFIED_OAK_SLAB = new Block<>(612, 13218, NamespacedKey.parse("minecraft:petrified_oak_slab"), () -> new SlabData(Block.PETRIFIED_OAK_SLAB, 13218), () -> Item.PETRIFIED_OAK_SLAB);
 
-    public static final Block<FenceData> BAMBOO_FENCE = new Block<>(613, 12749, NamespacedKey.parse("minecraft:bamboo_fence"), () -> new FenceData(Block.BAMBOO_FENCE, 12749), () -> Item.BAMBOO_FENCE);
+    public static final Block<SlabData> COBBLESTONE_SLAB = new Block<>(613, 13224, NamespacedKey.parse("minecraft:cobblestone_slab"), () -> new SlabData(Block.COBBLESTONE_SLAB, 13224), () -> Item.COBBLESTONE_SLAB);
 
-    public static final Block<DoorData> SPRUCE_DOOR = new Block<>(614, 12781, NamespacedKey.parse("minecraft:spruce_door"), () -> new DoorData(Block.SPRUCE_DOOR, 12781), () -> Item.SPRUCE_DOOR);
+    public static final Block<SlabData> BRICK_SLAB = new Block<>(614, 13230, NamespacedKey.parse("minecraft:brick_slab"), () -> new SlabData(Block.BRICK_SLAB, 13230), () -> Item.BRICK_SLAB);
 
-    public static final Block<DoorData> BIRCH_DOOR = new Block<>(615, 12845, NamespacedKey.parse("minecraft:birch_door"), () -> new DoorData(Block.BIRCH_DOOR, 12845), () -> Item.BIRCH_DOOR);
+    public static final Block<SlabData> STONE_BRICK_SLAB = new Block<>(615, 13236, NamespacedKey.parse("minecraft:stone_brick_slab"), () -> new SlabData(Block.STONE_BRICK_SLAB, 13236), () -> Item.STONE_BRICK_SLAB);
 
-    public static final Block<DoorData> JUNGLE_DOOR = new Block<>(616, 12909, NamespacedKey.parse("minecraft:jungle_door"), () -> new DoorData(Block.JUNGLE_DOOR, 12909), () -> Item.JUNGLE_DOOR);
+    public static final Block<SlabData> MUD_BRICK_SLAB = new Block<>(616, 13242, NamespacedKey.parse("minecraft:mud_brick_slab"), () -> new SlabData(Block.MUD_BRICK_SLAB, 13242), () -> Item.MUD_BRICK_SLAB);
 
-    public static final Block<DoorData> ACACIA_DOOR = new Block<>(617, 12973, NamespacedKey.parse("minecraft:acacia_door"), () -> new DoorData(Block.ACACIA_DOOR, 12973), () -> Item.ACACIA_DOOR);
+    public static final Block<SlabData> NETHER_BRICK_SLAB = new Block<>(617, 13248, NamespacedKey.parse("minecraft:nether_brick_slab"), () -> new SlabData(Block.NETHER_BRICK_SLAB, 13248), () -> Item.NETHER_BRICK_SLAB);
 
-    public static final Block<DoorData> CHERRY_DOOR = new Block<>(618, 13037, NamespacedKey.parse("minecraft:cherry_door"), () -> new DoorData(Block.CHERRY_DOOR, 13037), () -> Item.CHERRY_DOOR);
+    public static final Block<SlabData> QUARTZ_SLAB = new Block<>(618, 13254, NamespacedKey.parse("minecraft:quartz_slab"), () -> new SlabData(Block.QUARTZ_SLAB, 13254), () -> Item.QUARTZ_SLAB);
 
-    public static final Block<DoorData> DARK_OAK_DOOR = new Block<>(619, 13101, NamespacedKey.parse("minecraft:dark_oak_door"), () -> new DoorData(Block.DARK_OAK_DOOR, 13101), () -> Item.DARK_OAK_DOOR);
+    public static final Block<SlabData> RED_SANDSTONE_SLAB = new Block<>(619, 13260, NamespacedKey.parse("minecraft:red_sandstone_slab"), () -> new SlabData(Block.RED_SANDSTONE_SLAB, 13260), () -> Item.RED_SANDSTONE_SLAB);
 
-    public static final Block<DoorData> PALE_OAK_DOOR = new Block<>(620, 13165, NamespacedKey.parse("minecraft:pale_oak_door"), () -> new DoorData(Block.PALE_OAK_DOOR, 13165), () -> Item.PALE_OAK_DOOR);
+    public static final Block<SlabData> CUT_RED_SANDSTONE_SLAB = new Block<>(620, 13266, NamespacedKey.parse("minecraft:cut_red_sandstone_slab"), () -> new SlabData(Block.CUT_RED_SANDSTONE_SLAB, 13266), () -> Item.CUT_RED_SANDSTONE_SLAB);
 
-    public static final Block<DoorData> MANGROVE_DOOR = new Block<>(621, 13229, NamespacedKey.parse("minecraft:mangrove_door"), () -> new DoorData(Block.MANGROVE_DOOR, 13229), () -> Item.MANGROVE_DOOR);
+    public static final Block<SlabData> PURPUR_SLAB = new Block<>(621, 13272, NamespacedKey.parse("minecraft:purpur_slab"), () -> new SlabData(Block.PURPUR_SLAB, 13272), () -> Item.PURPUR_SLAB);
 
-    public static final Block<DoorData> BAMBOO_DOOR = new Block<>(622, 13293, NamespacedKey.parse("minecraft:bamboo_door"), () -> new DoorData(Block.BAMBOO_DOOR, 13293), () -> Item.BAMBOO_DOOR);
+    public static final Block<BlockData> SMOOTH_STONE = new Block<>(622, 13278, NamespacedKey.parse("minecraft:smooth_stone"), () -> new BlockData(Block.SMOOTH_STONE, 13278), () -> Item.SMOOTH_STONE);
 
-    public static final Block<EndRodData> END_ROD = new Block<>(623, 13357, NamespacedKey.parse("minecraft:end_rod"), () -> new EndRodData(Block.END_ROD, 13357), () -> Item.END_ROD);
+    public static final Block<BlockData> SMOOTH_SANDSTONE = new Block<>(623, 13279, NamespacedKey.parse("minecraft:smooth_sandstone"), () -> new BlockData(Block.SMOOTH_SANDSTONE, 13279), () -> Item.SMOOTH_SANDSTONE);
 
-    public static final Block<ChorusPlantData> CHORUS_PLANT = new Block<>(624, 13363, NamespacedKey.parse("minecraft:chorus_plant"), () -> new ChorusPlantData(Block.CHORUS_PLANT, 13363), () -> Item.CHORUS_PLANT);
+    public static final Block<BlockData> SMOOTH_QUARTZ = new Block<>(624, 13280, NamespacedKey.parse("minecraft:smooth_quartz"), () -> new BlockData(Block.SMOOTH_QUARTZ, 13280), () -> Item.SMOOTH_QUARTZ);
 
-    public static final Block<ChorusFlowerData> CHORUS_FLOWER = new Block<>(625, 13427, NamespacedKey.parse("minecraft:chorus_flower"), () -> new ChorusFlowerData(Block.CHORUS_FLOWER, 13427), () -> Item.CHORUS_FLOWER);
+    public static final Block<BlockData> SMOOTH_RED_SANDSTONE = new Block<>(625, 13281, NamespacedKey.parse("minecraft:smooth_red_sandstone"), () -> new BlockData(Block.SMOOTH_RED_SANDSTONE, 13281), () -> Item.SMOOTH_RED_SANDSTONE);
 
-    public static final Block<BlockData> PURPUR_BLOCK = new Block<>(626, 13433, NamespacedKey.parse("minecraft:purpur_block"), () -> new BlockData(Block.PURPUR_BLOCK, 13433), () -> Item.PURPUR_BLOCK);
+    public static final Block<FenceGateData> SPRUCE_FENCE_GATE = new Block<>(626, 13282, NamespacedKey.parse("minecraft:spruce_fence_gate"), () -> new FenceGateData(Block.SPRUCE_FENCE_GATE, 13282), () -> Item.SPRUCE_FENCE_GATE);
 
-    public static final Block<RotatedPillarData> PURPUR_PILLAR = new Block<>(627, 13434, NamespacedKey.parse("minecraft:purpur_pillar"), () -> new RotatedPillarData(Block.PURPUR_PILLAR, 13434), () -> Item.PURPUR_PILLAR);
+    public static final Block<FenceGateData> BIRCH_FENCE_GATE = new Block<>(627, 13314, NamespacedKey.parse("minecraft:birch_fence_gate"), () -> new FenceGateData(Block.BIRCH_FENCE_GATE, 13314), () -> Item.BIRCH_FENCE_GATE);
 
-    public static final Block<StairData> PURPUR_STAIRS = new Block<>(628, 13437, NamespacedKey.parse("minecraft:purpur_stairs"), () -> new StairData(Block.PURPUR_STAIRS, 13437), () -> Item.PURPUR_STAIRS);
+    public static final Block<FenceGateData> JUNGLE_FENCE_GATE = new Block<>(628, 13346, NamespacedKey.parse("minecraft:jungle_fence_gate"), () -> new FenceGateData(Block.JUNGLE_FENCE_GATE, 13346), () -> Item.JUNGLE_FENCE_GATE);
 
-    public static final Block<BlockData> END_STONE_BRICKS = new Block<>(629, 13517, NamespacedKey.parse("minecraft:end_stone_bricks"), () -> new BlockData(Block.END_STONE_BRICKS, 13517), () -> Item.END_STONE_BRICKS);
+    public static final Block<FenceGateData> ACACIA_FENCE_GATE = new Block<>(629, 13378, NamespacedKey.parse("minecraft:acacia_fence_gate"), () -> new FenceGateData(Block.ACACIA_FENCE_GATE, 13378), () -> Item.ACACIA_FENCE_GATE);
 
-    public static final Block<TorchflowerCropData> TORCHFLOWER_CROP = new Block<>(630, 13518, NamespacedKey.parse("minecraft:torchflower_crop"), () -> new TorchflowerCropData(Block.TORCHFLOWER_CROP, 13518), null);
+    public static final Block<FenceGateData> CHERRY_FENCE_GATE = new Block<>(630, 13410, NamespacedKey.parse("minecraft:cherry_fence_gate"), () -> new FenceGateData(Block.CHERRY_FENCE_GATE, 13410), () -> Item.CHERRY_FENCE_GATE);
 
-    public static final Block<PitcherCropData> PITCHER_CROP = new Block<>(631, 13520, NamespacedKey.parse("minecraft:pitcher_crop"), () -> new PitcherCropData(Block.PITCHER_CROP, 13520), null);
+    public static final Block<FenceGateData> DARK_OAK_FENCE_GATE = new Block<>(631, 13442, NamespacedKey.parse("minecraft:dark_oak_fence_gate"), () -> new FenceGateData(Block.DARK_OAK_FENCE_GATE, 13442), () -> Item.DARK_OAK_FENCE_GATE);
 
-    public static final Block<DoublePlantData> PITCHER_PLANT = new Block<>(632, 13530, NamespacedKey.parse("minecraft:pitcher_plant"), () -> new DoublePlantData(Block.PITCHER_PLANT, 13530), () -> Item.PITCHER_PLANT);
+    public static final Block<FenceGateData> PALE_OAK_FENCE_GATE = new Block<>(632, 13474, NamespacedKey.parse("minecraft:pale_oak_fence_gate"), () -> new FenceGateData(Block.PALE_OAK_FENCE_GATE, 13474), () -> Item.PALE_OAK_FENCE_GATE);
 
-    public static final Block<BeetrootData> BEETROOTS = new Block<>(633, 13532, NamespacedKey.parse("minecraft:beetroots"), () -> new BeetrootData(Block.BEETROOTS, 13532), null);
+    public static final Block<FenceGateData> MANGROVE_FENCE_GATE = new Block<>(633, 13506, NamespacedKey.parse("minecraft:mangrove_fence_gate"), () -> new FenceGateData(Block.MANGROVE_FENCE_GATE, 13506), () -> Item.MANGROVE_FENCE_GATE);
 
-    public static final Block<BlockData> DIRT_PATH = new Block<>(634, 13536, NamespacedKey.parse("minecraft:dirt_path"), () -> new BlockData(Block.DIRT_PATH, 13536), () -> Item.DIRT_PATH);
+    public static final Block<FenceGateData> BAMBOO_FENCE_GATE = new Block<>(634, 13538, NamespacedKey.parse("minecraft:bamboo_fence_gate"), () -> new FenceGateData(Block.BAMBOO_FENCE_GATE, 13538), () -> Item.BAMBOO_FENCE_GATE);
 
-    public static final Block<BlockData> END_GATEWAY = new Block<>(635, 13537, NamespacedKey.parse("minecraft:end_gateway"), () -> new BlockData(Block.END_GATEWAY, 13537), null);
+    public static final Block<FenceData> SPRUCE_FENCE = new Block<>(635, 13570, NamespacedKey.parse("minecraft:spruce_fence"), () -> new FenceData(Block.SPRUCE_FENCE, 13570), () -> Item.SPRUCE_FENCE);
 
-    public static final Block<CommandData> REPEATING_COMMAND_BLOCK = new Block<>(636, 13538, NamespacedKey.parse("minecraft:repeating_command_block"), () -> new CommandData(Block.REPEATING_COMMAND_BLOCK, 13538), () -> Item.REPEATING_COMMAND_BLOCK);
+    public static final Block<FenceData> BIRCH_FENCE = new Block<>(636, 13602, NamespacedKey.parse("minecraft:birch_fence"), () -> new FenceData(Block.BIRCH_FENCE, 13602), () -> Item.BIRCH_FENCE);
 
-    public static final Block<CommandData> CHAIN_COMMAND_BLOCK = new Block<>(637, 13550, NamespacedKey.parse("minecraft:chain_command_block"), () -> new CommandData(Block.CHAIN_COMMAND_BLOCK, 13550), () -> Item.CHAIN_COMMAND_BLOCK);
+    public static final Block<FenceData> JUNGLE_FENCE = new Block<>(637, 13634, NamespacedKey.parse("minecraft:jungle_fence"), () -> new FenceData(Block.JUNGLE_FENCE, 13634), () -> Item.JUNGLE_FENCE);
 
-    public static final Block<FrostedIceData> FROSTED_ICE = new Block<>(638, 13562, NamespacedKey.parse("minecraft:frosted_ice"), () -> new FrostedIceData(Block.FROSTED_ICE, 13562), null);
+    public static final Block<FenceData> ACACIA_FENCE = new Block<>(638, 13666, NamespacedKey.parse("minecraft:acacia_fence"), () -> new FenceData(Block.ACACIA_FENCE, 13666), () -> Item.ACACIA_FENCE);
 
-    public static final Block<BlockData> MAGMA_BLOCK = new Block<>(639, 13566, NamespacedKey.parse("minecraft:magma_block"), () -> new BlockData(Block.MAGMA_BLOCK, 13566), () -> Item.MAGMA_BLOCK);
+    public static final Block<FenceData> CHERRY_FENCE = new Block<>(639, 13698, NamespacedKey.parse("minecraft:cherry_fence"), () -> new FenceData(Block.CHERRY_FENCE, 13698), () -> Item.CHERRY_FENCE);
 
-    public static final Block<BlockData> NETHER_WART_BLOCK = new Block<>(640, 13567, NamespacedKey.parse("minecraft:nether_wart_block"), () -> new BlockData(Block.NETHER_WART_BLOCK, 13567), () -> Item.NETHER_WART_BLOCK);
+    public static final Block<FenceData> DARK_OAK_FENCE = new Block<>(640, 13730, NamespacedKey.parse("minecraft:dark_oak_fence"), () -> new FenceData(Block.DARK_OAK_FENCE, 13730), () -> Item.DARK_OAK_FENCE);
 
-    public static final Block<BlockData> RED_NETHER_BRICKS = new Block<>(641, 13568, NamespacedKey.parse("minecraft:red_nether_bricks"), () -> new BlockData(Block.RED_NETHER_BRICKS, 13568), () -> Item.RED_NETHER_BRICKS);
+    public static final Block<FenceData> PALE_OAK_FENCE = new Block<>(641, 13762, NamespacedKey.parse("minecraft:pale_oak_fence"), () -> new FenceData(Block.PALE_OAK_FENCE, 13762), () -> Item.PALE_OAK_FENCE);
 
-    public static final Block<RotatedPillarData> BONE_BLOCK = new Block<>(642, 13569, NamespacedKey.parse("minecraft:bone_block"), () -> new RotatedPillarData(Block.BONE_BLOCK, 13569), () -> Item.BONE_BLOCK);
+    public static final Block<FenceData> MANGROVE_FENCE = new Block<>(642, 13794, NamespacedKey.parse("minecraft:mangrove_fence"), () -> new FenceData(Block.MANGROVE_FENCE, 13794), () -> Item.MANGROVE_FENCE);
 
-    public static final Block<BlockData> STRUCTURE_VOID = new Block<>(643, 13572, NamespacedKey.parse("minecraft:structure_void"), () -> new BlockData(Block.STRUCTURE_VOID, 13572), () -> Item.STRUCTURE_VOID);
+    public static final Block<FenceData> BAMBOO_FENCE = new Block<>(643, 13826, NamespacedKey.parse("minecraft:bamboo_fence"), () -> new FenceData(Block.BAMBOO_FENCE, 13826), () -> Item.BAMBOO_FENCE);
 
-    public static final Block<ObserverData> OBSERVER = new Block<>(644, 13573, NamespacedKey.parse("minecraft:observer"), () -> new ObserverData(Block.OBSERVER, 13573), () -> Item.OBSERVER);
+    public static final Block<DoorData> SPRUCE_DOOR = new Block<>(644, 13858, NamespacedKey.parse("minecraft:spruce_door"), () -> new DoorData(Block.SPRUCE_DOOR, 13858), () -> Item.SPRUCE_DOOR);
 
-    public static final Block<ShulkerBoxData> SHULKER_BOX = new Block<>(645, 13585, NamespacedKey.parse("minecraft:shulker_box"), () -> new ShulkerBoxData(Block.SHULKER_BOX, 13585), () -> Item.SHULKER_BOX);
+    public static final Block<DoorData> BIRCH_DOOR = new Block<>(645, 13922, NamespacedKey.parse("minecraft:birch_door"), () -> new DoorData(Block.BIRCH_DOOR, 13922), () -> Item.BIRCH_DOOR);
 
-    public static final Block<ShulkerBoxData> WHITE_SHULKER_BOX = new Block<>(646, 13591, NamespacedKey.parse("minecraft:white_shulker_box"), () -> new ShulkerBoxData(Block.WHITE_SHULKER_BOX, 13591), () -> Item.WHITE_SHULKER_BOX);
+    public static final Block<DoorData> JUNGLE_DOOR = new Block<>(646, 13986, NamespacedKey.parse("minecraft:jungle_door"), () -> new DoorData(Block.JUNGLE_DOOR, 13986), () -> Item.JUNGLE_DOOR);
 
-    public static final Block<ShulkerBoxData> ORANGE_SHULKER_BOX = new Block<>(647, 13597, NamespacedKey.parse("minecraft:orange_shulker_box"), () -> new ShulkerBoxData(Block.ORANGE_SHULKER_BOX, 13597), () -> Item.ORANGE_SHULKER_BOX);
+    public static final Block<DoorData> ACACIA_DOOR = new Block<>(647, 14050, NamespacedKey.parse("minecraft:acacia_door"), () -> new DoorData(Block.ACACIA_DOOR, 14050), () -> Item.ACACIA_DOOR);
 
-    public static final Block<ShulkerBoxData> MAGENTA_SHULKER_BOX = new Block<>(648, 13603, NamespacedKey.parse("minecraft:magenta_shulker_box"), () -> new ShulkerBoxData(Block.MAGENTA_SHULKER_BOX, 13603), () -> Item.MAGENTA_SHULKER_BOX);
+    public static final Block<DoorData> CHERRY_DOOR = new Block<>(648, 14114, NamespacedKey.parse("minecraft:cherry_door"), () -> new DoorData(Block.CHERRY_DOOR, 14114), () -> Item.CHERRY_DOOR);
 
-    public static final Block<ShulkerBoxData> LIGHT_BLUE_SHULKER_BOX = new Block<>(649, 13609, NamespacedKey.parse("minecraft:light_blue_shulker_box"), () -> new ShulkerBoxData(Block.LIGHT_BLUE_SHULKER_BOX, 13609), () -> Item.LIGHT_BLUE_SHULKER_BOX);
+    public static final Block<DoorData> DARK_OAK_DOOR = new Block<>(649, 14178, NamespacedKey.parse("minecraft:dark_oak_door"), () -> new DoorData(Block.DARK_OAK_DOOR, 14178), () -> Item.DARK_OAK_DOOR);
 
-    public static final Block<ShulkerBoxData> YELLOW_SHULKER_BOX = new Block<>(650, 13615, NamespacedKey.parse("minecraft:yellow_shulker_box"), () -> new ShulkerBoxData(Block.YELLOW_SHULKER_BOX, 13615), () -> Item.YELLOW_SHULKER_BOX);
+    public static final Block<DoorData> PALE_OAK_DOOR = new Block<>(650, 14242, NamespacedKey.parse("minecraft:pale_oak_door"), () -> new DoorData(Block.PALE_OAK_DOOR, 14242), () -> Item.PALE_OAK_DOOR);
 
-    public static final Block<ShulkerBoxData> LIME_SHULKER_BOX = new Block<>(651, 13621, NamespacedKey.parse("minecraft:lime_shulker_box"), () -> new ShulkerBoxData(Block.LIME_SHULKER_BOX, 13621), () -> Item.LIME_SHULKER_BOX);
+    public static final Block<DoorData> MANGROVE_DOOR = new Block<>(651, 14306, NamespacedKey.parse("minecraft:mangrove_door"), () -> new DoorData(Block.MANGROVE_DOOR, 14306), () -> Item.MANGROVE_DOOR);
 
-    public static final Block<ShulkerBoxData> PINK_SHULKER_BOX = new Block<>(652, 13627, NamespacedKey.parse("minecraft:pink_shulker_box"), () -> new ShulkerBoxData(Block.PINK_SHULKER_BOX, 13627), () -> Item.PINK_SHULKER_BOX);
+    public static final Block<DoorData> BAMBOO_DOOR = new Block<>(652, 14370, NamespacedKey.parse("minecraft:bamboo_door"), () -> new DoorData(Block.BAMBOO_DOOR, 14370), () -> Item.BAMBOO_DOOR);
 
-    public static final Block<ShulkerBoxData> GRAY_SHULKER_BOX = new Block<>(653, 13633, NamespacedKey.parse("minecraft:gray_shulker_box"), () -> new ShulkerBoxData(Block.GRAY_SHULKER_BOX, 13633), () -> Item.GRAY_SHULKER_BOX);
+    public static final Block<EndRodData> END_ROD = new Block<>(653, 14434, NamespacedKey.parse("minecraft:end_rod"), () -> new EndRodData(Block.END_ROD, 14434), () -> Item.END_ROD);
 
-    public static final Block<ShulkerBoxData> LIGHT_GRAY_SHULKER_BOX = new Block<>(654, 13639, NamespacedKey.parse("minecraft:light_gray_shulker_box"), () -> new ShulkerBoxData(Block.LIGHT_GRAY_SHULKER_BOX, 13639), () -> Item.LIGHT_GRAY_SHULKER_BOX);
+    public static final Block<ChorusPlantData> CHORUS_PLANT = new Block<>(654, 14440, NamespacedKey.parse("minecraft:chorus_plant"), () -> new ChorusPlantData(Block.CHORUS_PLANT, 14440), () -> Item.CHORUS_PLANT);
 
-    public static final Block<ShulkerBoxData> CYAN_SHULKER_BOX = new Block<>(655, 13645, NamespacedKey.parse("minecraft:cyan_shulker_box"), () -> new ShulkerBoxData(Block.CYAN_SHULKER_BOX, 13645), () -> Item.CYAN_SHULKER_BOX);
+    public static final Block<ChorusFlowerData> CHORUS_FLOWER = new Block<>(655, 14504, NamespacedKey.parse("minecraft:chorus_flower"), () -> new ChorusFlowerData(Block.CHORUS_FLOWER, 14504), () -> Item.CHORUS_FLOWER);
 
-    public static final Block<ShulkerBoxData> PURPLE_SHULKER_BOX = new Block<>(656, 13651, NamespacedKey.parse("minecraft:purple_shulker_box"), () -> new ShulkerBoxData(Block.PURPLE_SHULKER_BOX, 13651), () -> Item.PURPLE_SHULKER_BOX);
+    public static final Block<BlockData> PURPUR_BLOCK = new Block<>(656, 14510, NamespacedKey.parse("minecraft:purpur_block"), () -> new BlockData(Block.PURPUR_BLOCK, 14510), () -> Item.PURPUR_BLOCK);
 
-    public static final Block<ShulkerBoxData> BLUE_SHULKER_BOX = new Block<>(657, 13657, NamespacedKey.parse("minecraft:blue_shulker_box"), () -> new ShulkerBoxData(Block.BLUE_SHULKER_BOX, 13657), () -> Item.BLUE_SHULKER_BOX);
+    public static final Block<RotatedPillarData> PURPUR_PILLAR = new Block<>(657, 14511, NamespacedKey.parse("minecraft:purpur_pillar"), () -> new RotatedPillarData(Block.PURPUR_PILLAR, 14511), () -> Item.PURPUR_PILLAR);
 
-    public static final Block<ShulkerBoxData> BROWN_SHULKER_BOX = new Block<>(658, 13663, NamespacedKey.parse("minecraft:brown_shulker_box"), () -> new ShulkerBoxData(Block.BROWN_SHULKER_BOX, 13663), () -> Item.BROWN_SHULKER_BOX);
+    public static final Block<StairData> PURPUR_STAIRS = new Block<>(658, 14514, NamespacedKey.parse("minecraft:purpur_stairs"), () -> new StairData(Block.PURPUR_STAIRS, 14514), () -> Item.PURPUR_STAIRS);
 
-    public static final Block<ShulkerBoxData> GREEN_SHULKER_BOX = new Block<>(659, 13669, NamespacedKey.parse("minecraft:green_shulker_box"), () -> new ShulkerBoxData(Block.GREEN_SHULKER_BOX, 13669), () -> Item.GREEN_SHULKER_BOX);
+    public static final Block<BlockData> END_STONE_BRICKS = new Block<>(659, 14594, NamespacedKey.parse("minecraft:end_stone_bricks"), () -> new BlockData(Block.END_STONE_BRICKS, 14594), () -> Item.END_STONE_BRICKS);
 
-    public static final Block<ShulkerBoxData> RED_SHULKER_BOX = new Block<>(660, 13675, NamespacedKey.parse("minecraft:red_shulker_box"), () -> new ShulkerBoxData(Block.RED_SHULKER_BOX, 13675), () -> Item.RED_SHULKER_BOX);
+    public static final Block<TorchflowerCropData> TORCHFLOWER_CROP = new Block<>(660, 14595, NamespacedKey.parse("minecraft:torchflower_crop"), () -> new TorchflowerCropData(Block.TORCHFLOWER_CROP, 14595), null);
 
-    public static final Block<ShulkerBoxData> BLACK_SHULKER_BOX = new Block<>(661, 13681, NamespacedKey.parse("minecraft:black_shulker_box"), () -> new ShulkerBoxData(Block.BLACK_SHULKER_BOX, 13681), () -> Item.BLACK_SHULKER_BOX);
+    public static final Block<PitcherCropData> PITCHER_CROP = new Block<>(661, 14597, NamespacedKey.parse("minecraft:pitcher_crop"), () -> new PitcherCropData(Block.PITCHER_CROP, 14597), null);
 
-    public static final Block<GlazedTerracottaData> WHITE_GLAZED_TERRACOTTA = new Block<>(662, 13687, NamespacedKey.parse("minecraft:white_glazed_terracotta"), () -> new GlazedTerracottaData(Block.WHITE_GLAZED_TERRACOTTA, 13687), () -> Item.WHITE_GLAZED_TERRACOTTA);
+    public static final Block<DoublePlantData> PITCHER_PLANT = new Block<>(662, 14607, NamespacedKey.parse("minecraft:pitcher_plant"), () -> new DoublePlantData(Block.PITCHER_PLANT, 14607), () -> Item.PITCHER_PLANT);
 
-    public static final Block<GlazedTerracottaData> ORANGE_GLAZED_TERRACOTTA = new Block<>(663, 13691, NamespacedKey.parse("minecraft:orange_glazed_terracotta"), () -> new GlazedTerracottaData(Block.ORANGE_GLAZED_TERRACOTTA, 13691), () -> Item.ORANGE_GLAZED_TERRACOTTA);
+    public static final Block<BeetrootData> BEETROOTS = new Block<>(663, 14609, NamespacedKey.parse("minecraft:beetroots"), () -> new BeetrootData(Block.BEETROOTS, 14609), null);
 
-    public static final Block<GlazedTerracottaData> MAGENTA_GLAZED_TERRACOTTA = new Block<>(664, 13695, NamespacedKey.parse("minecraft:magenta_glazed_terracotta"), () -> new GlazedTerracottaData(Block.MAGENTA_GLAZED_TERRACOTTA, 13695), () -> Item.MAGENTA_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> DIRT_PATH = new Block<>(664, 14613, NamespacedKey.parse("minecraft:dirt_path"), () -> new BlockData(Block.DIRT_PATH, 14613), () -> Item.DIRT_PATH);
 
-    public static final Block<GlazedTerracottaData> LIGHT_BLUE_GLAZED_TERRACOTTA = new Block<>(665, 13699, NamespacedKey.parse("minecraft:light_blue_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIGHT_BLUE_GLAZED_TERRACOTTA, 13699), () -> Item.LIGHT_BLUE_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> END_GATEWAY = new Block<>(665, 14614, NamespacedKey.parse("minecraft:end_gateway"), () -> new BlockData(Block.END_GATEWAY, 14614), null);
 
-    public static final Block<GlazedTerracottaData> YELLOW_GLAZED_TERRACOTTA = new Block<>(666, 13703, NamespacedKey.parse("minecraft:yellow_glazed_terracotta"), () -> new GlazedTerracottaData(Block.YELLOW_GLAZED_TERRACOTTA, 13703), () -> Item.YELLOW_GLAZED_TERRACOTTA);
+    public static final Block<CommandData> REPEATING_COMMAND_BLOCK = new Block<>(666, 14615, NamespacedKey.parse("minecraft:repeating_command_block"), () -> new CommandData(Block.REPEATING_COMMAND_BLOCK, 14615), () -> Item.REPEATING_COMMAND_BLOCK);
 
-    public static final Block<GlazedTerracottaData> LIME_GLAZED_TERRACOTTA = new Block<>(667, 13707, NamespacedKey.parse("minecraft:lime_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIME_GLAZED_TERRACOTTA, 13707), () -> Item.LIME_GLAZED_TERRACOTTA);
+    public static final Block<CommandData> CHAIN_COMMAND_BLOCK = new Block<>(667, 14627, NamespacedKey.parse("minecraft:chain_command_block"), () -> new CommandData(Block.CHAIN_COMMAND_BLOCK, 14627), () -> Item.CHAIN_COMMAND_BLOCK);
 
-    public static final Block<GlazedTerracottaData> PINK_GLAZED_TERRACOTTA = new Block<>(668, 13711, NamespacedKey.parse("minecraft:pink_glazed_terracotta"), () -> new GlazedTerracottaData(Block.PINK_GLAZED_TERRACOTTA, 13711), () -> Item.PINK_GLAZED_TERRACOTTA);
+    public static final Block<FrostedIceData> FROSTED_ICE = new Block<>(668, 14639, NamespacedKey.parse("minecraft:frosted_ice"), () -> new FrostedIceData(Block.FROSTED_ICE, 14639), null);
 
-    public static final Block<GlazedTerracottaData> GRAY_GLAZED_TERRACOTTA = new Block<>(669, 13715, NamespacedKey.parse("minecraft:gray_glazed_terracotta"), () -> new GlazedTerracottaData(Block.GRAY_GLAZED_TERRACOTTA, 13715), () -> Item.GRAY_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> MAGMA_BLOCK = new Block<>(669, 14643, NamespacedKey.parse("minecraft:magma_block"), () -> new BlockData(Block.MAGMA_BLOCK, 14643), () -> Item.MAGMA_BLOCK);
 
-    public static final Block<GlazedTerracottaData> LIGHT_GRAY_GLAZED_TERRACOTTA = new Block<>(670, 13719, NamespacedKey.parse("minecraft:light_gray_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIGHT_GRAY_GLAZED_TERRACOTTA, 13719), () -> Item.LIGHT_GRAY_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> NETHER_WART_BLOCK = new Block<>(670, 14644, NamespacedKey.parse("minecraft:nether_wart_block"), () -> new BlockData(Block.NETHER_WART_BLOCK, 14644), () -> Item.NETHER_WART_BLOCK);
 
-    public static final Block<GlazedTerracottaData> CYAN_GLAZED_TERRACOTTA = new Block<>(671, 13723, NamespacedKey.parse("minecraft:cyan_glazed_terracotta"), () -> new GlazedTerracottaData(Block.CYAN_GLAZED_TERRACOTTA, 13723), () -> Item.CYAN_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> RED_NETHER_BRICKS = new Block<>(671, 14645, NamespacedKey.parse("minecraft:red_nether_bricks"), () -> new BlockData(Block.RED_NETHER_BRICKS, 14645), () -> Item.RED_NETHER_BRICKS);
 
-    public static final Block<GlazedTerracottaData> PURPLE_GLAZED_TERRACOTTA = new Block<>(672, 13727, NamespacedKey.parse("minecraft:purple_glazed_terracotta"), () -> new GlazedTerracottaData(Block.PURPLE_GLAZED_TERRACOTTA, 13727), () -> Item.PURPLE_GLAZED_TERRACOTTA);
+    public static final Block<RotatedPillarData> BONE_BLOCK = new Block<>(672, 14646, NamespacedKey.parse("minecraft:bone_block"), () -> new RotatedPillarData(Block.BONE_BLOCK, 14646), () -> Item.BONE_BLOCK);
 
-    public static final Block<GlazedTerracottaData> BLUE_GLAZED_TERRACOTTA = new Block<>(673, 13731, NamespacedKey.parse("minecraft:blue_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BLUE_GLAZED_TERRACOTTA, 13731), () -> Item.BLUE_GLAZED_TERRACOTTA);
+    public static final Block<BlockData> STRUCTURE_VOID = new Block<>(673, 14649, NamespacedKey.parse("minecraft:structure_void"), () -> new BlockData(Block.STRUCTURE_VOID, 14649), () -> Item.STRUCTURE_VOID);
 
-    public static final Block<GlazedTerracottaData> BROWN_GLAZED_TERRACOTTA = new Block<>(674, 13735, NamespacedKey.parse("minecraft:brown_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BROWN_GLAZED_TERRACOTTA, 13735), () -> Item.BROWN_GLAZED_TERRACOTTA);
+    public static final Block<ObserverData> OBSERVER = new Block<>(674, 14650, NamespacedKey.parse("minecraft:observer"), () -> new ObserverData(Block.OBSERVER, 14650), () -> Item.OBSERVER);
 
-    public static final Block<GlazedTerracottaData> GREEN_GLAZED_TERRACOTTA = new Block<>(675, 13739, NamespacedKey.parse("minecraft:green_glazed_terracotta"), () -> new GlazedTerracottaData(Block.GREEN_GLAZED_TERRACOTTA, 13739), () -> Item.GREEN_GLAZED_TERRACOTTA);
+    public static final Block<ShulkerBoxData> SHULKER_BOX = new Block<>(675, 14662, NamespacedKey.parse("minecraft:shulker_box"), () -> new ShulkerBoxData(Block.SHULKER_BOX, 14662), () -> Item.SHULKER_BOX);
 
-    public static final Block<GlazedTerracottaData> RED_GLAZED_TERRACOTTA = new Block<>(676, 13743, NamespacedKey.parse("minecraft:red_glazed_terracotta"), () -> new GlazedTerracottaData(Block.RED_GLAZED_TERRACOTTA, 13743), () -> Item.RED_GLAZED_TERRACOTTA);
+    public static final Block<ShulkerBoxData> WHITE_SHULKER_BOX = new Block<>(676, 14668, NamespacedKey.parse("minecraft:white_shulker_box"), () -> new ShulkerBoxData(Block.WHITE_SHULKER_BOX, 14668), () -> Item.WHITE_SHULKER_BOX);
 
-    public static final Block<GlazedTerracottaData> BLACK_GLAZED_TERRACOTTA = new Block<>(677, 13747, NamespacedKey.parse("minecraft:black_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BLACK_GLAZED_TERRACOTTA, 13747), () -> Item.BLACK_GLAZED_TERRACOTTA);
+    public static final Block<ShulkerBoxData> ORANGE_SHULKER_BOX = new Block<>(677, 14674, NamespacedKey.parse("minecraft:orange_shulker_box"), () -> new ShulkerBoxData(Block.ORANGE_SHULKER_BOX, 14674), () -> Item.ORANGE_SHULKER_BOX);
 
-    public static final Block<BlockData> WHITE_CONCRETE = new Block<>(678, 13751, NamespacedKey.parse("minecraft:white_concrete"), () -> new BlockData(Block.WHITE_CONCRETE, 13751), () -> Item.WHITE_CONCRETE);
+    public static final Block<ShulkerBoxData> MAGENTA_SHULKER_BOX = new Block<>(678, 14680, NamespacedKey.parse("minecraft:magenta_shulker_box"), () -> new ShulkerBoxData(Block.MAGENTA_SHULKER_BOX, 14680), () -> Item.MAGENTA_SHULKER_BOX);
 
-    public static final Block<BlockData> ORANGE_CONCRETE = new Block<>(679, 13752, NamespacedKey.parse("minecraft:orange_concrete"), () -> new BlockData(Block.ORANGE_CONCRETE, 13752), () -> Item.ORANGE_CONCRETE);
+    public static final Block<ShulkerBoxData> LIGHT_BLUE_SHULKER_BOX = new Block<>(679, 14686, NamespacedKey.parse("minecraft:light_blue_shulker_box"), () -> new ShulkerBoxData(Block.LIGHT_BLUE_SHULKER_BOX, 14686), () -> Item.LIGHT_BLUE_SHULKER_BOX);
 
-    public static final Block<BlockData> MAGENTA_CONCRETE = new Block<>(680, 13753, NamespacedKey.parse("minecraft:magenta_concrete"), () -> new BlockData(Block.MAGENTA_CONCRETE, 13753), () -> Item.MAGENTA_CONCRETE);
+    public static final Block<ShulkerBoxData> YELLOW_SHULKER_BOX = new Block<>(680, 14692, NamespacedKey.parse("minecraft:yellow_shulker_box"), () -> new ShulkerBoxData(Block.YELLOW_SHULKER_BOX, 14692), () -> Item.YELLOW_SHULKER_BOX);
 
-    public static final Block<BlockData> LIGHT_BLUE_CONCRETE = new Block<>(681, 13754, NamespacedKey.parse("minecraft:light_blue_concrete"), () -> new BlockData(Block.LIGHT_BLUE_CONCRETE, 13754), () -> Item.LIGHT_BLUE_CONCRETE);
+    public static final Block<ShulkerBoxData> LIME_SHULKER_BOX = new Block<>(681, 14698, NamespacedKey.parse("minecraft:lime_shulker_box"), () -> new ShulkerBoxData(Block.LIME_SHULKER_BOX, 14698), () -> Item.LIME_SHULKER_BOX);
 
-    public static final Block<BlockData> YELLOW_CONCRETE = new Block<>(682, 13755, NamespacedKey.parse("minecraft:yellow_concrete"), () -> new BlockData(Block.YELLOW_CONCRETE, 13755), () -> Item.YELLOW_CONCRETE);
+    public static final Block<ShulkerBoxData> PINK_SHULKER_BOX = new Block<>(682, 14704, NamespacedKey.parse("minecraft:pink_shulker_box"), () -> new ShulkerBoxData(Block.PINK_SHULKER_BOX, 14704), () -> Item.PINK_SHULKER_BOX);
 
-    public static final Block<BlockData> LIME_CONCRETE = new Block<>(683, 13756, NamespacedKey.parse("minecraft:lime_concrete"), () -> new BlockData(Block.LIME_CONCRETE, 13756), () -> Item.LIME_CONCRETE);
+    public static final Block<ShulkerBoxData> GRAY_SHULKER_BOX = new Block<>(683, 14710, NamespacedKey.parse("minecraft:gray_shulker_box"), () -> new ShulkerBoxData(Block.GRAY_SHULKER_BOX, 14710), () -> Item.GRAY_SHULKER_BOX);
 
-    public static final Block<BlockData> PINK_CONCRETE = new Block<>(684, 13757, NamespacedKey.parse("minecraft:pink_concrete"), () -> new BlockData(Block.PINK_CONCRETE, 13757), () -> Item.PINK_CONCRETE);
+    public static final Block<ShulkerBoxData> LIGHT_GRAY_SHULKER_BOX = new Block<>(684, 14716, NamespacedKey.parse("minecraft:light_gray_shulker_box"), () -> new ShulkerBoxData(Block.LIGHT_GRAY_SHULKER_BOX, 14716), () -> Item.LIGHT_GRAY_SHULKER_BOX);
 
-    public static final Block<BlockData> GRAY_CONCRETE = new Block<>(685, 13758, NamespacedKey.parse("minecraft:gray_concrete"), () -> new BlockData(Block.GRAY_CONCRETE, 13758), () -> Item.GRAY_CONCRETE);
+    public static final Block<ShulkerBoxData> CYAN_SHULKER_BOX = new Block<>(685, 14722, NamespacedKey.parse("minecraft:cyan_shulker_box"), () -> new ShulkerBoxData(Block.CYAN_SHULKER_BOX, 14722), () -> Item.CYAN_SHULKER_BOX);
 
-    public static final Block<BlockData> LIGHT_GRAY_CONCRETE = new Block<>(686, 13759, NamespacedKey.parse("minecraft:light_gray_concrete"), () -> new BlockData(Block.LIGHT_GRAY_CONCRETE, 13759), () -> Item.LIGHT_GRAY_CONCRETE);
+    public static final Block<ShulkerBoxData> PURPLE_SHULKER_BOX = new Block<>(686, 14728, NamespacedKey.parse("minecraft:purple_shulker_box"), () -> new ShulkerBoxData(Block.PURPLE_SHULKER_BOX, 14728), () -> Item.PURPLE_SHULKER_BOX);
 
-    public static final Block<BlockData> CYAN_CONCRETE = new Block<>(687, 13760, NamespacedKey.parse("minecraft:cyan_concrete"), () -> new BlockData(Block.CYAN_CONCRETE, 13760), () -> Item.CYAN_CONCRETE);
+    public static final Block<ShulkerBoxData> BLUE_SHULKER_BOX = new Block<>(687, 14734, NamespacedKey.parse("minecraft:blue_shulker_box"), () -> new ShulkerBoxData(Block.BLUE_SHULKER_BOX, 14734), () -> Item.BLUE_SHULKER_BOX);
 
-    public static final Block<BlockData> PURPLE_CONCRETE = new Block<>(688, 13761, NamespacedKey.parse("minecraft:purple_concrete"), () -> new BlockData(Block.PURPLE_CONCRETE, 13761), () -> Item.PURPLE_CONCRETE);
+    public static final Block<ShulkerBoxData> BROWN_SHULKER_BOX = new Block<>(688, 14740, NamespacedKey.parse("minecraft:brown_shulker_box"), () -> new ShulkerBoxData(Block.BROWN_SHULKER_BOX, 14740), () -> Item.BROWN_SHULKER_BOX);
 
-    public static final Block<BlockData> BLUE_CONCRETE = new Block<>(689, 13762, NamespacedKey.parse("minecraft:blue_concrete"), () -> new BlockData(Block.BLUE_CONCRETE, 13762), () -> Item.BLUE_CONCRETE);
+    public static final Block<ShulkerBoxData> GREEN_SHULKER_BOX = new Block<>(689, 14746, NamespacedKey.parse("minecraft:green_shulker_box"), () -> new ShulkerBoxData(Block.GREEN_SHULKER_BOX, 14746), () -> Item.GREEN_SHULKER_BOX);
 
-    public static final Block<BlockData> BROWN_CONCRETE = new Block<>(690, 13763, NamespacedKey.parse("minecraft:brown_concrete"), () -> new BlockData(Block.BROWN_CONCRETE, 13763), () -> Item.BROWN_CONCRETE);
+    public static final Block<ShulkerBoxData> RED_SHULKER_BOX = new Block<>(690, 14752, NamespacedKey.parse("minecraft:red_shulker_box"), () -> new ShulkerBoxData(Block.RED_SHULKER_BOX, 14752), () -> Item.RED_SHULKER_BOX);
 
-    public static final Block<BlockData> GREEN_CONCRETE = new Block<>(691, 13764, NamespacedKey.parse("minecraft:green_concrete"), () -> new BlockData(Block.GREEN_CONCRETE, 13764), () -> Item.GREEN_CONCRETE);
+    public static final Block<ShulkerBoxData> BLACK_SHULKER_BOX = new Block<>(691, 14758, NamespacedKey.parse("minecraft:black_shulker_box"), () -> new ShulkerBoxData(Block.BLACK_SHULKER_BOX, 14758), () -> Item.BLACK_SHULKER_BOX);
 
-    public static final Block<BlockData> RED_CONCRETE = new Block<>(692, 13765, NamespacedKey.parse("minecraft:red_concrete"), () -> new BlockData(Block.RED_CONCRETE, 13765), () -> Item.RED_CONCRETE);
+    public static final Block<GlazedTerracottaData> WHITE_GLAZED_TERRACOTTA = new Block<>(692, 14764, NamespacedKey.parse("minecraft:white_glazed_terracotta"), () -> new GlazedTerracottaData(Block.WHITE_GLAZED_TERRACOTTA, 14764), () -> Item.WHITE_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> BLACK_CONCRETE = new Block<>(693, 13766, NamespacedKey.parse("minecraft:black_concrete"), () -> new BlockData(Block.BLACK_CONCRETE, 13766), () -> Item.BLACK_CONCRETE);
+    public static final Block<GlazedTerracottaData> ORANGE_GLAZED_TERRACOTTA = new Block<>(693, 14768, NamespacedKey.parse("minecraft:orange_glazed_terracotta"), () -> new GlazedTerracottaData(Block.ORANGE_GLAZED_TERRACOTTA, 14768), () -> Item.ORANGE_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> WHITE_CONCRETE_POWDER = new Block<>(694, 13767, NamespacedKey.parse("minecraft:white_concrete_powder"), () -> new BlockData(Block.WHITE_CONCRETE_POWDER, 13767), () -> Item.WHITE_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> MAGENTA_GLAZED_TERRACOTTA = new Block<>(694, 14772, NamespacedKey.parse("minecraft:magenta_glazed_terracotta"), () -> new GlazedTerracottaData(Block.MAGENTA_GLAZED_TERRACOTTA, 14772), () -> Item.MAGENTA_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> ORANGE_CONCRETE_POWDER = new Block<>(695, 13768, NamespacedKey.parse("minecraft:orange_concrete_powder"), () -> new BlockData(Block.ORANGE_CONCRETE_POWDER, 13768), () -> Item.ORANGE_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> LIGHT_BLUE_GLAZED_TERRACOTTA = new Block<>(695, 14776, NamespacedKey.parse("minecraft:light_blue_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIGHT_BLUE_GLAZED_TERRACOTTA, 14776), () -> Item.LIGHT_BLUE_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> MAGENTA_CONCRETE_POWDER = new Block<>(696, 13769, NamespacedKey.parse("minecraft:magenta_concrete_powder"), () -> new BlockData(Block.MAGENTA_CONCRETE_POWDER, 13769), () -> Item.MAGENTA_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> YELLOW_GLAZED_TERRACOTTA = new Block<>(696, 14780, NamespacedKey.parse("minecraft:yellow_glazed_terracotta"), () -> new GlazedTerracottaData(Block.YELLOW_GLAZED_TERRACOTTA, 14780), () -> Item.YELLOW_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> LIGHT_BLUE_CONCRETE_POWDER = new Block<>(697, 13770, NamespacedKey.parse("minecraft:light_blue_concrete_powder"), () -> new BlockData(Block.LIGHT_BLUE_CONCRETE_POWDER, 13770), () -> Item.LIGHT_BLUE_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> LIME_GLAZED_TERRACOTTA = new Block<>(697, 14784, NamespacedKey.parse("minecraft:lime_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIME_GLAZED_TERRACOTTA, 14784), () -> Item.LIME_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> YELLOW_CONCRETE_POWDER = new Block<>(698, 13771, NamespacedKey.parse("minecraft:yellow_concrete_powder"), () -> new BlockData(Block.YELLOW_CONCRETE_POWDER, 13771), () -> Item.YELLOW_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> PINK_GLAZED_TERRACOTTA = new Block<>(698, 14788, NamespacedKey.parse("minecraft:pink_glazed_terracotta"), () -> new GlazedTerracottaData(Block.PINK_GLAZED_TERRACOTTA, 14788), () -> Item.PINK_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> LIME_CONCRETE_POWDER = new Block<>(699, 13772, NamespacedKey.parse("minecraft:lime_concrete_powder"), () -> new BlockData(Block.LIME_CONCRETE_POWDER, 13772), () -> Item.LIME_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> GRAY_GLAZED_TERRACOTTA = new Block<>(699, 14792, NamespacedKey.parse("minecraft:gray_glazed_terracotta"), () -> new GlazedTerracottaData(Block.GRAY_GLAZED_TERRACOTTA, 14792), () -> Item.GRAY_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> PINK_CONCRETE_POWDER = new Block<>(700, 13773, NamespacedKey.parse("minecraft:pink_concrete_powder"), () -> new BlockData(Block.PINK_CONCRETE_POWDER, 13773), () -> Item.PINK_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> LIGHT_GRAY_GLAZED_TERRACOTTA = new Block<>(700, 14796, NamespacedKey.parse("minecraft:light_gray_glazed_terracotta"), () -> new GlazedTerracottaData(Block.LIGHT_GRAY_GLAZED_TERRACOTTA, 14796), () -> Item.LIGHT_GRAY_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> GRAY_CONCRETE_POWDER = new Block<>(701, 13774, NamespacedKey.parse("minecraft:gray_concrete_powder"), () -> new BlockData(Block.GRAY_CONCRETE_POWDER, 13774), () -> Item.GRAY_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> CYAN_GLAZED_TERRACOTTA = new Block<>(701, 14800, NamespacedKey.parse("minecraft:cyan_glazed_terracotta"), () -> new GlazedTerracottaData(Block.CYAN_GLAZED_TERRACOTTA, 14800), () -> Item.CYAN_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> LIGHT_GRAY_CONCRETE_POWDER = new Block<>(702, 13775, NamespacedKey.parse("minecraft:light_gray_concrete_powder"), () -> new BlockData(Block.LIGHT_GRAY_CONCRETE_POWDER, 13775), () -> Item.LIGHT_GRAY_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> PURPLE_GLAZED_TERRACOTTA = new Block<>(702, 14804, NamespacedKey.parse("minecraft:purple_glazed_terracotta"), () -> new GlazedTerracottaData(Block.PURPLE_GLAZED_TERRACOTTA, 14804), () -> Item.PURPLE_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> CYAN_CONCRETE_POWDER = new Block<>(703, 13776, NamespacedKey.parse("minecraft:cyan_concrete_powder"), () -> new BlockData(Block.CYAN_CONCRETE_POWDER, 13776), () -> Item.CYAN_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> BLUE_GLAZED_TERRACOTTA = new Block<>(703, 14808, NamespacedKey.parse("minecraft:blue_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BLUE_GLAZED_TERRACOTTA, 14808), () -> Item.BLUE_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> PURPLE_CONCRETE_POWDER = new Block<>(704, 13777, NamespacedKey.parse("minecraft:purple_concrete_powder"), () -> new BlockData(Block.PURPLE_CONCRETE_POWDER, 13777), () -> Item.PURPLE_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> BROWN_GLAZED_TERRACOTTA = new Block<>(704, 14812, NamespacedKey.parse("minecraft:brown_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BROWN_GLAZED_TERRACOTTA, 14812), () -> Item.BROWN_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> BLUE_CONCRETE_POWDER = new Block<>(705, 13778, NamespacedKey.parse("minecraft:blue_concrete_powder"), () -> new BlockData(Block.BLUE_CONCRETE_POWDER, 13778), () -> Item.BLUE_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> GREEN_GLAZED_TERRACOTTA = new Block<>(705, 14816, NamespacedKey.parse("minecraft:green_glazed_terracotta"), () -> new GlazedTerracottaData(Block.GREEN_GLAZED_TERRACOTTA, 14816), () -> Item.GREEN_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> BROWN_CONCRETE_POWDER = new Block<>(706, 13779, NamespacedKey.parse("minecraft:brown_concrete_powder"), () -> new BlockData(Block.BROWN_CONCRETE_POWDER, 13779), () -> Item.BROWN_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> RED_GLAZED_TERRACOTTA = new Block<>(706, 14820, NamespacedKey.parse("minecraft:red_glazed_terracotta"), () -> new GlazedTerracottaData(Block.RED_GLAZED_TERRACOTTA, 14820), () -> Item.RED_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> GREEN_CONCRETE_POWDER = new Block<>(707, 13780, NamespacedKey.parse("minecraft:green_concrete_powder"), () -> new BlockData(Block.GREEN_CONCRETE_POWDER, 13780), () -> Item.GREEN_CONCRETE_POWDER);
+    public static final Block<GlazedTerracottaData> BLACK_GLAZED_TERRACOTTA = new Block<>(707, 14824, NamespacedKey.parse("minecraft:black_glazed_terracotta"), () -> new GlazedTerracottaData(Block.BLACK_GLAZED_TERRACOTTA, 14824), () -> Item.BLACK_GLAZED_TERRACOTTA);
 
-    public static final Block<BlockData> RED_CONCRETE_POWDER = new Block<>(708, 13781, NamespacedKey.parse("minecraft:red_concrete_powder"), () -> new BlockData(Block.RED_CONCRETE_POWDER, 13781), () -> Item.RED_CONCRETE_POWDER);
+    public static final Block<BlockData> WHITE_CONCRETE = new Block<>(708, 14828, NamespacedKey.parse("minecraft:white_concrete"), () -> new BlockData(Block.WHITE_CONCRETE, 14828), () -> Item.WHITE_CONCRETE);
 
-    public static final Block<BlockData> BLACK_CONCRETE_POWDER = new Block<>(709, 13782, NamespacedKey.parse("minecraft:black_concrete_powder"), () -> new BlockData(Block.BLACK_CONCRETE_POWDER, 13782), () -> Item.BLACK_CONCRETE_POWDER);
+    public static final Block<BlockData> ORANGE_CONCRETE = new Block<>(709, 14829, NamespacedKey.parse("minecraft:orange_concrete"), () -> new BlockData(Block.ORANGE_CONCRETE, 14829), () -> Item.ORANGE_CONCRETE);
 
-    public static final Block<KelpData> KELP = new Block<>(710, 13783, NamespacedKey.parse("minecraft:kelp"), () -> new KelpData(Block.KELP, 13783), () -> Item.KELP);
+    public static final Block<BlockData> MAGENTA_CONCRETE = new Block<>(710, 14830, NamespacedKey.parse("minecraft:magenta_concrete"), () -> new BlockData(Block.MAGENTA_CONCRETE, 14830), () -> Item.MAGENTA_CONCRETE);
 
-    public static final Block<BlockData> KELP_PLANT = new Block<>(711, 13809, NamespacedKey.parse("minecraft:kelp_plant"), () -> new BlockData(Block.KELP_PLANT, 13809), null);
+    public static final Block<BlockData> LIGHT_BLUE_CONCRETE = new Block<>(711, 14831, NamespacedKey.parse("minecraft:light_blue_concrete"), () -> new BlockData(Block.LIGHT_BLUE_CONCRETE, 14831), () -> Item.LIGHT_BLUE_CONCRETE);
 
-    public static final Block<BlockData> DRIED_KELP_BLOCK = new Block<>(712, 13810, NamespacedKey.parse("minecraft:dried_kelp_block"), () -> new BlockData(Block.DRIED_KELP_BLOCK, 13810), () -> Item.DRIED_KELP_BLOCK);
+    public static final Block<BlockData> YELLOW_CONCRETE = new Block<>(712, 14832, NamespacedKey.parse("minecraft:yellow_concrete"), () -> new BlockData(Block.YELLOW_CONCRETE, 14832), () -> Item.YELLOW_CONCRETE);
 
-    public static final Block<TurtleEggData> TURTLE_EGG = new Block<>(713, 13811, NamespacedKey.parse("minecraft:turtle_egg"), () -> new TurtleEggData(Block.TURTLE_EGG, 13811), () -> Item.TURTLE_EGG);
+    public static final Block<BlockData> LIME_CONCRETE = new Block<>(713, 14833, NamespacedKey.parse("minecraft:lime_concrete"), () -> new BlockData(Block.LIME_CONCRETE, 14833), () -> Item.LIME_CONCRETE);
 
-    public static final Block<SnifferEggData> SNIFFER_EGG = new Block<>(714, 13823, NamespacedKey.parse("minecraft:sniffer_egg"), () -> new SnifferEggData(Block.SNIFFER_EGG, 13823), () -> Item.SNIFFER_EGG);
+    public static final Block<BlockData> PINK_CONCRETE = new Block<>(714, 14834, NamespacedKey.parse("minecraft:pink_concrete"), () -> new BlockData(Block.PINK_CONCRETE, 14834), () -> Item.PINK_CONCRETE);
 
-    public static final Block<BlockData> DEAD_TUBE_CORAL_BLOCK = new Block<>(715, 13826, NamespacedKey.parse("minecraft:dead_tube_coral_block"), () -> new BlockData(Block.DEAD_TUBE_CORAL_BLOCK, 13826), () -> Item.DEAD_TUBE_CORAL_BLOCK);
+    public static final Block<BlockData> GRAY_CONCRETE = new Block<>(715, 14835, NamespacedKey.parse("minecraft:gray_concrete"), () -> new BlockData(Block.GRAY_CONCRETE, 14835), () -> Item.GRAY_CONCRETE);
 
-    public static final Block<BlockData> DEAD_BRAIN_CORAL_BLOCK = new Block<>(716, 13827, NamespacedKey.parse("minecraft:dead_brain_coral_block"), () -> new BlockData(Block.DEAD_BRAIN_CORAL_BLOCK, 13827), () -> Item.DEAD_BRAIN_CORAL_BLOCK);
+    public static final Block<BlockData> LIGHT_GRAY_CONCRETE = new Block<>(716, 14836, NamespacedKey.parse("minecraft:light_gray_concrete"), () -> new BlockData(Block.LIGHT_GRAY_CONCRETE, 14836), () -> Item.LIGHT_GRAY_CONCRETE);
 
-    public static final Block<BlockData> DEAD_BUBBLE_CORAL_BLOCK = new Block<>(717, 13828, NamespacedKey.parse("minecraft:dead_bubble_coral_block"), () -> new BlockData(Block.DEAD_BUBBLE_CORAL_BLOCK, 13828), () -> Item.DEAD_BUBBLE_CORAL_BLOCK);
+    public static final Block<BlockData> CYAN_CONCRETE = new Block<>(717, 14837, NamespacedKey.parse("minecraft:cyan_concrete"), () -> new BlockData(Block.CYAN_CONCRETE, 14837), () -> Item.CYAN_CONCRETE);
 
-    public static final Block<BlockData> DEAD_FIRE_CORAL_BLOCK = new Block<>(718, 13829, NamespacedKey.parse("minecraft:dead_fire_coral_block"), () -> new BlockData(Block.DEAD_FIRE_CORAL_BLOCK, 13829), () -> Item.DEAD_FIRE_CORAL_BLOCK);
+    public static final Block<BlockData> PURPLE_CONCRETE = new Block<>(718, 14838, NamespacedKey.parse("minecraft:purple_concrete"), () -> new BlockData(Block.PURPLE_CONCRETE, 14838), () -> Item.PURPLE_CONCRETE);
 
-    public static final Block<BlockData> DEAD_HORN_CORAL_BLOCK = new Block<>(719, 13830, NamespacedKey.parse("minecraft:dead_horn_coral_block"), () -> new BlockData(Block.DEAD_HORN_CORAL_BLOCK, 13830), () -> Item.DEAD_HORN_CORAL_BLOCK);
+    public static final Block<BlockData> BLUE_CONCRETE = new Block<>(719, 14839, NamespacedKey.parse("minecraft:blue_concrete"), () -> new BlockData(Block.BLUE_CONCRETE, 14839), () -> Item.BLUE_CONCRETE);
 
-    public static final Block<BlockData> TUBE_CORAL_BLOCK = new Block<>(720, 13831, NamespacedKey.parse("minecraft:tube_coral_block"), () -> new BlockData(Block.TUBE_CORAL_BLOCK, 13831), () -> Item.TUBE_CORAL_BLOCK);
+    public static final Block<BlockData> BROWN_CONCRETE = new Block<>(720, 14840, NamespacedKey.parse("minecraft:brown_concrete"), () -> new BlockData(Block.BROWN_CONCRETE, 14840), () -> Item.BROWN_CONCRETE);
 
-    public static final Block<BlockData> BRAIN_CORAL_BLOCK = new Block<>(721, 13832, NamespacedKey.parse("minecraft:brain_coral_block"), () -> new BlockData(Block.BRAIN_CORAL_BLOCK, 13832), () -> Item.BRAIN_CORAL_BLOCK);
+    public static final Block<BlockData> GREEN_CONCRETE = new Block<>(721, 14841, NamespacedKey.parse("minecraft:green_concrete"), () -> new BlockData(Block.GREEN_CONCRETE, 14841), () -> Item.GREEN_CONCRETE);
 
-    public static final Block<BlockData> BUBBLE_CORAL_BLOCK = new Block<>(722, 13833, NamespacedKey.parse("minecraft:bubble_coral_block"), () -> new BlockData(Block.BUBBLE_CORAL_BLOCK, 13833), () -> Item.BUBBLE_CORAL_BLOCK);
+    public static final Block<BlockData> RED_CONCRETE = new Block<>(722, 14842, NamespacedKey.parse("minecraft:red_concrete"), () -> new BlockData(Block.RED_CONCRETE, 14842), () -> Item.RED_CONCRETE);
 
-    public static final Block<BlockData> FIRE_CORAL_BLOCK = new Block<>(723, 13834, NamespacedKey.parse("minecraft:fire_coral_block"), () -> new BlockData(Block.FIRE_CORAL_BLOCK, 13834), () -> Item.FIRE_CORAL_BLOCK);
+    public static final Block<BlockData> BLACK_CONCRETE = new Block<>(723, 14843, NamespacedKey.parse("minecraft:black_concrete"), () -> new BlockData(Block.BLACK_CONCRETE, 14843), () -> Item.BLACK_CONCRETE);
 
-    public static final Block<BlockData> HORN_CORAL_BLOCK = new Block<>(724, 13835, NamespacedKey.parse("minecraft:horn_coral_block"), () -> new BlockData(Block.HORN_CORAL_BLOCK, 13835), () -> Item.HORN_CORAL_BLOCK);
+    public static final Block<BlockData> WHITE_CONCRETE_POWDER = new Block<>(724, 14844, NamespacedKey.parse("minecraft:white_concrete_powder"), () -> new BlockData(Block.WHITE_CONCRETE_POWDER, 14844), () -> Item.WHITE_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralPlantData> DEAD_TUBE_CORAL = new Block<>(725, 13836, NamespacedKey.parse("minecraft:dead_tube_coral"), () -> new BaseCoralPlantData(Block.DEAD_TUBE_CORAL, 13836), () -> Item.DEAD_TUBE_CORAL);
+    public static final Block<BlockData> ORANGE_CONCRETE_POWDER = new Block<>(725, 14845, NamespacedKey.parse("minecraft:orange_concrete_powder"), () -> new BlockData(Block.ORANGE_CONCRETE_POWDER, 14845), () -> Item.ORANGE_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralPlantData> DEAD_BRAIN_CORAL = new Block<>(726, 13838, NamespacedKey.parse("minecraft:dead_brain_coral"), () -> new BaseCoralPlantData(Block.DEAD_BRAIN_CORAL, 13838), () -> Item.DEAD_BRAIN_CORAL);
+    public static final Block<BlockData> MAGENTA_CONCRETE_POWDER = new Block<>(726, 14846, NamespacedKey.parse("minecraft:magenta_concrete_powder"), () -> new BlockData(Block.MAGENTA_CONCRETE_POWDER, 14846), () -> Item.MAGENTA_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralPlantData> DEAD_BUBBLE_CORAL = new Block<>(727, 13840, NamespacedKey.parse("minecraft:dead_bubble_coral"), () -> new BaseCoralPlantData(Block.DEAD_BUBBLE_CORAL, 13840), () -> Item.DEAD_BUBBLE_CORAL);
+    public static final Block<BlockData> LIGHT_BLUE_CONCRETE_POWDER = new Block<>(727, 14847, NamespacedKey.parse("minecraft:light_blue_concrete_powder"), () -> new BlockData(Block.LIGHT_BLUE_CONCRETE_POWDER, 14847), () -> Item.LIGHT_BLUE_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralPlantData> DEAD_FIRE_CORAL = new Block<>(728, 13842, NamespacedKey.parse("minecraft:dead_fire_coral"), () -> new BaseCoralPlantData(Block.DEAD_FIRE_CORAL, 13842), () -> Item.DEAD_FIRE_CORAL);
+    public static final Block<BlockData> YELLOW_CONCRETE_POWDER = new Block<>(728, 14848, NamespacedKey.parse("minecraft:yellow_concrete_powder"), () -> new BlockData(Block.YELLOW_CONCRETE_POWDER, 14848), () -> Item.YELLOW_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralPlantData> DEAD_HORN_CORAL = new Block<>(729, 13844, NamespacedKey.parse("minecraft:dead_horn_coral"), () -> new BaseCoralPlantData(Block.DEAD_HORN_CORAL, 13844), () -> Item.DEAD_HORN_CORAL);
+    public static final Block<BlockData> LIME_CONCRETE_POWDER = new Block<>(729, 14849, NamespacedKey.parse("minecraft:lime_concrete_powder"), () -> new BlockData(Block.LIME_CONCRETE_POWDER, 14849), () -> Item.LIME_CONCRETE_POWDER);
 
-    public static final Block<CoralPlantData> TUBE_CORAL = new Block<>(730, 13846, NamespacedKey.parse("minecraft:tube_coral"), () -> new CoralPlantData(Block.TUBE_CORAL, 13846), () -> Item.TUBE_CORAL);
+    public static final Block<BlockData> PINK_CONCRETE_POWDER = new Block<>(730, 14850, NamespacedKey.parse("minecraft:pink_concrete_powder"), () -> new BlockData(Block.PINK_CONCRETE_POWDER, 14850), () -> Item.PINK_CONCRETE_POWDER);
 
-    public static final Block<CoralPlantData> BRAIN_CORAL = new Block<>(731, 13848, NamespacedKey.parse("minecraft:brain_coral"), () -> new CoralPlantData(Block.BRAIN_CORAL, 13848), () -> Item.BRAIN_CORAL);
+    public static final Block<BlockData> GRAY_CONCRETE_POWDER = new Block<>(731, 14851, NamespacedKey.parse("minecraft:gray_concrete_powder"), () -> new BlockData(Block.GRAY_CONCRETE_POWDER, 14851), () -> Item.GRAY_CONCRETE_POWDER);
 
-    public static final Block<CoralPlantData> BUBBLE_CORAL = new Block<>(732, 13850, NamespacedKey.parse("minecraft:bubble_coral"), () -> new CoralPlantData(Block.BUBBLE_CORAL, 13850), () -> Item.BUBBLE_CORAL);
+    public static final Block<BlockData> LIGHT_GRAY_CONCRETE_POWDER = new Block<>(732, 14852, NamespacedKey.parse("minecraft:light_gray_concrete_powder"), () -> new BlockData(Block.LIGHT_GRAY_CONCRETE_POWDER, 14852), () -> Item.LIGHT_GRAY_CONCRETE_POWDER);
 
-    public static final Block<CoralPlantData> FIRE_CORAL = new Block<>(733, 13852, NamespacedKey.parse("minecraft:fire_coral"), () -> new CoralPlantData(Block.FIRE_CORAL, 13852), () -> Item.FIRE_CORAL);
+    public static final Block<BlockData> CYAN_CONCRETE_POWDER = new Block<>(733, 14853, NamespacedKey.parse("minecraft:cyan_concrete_powder"), () -> new BlockData(Block.CYAN_CONCRETE_POWDER, 14853), () -> Item.CYAN_CONCRETE_POWDER);
 
-    public static final Block<CoralPlantData> HORN_CORAL = new Block<>(734, 13854, NamespacedKey.parse("minecraft:horn_coral"), () -> new CoralPlantData(Block.HORN_CORAL, 13854), () -> Item.HORN_CORAL);
+    public static final Block<BlockData> PURPLE_CONCRETE_POWDER = new Block<>(734, 14854, NamespacedKey.parse("minecraft:purple_concrete_powder"), () -> new BlockData(Block.PURPLE_CONCRETE_POWDER, 14854), () -> Item.PURPLE_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralFanData> DEAD_TUBE_CORAL_FAN = new Block<>(735, 13856, NamespacedKey.parse("minecraft:dead_tube_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_TUBE_CORAL_FAN, 13856), () -> Item.DEAD_TUBE_CORAL_FAN);
+    public static final Block<BlockData> BLUE_CONCRETE_POWDER = new Block<>(735, 14855, NamespacedKey.parse("minecraft:blue_concrete_powder"), () -> new BlockData(Block.BLUE_CONCRETE_POWDER, 14855), () -> Item.BLUE_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralFanData> DEAD_BRAIN_CORAL_FAN = new Block<>(736, 13858, NamespacedKey.parse("minecraft:dead_brain_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_BRAIN_CORAL_FAN, 13858), () -> Item.DEAD_BRAIN_CORAL_FAN);
+    public static final Block<BlockData> BROWN_CONCRETE_POWDER = new Block<>(736, 14856, NamespacedKey.parse("minecraft:brown_concrete_powder"), () -> new BlockData(Block.BROWN_CONCRETE_POWDER, 14856), () -> Item.BROWN_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralFanData> DEAD_BUBBLE_CORAL_FAN = new Block<>(737, 13860, NamespacedKey.parse("minecraft:dead_bubble_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_BUBBLE_CORAL_FAN, 13860), () -> Item.DEAD_BUBBLE_CORAL_FAN);
+    public static final Block<BlockData> GREEN_CONCRETE_POWDER = new Block<>(737, 14857, NamespacedKey.parse("minecraft:green_concrete_powder"), () -> new BlockData(Block.GREEN_CONCRETE_POWDER, 14857), () -> Item.GREEN_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralFanData> DEAD_FIRE_CORAL_FAN = new Block<>(738, 13862, NamespacedKey.parse("minecraft:dead_fire_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_FIRE_CORAL_FAN, 13862), () -> Item.DEAD_FIRE_CORAL_FAN);
+    public static final Block<BlockData> RED_CONCRETE_POWDER = new Block<>(738, 14858, NamespacedKey.parse("minecraft:red_concrete_powder"), () -> new BlockData(Block.RED_CONCRETE_POWDER, 14858), () -> Item.RED_CONCRETE_POWDER);
 
-    public static final Block<BaseCoralFanData> DEAD_HORN_CORAL_FAN = new Block<>(739, 13864, NamespacedKey.parse("minecraft:dead_horn_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_HORN_CORAL_FAN, 13864), () -> Item.DEAD_HORN_CORAL_FAN);
+    public static final Block<BlockData> BLACK_CONCRETE_POWDER = new Block<>(739, 14859, NamespacedKey.parse("minecraft:black_concrete_powder"), () -> new BlockData(Block.BLACK_CONCRETE_POWDER, 14859), () -> Item.BLACK_CONCRETE_POWDER);
 
-    public static final Block<CoralFanData> TUBE_CORAL_FAN = new Block<>(740, 13866, NamespacedKey.parse("minecraft:tube_coral_fan"), () -> new CoralFanData(Block.TUBE_CORAL_FAN, 13866), () -> Item.TUBE_CORAL_FAN);
+    public static final Block<KelpData> KELP = new Block<>(740, 14860, NamespacedKey.parse("minecraft:kelp"), () -> new KelpData(Block.KELP, 14860), () -> Item.KELP);
 
-    public static final Block<CoralFanData> BRAIN_CORAL_FAN = new Block<>(741, 13868, NamespacedKey.parse("minecraft:brain_coral_fan"), () -> new CoralFanData(Block.BRAIN_CORAL_FAN, 13868), () -> Item.BRAIN_CORAL_FAN);
+    public static final Block<BlockData> KELP_PLANT = new Block<>(741, 14886, NamespacedKey.parse("minecraft:kelp_plant"), () -> new BlockData(Block.KELP_PLANT, 14886), null);
 
-    public static final Block<CoralFanData> BUBBLE_CORAL_FAN = new Block<>(742, 13870, NamespacedKey.parse("minecraft:bubble_coral_fan"), () -> new CoralFanData(Block.BUBBLE_CORAL_FAN, 13870), () -> Item.BUBBLE_CORAL_FAN);
+    public static final Block<BlockData> DRIED_KELP_BLOCK = new Block<>(742, 14887, NamespacedKey.parse("minecraft:dried_kelp_block"), () -> new BlockData(Block.DRIED_KELP_BLOCK, 14887), () -> Item.DRIED_KELP_BLOCK);
 
-    public static final Block<CoralFanData> FIRE_CORAL_FAN = new Block<>(743, 13872, NamespacedKey.parse("minecraft:fire_coral_fan"), () -> new CoralFanData(Block.FIRE_CORAL_FAN, 13872), () -> Item.FIRE_CORAL_FAN);
+    public static final Block<TurtleEggData> TURTLE_EGG = new Block<>(743, 14888, NamespacedKey.parse("minecraft:turtle_egg"), () -> new TurtleEggData(Block.TURTLE_EGG, 14888), () -> Item.TURTLE_EGG);
 
-    public static final Block<CoralFanData> HORN_CORAL_FAN = new Block<>(744, 13874, NamespacedKey.parse("minecraft:horn_coral_fan"), () -> new CoralFanData(Block.HORN_CORAL_FAN, 13874), () -> Item.HORN_CORAL_FAN);
+    public static final Block<SnifferEggData> SNIFFER_EGG = new Block<>(744, 14900, NamespacedKey.parse("minecraft:sniffer_egg"), () -> new SnifferEggData(Block.SNIFFER_EGG, 14900), () -> Item.SNIFFER_EGG);
 
-    public static final Block<BaseCoralWallFanData> DEAD_TUBE_CORAL_WALL_FAN = new Block<>(745, 13876, NamespacedKey.parse("minecraft:dead_tube_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_TUBE_CORAL_WALL_FAN, 13876), null);
+    public static final Block<DriedGhastData> DRIED_GHAST = new Block<>(745, 14903, NamespacedKey.parse("minecraft:dried_ghast"), () -> new DriedGhastData(Block.DRIED_GHAST, 14903), () -> Item.DRIED_GHAST);
 
-    public static final Block<BaseCoralWallFanData> DEAD_BRAIN_CORAL_WALL_FAN = new Block<>(746, 13884, NamespacedKey.parse("minecraft:dead_brain_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_BRAIN_CORAL_WALL_FAN, 13884), null);
+    public static final Block<BlockData> DEAD_TUBE_CORAL_BLOCK = new Block<>(746, 14935, NamespacedKey.parse("minecraft:dead_tube_coral_block"), () -> new BlockData(Block.DEAD_TUBE_CORAL_BLOCK, 14935), () -> Item.DEAD_TUBE_CORAL_BLOCK);
 
-    public static final Block<BaseCoralWallFanData> DEAD_BUBBLE_CORAL_WALL_FAN = new Block<>(747, 13892, NamespacedKey.parse("minecraft:dead_bubble_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_BUBBLE_CORAL_WALL_FAN, 13892), null);
+    public static final Block<BlockData> DEAD_BRAIN_CORAL_BLOCK = new Block<>(747, 14936, NamespacedKey.parse("minecraft:dead_brain_coral_block"), () -> new BlockData(Block.DEAD_BRAIN_CORAL_BLOCK, 14936), () -> Item.DEAD_BRAIN_CORAL_BLOCK);
 
-    public static final Block<BaseCoralWallFanData> DEAD_FIRE_CORAL_WALL_FAN = new Block<>(748, 13900, NamespacedKey.parse("minecraft:dead_fire_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_FIRE_CORAL_WALL_FAN, 13900), null);
+    public static final Block<BlockData> DEAD_BUBBLE_CORAL_BLOCK = new Block<>(748, 14937, NamespacedKey.parse("minecraft:dead_bubble_coral_block"), () -> new BlockData(Block.DEAD_BUBBLE_CORAL_BLOCK, 14937), () -> Item.DEAD_BUBBLE_CORAL_BLOCK);
 
-    public static final Block<BaseCoralWallFanData> DEAD_HORN_CORAL_WALL_FAN = new Block<>(749, 13908, NamespacedKey.parse("minecraft:dead_horn_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_HORN_CORAL_WALL_FAN, 13908), null);
+    public static final Block<BlockData> DEAD_FIRE_CORAL_BLOCK = new Block<>(749, 14938, NamespacedKey.parse("minecraft:dead_fire_coral_block"), () -> new BlockData(Block.DEAD_FIRE_CORAL_BLOCK, 14938), () -> Item.DEAD_FIRE_CORAL_BLOCK);
 
-    public static final Block<CoralWallFanData> TUBE_CORAL_WALL_FAN = new Block<>(750, 13916, NamespacedKey.parse("minecraft:tube_coral_wall_fan"), () -> new CoralWallFanData(Block.TUBE_CORAL_WALL_FAN, 13916), null);
+    public static final Block<BlockData> DEAD_HORN_CORAL_BLOCK = new Block<>(750, 14939, NamespacedKey.parse("minecraft:dead_horn_coral_block"), () -> new BlockData(Block.DEAD_HORN_CORAL_BLOCK, 14939), () -> Item.DEAD_HORN_CORAL_BLOCK);
 
-    public static final Block<CoralWallFanData> BRAIN_CORAL_WALL_FAN = new Block<>(751, 13924, NamespacedKey.parse("minecraft:brain_coral_wall_fan"), () -> new CoralWallFanData(Block.BRAIN_CORAL_WALL_FAN, 13924), null);
+    public static final Block<BlockData> TUBE_CORAL_BLOCK = new Block<>(751, 14940, NamespacedKey.parse("minecraft:tube_coral_block"), () -> new BlockData(Block.TUBE_CORAL_BLOCK, 14940), () -> Item.TUBE_CORAL_BLOCK);
 
-    public static final Block<CoralWallFanData> BUBBLE_CORAL_WALL_FAN = new Block<>(752, 13932, NamespacedKey.parse("minecraft:bubble_coral_wall_fan"), () -> new CoralWallFanData(Block.BUBBLE_CORAL_WALL_FAN, 13932), null);
+    public static final Block<BlockData> BRAIN_CORAL_BLOCK = new Block<>(752, 14941, NamespacedKey.parse("minecraft:brain_coral_block"), () -> new BlockData(Block.BRAIN_CORAL_BLOCK, 14941), () -> Item.BRAIN_CORAL_BLOCK);
 
-    public static final Block<CoralWallFanData> FIRE_CORAL_WALL_FAN = new Block<>(753, 13940, NamespacedKey.parse("minecraft:fire_coral_wall_fan"), () -> new CoralWallFanData(Block.FIRE_CORAL_WALL_FAN, 13940), null);
+    public static final Block<BlockData> BUBBLE_CORAL_BLOCK = new Block<>(753, 14942, NamespacedKey.parse("minecraft:bubble_coral_block"), () -> new BlockData(Block.BUBBLE_CORAL_BLOCK, 14942), () -> Item.BUBBLE_CORAL_BLOCK);
 
-    public static final Block<CoralWallFanData> HORN_CORAL_WALL_FAN = new Block<>(754, 13948, NamespacedKey.parse("minecraft:horn_coral_wall_fan"), () -> new CoralWallFanData(Block.HORN_CORAL_WALL_FAN, 13948), null);
+    public static final Block<BlockData> FIRE_CORAL_BLOCK = new Block<>(754, 14943, NamespacedKey.parse("minecraft:fire_coral_block"), () -> new BlockData(Block.FIRE_CORAL_BLOCK, 14943), () -> Item.FIRE_CORAL_BLOCK);
 
-    public static final Block<SeaPickleData> SEA_PICKLE = new Block<>(755, 13956, NamespacedKey.parse("minecraft:sea_pickle"), () -> new SeaPickleData(Block.SEA_PICKLE, 13956), () -> Item.SEA_PICKLE);
+    public static final Block<BlockData> HORN_CORAL_BLOCK = new Block<>(755, 14944, NamespacedKey.parse("minecraft:horn_coral_block"), () -> new BlockData(Block.HORN_CORAL_BLOCK, 14944), () -> Item.HORN_CORAL_BLOCK);
 
-    public static final Block<BlockData> BLUE_ICE = new Block<>(756, 13964, NamespacedKey.parse("minecraft:blue_ice"), () -> new BlockData(Block.BLUE_ICE, 13964), () -> Item.BLUE_ICE);
+    public static final Block<BaseCoralPlantData> DEAD_TUBE_CORAL = new Block<>(756, 14945, NamespacedKey.parse("minecraft:dead_tube_coral"), () -> new BaseCoralPlantData(Block.DEAD_TUBE_CORAL, 14945), () -> Item.DEAD_TUBE_CORAL);
 
-    public static final Block<ConduitData> CONDUIT = new Block<>(757, 13965, NamespacedKey.parse("minecraft:conduit"), () -> new ConduitData(Block.CONDUIT, 13965), () -> Item.CONDUIT);
+    public static final Block<BaseCoralPlantData> DEAD_BRAIN_CORAL = new Block<>(757, 14947, NamespacedKey.parse("minecraft:dead_brain_coral"), () -> new BaseCoralPlantData(Block.DEAD_BRAIN_CORAL, 14947), () -> Item.DEAD_BRAIN_CORAL);
 
-    public static final Block<BlockData> BAMBOO_SAPLING = new Block<>(758, 13967, NamespacedKey.parse("minecraft:bamboo_sapling"), () -> new BlockData(Block.BAMBOO_SAPLING, 13967), null);
+    public static final Block<BaseCoralPlantData> DEAD_BUBBLE_CORAL = new Block<>(758, 14949, NamespacedKey.parse("minecraft:dead_bubble_coral"), () -> new BaseCoralPlantData(Block.DEAD_BUBBLE_CORAL, 14949), () -> Item.DEAD_BUBBLE_CORAL);
 
-    public static final Block<BambooStalkData> BAMBOO = new Block<>(759, 13968, NamespacedKey.parse("minecraft:bamboo"), () -> new BambooStalkData(Block.BAMBOO, 13968), () -> Item.BAMBOO);
+    public static final Block<BaseCoralPlantData> DEAD_FIRE_CORAL = new Block<>(759, 14951, NamespacedKey.parse("minecraft:dead_fire_coral"), () -> new BaseCoralPlantData(Block.DEAD_FIRE_CORAL, 14951), () -> Item.DEAD_FIRE_CORAL);
 
-    public static final Block<BlockData> POTTED_BAMBOO = new Block<>(760, 13980, NamespacedKey.parse("minecraft:potted_bamboo"), () -> new BlockData(Block.POTTED_BAMBOO, 13980), null);
+    public static final Block<BaseCoralPlantData> DEAD_HORN_CORAL = new Block<>(760, 14953, NamespacedKey.parse("minecraft:dead_horn_coral"), () -> new BaseCoralPlantData(Block.DEAD_HORN_CORAL, 14953), () -> Item.DEAD_HORN_CORAL);
 
-    public static final Block<BlockData> VOID_AIR = new Block<>(761, 13981, NamespacedKey.parse("minecraft:void_air"), () -> new BlockData(Block.VOID_AIR, 13981), null);
+    public static final Block<CoralPlantData> TUBE_CORAL = new Block<>(761, 14955, NamespacedKey.parse("minecraft:tube_coral"), () -> new CoralPlantData(Block.TUBE_CORAL, 14955), () -> Item.TUBE_CORAL);
 
-    public static final Block<BlockData> CAVE_AIR = new Block<>(762, 13982, NamespacedKey.parse("minecraft:cave_air"), () -> new BlockData(Block.CAVE_AIR, 13982), null);
+    public static final Block<CoralPlantData> BRAIN_CORAL = new Block<>(762, 14957, NamespacedKey.parse("minecraft:brain_coral"), () -> new CoralPlantData(Block.BRAIN_CORAL, 14957), () -> Item.BRAIN_CORAL);
 
-    public static final Block<BubbleColumnData> BUBBLE_COLUMN = new Block<>(763, 13983, NamespacedKey.parse("minecraft:bubble_column"), () -> new BubbleColumnData(Block.BUBBLE_COLUMN, 13983), null);
+    public static final Block<CoralPlantData> BUBBLE_CORAL = new Block<>(763, 14959, NamespacedKey.parse("minecraft:bubble_coral"), () -> new CoralPlantData(Block.BUBBLE_CORAL, 14959), () -> Item.BUBBLE_CORAL);
 
-    public static final Block<StairData> POLISHED_GRANITE_STAIRS = new Block<>(764, 13985, NamespacedKey.parse("minecraft:polished_granite_stairs"), () -> new StairData(Block.POLISHED_GRANITE_STAIRS, 13985), () -> Item.POLISHED_GRANITE_STAIRS);
+    public static final Block<CoralPlantData> FIRE_CORAL = new Block<>(764, 14961, NamespacedKey.parse("minecraft:fire_coral"), () -> new CoralPlantData(Block.FIRE_CORAL, 14961), () -> Item.FIRE_CORAL);
 
-    public static final Block<StairData> SMOOTH_RED_SANDSTONE_STAIRS = new Block<>(765, 14065, NamespacedKey.parse("minecraft:smooth_red_sandstone_stairs"), () -> new StairData(Block.SMOOTH_RED_SANDSTONE_STAIRS, 14065), () -> Item.SMOOTH_RED_SANDSTONE_STAIRS);
+    public static final Block<CoralPlantData> HORN_CORAL = new Block<>(765, 14963, NamespacedKey.parse("minecraft:horn_coral"), () -> new CoralPlantData(Block.HORN_CORAL, 14963), () -> Item.HORN_CORAL);
 
-    public static final Block<StairData> MOSSY_STONE_BRICK_STAIRS = new Block<>(766, 14145, NamespacedKey.parse("minecraft:mossy_stone_brick_stairs"), () -> new StairData(Block.MOSSY_STONE_BRICK_STAIRS, 14145), () -> Item.MOSSY_STONE_BRICK_STAIRS);
+    public static final Block<BaseCoralFanData> DEAD_TUBE_CORAL_FAN = new Block<>(766, 14965, NamespacedKey.parse("minecraft:dead_tube_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_TUBE_CORAL_FAN, 14965), () -> Item.DEAD_TUBE_CORAL_FAN);
 
-    public static final Block<StairData> POLISHED_DIORITE_STAIRS = new Block<>(767, 14225, NamespacedKey.parse("minecraft:polished_diorite_stairs"), () -> new StairData(Block.POLISHED_DIORITE_STAIRS, 14225), () -> Item.POLISHED_DIORITE_STAIRS);
+    public static final Block<BaseCoralFanData> DEAD_BRAIN_CORAL_FAN = new Block<>(767, 14967, NamespacedKey.parse("minecraft:dead_brain_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_BRAIN_CORAL_FAN, 14967), () -> Item.DEAD_BRAIN_CORAL_FAN);
 
-    public static final Block<StairData> MOSSY_COBBLESTONE_STAIRS = new Block<>(768, 14305, NamespacedKey.parse("minecraft:mossy_cobblestone_stairs"), () -> new StairData(Block.MOSSY_COBBLESTONE_STAIRS, 14305), () -> Item.MOSSY_COBBLESTONE_STAIRS);
+    public static final Block<BaseCoralFanData> DEAD_BUBBLE_CORAL_FAN = new Block<>(768, 14969, NamespacedKey.parse("minecraft:dead_bubble_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_BUBBLE_CORAL_FAN, 14969), () -> Item.DEAD_BUBBLE_CORAL_FAN);
 
-    public static final Block<StairData> END_STONE_BRICK_STAIRS = new Block<>(769, 14385, NamespacedKey.parse("minecraft:end_stone_brick_stairs"), () -> new StairData(Block.END_STONE_BRICK_STAIRS, 14385), () -> Item.END_STONE_BRICK_STAIRS);
+    public static final Block<BaseCoralFanData> DEAD_FIRE_CORAL_FAN = new Block<>(769, 14971, NamespacedKey.parse("minecraft:dead_fire_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_FIRE_CORAL_FAN, 14971), () -> Item.DEAD_FIRE_CORAL_FAN);
 
-    public static final Block<StairData> STONE_STAIRS = new Block<>(770, 14465, NamespacedKey.parse("minecraft:stone_stairs"), () -> new StairData(Block.STONE_STAIRS, 14465), () -> Item.STONE_STAIRS);
+    public static final Block<BaseCoralFanData> DEAD_HORN_CORAL_FAN = new Block<>(770, 14973, NamespacedKey.parse("minecraft:dead_horn_coral_fan"), () -> new BaseCoralFanData(Block.DEAD_HORN_CORAL_FAN, 14973), () -> Item.DEAD_HORN_CORAL_FAN);
 
-    public static final Block<StairData> SMOOTH_SANDSTONE_STAIRS = new Block<>(771, 14545, NamespacedKey.parse("minecraft:smooth_sandstone_stairs"), () -> new StairData(Block.SMOOTH_SANDSTONE_STAIRS, 14545), () -> Item.SMOOTH_SANDSTONE_STAIRS);
+    public static final Block<CoralFanData> TUBE_CORAL_FAN = new Block<>(771, 14975, NamespacedKey.parse("minecraft:tube_coral_fan"), () -> new CoralFanData(Block.TUBE_CORAL_FAN, 14975), () -> Item.TUBE_CORAL_FAN);
 
-    public static final Block<StairData> SMOOTH_QUARTZ_STAIRS = new Block<>(772, 14625, NamespacedKey.parse("minecraft:smooth_quartz_stairs"), () -> new StairData(Block.SMOOTH_QUARTZ_STAIRS, 14625), () -> Item.SMOOTH_QUARTZ_STAIRS);
+    public static final Block<CoralFanData> BRAIN_CORAL_FAN = new Block<>(772, 14977, NamespacedKey.parse("minecraft:brain_coral_fan"), () -> new CoralFanData(Block.BRAIN_CORAL_FAN, 14977), () -> Item.BRAIN_CORAL_FAN);
 
-    public static final Block<StairData> GRANITE_STAIRS = new Block<>(773, 14705, NamespacedKey.parse("minecraft:granite_stairs"), () -> new StairData(Block.GRANITE_STAIRS, 14705), () -> Item.GRANITE_STAIRS);
+    public static final Block<CoralFanData> BUBBLE_CORAL_FAN = new Block<>(773, 14979, NamespacedKey.parse("minecraft:bubble_coral_fan"), () -> new CoralFanData(Block.BUBBLE_CORAL_FAN, 14979), () -> Item.BUBBLE_CORAL_FAN);
 
-    public static final Block<StairData> ANDESITE_STAIRS = new Block<>(774, 14785, NamespacedKey.parse("minecraft:andesite_stairs"), () -> new StairData(Block.ANDESITE_STAIRS, 14785), () -> Item.ANDESITE_STAIRS);
+    public static final Block<CoralFanData> FIRE_CORAL_FAN = new Block<>(774, 14981, NamespacedKey.parse("minecraft:fire_coral_fan"), () -> new CoralFanData(Block.FIRE_CORAL_FAN, 14981), () -> Item.FIRE_CORAL_FAN);
 
-    public static final Block<StairData> RED_NETHER_BRICK_STAIRS = new Block<>(775, 14865, NamespacedKey.parse("minecraft:red_nether_brick_stairs"), () -> new StairData(Block.RED_NETHER_BRICK_STAIRS, 14865), () -> Item.RED_NETHER_BRICK_STAIRS);
+    public static final Block<CoralFanData> HORN_CORAL_FAN = new Block<>(775, 14983, NamespacedKey.parse("minecraft:horn_coral_fan"), () -> new CoralFanData(Block.HORN_CORAL_FAN, 14983), () -> Item.HORN_CORAL_FAN);
 
-    public static final Block<StairData> POLISHED_ANDESITE_STAIRS = new Block<>(776, 14945, NamespacedKey.parse("minecraft:polished_andesite_stairs"), () -> new StairData(Block.POLISHED_ANDESITE_STAIRS, 14945), () -> Item.POLISHED_ANDESITE_STAIRS);
+    public static final Block<BaseCoralWallFanData> DEAD_TUBE_CORAL_WALL_FAN = new Block<>(776, 14985, NamespacedKey.parse("minecraft:dead_tube_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_TUBE_CORAL_WALL_FAN, 14985), null);
 
-    public static final Block<StairData> DIORITE_STAIRS = new Block<>(777, 15025, NamespacedKey.parse("minecraft:diorite_stairs"), () -> new StairData(Block.DIORITE_STAIRS, 15025), () -> Item.DIORITE_STAIRS);
+    public static final Block<BaseCoralWallFanData> DEAD_BRAIN_CORAL_WALL_FAN = new Block<>(777, 14993, NamespacedKey.parse("minecraft:dead_brain_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_BRAIN_CORAL_WALL_FAN, 14993), null);
 
-    public static final Block<SlabData> POLISHED_GRANITE_SLAB = new Block<>(778, 15105, NamespacedKey.parse("minecraft:polished_granite_slab"), () -> new SlabData(Block.POLISHED_GRANITE_SLAB, 15105), () -> Item.POLISHED_GRANITE_SLAB);
+    public static final Block<BaseCoralWallFanData> DEAD_BUBBLE_CORAL_WALL_FAN = new Block<>(778, 15001, NamespacedKey.parse("minecraft:dead_bubble_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_BUBBLE_CORAL_WALL_FAN, 15001), null);
 
-    public static final Block<SlabData> SMOOTH_RED_SANDSTONE_SLAB = new Block<>(779, 15111, NamespacedKey.parse("minecraft:smooth_red_sandstone_slab"), () -> new SlabData(Block.SMOOTH_RED_SANDSTONE_SLAB, 15111), () -> Item.SMOOTH_RED_SANDSTONE_SLAB);
+    public static final Block<BaseCoralWallFanData> DEAD_FIRE_CORAL_WALL_FAN = new Block<>(779, 15009, NamespacedKey.parse("minecraft:dead_fire_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_FIRE_CORAL_WALL_FAN, 15009), null);
 
-    public static final Block<SlabData> MOSSY_STONE_BRICK_SLAB = new Block<>(780, 15117, NamespacedKey.parse("minecraft:mossy_stone_brick_slab"), () -> new SlabData(Block.MOSSY_STONE_BRICK_SLAB, 15117), () -> Item.MOSSY_STONE_BRICK_SLAB);
+    public static final Block<BaseCoralWallFanData> DEAD_HORN_CORAL_WALL_FAN = new Block<>(780, 15017, NamespacedKey.parse("minecraft:dead_horn_coral_wall_fan"), () -> new BaseCoralWallFanData(Block.DEAD_HORN_CORAL_WALL_FAN, 15017), null);
 
-    public static final Block<SlabData> POLISHED_DIORITE_SLAB = new Block<>(781, 15123, NamespacedKey.parse("minecraft:polished_diorite_slab"), () -> new SlabData(Block.POLISHED_DIORITE_SLAB, 15123), () -> Item.POLISHED_DIORITE_SLAB);
+    public static final Block<CoralWallFanData> TUBE_CORAL_WALL_FAN = new Block<>(781, 15025, NamespacedKey.parse("minecraft:tube_coral_wall_fan"), () -> new CoralWallFanData(Block.TUBE_CORAL_WALL_FAN, 15025), null);
 
-    public static final Block<SlabData> MOSSY_COBBLESTONE_SLAB = new Block<>(782, 15129, NamespacedKey.parse("minecraft:mossy_cobblestone_slab"), () -> new SlabData(Block.MOSSY_COBBLESTONE_SLAB, 15129), () -> Item.MOSSY_COBBLESTONE_SLAB);
+    public static final Block<CoralWallFanData> BRAIN_CORAL_WALL_FAN = new Block<>(782, 15033, NamespacedKey.parse("minecraft:brain_coral_wall_fan"), () -> new CoralWallFanData(Block.BRAIN_CORAL_WALL_FAN, 15033), null);
 
-    public static final Block<SlabData> END_STONE_BRICK_SLAB = new Block<>(783, 15135, NamespacedKey.parse("minecraft:end_stone_brick_slab"), () -> new SlabData(Block.END_STONE_BRICK_SLAB, 15135), () -> Item.END_STONE_BRICK_SLAB);
+    public static final Block<CoralWallFanData> BUBBLE_CORAL_WALL_FAN = new Block<>(783, 15041, NamespacedKey.parse("minecraft:bubble_coral_wall_fan"), () -> new CoralWallFanData(Block.BUBBLE_CORAL_WALL_FAN, 15041), null);
 
-    public static final Block<SlabData> SMOOTH_SANDSTONE_SLAB = new Block<>(784, 15141, NamespacedKey.parse("minecraft:smooth_sandstone_slab"), () -> new SlabData(Block.SMOOTH_SANDSTONE_SLAB, 15141), () -> Item.SMOOTH_SANDSTONE_SLAB);
+    public static final Block<CoralWallFanData> FIRE_CORAL_WALL_FAN = new Block<>(784, 15049, NamespacedKey.parse("minecraft:fire_coral_wall_fan"), () -> new CoralWallFanData(Block.FIRE_CORAL_WALL_FAN, 15049), null);
 
-    public static final Block<SlabData> SMOOTH_QUARTZ_SLAB = new Block<>(785, 15147, NamespacedKey.parse("minecraft:smooth_quartz_slab"), () -> new SlabData(Block.SMOOTH_QUARTZ_SLAB, 15147), () -> Item.SMOOTH_QUARTZ_SLAB);
+    public static final Block<CoralWallFanData> HORN_CORAL_WALL_FAN = new Block<>(785, 15057, NamespacedKey.parse("minecraft:horn_coral_wall_fan"), () -> new CoralWallFanData(Block.HORN_CORAL_WALL_FAN, 15057), null);
 
-    public static final Block<SlabData> GRANITE_SLAB = new Block<>(786, 15153, NamespacedKey.parse("minecraft:granite_slab"), () -> new SlabData(Block.GRANITE_SLAB, 15153), () -> Item.GRANITE_SLAB);
+    public static final Block<SeaPickleData> SEA_PICKLE = new Block<>(786, 15065, NamespacedKey.parse("minecraft:sea_pickle"), () -> new SeaPickleData(Block.SEA_PICKLE, 15065), () -> Item.SEA_PICKLE);
 
-    public static final Block<SlabData> ANDESITE_SLAB = new Block<>(787, 15159, NamespacedKey.parse("minecraft:andesite_slab"), () -> new SlabData(Block.ANDESITE_SLAB, 15159), () -> Item.ANDESITE_SLAB);
+    public static final Block<BlockData> BLUE_ICE = new Block<>(787, 15073, NamespacedKey.parse("minecraft:blue_ice"), () -> new BlockData(Block.BLUE_ICE, 15073), () -> Item.BLUE_ICE);
 
-    public static final Block<SlabData> RED_NETHER_BRICK_SLAB = new Block<>(788, 15165, NamespacedKey.parse("minecraft:red_nether_brick_slab"), () -> new SlabData(Block.RED_NETHER_BRICK_SLAB, 15165), () -> Item.RED_NETHER_BRICK_SLAB);
+    public static final Block<ConduitData> CONDUIT = new Block<>(788, 15074, NamespacedKey.parse("minecraft:conduit"), () -> new ConduitData(Block.CONDUIT, 15074), () -> Item.CONDUIT);
 
-    public static final Block<SlabData> POLISHED_ANDESITE_SLAB = new Block<>(789, 15171, NamespacedKey.parse("minecraft:polished_andesite_slab"), () -> new SlabData(Block.POLISHED_ANDESITE_SLAB, 15171), () -> Item.POLISHED_ANDESITE_SLAB);
+    public static final Block<BlockData> BAMBOO_SAPLING = new Block<>(789, 15076, NamespacedKey.parse("minecraft:bamboo_sapling"), () -> new BlockData(Block.BAMBOO_SAPLING, 15076), null);
 
-    public static final Block<SlabData> DIORITE_SLAB = new Block<>(790, 15177, NamespacedKey.parse("minecraft:diorite_slab"), () -> new SlabData(Block.DIORITE_SLAB, 15177), () -> Item.DIORITE_SLAB);
+    public static final Block<BambooStalkData> BAMBOO = new Block<>(790, 15077, NamespacedKey.parse("minecraft:bamboo"), () -> new BambooStalkData(Block.BAMBOO, 15077), () -> Item.BAMBOO);
 
-    public static final Block<WallData> BRICK_WALL = new Block<>(791, 15183, NamespacedKey.parse("minecraft:brick_wall"), () -> new WallData(Block.BRICK_WALL, 15183), () -> Item.BRICK_WALL);
+    public static final Block<BlockData> POTTED_BAMBOO = new Block<>(791, 15089, NamespacedKey.parse("minecraft:potted_bamboo"), () -> new BlockData(Block.POTTED_BAMBOO, 15089), null);
 
-    public static final Block<WallData> PRISMARINE_WALL = new Block<>(792, 15507, NamespacedKey.parse("minecraft:prismarine_wall"), () -> new WallData(Block.PRISMARINE_WALL, 15507), () -> Item.PRISMARINE_WALL);
+    public static final Block<BlockData> VOID_AIR = new Block<>(792, 15090, NamespacedKey.parse("minecraft:void_air"), () -> new BlockData(Block.VOID_AIR, 15090), null);
 
-    public static final Block<WallData> RED_SANDSTONE_WALL = new Block<>(793, 15831, NamespacedKey.parse("minecraft:red_sandstone_wall"), () -> new WallData(Block.RED_SANDSTONE_WALL, 15831), () -> Item.RED_SANDSTONE_WALL);
+    public static final Block<BlockData> CAVE_AIR = new Block<>(793, 15091, NamespacedKey.parse("minecraft:cave_air"), () -> new BlockData(Block.CAVE_AIR, 15091), null);
 
-    public static final Block<WallData> MOSSY_STONE_BRICK_WALL = new Block<>(794, 16155, NamespacedKey.parse("minecraft:mossy_stone_brick_wall"), () -> new WallData(Block.MOSSY_STONE_BRICK_WALL, 16155), () -> Item.MOSSY_STONE_BRICK_WALL);
+    public static final Block<BubbleColumnData> BUBBLE_COLUMN = new Block<>(794, 15092, NamespacedKey.parse("minecraft:bubble_column"), () -> new BubbleColumnData(Block.BUBBLE_COLUMN, 15092), null);
 
-    public static final Block<WallData> GRANITE_WALL = new Block<>(795, 16479, NamespacedKey.parse("minecraft:granite_wall"), () -> new WallData(Block.GRANITE_WALL, 16479), () -> Item.GRANITE_WALL);
+    public static final Block<StairData> POLISHED_GRANITE_STAIRS = new Block<>(795, 15094, NamespacedKey.parse("minecraft:polished_granite_stairs"), () -> new StairData(Block.POLISHED_GRANITE_STAIRS, 15094), () -> Item.POLISHED_GRANITE_STAIRS);
 
-    public static final Block<WallData> STONE_BRICK_WALL = new Block<>(796, 16803, NamespacedKey.parse("minecraft:stone_brick_wall"), () -> new WallData(Block.STONE_BRICK_WALL, 16803), () -> Item.STONE_BRICK_WALL);
+    public static final Block<StairData> SMOOTH_RED_SANDSTONE_STAIRS = new Block<>(796, 15174, NamespacedKey.parse("minecraft:smooth_red_sandstone_stairs"), () -> new StairData(Block.SMOOTH_RED_SANDSTONE_STAIRS, 15174), () -> Item.SMOOTH_RED_SANDSTONE_STAIRS);
 
-    public static final Block<WallData> MUD_BRICK_WALL = new Block<>(797, 17127, NamespacedKey.parse("minecraft:mud_brick_wall"), () -> new WallData(Block.MUD_BRICK_WALL, 17127), () -> Item.MUD_BRICK_WALL);
+    public static final Block<StairData> MOSSY_STONE_BRICK_STAIRS = new Block<>(797, 15254, NamespacedKey.parse("minecraft:mossy_stone_brick_stairs"), () -> new StairData(Block.MOSSY_STONE_BRICK_STAIRS, 15254), () -> Item.MOSSY_STONE_BRICK_STAIRS);
 
-    public static final Block<WallData> NETHER_BRICK_WALL = new Block<>(798, 17451, NamespacedKey.parse("minecraft:nether_brick_wall"), () -> new WallData(Block.NETHER_BRICK_WALL, 17451), () -> Item.NETHER_BRICK_WALL);
+    public static final Block<StairData> POLISHED_DIORITE_STAIRS = new Block<>(798, 15334, NamespacedKey.parse("minecraft:polished_diorite_stairs"), () -> new StairData(Block.POLISHED_DIORITE_STAIRS, 15334), () -> Item.POLISHED_DIORITE_STAIRS);
 
-    public static final Block<WallData> ANDESITE_WALL = new Block<>(799, 17775, NamespacedKey.parse("minecraft:andesite_wall"), () -> new WallData(Block.ANDESITE_WALL, 17775), () -> Item.ANDESITE_WALL);
+    public static final Block<StairData> MOSSY_COBBLESTONE_STAIRS = new Block<>(799, 15414, NamespacedKey.parse("minecraft:mossy_cobblestone_stairs"), () -> new StairData(Block.MOSSY_COBBLESTONE_STAIRS, 15414), () -> Item.MOSSY_COBBLESTONE_STAIRS);
 
-    public static final Block<WallData> RED_NETHER_BRICK_WALL = new Block<>(800, 18099, NamespacedKey.parse("minecraft:red_nether_brick_wall"), () -> new WallData(Block.RED_NETHER_BRICK_WALL, 18099), () -> Item.RED_NETHER_BRICK_WALL);
+    public static final Block<StairData> END_STONE_BRICK_STAIRS = new Block<>(800, 15494, NamespacedKey.parse("minecraft:end_stone_brick_stairs"), () -> new StairData(Block.END_STONE_BRICK_STAIRS, 15494), () -> Item.END_STONE_BRICK_STAIRS);
 
-    public static final Block<WallData> SANDSTONE_WALL = new Block<>(801, 18423, NamespacedKey.parse("minecraft:sandstone_wall"), () -> new WallData(Block.SANDSTONE_WALL, 18423), () -> Item.SANDSTONE_WALL);
+    public static final Block<StairData> STONE_STAIRS = new Block<>(801, 15574, NamespacedKey.parse("minecraft:stone_stairs"), () -> new StairData(Block.STONE_STAIRS, 15574), () -> Item.STONE_STAIRS);
 
-    public static final Block<WallData> END_STONE_BRICK_WALL = new Block<>(802, 18747, NamespacedKey.parse("minecraft:end_stone_brick_wall"), () -> new WallData(Block.END_STONE_BRICK_WALL, 18747), () -> Item.END_STONE_BRICK_WALL);
+    public static final Block<StairData> SMOOTH_SANDSTONE_STAIRS = new Block<>(802, 15654, NamespacedKey.parse("minecraft:smooth_sandstone_stairs"), () -> new StairData(Block.SMOOTH_SANDSTONE_STAIRS, 15654), () -> Item.SMOOTH_SANDSTONE_STAIRS);
 
-    public static final Block<WallData> DIORITE_WALL = new Block<>(803, 19071, NamespacedKey.parse("minecraft:diorite_wall"), () -> new WallData(Block.DIORITE_WALL, 19071), () -> Item.DIORITE_WALL);
+    public static final Block<StairData> SMOOTH_QUARTZ_STAIRS = new Block<>(803, 15734, NamespacedKey.parse("minecraft:smooth_quartz_stairs"), () -> new StairData(Block.SMOOTH_QUARTZ_STAIRS, 15734), () -> Item.SMOOTH_QUARTZ_STAIRS);
 
-    public static final Block<ScaffoldingData> SCAFFOLDING = new Block<>(804, 19395, NamespacedKey.parse("minecraft:scaffolding"), () -> new ScaffoldingData(Block.SCAFFOLDING, 19395), () -> Item.SCAFFOLDING);
+    public static final Block<StairData> GRANITE_STAIRS = new Block<>(804, 15814, NamespacedKey.parse("minecraft:granite_stairs"), () -> new StairData(Block.GRANITE_STAIRS, 15814), () -> Item.GRANITE_STAIRS);
 
-    public static final Block<LoomData> LOOM = new Block<>(805, 19427, NamespacedKey.parse("minecraft:loom"), () -> new LoomData(Block.LOOM, 19427), () -> Item.LOOM);
+    public static final Block<StairData> ANDESITE_STAIRS = new Block<>(805, 15894, NamespacedKey.parse("minecraft:andesite_stairs"), () -> new StairData(Block.ANDESITE_STAIRS, 15894), () -> Item.ANDESITE_STAIRS);
 
-    public static final Block<BarrelData> BARREL = new Block<>(806, 19431, NamespacedKey.parse("minecraft:barrel"), () -> new BarrelData(Block.BARREL, 19431), () -> Item.BARREL);
+    public static final Block<StairData> RED_NETHER_BRICK_STAIRS = new Block<>(806, 15974, NamespacedKey.parse("minecraft:red_nether_brick_stairs"), () -> new StairData(Block.RED_NETHER_BRICK_STAIRS, 15974), () -> Item.RED_NETHER_BRICK_STAIRS);
 
-    public static final Block<SmokerData> SMOKER = new Block<>(807, 19443, NamespacedKey.parse("minecraft:smoker"), () -> new SmokerData(Block.SMOKER, 19443), () -> Item.SMOKER);
+    public static final Block<StairData> POLISHED_ANDESITE_STAIRS = new Block<>(807, 16054, NamespacedKey.parse("minecraft:polished_andesite_stairs"), () -> new StairData(Block.POLISHED_ANDESITE_STAIRS, 16054), () -> Item.POLISHED_ANDESITE_STAIRS);
 
-    public static final Block<BlastFurnaceData> BLAST_FURNACE = new Block<>(808, 19451, NamespacedKey.parse("minecraft:blast_furnace"), () -> new BlastFurnaceData(Block.BLAST_FURNACE, 19451), () -> Item.BLAST_FURNACE);
+    public static final Block<StairData> DIORITE_STAIRS = new Block<>(808, 16134, NamespacedKey.parse("minecraft:diorite_stairs"), () -> new StairData(Block.DIORITE_STAIRS, 16134), () -> Item.DIORITE_STAIRS);
 
-    public static final Block<BlockData> CARTOGRAPHY_TABLE = new Block<>(809, 19459, NamespacedKey.parse("minecraft:cartography_table"), () -> new BlockData(Block.CARTOGRAPHY_TABLE, 19459), () -> Item.CARTOGRAPHY_TABLE);
+    public static final Block<SlabData> POLISHED_GRANITE_SLAB = new Block<>(809, 16214, NamespacedKey.parse("minecraft:polished_granite_slab"), () -> new SlabData(Block.POLISHED_GRANITE_SLAB, 16214), () -> Item.POLISHED_GRANITE_SLAB);
 
-    public static final Block<BlockData> FLETCHING_TABLE = new Block<>(810, 19460, NamespacedKey.parse("minecraft:fletching_table"), () -> new BlockData(Block.FLETCHING_TABLE, 19460), () -> Item.FLETCHING_TABLE);
+    public static final Block<SlabData> SMOOTH_RED_SANDSTONE_SLAB = new Block<>(810, 16220, NamespacedKey.parse("minecraft:smooth_red_sandstone_slab"), () -> new SlabData(Block.SMOOTH_RED_SANDSTONE_SLAB, 16220), () -> Item.SMOOTH_RED_SANDSTONE_SLAB);
 
-    public static final Block<GrindstoneData> GRINDSTONE = new Block<>(811, 19461, NamespacedKey.parse("minecraft:grindstone"), () -> new GrindstoneData(Block.GRINDSTONE, 19461), () -> Item.GRINDSTONE);
+    public static final Block<SlabData> MOSSY_STONE_BRICK_SLAB = new Block<>(811, 16226, NamespacedKey.parse("minecraft:mossy_stone_brick_slab"), () -> new SlabData(Block.MOSSY_STONE_BRICK_SLAB, 16226), () -> Item.MOSSY_STONE_BRICK_SLAB);
 
-    public static final Block<LecternData> LECTERN = new Block<>(812, 19473, NamespacedKey.parse("minecraft:lectern"), () -> new LecternData(Block.LECTERN, 19473), () -> Item.LECTERN);
+    public static final Block<SlabData> POLISHED_DIORITE_SLAB = new Block<>(812, 16232, NamespacedKey.parse("minecraft:polished_diorite_slab"), () -> new SlabData(Block.POLISHED_DIORITE_SLAB, 16232), () -> Item.POLISHED_DIORITE_SLAB);
 
-    public static final Block<BlockData> SMITHING_TABLE = new Block<>(813, 19489, NamespacedKey.parse("minecraft:smithing_table"), () -> new BlockData(Block.SMITHING_TABLE, 19489), () -> Item.SMITHING_TABLE);
+    public static final Block<SlabData> MOSSY_COBBLESTONE_SLAB = new Block<>(813, 16238, NamespacedKey.parse("minecraft:mossy_cobblestone_slab"), () -> new SlabData(Block.MOSSY_COBBLESTONE_SLAB, 16238), () -> Item.MOSSY_COBBLESTONE_SLAB);
 
-    public static final Block<StonecutterData> STONECUTTER = new Block<>(814, 19490, NamespacedKey.parse("minecraft:stonecutter"), () -> new StonecutterData(Block.STONECUTTER, 19490), () -> Item.STONECUTTER);
+    public static final Block<SlabData> END_STONE_BRICK_SLAB = new Block<>(814, 16244, NamespacedKey.parse("minecraft:end_stone_brick_slab"), () -> new SlabData(Block.END_STONE_BRICK_SLAB, 16244), () -> Item.END_STONE_BRICK_SLAB);
 
-    public static final Block<BellData> BELL = new Block<>(815, 19494, NamespacedKey.parse("minecraft:bell"), () -> new BellData(Block.BELL, 19494), () -> Item.BELL);
+    public static final Block<SlabData> SMOOTH_SANDSTONE_SLAB = new Block<>(815, 16250, NamespacedKey.parse("minecraft:smooth_sandstone_slab"), () -> new SlabData(Block.SMOOTH_SANDSTONE_SLAB, 16250), () -> Item.SMOOTH_SANDSTONE_SLAB);
 
-    public static final Block<LanternData> LANTERN = new Block<>(816, 19526, NamespacedKey.parse("minecraft:lantern"), () -> new LanternData(Block.LANTERN, 19526), () -> Item.LANTERN);
+    public static final Block<SlabData> SMOOTH_QUARTZ_SLAB = new Block<>(816, 16256, NamespacedKey.parse("minecraft:smooth_quartz_slab"), () -> new SlabData(Block.SMOOTH_QUARTZ_SLAB, 16256), () -> Item.SMOOTH_QUARTZ_SLAB);
 
-    public static final Block<LanternData> SOUL_LANTERN = new Block<>(817, 19530, NamespacedKey.parse("minecraft:soul_lantern"), () -> new LanternData(Block.SOUL_LANTERN, 19530), () -> Item.SOUL_LANTERN);
+    public static final Block<SlabData> GRANITE_SLAB = new Block<>(817, 16262, NamespacedKey.parse("minecraft:granite_slab"), () -> new SlabData(Block.GRANITE_SLAB, 16262), () -> Item.GRANITE_SLAB);
 
-    public static final Block<CampfireData> CAMPFIRE = new Block<>(818, 19534, NamespacedKey.parse("minecraft:campfire"), () -> new CampfireData(Block.CAMPFIRE, 19534), () -> Item.CAMPFIRE);
+    public static final Block<SlabData> ANDESITE_SLAB = new Block<>(818, 16268, NamespacedKey.parse("minecraft:andesite_slab"), () -> new SlabData(Block.ANDESITE_SLAB, 16268), () -> Item.ANDESITE_SLAB);
 
-    public static final Block<CampfireData> SOUL_CAMPFIRE = new Block<>(819, 19566, NamespacedKey.parse("minecraft:soul_campfire"), () -> new CampfireData(Block.SOUL_CAMPFIRE, 19566), () -> Item.SOUL_CAMPFIRE);
+    public static final Block<SlabData> RED_NETHER_BRICK_SLAB = new Block<>(819, 16274, NamespacedKey.parse("minecraft:red_nether_brick_slab"), () -> new SlabData(Block.RED_NETHER_BRICK_SLAB, 16274), () -> Item.RED_NETHER_BRICK_SLAB);
 
-    public static final Block<SweetBerryBushData> SWEET_BERRY_BUSH = new Block<>(820, 19598, NamespacedKey.parse("minecraft:sweet_berry_bush"), () -> new SweetBerryBushData(Block.SWEET_BERRY_BUSH, 19598), null);
+    public static final Block<SlabData> POLISHED_ANDESITE_SLAB = new Block<>(820, 16280, NamespacedKey.parse("minecraft:polished_andesite_slab"), () -> new SlabData(Block.POLISHED_ANDESITE_SLAB, 16280), () -> Item.POLISHED_ANDESITE_SLAB);
 
-    public static final Block<RotatedPillarData> WARPED_STEM = new Block<>(821, 19602, NamespacedKey.parse("minecraft:warped_stem"), () -> new RotatedPillarData(Block.WARPED_STEM, 19602), () -> Item.WARPED_STEM);
+    public static final Block<SlabData> DIORITE_SLAB = new Block<>(821, 16286, NamespacedKey.parse("minecraft:diorite_slab"), () -> new SlabData(Block.DIORITE_SLAB, 16286), () -> Item.DIORITE_SLAB);
 
-    public static final Block<RotatedPillarData> STRIPPED_WARPED_STEM = new Block<>(822, 19605, NamespacedKey.parse("minecraft:stripped_warped_stem"), () -> new RotatedPillarData(Block.STRIPPED_WARPED_STEM, 19605), () -> Item.STRIPPED_WARPED_STEM);
+    public static final Block<WallData> BRICK_WALL = new Block<>(822, 16292, NamespacedKey.parse("minecraft:brick_wall"), () -> new WallData(Block.BRICK_WALL, 16292), () -> Item.BRICK_WALL);
 
-    public static final Block<RotatedPillarData> WARPED_HYPHAE = new Block<>(823, 19608, NamespacedKey.parse("minecraft:warped_hyphae"), () -> new RotatedPillarData(Block.WARPED_HYPHAE, 19608), () -> Item.WARPED_HYPHAE);
+    public static final Block<WallData> PRISMARINE_WALL = new Block<>(823, 16616, NamespacedKey.parse("minecraft:prismarine_wall"), () -> new WallData(Block.PRISMARINE_WALL, 16616), () -> Item.PRISMARINE_WALL);
 
-    public static final Block<RotatedPillarData> STRIPPED_WARPED_HYPHAE = new Block<>(824, 19611, NamespacedKey.parse("minecraft:stripped_warped_hyphae"), () -> new RotatedPillarData(Block.STRIPPED_WARPED_HYPHAE, 19611), () -> Item.STRIPPED_WARPED_HYPHAE);
+    public static final Block<WallData> RED_SANDSTONE_WALL = new Block<>(824, 16940, NamespacedKey.parse("minecraft:red_sandstone_wall"), () -> new WallData(Block.RED_SANDSTONE_WALL, 16940), () -> Item.RED_SANDSTONE_WALL);
 
-    public static final Block<BlockData> WARPED_NYLIUM = new Block<>(825, 19614, NamespacedKey.parse("minecraft:warped_nylium"), () -> new BlockData(Block.WARPED_NYLIUM, 19614), () -> Item.WARPED_NYLIUM);
+    public static final Block<WallData> MOSSY_STONE_BRICK_WALL = new Block<>(825, 17264, NamespacedKey.parse("minecraft:mossy_stone_brick_wall"), () -> new WallData(Block.MOSSY_STONE_BRICK_WALL, 17264), () -> Item.MOSSY_STONE_BRICK_WALL);
 
-    public static final Block<BlockData> WARPED_FUNGUS = new Block<>(826, 19615, NamespacedKey.parse("minecraft:warped_fungus"), () -> new BlockData(Block.WARPED_FUNGUS, 19615), () -> Item.WARPED_FUNGUS);
+    public static final Block<WallData> GRANITE_WALL = new Block<>(826, 17588, NamespacedKey.parse("minecraft:granite_wall"), () -> new WallData(Block.GRANITE_WALL, 17588), () -> Item.GRANITE_WALL);
 
-    public static final Block<BlockData> WARPED_WART_BLOCK = new Block<>(827, 19616, NamespacedKey.parse("minecraft:warped_wart_block"), () -> new BlockData(Block.WARPED_WART_BLOCK, 19616), () -> Item.WARPED_WART_BLOCK);
+    public static final Block<WallData> STONE_BRICK_WALL = new Block<>(827, 17912, NamespacedKey.parse("minecraft:stone_brick_wall"), () -> new WallData(Block.STONE_BRICK_WALL, 17912), () -> Item.STONE_BRICK_WALL);
 
-    public static final Block<BlockData> WARPED_ROOTS = new Block<>(828, 19617, NamespacedKey.parse("minecraft:warped_roots"), () -> new BlockData(Block.WARPED_ROOTS, 19617), () -> Item.WARPED_ROOTS);
+    public static final Block<WallData> MUD_BRICK_WALL = new Block<>(828, 18236, NamespacedKey.parse("minecraft:mud_brick_wall"), () -> new WallData(Block.MUD_BRICK_WALL, 18236), () -> Item.MUD_BRICK_WALL);
 
-    public static final Block<BlockData> NETHER_SPROUTS = new Block<>(829, 19618, NamespacedKey.parse("minecraft:nether_sprouts"), () -> new BlockData(Block.NETHER_SPROUTS, 19618), () -> Item.NETHER_SPROUTS);
+    public static final Block<WallData> NETHER_BRICK_WALL = new Block<>(829, 18560, NamespacedKey.parse("minecraft:nether_brick_wall"), () -> new WallData(Block.NETHER_BRICK_WALL, 18560), () -> Item.NETHER_BRICK_WALL);
 
-    public static final Block<RotatedPillarData> CRIMSON_STEM = new Block<>(830, 19619, NamespacedKey.parse("minecraft:crimson_stem"), () -> new RotatedPillarData(Block.CRIMSON_STEM, 19619), () -> Item.CRIMSON_STEM);
+    public static final Block<WallData> ANDESITE_WALL = new Block<>(830, 18884, NamespacedKey.parse("minecraft:andesite_wall"), () -> new WallData(Block.ANDESITE_WALL, 18884), () -> Item.ANDESITE_WALL);
 
-    public static final Block<RotatedPillarData> STRIPPED_CRIMSON_STEM = new Block<>(831, 19622, NamespacedKey.parse("minecraft:stripped_crimson_stem"), () -> new RotatedPillarData(Block.STRIPPED_CRIMSON_STEM, 19622), () -> Item.STRIPPED_CRIMSON_STEM);
+    public static final Block<WallData> RED_NETHER_BRICK_WALL = new Block<>(831, 19208, NamespacedKey.parse("minecraft:red_nether_brick_wall"), () -> new WallData(Block.RED_NETHER_BRICK_WALL, 19208), () -> Item.RED_NETHER_BRICK_WALL);
 
-    public static final Block<RotatedPillarData> CRIMSON_HYPHAE = new Block<>(832, 19625, NamespacedKey.parse("minecraft:crimson_hyphae"), () -> new RotatedPillarData(Block.CRIMSON_HYPHAE, 19625), () -> Item.CRIMSON_HYPHAE);
+    public static final Block<WallData> SANDSTONE_WALL = new Block<>(832, 19532, NamespacedKey.parse("minecraft:sandstone_wall"), () -> new WallData(Block.SANDSTONE_WALL, 19532), () -> Item.SANDSTONE_WALL);
 
-    public static final Block<RotatedPillarData> STRIPPED_CRIMSON_HYPHAE = new Block<>(833, 19628, NamespacedKey.parse("minecraft:stripped_crimson_hyphae"), () -> new RotatedPillarData(Block.STRIPPED_CRIMSON_HYPHAE, 19628), () -> Item.STRIPPED_CRIMSON_HYPHAE);
+    public static final Block<WallData> END_STONE_BRICK_WALL = new Block<>(833, 19856, NamespacedKey.parse("minecraft:end_stone_brick_wall"), () -> new WallData(Block.END_STONE_BRICK_WALL, 19856), () -> Item.END_STONE_BRICK_WALL);
 
-    public static final Block<BlockData> CRIMSON_NYLIUM = new Block<>(834, 19631, NamespacedKey.parse("minecraft:crimson_nylium"), () -> new BlockData(Block.CRIMSON_NYLIUM, 19631), () -> Item.CRIMSON_NYLIUM);
+    public static final Block<WallData> DIORITE_WALL = new Block<>(834, 20180, NamespacedKey.parse("minecraft:diorite_wall"), () -> new WallData(Block.DIORITE_WALL, 20180), () -> Item.DIORITE_WALL);
 
-    public static final Block<BlockData> CRIMSON_FUNGUS = new Block<>(835, 19632, NamespacedKey.parse("minecraft:crimson_fungus"), () -> new BlockData(Block.CRIMSON_FUNGUS, 19632), () -> Item.CRIMSON_FUNGUS);
+    public static final Block<ScaffoldingData> SCAFFOLDING = new Block<>(835, 20504, NamespacedKey.parse("minecraft:scaffolding"), () -> new ScaffoldingData(Block.SCAFFOLDING, 20504), () -> Item.SCAFFOLDING);
 
-    public static final Block<BlockData> SHROOMLIGHT = new Block<>(836, 19633, NamespacedKey.parse("minecraft:shroomlight"), () -> new BlockData(Block.SHROOMLIGHT, 19633), () -> Item.SHROOMLIGHT);
+    public static final Block<LoomData> LOOM = new Block<>(836, 20536, NamespacedKey.parse("minecraft:loom"), () -> new LoomData(Block.LOOM, 20536), () -> Item.LOOM);
 
-    public static final Block<WeepingVinesData> WEEPING_VINES = new Block<>(837, 19634, NamespacedKey.parse("minecraft:weeping_vines"), () -> new WeepingVinesData(Block.WEEPING_VINES, 19634), () -> Item.WEEPING_VINES);
+    public static final Block<BarrelData> BARREL = new Block<>(837, 20540, NamespacedKey.parse("minecraft:barrel"), () -> new BarrelData(Block.BARREL, 20540), () -> Item.BARREL);
 
-    public static final Block<BlockData> WEEPING_VINES_PLANT = new Block<>(838, 19660, NamespacedKey.parse("minecraft:weeping_vines_plant"), () -> new BlockData(Block.WEEPING_VINES_PLANT, 19660), null);
+    public static final Block<SmokerData> SMOKER = new Block<>(838, 20552, NamespacedKey.parse("minecraft:smoker"), () -> new SmokerData(Block.SMOKER, 20552), () -> Item.SMOKER);
 
-    public static final Block<TwistingVinesData> TWISTING_VINES = new Block<>(839, 19661, NamespacedKey.parse("minecraft:twisting_vines"), () -> new TwistingVinesData(Block.TWISTING_VINES, 19661), () -> Item.TWISTING_VINES);
+    public static final Block<BlastFurnaceData> BLAST_FURNACE = new Block<>(839, 20560, NamespacedKey.parse("minecraft:blast_furnace"), () -> new BlastFurnaceData(Block.BLAST_FURNACE, 20560), () -> Item.BLAST_FURNACE);
 
-    public static final Block<BlockData> TWISTING_VINES_PLANT = new Block<>(840, 19687, NamespacedKey.parse("minecraft:twisting_vines_plant"), () -> new BlockData(Block.TWISTING_VINES_PLANT, 19687), null);
+    public static final Block<BlockData> CARTOGRAPHY_TABLE = new Block<>(840, 20568, NamespacedKey.parse("minecraft:cartography_table"), () -> new BlockData(Block.CARTOGRAPHY_TABLE, 20568), () -> Item.CARTOGRAPHY_TABLE);
 
-    public static final Block<BlockData> CRIMSON_ROOTS = new Block<>(841, 19688, NamespacedKey.parse("minecraft:crimson_roots"), () -> new BlockData(Block.CRIMSON_ROOTS, 19688), () -> Item.CRIMSON_ROOTS);
+    public static final Block<BlockData> FLETCHING_TABLE = new Block<>(841, 20569, NamespacedKey.parse("minecraft:fletching_table"), () -> new BlockData(Block.FLETCHING_TABLE, 20569), () -> Item.FLETCHING_TABLE);
 
-    public static final Block<BlockData> CRIMSON_PLANKS = new Block<>(842, 19689, NamespacedKey.parse("minecraft:crimson_planks"), () -> new BlockData(Block.CRIMSON_PLANKS, 19689), () -> Item.CRIMSON_PLANKS);
+    public static final Block<GrindstoneData> GRINDSTONE = new Block<>(842, 20570, NamespacedKey.parse("minecraft:grindstone"), () -> new GrindstoneData(Block.GRINDSTONE, 20570), () -> Item.GRINDSTONE);
 
-    public static final Block<BlockData> WARPED_PLANKS = new Block<>(843, 19690, NamespacedKey.parse("minecraft:warped_planks"), () -> new BlockData(Block.WARPED_PLANKS, 19690), () -> Item.WARPED_PLANKS);
+    public static final Block<LecternData> LECTERN = new Block<>(843, 20582, NamespacedKey.parse("minecraft:lectern"), () -> new LecternData(Block.LECTERN, 20582), () -> Item.LECTERN);
 
-    public static final Block<SlabData> CRIMSON_SLAB = new Block<>(844, 19691, NamespacedKey.parse("minecraft:crimson_slab"), () -> new SlabData(Block.CRIMSON_SLAB, 19691), () -> Item.CRIMSON_SLAB);
+    public static final Block<BlockData> SMITHING_TABLE = new Block<>(844, 20598, NamespacedKey.parse("minecraft:smithing_table"), () -> new BlockData(Block.SMITHING_TABLE, 20598), () -> Item.SMITHING_TABLE);
 
-    public static final Block<SlabData> WARPED_SLAB = new Block<>(845, 19697, NamespacedKey.parse("minecraft:warped_slab"), () -> new SlabData(Block.WARPED_SLAB, 19697), () -> Item.WARPED_SLAB);
+    public static final Block<StonecutterData> STONECUTTER = new Block<>(845, 20599, NamespacedKey.parse("minecraft:stonecutter"), () -> new StonecutterData(Block.STONECUTTER, 20599), () -> Item.STONECUTTER);
 
-    public static final Block<PressurePlateData> CRIMSON_PRESSURE_PLATE = new Block<>(846, 19703, NamespacedKey.parse("minecraft:crimson_pressure_plate"), () -> new PressurePlateData(Block.CRIMSON_PRESSURE_PLATE, 19703), () -> Item.CRIMSON_PRESSURE_PLATE);
+    public static final Block<BellData> BELL = new Block<>(846, 20603, NamespacedKey.parse("minecraft:bell"), () -> new BellData(Block.BELL, 20603), () -> Item.BELL);
 
-    public static final Block<PressurePlateData> WARPED_PRESSURE_PLATE = new Block<>(847, 19705, NamespacedKey.parse("minecraft:warped_pressure_plate"), () -> new PressurePlateData(Block.WARPED_PRESSURE_PLATE, 19705), () -> Item.WARPED_PRESSURE_PLATE);
+    public static final Block<LanternData> LANTERN = new Block<>(847, 20635, NamespacedKey.parse("minecraft:lantern"), () -> new LanternData(Block.LANTERN, 20635), () -> Item.LANTERN);
 
-    public static final Block<FenceData> CRIMSON_FENCE = new Block<>(848, 19707, NamespacedKey.parse("minecraft:crimson_fence"), () -> new FenceData(Block.CRIMSON_FENCE, 19707), () -> Item.CRIMSON_FENCE);
+    public static final Block<LanternData> SOUL_LANTERN = new Block<>(848, 20639, NamespacedKey.parse("minecraft:soul_lantern"), () -> new LanternData(Block.SOUL_LANTERN, 20639), () -> Item.SOUL_LANTERN);
 
-    public static final Block<FenceData> WARPED_FENCE = new Block<>(849, 19739, NamespacedKey.parse("minecraft:warped_fence"), () -> new FenceData(Block.WARPED_FENCE, 19739), () -> Item.WARPED_FENCE);
+    public static final Block<WeatheringLanternData> COPPER_LANTERN = new Block<>(849, 20643, NamespacedKey.parse("minecraft:copper_lantern"), () -> new WeatheringLanternData(Block.COPPER_LANTERN, 20643), () -> Item.COPPER_LANTERN);
 
-    public static final Block<TrapdoorData> CRIMSON_TRAPDOOR = new Block<>(850, 19771, NamespacedKey.parse("minecraft:crimson_trapdoor"), () -> new TrapdoorData(Block.CRIMSON_TRAPDOOR, 19771), () -> Item.CRIMSON_TRAPDOOR);
+    public static final Block<WeatheringLanternData> EXPOSED_COPPER_LANTERN = new Block<>(850, 20647, NamespacedKey.parse("minecraft:exposed_copper_lantern"), () -> new WeatheringLanternData(Block.EXPOSED_COPPER_LANTERN, 20647), () -> Item.EXPOSED_COPPER_LANTERN);
 
-    public static final Block<TrapdoorData> WARPED_TRAPDOOR = new Block<>(851, 19835, NamespacedKey.parse("minecraft:warped_trapdoor"), () -> new TrapdoorData(Block.WARPED_TRAPDOOR, 19835), () -> Item.WARPED_TRAPDOOR);
+    public static final Block<WeatheringLanternData> WEATHERED_COPPER_LANTERN = new Block<>(851, 20651, NamespacedKey.parse("minecraft:weathered_copper_lantern"), () -> new WeatheringLanternData(Block.WEATHERED_COPPER_LANTERN, 20651), () -> Item.WEATHERED_COPPER_LANTERN);
 
-    public static final Block<FenceGateData> CRIMSON_FENCE_GATE = new Block<>(852, 19899, NamespacedKey.parse("minecraft:crimson_fence_gate"), () -> new FenceGateData(Block.CRIMSON_FENCE_GATE, 19899), () -> Item.CRIMSON_FENCE_GATE);
+    public static final Block<WeatheringLanternData> OXIDIZED_COPPER_LANTERN = new Block<>(852, 20655, NamespacedKey.parse("minecraft:oxidized_copper_lantern"), () -> new WeatheringLanternData(Block.OXIDIZED_COPPER_LANTERN, 20655), () -> Item.OXIDIZED_COPPER_LANTERN);
 
-    public static final Block<FenceGateData> WARPED_FENCE_GATE = new Block<>(853, 19931, NamespacedKey.parse("minecraft:warped_fence_gate"), () -> new FenceGateData(Block.WARPED_FENCE_GATE, 19931), () -> Item.WARPED_FENCE_GATE);
+    public static final Block<LanternData> WAXED_COPPER_LANTERN = new Block<>(853, 20659, NamespacedKey.parse("minecraft:waxed_copper_lantern"), () -> new LanternData(Block.WAXED_COPPER_LANTERN, 20659), () -> Item.WAXED_COPPER_LANTERN);
 
-    public static final Block<StairData> CRIMSON_STAIRS = new Block<>(854, 19963, NamespacedKey.parse("minecraft:crimson_stairs"), () -> new StairData(Block.CRIMSON_STAIRS, 19963), () -> Item.CRIMSON_STAIRS);
+    public static final Block<LanternData> WAXED_EXPOSED_COPPER_LANTERN = new Block<>(854, 20663, NamespacedKey.parse("minecraft:waxed_exposed_copper_lantern"), () -> new LanternData(Block.WAXED_EXPOSED_COPPER_LANTERN, 20663), () -> Item.WAXED_EXPOSED_COPPER_LANTERN);
 
-    public static final Block<StairData> WARPED_STAIRS = new Block<>(855, 20043, NamespacedKey.parse("minecraft:warped_stairs"), () -> new StairData(Block.WARPED_STAIRS, 20043), () -> Item.WARPED_STAIRS);
+    public static final Block<LanternData> WAXED_WEATHERED_COPPER_LANTERN = new Block<>(855, 20667, NamespacedKey.parse("minecraft:waxed_weathered_copper_lantern"), () -> new LanternData(Block.WAXED_WEATHERED_COPPER_LANTERN, 20667), () -> Item.WAXED_WEATHERED_COPPER_LANTERN);
 
-    public static final Block<ButtonData> CRIMSON_BUTTON = new Block<>(856, 20123, NamespacedKey.parse("minecraft:crimson_button"), () -> new ButtonData(Block.CRIMSON_BUTTON, 20123), () -> Item.CRIMSON_BUTTON);
+    public static final Block<LanternData> WAXED_OXIDIZED_COPPER_LANTERN = new Block<>(856, 20671, NamespacedKey.parse("minecraft:waxed_oxidized_copper_lantern"), () -> new LanternData(Block.WAXED_OXIDIZED_COPPER_LANTERN, 20671), () -> Item.WAXED_OXIDIZED_COPPER_LANTERN);
 
-    public static final Block<ButtonData> WARPED_BUTTON = new Block<>(857, 20147, NamespacedKey.parse("minecraft:warped_button"), () -> new ButtonData(Block.WARPED_BUTTON, 20147), () -> Item.WARPED_BUTTON);
+    public static final Block<CampfireData> CAMPFIRE = new Block<>(857, 20675, NamespacedKey.parse("minecraft:campfire"), () -> new CampfireData(Block.CAMPFIRE, 20675), () -> Item.CAMPFIRE);
 
-    public static final Block<DoorData> CRIMSON_DOOR = new Block<>(858, 20171, NamespacedKey.parse("minecraft:crimson_door"), () -> new DoorData(Block.CRIMSON_DOOR, 20171), () -> Item.CRIMSON_DOOR);
+    public static final Block<CampfireData> SOUL_CAMPFIRE = new Block<>(858, 20707, NamespacedKey.parse("minecraft:soul_campfire"), () -> new CampfireData(Block.SOUL_CAMPFIRE, 20707), () -> Item.SOUL_CAMPFIRE);
 
-    public static final Block<DoorData> WARPED_DOOR = new Block<>(859, 20235, NamespacedKey.parse("minecraft:warped_door"), () -> new DoorData(Block.WARPED_DOOR, 20235), () -> Item.WARPED_DOOR);
+    public static final Block<SweetBerryBushData> SWEET_BERRY_BUSH = new Block<>(859, 20739, NamespacedKey.parse("minecraft:sweet_berry_bush"), () -> new SweetBerryBushData(Block.SWEET_BERRY_BUSH, 20739), null);
 
-    public static final Block<StandingSignData> CRIMSON_SIGN = new Block<>(860, 20299, NamespacedKey.parse("minecraft:crimson_sign"), () -> new StandingSignData(Block.CRIMSON_SIGN, 20299), () -> Item.CRIMSON_SIGN);
+    public static final Block<RotatedPillarData> WARPED_STEM = new Block<>(860, 20743, NamespacedKey.parse("minecraft:warped_stem"), () -> new RotatedPillarData(Block.WARPED_STEM, 20743), () -> Item.WARPED_STEM);
 
-    public static final Block<StandingSignData> WARPED_SIGN = new Block<>(861, 20331, NamespacedKey.parse("minecraft:warped_sign"), () -> new StandingSignData(Block.WARPED_SIGN, 20331), () -> Item.WARPED_SIGN);
+    public static final Block<RotatedPillarData> STRIPPED_WARPED_STEM = new Block<>(861, 20746, NamespacedKey.parse("minecraft:stripped_warped_stem"), () -> new RotatedPillarData(Block.STRIPPED_WARPED_STEM, 20746), () -> Item.STRIPPED_WARPED_STEM);
 
-    public static final Block<WallSignData> CRIMSON_WALL_SIGN = new Block<>(862, 20363, NamespacedKey.parse("minecraft:crimson_wall_sign"), () -> new WallSignData(Block.CRIMSON_WALL_SIGN, 20363), null);
+    public static final Block<RotatedPillarData> WARPED_HYPHAE = new Block<>(862, 20749, NamespacedKey.parse("minecraft:warped_hyphae"), () -> new RotatedPillarData(Block.WARPED_HYPHAE, 20749), () -> Item.WARPED_HYPHAE);
 
-    public static final Block<WallSignData> WARPED_WALL_SIGN = new Block<>(863, 20371, NamespacedKey.parse("minecraft:warped_wall_sign"), () -> new WallSignData(Block.WARPED_WALL_SIGN, 20371), null);
+    public static final Block<RotatedPillarData> STRIPPED_WARPED_HYPHAE = new Block<>(863, 20752, NamespacedKey.parse("minecraft:stripped_warped_hyphae"), () -> new RotatedPillarData(Block.STRIPPED_WARPED_HYPHAE, 20752), () -> Item.STRIPPED_WARPED_HYPHAE);
 
-    public static final Block<StructureData> STRUCTURE_BLOCK = new Block<>(864, 20379, NamespacedKey.parse("minecraft:structure_block"), () -> new StructureData(Block.STRUCTURE_BLOCK, 20379), () -> Item.STRUCTURE_BLOCK);
+    public static final Block<BlockData> WARPED_NYLIUM = new Block<>(864, 20755, NamespacedKey.parse("minecraft:warped_nylium"), () -> new BlockData(Block.WARPED_NYLIUM, 20755), () -> Item.WARPED_NYLIUM);
 
-    public static final Block<JigsawData> JIGSAW = new Block<>(865, 20383, NamespacedKey.parse("minecraft:jigsaw"), () -> new JigsawData(Block.JIGSAW, 20383), () -> Item.JIGSAW);
+    public static final Block<BlockData> WARPED_FUNGUS = new Block<>(865, 20756, NamespacedKey.parse("minecraft:warped_fungus"), () -> new BlockData(Block.WARPED_FUNGUS, 20756), () -> Item.WARPED_FUNGUS);
 
-    public static final Block<TestData> TEST_BLOCK = new Block<>(866, 20395, NamespacedKey.parse("minecraft:test_block"), () -> new TestData(Block.TEST_BLOCK, 20395), () -> Item.TEST_BLOCK);
+    public static final Block<BlockData> WARPED_WART_BLOCK = new Block<>(866, 20757, NamespacedKey.parse("minecraft:warped_wart_block"), () -> new BlockData(Block.WARPED_WART_BLOCK, 20757), () -> Item.WARPED_WART_BLOCK);
 
-    public static final Block<BlockData> TEST_INSTANCE_BLOCK = new Block<>(867, 20399, NamespacedKey.parse("minecraft:test_instance_block"), () -> new BlockData(Block.TEST_INSTANCE_BLOCK, 20399), () -> Item.TEST_INSTANCE_BLOCK);
+    public static final Block<BlockData> WARPED_ROOTS = new Block<>(867, 20758, NamespacedKey.parse("minecraft:warped_roots"), () -> new BlockData(Block.WARPED_ROOTS, 20758), () -> Item.WARPED_ROOTS);
 
-    public static final Block<ComposterData> COMPOSTER = new Block<>(868, 20400, NamespacedKey.parse("minecraft:composter"), () -> new ComposterData(Block.COMPOSTER, 20400), () -> Item.COMPOSTER);
+    public static final Block<BlockData> NETHER_SPROUTS = new Block<>(868, 20759, NamespacedKey.parse("minecraft:nether_sprouts"), () -> new BlockData(Block.NETHER_SPROUTS, 20759), () -> Item.NETHER_SPROUTS);
 
-    public static final Block<TargetData> TARGET = new Block<>(869, 20409, NamespacedKey.parse("minecraft:target"), () -> new TargetData(Block.TARGET, 20409), () -> Item.TARGET);
+    public static final Block<RotatedPillarData> CRIMSON_STEM = new Block<>(869, 20760, NamespacedKey.parse("minecraft:crimson_stem"), () -> new RotatedPillarData(Block.CRIMSON_STEM, 20760), () -> Item.CRIMSON_STEM);
 
-    public static final Block<BeehiveData> BEE_NEST = new Block<>(870, 20425, NamespacedKey.parse("minecraft:bee_nest"), () -> new BeehiveData(Block.BEE_NEST, 20425), () -> Item.BEE_NEST);
+    public static final Block<RotatedPillarData> STRIPPED_CRIMSON_STEM = new Block<>(870, 20763, NamespacedKey.parse("minecraft:stripped_crimson_stem"), () -> new RotatedPillarData(Block.STRIPPED_CRIMSON_STEM, 20763), () -> Item.STRIPPED_CRIMSON_STEM);
 
-    public static final Block<BeehiveData> BEEHIVE = new Block<>(871, 20449, NamespacedKey.parse("minecraft:beehive"), () -> new BeehiveData(Block.BEEHIVE, 20449), () -> Item.BEEHIVE);
+    public static final Block<RotatedPillarData> CRIMSON_HYPHAE = new Block<>(871, 20766, NamespacedKey.parse("minecraft:crimson_hyphae"), () -> new RotatedPillarData(Block.CRIMSON_HYPHAE, 20766), () -> Item.CRIMSON_HYPHAE);
 
-    public static final Block<BlockData> HONEY_BLOCK = new Block<>(872, 20473, NamespacedKey.parse("minecraft:honey_block"), () -> new BlockData(Block.HONEY_BLOCK, 20473), () -> Item.HONEY_BLOCK);
+    public static final Block<RotatedPillarData> STRIPPED_CRIMSON_HYPHAE = new Block<>(872, 20769, NamespacedKey.parse("minecraft:stripped_crimson_hyphae"), () -> new RotatedPillarData(Block.STRIPPED_CRIMSON_HYPHAE, 20769), () -> Item.STRIPPED_CRIMSON_HYPHAE);
 
-    public static final Block<BlockData> HONEYCOMB_BLOCK = new Block<>(873, 20474, NamespacedKey.parse("minecraft:honeycomb_block"), () -> new BlockData(Block.HONEYCOMB_BLOCK, 20474), () -> Item.HONEYCOMB_BLOCK);
+    public static final Block<BlockData> CRIMSON_NYLIUM = new Block<>(873, 20772, NamespacedKey.parse("minecraft:crimson_nylium"), () -> new BlockData(Block.CRIMSON_NYLIUM, 20772), () -> Item.CRIMSON_NYLIUM);
 
-    public static final Block<BlockData> NETHERITE_BLOCK = new Block<>(874, 20475, NamespacedKey.parse("minecraft:netherite_block"), () -> new BlockData(Block.NETHERITE_BLOCK, 20475), () -> Item.NETHERITE_BLOCK);
+    public static final Block<BlockData> CRIMSON_FUNGUS = new Block<>(874, 20773, NamespacedKey.parse("minecraft:crimson_fungus"), () -> new BlockData(Block.CRIMSON_FUNGUS, 20773), () -> Item.CRIMSON_FUNGUS);
 
-    public static final Block<BlockData> ANCIENT_DEBRIS = new Block<>(875, 20476, NamespacedKey.parse("minecraft:ancient_debris"), () -> new BlockData(Block.ANCIENT_DEBRIS, 20476), () -> Item.ANCIENT_DEBRIS);
+    public static final Block<BlockData> SHROOMLIGHT = new Block<>(875, 20774, NamespacedKey.parse("minecraft:shroomlight"), () -> new BlockData(Block.SHROOMLIGHT, 20774), () -> Item.SHROOMLIGHT);
 
-    public static final Block<BlockData> CRYING_OBSIDIAN = new Block<>(876, 20477, NamespacedKey.parse("minecraft:crying_obsidian"), () -> new BlockData(Block.CRYING_OBSIDIAN, 20477), () -> Item.CRYING_OBSIDIAN);
+    public static final Block<WeepingVinesData> WEEPING_VINES = new Block<>(876, 20775, NamespacedKey.parse("minecraft:weeping_vines"), () -> new WeepingVinesData(Block.WEEPING_VINES, 20775), () -> Item.WEEPING_VINES);
 
-    public static final Block<RespawnAnchorData> RESPAWN_ANCHOR = new Block<>(877, 20478, NamespacedKey.parse("minecraft:respawn_anchor"), () -> new RespawnAnchorData(Block.RESPAWN_ANCHOR, 20478), () -> Item.RESPAWN_ANCHOR);
+    public static final Block<BlockData> WEEPING_VINES_PLANT = new Block<>(877, 20801, NamespacedKey.parse("minecraft:weeping_vines_plant"), () -> new BlockData(Block.WEEPING_VINES_PLANT, 20801), null);
 
-    public static final Block<BlockData> POTTED_CRIMSON_FUNGUS = new Block<>(878, 20483, NamespacedKey.parse("minecraft:potted_crimson_fungus"), () -> new BlockData(Block.POTTED_CRIMSON_FUNGUS, 20483), null);
+    public static final Block<TwistingVinesData> TWISTING_VINES = new Block<>(878, 20802, NamespacedKey.parse("minecraft:twisting_vines"), () -> new TwistingVinesData(Block.TWISTING_VINES, 20802), () -> Item.TWISTING_VINES);
 
-    public static final Block<BlockData> POTTED_WARPED_FUNGUS = new Block<>(879, 20484, NamespacedKey.parse("minecraft:potted_warped_fungus"), () -> new BlockData(Block.POTTED_WARPED_FUNGUS, 20484), null);
+    public static final Block<BlockData> TWISTING_VINES_PLANT = new Block<>(879, 20828, NamespacedKey.parse("minecraft:twisting_vines_plant"), () -> new BlockData(Block.TWISTING_VINES_PLANT, 20828), null);
 
-    public static final Block<BlockData> POTTED_CRIMSON_ROOTS = new Block<>(880, 20485, NamespacedKey.parse("minecraft:potted_crimson_roots"), () -> new BlockData(Block.POTTED_CRIMSON_ROOTS, 20485), null);
+    public static final Block<BlockData> CRIMSON_ROOTS = new Block<>(880, 20829, NamespacedKey.parse("minecraft:crimson_roots"), () -> new BlockData(Block.CRIMSON_ROOTS, 20829), () -> Item.CRIMSON_ROOTS);
 
-    public static final Block<BlockData> POTTED_WARPED_ROOTS = new Block<>(881, 20486, NamespacedKey.parse("minecraft:potted_warped_roots"), () -> new BlockData(Block.POTTED_WARPED_ROOTS, 20486), null);
+    public static final Block<BlockData> CRIMSON_PLANKS = new Block<>(881, 20830, NamespacedKey.parse("minecraft:crimson_planks"), () -> new BlockData(Block.CRIMSON_PLANKS, 20830), () -> Item.CRIMSON_PLANKS);
 
-    public static final Block<BlockData> LODESTONE = new Block<>(882, 20487, NamespacedKey.parse("minecraft:lodestone"), () -> new BlockData(Block.LODESTONE, 20487), () -> Item.LODESTONE);
+    public static final Block<BlockData> WARPED_PLANKS = new Block<>(882, 20831, NamespacedKey.parse("minecraft:warped_planks"), () -> new BlockData(Block.WARPED_PLANKS, 20831), () -> Item.WARPED_PLANKS);
 
-    public static final Block<BlockData> BLACKSTONE = new Block<>(883, 20488, NamespacedKey.parse("minecraft:blackstone"), () -> new BlockData(Block.BLACKSTONE, 20488), () -> Item.BLACKSTONE);
+    public static final Block<SlabData> CRIMSON_SLAB = new Block<>(883, 20832, NamespacedKey.parse("minecraft:crimson_slab"), () -> new SlabData(Block.CRIMSON_SLAB, 20832), () -> Item.CRIMSON_SLAB);
 
-    public static final Block<StairData> BLACKSTONE_STAIRS = new Block<>(884, 20489, NamespacedKey.parse("minecraft:blackstone_stairs"), () -> new StairData(Block.BLACKSTONE_STAIRS, 20489), () -> Item.BLACKSTONE_STAIRS);
+    public static final Block<SlabData> WARPED_SLAB = new Block<>(884, 20838, NamespacedKey.parse("minecraft:warped_slab"), () -> new SlabData(Block.WARPED_SLAB, 20838), () -> Item.WARPED_SLAB);
 
-    public static final Block<WallData> BLACKSTONE_WALL = new Block<>(885, 20569, NamespacedKey.parse("minecraft:blackstone_wall"), () -> new WallData(Block.BLACKSTONE_WALL, 20569), () -> Item.BLACKSTONE_WALL);
+    public static final Block<PressurePlateData> CRIMSON_PRESSURE_PLATE = new Block<>(885, 20844, NamespacedKey.parse("minecraft:crimson_pressure_plate"), () -> new PressurePlateData(Block.CRIMSON_PRESSURE_PLATE, 20844), () -> Item.CRIMSON_PRESSURE_PLATE);
 
-    public static final Block<SlabData> BLACKSTONE_SLAB = new Block<>(886, 20893, NamespacedKey.parse("minecraft:blackstone_slab"), () -> new SlabData(Block.BLACKSTONE_SLAB, 20893), () -> Item.BLACKSTONE_SLAB);
+    public static final Block<PressurePlateData> WARPED_PRESSURE_PLATE = new Block<>(886, 20846, NamespacedKey.parse("minecraft:warped_pressure_plate"), () -> new PressurePlateData(Block.WARPED_PRESSURE_PLATE, 20846), () -> Item.WARPED_PRESSURE_PLATE);
 
-    public static final Block<BlockData> POLISHED_BLACKSTONE = new Block<>(887, 20899, NamespacedKey.parse("minecraft:polished_blackstone"), () -> new BlockData(Block.POLISHED_BLACKSTONE, 20899), () -> Item.POLISHED_BLACKSTONE);
+    public static final Block<FenceData> CRIMSON_FENCE = new Block<>(887, 20848, NamespacedKey.parse("minecraft:crimson_fence"), () -> new FenceData(Block.CRIMSON_FENCE, 20848), () -> Item.CRIMSON_FENCE);
 
-    public static final Block<BlockData> POLISHED_BLACKSTONE_BRICKS = new Block<>(888, 20900, NamespacedKey.parse("minecraft:polished_blackstone_bricks"), () -> new BlockData(Block.POLISHED_BLACKSTONE_BRICKS, 20900), () -> Item.POLISHED_BLACKSTONE_BRICKS);
+    public static final Block<FenceData> WARPED_FENCE = new Block<>(888, 20880, NamespacedKey.parse("minecraft:warped_fence"), () -> new FenceData(Block.WARPED_FENCE, 20880), () -> Item.WARPED_FENCE);
 
-    public static final Block<BlockData> CRACKED_POLISHED_BLACKSTONE_BRICKS = new Block<>(889, 20901, NamespacedKey.parse("minecraft:cracked_polished_blackstone_bricks"), () -> new BlockData(Block.CRACKED_POLISHED_BLACKSTONE_BRICKS, 20901), () -> Item.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+    public static final Block<TrapdoorData> CRIMSON_TRAPDOOR = new Block<>(889, 20912, NamespacedKey.parse("minecraft:crimson_trapdoor"), () -> new TrapdoorData(Block.CRIMSON_TRAPDOOR, 20912), () -> Item.CRIMSON_TRAPDOOR);
 
-    public static final Block<BlockData> CHISELED_POLISHED_BLACKSTONE = new Block<>(890, 20902, NamespacedKey.parse("minecraft:chiseled_polished_blackstone"), () -> new BlockData(Block.CHISELED_POLISHED_BLACKSTONE, 20902), () -> Item.CHISELED_POLISHED_BLACKSTONE);
+    public static final Block<TrapdoorData> WARPED_TRAPDOOR = new Block<>(890, 20976, NamespacedKey.parse("minecraft:warped_trapdoor"), () -> new TrapdoorData(Block.WARPED_TRAPDOOR, 20976), () -> Item.WARPED_TRAPDOOR);
 
-    public static final Block<SlabData> POLISHED_BLACKSTONE_BRICK_SLAB = new Block<>(891, 20903, NamespacedKey.parse("minecraft:polished_blackstone_brick_slab"), () -> new SlabData(Block.POLISHED_BLACKSTONE_BRICK_SLAB, 20903), () -> Item.POLISHED_BLACKSTONE_BRICK_SLAB);
+    public static final Block<FenceGateData> CRIMSON_FENCE_GATE = new Block<>(891, 21040, NamespacedKey.parse("minecraft:crimson_fence_gate"), () -> new FenceGateData(Block.CRIMSON_FENCE_GATE, 21040), () -> Item.CRIMSON_FENCE_GATE);
 
-    public static final Block<StairData> POLISHED_BLACKSTONE_BRICK_STAIRS = new Block<>(892, 20909, NamespacedKey.parse("minecraft:polished_blackstone_brick_stairs"), () -> new StairData(Block.POLISHED_BLACKSTONE_BRICK_STAIRS, 20909), () -> Item.POLISHED_BLACKSTONE_BRICK_STAIRS);
+    public static final Block<FenceGateData> WARPED_FENCE_GATE = new Block<>(892, 21072, NamespacedKey.parse("minecraft:warped_fence_gate"), () -> new FenceGateData(Block.WARPED_FENCE_GATE, 21072), () -> Item.WARPED_FENCE_GATE);
 
-    public static final Block<WallData> POLISHED_BLACKSTONE_BRICK_WALL = new Block<>(893, 20989, NamespacedKey.parse("minecraft:polished_blackstone_brick_wall"), () -> new WallData(Block.POLISHED_BLACKSTONE_BRICK_WALL, 20989), () -> Item.POLISHED_BLACKSTONE_BRICK_WALL);
+    public static final Block<StairData> CRIMSON_STAIRS = new Block<>(893, 21104, NamespacedKey.parse("minecraft:crimson_stairs"), () -> new StairData(Block.CRIMSON_STAIRS, 21104), () -> Item.CRIMSON_STAIRS);
 
-    public static final Block<BlockData> GILDED_BLACKSTONE = new Block<>(894, 21313, NamespacedKey.parse("minecraft:gilded_blackstone"), () -> new BlockData(Block.GILDED_BLACKSTONE, 21313), () -> Item.GILDED_BLACKSTONE);
+    public static final Block<StairData> WARPED_STAIRS = new Block<>(894, 21184, NamespacedKey.parse("minecraft:warped_stairs"), () -> new StairData(Block.WARPED_STAIRS, 21184), () -> Item.WARPED_STAIRS);
 
-    public static final Block<StairData> POLISHED_BLACKSTONE_STAIRS = new Block<>(895, 21314, NamespacedKey.parse("minecraft:polished_blackstone_stairs"), () -> new StairData(Block.POLISHED_BLACKSTONE_STAIRS, 21314), () -> Item.POLISHED_BLACKSTONE_STAIRS);
+    public static final Block<ButtonData> CRIMSON_BUTTON = new Block<>(895, 21264, NamespacedKey.parse("minecraft:crimson_button"), () -> new ButtonData(Block.CRIMSON_BUTTON, 21264), () -> Item.CRIMSON_BUTTON);
 
-    public static final Block<SlabData> POLISHED_BLACKSTONE_SLAB = new Block<>(896, 21394, NamespacedKey.parse("minecraft:polished_blackstone_slab"), () -> new SlabData(Block.POLISHED_BLACKSTONE_SLAB, 21394), () -> Item.POLISHED_BLACKSTONE_SLAB);
+    public static final Block<ButtonData> WARPED_BUTTON = new Block<>(896, 21288, NamespacedKey.parse("minecraft:warped_button"), () -> new ButtonData(Block.WARPED_BUTTON, 21288), () -> Item.WARPED_BUTTON);
 
-    public static final Block<PressurePlateData> POLISHED_BLACKSTONE_PRESSURE_PLATE = new Block<>(897, 21400, NamespacedKey.parse("minecraft:polished_blackstone_pressure_plate"), () -> new PressurePlateData(Block.POLISHED_BLACKSTONE_PRESSURE_PLATE, 21400), () -> Item.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+    public static final Block<DoorData> CRIMSON_DOOR = new Block<>(897, 21312, NamespacedKey.parse("minecraft:crimson_door"), () -> new DoorData(Block.CRIMSON_DOOR, 21312), () -> Item.CRIMSON_DOOR);
 
-    public static final Block<ButtonData> POLISHED_BLACKSTONE_BUTTON = new Block<>(898, 21402, NamespacedKey.parse("minecraft:polished_blackstone_button"), () -> new ButtonData(Block.POLISHED_BLACKSTONE_BUTTON, 21402), () -> Item.POLISHED_BLACKSTONE_BUTTON);
+    public static final Block<DoorData> WARPED_DOOR = new Block<>(898, 21376, NamespacedKey.parse("minecraft:warped_door"), () -> new DoorData(Block.WARPED_DOOR, 21376), () -> Item.WARPED_DOOR);
 
-    public static final Block<WallData> POLISHED_BLACKSTONE_WALL = new Block<>(899, 21426, NamespacedKey.parse("minecraft:polished_blackstone_wall"), () -> new WallData(Block.POLISHED_BLACKSTONE_WALL, 21426), () -> Item.POLISHED_BLACKSTONE_WALL);
+    public static final Block<StandingSignData> CRIMSON_SIGN = new Block<>(899, 21440, NamespacedKey.parse("minecraft:crimson_sign"), () -> new StandingSignData(Block.CRIMSON_SIGN, 21440), () -> Item.CRIMSON_SIGN);
 
-    public static final Block<BlockData> CHISELED_NETHER_BRICKS = new Block<>(900, 21750, NamespacedKey.parse("minecraft:chiseled_nether_bricks"), () -> new BlockData(Block.CHISELED_NETHER_BRICKS, 21750), () -> Item.CHISELED_NETHER_BRICKS);
+    public static final Block<StandingSignData> WARPED_SIGN = new Block<>(900, 21472, NamespacedKey.parse("minecraft:warped_sign"), () -> new StandingSignData(Block.WARPED_SIGN, 21472), () -> Item.WARPED_SIGN);
 
-    public static final Block<BlockData> CRACKED_NETHER_BRICKS = new Block<>(901, 21751, NamespacedKey.parse("minecraft:cracked_nether_bricks"), () -> new BlockData(Block.CRACKED_NETHER_BRICKS, 21751), () -> Item.CRACKED_NETHER_BRICKS);
+    public static final Block<WallSignData> CRIMSON_WALL_SIGN = new Block<>(901, 21504, NamespacedKey.parse("minecraft:crimson_wall_sign"), () -> new WallSignData(Block.CRIMSON_WALL_SIGN, 21504), null);
 
-    public static final Block<BlockData> QUARTZ_BRICKS = new Block<>(902, 21752, NamespacedKey.parse("minecraft:quartz_bricks"), () -> new BlockData(Block.QUARTZ_BRICKS, 21752), () -> Item.QUARTZ_BRICKS);
+    public static final Block<WallSignData> WARPED_WALL_SIGN = new Block<>(902, 21512, NamespacedKey.parse("minecraft:warped_wall_sign"), () -> new WallSignData(Block.WARPED_WALL_SIGN, 21512), null);
 
-    public static final Block<CandleData> CANDLE = new Block<>(903, 21753, NamespacedKey.parse("minecraft:candle"), () -> new CandleData(Block.CANDLE, 21753), () -> Item.CANDLE);
+    public static final Block<StructureData> STRUCTURE_BLOCK = new Block<>(903, 21520, NamespacedKey.parse("minecraft:structure_block"), () -> new StructureData(Block.STRUCTURE_BLOCK, 21520), () -> Item.STRUCTURE_BLOCK);
 
-    public static final Block<CandleData> WHITE_CANDLE = new Block<>(904, 21769, NamespacedKey.parse("minecraft:white_candle"), () -> new CandleData(Block.WHITE_CANDLE, 21769), () -> Item.WHITE_CANDLE);
+    public static final Block<JigsawData> JIGSAW = new Block<>(904, 21524, NamespacedKey.parse("minecraft:jigsaw"), () -> new JigsawData(Block.JIGSAW, 21524), () -> Item.JIGSAW);
 
-    public static final Block<CandleData> ORANGE_CANDLE = new Block<>(905, 21785, NamespacedKey.parse("minecraft:orange_candle"), () -> new CandleData(Block.ORANGE_CANDLE, 21785), () -> Item.ORANGE_CANDLE);
+    public static final Block<TestData> TEST_BLOCK = new Block<>(905, 21536, NamespacedKey.parse("minecraft:test_block"), () -> new TestData(Block.TEST_BLOCK, 21536), () -> Item.TEST_BLOCK);
 
-    public static final Block<CandleData> MAGENTA_CANDLE = new Block<>(906, 21801, NamespacedKey.parse("minecraft:magenta_candle"), () -> new CandleData(Block.MAGENTA_CANDLE, 21801), () -> Item.MAGENTA_CANDLE);
+    public static final Block<BlockData> TEST_INSTANCE_BLOCK = new Block<>(906, 21540, NamespacedKey.parse("minecraft:test_instance_block"), () -> new BlockData(Block.TEST_INSTANCE_BLOCK, 21540), () -> Item.TEST_INSTANCE_BLOCK);
 
-    public static final Block<CandleData> LIGHT_BLUE_CANDLE = new Block<>(907, 21817, NamespacedKey.parse("minecraft:light_blue_candle"), () -> new CandleData(Block.LIGHT_BLUE_CANDLE, 21817), () -> Item.LIGHT_BLUE_CANDLE);
+    public static final Block<ComposterData> COMPOSTER = new Block<>(907, 21541, NamespacedKey.parse("minecraft:composter"), () -> new ComposterData(Block.COMPOSTER, 21541), () -> Item.COMPOSTER);
 
-    public static final Block<CandleData> YELLOW_CANDLE = new Block<>(908, 21833, NamespacedKey.parse("minecraft:yellow_candle"), () -> new CandleData(Block.YELLOW_CANDLE, 21833), () -> Item.YELLOW_CANDLE);
+    public static final Block<TargetData> TARGET = new Block<>(908, 21550, NamespacedKey.parse("minecraft:target"), () -> new TargetData(Block.TARGET, 21550), () -> Item.TARGET);
 
-    public static final Block<CandleData> LIME_CANDLE = new Block<>(909, 21849, NamespacedKey.parse("minecraft:lime_candle"), () -> new CandleData(Block.LIME_CANDLE, 21849), () -> Item.LIME_CANDLE);
+    public static final Block<BeehiveData> BEE_NEST = new Block<>(909, 21566, NamespacedKey.parse("minecraft:bee_nest"), () -> new BeehiveData(Block.BEE_NEST, 21566), () -> Item.BEE_NEST);
 
-    public static final Block<CandleData> PINK_CANDLE = new Block<>(910, 21865, NamespacedKey.parse("minecraft:pink_candle"), () -> new CandleData(Block.PINK_CANDLE, 21865), () -> Item.PINK_CANDLE);
+    public static final Block<BeehiveData> BEEHIVE = new Block<>(910, 21590, NamespacedKey.parse("minecraft:beehive"), () -> new BeehiveData(Block.BEEHIVE, 21590), () -> Item.BEEHIVE);
 
-    public static final Block<CandleData> GRAY_CANDLE = new Block<>(911, 21881, NamespacedKey.parse("minecraft:gray_candle"), () -> new CandleData(Block.GRAY_CANDLE, 21881), () -> Item.GRAY_CANDLE);
+    public static final Block<BlockData> HONEY_BLOCK = new Block<>(911, 21614, NamespacedKey.parse("minecraft:honey_block"), () -> new BlockData(Block.HONEY_BLOCK, 21614), () -> Item.HONEY_BLOCK);
 
-    public static final Block<CandleData> LIGHT_GRAY_CANDLE = new Block<>(912, 21897, NamespacedKey.parse("minecraft:light_gray_candle"), () -> new CandleData(Block.LIGHT_GRAY_CANDLE, 21897), () -> Item.LIGHT_GRAY_CANDLE);
+    public static final Block<BlockData> HONEYCOMB_BLOCK = new Block<>(912, 21615, NamespacedKey.parse("minecraft:honeycomb_block"), () -> new BlockData(Block.HONEYCOMB_BLOCK, 21615), () -> Item.HONEYCOMB_BLOCK);
 
-    public static final Block<CandleData> CYAN_CANDLE = new Block<>(913, 21913, NamespacedKey.parse("minecraft:cyan_candle"), () -> new CandleData(Block.CYAN_CANDLE, 21913), () -> Item.CYAN_CANDLE);
+    public static final Block<BlockData> NETHERITE_BLOCK = new Block<>(913, 21616, NamespacedKey.parse("minecraft:netherite_block"), () -> new BlockData(Block.NETHERITE_BLOCK, 21616), () -> Item.NETHERITE_BLOCK);
 
-    public static final Block<CandleData> PURPLE_CANDLE = new Block<>(914, 21929, NamespacedKey.parse("minecraft:purple_candle"), () -> new CandleData(Block.PURPLE_CANDLE, 21929), () -> Item.PURPLE_CANDLE);
+    public static final Block<BlockData> ANCIENT_DEBRIS = new Block<>(914, 21617, NamespacedKey.parse("minecraft:ancient_debris"), () -> new BlockData(Block.ANCIENT_DEBRIS, 21617), () -> Item.ANCIENT_DEBRIS);
 
-    public static final Block<CandleData> BLUE_CANDLE = new Block<>(915, 21945, NamespacedKey.parse("minecraft:blue_candle"), () -> new CandleData(Block.BLUE_CANDLE, 21945), () -> Item.BLUE_CANDLE);
+    public static final Block<BlockData> CRYING_OBSIDIAN = new Block<>(915, 21618, NamespacedKey.parse("minecraft:crying_obsidian"), () -> new BlockData(Block.CRYING_OBSIDIAN, 21618), () -> Item.CRYING_OBSIDIAN);
 
-    public static final Block<CandleData> BROWN_CANDLE = new Block<>(916, 21961, NamespacedKey.parse("minecraft:brown_candle"), () -> new CandleData(Block.BROWN_CANDLE, 21961), () -> Item.BROWN_CANDLE);
+    public static final Block<RespawnAnchorData> RESPAWN_ANCHOR = new Block<>(916, 21619, NamespacedKey.parse("minecraft:respawn_anchor"), () -> new RespawnAnchorData(Block.RESPAWN_ANCHOR, 21619), () -> Item.RESPAWN_ANCHOR);
 
-    public static final Block<CandleData> GREEN_CANDLE = new Block<>(917, 21977, NamespacedKey.parse("minecraft:green_candle"), () -> new CandleData(Block.GREEN_CANDLE, 21977), () -> Item.GREEN_CANDLE);
+    public static final Block<BlockData> POTTED_CRIMSON_FUNGUS = new Block<>(917, 21624, NamespacedKey.parse("minecraft:potted_crimson_fungus"), () -> new BlockData(Block.POTTED_CRIMSON_FUNGUS, 21624), null);
 
-    public static final Block<CandleData> RED_CANDLE = new Block<>(918, 21993, NamespacedKey.parse("minecraft:red_candle"), () -> new CandleData(Block.RED_CANDLE, 21993), () -> Item.RED_CANDLE);
+    public static final Block<BlockData> POTTED_WARPED_FUNGUS = new Block<>(918, 21625, NamespacedKey.parse("minecraft:potted_warped_fungus"), () -> new BlockData(Block.POTTED_WARPED_FUNGUS, 21625), null);
 
-    public static final Block<CandleData> BLACK_CANDLE = new Block<>(919, 22009, NamespacedKey.parse("minecraft:black_candle"), () -> new CandleData(Block.BLACK_CANDLE, 22009), () -> Item.BLACK_CANDLE);
+    public static final Block<BlockData> POTTED_CRIMSON_ROOTS = new Block<>(919, 21626, NamespacedKey.parse("minecraft:potted_crimson_roots"), () -> new BlockData(Block.POTTED_CRIMSON_ROOTS, 21626), null);
 
-    public static final Block<CandleCakeData> CANDLE_CAKE = new Block<>(920, 22025, NamespacedKey.parse("minecraft:candle_cake"), () -> new CandleCakeData(Block.CANDLE_CAKE, 22025), null);
+    public static final Block<BlockData> POTTED_WARPED_ROOTS = new Block<>(920, 21627, NamespacedKey.parse("minecraft:potted_warped_roots"), () -> new BlockData(Block.POTTED_WARPED_ROOTS, 21627), null);
 
-    public static final Block<CandleCakeData> WHITE_CANDLE_CAKE = new Block<>(921, 22027, NamespacedKey.parse("minecraft:white_candle_cake"), () -> new CandleCakeData(Block.WHITE_CANDLE_CAKE, 22027), null);
+    public static final Block<BlockData> LODESTONE = new Block<>(921, 21628, NamespacedKey.parse("minecraft:lodestone"), () -> new BlockData(Block.LODESTONE, 21628), () -> Item.LODESTONE);
 
-    public static final Block<CandleCakeData> ORANGE_CANDLE_CAKE = new Block<>(922, 22029, NamespacedKey.parse("minecraft:orange_candle_cake"), () -> new CandleCakeData(Block.ORANGE_CANDLE_CAKE, 22029), null);
+    public static final Block<BlockData> BLACKSTONE = new Block<>(922, 21629, NamespacedKey.parse("minecraft:blackstone"), () -> new BlockData(Block.BLACKSTONE, 21629), () -> Item.BLACKSTONE);
 
-    public static final Block<CandleCakeData> MAGENTA_CANDLE_CAKE = new Block<>(923, 22031, NamespacedKey.parse("minecraft:magenta_candle_cake"), () -> new CandleCakeData(Block.MAGENTA_CANDLE_CAKE, 22031), null);
+    public static final Block<StairData> BLACKSTONE_STAIRS = new Block<>(923, 21630, NamespacedKey.parse("minecraft:blackstone_stairs"), () -> new StairData(Block.BLACKSTONE_STAIRS, 21630), () -> Item.BLACKSTONE_STAIRS);
 
-    public static final Block<CandleCakeData> LIGHT_BLUE_CANDLE_CAKE = new Block<>(924, 22033, NamespacedKey.parse("minecraft:light_blue_candle_cake"), () -> new CandleCakeData(Block.LIGHT_BLUE_CANDLE_CAKE, 22033), null);
+    public static final Block<WallData> BLACKSTONE_WALL = new Block<>(924, 21710, NamespacedKey.parse("minecraft:blackstone_wall"), () -> new WallData(Block.BLACKSTONE_WALL, 21710), () -> Item.BLACKSTONE_WALL);
 
-    public static final Block<CandleCakeData> YELLOW_CANDLE_CAKE = new Block<>(925, 22035, NamespacedKey.parse("minecraft:yellow_candle_cake"), () -> new CandleCakeData(Block.YELLOW_CANDLE_CAKE, 22035), null);
+    public static final Block<SlabData> BLACKSTONE_SLAB = new Block<>(925, 22034, NamespacedKey.parse("minecraft:blackstone_slab"), () -> new SlabData(Block.BLACKSTONE_SLAB, 22034), () -> Item.BLACKSTONE_SLAB);
 
-    public static final Block<CandleCakeData> LIME_CANDLE_CAKE = new Block<>(926, 22037, NamespacedKey.parse("minecraft:lime_candle_cake"), () -> new CandleCakeData(Block.LIME_CANDLE_CAKE, 22037), null);
+    public static final Block<BlockData> POLISHED_BLACKSTONE = new Block<>(926, 22040, NamespacedKey.parse("minecraft:polished_blackstone"), () -> new BlockData(Block.POLISHED_BLACKSTONE, 22040), () -> Item.POLISHED_BLACKSTONE);
 
-    public static final Block<CandleCakeData> PINK_CANDLE_CAKE = new Block<>(927, 22039, NamespacedKey.parse("minecraft:pink_candle_cake"), () -> new CandleCakeData(Block.PINK_CANDLE_CAKE, 22039), null);
+    public static final Block<BlockData> POLISHED_BLACKSTONE_BRICKS = new Block<>(927, 22041, NamespacedKey.parse("minecraft:polished_blackstone_bricks"), () -> new BlockData(Block.POLISHED_BLACKSTONE_BRICKS, 22041), () -> Item.POLISHED_BLACKSTONE_BRICKS);
 
-    public static final Block<CandleCakeData> GRAY_CANDLE_CAKE = new Block<>(928, 22041, NamespacedKey.parse("minecraft:gray_candle_cake"), () -> new CandleCakeData(Block.GRAY_CANDLE_CAKE, 22041), null);
+    public static final Block<BlockData> CRACKED_POLISHED_BLACKSTONE_BRICKS = new Block<>(928, 22042, NamespacedKey.parse("minecraft:cracked_polished_blackstone_bricks"), () -> new BlockData(Block.CRACKED_POLISHED_BLACKSTONE_BRICKS, 22042), () -> Item.CRACKED_POLISHED_BLACKSTONE_BRICKS);
 
-    public static final Block<CandleCakeData> LIGHT_GRAY_CANDLE_CAKE = new Block<>(929, 22043, NamespacedKey.parse("minecraft:light_gray_candle_cake"), () -> new CandleCakeData(Block.LIGHT_GRAY_CANDLE_CAKE, 22043), null);
+    public static final Block<BlockData> CHISELED_POLISHED_BLACKSTONE = new Block<>(929, 22043, NamespacedKey.parse("minecraft:chiseled_polished_blackstone"), () -> new BlockData(Block.CHISELED_POLISHED_BLACKSTONE, 22043), () -> Item.CHISELED_POLISHED_BLACKSTONE);
 
-    public static final Block<CandleCakeData> CYAN_CANDLE_CAKE = new Block<>(930, 22045, NamespacedKey.parse("minecraft:cyan_candle_cake"), () -> new CandleCakeData(Block.CYAN_CANDLE_CAKE, 22045), null);
+    public static final Block<SlabData> POLISHED_BLACKSTONE_BRICK_SLAB = new Block<>(930, 22044, NamespacedKey.parse("minecraft:polished_blackstone_brick_slab"), () -> new SlabData(Block.POLISHED_BLACKSTONE_BRICK_SLAB, 22044), () -> Item.POLISHED_BLACKSTONE_BRICK_SLAB);
 
-    public static final Block<CandleCakeData> PURPLE_CANDLE_CAKE = new Block<>(931, 22047, NamespacedKey.parse("minecraft:purple_candle_cake"), () -> new CandleCakeData(Block.PURPLE_CANDLE_CAKE, 22047), null);
+    public static final Block<StairData> POLISHED_BLACKSTONE_BRICK_STAIRS = new Block<>(931, 22050, NamespacedKey.parse("minecraft:polished_blackstone_brick_stairs"), () -> new StairData(Block.POLISHED_BLACKSTONE_BRICK_STAIRS, 22050), () -> Item.POLISHED_BLACKSTONE_BRICK_STAIRS);
 
-    public static final Block<CandleCakeData> BLUE_CANDLE_CAKE = new Block<>(932, 22049, NamespacedKey.parse("minecraft:blue_candle_cake"), () -> new CandleCakeData(Block.BLUE_CANDLE_CAKE, 22049), null);
+    public static final Block<WallData> POLISHED_BLACKSTONE_BRICK_WALL = new Block<>(932, 22130, NamespacedKey.parse("minecraft:polished_blackstone_brick_wall"), () -> new WallData(Block.POLISHED_BLACKSTONE_BRICK_WALL, 22130), () -> Item.POLISHED_BLACKSTONE_BRICK_WALL);
 
-    public static final Block<CandleCakeData> BROWN_CANDLE_CAKE = new Block<>(933, 22051, NamespacedKey.parse("minecraft:brown_candle_cake"), () -> new CandleCakeData(Block.BROWN_CANDLE_CAKE, 22051), null);
+    public static final Block<BlockData> GILDED_BLACKSTONE = new Block<>(933, 22454, NamespacedKey.parse("minecraft:gilded_blackstone"), () -> new BlockData(Block.GILDED_BLACKSTONE, 22454), () -> Item.GILDED_BLACKSTONE);
 
-    public static final Block<CandleCakeData> GREEN_CANDLE_CAKE = new Block<>(934, 22053, NamespacedKey.parse("minecraft:green_candle_cake"), () -> new CandleCakeData(Block.GREEN_CANDLE_CAKE, 22053), null);
+    public static final Block<StairData> POLISHED_BLACKSTONE_STAIRS = new Block<>(934, 22455, NamespacedKey.parse("minecraft:polished_blackstone_stairs"), () -> new StairData(Block.POLISHED_BLACKSTONE_STAIRS, 22455), () -> Item.POLISHED_BLACKSTONE_STAIRS);
 
-    public static final Block<CandleCakeData> RED_CANDLE_CAKE = new Block<>(935, 22055, NamespacedKey.parse("minecraft:red_candle_cake"), () -> new CandleCakeData(Block.RED_CANDLE_CAKE, 22055), null);
+    public static final Block<SlabData> POLISHED_BLACKSTONE_SLAB = new Block<>(935, 22535, NamespacedKey.parse("minecraft:polished_blackstone_slab"), () -> new SlabData(Block.POLISHED_BLACKSTONE_SLAB, 22535), () -> Item.POLISHED_BLACKSTONE_SLAB);
 
-    public static final Block<CandleCakeData> BLACK_CANDLE_CAKE = new Block<>(936, 22057, NamespacedKey.parse("minecraft:black_candle_cake"), () -> new CandleCakeData(Block.BLACK_CANDLE_CAKE, 22057), null);
+    public static final Block<PressurePlateData> POLISHED_BLACKSTONE_PRESSURE_PLATE = new Block<>(936, 22541, NamespacedKey.parse("minecraft:polished_blackstone_pressure_plate"), () -> new PressurePlateData(Block.POLISHED_BLACKSTONE_PRESSURE_PLATE, 22541), () -> Item.POLISHED_BLACKSTONE_PRESSURE_PLATE);
 
-    public static final Block<BlockData> AMETHYST_BLOCK = new Block<>(937, 22059, NamespacedKey.parse("minecraft:amethyst_block"), () -> new BlockData(Block.AMETHYST_BLOCK, 22059), () -> Item.AMETHYST_BLOCK);
+    public static final Block<ButtonData> POLISHED_BLACKSTONE_BUTTON = new Block<>(937, 22543, NamespacedKey.parse("minecraft:polished_blackstone_button"), () -> new ButtonData(Block.POLISHED_BLACKSTONE_BUTTON, 22543), () -> Item.POLISHED_BLACKSTONE_BUTTON);
 
-    public static final Block<BlockData> BUDDING_AMETHYST = new Block<>(938, 22060, NamespacedKey.parse("minecraft:budding_amethyst"), () -> new BlockData(Block.BUDDING_AMETHYST, 22060), () -> Item.BUDDING_AMETHYST);
+    public static final Block<WallData> POLISHED_BLACKSTONE_WALL = new Block<>(938, 22567, NamespacedKey.parse("minecraft:polished_blackstone_wall"), () -> new WallData(Block.POLISHED_BLACKSTONE_WALL, 22567), () -> Item.POLISHED_BLACKSTONE_WALL);
 
-    public static final Block<AmethystClusterData> AMETHYST_CLUSTER = new Block<>(939, 22061, NamespacedKey.parse("minecraft:amethyst_cluster"), () -> new AmethystClusterData(Block.AMETHYST_CLUSTER, 22061), () -> Item.AMETHYST_CLUSTER);
+    public static final Block<BlockData> CHISELED_NETHER_BRICKS = new Block<>(939, 22891, NamespacedKey.parse("minecraft:chiseled_nether_bricks"), () -> new BlockData(Block.CHISELED_NETHER_BRICKS, 22891), () -> Item.CHISELED_NETHER_BRICKS);
 
-    public static final Block<AmethystClusterData> LARGE_AMETHYST_BUD = new Block<>(940, 22073, NamespacedKey.parse("minecraft:large_amethyst_bud"), () -> new AmethystClusterData(Block.LARGE_AMETHYST_BUD, 22073), () -> Item.LARGE_AMETHYST_BUD);
+    public static final Block<BlockData> CRACKED_NETHER_BRICKS = new Block<>(940, 22892, NamespacedKey.parse("minecraft:cracked_nether_bricks"), () -> new BlockData(Block.CRACKED_NETHER_BRICKS, 22892), () -> Item.CRACKED_NETHER_BRICKS);
 
-    public static final Block<AmethystClusterData> MEDIUM_AMETHYST_BUD = new Block<>(941, 22085, NamespacedKey.parse("minecraft:medium_amethyst_bud"), () -> new AmethystClusterData(Block.MEDIUM_AMETHYST_BUD, 22085), () -> Item.MEDIUM_AMETHYST_BUD);
+    public static final Block<BlockData> QUARTZ_BRICKS = new Block<>(941, 22893, NamespacedKey.parse("minecraft:quartz_bricks"), () -> new BlockData(Block.QUARTZ_BRICKS, 22893), () -> Item.QUARTZ_BRICKS);
 
-    public static final Block<AmethystClusterData> SMALL_AMETHYST_BUD = new Block<>(942, 22097, NamespacedKey.parse("minecraft:small_amethyst_bud"), () -> new AmethystClusterData(Block.SMALL_AMETHYST_BUD, 22097), () -> Item.SMALL_AMETHYST_BUD);
+    public static final Block<CandleData> CANDLE = new Block<>(942, 22894, NamespacedKey.parse("minecraft:candle"), () -> new CandleData(Block.CANDLE, 22894), () -> Item.CANDLE);
 
-    public static final Block<BlockData> TUFF = new Block<>(943, 22109, NamespacedKey.parse("minecraft:tuff"), () -> new BlockData(Block.TUFF, 22109), () -> Item.TUFF);
+    public static final Block<CandleData> WHITE_CANDLE = new Block<>(943, 22910, NamespacedKey.parse("minecraft:white_candle"), () -> new CandleData(Block.WHITE_CANDLE, 22910), () -> Item.WHITE_CANDLE);
 
-    public static final Block<SlabData> TUFF_SLAB = new Block<>(944, 22110, NamespacedKey.parse("minecraft:tuff_slab"), () -> new SlabData(Block.TUFF_SLAB, 22110), () -> Item.TUFF_SLAB);
+    public static final Block<CandleData> ORANGE_CANDLE = new Block<>(944, 22926, NamespacedKey.parse("minecraft:orange_candle"), () -> new CandleData(Block.ORANGE_CANDLE, 22926), () -> Item.ORANGE_CANDLE);
 
-    public static final Block<StairData> TUFF_STAIRS = new Block<>(945, 22116, NamespacedKey.parse("minecraft:tuff_stairs"), () -> new StairData(Block.TUFF_STAIRS, 22116), () -> Item.TUFF_STAIRS);
+    public static final Block<CandleData> MAGENTA_CANDLE = new Block<>(945, 22942, NamespacedKey.parse("minecraft:magenta_candle"), () -> new CandleData(Block.MAGENTA_CANDLE, 22942), () -> Item.MAGENTA_CANDLE);
 
-    public static final Block<WallData> TUFF_WALL = new Block<>(946, 22196, NamespacedKey.parse("minecraft:tuff_wall"), () -> new WallData(Block.TUFF_WALL, 22196), () -> Item.TUFF_WALL);
+    public static final Block<CandleData> LIGHT_BLUE_CANDLE = new Block<>(946, 22958, NamespacedKey.parse("minecraft:light_blue_candle"), () -> new CandleData(Block.LIGHT_BLUE_CANDLE, 22958), () -> Item.LIGHT_BLUE_CANDLE);
 
-    public static final Block<BlockData> POLISHED_TUFF = new Block<>(947, 22520, NamespacedKey.parse("minecraft:polished_tuff"), () -> new BlockData(Block.POLISHED_TUFF, 22520), () -> Item.POLISHED_TUFF);
+    public static final Block<CandleData> YELLOW_CANDLE = new Block<>(947, 22974, NamespacedKey.parse("minecraft:yellow_candle"), () -> new CandleData(Block.YELLOW_CANDLE, 22974), () -> Item.YELLOW_CANDLE);
 
-    public static final Block<SlabData> POLISHED_TUFF_SLAB = new Block<>(948, 22521, NamespacedKey.parse("minecraft:polished_tuff_slab"), () -> new SlabData(Block.POLISHED_TUFF_SLAB, 22521), () -> Item.POLISHED_TUFF_SLAB);
+    public static final Block<CandleData> LIME_CANDLE = new Block<>(948, 22990, NamespacedKey.parse("minecraft:lime_candle"), () -> new CandleData(Block.LIME_CANDLE, 22990), () -> Item.LIME_CANDLE);
 
-    public static final Block<StairData> POLISHED_TUFF_STAIRS = new Block<>(949, 22527, NamespacedKey.parse("minecraft:polished_tuff_stairs"), () -> new StairData(Block.POLISHED_TUFF_STAIRS, 22527), () -> Item.POLISHED_TUFF_STAIRS);
+    public static final Block<CandleData> PINK_CANDLE = new Block<>(949, 23006, NamespacedKey.parse("minecraft:pink_candle"), () -> new CandleData(Block.PINK_CANDLE, 23006), () -> Item.PINK_CANDLE);
 
-    public static final Block<WallData> POLISHED_TUFF_WALL = new Block<>(950, 22607, NamespacedKey.parse("minecraft:polished_tuff_wall"), () -> new WallData(Block.POLISHED_TUFF_WALL, 22607), () -> Item.POLISHED_TUFF_WALL);
+    public static final Block<CandleData> GRAY_CANDLE = new Block<>(950, 23022, NamespacedKey.parse("minecraft:gray_candle"), () -> new CandleData(Block.GRAY_CANDLE, 23022), () -> Item.GRAY_CANDLE);
 
-    public static final Block<BlockData> CHISELED_TUFF = new Block<>(951, 22931, NamespacedKey.parse("minecraft:chiseled_tuff"), () -> new BlockData(Block.CHISELED_TUFF, 22931), () -> Item.CHISELED_TUFF);
+    public static final Block<CandleData> LIGHT_GRAY_CANDLE = new Block<>(951, 23038, NamespacedKey.parse("minecraft:light_gray_candle"), () -> new CandleData(Block.LIGHT_GRAY_CANDLE, 23038), () -> Item.LIGHT_GRAY_CANDLE);
 
-    public static final Block<BlockData> TUFF_BRICKS = new Block<>(952, 22932, NamespacedKey.parse("minecraft:tuff_bricks"), () -> new BlockData(Block.TUFF_BRICKS, 22932), () -> Item.TUFF_BRICKS);
+    public static final Block<CandleData> CYAN_CANDLE = new Block<>(952, 23054, NamespacedKey.parse("minecraft:cyan_candle"), () -> new CandleData(Block.CYAN_CANDLE, 23054), () -> Item.CYAN_CANDLE);
 
-    public static final Block<SlabData> TUFF_BRICK_SLAB = new Block<>(953, 22933, NamespacedKey.parse("minecraft:tuff_brick_slab"), () -> new SlabData(Block.TUFF_BRICK_SLAB, 22933), () -> Item.TUFF_BRICK_SLAB);
+    public static final Block<CandleData> PURPLE_CANDLE = new Block<>(953, 23070, NamespacedKey.parse("minecraft:purple_candle"), () -> new CandleData(Block.PURPLE_CANDLE, 23070), () -> Item.PURPLE_CANDLE);
 
-    public static final Block<StairData> TUFF_BRICK_STAIRS = new Block<>(954, 22939, NamespacedKey.parse("minecraft:tuff_brick_stairs"), () -> new StairData(Block.TUFF_BRICK_STAIRS, 22939), () -> Item.TUFF_BRICK_STAIRS);
+    public static final Block<CandleData> BLUE_CANDLE = new Block<>(954, 23086, NamespacedKey.parse("minecraft:blue_candle"), () -> new CandleData(Block.BLUE_CANDLE, 23086), () -> Item.BLUE_CANDLE);
 
-    public static final Block<WallData> TUFF_BRICK_WALL = new Block<>(955, 23019, NamespacedKey.parse("minecraft:tuff_brick_wall"), () -> new WallData(Block.TUFF_BRICK_WALL, 23019), () -> Item.TUFF_BRICK_WALL);
+    public static final Block<CandleData> BROWN_CANDLE = new Block<>(955, 23102, NamespacedKey.parse("minecraft:brown_candle"), () -> new CandleData(Block.BROWN_CANDLE, 23102), () -> Item.BROWN_CANDLE);
 
-    public static final Block<BlockData> CHISELED_TUFF_BRICKS = new Block<>(956, 23343, NamespacedKey.parse("minecraft:chiseled_tuff_bricks"), () -> new BlockData(Block.CHISELED_TUFF_BRICKS, 23343), () -> Item.CHISELED_TUFF_BRICKS);
+    public static final Block<CandleData> GREEN_CANDLE = new Block<>(956, 23118, NamespacedKey.parse("minecraft:green_candle"), () -> new CandleData(Block.GREEN_CANDLE, 23118), () -> Item.GREEN_CANDLE);
 
-    public static final Block<BlockData> CALCITE = new Block<>(957, 23344, NamespacedKey.parse("minecraft:calcite"), () -> new BlockData(Block.CALCITE, 23344), () -> Item.CALCITE);
+    public static final Block<CandleData> RED_CANDLE = new Block<>(957, 23134, NamespacedKey.parse("minecraft:red_candle"), () -> new CandleData(Block.RED_CANDLE, 23134), () -> Item.RED_CANDLE);
 
-    public static final Block<BlockData> TINTED_GLASS = new Block<>(958, 23345, NamespacedKey.parse("minecraft:tinted_glass"), () -> new BlockData(Block.TINTED_GLASS, 23345), () -> Item.TINTED_GLASS);
+    public static final Block<CandleData> BLACK_CANDLE = new Block<>(958, 23150, NamespacedKey.parse("minecraft:black_candle"), () -> new CandleData(Block.BLACK_CANDLE, 23150), () -> Item.BLACK_CANDLE);
 
-    public static final Block<BlockData> POWDER_SNOW = new Block<>(959, 23346, NamespacedKey.parse("minecraft:powder_snow"), () -> new BlockData(Block.POWDER_SNOW, 23346), null);
+    public static final Block<CandleCakeData> CANDLE_CAKE = new Block<>(959, 23166, NamespacedKey.parse("minecraft:candle_cake"), () -> new CandleCakeData(Block.CANDLE_CAKE, 23166), null);
 
-    public static final Block<SculkSensorData> SCULK_SENSOR = new Block<>(960, 23347, NamespacedKey.parse("minecraft:sculk_sensor"), () -> new SculkSensorData(Block.SCULK_SENSOR, 23347), () -> Item.SCULK_SENSOR);
+    public static final Block<CandleCakeData> WHITE_CANDLE_CAKE = new Block<>(960, 23168, NamespacedKey.parse("minecraft:white_candle_cake"), () -> new CandleCakeData(Block.WHITE_CANDLE_CAKE, 23168), null);
 
-    public static final Block<CalibratedSculkSensorData> CALIBRATED_SCULK_SENSOR = new Block<>(961, 23443, NamespacedKey.parse("minecraft:calibrated_sculk_sensor"), () -> new CalibratedSculkSensorData(Block.CALIBRATED_SCULK_SENSOR, 23443), () -> Item.CALIBRATED_SCULK_SENSOR);
+    public static final Block<CandleCakeData> ORANGE_CANDLE_CAKE = new Block<>(961, 23170, NamespacedKey.parse("minecraft:orange_candle_cake"), () -> new CandleCakeData(Block.ORANGE_CANDLE_CAKE, 23170), null);
 
-    public static final Block<BlockData> SCULK = new Block<>(962, 23827, NamespacedKey.parse("minecraft:sculk"), () -> new BlockData(Block.SCULK, 23827), () -> Item.SCULK);
+    public static final Block<CandleCakeData> MAGENTA_CANDLE_CAKE = new Block<>(962, 23172, NamespacedKey.parse("minecraft:magenta_candle_cake"), () -> new CandleCakeData(Block.MAGENTA_CANDLE_CAKE, 23172), null);
 
-    public static final Block<SculkVeinData> SCULK_VEIN = new Block<>(963, 23828, NamespacedKey.parse("minecraft:sculk_vein"), () -> new SculkVeinData(Block.SCULK_VEIN, 23828), () -> Item.SCULK_VEIN);
+    public static final Block<CandleCakeData> LIGHT_BLUE_CANDLE_CAKE = new Block<>(963, 23174, NamespacedKey.parse("minecraft:light_blue_candle_cake"), () -> new CandleCakeData(Block.LIGHT_BLUE_CANDLE_CAKE, 23174), null);
 
-    public static final Block<SculkCatalystData> SCULK_CATALYST = new Block<>(964, 23956, NamespacedKey.parse("minecraft:sculk_catalyst"), () -> new SculkCatalystData(Block.SCULK_CATALYST, 23956), () -> Item.SCULK_CATALYST);
+    public static final Block<CandleCakeData> YELLOW_CANDLE_CAKE = new Block<>(964, 23176, NamespacedKey.parse("minecraft:yellow_candle_cake"), () -> new CandleCakeData(Block.YELLOW_CANDLE_CAKE, 23176), null);
 
-    public static final Block<SculkShriekerData> SCULK_SHRIEKER = new Block<>(965, 23958, NamespacedKey.parse("minecraft:sculk_shrieker"), () -> new SculkShriekerData(Block.SCULK_SHRIEKER, 23958), () -> Item.SCULK_SHRIEKER);
+    public static final Block<CandleCakeData> LIME_CANDLE_CAKE = new Block<>(965, 23178, NamespacedKey.parse("minecraft:lime_candle_cake"), () -> new CandleCakeData(Block.LIME_CANDLE_CAKE, 23178), null);
 
-    public static final Block<BlockData> COPPER_BLOCK = new Block<>(966, 23966, NamespacedKey.parse("minecraft:copper_block"), () -> new BlockData(Block.COPPER_BLOCK, 23966), () -> Item.COPPER_BLOCK);
+    public static final Block<CandleCakeData> PINK_CANDLE_CAKE = new Block<>(966, 23180, NamespacedKey.parse("minecraft:pink_candle_cake"), () -> new CandleCakeData(Block.PINK_CANDLE_CAKE, 23180), null);
 
-    public static final Block<BlockData> EXPOSED_COPPER = new Block<>(967, 23967, NamespacedKey.parse("minecraft:exposed_copper"), () -> new BlockData(Block.EXPOSED_COPPER, 23967), () -> Item.EXPOSED_COPPER);
+    public static final Block<CandleCakeData> GRAY_CANDLE_CAKE = new Block<>(967, 23182, NamespacedKey.parse("minecraft:gray_candle_cake"), () -> new CandleCakeData(Block.GRAY_CANDLE_CAKE, 23182), null);
 
-    public static final Block<BlockData> WEATHERED_COPPER = new Block<>(968, 23968, NamespacedKey.parse("minecraft:weathered_copper"), () -> new BlockData(Block.WEATHERED_COPPER, 23968), () -> Item.WEATHERED_COPPER);
+    public static final Block<CandleCakeData> LIGHT_GRAY_CANDLE_CAKE = new Block<>(968, 23184, NamespacedKey.parse("minecraft:light_gray_candle_cake"), () -> new CandleCakeData(Block.LIGHT_GRAY_CANDLE_CAKE, 23184), null);
 
-    public static final Block<BlockData> OXIDIZED_COPPER = new Block<>(969, 23969, NamespacedKey.parse("minecraft:oxidized_copper"), () -> new BlockData(Block.OXIDIZED_COPPER, 23969), () -> Item.OXIDIZED_COPPER);
+    public static final Block<CandleCakeData> CYAN_CANDLE_CAKE = new Block<>(969, 23186, NamespacedKey.parse("minecraft:cyan_candle_cake"), () -> new CandleCakeData(Block.CYAN_CANDLE_CAKE, 23186), null);
 
-    public static final Block<BlockData> COPPER_ORE = new Block<>(970, 23970, NamespacedKey.parse("minecraft:copper_ore"), () -> new BlockData(Block.COPPER_ORE, 23970), () -> Item.COPPER_ORE);
+    public static final Block<CandleCakeData> PURPLE_CANDLE_CAKE = new Block<>(970, 23188, NamespacedKey.parse("minecraft:purple_candle_cake"), () -> new CandleCakeData(Block.PURPLE_CANDLE_CAKE, 23188), null);
 
-    public static final Block<BlockData> DEEPSLATE_COPPER_ORE = new Block<>(971, 23971, NamespacedKey.parse("minecraft:deepslate_copper_ore"), () -> new BlockData(Block.DEEPSLATE_COPPER_ORE, 23971), () -> Item.DEEPSLATE_COPPER_ORE);
+    public static final Block<CandleCakeData> BLUE_CANDLE_CAKE = new Block<>(971, 23190, NamespacedKey.parse("minecraft:blue_candle_cake"), () -> new CandleCakeData(Block.BLUE_CANDLE_CAKE, 23190), null);
 
-    public static final Block<BlockData> OXIDIZED_CUT_COPPER = new Block<>(972, 23972, NamespacedKey.parse("minecraft:oxidized_cut_copper"), () -> new BlockData(Block.OXIDIZED_CUT_COPPER, 23972), () -> Item.OXIDIZED_CUT_COPPER);
+    public static final Block<CandleCakeData> BROWN_CANDLE_CAKE = new Block<>(972, 23192, NamespacedKey.parse("minecraft:brown_candle_cake"), () -> new CandleCakeData(Block.BROWN_CANDLE_CAKE, 23192), null);
 
-    public static final Block<BlockData> WEATHERED_CUT_COPPER = new Block<>(973, 23973, NamespacedKey.parse("minecraft:weathered_cut_copper"), () -> new BlockData(Block.WEATHERED_CUT_COPPER, 23973), () -> Item.WEATHERED_CUT_COPPER);
+    public static final Block<CandleCakeData> GREEN_CANDLE_CAKE = new Block<>(973, 23194, NamespacedKey.parse("minecraft:green_candle_cake"), () -> new CandleCakeData(Block.GREEN_CANDLE_CAKE, 23194), null);
 
-    public static final Block<BlockData> EXPOSED_CUT_COPPER = new Block<>(974, 23974, NamespacedKey.parse("minecraft:exposed_cut_copper"), () -> new BlockData(Block.EXPOSED_CUT_COPPER, 23974), () -> Item.EXPOSED_CUT_COPPER);
+    public static final Block<CandleCakeData> RED_CANDLE_CAKE = new Block<>(974, 23196, NamespacedKey.parse("minecraft:red_candle_cake"), () -> new CandleCakeData(Block.RED_CANDLE_CAKE, 23196), null);
 
-    public static final Block<BlockData> CUT_COPPER = new Block<>(975, 23975, NamespacedKey.parse("minecraft:cut_copper"), () -> new BlockData(Block.CUT_COPPER, 23975), () -> Item.CUT_COPPER);
+    public static final Block<CandleCakeData> BLACK_CANDLE_CAKE = new Block<>(975, 23198, NamespacedKey.parse("minecraft:black_candle_cake"), () -> new CandleCakeData(Block.BLACK_CANDLE_CAKE, 23198), null);
 
-    public static final Block<BlockData> OXIDIZED_CHISELED_COPPER = new Block<>(976, 23976, NamespacedKey.parse("minecraft:oxidized_chiseled_copper"), () -> new BlockData(Block.OXIDIZED_CHISELED_COPPER, 23976), () -> Item.OXIDIZED_CHISELED_COPPER);
+    public static final Block<BlockData> AMETHYST_BLOCK = new Block<>(976, 23200, NamespacedKey.parse("minecraft:amethyst_block"), () -> new BlockData(Block.AMETHYST_BLOCK, 23200), () -> Item.AMETHYST_BLOCK);
 
-    public static final Block<BlockData> WEATHERED_CHISELED_COPPER = new Block<>(977, 23977, NamespacedKey.parse("minecraft:weathered_chiseled_copper"), () -> new BlockData(Block.WEATHERED_CHISELED_COPPER, 23977), () -> Item.WEATHERED_CHISELED_COPPER);
+    public static final Block<BlockData> BUDDING_AMETHYST = new Block<>(977, 23201, NamespacedKey.parse("minecraft:budding_amethyst"), () -> new BlockData(Block.BUDDING_AMETHYST, 23201), () -> Item.BUDDING_AMETHYST);
 
-    public static final Block<BlockData> EXPOSED_CHISELED_COPPER = new Block<>(978, 23978, NamespacedKey.parse("minecraft:exposed_chiseled_copper"), () -> new BlockData(Block.EXPOSED_CHISELED_COPPER, 23978), () -> Item.EXPOSED_CHISELED_COPPER);
+    public static final Block<AmethystClusterData> AMETHYST_CLUSTER = new Block<>(978, 23202, NamespacedKey.parse("minecraft:amethyst_cluster"), () -> new AmethystClusterData(Block.AMETHYST_CLUSTER, 23202), () -> Item.AMETHYST_CLUSTER);
 
-    public static final Block<BlockData> CHISELED_COPPER = new Block<>(979, 23979, NamespacedKey.parse("minecraft:chiseled_copper"), () -> new BlockData(Block.CHISELED_COPPER, 23979), () -> Item.CHISELED_COPPER);
+    public static final Block<AmethystClusterData> LARGE_AMETHYST_BUD = new Block<>(979, 23214, NamespacedKey.parse("minecraft:large_amethyst_bud"), () -> new AmethystClusterData(Block.LARGE_AMETHYST_BUD, 23214), () -> Item.LARGE_AMETHYST_BUD);
 
-    public static final Block<BlockData> WAXED_OXIDIZED_CHISELED_COPPER = new Block<>(980, 23980, NamespacedKey.parse("minecraft:waxed_oxidized_chiseled_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_CHISELED_COPPER, 23980), () -> Item.WAXED_OXIDIZED_CHISELED_COPPER);
+    public static final Block<AmethystClusterData> MEDIUM_AMETHYST_BUD = new Block<>(980, 23226, NamespacedKey.parse("minecraft:medium_amethyst_bud"), () -> new AmethystClusterData(Block.MEDIUM_AMETHYST_BUD, 23226), () -> Item.MEDIUM_AMETHYST_BUD);
 
-    public static final Block<BlockData> WAXED_WEATHERED_CHISELED_COPPER = new Block<>(981, 23981, NamespacedKey.parse("minecraft:waxed_weathered_chiseled_copper"), () -> new BlockData(Block.WAXED_WEATHERED_CHISELED_COPPER, 23981), () -> Item.WAXED_WEATHERED_CHISELED_COPPER);
+    public static final Block<AmethystClusterData> SMALL_AMETHYST_BUD = new Block<>(981, 23238, NamespacedKey.parse("minecraft:small_amethyst_bud"), () -> new AmethystClusterData(Block.SMALL_AMETHYST_BUD, 23238), () -> Item.SMALL_AMETHYST_BUD);
 
-    public static final Block<BlockData> WAXED_EXPOSED_CHISELED_COPPER = new Block<>(982, 23982, NamespacedKey.parse("minecraft:waxed_exposed_chiseled_copper"), () -> new BlockData(Block.WAXED_EXPOSED_CHISELED_COPPER, 23982), () -> Item.WAXED_EXPOSED_CHISELED_COPPER);
+    public static final Block<BlockData> TUFF = new Block<>(982, 23250, NamespacedKey.parse("minecraft:tuff"), () -> new BlockData(Block.TUFF, 23250), () -> Item.TUFF);
 
-    public static final Block<BlockData> WAXED_CHISELED_COPPER = new Block<>(983, 23983, NamespacedKey.parse("minecraft:waxed_chiseled_copper"), () -> new BlockData(Block.WAXED_CHISELED_COPPER, 23983), () -> Item.WAXED_CHISELED_COPPER);
+    public static final Block<SlabData> TUFF_SLAB = new Block<>(983, 23251, NamespacedKey.parse("minecraft:tuff_slab"), () -> new SlabData(Block.TUFF_SLAB, 23251), () -> Item.TUFF_SLAB);
 
-    public static final Block<WeatheringCopperStairData> OXIDIZED_CUT_COPPER_STAIRS = new Block<>(984, 23984, NamespacedKey.parse("minecraft:oxidized_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.OXIDIZED_CUT_COPPER_STAIRS, 23984), () -> Item.OXIDIZED_CUT_COPPER_STAIRS);
+    public static final Block<StairData> TUFF_STAIRS = new Block<>(984, 23257, NamespacedKey.parse("minecraft:tuff_stairs"), () -> new StairData(Block.TUFF_STAIRS, 23257), () -> Item.TUFF_STAIRS);
 
-    public static final Block<WeatheringCopperStairData> WEATHERED_CUT_COPPER_STAIRS = new Block<>(985, 24064, NamespacedKey.parse("minecraft:weathered_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.WEATHERED_CUT_COPPER_STAIRS, 24064), () -> Item.WEATHERED_CUT_COPPER_STAIRS);
+    public static final Block<WallData> TUFF_WALL = new Block<>(985, 23337, NamespacedKey.parse("minecraft:tuff_wall"), () -> new WallData(Block.TUFF_WALL, 23337), () -> Item.TUFF_WALL);
 
-    public static final Block<WeatheringCopperStairData> EXPOSED_CUT_COPPER_STAIRS = new Block<>(986, 24144, NamespacedKey.parse("minecraft:exposed_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.EXPOSED_CUT_COPPER_STAIRS, 24144), () -> Item.EXPOSED_CUT_COPPER_STAIRS);
+    public static final Block<BlockData> POLISHED_TUFF = new Block<>(986, 23661, NamespacedKey.parse("minecraft:polished_tuff"), () -> new BlockData(Block.POLISHED_TUFF, 23661), () -> Item.POLISHED_TUFF);
 
-    public static final Block<WeatheringCopperStairData> CUT_COPPER_STAIRS = new Block<>(987, 24224, NamespacedKey.parse("minecraft:cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.CUT_COPPER_STAIRS, 24224), () -> Item.CUT_COPPER_STAIRS);
+    public static final Block<SlabData> POLISHED_TUFF_SLAB = new Block<>(987, 23662, NamespacedKey.parse("minecraft:polished_tuff_slab"), () -> new SlabData(Block.POLISHED_TUFF_SLAB, 23662), () -> Item.POLISHED_TUFF_SLAB);
 
-    public static final Block<WeatheringCopperSlabData> OXIDIZED_CUT_COPPER_SLAB = new Block<>(988, 24304, NamespacedKey.parse("minecraft:oxidized_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.OXIDIZED_CUT_COPPER_SLAB, 24304), () -> Item.OXIDIZED_CUT_COPPER_SLAB);
+    public static final Block<StairData> POLISHED_TUFF_STAIRS = new Block<>(988, 23668, NamespacedKey.parse("minecraft:polished_tuff_stairs"), () -> new StairData(Block.POLISHED_TUFF_STAIRS, 23668), () -> Item.POLISHED_TUFF_STAIRS);
 
-    public static final Block<WeatheringCopperSlabData> WEATHERED_CUT_COPPER_SLAB = new Block<>(989, 24310, NamespacedKey.parse("minecraft:weathered_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.WEATHERED_CUT_COPPER_SLAB, 24310), () -> Item.WEATHERED_CUT_COPPER_SLAB);
+    public static final Block<WallData> POLISHED_TUFF_WALL = new Block<>(989, 23748, NamespacedKey.parse("minecraft:polished_tuff_wall"), () -> new WallData(Block.POLISHED_TUFF_WALL, 23748), () -> Item.POLISHED_TUFF_WALL);
 
-    public static final Block<WeatheringCopperSlabData> EXPOSED_CUT_COPPER_SLAB = new Block<>(990, 24316, NamespacedKey.parse("minecraft:exposed_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.EXPOSED_CUT_COPPER_SLAB, 24316), () -> Item.EXPOSED_CUT_COPPER_SLAB);
+    public static final Block<BlockData> CHISELED_TUFF = new Block<>(990, 24072, NamespacedKey.parse("minecraft:chiseled_tuff"), () -> new BlockData(Block.CHISELED_TUFF, 24072), () -> Item.CHISELED_TUFF);
 
-    public static final Block<WeatheringCopperSlabData> CUT_COPPER_SLAB = new Block<>(991, 24322, NamespacedKey.parse("minecraft:cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.CUT_COPPER_SLAB, 24322), () -> Item.CUT_COPPER_SLAB);
+    public static final Block<BlockData> TUFF_BRICKS = new Block<>(991, 24073, NamespacedKey.parse("minecraft:tuff_bricks"), () -> new BlockData(Block.TUFF_BRICKS, 24073), () -> Item.TUFF_BRICKS);
 
-    public static final Block<BlockData> WAXED_COPPER_BLOCK = new Block<>(992, 24328, NamespacedKey.parse("minecraft:waxed_copper_block"), () -> new BlockData(Block.WAXED_COPPER_BLOCK, 24328), () -> Item.WAXED_COPPER_BLOCK);
+    public static final Block<SlabData> TUFF_BRICK_SLAB = new Block<>(992, 24074, NamespacedKey.parse("minecraft:tuff_brick_slab"), () -> new SlabData(Block.TUFF_BRICK_SLAB, 24074), () -> Item.TUFF_BRICK_SLAB);
 
-    public static final Block<BlockData> WAXED_WEATHERED_COPPER = new Block<>(993, 24329, NamespacedKey.parse("minecraft:waxed_weathered_copper"), () -> new BlockData(Block.WAXED_WEATHERED_COPPER, 24329), () -> Item.WAXED_WEATHERED_COPPER);
+    public static final Block<StairData> TUFF_BRICK_STAIRS = new Block<>(993, 24080, NamespacedKey.parse("minecraft:tuff_brick_stairs"), () -> new StairData(Block.TUFF_BRICK_STAIRS, 24080), () -> Item.TUFF_BRICK_STAIRS);
 
-    public static final Block<BlockData> WAXED_EXPOSED_COPPER = new Block<>(994, 24330, NamespacedKey.parse("minecraft:waxed_exposed_copper"), () -> new BlockData(Block.WAXED_EXPOSED_COPPER, 24330), () -> Item.WAXED_EXPOSED_COPPER);
+    public static final Block<WallData> TUFF_BRICK_WALL = new Block<>(994, 24160, NamespacedKey.parse("minecraft:tuff_brick_wall"), () -> new WallData(Block.TUFF_BRICK_WALL, 24160), () -> Item.TUFF_BRICK_WALL);
 
-    public static final Block<BlockData> WAXED_OXIDIZED_COPPER = new Block<>(995, 24331, NamespacedKey.parse("minecraft:waxed_oxidized_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_COPPER, 24331), () -> Item.WAXED_OXIDIZED_COPPER);
+    public static final Block<BlockData> CHISELED_TUFF_BRICKS = new Block<>(995, 24484, NamespacedKey.parse("minecraft:chiseled_tuff_bricks"), () -> new BlockData(Block.CHISELED_TUFF_BRICKS, 24484), () -> Item.CHISELED_TUFF_BRICKS);
 
-    public static final Block<BlockData> WAXED_OXIDIZED_CUT_COPPER = new Block<>(996, 24332, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_CUT_COPPER, 24332), () -> Item.WAXED_OXIDIZED_CUT_COPPER);
+    public static final Block<BlockData> CALCITE = new Block<>(996, 24485, NamespacedKey.parse("minecraft:calcite"), () -> new BlockData(Block.CALCITE, 24485), () -> Item.CALCITE);
 
-    public static final Block<BlockData> WAXED_WEATHERED_CUT_COPPER = new Block<>(997, 24333, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper"), () -> new BlockData(Block.WAXED_WEATHERED_CUT_COPPER, 24333), () -> Item.WAXED_WEATHERED_CUT_COPPER);
+    public static final Block<BlockData> TINTED_GLASS = new Block<>(997, 24486, NamespacedKey.parse("minecraft:tinted_glass"), () -> new BlockData(Block.TINTED_GLASS, 24486), () -> Item.TINTED_GLASS);
 
-    public static final Block<BlockData> WAXED_EXPOSED_CUT_COPPER = new Block<>(998, 24334, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper"), () -> new BlockData(Block.WAXED_EXPOSED_CUT_COPPER, 24334), () -> Item.WAXED_EXPOSED_CUT_COPPER);
+    public static final Block<BlockData> POWDER_SNOW = new Block<>(998, 24487, NamespacedKey.parse("minecraft:powder_snow"), () -> new BlockData(Block.POWDER_SNOW, 24487), null);
 
-    public static final Block<BlockData> WAXED_CUT_COPPER = new Block<>(999, 24335, NamespacedKey.parse("minecraft:waxed_cut_copper"), () -> new BlockData(Block.WAXED_CUT_COPPER, 24335), () -> Item.WAXED_CUT_COPPER);
+    public static final Block<SculkSensorData> SCULK_SENSOR = new Block<>(999, 24488, NamespacedKey.parse("minecraft:sculk_sensor"), () -> new SculkSensorData(Block.SCULK_SENSOR, 24488), () -> Item.SCULK_SENSOR);
 
-    public static final Block<StairData> WAXED_OXIDIZED_CUT_COPPER_STAIRS = new Block<>(1000, 24336, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_stairs"), () -> new StairData(Block.WAXED_OXIDIZED_CUT_COPPER_STAIRS, 24336), () -> Item.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
+    public static final Block<CalibratedSculkSensorData> CALIBRATED_SCULK_SENSOR = new Block<>(1000, 24584, NamespacedKey.parse("minecraft:calibrated_sculk_sensor"), () -> new CalibratedSculkSensorData(Block.CALIBRATED_SCULK_SENSOR, 24584), () -> Item.CALIBRATED_SCULK_SENSOR);
 
-    public static final Block<StairData> WAXED_WEATHERED_CUT_COPPER_STAIRS = new Block<>(1001, 24416, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_stairs"), () -> new StairData(Block.WAXED_WEATHERED_CUT_COPPER_STAIRS, 24416), () -> Item.WAXED_WEATHERED_CUT_COPPER_STAIRS);
+    public static final Block<BlockData> SCULK = new Block<>(1001, 24968, NamespacedKey.parse("minecraft:sculk"), () -> new BlockData(Block.SCULK, 24968), () -> Item.SCULK);
 
-    public static final Block<StairData> WAXED_EXPOSED_CUT_COPPER_STAIRS = new Block<>(1002, 24496, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_stairs"), () -> new StairData(Block.WAXED_EXPOSED_CUT_COPPER_STAIRS, 24496), () -> Item.WAXED_EXPOSED_CUT_COPPER_STAIRS);
+    public static final Block<SculkVeinData> SCULK_VEIN = new Block<>(1002, 24969, NamespacedKey.parse("minecraft:sculk_vein"), () -> new SculkVeinData(Block.SCULK_VEIN, 24969), () -> Item.SCULK_VEIN);
 
-    public static final Block<StairData> WAXED_CUT_COPPER_STAIRS = new Block<>(1003, 24576, NamespacedKey.parse("minecraft:waxed_cut_copper_stairs"), () -> new StairData(Block.WAXED_CUT_COPPER_STAIRS, 24576), () -> Item.WAXED_CUT_COPPER_STAIRS);
+    public static final Block<SculkCatalystData> SCULK_CATALYST = new Block<>(1003, 25097, NamespacedKey.parse("minecraft:sculk_catalyst"), () -> new SculkCatalystData(Block.SCULK_CATALYST, 25097), () -> Item.SCULK_CATALYST);
 
-    public static final Block<SlabData> WAXED_OXIDIZED_CUT_COPPER_SLAB = new Block<>(1004, 24656, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_slab"), () -> new SlabData(Block.WAXED_OXIDIZED_CUT_COPPER_SLAB, 24656), () -> Item.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+    public static final Block<SculkShriekerData> SCULK_SHRIEKER = new Block<>(1004, 25099, NamespacedKey.parse("minecraft:sculk_shrieker"), () -> new SculkShriekerData(Block.SCULK_SHRIEKER, 25099), () -> Item.SCULK_SHRIEKER);
 
-    public static final Block<SlabData> WAXED_WEATHERED_CUT_COPPER_SLAB = new Block<>(1005, 24662, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_slab"), () -> new SlabData(Block.WAXED_WEATHERED_CUT_COPPER_SLAB, 24662), () -> Item.WAXED_WEATHERED_CUT_COPPER_SLAB);
+    public static final Block<BlockData> COPPER_BLOCK = new Block<>(1005, 25107, NamespacedKey.parse("minecraft:copper_block"), () -> new BlockData(Block.COPPER_BLOCK, 25107), () -> Item.COPPER_BLOCK);
 
-    public static final Block<SlabData> WAXED_EXPOSED_CUT_COPPER_SLAB = new Block<>(1006, 24668, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_slab"), () -> new SlabData(Block.WAXED_EXPOSED_CUT_COPPER_SLAB, 24668), () -> Item.WAXED_EXPOSED_CUT_COPPER_SLAB);
+    public static final Block<BlockData> EXPOSED_COPPER = new Block<>(1006, 25108, NamespacedKey.parse("minecraft:exposed_copper"), () -> new BlockData(Block.EXPOSED_COPPER, 25108), () -> Item.EXPOSED_COPPER);
 
-    public static final Block<SlabData> WAXED_CUT_COPPER_SLAB = new Block<>(1007, 24674, NamespacedKey.parse("minecraft:waxed_cut_copper_slab"), () -> new SlabData(Block.WAXED_CUT_COPPER_SLAB, 24674), () -> Item.WAXED_CUT_COPPER_SLAB);
+    public static final Block<BlockData> WEATHERED_COPPER = new Block<>(1007, 25109, NamespacedKey.parse("minecraft:weathered_copper"), () -> new BlockData(Block.WEATHERED_COPPER, 25109), () -> Item.WEATHERED_COPPER);
 
-    public static final Block<WeatheringCopperDoorData> COPPER_DOOR = new Block<>(1008, 24680, NamespacedKey.parse("minecraft:copper_door"), () -> new WeatheringCopperDoorData(Block.COPPER_DOOR, 24680), () -> Item.COPPER_DOOR);
+    public static final Block<BlockData> OXIDIZED_COPPER = new Block<>(1008, 25110, NamespacedKey.parse("minecraft:oxidized_copper"), () -> new BlockData(Block.OXIDIZED_COPPER, 25110), () -> Item.OXIDIZED_COPPER);
 
-    public static final Block<WeatheringCopperDoorData> EXPOSED_COPPER_DOOR = new Block<>(1009, 24744, NamespacedKey.parse("minecraft:exposed_copper_door"), () -> new WeatheringCopperDoorData(Block.EXPOSED_COPPER_DOOR, 24744), () -> Item.EXPOSED_COPPER_DOOR);
+    public static final Block<BlockData> COPPER_ORE = new Block<>(1009, 25111, NamespacedKey.parse("minecraft:copper_ore"), () -> new BlockData(Block.COPPER_ORE, 25111), () -> Item.COPPER_ORE);
 
-    public static final Block<WeatheringCopperDoorData> OXIDIZED_COPPER_DOOR = new Block<>(1010, 24808, NamespacedKey.parse("minecraft:oxidized_copper_door"), () -> new WeatheringCopperDoorData(Block.OXIDIZED_COPPER_DOOR, 24808), () -> Item.OXIDIZED_COPPER_DOOR);
+    public static final Block<BlockData> DEEPSLATE_COPPER_ORE = new Block<>(1010, 25112, NamespacedKey.parse("minecraft:deepslate_copper_ore"), () -> new BlockData(Block.DEEPSLATE_COPPER_ORE, 25112), () -> Item.DEEPSLATE_COPPER_ORE);
 
-    public static final Block<WeatheringCopperDoorData> WEATHERED_COPPER_DOOR = new Block<>(1011, 24872, NamespacedKey.parse("minecraft:weathered_copper_door"), () -> new WeatheringCopperDoorData(Block.WEATHERED_COPPER_DOOR, 24872), () -> Item.WEATHERED_COPPER_DOOR);
+    public static final Block<BlockData> OXIDIZED_CUT_COPPER = new Block<>(1011, 25113, NamespacedKey.parse("minecraft:oxidized_cut_copper"), () -> new BlockData(Block.OXIDIZED_CUT_COPPER, 25113), () -> Item.OXIDIZED_CUT_COPPER);
 
-    public static final Block<DoorData> WAXED_COPPER_DOOR = new Block<>(1012, 24936, NamespacedKey.parse("minecraft:waxed_copper_door"), () -> new DoorData(Block.WAXED_COPPER_DOOR, 24936), () -> Item.WAXED_COPPER_DOOR);
+    public static final Block<BlockData> WEATHERED_CUT_COPPER = new Block<>(1012, 25114, NamespacedKey.parse("minecraft:weathered_cut_copper"), () -> new BlockData(Block.WEATHERED_CUT_COPPER, 25114), () -> Item.WEATHERED_CUT_COPPER);
 
-    public static final Block<DoorData> WAXED_EXPOSED_COPPER_DOOR = new Block<>(1013, 25000, NamespacedKey.parse("minecraft:waxed_exposed_copper_door"), () -> new DoorData(Block.WAXED_EXPOSED_COPPER_DOOR, 25000), () -> Item.WAXED_EXPOSED_COPPER_DOOR);
+    public static final Block<BlockData> EXPOSED_CUT_COPPER = new Block<>(1013, 25115, NamespacedKey.parse("minecraft:exposed_cut_copper"), () -> new BlockData(Block.EXPOSED_CUT_COPPER, 25115), () -> Item.EXPOSED_CUT_COPPER);
 
-    public static final Block<DoorData> WAXED_OXIDIZED_COPPER_DOOR = new Block<>(1014, 25064, NamespacedKey.parse("minecraft:waxed_oxidized_copper_door"), () -> new DoorData(Block.WAXED_OXIDIZED_COPPER_DOOR, 25064), () -> Item.WAXED_OXIDIZED_COPPER_DOOR);
+    public static final Block<BlockData> CUT_COPPER = new Block<>(1014, 25116, NamespacedKey.parse("minecraft:cut_copper"), () -> new BlockData(Block.CUT_COPPER, 25116), () -> Item.CUT_COPPER);
 
-    public static final Block<DoorData> WAXED_WEATHERED_COPPER_DOOR = new Block<>(1015, 25128, NamespacedKey.parse("minecraft:waxed_weathered_copper_door"), () -> new DoorData(Block.WAXED_WEATHERED_COPPER_DOOR, 25128), () -> Item.WAXED_WEATHERED_COPPER_DOOR);
+    public static final Block<BlockData> OXIDIZED_CHISELED_COPPER = new Block<>(1015, 25117, NamespacedKey.parse("minecraft:oxidized_chiseled_copper"), () -> new BlockData(Block.OXIDIZED_CHISELED_COPPER, 25117), () -> Item.OXIDIZED_CHISELED_COPPER);
 
-    public static final Block<WeatheringCopperTrapDoorData> COPPER_TRAPDOOR = new Block<>(1016, 25192, NamespacedKey.parse("minecraft:copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.COPPER_TRAPDOOR, 25192), () -> Item.COPPER_TRAPDOOR);
+    public static final Block<BlockData> WEATHERED_CHISELED_COPPER = new Block<>(1016, 25118, NamespacedKey.parse("minecraft:weathered_chiseled_copper"), () -> new BlockData(Block.WEATHERED_CHISELED_COPPER, 25118), () -> Item.WEATHERED_CHISELED_COPPER);
 
-    public static final Block<WeatheringCopperTrapDoorData> EXPOSED_COPPER_TRAPDOOR = new Block<>(1017, 25256, NamespacedKey.parse("minecraft:exposed_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.EXPOSED_COPPER_TRAPDOOR, 25256), () -> Item.EXPOSED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> EXPOSED_CHISELED_COPPER = new Block<>(1017, 25119, NamespacedKey.parse("minecraft:exposed_chiseled_copper"), () -> new BlockData(Block.EXPOSED_CHISELED_COPPER, 25119), () -> Item.EXPOSED_CHISELED_COPPER);
 
-    public static final Block<WeatheringCopperTrapDoorData> OXIDIZED_COPPER_TRAPDOOR = new Block<>(1018, 25320, NamespacedKey.parse("minecraft:oxidized_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.OXIDIZED_COPPER_TRAPDOOR, 25320), () -> Item.OXIDIZED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> CHISELED_COPPER = new Block<>(1018, 25120, NamespacedKey.parse("minecraft:chiseled_copper"), () -> new BlockData(Block.CHISELED_COPPER, 25120), () -> Item.CHISELED_COPPER);
 
-    public static final Block<WeatheringCopperTrapDoorData> WEATHERED_COPPER_TRAPDOOR = new Block<>(1019, 25384, NamespacedKey.parse("minecraft:weathered_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.WEATHERED_COPPER_TRAPDOOR, 25384), () -> Item.WEATHERED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> WAXED_OXIDIZED_CHISELED_COPPER = new Block<>(1019, 25121, NamespacedKey.parse("minecraft:waxed_oxidized_chiseled_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_CHISELED_COPPER, 25121), () -> Item.WAXED_OXIDIZED_CHISELED_COPPER);
 
-    public static final Block<TrapdoorData> WAXED_COPPER_TRAPDOOR = new Block<>(1020, 25448, NamespacedKey.parse("minecraft:waxed_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_COPPER_TRAPDOOR, 25448), () -> Item.WAXED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> WAXED_WEATHERED_CHISELED_COPPER = new Block<>(1020, 25122, NamespacedKey.parse("minecraft:waxed_weathered_chiseled_copper"), () -> new BlockData(Block.WAXED_WEATHERED_CHISELED_COPPER, 25122), () -> Item.WAXED_WEATHERED_CHISELED_COPPER);
 
-    public static final Block<TrapdoorData> WAXED_EXPOSED_COPPER_TRAPDOOR = new Block<>(1021, 25512, NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_EXPOSED_COPPER_TRAPDOOR, 25512), () -> Item.WAXED_EXPOSED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> WAXED_EXPOSED_CHISELED_COPPER = new Block<>(1021, 25123, NamespacedKey.parse("minecraft:waxed_exposed_chiseled_copper"), () -> new BlockData(Block.WAXED_EXPOSED_CHISELED_COPPER, 25123), () -> Item.WAXED_EXPOSED_CHISELED_COPPER);
 
-    public static final Block<TrapdoorData> WAXED_OXIDIZED_COPPER_TRAPDOOR = new Block<>(1022, 25576, NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_OXIDIZED_COPPER_TRAPDOOR, 25576), () -> Item.WAXED_OXIDIZED_COPPER_TRAPDOOR);
+    public static final Block<BlockData> WAXED_CHISELED_COPPER = new Block<>(1022, 25124, NamespacedKey.parse("minecraft:waxed_chiseled_copper"), () -> new BlockData(Block.WAXED_CHISELED_COPPER, 25124), () -> Item.WAXED_CHISELED_COPPER);
 
-    public static final Block<TrapdoorData> WAXED_WEATHERED_COPPER_TRAPDOOR = new Block<>(1023, 25640, NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_WEATHERED_COPPER_TRAPDOOR, 25640), () -> Item.WAXED_WEATHERED_COPPER_TRAPDOOR);
+    public static final Block<WeatheringCopperStairData> OXIDIZED_CUT_COPPER_STAIRS = new Block<>(1023, 25125, NamespacedKey.parse("minecraft:oxidized_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.OXIDIZED_CUT_COPPER_STAIRS, 25125), () -> Item.OXIDIZED_CUT_COPPER_STAIRS);
 
-    public static final Block<WeatheringCopperGrateData> COPPER_GRATE = new Block<>(1024, 25704, NamespacedKey.parse("minecraft:copper_grate"), () -> new WeatheringCopperGrateData(Block.COPPER_GRATE, 25704), () -> Item.COPPER_GRATE);
+    public static final Block<WeatheringCopperStairData> WEATHERED_CUT_COPPER_STAIRS = new Block<>(1024, 25205, NamespacedKey.parse("minecraft:weathered_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.WEATHERED_CUT_COPPER_STAIRS, 25205), () -> Item.WEATHERED_CUT_COPPER_STAIRS);
 
-    public static final Block<WeatheringCopperGrateData> EXPOSED_COPPER_GRATE = new Block<>(1025, 25706, NamespacedKey.parse("minecraft:exposed_copper_grate"), () -> new WeatheringCopperGrateData(Block.EXPOSED_COPPER_GRATE, 25706), () -> Item.EXPOSED_COPPER_GRATE);
+    public static final Block<WeatheringCopperStairData> EXPOSED_CUT_COPPER_STAIRS = new Block<>(1025, 25285, NamespacedKey.parse("minecraft:exposed_cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.EXPOSED_CUT_COPPER_STAIRS, 25285), () -> Item.EXPOSED_CUT_COPPER_STAIRS);
 
-    public static final Block<WeatheringCopperGrateData> WEATHERED_COPPER_GRATE = new Block<>(1026, 25708, NamespacedKey.parse("minecraft:weathered_copper_grate"), () -> new WeatheringCopperGrateData(Block.WEATHERED_COPPER_GRATE, 25708), () -> Item.WEATHERED_COPPER_GRATE);
+    public static final Block<WeatheringCopperStairData> CUT_COPPER_STAIRS = new Block<>(1026, 25365, NamespacedKey.parse("minecraft:cut_copper_stairs"), () -> new WeatheringCopperStairData(Block.CUT_COPPER_STAIRS, 25365), () -> Item.CUT_COPPER_STAIRS);
 
-    public static final Block<WeatheringCopperGrateData> OXIDIZED_COPPER_GRATE = new Block<>(1027, 25710, NamespacedKey.parse("minecraft:oxidized_copper_grate"), () -> new WeatheringCopperGrateData(Block.OXIDIZED_COPPER_GRATE, 25710), () -> Item.OXIDIZED_COPPER_GRATE);
+    public static final Block<WeatheringCopperSlabData> OXIDIZED_CUT_COPPER_SLAB = new Block<>(1027, 25445, NamespacedKey.parse("minecraft:oxidized_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.OXIDIZED_CUT_COPPER_SLAB, 25445), () -> Item.OXIDIZED_CUT_COPPER_SLAB);
 
-    public static final Block<WaterloggedTransparentData> WAXED_COPPER_GRATE = new Block<>(1028, 25712, NamespacedKey.parse("minecraft:waxed_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_COPPER_GRATE, 25712), () -> Item.WAXED_COPPER_GRATE);
+    public static final Block<WeatheringCopperSlabData> WEATHERED_CUT_COPPER_SLAB = new Block<>(1028, 25451, NamespacedKey.parse("minecraft:weathered_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.WEATHERED_CUT_COPPER_SLAB, 25451), () -> Item.WEATHERED_CUT_COPPER_SLAB);
 
-    public static final Block<WaterloggedTransparentData> WAXED_EXPOSED_COPPER_GRATE = new Block<>(1029, 25714, NamespacedKey.parse("minecraft:waxed_exposed_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_EXPOSED_COPPER_GRATE, 25714), () -> Item.WAXED_EXPOSED_COPPER_GRATE);
+    public static final Block<WeatheringCopperSlabData> EXPOSED_CUT_COPPER_SLAB = new Block<>(1029, 25457, NamespacedKey.parse("minecraft:exposed_cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.EXPOSED_CUT_COPPER_SLAB, 25457), () -> Item.EXPOSED_CUT_COPPER_SLAB);
 
-    public static final Block<WaterloggedTransparentData> WAXED_WEATHERED_COPPER_GRATE = new Block<>(1030, 25716, NamespacedKey.parse("minecraft:waxed_weathered_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_WEATHERED_COPPER_GRATE, 25716), () -> Item.WAXED_WEATHERED_COPPER_GRATE);
+    public static final Block<WeatheringCopperSlabData> CUT_COPPER_SLAB = new Block<>(1030, 25463, NamespacedKey.parse("minecraft:cut_copper_slab"), () -> new WeatheringCopperSlabData(Block.CUT_COPPER_SLAB, 25463), () -> Item.CUT_COPPER_SLAB);
 
-    public static final Block<WaterloggedTransparentData> WAXED_OXIDIZED_COPPER_GRATE = new Block<>(1031, 25718, NamespacedKey.parse("minecraft:waxed_oxidized_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_OXIDIZED_COPPER_GRATE, 25718), () -> Item.WAXED_OXIDIZED_COPPER_GRATE);
+    public static final Block<BlockData> WAXED_COPPER_BLOCK = new Block<>(1031, 25469, NamespacedKey.parse("minecraft:waxed_copper_block"), () -> new BlockData(Block.WAXED_COPPER_BLOCK, 25469), () -> Item.WAXED_COPPER_BLOCK);
 
-    public static final Block<WeatheringCopperBulbData> COPPER_BULB = new Block<>(1032, 25720, NamespacedKey.parse("minecraft:copper_bulb"), () -> new WeatheringCopperBulbData(Block.COPPER_BULB, 25720), () -> Item.COPPER_BULB);
+    public static final Block<BlockData> WAXED_WEATHERED_COPPER = new Block<>(1032, 25470, NamespacedKey.parse("minecraft:waxed_weathered_copper"), () -> new BlockData(Block.WAXED_WEATHERED_COPPER, 25470), () -> Item.WAXED_WEATHERED_COPPER);
 
-    public static final Block<WeatheringCopperBulbData> EXPOSED_COPPER_BULB = new Block<>(1033, 25724, NamespacedKey.parse("minecraft:exposed_copper_bulb"), () -> new WeatheringCopperBulbData(Block.EXPOSED_COPPER_BULB, 25724), () -> Item.EXPOSED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_EXPOSED_COPPER = new Block<>(1033, 25471, NamespacedKey.parse("minecraft:waxed_exposed_copper"), () -> new BlockData(Block.WAXED_EXPOSED_COPPER, 25471), () -> Item.WAXED_EXPOSED_COPPER);
 
-    public static final Block<WeatheringCopperBulbData> WEATHERED_COPPER_BULB = new Block<>(1034, 25728, NamespacedKey.parse("minecraft:weathered_copper_bulb"), () -> new WeatheringCopperBulbData(Block.WEATHERED_COPPER_BULB, 25728), () -> Item.WEATHERED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_OXIDIZED_COPPER = new Block<>(1034, 25472, NamespacedKey.parse("minecraft:waxed_oxidized_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_COPPER, 25472), () -> Item.WAXED_OXIDIZED_COPPER);
 
-    public static final Block<WeatheringCopperBulbData> OXIDIZED_COPPER_BULB = new Block<>(1035, 25732, NamespacedKey.parse("minecraft:oxidized_copper_bulb"), () -> new WeatheringCopperBulbData(Block.OXIDIZED_COPPER_BULB, 25732), () -> Item.OXIDIZED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_OXIDIZED_CUT_COPPER = new Block<>(1035, 25473, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper"), () -> new BlockData(Block.WAXED_OXIDIZED_CUT_COPPER, 25473), () -> Item.WAXED_OXIDIZED_CUT_COPPER);
 
-    public static final Block<CopperBulbBlockData> WAXED_COPPER_BULB = new Block<>(1036, 25736, NamespacedKey.parse("minecraft:waxed_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_COPPER_BULB, 25736), () -> Item.WAXED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_WEATHERED_CUT_COPPER = new Block<>(1036, 25474, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper"), () -> new BlockData(Block.WAXED_WEATHERED_CUT_COPPER, 25474), () -> Item.WAXED_WEATHERED_CUT_COPPER);
 
-    public static final Block<CopperBulbBlockData> WAXED_EXPOSED_COPPER_BULB = new Block<>(1037, 25740, NamespacedKey.parse("minecraft:waxed_exposed_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_EXPOSED_COPPER_BULB, 25740), () -> Item.WAXED_EXPOSED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_EXPOSED_CUT_COPPER = new Block<>(1037, 25475, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper"), () -> new BlockData(Block.WAXED_EXPOSED_CUT_COPPER, 25475), () -> Item.WAXED_EXPOSED_CUT_COPPER);
 
-    public static final Block<CopperBulbBlockData> WAXED_WEATHERED_COPPER_BULB = new Block<>(1038, 25744, NamespacedKey.parse("minecraft:waxed_weathered_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_WEATHERED_COPPER_BULB, 25744), () -> Item.WAXED_WEATHERED_COPPER_BULB);
+    public static final Block<BlockData> WAXED_CUT_COPPER = new Block<>(1038, 25476, NamespacedKey.parse("minecraft:waxed_cut_copper"), () -> new BlockData(Block.WAXED_CUT_COPPER, 25476), () -> Item.WAXED_CUT_COPPER);
 
-    public static final Block<CopperBulbBlockData> WAXED_OXIDIZED_COPPER_BULB = new Block<>(1039, 25748, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_OXIDIZED_COPPER_BULB, 25748), () -> Item.WAXED_OXIDIZED_COPPER_BULB);
+    public static final Block<StairData> WAXED_OXIDIZED_CUT_COPPER_STAIRS = new Block<>(1039, 25477, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_stairs"), () -> new StairData(Block.WAXED_OXIDIZED_CUT_COPPER_STAIRS, 25477), () -> Item.WAXED_OXIDIZED_CUT_COPPER_STAIRS);
 
-    public static final Block<LightningRodData> LIGHTNING_ROD = new Block<>(1040, 25752, NamespacedKey.parse("minecraft:lightning_rod"), () -> new LightningRodData(Block.LIGHTNING_ROD, 25752), () -> Item.LIGHTNING_ROD);
+    public static final Block<StairData> WAXED_WEATHERED_CUT_COPPER_STAIRS = new Block<>(1040, 25557, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_stairs"), () -> new StairData(Block.WAXED_WEATHERED_CUT_COPPER_STAIRS, 25557), () -> Item.WAXED_WEATHERED_CUT_COPPER_STAIRS);
 
-    public static final Block<PointedDripstoneData> POINTED_DRIPSTONE = new Block<>(1041, 25776, NamespacedKey.parse("minecraft:pointed_dripstone"), () -> new PointedDripstoneData(Block.POINTED_DRIPSTONE, 25776), () -> Item.POINTED_DRIPSTONE);
+    public static final Block<StairData> WAXED_EXPOSED_CUT_COPPER_STAIRS = new Block<>(1041, 25637, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_stairs"), () -> new StairData(Block.WAXED_EXPOSED_CUT_COPPER_STAIRS, 25637), () -> Item.WAXED_EXPOSED_CUT_COPPER_STAIRS);
 
-    public static final Block<BlockData> DRIPSTONE_BLOCK = new Block<>(1042, 25796, NamespacedKey.parse("minecraft:dripstone_block"), () -> new BlockData(Block.DRIPSTONE_BLOCK, 25796), () -> Item.DRIPSTONE_BLOCK);
+    public static final Block<StairData> WAXED_CUT_COPPER_STAIRS = new Block<>(1042, 25717, NamespacedKey.parse("minecraft:waxed_cut_copper_stairs"), () -> new StairData(Block.WAXED_CUT_COPPER_STAIRS, 25717), () -> Item.WAXED_CUT_COPPER_STAIRS);
 
-    public static final Block<CaveVinesData> CAVE_VINES = new Block<>(1043, 25797, NamespacedKey.parse("minecraft:cave_vines"), () -> new CaveVinesData(Block.CAVE_VINES, 25797), null);
+    public static final Block<SlabData> WAXED_OXIDIZED_CUT_COPPER_SLAB = new Block<>(1043, 25797, NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_slab"), () -> new SlabData(Block.WAXED_OXIDIZED_CUT_COPPER_SLAB, 25797), () -> Item.WAXED_OXIDIZED_CUT_COPPER_SLAB);
 
-    public static final Block<CaveVinesPlantData> CAVE_VINES_PLANT = new Block<>(1044, 25849, NamespacedKey.parse("minecraft:cave_vines_plant"), () -> new CaveVinesPlantData(Block.CAVE_VINES_PLANT, 25849), null);
+    public static final Block<SlabData> WAXED_WEATHERED_CUT_COPPER_SLAB = new Block<>(1044, 25803, NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_slab"), () -> new SlabData(Block.WAXED_WEATHERED_CUT_COPPER_SLAB, 25803), () -> Item.WAXED_WEATHERED_CUT_COPPER_SLAB);
 
-    public static final Block<BlockData> SPORE_BLOSSOM = new Block<>(1045, 25851, NamespacedKey.parse("minecraft:spore_blossom"), () -> new BlockData(Block.SPORE_BLOSSOM, 25851), () -> Item.SPORE_BLOSSOM);
+    public static final Block<SlabData> WAXED_EXPOSED_CUT_COPPER_SLAB = new Block<>(1045, 25809, NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_slab"), () -> new SlabData(Block.WAXED_EXPOSED_CUT_COPPER_SLAB, 25809), () -> Item.WAXED_EXPOSED_CUT_COPPER_SLAB);
 
-    public static final Block<BlockData> AZALEA = new Block<>(1046, 25852, NamespacedKey.parse("minecraft:azalea"), () -> new BlockData(Block.AZALEA, 25852), () -> Item.AZALEA);
+    public static final Block<SlabData> WAXED_CUT_COPPER_SLAB = new Block<>(1046, 25815, NamespacedKey.parse("minecraft:waxed_cut_copper_slab"), () -> new SlabData(Block.WAXED_CUT_COPPER_SLAB, 25815), () -> Item.WAXED_CUT_COPPER_SLAB);
 
-    public static final Block<BlockData> FLOWERING_AZALEA = new Block<>(1047, 25853, NamespacedKey.parse("minecraft:flowering_azalea"), () -> new BlockData(Block.FLOWERING_AZALEA, 25853), () -> Item.FLOWERING_AZALEA);
+    public static final Block<WeatheringCopperDoorData> COPPER_DOOR = new Block<>(1047, 25821, NamespacedKey.parse("minecraft:copper_door"), () -> new WeatheringCopperDoorData(Block.COPPER_DOOR, 25821), () -> Item.COPPER_DOOR);
 
-    public static final Block<BlockData> MOSS_CARPET = new Block<>(1048, 25854, NamespacedKey.parse("minecraft:moss_carpet"), () -> new BlockData(Block.MOSS_CARPET, 25854), () -> Item.MOSS_CARPET);
+    public static final Block<WeatheringCopperDoorData> EXPOSED_COPPER_DOOR = new Block<>(1048, 25885, NamespacedKey.parse("minecraft:exposed_copper_door"), () -> new WeatheringCopperDoorData(Block.EXPOSED_COPPER_DOOR, 25885), () -> Item.EXPOSED_COPPER_DOOR);
 
-    public static final Block<FlowerBedData> PINK_PETALS = new Block<>(1049, 25855, NamespacedKey.parse("minecraft:pink_petals"), () -> new FlowerBedData(Block.PINK_PETALS, 25855), () -> Item.PINK_PETALS);
+    public static final Block<WeatheringCopperDoorData> OXIDIZED_COPPER_DOOR = new Block<>(1049, 25949, NamespacedKey.parse("minecraft:oxidized_copper_door"), () -> new WeatheringCopperDoorData(Block.OXIDIZED_COPPER_DOOR, 25949), () -> Item.OXIDIZED_COPPER_DOOR);
 
-    public static final Block<FlowerBedData> WILDFLOWERS = new Block<>(1050, 25871, NamespacedKey.parse("minecraft:wildflowers"), () -> new FlowerBedData(Block.WILDFLOWERS, 25871), () -> Item.WILDFLOWERS);
+    public static final Block<WeatheringCopperDoorData> WEATHERED_COPPER_DOOR = new Block<>(1050, 26013, NamespacedKey.parse("minecraft:weathered_copper_door"), () -> new WeatheringCopperDoorData(Block.WEATHERED_COPPER_DOOR, 26013), () -> Item.WEATHERED_COPPER_DOOR);
 
-    public static final Block<LeafLitterData> LEAF_LITTER = new Block<>(1051, 25887, NamespacedKey.parse("minecraft:leaf_litter"), () -> new LeafLitterData(Block.LEAF_LITTER, 25887), () -> Item.LEAF_LITTER);
+    public static final Block<DoorData> WAXED_COPPER_DOOR = new Block<>(1051, 26077, NamespacedKey.parse("minecraft:waxed_copper_door"), () -> new DoorData(Block.WAXED_COPPER_DOOR, 26077), () -> Item.WAXED_COPPER_DOOR);
 
-    public static final Block<BlockData> MOSS_BLOCK = new Block<>(1052, 25903, NamespacedKey.parse("minecraft:moss_block"), () -> new BlockData(Block.MOSS_BLOCK, 25903), () -> Item.MOSS_BLOCK);
+    public static final Block<DoorData> WAXED_EXPOSED_COPPER_DOOR = new Block<>(1052, 26141, NamespacedKey.parse("minecraft:waxed_exposed_copper_door"), () -> new DoorData(Block.WAXED_EXPOSED_COPPER_DOOR, 26141), () -> Item.WAXED_EXPOSED_COPPER_DOOR);
 
-    public static final Block<BigDripleafData> BIG_DRIPLEAF = new Block<>(1053, 25904, NamespacedKey.parse("minecraft:big_dripleaf"), () -> new BigDripleafData(Block.BIG_DRIPLEAF, 25904), () -> Item.BIG_DRIPLEAF);
+    public static final Block<DoorData> WAXED_OXIDIZED_COPPER_DOOR = new Block<>(1053, 26205, NamespacedKey.parse("minecraft:waxed_oxidized_copper_door"), () -> new DoorData(Block.WAXED_OXIDIZED_COPPER_DOOR, 26205), () -> Item.WAXED_OXIDIZED_COPPER_DOOR);
 
-    public static final Block<BigDripleafStemData> BIG_DRIPLEAF_STEM = new Block<>(1054, 25936, NamespacedKey.parse("minecraft:big_dripleaf_stem"), () -> new BigDripleafStemData(Block.BIG_DRIPLEAF_STEM, 25936), null);
+    public static final Block<DoorData> WAXED_WEATHERED_COPPER_DOOR = new Block<>(1054, 26269, NamespacedKey.parse("minecraft:waxed_weathered_copper_door"), () -> new DoorData(Block.WAXED_WEATHERED_COPPER_DOOR, 26269), () -> Item.WAXED_WEATHERED_COPPER_DOOR);
 
-    public static final Block<SmallDripleafData> SMALL_DRIPLEAF = new Block<>(1055, 25944, NamespacedKey.parse("minecraft:small_dripleaf"), () -> new SmallDripleafData(Block.SMALL_DRIPLEAF, 25944), () -> Item.SMALL_DRIPLEAF);
+    public static final Block<WeatheringCopperTrapDoorData> COPPER_TRAPDOOR = new Block<>(1055, 26333, NamespacedKey.parse("minecraft:copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.COPPER_TRAPDOOR, 26333), () -> Item.COPPER_TRAPDOOR);
 
-    public static final Block<HangingRootsData> HANGING_ROOTS = new Block<>(1056, 25960, NamespacedKey.parse("minecraft:hanging_roots"), () -> new HangingRootsData(Block.HANGING_ROOTS, 25960), () -> Item.HANGING_ROOTS);
+    public static final Block<WeatheringCopperTrapDoorData> EXPOSED_COPPER_TRAPDOOR = new Block<>(1056, 26397, NamespacedKey.parse("minecraft:exposed_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.EXPOSED_COPPER_TRAPDOOR, 26397), () -> Item.EXPOSED_COPPER_TRAPDOOR);
 
-    public static final Block<BlockData> ROOTED_DIRT = new Block<>(1057, 25962, NamespacedKey.parse("minecraft:rooted_dirt"), () -> new BlockData(Block.ROOTED_DIRT, 25962), () -> Item.ROOTED_DIRT);
+    public static final Block<WeatheringCopperTrapDoorData> OXIDIZED_COPPER_TRAPDOOR = new Block<>(1057, 26461, NamespacedKey.parse("minecraft:oxidized_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.OXIDIZED_COPPER_TRAPDOOR, 26461), () -> Item.OXIDIZED_COPPER_TRAPDOOR);
 
-    public static final Block<BlockData> MUD = new Block<>(1058, 25963, NamespacedKey.parse("minecraft:mud"), () -> new BlockData(Block.MUD, 25963), () -> Item.MUD);
+    public static final Block<WeatheringCopperTrapDoorData> WEATHERED_COPPER_TRAPDOOR = new Block<>(1058, 26525, NamespacedKey.parse("minecraft:weathered_copper_trapdoor"), () -> new WeatheringCopperTrapDoorData(Block.WEATHERED_COPPER_TRAPDOOR, 26525), () -> Item.WEATHERED_COPPER_TRAPDOOR);
 
-    public static final Block<RotatedPillarData> DEEPSLATE = new Block<>(1059, 25964, NamespacedKey.parse("minecraft:deepslate"), () -> new RotatedPillarData(Block.DEEPSLATE, 25964), () -> Item.DEEPSLATE);
+    public static final Block<TrapdoorData> WAXED_COPPER_TRAPDOOR = new Block<>(1059, 26589, NamespacedKey.parse("minecraft:waxed_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_COPPER_TRAPDOOR, 26589), () -> Item.WAXED_COPPER_TRAPDOOR);
 
-    public static final Block<BlockData> COBBLED_DEEPSLATE = new Block<>(1060, 25967, NamespacedKey.parse("minecraft:cobbled_deepslate"), () -> new BlockData(Block.COBBLED_DEEPSLATE, 25967), () -> Item.COBBLED_DEEPSLATE);
+    public static final Block<TrapdoorData> WAXED_EXPOSED_COPPER_TRAPDOOR = new Block<>(1060, 26653, NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_EXPOSED_COPPER_TRAPDOOR, 26653), () -> Item.WAXED_EXPOSED_COPPER_TRAPDOOR);
 
-    public static final Block<StairData> COBBLED_DEEPSLATE_STAIRS = new Block<>(1061, 25968, NamespacedKey.parse("minecraft:cobbled_deepslate_stairs"), () -> new StairData(Block.COBBLED_DEEPSLATE_STAIRS, 25968), () -> Item.COBBLED_DEEPSLATE_STAIRS);
+    public static final Block<TrapdoorData> WAXED_OXIDIZED_COPPER_TRAPDOOR = new Block<>(1061, 26717, NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_OXIDIZED_COPPER_TRAPDOOR, 26717), () -> Item.WAXED_OXIDIZED_COPPER_TRAPDOOR);
 
-    public static final Block<SlabData> COBBLED_DEEPSLATE_SLAB = new Block<>(1062, 26048, NamespacedKey.parse("minecraft:cobbled_deepslate_slab"), () -> new SlabData(Block.COBBLED_DEEPSLATE_SLAB, 26048), () -> Item.COBBLED_DEEPSLATE_SLAB);
+    public static final Block<TrapdoorData> WAXED_WEATHERED_COPPER_TRAPDOOR = new Block<>(1062, 26781, NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"), () -> new TrapdoorData(Block.WAXED_WEATHERED_COPPER_TRAPDOOR, 26781), () -> Item.WAXED_WEATHERED_COPPER_TRAPDOOR);
 
-    public static final Block<WallData> COBBLED_DEEPSLATE_WALL = new Block<>(1063, 26054, NamespacedKey.parse("minecraft:cobbled_deepslate_wall"), () -> new WallData(Block.COBBLED_DEEPSLATE_WALL, 26054), () -> Item.COBBLED_DEEPSLATE_WALL);
+    public static final Block<WeatheringCopperGrateData> COPPER_GRATE = new Block<>(1063, 26845, NamespacedKey.parse("minecraft:copper_grate"), () -> new WeatheringCopperGrateData(Block.COPPER_GRATE, 26845), () -> Item.COPPER_GRATE);
 
-    public static final Block<BlockData> POLISHED_DEEPSLATE = new Block<>(1064, 26378, NamespacedKey.parse("minecraft:polished_deepslate"), () -> new BlockData(Block.POLISHED_DEEPSLATE, 26378), () -> Item.POLISHED_DEEPSLATE);
+    public static final Block<WeatheringCopperGrateData> EXPOSED_COPPER_GRATE = new Block<>(1064, 26847, NamespacedKey.parse("minecraft:exposed_copper_grate"), () -> new WeatheringCopperGrateData(Block.EXPOSED_COPPER_GRATE, 26847), () -> Item.EXPOSED_COPPER_GRATE);
 
-    public static final Block<StairData> POLISHED_DEEPSLATE_STAIRS = new Block<>(1065, 26379, NamespacedKey.parse("minecraft:polished_deepslate_stairs"), () -> new StairData(Block.POLISHED_DEEPSLATE_STAIRS, 26379), () -> Item.POLISHED_DEEPSLATE_STAIRS);
+    public static final Block<WeatheringCopperGrateData> WEATHERED_COPPER_GRATE = new Block<>(1065, 26849, NamespacedKey.parse("minecraft:weathered_copper_grate"), () -> new WeatheringCopperGrateData(Block.WEATHERED_COPPER_GRATE, 26849), () -> Item.WEATHERED_COPPER_GRATE);
 
-    public static final Block<SlabData> POLISHED_DEEPSLATE_SLAB = new Block<>(1066, 26459, NamespacedKey.parse("minecraft:polished_deepslate_slab"), () -> new SlabData(Block.POLISHED_DEEPSLATE_SLAB, 26459), () -> Item.POLISHED_DEEPSLATE_SLAB);
+    public static final Block<WeatheringCopperGrateData> OXIDIZED_COPPER_GRATE = new Block<>(1066, 26851, NamespacedKey.parse("minecraft:oxidized_copper_grate"), () -> new WeatheringCopperGrateData(Block.OXIDIZED_COPPER_GRATE, 26851), () -> Item.OXIDIZED_COPPER_GRATE);
 
-    public static final Block<WallData> POLISHED_DEEPSLATE_WALL = new Block<>(1067, 26465, NamespacedKey.parse("minecraft:polished_deepslate_wall"), () -> new WallData(Block.POLISHED_DEEPSLATE_WALL, 26465), () -> Item.POLISHED_DEEPSLATE_WALL);
+    public static final Block<WaterloggedTransparentData> WAXED_COPPER_GRATE = new Block<>(1067, 26853, NamespacedKey.parse("minecraft:waxed_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_COPPER_GRATE, 26853), () -> Item.WAXED_COPPER_GRATE);
 
-    public static final Block<BlockData> DEEPSLATE_TILES = new Block<>(1068, 26789, NamespacedKey.parse("minecraft:deepslate_tiles"), () -> new BlockData(Block.DEEPSLATE_TILES, 26789), () -> Item.DEEPSLATE_TILES);
+    public static final Block<WaterloggedTransparentData> WAXED_EXPOSED_COPPER_GRATE = new Block<>(1068, 26855, NamespacedKey.parse("minecraft:waxed_exposed_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_EXPOSED_COPPER_GRATE, 26855), () -> Item.WAXED_EXPOSED_COPPER_GRATE);
 
-    public static final Block<StairData> DEEPSLATE_TILE_STAIRS = new Block<>(1069, 26790, NamespacedKey.parse("minecraft:deepslate_tile_stairs"), () -> new StairData(Block.DEEPSLATE_TILE_STAIRS, 26790), () -> Item.DEEPSLATE_TILE_STAIRS);
+    public static final Block<WaterloggedTransparentData> WAXED_WEATHERED_COPPER_GRATE = new Block<>(1069, 26857, NamespacedKey.parse("minecraft:waxed_weathered_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_WEATHERED_COPPER_GRATE, 26857), () -> Item.WAXED_WEATHERED_COPPER_GRATE);
 
-    public static final Block<SlabData> DEEPSLATE_TILE_SLAB = new Block<>(1070, 26870, NamespacedKey.parse("minecraft:deepslate_tile_slab"), () -> new SlabData(Block.DEEPSLATE_TILE_SLAB, 26870), () -> Item.DEEPSLATE_TILE_SLAB);
+    public static final Block<WaterloggedTransparentData> WAXED_OXIDIZED_COPPER_GRATE = new Block<>(1070, 26859, NamespacedKey.parse("minecraft:waxed_oxidized_copper_grate"), () -> new WaterloggedTransparentData(Block.WAXED_OXIDIZED_COPPER_GRATE, 26859), () -> Item.WAXED_OXIDIZED_COPPER_GRATE);
 
-    public static final Block<WallData> DEEPSLATE_TILE_WALL = new Block<>(1071, 26876, NamespacedKey.parse("minecraft:deepslate_tile_wall"), () -> new WallData(Block.DEEPSLATE_TILE_WALL, 26876), () -> Item.DEEPSLATE_TILE_WALL);
+    public static final Block<WeatheringCopperBulbData> COPPER_BULB = new Block<>(1071, 26861, NamespacedKey.parse("minecraft:copper_bulb"), () -> new WeatheringCopperBulbData(Block.COPPER_BULB, 26861), () -> Item.COPPER_BULB);
 
-    public static final Block<BlockData> DEEPSLATE_BRICKS = new Block<>(1072, 27200, NamespacedKey.parse("minecraft:deepslate_bricks"), () -> new BlockData(Block.DEEPSLATE_BRICKS, 27200), () -> Item.DEEPSLATE_BRICKS);
+    public static final Block<WeatheringCopperBulbData> EXPOSED_COPPER_BULB = new Block<>(1072, 26865, NamespacedKey.parse("minecraft:exposed_copper_bulb"), () -> new WeatheringCopperBulbData(Block.EXPOSED_COPPER_BULB, 26865), () -> Item.EXPOSED_COPPER_BULB);
 
-    public static final Block<StairData> DEEPSLATE_BRICK_STAIRS = new Block<>(1073, 27201, NamespacedKey.parse("minecraft:deepslate_brick_stairs"), () -> new StairData(Block.DEEPSLATE_BRICK_STAIRS, 27201), () -> Item.DEEPSLATE_BRICK_STAIRS);
+    public static final Block<WeatheringCopperBulbData> WEATHERED_COPPER_BULB = new Block<>(1073, 26869, NamespacedKey.parse("minecraft:weathered_copper_bulb"), () -> new WeatheringCopperBulbData(Block.WEATHERED_COPPER_BULB, 26869), () -> Item.WEATHERED_COPPER_BULB);
 
-    public static final Block<SlabData> DEEPSLATE_BRICK_SLAB = new Block<>(1074, 27281, NamespacedKey.parse("minecraft:deepslate_brick_slab"), () -> new SlabData(Block.DEEPSLATE_BRICK_SLAB, 27281), () -> Item.DEEPSLATE_BRICK_SLAB);
+    public static final Block<WeatheringCopperBulbData> OXIDIZED_COPPER_BULB = new Block<>(1074, 26873, NamespacedKey.parse("minecraft:oxidized_copper_bulb"), () -> new WeatheringCopperBulbData(Block.OXIDIZED_COPPER_BULB, 26873), () -> Item.OXIDIZED_COPPER_BULB);
 
-    public static final Block<WallData> DEEPSLATE_BRICK_WALL = new Block<>(1075, 27287, NamespacedKey.parse("minecraft:deepslate_brick_wall"), () -> new WallData(Block.DEEPSLATE_BRICK_WALL, 27287), () -> Item.DEEPSLATE_BRICK_WALL);
+    public static final Block<CopperBulbBlockData> WAXED_COPPER_BULB = new Block<>(1075, 26877, NamespacedKey.parse("minecraft:waxed_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_COPPER_BULB, 26877), () -> Item.WAXED_COPPER_BULB);
 
-    public static final Block<BlockData> CHISELED_DEEPSLATE = new Block<>(1076, 27611, NamespacedKey.parse("minecraft:chiseled_deepslate"), () -> new BlockData(Block.CHISELED_DEEPSLATE, 27611), () -> Item.CHISELED_DEEPSLATE);
+    public static final Block<CopperBulbBlockData> WAXED_EXPOSED_COPPER_BULB = new Block<>(1076, 26881, NamespacedKey.parse("minecraft:waxed_exposed_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_EXPOSED_COPPER_BULB, 26881), () -> Item.WAXED_EXPOSED_COPPER_BULB);
 
-    public static final Block<BlockData> CRACKED_DEEPSLATE_BRICKS = new Block<>(1077, 27612, NamespacedKey.parse("minecraft:cracked_deepslate_bricks"), () -> new BlockData(Block.CRACKED_DEEPSLATE_BRICKS, 27612), () -> Item.CRACKED_DEEPSLATE_BRICKS);
+    public static final Block<CopperBulbBlockData> WAXED_WEATHERED_COPPER_BULB = new Block<>(1077, 26885, NamespacedKey.parse("minecraft:waxed_weathered_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_WEATHERED_COPPER_BULB, 26885), () -> Item.WAXED_WEATHERED_COPPER_BULB);
 
-    public static final Block<BlockData> CRACKED_DEEPSLATE_TILES = new Block<>(1078, 27613, NamespacedKey.parse("minecraft:cracked_deepslate_tiles"), () -> new BlockData(Block.CRACKED_DEEPSLATE_TILES, 27613), () -> Item.CRACKED_DEEPSLATE_TILES);
+    public static final Block<CopperBulbBlockData> WAXED_OXIDIZED_COPPER_BULB = new Block<>(1078, 26889, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bulb"), () -> new CopperBulbBlockData(Block.WAXED_OXIDIZED_COPPER_BULB, 26889), () -> Item.WAXED_OXIDIZED_COPPER_BULB);
 
-    public static final Block<InfestedRotatedPillarData> INFESTED_DEEPSLATE = new Block<>(1079, 27614, NamespacedKey.parse("minecraft:infested_deepslate"), () -> new InfestedRotatedPillarData(Block.INFESTED_DEEPSLATE, 27614), () -> Item.INFESTED_DEEPSLATE);
+    public static final Block<WeatheringCopperChestData> COPPER_CHEST = new Block<>(1079, 26893, NamespacedKey.parse("minecraft:copper_chest"), () -> new WeatheringCopperChestData(Block.COPPER_CHEST, 26893), () -> Item.COPPER_CHEST);
 
-    public static final Block<BlockData> SMOOTH_BASALT = new Block<>(1080, 27617, NamespacedKey.parse("minecraft:smooth_basalt"), () -> new BlockData(Block.SMOOTH_BASALT, 27617), () -> Item.SMOOTH_BASALT);
+    public static final Block<WeatheringCopperChestData> EXPOSED_COPPER_CHEST = new Block<>(1080, 26917, NamespacedKey.parse("minecraft:exposed_copper_chest"), () -> new WeatheringCopperChestData(Block.EXPOSED_COPPER_CHEST, 26917), () -> Item.EXPOSED_COPPER_CHEST);
 
-    public static final Block<BlockData> RAW_IRON_BLOCK = new Block<>(1081, 27618, NamespacedKey.parse("minecraft:raw_iron_block"), () -> new BlockData(Block.RAW_IRON_BLOCK, 27618), () -> Item.RAW_IRON_BLOCK);
+    public static final Block<WeatheringCopperChestData> WEATHERED_COPPER_CHEST = new Block<>(1081, 26941, NamespacedKey.parse("minecraft:weathered_copper_chest"), () -> new WeatheringCopperChestData(Block.WEATHERED_COPPER_CHEST, 26941), () -> Item.WEATHERED_COPPER_CHEST);
 
-    public static final Block<BlockData> RAW_COPPER_BLOCK = new Block<>(1082, 27619, NamespacedKey.parse("minecraft:raw_copper_block"), () -> new BlockData(Block.RAW_COPPER_BLOCK, 27619), () -> Item.RAW_COPPER_BLOCK);
+    public static final Block<WeatheringCopperChestData> OXIDIZED_COPPER_CHEST = new Block<>(1082, 26965, NamespacedKey.parse("minecraft:oxidized_copper_chest"), () -> new WeatheringCopperChestData(Block.OXIDIZED_COPPER_CHEST, 26965), () -> Item.OXIDIZED_COPPER_CHEST);
 
-    public static final Block<BlockData> RAW_GOLD_BLOCK = new Block<>(1083, 27620, NamespacedKey.parse("minecraft:raw_gold_block"), () -> new BlockData(Block.RAW_GOLD_BLOCK, 27620), () -> Item.RAW_GOLD_BLOCK);
+    public static final Block<CopperChestData> WAXED_COPPER_CHEST = new Block<>(1083, 26989, NamespacedKey.parse("minecraft:waxed_copper_chest"), () -> new CopperChestData(Block.WAXED_COPPER_CHEST, 26989), () -> Item.WAXED_COPPER_CHEST);
 
-    public static final Block<BlockData> POTTED_AZALEA_BUSH = new Block<>(1084, 27621, NamespacedKey.parse("minecraft:potted_azalea_bush"), () -> new BlockData(Block.POTTED_AZALEA_BUSH, 27621), null);
+    public static final Block<CopperChestData> WAXED_EXPOSED_COPPER_CHEST = new Block<>(1084, 27013, NamespacedKey.parse("minecraft:waxed_exposed_copper_chest"), () -> new CopperChestData(Block.WAXED_EXPOSED_COPPER_CHEST, 27013), () -> Item.WAXED_EXPOSED_COPPER_CHEST);
 
-    public static final Block<BlockData> POTTED_FLOWERING_AZALEA_BUSH = new Block<>(1085, 27622, NamespacedKey.parse("minecraft:potted_flowering_azalea_bush"), () -> new BlockData(Block.POTTED_FLOWERING_AZALEA_BUSH, 27622), null);
+    public static final Block<CopperChestData> WAXED_WEATHERED_COPPER_CHEST = new Block<>(1085, 27037, NamespacedKey.parse("minecraft:waxed_weathered_copper_chest"), () -> new CopperChestData(Block.WAXED_WEATHERED_COPPER_CHEST, 27037), () -> Item.WAXED_WEATHERED_COPPER_CHEST);
 
-    public static final Block<RotatedPillarData> OCHRE_FROGLIGHT = new Block<>(1086, 27623, NamespacedKey.parse("minecraft:ochre_froglight"), () -> new RotatedPillarData(Block.OCHRE_FROGLIGHT, 27623), () -> Item.OCHRE_FROGLIGHT);
+    public static final Block<CopperChestData> WAXED_OXIDIZED_COPPER_CHEST = new Block<>(1086, 27061, NamespacedKey.parse("minecraft:waxed_oxidized_copper_chest"), () -> new CopperChestData(Block.WAXED_OXIDIZED_COPPER_CHEST, 27061), () -> Item.WAXED_OXIDIZED_COPPER_CHEST);
 
-    public static final Block<RotatedPillarData> VERDANT_FROGLIGHT = new Block<>(1087, 27626, NamespacedKey.parse("minecraft:verdant_froglight"), () -> new RotatedPillarData(Block.VERDANT_FROGLIGHT, 27626), () -> Item.VERDANT_FROGLIGHT);
+    public static final Block<WeatheringCopperGolemStatueData> COPPER_GOLEM_STATUE = new Block<>(1087, 27085, NamespacedKey.parse("minecraft:copper_golem_statue"), () -> new WeatheringCopperGolemStatueData(Block.COPPER_GOLEM_STATUE, 27085), () -> Item.COPPER_GOLEM_STATUE);
 
-    public static final Block<RotatedPillarData> PEARLESCENT_FROGLIGHT = new Block<>(1088, 27629, NamespacedKey.parse("minecraft:pearlescent_froglight"), () -> new RotatedPillarData(Block.PEARLESCENT_FROGLIGHT, 27629), () -> Item.PEARLESCENT_FROGLIGHT);
+    public static final Block<WeatheringCopperGolemStatueData> EXPOSED_COPPER_GOLEM_STATUE = new Block<>(1088, 27117, NamespacedKey.parse("minecraft:exposed_copper_golem_statue"), () -> new WeatheringCopperGolemStatueData(Block.EXPOSED_COPPER_GOLEM_STATUE, 27117), () -> Item.EXPOSED_COPPER_GOLEM_STATUE);
 
-    public static final Block<BlockData> FROGSPAWN = new Block<>(1089, 27632, NamespacedKey.parse("minecraft:frogspawn"), () -> new BlockData(Block.FROGSPAWN, 27632), () -> Item.FROGSPAWN);
+    public static final Block<WeatheringCopperGolemStatueData> WEATHERED_COPPER_GOLEM_STATUE = new Block<>(1089, 27149, NamespacedKey.parse("minecraft:weathered_copper_golem_statue"), () -> new WeatheringCopperGolemStatueData(Block.WEATHERED_COPPER_GOLEM_STATUE, 27149), () -> Item.WEATHERED_COPPER_GOLEM_STATUE);
 
-    public static final Block<BlockData> REINFORCED_DEEPSLATE = new Block<>(1090, 27633, NamespacedKey.parse("minecraft:reinforced_deepslate"), () -> new BlockData(Block.REINFORCED_DEEPSLATE, 27633), () -> Item.REINFORCED_DEEPSLATE);
+    public static final Block<WeatheringCopperGolemStatueData> OXIDIZED_COPPER_GOLEM_STATUE = new Block<>(1090, 27181, NamespacedKey.parse("minecraft:oxidized_copper_golem_statue"), () -> new WeatheringCopperGolemStatueData(Block.OXIDIZED_COPPER_GOLEM_STATUE, 27181), () -> Item.OXIDIZED_COPPER_GOLEM_STATUE);
 
-    public static final Block<DecoratedPotData> DECORATED_POT = new Block<>(1091, 27634, NamespacedKey.parse("minecraft:decorated_pot"), () -> new DecoratedPotData(Block.DECORATED_POT, 27634), () -> Item.DECORATED_POT);
+    public static final Block<CopperGolemStatueData> WAXED_COPPER_GOLEM_STATUE = new Block<>(1091, 27213, NamespacedKey.parse("minecraft:waxed_copper_golem_statue"), () -> new CopperGolemStatueData(Block.WAXED_COPPER_GOLEM_STATUE, 27213), () -> Item.WAXED_COPPER_GOLEM_STATUE);
 
-    public static final Block<CrafterData> CRAFTER = new Block<>(1092, 27650, NamespacedKey.parse("minecraft:crafter"), () -> new CrafterData(Block.CRAFTER, 27650), () -> Item.CRAFTER);
+    public static final Block<CopperGolemStatueData> WAXED_EXPOSED_COPPER_GOLEM_STATUE = new Block<>(1092, 27245, NamespacedKey.parse("minecraft:waxed_exposed_copper_golem_statue"), () -> new CopperGolemStatueData(Block.WAXED_EXPOSED_COPPER_GOLEM_STATUE, 27245), () -> Item.WAXED_EXPOSED_COPPER_GOLEM_STATUE);
 
-    public static final Block<TrialSpawnerData> TRIAL_SPAWNER = new Block<>(1093, 27698, NamespacedKey.parse("minecraft:trial_spawner"), () -> new TrialSpawnerData(Block.TRIAL_SPAWNER, 27698), () -> Item.TRIAL_SPAWNER);
+    public static final Block<CopperGolemStatueData> WAXED_WEATHERED_COPPER_GOLEM_STATUE = new Block<>(1093, 27277, NamespacedKey.parse("minecraft:waxed_weathered_copper_golem_statue"), () -> new CopperGolemStatueData(Block.WAXED_WEATHERED_COPPER_GOLEM_STATUE, 27277), () -> Item.WAXED_WEATHERED_COPPER_GOLEM_STATUE);
 
-    public static final Block<VaultData> VAULT = new Block<>(1094, 27710, NamespacedKey.parse("minecraft:vault"), () -> new VaultData(Block.VAULT, 27710), () -> Item.VAULT);
+    public static final Block<CopperGolemStatueData> WAXED_OXIDIZED_COPPER_GOLEM_STATUE = new Block<>(1094, 27309, NamespacedKey.parse("minecraft:waxed_oxidized_copper_golem_statue"), () -> new CopperGolemStatueData(Block.WAXED_OXIDIZED_COPPER_GOLEM_STATUE, 27309), () -> Item.WAXED_OXIDIZED_COPPER_GOLEM_STATUE);
 
-    public static final Block<HeavyCoreData> HEAVY_CORE = new Block<>(1095, 27742, NamespacedKey.parse("minecraft:heavy_core"), () -> new HeavyCoreData(Block.HEAVY_CORE, 27742), () -> Item.HEAVY_CORE);
+    public static final Block<WeatheringLightningRodData> LIGHTNING_ROD = new Block<>(1095, 27341, NamespacedKey.parse("minecraft:lightning_rod"), () -> new WeatheringLightningRodData(Block.LIGHTNING_ROD, 27341), () -> Item.LIGHTNING_ROD);
 
-    public static final Block<BlockData> PALE_MOSS_BLOCK = new Block<>(1096, 27744, NamespacedKey.parse("minecraft:pale_moss_block"), () -> new BlockData(Block.PALE_MOSS_BLOCK, 27744), () -> Item.PALE_MOSS_BLOCK);
+    public static final Block<WeatheringLightningRodData> EXPOSED_LIGHTNING_ROD = new Block<>(1096, 27365, NamespacedKey.parse("minecraft:exposed_lightning_rod"), () -> new WeatheringLightningRodData(Block.EXPOSED_LIGHTNING_ROD, 27365), () -> Item.EXPOSED_LIGHTNING_ROD);
 
-    public static final Block<MossyCarpetData> PALE_MOSS_CARPET = new Block<>(1097, 27745, NamespacedKey.parse("minecraft:pale_moss_carpet"), () -> new MossyCarpetData(Block.PALE_MOSS_CARPET, 27745), () -> Item.PALE_MOSS_CARPET);
+    public static final Block<WeatheringLightningRodData> WEATHERED_LIGHTNING_ROD = new Block<>(1097, 27389, NamespacedKey.parse("minecraft:weathered_lightning_rod"), () -> new WeatheringLightningRodData(Block.WEATHERED_LIGHTNING_ROD, 27389), () -> Item.WEATHERED_LIGHTNING_ROD);
 
-    public static final Block<HangingMossData> PALE_HANGING_MOSS = new Block<>(1098, 27907, NamespacedKey.parse("minecraft:pale_hanging_moss"), () -> new HangingMossData(Block.PALE_HANGING_MOSS, 27907), () -> Item.PALE_HANGING_MOSS);
+    public static final Block<WeatheringLightningRodData> OXIDIZED_LIGHTNING_ROD = new Block<>(1098, 27413, NamespacedKey.parse("minecraft:oxidized_lightning_rod"), () -> new WeatheringLightningRodData(Block.OXIDIZED_LIGHTNING_ROD, 27413), () -> Item.OXIDIZED_LIGHTNING_ROD);
 
-    public static final Block<BlockData> OPEN_EYEBLOSSOM = new Block<>(1099, 27909, NamespacedKey.parse("minecraft:open_eyeblossom"), () -> new BlockData(Block.OPEN_EYEBLOSSOM, 27909), () -> Item.OPEN_EYEBLOSSOM);
+    public static final Block<LightningRodData> WAXED_LIGHTNING_ROD = new Block<>(1099, 27437, NamespacedKey.parse("minecraft:waxed_lightning_rod"), () -> new LightningRodData(Block.WAXED_LIGHTNING_ROD, 27437), () -> Item.WAXED_LIGHTNING_ROD);
 
-    public static final Block<BlockData> CLOSED_EYEBLOSSOM = new Block<>(1100, 27910, NamespacedKey.parse("minecraft:closed_eyeblossom"), () -> new BlockData(Block.CLOSED_EYEBLOSSOM, 27910), () -> Item.CLOSED_EYEBLOSSOM);
+    public static final Block<LightningRodData> WAXED_EXPOSED_LIGHTNING_ROD = new Block<>(1100, 27461, NamespacedKey.parse("minecraft:waxed_exposed_lightning_rod"), () -> new LightningRodData(Block.WAXED_EXPOSED_LIGHTNING_ROD, 27461), () -> Item.WAXED_EXPOSED_LIGHTNING_ROD);
 
-    public static final Block<BlockData> POTTED_OPEN_EYEBLOSSOM = new Block<>(1101, 27911, NamespacedKey.parse("minecraft:potted_open_eyeblossom"), () -> new BlockData(Block.POTTED_OPEN_EYEBLOSSOM, 27911), null);
+    public static final Block<LightningRodData> WAXED_WEATHERED_LIGHTNING_ROD = new Block<>(1101, 27485, NamespacedKey.parse("minecraft:waxed_weathered_lightning_rod"), () -> new LightningRodData(Block.WAXED_WEATHERED_LIGHTNING_ROD, 27485), () -> Item.WAXED_WEATHERED_LIGHTNING_ROD);
 
-    public static final Block<BlockData> POTTED_CLOSED_EYEBLOSSOM = new Block<>(1102, 27912, NamespacedKey.parse("minecraft:potted_closed_eyeblossom"), () -> new BlockData(Block.POTTED_CLOSED_EYEBLOSSOM, 27912), null);
+    public static final Block<LightningRodData> WAXED_OXIDIZED_LIGHTNING_ROD = new Block<>(1102, 27509, NamespacedKey.parse("minecraft:waxed_oxidized_lightning_rod"), () -> new LightningRodData(Block.WAXED_OXIDIZED_LIGHTNING_ROD, 27509), () -> Item.WAXED_OXIDIZED_LIGHTNING_ROD);
 
-    public static final Block<BlockData> FIREFLY_BUSH = new Block<>(1103, 27913, NamespacedKey.parse("minecraft:firefly_bush"), () -> new BlockData(Block.FIREFLY_BUSH, 27913), () -> Item.FIREFLY_BUSH);
+    public static final Block<PointedDripstoneData> POINTED_DRIPSTONE = new Block<>(1103, 27533, NamespacedKey.parse("minecraft:pointed_dripstone"), () -> new PointedDripstoneData(Block.POINTED_DRIPSTONE, 27533), () -> Item.POINTED_DRIPSTONE);
+
+    public static final Block<BlockData> DRIPSTONE_BLOCK = new Block<>(1104, 27553, NamespacedKey.parse("minecraft:dripstone_block"), () -> new BlockData(Block.DRIPSTONE_BLOCK, 27553), () -> Item.DRIPSTONE_BLOCK);
+
+    public static final Block<CaveVinesData> CAVE_VINES = new Block<>(1105, 27554, NamespacedKey.parse("minecraft:cave_vines"), () -> new CaveVinesData(Block.CAVE_VINES, 27554), null);
+
+    public static final Block<CaveVinesPlantData> CAVE_VINES_PLANT = new Block<>(1106, 27606, NamespacedKey.parse("minecraft:cave_vines_plant"), () -> new CaveVinesPlantData(Block.CAVE_VINES_PLANT, 27606), null);
+
+    public static final Block<BlockData> SPORE_BLOSSOM = new Block<>(1107, 27608, NamespacedKey.parse("minecraft:spore_blossom"), () -> new BlockData(Block.SPORE_BLOSSOM, 27608), () -> Item.SPORE_BLOSSOM);
+
+    public static final Block<BlockData> AZALEA = new Block<>(1108, 27609, NamespacedKey.parse("minecraft:azalea"), () -> new BlockData(Block.AZALEA, 27609), () -> Item.AZALEA);
+
+    public static final Block<BlockData> FLOWERING_AZALEA = new Block<>(1109, 27610, NamespacedKey.parse("minecraft:flowering_azalea"), () -> new BlockData(Block.FLOWERING_AZALEA, 27610), () -> Item.FLOWERING_AZALEA);
+
+    public static final Block<BlockData> MOSS_CARPET = new Block<>(1110, 27611, NamespacedKey.parse("minecraft:moss_carpet"), () -> new BlockData(Block.MOSS_CARPET, 27611), () -> Item.MOSS_CARPET);
+
+    public static final Block<FlowerBedData> PINK_PETALS = new Block<>(1111, 27612, NamespacedKey.parse("minecraft:pink_petals"), () -> new FlowerBedData(Block.PINK_PETALS, 27612), () -> Item.PINK_PETALS);
+
+    public static final Block<FlowerBedData> WILDFLOWERS = new Block<>(1112, 27628, NamespacedKey.parse("minecraft:wildflowers"), () -> new FlowerBedData(Block.WILDFLOWERS, 27628), () -> Item.WILDFLOWERS);
+
+    public static final Block<LeafLitterData> LEAF_LITTER = new Block<>(1113, 27644, NamespacedKey.parse("minecraft:leaf_litter"), () -> new LeafLitterData(Block.LEAF_LITTER, 27644), () -> Item.LEAF_LITTER);
+
+    public static final Block<BlockData> MOSS_BLOCK = new Block<>(1114, 27660, NamespacedKey.parse("minecraft:moss_block"), () -> new BlockData(Block.MOSS_BLOCK, 27660), () -> Item.MOSS_BLOCK);
+
+    public static final Block<BigDripleafData> BIG_DRIPLEAF = new Block<>(1115, 27661, NamespacedKey.parse("minecraft:big_dripleaf"), () -> new BigDripleafData(Block.BIG_DRIPLEAF, 27661), () -> Item.BIG_DRIPLEAF);
+
+    public static final Block<BigDripleafStemData> BIG_DRIPLEAF_STEM = new Block<>(1116, 27693, NamespacedKey.parse("minecraft:big_dripleaf_stem"), () -> new BigDripleafStemData(Block.BIG_DRIPLEAF_STEM, 27693), null);
+
+    public static final Block<SmallDripleafData> SMALL_DRIPLEAF = new Block<>(1117, 27701, NamespacedKey.parse("minecraft:small_dripleaf"), () -> new SmallDripleafData(Block.SMALL_DRIPLEAF, 27701), () -> Item.SMALL_DRIPLEAF);
+
+    public static final Block<HangingRootsData> HANGING_ROOTS = new Block<>(1118, 27717, NamespacedKey.parse("minecraft:hanging_roots"), () -> new HangingRootsData(Block.HANGING_ROOTS, 27717), () -> Item.HANGING_ROOTS);
+
+    public static final Block<BlockData> ROOTED_DIRT = new Block<>(1119, 27719, NamespacedKey.parse("minecraft:rooted_dirt"), () -> new BlockData(Block.ROOTED_DIRT, 27719), () -> Item.ROOTED_DIRT);
+
+    public static final Block<BlockData> MUD = new Block<>(1120, 27720, NamespacedKey.parse("minecraft:mud"), () -> new BlockData(Block.MUD, 27720), () -> Item.MUD);
+
+    public static final Block<RotatedPillarData> DEEPSLATE = new Block<>(1121, 27721, NamespacedKey.parse("minecraft:deepslate"), () -> new RotatedPillarData(Block.DEEPSLATE, 27721), () -> Item.DEEPSLATE);
+
+    public static final Block<BlockData> COBBLED_DEEPSLATE = new Block<>(1122, 27724, NamespacedKey.parse("minecraft:cobbled_deepslate"), () -> new BlockData(Block.COBBLED_DEEPSLATE, 27724), () -> Item.COBBLED_DEEPSLATE);
+
+    public static final Block<StairData> COBBLED_DEEPSLATE_STAIRS = new Block<>(1123, 27725, NamespacedKey.parse("minecraft:cobbled_deepslate_stairs"), () -> new StairData(Block.COBBLED_DEEPSLATE_STAIRS, 27725), () -> Item.COBBLED_DEEPSLATE_STAIRS);
+
+    public static final Block<SlabData> COBBLED_DEEPSLATE_SLAB = new Block<>(1124, 27805, NamespacedKey.parse("minecraft:cobbled_deepslate_slab"), () -> new SlabData(Block.COBBLED_DEEPSLATE_SLAB, 27805), () -> Item.COBBLED_DEEPSLATE_SLAB);
+
+    public static final Block<WallData> COBBLED_DEEPSLATE_WALL = new Block<>(1125, 27811, NamespacedKey.parse("minecraft:cobbled_deepslate_wall"), () -> new WallData(Block.COBBLED_DEEPSLATE_WALL, 27811), () -> Item.COBBLED_DEEPSLATE_WALL);
+
+    public static final Block<BlockData> POLISHED_DEEPSLATE = new Block<>(1126, 28135, NamespacedKey.parse("minecraft:polished_deepslate"), () -> new BlockData(Block.POLISHED_DEEPSLATE, 28135), () -> Item.POLISHED_DEEPSLATE);
+
+    public static final Block<StairData> POLISHED_DEEPSLATE_STAIRS = new Block<>(1127, 28136, NamespacedKey.parse("minecraft:polished_deepslate_stairs"), () -> new StairData(Block.POLISHED_DEEPSLATE_STAIRS, 28136), () -> Item.POLISHED_DEEPSLATE_STAIRS);
+
+    public static final Block<SlabData> POLISHED_DEEPSLATE_SLAB = new Block<>(1128, 28216, NamespacedKey.parse("minecraft:polished_deepslate_slab"), () -> new SlabData(Block.POLISHED_DEEPSLATE_SLAB, 28216), () -> Item.POLISHED_DEEPSLATE_SLAB);
+
+    public static final Block<WallData> POLISHED_DEEPSLATE_WALL = new Block<>(1129, 28222, NamespacedKey.parse("minecraft:polished_deepslate_wall"), () -> new WallData(Block.POLISHED_DEEPSLATE_WALL, 28222), () -> Item.POLISHED_DEEPSLATE_WALL);
+
+    public static final Block<BlockData> DEEPSLATE_TILES = new Block<>(1130, 28546, NamespacedKey.parse("minecraft:deepslate_tiles"), () -> new BlockData(Block.DEEPSLATE_TILES, 28546), () -> Item.DEEPSLATE_TILES);
+
+    public static final Block<StairData> DEEPSLATE_TILE_STAIRS = new Block<>(1131, 28547, NamespacedKey.parse("minecraft:deepslate_tile_stairs"), () -> new StairData(Block.DEEPSLATE_TILE_STAIRS, 28547), () -> Item.DEEPSLATE_TILE_STAIRS);
+
+    public static final Block<SlabData> DEEPSLATE_TILE_SLAB = new Block<>(1132, 28627, NamespacedKey.parse("minecraft:deepslate_tile_slab"), () -> new SlabData(Block.DEEPSLATE_TILE_SLAB, 28627), () -> Item.DEEPSLATE_TILE_SLAB);
+
+    public static final Block<WallData> DEEPSLATE_TILE_WALL = new Block<>(1133, 28633, NamespacedKey.parse("minecraft:deepslate_tile_wall"), () -> new WallData(Block.DEEPSLATE_TILE_WALL, 28633), () -> Item.DEEPSLATE_TILE_WALL);
+
+    public static final Block<BlockData> DEEPSLATE_BRICKS = new Block<>(1134, 28957, NamespacedKey.parse("minecraft:deepslate_bricks"), () -> new BlockData(Block.DEEPSLATE_BRICKS, 28957), () -> Item.DEEPSLATE_BRICKS);
+
+    public static final Block<StairData> DEEPSLATE_BRICK_STAIRS = new Block<>(1135, 28958, NamespacedKey.parse("minecraft:deepslate_brick_stairs"), () -> new StairData(Block.DEEPSLATE_BRICK_STAIRS, 28958), () -> Item.DEEPSLATE_BRICK_STAIRS);
+
+    public static final Block<SlabData> DEEPSLATE_BRICK_SLAB = new Block<>(1136, 29038, NamespacedKey.parse("minecraft:deepslate_brick_slab"), () -> new SlabData(Block.DEEPSLATE_BRICK_SLAB, 29038), () -> Item.DEEPSLATE_BRICK_SLAB);
+
+    public static final Block<WallData> DEEPSLATE_BRICK_WALL = new Block<>(1137, 29044, NamespacedKey.parse("minecraft:deepslate_brick_wall"), () -> new WallData(Block.DEEPSLATE_BRICK_WALL, 29044), () -> Item.DEEPSLATE_BRICK_WALL);
+
+    public static final Block<BlockData> CHISELED_DEEPSLATE = new Block<>(1138, 29368, NamespacedKey.parse("minecraft:chiseled_deepslate"), () -> new BlockData(Block.CHISELED_DEEPSLATE, 29368), () -> Item.CHISELED_DEEPSLATE);
+
+    public static final Block<BlockData> CRACKED_DEEPSLATE_BRICKS = new Block<>(1139, 29369, NamespacedKey.parse("minecraft:cracked_deepslate_bricks"), () -> new BlockData(Block.CRACKED_DEEPSLATE_BRICKS, 29369), () -> Item.CRACKED_DEEPSLATE_BRICKS);
+
+    public static final Block<BlockData> CRACKED_DEEPSLATE_TILES = new Block<>(1140, 29370, NamespacedKey.parse("minecraft:cracked_deepslate_tiles"), () -> new BlockData(Block.CRACKED_DEEPSLATE_TILES, 29370), () -> Item.CRACKED_DEEPSLATE_TILES);
+
+    public static final Block<InfestedRotatedPillarData> INFESTED_DEEPSLATE = new Block<>(1141, 29371, NamespacedKey.parse("minecraft:infested_deepslate"), () -> new InfestedRotatedPillarData(Block.INFESTED_DEEPSLATE, 29371), () -> Item.INFESTED_DEEPSLATE);
+
+    public static final Block<BlockData> SMOOTH_BASALT = new Block<>(1142, 29374, NamespacedKey.parse("minecraft:smooth_basalt"), () -> new BlockData(Block.SMOOTH_BASALT, 29374), () -> Item.SMOOTH_BASALT);
+
+    public static final Block<BlockData> RAW_IRON_BLOCK = new Block<>(1143, 29375, NamespacedKey.parse("minecraft:raw_iron_block"), () -> new BlockData(Block.RAW_IRON_BLOCK, 29375), () -> Item.RAW_IRON_BLOCK);
+
+    public static final Block<BlockData> RAW_COPPER_BLOCK = new Block<>(1144, 29376, NamespacedKey.parse("minecraft:raw_copper_block"), () -> new BlockData(Block.RAW_COPPER_BLOCK, 29376), () -> Item.RAW_COPPER_BLOCK);
+
+    public static final Block<BlockData> RAW_GOLD_BLOCK = new Block<>(1145, 29377, NamespacedKey.parse("minecraft:raw_gold_block"), () -> new BlockData(Block.RAW_GOLD_BLOCK, 29377), () -> Item.RAW_GOLD_BLOCK);
+
+    public static final Block<BlockData> POTTED_AZALEA_BUSH = new Block<>(1146, 29378, NamespacedKey.parse("minecraft:potted_azalea_bush"), () -> new BlockData(Block.POTTED_AZALEA_BUSH, 29378), null);
+
+    public static final Block<BlockData> POTTED_FLOWERING_AZALEA_BUSH = new Block<>(1147, 29379, NamespacedKey.parse("minecraft:potted_flowering_azalea_bush"), () -> new BlockData(Block.POTTED_FLOWERING_AZALEA_BUSH, 29379), null);
+
+    public static final Block<RotatedPillarData> OCHRE_FROGLIGHT = new Block<>(1148, 29380, NamespacedKey.parse("minecraft:ochre_froglight"), () -> new RotatedPillarData(Block.OCHRE_FROGLIGHT, 29380), () -> Item.OCHRE_FROGLIGHT);
+
+    public static final Block<RotatedPillarData> VERDANT_FROGLIGHT = new Block<>(1149, 29383, NamespacedKey.parse("minecraft:verdant_froglight"), () -> new RotatedPillarData(Block.VERDANT_FROGLIGHT, 29383), () -> Item.VERDANT_FROGLIGHT);
+
+    public static final Block<RotatedPillarData> PEARLESCENT_FROGLIGHT = new Block<>(1150, 29386, NamespacedKey.parse("minecraft:pearlescent_froglight"), () -> new RotatedPillarData(Block.PEARLESCENT_FROGLIGHT, 29386), () -> Item.PEARLESCENT_FROGLIGHT);
+
+    public static final Block<BlockData> FROGSPAWN = new Block<>(1151, 29389, NamespacedKey.parse("minecraft:frogspawn"), () -> new BlockData(Block.FROGSPAWN, 29389), () -> Item.FROGSPAWN);
+
+    public static final Block<BlockData> REINFORCED_DEEPSLATE = new Block<>(1152, 29390, NamespacedKey.parse("minecraft:reinforced_deepslate"), () -> new BlockData(Block.REINFORCED_DEEPSLATE, 29390), () -> Item.REINFORCED_DEEPSLATE);
+
+    public static final Block<DecoratedPotData> DECORATED_POT = new Block<>(1153, 29391, NamespacedKey.parse("minecraft:decorated_pot"), () -> new DecoratedPotData(Block.DECORATED_POT, 29391), () -> Item.DECORATED_POT);
+
+    public static final Block<CrafterData> CRAFTER = new Block<>(1154, 29407, NamespacedKey.parse("minecraft:crafter"), () -> new CrafterData(Block.CRAFTER, 29407), () -> Item.CRAFTER);
+
+    public static final Block<TrialSpawnerData> TRIAL_SPAWNER = new Block<>(1155, 29455, NamespacedKey.parse("minecraft:trial_spawner"), () -> new TrialSpawnerData(Block.TRIAL_SPAWNER, 29455), () -> Item.TRIAL_SPAWNER);
+
+    public static final Block<VaultData> VAULT = new Block<>(1156, 29467, NamespacedKey.parse("minecraft:vault"), () -> new VaultData(Block.VAULT, 29467), () -> Item.VAULT);
+
+    public static final Block<HeavyCoreData> HEAVY_CORE = new Block<>(1157, 29499, NamespacedKey.parse("minecraft:heavy_core"), () -> new HeavyCoreData(Block.HEAVY_CORE, 29499), () -> Item.HEAVY_CORE);
+
+    public static final Block<BlockData> PALE_MOSS_BLOCK = new Block<>(1158, 29501, NamespacedKey.parse("minecraft:pale_moss_block"), () -> new BlockData(Block.PALE_MOSS_BLOCK, 29501), () -> Item.PALE_MOSS_BLOCK);
+
+    public static final Block<MossyCarpetData> PALE_MOSS_CARPET = new Block<>(1159, 29502, NamespacedKey.parse("minecraft:pale_moss_carpet"), () -> new MossyCarpetData(Block.PALE_MOSS_CARPET, 29502), () -> Item.PALE_MOSS_CARPET);
+
+    public static final Block<HangingMossData> PALE_HANGING_MOSS = new Block<>(1160, 29664, NamespacedKey.parse("minecraft:pale_hanging_moss"), () -> new HangingMossData(Block.PALE_HANGING_MOSS, 29664), () -> Item.PALE_HANGING_MOSS);
+
+    public static final Block<BlockData> OPEN_EYEBLOSSOM = new Block<>(1161, 29666, NamespacedKey.parse("minecraft:open_eyeblossom"), () -> new BlockData(Block.OPEN_EYEBLOSSOM, 29666), () -> Item.OPEN_EYEBLOSSOM);
+
+    public static final Block<BlockData> CLOSED_EYEBLOSSOM = new Block<>(1162, 29667, NamespacedKey.parse("minecraft:closed_eyeblossom"), () -> new BlockData(Block.CLOSED_EYEBLOSSOM, 29667), () -> Item.CLOSED_EYEBLOSSOM);
+
+    public static final Block<BlockData> POTTED_OPEN_EYEBLOSSOM = new Block<>(1163, 29668, NamespacedKey.parse("minecraft:potted_open_eyeblossom"), () -> new BlockData(Block.POTTED_OPEN_EYEBLOSSOM, 29668), null);
+
+    public static final Block<BlockData> POTTED_CLOSED_EYEBLOSSOM = new Block<>(1164, 29669, NamespacedKey.parse("minecraft:potted_closed_eyeblossom"), () -> new BlockData(Block.POTTED_CLOSED_EYEBLOSSOM, 29669), null);
+
+    public static final Block<BlockData> FIREFLY_BUSH = new Block<>(1165, 29670, NamespacedKey.parse("minecraft:firefly_bush"), () -> new BlockData(Block.FIREFLY_BUSH, 29670), () -> Item.FIREFLY_BUSH);
 
     private static final Block<?>[] VALUES = {
             AIR,
@@ -2583,6 +2717,18 @@ sealed class Blocks permits Block {
             TNT,
             BOOKSHELF,
             CHISELED_BOOKSHELF,
+            ACACIA_SHELF,
+            BAMBOO_SHELF,
+            BIRCH_SHELF,
+            CHERRY_SHELF,
+            CRIMSON_SHELF,
+            DARK_OAK_SHELF,
+            JUNGLE_SHELF,
+            MANGROVE_SHELF,
+            OAK_SHELF,
+            PALE_OAK_SHELF,
+            SPRUCE_SHELF,
+            WARPED_SHELF,
             MOSSY_COBBLESTONE,
             OBSIDIAN,
             TORCH,
@@ -2683,6 +2829,8 @@ sealed class Blocks permits Block {
             POLISHED_BASALT,
             SOUL_TORCH,
             SOUL_WALL_TORCH,
+            COPPER_TORCH,
+            COPPER_WALL_TORCH,
             GLOWSTONE,
             NETHER_PORTAL,
             CARVED_PUMPKIN,
@@ -2731,7 +2879,23 @@ sealed class Blocks permits Block {
             RED_MUSHROOM_BLOCK,
             MUSHROOM_STEM,
             IRON_BARS,
-            CHAIN,
+            COPPER_BARS,
+            EXPOSED_COPPER_BARS,
+            WEATHERED_COPPER_BARS,
+            OXIDIZED_COPPER_BARS,
+            WAXED_COPPER_BARS,
+            WAXED_EXPOSED_COPPER_BARS,
+            WAXED_WEATHERED_COPPER_BARS,
+            WAXED_OXIDIZED_COPPER_BARS,
+            IRON_CHAIN,
+            COPPER_CHAIN,
+            EXPOSED_COPPER_CHAIN,
+            WEATHERED_COPPER_CHAIN,
+            OXIDIZED_COPPER_CHAIN,
+            WAXED_COPPER_CHAIN,
+            WAXED_EXPOSED_COPPER_CHAIN,
+            WAXED_WEATHERED_COPPER_CHAIN,
+            WAXED_OXIDIZED_COPPER_CHAIN,
             GLASS_PANE,
             PUMPKIN,
             MELON,
@@ -3119,6 +3283,7 @@ sealed class Blocks permits Block {
             DRIED_KELP_BLOCK,
             TURTLE_EGG,
             SNIFFER_EGG,
+            DRIED_GHAST,
             DEAD_TUBE_CORAL_BLOCK,
             DEAD_BRAIN_CORAL_BLOCK,
             DEAD_BUBBLE_CORAL_BLOCK,
@@ -3222,6 +3387,14 @@ sealed class Blocks permits Block {
             BELL,
             LANTERN,
             SOUL_LANTERN,
+            COPPER_LANTERN,
+            EXPOSED_COPPER_LANTERN,
+            WEATHERED_COPPER_LANTERN,
+            OXIDIZED_COPPER_LANTERN,
+            WAXED_COPPER_LANTERN,
+            WAXED_EXPOSED_COPPER_LANTERN,
+            WAXED_WEATHERED_COPPER_LANTERN,
+            WAXED_OXIDIZED_COPPER_LANTERN,
             CAMPFIRE,
             SOUL_CAMPFIRE,
             SWEET_BERRY_BUSH,
@@ -3444,7 +3617,30 @@ sealed class Blocks permits Block {
             WAXED_EXPOSED_COPPER_BULB,
             WAXED_WEATHERED_COPPER_BULB,
             WAXED_OXIDIZED_COPPER_BULB,
+            COPPER_CHEST,
+            EXPOSED_COPPER_CHEST,
+            WEATHERED_COPPER_CHEST,
+            OXIDIZED_COPPER_CHEST,
+            WAXED_COPPER_CHEST,
+            WAXED_EXPOSED_COPPER_CHEST,
+            WAXED_WEATHERED_COPPER_CHEST,
+            WAXED_OXIDIZED_COPPER_CHEST,
+            COPPER_GOLEM_STATUE,
+            EXPOSED_COPPER_GOLEM_STATUE,
+            WEATHERED_COPPER_GOLEM_STATUE,
+            OXIDIZED_COPPER_GOLEM_STATUE,
+            WAXED_COPPER_GOLEM_STATUE,
+            WAXED_EXPOSED_COPPER_GOLEM_STATUE,
+            WAXED_WEATHERED_COPPER_GOLEM_STATUE,
+            WAXED_OXIDIZED_COPPER_GOLEM_STATUE,
             LIGHTNING_ROD,
+            EXPOSED_LIGHTNING_ROD,
+            WEATHERED_LIGHTNING_ROD,
+            OXIDIZED_LIGHTNING_ROD,
+            WAXED_LIGHTNING_ROD,
+            WAXED_EXPOSED_LIGHTNING_ROD,
+            WAXED_WEATHERED_LIGHTNING_ROD,
+            WAXED_OXIDIZED_LIGHTNING_ROD,
             POINTED_DRIPSTONE,
             DRIPSTONE_BLOCK,
             CAVE_VINES,
@@ -3700,6 +3896,18 @@ sealed class Blocks permits Block {
             registry.register(Block.TNT.key(), Block.TNT);
             registry.register(Block.BOOKSHELF.key(), Block.BOOKSHELF);
             registry.register(Block.CHISELED_BOOKSHELF.key(), Block.CHISELED_BOOKSHELF);
+            registry.register(Block.ACACIA_SHELF.key(), Block.ACACIA_SHELF);
+            registry.register(Block.BAMBOO_SHELF.key(), Block.BAMBOO_SHELF);
+            registry.register(Block.BIRCH_SHELF.key(), Block.BIRCH_SHELF);
+            registry.register(Block.CHERRY_SHELF.key(), Block.CHERRY_SHELF);
+            registry.register(Block.CRIMSON_SHELF.key(), Block.CRIMSON_SHELF);
+            registry.register(Block.DARK_OAK_SHELF.key(), Block.DARK_OAK_SHELF);
+            registry.register(Block.JUNGLE_SHELF.key(), Block.JUNGLE_SHELF);
+            registry.register(Block.MANGROVE_SHELF.key(), Block.MANGROVE_SHELF);
+            registry.register(Block.OAK_SHELF.key(), Block.OAK_SHELF);
+            registry.register(Block.PALE_OAK_SHELF.key(), Block.PALE_OAK_SHELF);
+            registry.register(Block.SPRUCE_SHELF.key(), Block.SPRUCE_SHELF);
+            registry.register(Block.WARPED_SHELF.key(), Block.WARPED_SHELF);
             registry.register(Block.MOSSY_COBBLESTONE.key(), Block.MOSSY_COBBLESTONE);
             registry.register(Block.OBSIDIAN.key(), Block.OBSIDIAN);
             registry.register(Block.TORCH.key(), Block.TORCH);
@@ -3800,6 +4008,8 @@ sealed class Blocks permits Block {
             registry.register(Block.POLISHED_BASALT.key(), Block.POLISHED_BASALT);
             registry.register(Block.SOUL_TORCH.key(), Block.SOUL_TORCH);
             registry.register(Block.SOUL_WALL_TORCH.key(), Block.SOUL_WALL_TORCH);
+            registry.register(Block.COPPER_TORCH.key(), Block.COPPER_TORCH);
+            registry.register(Block.COPPER_WALL_TORCH.key(), Block.COPPER_WALL_TORCH);
             registry.register(Block.GLOWSTONE.key(), Block.GLOWSTONE);
             registry.register(Block.NETHER_PORTAL.key(), Block.NETHER_PORTAL);
             registry.register(Block.CARVED_PUMPKIN.key(), Block.CARVED_PUMPKIN);
@@ -3848,7 +4058,23 @@ sealed class Blocks permits Block {
             registry.register(Block.RED_MUSHROOM_BLOCK.key(), Block.RED_MUSHROOM_BLOCK);
             registry.register(Block.MUSHROOM_STEM.key(), Block.MUSHROOM_STEM);
             registry.register(Block.IRON_BARS.key(), Block.IRON_BARS);
-            registry.register(Block.CHAIN.key(), Block.CHAIN);
+            registry.register(Block.COPPER_BARS.key(), Block.COPPER_BARS);
+            registry.register(Block.EXPOSED_COPPER_BARS.key(), Block.EXPOSED_COPPER_BARS);
+            registry.register(Block.WEATHERED_COPPER_BARS.key(), Block.WEATHERED_COPPER_BARS);
+            registry.register(Block.OXIDIZED_COPPER_BARS.key(), Block.OXIDIZED_COPPER_BARS);
+            registry.register(Block.WAXED_COPPER_BARS.key(), Block.WAXED_COPPER_BARS);
+            registry.register(Block.WAXED_EXPOSED_COPPER_BARS.key(), Block.WAXED_EXPOSED_COPPER_BARS);
+            registry.register(Block.WAXED_WEATHERED_COPPER_BARS.key(), Block.WAXED_WEATHERED_COPPER_BARS);
+            registry.register(Block.WAXED_OXIDIZED_COPPER_BARS.key(), Block.WAXED_OXIDIZED_COPPER_BARS);
+            registry.register(Block.IRON_CHAIN.key(), Block.IRON_CHAIN);
+            registry.register(Block.COPPER_CHAIN.key(), Block.COPPER_CHAIN);
+            registry.register(Block.EXPOSED_COPPER_CHAIN.key(), Block.EXPOSED_COPPER_CHAIN);
+            registry.register(Block.WEATHERED_COPPER_CHAIN.key(), Block.WEATHERED_COPPER_CHAIN);
+            registry.register(Block.OXIDIZED_COPPER_CHAIN.key(), Block.OXIDIZED_COPPER_CHAIN);
+            registry.register(Block.WAXED_COPPER_CHAIN.key(), Block.WAXED_COPPER_CHAIN);
+            registry.register(Block.WAXED_EXPOSED_COPPER_CHAIN.key(), Block.WAXED_EXPOSED_COPPER_CHAIN);
+            registry.register(Block.WAXED_WEATHERED_COPPER_CHAIN.key(), Block.WAXED_WEATHERED_COPPER_CHAIN);
+            registry.register(Block.WAXED_OXIDIZED_COPPER_CHAIN.key(), Block.WAXED_OXIDIZED_COPPER_CHAIN);
             registry.register(Block.GLASS_PANE.key(), Block.GLASS_PANE);
             registry.register(Block.PUMPKIN.key(), Block.PUMPKIN);
             registry.register(Block.MELON.key(), Block.MELON);
@@ -4236,6 +4462,7 @@ sealed class Blocks permits Block {
             registry.register(Block.DRIED_KELP_BLOCK.key(), Block.DRIED_KELP_BLOCK);
             registry.register(Block.TURTLE_EGG.key(), Block.TURTLE_EGG);
             registry.register(Block.SNIFFER_EGG.key(), Block.SNIFFER_EGG);
+            registry.register(Block.DRIED_GHAST.key(), Block.DRIED_GHAST);
             registry.register(Block.DEAD_TUBE_CORAL_BLOCK.key(), Block.DEAD_TUBE_CORAL_BLOCK);
             registry.register(Block.DEAD_BRAIN_CORAL_BLOCK.key(), Block.DEAD_BRAIN_CORAL_BLOCK);
             registry.register(Block.DEAD_BUBBLE_CORAL_BLOCK.key(), Block.DEAD_BUBBLE_CORAL_BLOCK);
@@ -4339,6 +4566,14 @@ sealed class Blocks permits Block {
             registry.register(Block.BELL.key(), Block.BELL);
             registry.register(Block.LANTERN.key(), Block.LANTERN);
             registry.register(Block.SOUL_LANTERN.key(), Block.SOUL_LANTERN);
+            registry.register(Block.COPPER_LANTERN.key(), Block.COPPER_LANTERN);
+            registry.register(Block.EXPOSED_COPPER_LANTERN.key(), Block.EXPOSED_COPPER_LANTERN);
+            registry.register(Block.WEATHERED_COPPER_LANTERN.key(), Block.WEATHERED_COPPER_LANTERN);
+            registry.register(Block.OXIDIZED_COPPER_LANTERN.key(), Block.OXIDIZED_COPPER_LANTERN);
+            registry.register(Block.WAXED_COPPER_LANTERN.key(), Block.WAXED_COPPER_LANTERN);
+            registry.register(Block.WAXED_EXPOSED_COPPER_LANTERN.key(), Block.WAXED_EXPOSED_COPPER_LANTERN);
+            registry.register(Block.WAXED_WEATHERED_COPPER_LANTERN.key(), Block.WAXED_WEATHERED_COPPER_LANTERN);
+            registry.register(Block.WAXED_OXIDIZED_COPPER_LANTERN.key(), Block.WAXED_OXIDIZED_COPPER_LANTERN);
             registry.register(Block.CAMPFIRE.key(), Block.CAMPFIRE);
             registry.register(Block.SOUL_CAMPFIRE.key(), Block.SOUL_CAMPFIRE);
             registry.register(Block.SWEET_BERRY_BUSH.key(), Block.SWEET_BERRY_BUSH);
@@ -4561,7 +4796,30 @@ sealed class Blocks permits Block {
             registry.register(Block.WAXED_EXPOSED_COPPER_BULB.key(), Block.WAXED_EXPOSED_COPPER_BULB);
             registry.register(Block.WAXED_WEATHERED_COPPER_BULB.key(), Block.WAXED_WEATHERED_COPPER_BULB);
             registry.register(Block.WAXED_OXIDIZED_COPPER_BULB.key(), Block.WAXED_OXIDIZED_COPPER_BULB);
+            registry.register(Block.COPPER_CHEST.key(), Block.COPPER_CHEST);
+            registry.register(Block.EXPOSED_COPPER_CHEST.key(), Block.EXPOSED_COPPER_CHEST);
+            registry.register(Block.WEATHERED_COPPER_CHEST.key(), Block.WEATHERED_COPPER_CHEST);
+            registry.register(Block.OXIDIZED_COPPER_CHEST.key(), Block.OXIDIZED_COPPER_CHEST);
+            registry.register(Block.WAXED_COPPER_CHEST.key(), Block.WAXED_COPPER_CHEST);
+            registry.register(Block.WAXED_EXPOSED_COPPER_CHEST.key(), Block.WAXED_EXPOSED_COPPER_CHEST);
+            registry.register(Block.WAXED_WEATHERED_COPPER_CHEST.key(), Block.WAXED_WEATHERED_COPPER_CHEST);
+            registry.register(Block.WAXED_OXIDIZED_COPPER_CHEST.key(), Block.WAXED_OXIDIZED_COPPER_CHEST);
+            registry.register(Block.COPPER_GOLEM_STATUE.key(), Block.COPPER_GOLEM_STATUE);
+            registry.register(Block.EXPOSED_COPPER_GOLEM_STATUE.key(), Block.EXPOSED_COPPER_GOLEM_STATUE);
+            registry.register(Block.WEATHERED_COPPER_GOLEM_STATUE.key(), Block.WEATHERED_COPPER_GOLEM_STATUE);
+            registry.register(Block.OXIDIZED_COPPER_GOLEM_STATUE.key(), Block.OXIDIZED_COPPER_GOLEM_STATUE);
+            registry.register(Block.WAXED_COPPER_GOLEM_STATUE.key(), Block.WAXED_COPPER_GOLEM_STATUE);
+            registry.register(Block.WAXED_EXPOSED_COPPER_GOLEM_STATUE.key(), Block.WAXED_EXPOSED_COPPER_GOLEM_STATUE);
+            registry.register(Block.WAXED_WEATHERED_COPPER_GOLEM_STATUE.key(), Block.WAXED_WEATHERED_COPPER_GOLEM_STATUE);
+            registry.register(Block.WAXED_OXIDIZED_COPPER_GOLEM_STATUE.key(), Block.WAXED_OXIDIZED_COPPER_GOLEM_STATUE);
             registry.register(Block.LIGHTNING_ROD.key(), Block.LIGHTNING_ROD);
+            registry.register(Block.EXPOSED_LIGHTNING_ROD.key(), Block.EXPOSED_LIGHTNING_ROD);
+            registry.register(Block.WEATHERED_LIGHTNING_ROD.key(), Block.WEATHERED_LIGHTNING_ROD);
+            registry.register(Block.OXIDIZED_LIGHTNING_ROD.key(), Block.OXIDIZED_LIGHTNING_ROD);
+            registry.register(Block.WAXED_LIGHTNING_ROD.key(), Block.WAXED_LIGHTNING_ROD);
+            registry.register(Block.WAXED_EXPOSED_LIGHTNING_ROD.key(), Block.WAXED_EXPOSED_LIGHTNING_ROD);
+            registry.register(Block.WAXED_WEATHERED_LIGHTNING_ROD.key(), Block.WAXED_WEATHERED_LIGHTNING_ROD);
+            registry.register(Block.WAXED_OXIDIZED_LIGHTNING_ROD.key(), Block.WAXED_OXIDIZED_LIGHTNING_ROD);
             registry.register(Block.POINTED_DRIPSTONE.key(), Block.POINTED_DRIPSTONE);
             registry.register(Block.DRIPSTONE_BLOCK.key(), Block.DRIPSTONE_BLOCK);
             registry.register(Block.CAVE_VINES.key(), Block.CAVE_VINES);
@@ -4640,6 +4898,7 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("bamboo_blocks"), Tags.BAMBOO_BLOCKS);
             registry.registerTag(NamespacedKey.minecraft("bamboo_plantable_on"), Tags.BAMBOO_PLANTABLE_ON);
             registry.registerTag(NamespacedKey.minecraft("banners"), Tags.BANNERS);
+            registry.registerTag(NamespacedKey.minecraft("bars"), Tags.BARS);
             registry.registerTag(NamespacedKey.minecraft("base_stone_nether"), Tags.BASE_STONE_NETHER);
             registry.registerTag(NamespacedKey.minecraft("base_stone_overworld"), Tags.BASE_STONE_OVERWORLD);
             registry.registerTag(NamespacedKey.minecraft("bats_spawnable_on"), Tags.BATS_SPAWNABLE_ON);
@@ -4655,11 +4914,13 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("camel_sand_step_sound_blocks"), Tags.CAMEL_SAND_STEP_SOUND_BLOCKS);
             registry.registerTag(NamespacedKey.minecraft("camels_spawnable_on"), Tags.CAMELS_SPAWNABLE_ON);
             registry.registerTag(NamespacedKey.minecraft("campfires"), Tags.CAMPFIRES);
+            registry.registerTag(NamespacedKey.minecraft("can_glide_through"), Tags.CAN_GLIDE_THROUGH);
             registry.registerTag(NamespacedKey.minecraft("candle_cakes"), Tags.CANDLE_CAKES);
             registry.registerTag(NamespacedKey.minecraft("candles"), Tags.CANDLES);
             registry.registerTag(NamespacedKey.minecraft("cauldrons"), Tags.CAULDRONS);
             registry.registerTag(NamespacedKey.minecraft("cave_vines"), Tags.CAVE_VINES);
             registry.registerTag(NamespacedKey.minecraft("ceiling_hanging_signs"), Tags.CEILING_HANGING_SIGNS);
+            registry.registerTag(NamespacedKey.minecraft("chains"), Tags.CHAINS);
             registry.registerTag(NamespacedKey.minecraft("cherry_logs"), Tags.CHERRY_LOGS);
             registry.registerTag(NamespacedKey.minecraft("climbable"), Tags.CLIMBABLE);
             registry.registerTag(NamespacedKey.minecraft("coal_ores"), Tags.COAL_ORES);
@@ -4667,6 +4928,9 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("completes_find_tree_tutorial"), Tags.COMPLETES_FIND_TREE_TUTORIAL);
             registry.registerTag(NamespacedKey.minecraft("concrete_powder"), Tags.CONCRETE_POWDER);
             registry.registerTag(NamespacedKey.minecraft("convertable_to_mud"), Tags.CONVERTABLE_TO_MUD);
+            registry.registerTag(NamespacedKey.minecraft("copper"), Tags.COPPER);
+            registry.registerTag(NamespacedKey.minecraft("copper_chests"), Tags.COPPER_CHESTS);
+            registry.registerTag(NamespacedKey.minecraft("copper_golem_statues"), Tags.COPPER_GOLEM_STATUES);
             registry.registerTag(NamespacedKey.minecraft("copper_ores"), Tags.COPPER_ORES);
             registry.registerTag(NamespacedKey.minecraft("coral_blocks"), Tags.CORAL_BLOCKS);
             registry.registerTag(NamespacedKey.minecraft("coral_plants"), Tags.CORAL_PLANTS);
@@ -4704,9 +4968,11 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("goats_spawnable_on"), Tags.GOATS_SPAWNABLE_ON);
             registry.registerTag(NamespacedKey.minecraft("gold_ores"), Tags.GOLD_ORES);
             registry.registerTag(NamespacedKey.minecraft("guarded_by_piglins"), Tags.GUARDED_BY_PIGLINS);
+            registry.registerTag(NamespacedKey.minecraft("happy_ghast_avoids"), Tags.HAPPY_GHAST_AVOIDS);
             registry.registerTag(NamespacedKey.minecraft("hoglin_repellents"), Tags.HOGLIN_REPELLENTS);
             registry.registerTag(NamespacedKey.minecraft("ice"), Tags.ICE);
             registry.registerTag(NamespacedKey.minecraft("impermeable"), Tags.IMPERMEABLE);
+            registry.registerTag(NamespacedKey.minecraft("incorrect_for_copper_tool"), Tags.INCORRECT_FOR_COPPER_TOOL);
             registry.registerTag(NamespacedKey.minecraft("incorrect_for_diamond_tool"), Tags.INCORRECT_FOR_DIAMOND_TOOL);
             registry.registerTag(NamespacedKey.minecraft("incorrect_for_gold_tool"), Tags.INCORRECT_FOR_GOLD_TOOL);
             registry.registerTag(NamespacedKey.minecraft("incorrect_for_iron_tool"), Tags.INCORRECT_FOR_IRON_TOOL);
@@ -4720,9 +4986,11 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("invalid_spawn_inside"), Tags.INVALID_SPAWN_INSIDE);
             registry.registerTag(NamespacedKey.minecraft("iron_ores"), Tags.IRON_ORES);
             registry.registerTag(NamespacedKey.minecraft("jungle_logs"), Tags.JUNGLE_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("lanterns"), Tags.LANTERNS);
             registry.registerTag(NamespacedKey.minecraft("lapis_ores"), Tags.LAPIS_ORES);
             registry.registerTag(NamespacedKey.minecraft("lava_pool_stone_cannot_replace"), Tags.LAVA_POOL_STONE_CANNOT_REPLACE);
             registry.registerTag(NamespacedKey.minecraft("leaves"), Tags.LEAVES);
+            registry.registerTag(NamespacedKey.minecraft("lightning_rods"), Tags.LIGHTNING_RODS);
             registry.registerTag(NamespacedKey.minecraft("logs"), Tags.LOGS);
             registry.registerTag(NamespacedKey.minecraft("logs_that_burn"), Tags.LOGS_THAT_BURN);
             registry.registerTag(NamespacedKey.minecraft("lush_ground_replaceable"), Tags.LUSH_GROUND_REPLACEABLE);
@@ -4751,7 +5019,6 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("parrots_spawnable_on"), Tags.PARROTS_SPAWNABLE_ON);
             registry.registerTag(NamespacedKey.minecraft("piglin_repellents"), Tags.PIGLIN_REPELLENTS);
             registry.registerTag(NamespacedKey.minecraft("planks"), Tags.PLANKS);
-            registry.registerTag(NamespacedKey.minecraft("plays_ambient_desert_block_sounds"), Tags.PLAYS_AMBIENT_DESERT_BLOCK_SOUNDS);
             registry.registerTag(NamespacedKey.minecraft("polar_bears_spawnable_on_alternate"), Tags.POLAR_BEARS_SPAWNABLE_ON_ALTERNATE);
             registry.registerTag(NamespacedKey.minecraft("portals"), Tags.PORTALS);
             registry.registerTag(NamespacedKey.minecraft("pressure_plates"), Tags.PRESSURE_PLATES);
@@ -4793,6 +5060,9 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("terracotta"), Tags.TERRACOTTA);
             registry.registerTag(NamespacedKey.minecraft("trail_ruins_replaceable"), Tags.TRAIL_RUINS_REPLACEABLE);
             registry.registerTag(NamespacedKey.minecraft("trapdoors"), Tags.TRAPDOORS);
+            registry.registerTag(NamespacedKey.minecraft("triggers_ambient_desert_dry_vegetation_block_sounds"), Tags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS);
+            registry.registerTag(NamespacedKey.minecraft("triggers_ambient_desert_sand_block_sounds"), Tags.TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS);
+            registry.registerTag(NamespacedKey.minecraft("triggers_ambient_dried_ghast_block_sounds"), Tags.TRIGGERS_AMBIENT_DRIED_GHAST_BLOCK_SOUNDS);
             registry.registerTag(NamespacedKey.minecraft("underwater_bonemeals"), Tags.UNDERWATER_BONEMEALS);
             registry.registerTag(NamespacedKey.minecraft("unstable_bottom_center"), Tags.UNSTABLE_BOTTOM_CENTER);
             registry.registerTag(NamespacedKey.minecraft("valid_spawn"), Tags.VALID_SPAWN);
@@ -4811,6 +5081,7 @@ sealed class Blocks permits Block {
             registry.registerTag(NamespacedKey.minecraft("wooden_doors"), Tags.WOODEN_DOORS);
             registry.registerTag(NamespacedKey.minecraft("wooden_fences"), Tags.WOODEN_FENCES);
             registry.registerTag(NamespacedKey.minecraft("wooden_pressure_plates"), Tags.WOODEN_PRESSURE_PLATES);
+            registry.registerTag(NamespacedKey.minecraft("wooden_shelves"), Tags.WOODEN_SHELVES);
             registry.registerTag(NamespacedKey.minecraft("wooden_slabs"), Tags.WOODEN_SLABS);
             registry.registerTag(NamespacedKey.minecraft("wooden_stairs"), Tags.WOODEN_STAIRS);
             registry.registerTag(NamespacedKey.minecraft("wooden_trapdoors"), Tags.WOODEN_TRAPDOORS);
@@ -4958,6 +5229,18 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:black_wall_banner"))
                 .build();
 
+        public static final Tag<Block<?>> BARS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:iron_bars"))
+                .resource(NamespacedKey.parse("minecraft:copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_bars"))
+                .build();
+
         public static final Tag<Block<?>> BASE_STONE_NETHER = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:netherrack"))
                 .resource(NamespacedKey.parse("minecraft:basalt"))
@@ -5093,6 +5376,15 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:soul_campfire"))
                 .build();
 
+        public static final Tag<Block<?>> CAN_GLIDE_THROUGH = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:vine"))
+                .resource(NamespacedKey.parse("minecraft:twisting_vines"))
+                .resource(NamespacedKey.parse("minecraft:twisting_vines_plant"))
+                .resource(NamespacedKey.parse("minecraft:weeping_vines"))
+                .resource(NamespacedKey.parse("minecraft:weeping_vines_plant"))
+                .tag(NamespacedKey.parse("minecraft:cave_vines"))
+                .build();
+
         public static final Tag<Block<?>> CANDLE_CAKES = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:candle_cake"))
                 .resource(NamespacedKey.parse("minecraft:white_candle_cake"))
@@ -5160,6 +5452,18 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:bamboo_hanging_sign"))
                 .build();
 
+        public static final Tag<Block<?>> CHAINS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:iron_chain"))
+                .resource(NamespacedKey.parse("minecraft:copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_chain"))
+                .build();
+
         public static final Tag<Block<?>> CHERRY_LOGS = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:cherry_log"))
                 .resource(NamespacedKey.parse("minecraft:cherry_wood"))
@@ -5224,6 +5528,39 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:dirt"))
                 .resource(NamespacedKey.parse("minecraft:coarse_dirt"))
                 .resource(NamespacedKey.parse("minecraft:rooted_dirt"))
+                .build();
+
+        public static final Tag<Block<?>> COPPER = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:copper_block"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_block"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper"))
+                .build();
+
+        public static final Tag<Block<?>> COPPER_CHESTS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_chest"))
+                .build();
+
+        public static final Tag<Block<?>> COPPER_GOLEM_STATUES = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_golem_statue"))
                 .build();
 
         public static final Tag<Block<?>> COPPER_ORES = Tag.builder(RegistryKey.BLOCK)
@@ -5557,6 +5894,7 @@ sealed class Blocks permits Block {
                 .build();
 
         public static final Tag<Block<?>> GUARDED_BY_PIGLINS = Tag.builder(RegistryKey.BLOCK)
+                .tag(NamespacedKey.parse("minecraft:copper_chests"))
                 .resource(NamespacedKey.parse("minecraft:gold_block"))
                 .resource(NamespacedKey.parse("minecraft:barrel"))
                 .resource(NamespacedKey.parse("minecraft:chest"))
@@ -5566,6 +5904,15 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:raw_gold_block"))
                 .tag(NamespacedKey.parse("minecraft:shulker_boxes"))
                 .tag(NamespacedKey.parse("minecraft:gold_ores"))
+                .build();
+
+        public static final Tag<Block<?>> HAPPY_GHAST_AVOIDS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:sweet_berry_bush"))
+                .resource(NamespacedKey.parse("minecraft:cactus"))
+                .resource(NamespacedKey.parse("minecraft:wither_rose"))
+                .resource(NamespacedKey.parse("minecraft:magma_block"))
+                .resource(NamespacedKey.parse("minecraft:fire"))
+                .resource(NamespacedKey.parse("minecraft:pointed_dripstone"))
                 .build();
 
         public static final Tag<Block<?>> HOGLIN_REPELLENTS = Tag.builder(RegistryKey.BLOCK)
@@ -5601,6 +5948,12 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:red_stained_glass"))
                 .resource(NamespacedKey.parse("minecraft:black_stained_glass"))
                 .resource(NamespacedKey.parse("minecraft:tinted_glass"))
+                .resource(NamespacedKey.parse("minecraft:barrier"))
+                .build();
+
+        public static final Tag<Block<?>> INCORRECT_FOR_COPPER_TOOL = Tag.builder(RegistryKey.BLOCK)
+                .tag(NamespacedKey.parse("minecraft:needs_diamond_tool"))
+                .tag(NamespacedKey.parse("minecraft:needs_iron_tool"))
                 .build();
 
         public static final Tag<Block<?>> INCORRECT_FOR_DIAMOND_TOOL = Tag.builder(RegistryKey.BLOCK)
@@ -5672,6 +6025,19 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:stripped_jungle_wood"))
                 .build();
 
+        public static final Tag<Block<?>> LANTERNS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:lantern"))
+                .resource(NamespacedKey.parse("minecraft:soul_lantern"))
+                .resource(NamespacedKey.parse("minecraft:copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_lantern"))
+                .build();
+
         public static final Tag<Block<?>> LAPIS_ORES = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:lapis_ore"))
                 .resource(NamespacedKey.parse("minecraft:deepslate_lapis_ore"))
@@ -5695,6 +6061,17 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:flowering_azalea_leaves"))
                 .resource(NamespacedKey.parse("minecraft:mangrove_leaves"))
                 .resource(NamespacedKey.parse("minecraft:cherry_leaves"))
+                .build();
+
+        public static final Tag<Block<?>> LIGHTNING_RODS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:exposed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:weathered_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_lightning_rod"))
                 .build();
 
         public static final Tag<Block<?>> LOGS = Tag.builder(RegistryKey.BLOCK)
@@ -5818,6 +6195,7 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"))
                 .tag(NamespacedKey.parse("minecraft:bamboo_blocks"))
                 .resource(NamespacedKey.parse("minecraft:chiseled_bookshelf"))
+                .tag(NamespacedKey.parse("minecraft:wooden_shelves"))
                 .resource(NamespacedKey.parse("minecraft:creaking_heart"))
                 .build();
 
@@ -5888,8 +6266,6 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:mossy_stone_bricks"))
                 .resource(NamespacedKey.parse("minecraft:cracked_stone_bricks"))
                 .resource(NamespacedKey.parse("minecraft:chiseled_stone_bricks"))
-                .resource(NamespacedKey.parse("minecraft:iron_bars"))
-                .resource(NamespacedKey.parse("minecraft:chain"))
                 .resource(NamespacedKey.parse("minecraft:brick_stairs"))
                 .resource(NamespacedKey.parse("minecraft:stone_brick_stairs"))
                 .resource(NamespacedKey.parse("minecraft:nether_bricks"))
@@ -6059,8 +6435,6 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:grindstone"))
                 .resource(NamespacedKey.parse("minecraft:stonecutter"))
                 .resource(NamespacedKey.parse("minecraft:bell"))
-                .resource(NamespacedKey.parse("minecraft:lantern"))
-                .resource(NamespacedKey.parse("minecraft:soul_lantern"))
                 .resource(NamespacedKey.parse("minecraft:warped_nylium"))
                 .resource(NamespacedKey.parse("minecraft:crimson_nylium"))
                 .resource(NamespacedKey.parse("minecraft:netherite_block"))
@@ -6120,7 +6494,6 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:waxed_weathered_cut_copper_slab"))
                 .resource(NamespacedKey.parse("minecraft:waxed_exposed_cut_copper_slab"))
                 .resource(NamespacedKey.parse("minecraft:waxed_cut_copper_slab"))
-                .resource(NamespacedKey.parse("minecraft:lightning_rod"))
                 .resource(NamespacedKey.parse("minecraft:pointed_dripstone"))
                 .resource(NamespacedKey.parse("minecraft:dripstone_block"))
                 .resource(NamespacedKey.parse("minecraft:deepslate"))
@@ -6233,6 +6606,12 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:resin_brick_wall"))
                 .resource(NamespacedKey.parse("minecraft:resin_brick_stairs"))
                 .resource(NamespacedKey.parse("minecraft:chiseled_resin_bricks"))
+                .tag(NamespacedKey.parse("minecraft:copper_chests"))
+                .tag(NamespacedKey.parse("minecraft:copper_golem_statues"))
+                .tag(NamespacedKey.parse("minecraft:lightning_rods"))
+                .tag(NamespacedKey.parse("minecraft:lanterns"))
+                .tag(NamespacedKey.parse("minecraft:chains"))
+                .tag(NamespacedKey.parse("minecraft:bars"))
                 .build();
 
         public static final Tag<Block<?>> MINEABLE_SHOVEL = Tag.builder(RegistryKey.BLOCK)
@@ -6354,7 +6733,6 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_slab"))
                 .resource(NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper_stairs"))
                 .resource(NamespacedKey.parse("minecraft:waxed_oxidized_cut_copper"))
-                .resource(NamespacedKey.parse("minecraft:lightning_rod"))
                 .resource(NamespacedKey.parse("minecraft:crafter"))
                 .resource(NamespacedKey.parse("minecraft:chiseled_copper"))
                 .resource(NamespacedKey.parse("minecraft:exposed_chiseled_copper"))
@@ -6388,6 +6766,8 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"))
                 .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"))
                 .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"))
+                .tag(NamespacedKey.parse("minecraft:copper_chests"))
+                .tag(NamespacedKey.parse("minecraft:lightning_rods"))
                 .build();
 
         public static final Tag<Block<?>> NETHER_CARVER_REPLACEABLES = Tag.builder(RegistryKey.BLOCK)
@@ -6482,12 +6862,6 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:mangrove_planks"))
                 .resource(NamespacedKey.parse("minecraft:bamboo_planks"))
                 .resource(NamespacedKey.parse("minecraft:cherry_planks"))
-                .build();
-
-        public static final Tag<Block<?>> PLAYS_AMBIENT_DESERT_BLOCK_SOUNDS = Tag.builder(RegistryKey.BLOCK)
-                .tag(NamespacedKey.parse("minecraft:terracotta"))
-                .resource(NamespacedKey.parse("minecraft:sand"))
-                .resource(NamespacedKey.parse("minecraft:red_sand"))
                 .build();
 
         public static final Tag<Block<?>> POLAR_BEARS_SPAWNABLE_ON_ALTERNATE = Tag.builder(RegistryKey.BLOCK)
@@ -6629,7 +7003,6 @@ sealed class Blocks permits Block {
         public static final Tag<Block<?>> SAND = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:sand"))
                 .resource(NamespacedKey.parse("minecraft:red_sand"))
-                .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
                 .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
                 .build();
 
@@ -6996,6 +7369,22 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"))
                 .build();
 
+        public static final Tag<Block<?>> TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS = Tag.builder(RegistryKey.BLOCK)
+                .tag(NamespacedKey.parse("minecraft:terracotta"))
+                .resource(NamespacedKey.parse("minecraft:sand"))
+                .resource(NamespacedKey.parse("minecraft:red_sand"))
+                .build();
+
+        public static final Tag<Block<?>> TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:sand"))
+                .resource(NamespacedKey.parse("minecraft:red_sand"))
+                .build();
+
+        public static final Tag<Block<?>> TRIGGERS_AMBIENT_DRIED_GHAST_BLOCK_SOUNDS = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:soul_sand"))
+                .resource(NamespacedKey.parse("minecraft:soul_soil"))
+                .build();
+
         public static final Tag<Block<?>> UNDERWATER_BONEMEALS = Tag.builder(RegistryKey.BLOCK)
                 .resource(NamespacedKey.parse("minecraft:seagrass"))
                 .tag(NamespacedKey.parse("minecraft:corals"))
@@ -7042,6 +7431,7 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:torch"))
                 .resource(NamespacedKey.parse("minecraft:soul_torch"))
                 .resource(NamespacedKey.parse("minecraft:redstone_torch"))
+                .resource(NamespacedKey.parse("minecraft:copper_torch"))
                 .resource(NamespacedKey.parse("minecraft:tripwire"))
                 .tag(NamespacedKey.parse("minecraft:signs"))
                 .tag(NamespacedKey.parse("minecraft:banners"))
@@ -7194,6 +7584,21 @@ sealed class Blocks permits Block {
                 .resource(NamespacedKey.parse("minecraft:mangrove_pressure_plate"))
                 .resource(NamespacedKey.parse("minecraft:bamboo_pressure_plate"))
                 .resource(NamespacedKey.parse("minecraft:cherry_pressure_plate"))
+                .build();
+
+        public static final Tag<Block<?>> WOODEN_SHELVES = Tag.builder(RegistryKey.BLOCK)
+                .resource(NamespacedKey.parse("minecraft:acacia_shelf"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_shelf"))
+                .resource(NamespacedKey.parse("minecraft:birch_shelf"))
+                .resource(NamespacedKey.parse("minecraft:cherry_shelf"))
+                .resource(NamespacedKey.parse("minecraft:crimson_shelf"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:jungle_shelf"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_shelf"))
+                .resource(NamespacedKey.parse("minecraft:oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:spruce_shelf"))
+                .resource(NamespacedKey.parse("minecraft:warped_shelf"))
                 .build();
 
         public static final Tag<Block<?>> WOODEN_SLABS = Tag.builder(RegistryKey.BLOCK)

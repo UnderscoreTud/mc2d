@@ -20,6 +20,7 @@ public class Structure implements Instruction {
 
     private final ClassName source;
     private final Map<String, InstructionInfo> instructions;
+    private final Set<String> ignoredKeys;
     private final @Nullable CodeBlock initializer;
     private final Type type;
     private final boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
@@ -27,6 +28,7 @@ public class Structure implements Instruction {
     private Structure(Builder builder) {
         this.source = builder.source;
         this.instructions = builder.instructions;
+        this.ignoredKeys = builder.ignoredKeys;
         this.initializer = builder.initializer;
         this.type = builder.type;
         this.trimmed = builder.trimmed;
@@ -42,6 +44,7 @@ public class Structure implements Instruction {
         Set<String> unhandled = node.propertyStream()
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toCollection(LinkedHashSet::new));
+        unhandled.removeAll(ignoredKeys);
 
         if (!trimmed)
             type.begin(out, source, initializer);
@@ -116,6 +119,7 @@ public class Structure implements Instruction {
 
         private final ClassName source;
         private final Map<String, InstructionInfo> instructions = new LinkedHashMap<>();
+        private final Set<String> ignoredKeys = new HashSet<>();
         private CodeBlock initializer;
         private Type type = Type.BUILDER;
         private boolean trimmed, allowMissingKeys, ignoreUnknownKeys;
@@ -161,6 +165,12 @@ public class Structure implements Instruction {
             Preconditions.checkNotNull(key, "key");
             Preconditions.checkNotNull(instruction, "instruction");
             instructions.put(key, new InstructionInfo(instruction, Function.identity(), true));
+            return this;
+        }
+
+        public Builder ignore(String key) {
+            Preconditions.checkNotNull(key, "key");
+            ignoredKeys.add(key);
             return this;
         }
 

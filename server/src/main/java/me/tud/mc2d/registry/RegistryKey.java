@@ -45,6 +45,7 @@ public class RegistryKey<T, R extends Registry<T>> {
     public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> PIG_VARIANT = create("pig_variant");
     public static final RegistryKey<WolfSoundVariant, DataDrivenRegistry<WolfSoundVariant>> WOLF_SOUND_VARIANT = create("wolf_sound_variant");
     public static final RegistryKey<WolfVariant, DataDrivenRegistry<WolfVariant>> WOLF_VARIANT = create("wolf_variant");
+    public static final RegistryKey<MobVariant, DataDrivenRegistry<MobVariant>> ZOMBIE_NAUTILUS_VARIANT = create("zombie_nautilus_variant");
 
     private final NamespacedKey key;
 

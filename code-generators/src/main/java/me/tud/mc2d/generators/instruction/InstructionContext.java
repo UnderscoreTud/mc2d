@@ -1,6 +1,7 @@
 package me.tud.mc2d.generators.instruction;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeType;
 import me.tud.mc2d.generators.instruction.exception.InstructionException;
 
 import java.util.ArrayDeque;
@@ -66,6 +67,12 @@ public final class InstructionContext {
 
     public InstructionException expected(String expected, String actual) {
         return new InstructionException(pointer(), contextString(), "Expected " + expected + ", got " + actual);
+    }
+
+    public JsonNode expect(JsonNode node, JsonNodeType type) {
+        if (node.getNodeType() != type)
+            throw expected(type.name(), node);
+        return node;
     }
 
     private static String escape(String s) {

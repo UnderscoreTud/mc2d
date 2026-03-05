@@ -1,10 +1,12 @@
 package me.tud.mc2d.generators.instruction;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeType;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.palantir.javapoet.TypeName;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.util.StringUtils;
+import org.machinemc.nbt.NBT;
 import org.machinemc.scriptive.style.ChatColor;
 import org.machinemc.scriptive.style.HexColor;
 
@@ -36,10 +38,6 @@ public final class Instructions {
     };
 
     public static final Instruction INT_PROVIDER = IntProviderInstructions.INT_PROVIDER;
-
-    public static final Instruction
-            COMPONENT = ComponentInstructions.COMPONENT, 
-            TEXT_FORMAT = ComponentInstructions.TEXT_FORMAT;
 
     public static Instruction text(String format, Object... args) {
         return (_, _, out) -> out.add(format, args);
@@ -109,10 +107,14 @@ public final class Instructions {
 
     public static Instruction mapOf(Instruction keyInstruction, Instruction valueInstruction) {
         return (ctx, node, out) -> {
-            if (!node.isObject())
-                throw ctx.expected("an object", node);
+            ctx.expect(node, JsonNodeType.OBJECT);
 
-            out.add("$T.of(\n", Map.class).indent().indent();
+            boolean ofEntries = node.size() > 10;
+            Instruction key = ofEntries ? text("$T.entry(", Map.class).append(keyInstruction) : keyInstruction;
+            Instruction value = ofEntries ? valueInstruction.append(")") : valueInstruction;
+            String method = ofEntries ? "ofEntries" : "of";
+
+            out.add("$T.$N(\n", Map.class, method).indent().indent();
             int i = 0;
             for (Map.Entry<String, JsonNode> entry : node.properties()) {
                 if (i != 0)
@@ -120,9 +122,9 @@ public final class Instructions {
                 try {
                     ctx.pushCtx("map");
                     ctx.pushKey(entry.getKey());
-                    keyInstruction.apply(ctx, new TextNode(entry.getKey()), out);
+                    key.apply(ctx, new TextNode(entry.getKey()), out);
                     out.add(", ");
-                    valueInstruction.apply(ctx, entry.getValue(), out);
+                    value.apply(ctx, entry.getValue(), out);
                 } finally {
                     ctx.popCtx();
                     ctx.pop();

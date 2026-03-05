@@ -26,6 +26,9 @@ sealed class ArmorTrimMaterials permits ArmorTrimMaterial {
 
     public static final ArmorTrimMaterial COPPER = ArmorTrimMaterial.builder()
             .assetName("copper")
+            .overrideArmorAssets(Map.of(
+                    NamespacedKey.parse("minecraft:copper"), "copper_darker"
+            ))
             .description(TranslationComponent.of("trim_material.minecraft.copper").modify()
                     .color(new HexColor("#B4684D"))
                     .finish())

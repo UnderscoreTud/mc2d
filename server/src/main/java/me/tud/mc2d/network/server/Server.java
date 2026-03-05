@@ -48,8 +48,8 @@ import java.util.List;
 
 public class Server {
 
-    public static final String VERSION_NAME = "1.21.5";
-    public static final int PROTOCOL_VERSION = 770;
+    public static final String VERSION_NAME = "1.21.11";
+    public static final int PROTOCOL_VERSION = 774;
     public static final DataPack CORE_PACK = new DataPack(NamespacedKey.minecraft("core"), VERSION_NAME);
 
     public static final Duration READ_IDLE_TIMEOUT = Duration.of(30, ChronoUnit.SECONDS);

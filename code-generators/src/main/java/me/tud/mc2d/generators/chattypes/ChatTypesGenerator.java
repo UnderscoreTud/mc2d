@@ -4,6 +4,7 @@ import me.tud.mc2d.generators.DataDrivenRegistryGenerator;
 import me.tud.mc2d.generators.instruction.Structure;
 import me.tud.mc2d.generators.util.Imports;
 
+import static me.tud.mc2d.generators.instruction.ComponentInstructions.TEXT_FORMAT;
 import static me.tud.mc2d.generators.instruction.Instructions.*;
 
 public class ChatTypesGenerator extends DataDrivenRegistryGenerator {

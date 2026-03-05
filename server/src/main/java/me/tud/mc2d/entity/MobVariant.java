@@ -29,6 +29,10 @@ public class MobVariant implements NBTSerializable {
             .assetID(NamespacedKey.minecraft("entity/pig/temperate_pig"))
             .build();
 
+    public static final MobVariant ZOMBIE_NAUTILUS_TEMPERATE = MobVariant.builder()
+            .assetID(NamespacedKey.minecraft("entity/nautilus/zombie_nautilus"))
+            .build();
+
     private final NamespacedKey assetID;
 
     @Override

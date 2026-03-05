@@ -626,2187 +626,2405 @@ sealed class Items permits Item {
 
     public static final Item BRICKS = new Item(304, NamespacedKey.parse("minecraft:bricks"), () -> Block.BRICKS);
 
-    public static final Item BOOKSHELF = new Item(305, NamespacedKey.parse("minecraft:bookshelf"), () -> Block.BOOKSHELF);
+    public static final Item ACACIA_SHELF = new Item(305, NamespacedKey.parse("minecraft:acacia_shelf"), () -> Block.ACACIA_SHELF);
 
-    public static final Item CHISELED_BOOKSHELF = new Item(306, NamespacedKey.parse("minecraft:chiseled_bookshelf"), () -> Block.CHISELED_BOOKSHELF);
+    public static final Item BAMBOO_SHELF = new Item(306, NamespacedKey.parse("minecraft:bamboo_shelf"), () -> Block.BAMBOO_SHELF);
 
-    public static final Item DECORATED_POT = new Item(307, NamespacedKey.parse("minecraft:decorated_pot"), () -> Block.DECORATED_POT);
+    public static final Item BIRCH_SHELF = new Item(307, NamespacedKey.parse("minecraft:birch_shelf"), () -> Block.BIRCH_SHELF);
 
-    public static final Item MOSSY_COBBLESTONE = new Item(308, NamespacedKey.parse("minecraft:mossy_cobblestone"), () -> Block.MOSSY_COBBLESTONE);
+    public static final Item CHERRY_SHELF = new Item(308, NamespacedKey.parse("minecraft:cherry_shelf"), () -> Block.CHERRY_SHELF);
 
-    public static final Item OBSIDIAN = new Item(309, NamespacedKey.parse("minecraft:obsidian"), () -> Block.OBSIDIAN);
+    public static final Item CRIMSON_SHELF = new Item(309, NamespacedKey.parse("minecraft:crimson_shelf"), () -> Block.CRIMSON_SHELF);
 
-    public static final Item TORCH = new Item(310, NamespacedKey.parse("minecraft:torch"), () -> Block.TORCH);
+    public static final Item DARK_OAK_SHELF = new Item(310, NamespacedKey.parse("minecraft:dark_oak_shelf"), () -> Block.DARK_OAK_SHELF);
 
-    public static final Item END_ROD = new Item(311, NamespacedKey.parse("minecraft:end_rod"), () -> Block.END_ROD);
+    public static final Item JUNGLE_SHELF = new Item(311, NamespacedKey.parse("minecraft:jungle_shelf"), () -> Block.JUNGLE_SHELF);
 
-    public static final Item CHORUS_PLANT = new Item(312, NamespacedKey.parse("minecraft:chorus_plant"), () -> Block.CHORUS_PLANT);
+    public static final Item MANGROVE_SHELF = new Item(312, NamespacedKey.parse("minecraft:mangrove_shelf"), () -> Block.MANGROVE_SHELF);
 
-    public static final Item CHORUS_FLOWER = new Item(313, NamespacedKey.parse("minecraft:chorus_flower"), () -> Block.CHORUS_FLOWER);
+    public static final Item OAK_SHELF = new Item(313, NamespacedKey.parse("minecraft:oak_shelf"), () -> Block.OAK_SHELF);
 
-    public static final Item PURPUR_BLOCK = new Item(314, NamespacedKey.parse("minecraft:purpur_block"), () -> Block.PURPUR_BLOCK);
+    public static final Item PALE_OAK_SHELF = new Item(314, NamespacedKey.parse("minecraft:pale_oak_shelf"), () -> Block.PALE_OAK_SHELF);
 
-    public static final Item PURPUR_PILLAR = new Item(315, NamespacedKey.parse("minecraft:purpur_pillar"), () -> Block.PURPUR_PILLAR);
+    public static final Item SPRUCE_SHELF = new Item(315, NamespacedKey.parse("minecraft:spruce_shelf"), () -> Block.SPRUCE_SHELF);
 
-    public static final Item PURPUR_STAIRS = new Item(316, NamespacedKey.parse("minecraft:purpur_stairs"), () -> Block.PURPUR_STAIRS);
+    public static final Item WARPED_SHELF = new Item(316, NamespacedKey.parse("minecraft:warped_shelf"), () -> Block.WARPED_SHELF);
 
-    public static final Item SPAWNER = new Item(317, NamespacedKey.parse("minecraft:spawner"), () -> Block.SPAWNER);
+    public static final Item BOOKSHELF = new Item(317, NamespacedKey.parse("minecraft:bookshelf"), () -> Block.BOOKSHELF);
 
-    public static final Item CREAKING_HEART = new Item(318, NamespacedKey.parse("minecraft:creaking_heart"), () -> Block.CREAKING_HEART);
+    public static final Item CHISELED_BOOKSHELF = new Item(318, NamespacedKey.parse("minecraft:chiseled_bookshelf"), () -> Block.CHISELED_BOOKSHELF);
 
-    public static final Item CHEST = new Item(319, NamespacedKey.parse("minecraft:chest"), () -> Block.CHEST);
+    public static final Item DECORATED_POT = new Item(319, NamespacedKey.parse("minecraft:decorated_pot"), () -> Block.DECORATED_POT);
 
-    public static final Item CRAFTING_TABLE = new Item(320, NamespacedKey.parse("minecraft:crafting_table"), () -> Block.CRAFTING_TABLE);
+    public static final Item MOSSY_COBBLESTONE = new Item(320, NamespacedKey.parse("minecraft:mossy_cobblestone"), () -> Block.MOSSY_COBBLESTONE);
 
-    public static final Item FARMLAND = new Item(321, NamespacedKey.parse("minecraft:farmland"), () -> Block.FARMLAND);
+    public static final Item OBSIDIAN = new Item(321, NamespacedKey.parse("minecraft:obsidian"), () -> Block.OBSIDIAN);
 
-    public static final Item FURNACE = new Item(322, NamespacedKey.parse("minecraft:furnace"), () -> Block.FURNACE);
+    public static final Item TORCH = new Item(322, NamespacedKey.parse("minecraft:torch"), () -> Block.TORCH);
 
-    public static final Item LADDER = new Item(323, NamespacedKey.parse("minecraft:ladder"), () -> Block.LADDER);
+    public static final Item END_ROD = new Item(323, NamespacedKey.parse("minecraft:end_rod"), () -> Block.END_ROD);
 
-    public static final Item COBBLESTONE_STAIRS = new Item(324, NamespacedKey.parse("minecraft:cobblestone_stairs"), () -> Block.COBBLESTONE_STAIRS);
+    public static final Item CHORUS_PLANT = new Item(324, NamespacedKey.parse("minecraft:chorus_plant"), () -> Block.CHORUS_PLANT);
 
-    public static final Item SNOW = new Item(325, NamespacedKey.parse("minecraft:snow"), () -> Block.SNOW);
+    public static final Item CHORUS_FLOWER = new Item(325, NamespacedKey.parse("minecraft:chorus_flower"), () -> Block.CHORUS_FLOWER);
 
-    public static final Item ICE = new Item(326, NamespacedKey.parse("minecraft:ice"), () -> Block.ICE);
+    public static final Item PURPUR_BLOCK = new Item(326, NamespacedKey.parse("minecraft:purpur_block"), () -> Block.PURPUR_BLOCK);
 
-    public static final Item SNOW_BLOCK = new Item(327, NamespacedKey.parse("minecraft:snow_block"), () -> Block.SNOW_BLOCK);
+    public static final Item PURPUR_PILLAR = new Item(327, NamespacedKey.parse("minecraft:purpur_pillar"), () -> Block.PURPUR_PILLAR);
 
-    public static final Item CACTUS = new Item(328, NamespacedKey.parse("minecraft:cactus"), () -> Block.CACTUS);
+    public static final Item PURPUR_STAIRS = new Item(328, NamespacedKey.parse("minecraft:purpur_stairs"), () -> Block.PURPUR_STAIRS);
 
-    public static final Item CACTUS_FLOWER = new Item(329, NamespacedKey.parse("minecraft:cactus_flower"), () -> Block.CACTUS_FLOWER);
+    public static final Item SPAWNER = new Item(329, NamespacedKey.parse("minecraft:spawner"), () -> Block.SPAWNER);
 
-    public static final Item CLAY = new Item(330, NamespacedKey.parse("minecraft:clay"), () -> Block.CLAY);
+    public static final Item CREAKING_HEART = new Item(330, NamespacedKey.parse("minecraft:creaking_heart"), () -> Block.CREAKING_HEART);
 
-    public static final Item JUKEBOX = new Item(331, NamespacedKey.parse("minecraft:jukebox"), () -> Block.JUKEBOX);
+    public static final Item CHEST = new Item(331, NamespacedKey.parse("minecraft:chest"), () -> Block.CHEST);
 
-    public static final Item OAK_FENCE = new Item(332, NamespacedKey.parse("minecraft:oak_fence"), () -> Block.OAK_FENCE);
+    public static final Item CRAFTING_TABLE = new Item(332, NamespacedKey.parse("minecraft:crafting_table"), () -> Block.CRAFTING_TABLE);
 
-    public static final Item SPRUCE_FENCE = new Item(333, NamespacedKey.parse("minecraft:spruce_fence"), () -> Block.SPRUCE_FENCE);
+    public static final Item FARMLAND = new Item(333, NamespacedKey.parse("minecraft:farmland"), () -> Block.FARMLAND);
 
-    public static final Item BIRCH_FENCE = new Item(334, NamespacedKey.parse("minecraft:birch_fence"), () -> Block.BIRCH_FENCE);
+    public static final Item FURNACE = new Item(334, NamespacedKey.parse("minecraft:furnace"), () -> Block.FURNACE);
 
-    public static final Item JUNGLE_FENCE = new Item(335, NamespacedKey.parse("minecraft:jungle_fence"), () -> Block.JUNGLE_FENCE);
+    public static final Item LADDER = new Item(335, NamespacedKey.parse("minecraft:ladder"), () -> Block.LADDER);
 
-    public static final Item ACACIA_FENCE = new Item(336, NamespacedKey.parse("minecraft:acacia_fence"), () -> Block.ACACIA_FENCE);
+    public static final Item COBBLESTONE_STAIRS = new Item(336, NamespacedKey.parse("minecraft:cobblestone_stairs"), () -> Block.COBBLESTONE_STAIRS);
 
-    public static final Item CHERRY_FENCE = new Item(337, NamespacedKey.parse("minecraft:cherry_fence"), () -> Block.CHERRY_FENCE);
+    public static final Item SNOW = new Item(337, NamespacedKey.parse("minecraft:snow"), () -> Block.SNOW);
 
-    public static final Item DARK_OAK_FENCE = new Item(338, NamespacedKey.parse("minecraft:dark_oak_fence"), () -> Block.DARK_OAK_FENCE);
+    public static final Item ICE = new Item(338, NamespacedKey.parse("minecraft:ice"), () -> Block.ICE);
 
-    public static final Item PALE_OAK_FENCE = new Item(339, NamespacedKey.parse("minecraft:pale_oak_fence"), () -> Block.PALE_OAK_FENCE);
+    public static final Item SNOW_BLOCK = new Item(339, NamespacedKey.parse("minecraft:snow_block"), () -> Block.SNOW_BLOCK);
 
-    public static final Item MANGROVE_FENCE = new Item(340, NamespacedKey.parse("minecraft:mangrove_fence"), () -> Block.MANGROVE_FENCE);
+    public static final Item CACTUS = new Item(340, NamespacedKey.parse("minecraft:cactus"), () -> Block.CACTUS);
 
-    public static final Item BAMBOO_FENCE = new Item(341, NamespacedKey.parse("minecraft:bamboo_fence"), () -> Block.BAMBOO_FENCE);
+    public static final Item CACTUS_FLOWER = new Item(341, NamespacedKey.parse("minecraft:cactus_flower"), () -> Block.CACTUS_FLOWER);
 
-    public static final Item CRIMSON_FENCE = new Item(342, NamespacedKey.parse("minecraft:crimson_fence"), () -> Block.CRIMSON_FENCE);
+    public static final Item CLAY = new Item(342, NamespacedKey.parse("minecraft:clay"), () -> Block.CLAY);
 
-    public static final Item WARPED_FENCE = new Item(343, NamespacedKey.parse("minecraft:warped_fence"), () -> Block.WARPED_FENCE);
+    public static final Item JUKEBOX = new Item(343, NamespacedKey.parse("minecraft:jukebox"), () -> Block.JUKEBOX);
 
-    public static final Item PUMPKIN = new Item(344, NamespacedKey.parse("minecraft:pumpkin"), () -> Block.PUMPKIN);
+    public static final Item OAK_FENCE = new Item(344, NamespacedKey.parse("minecraft:oak_fence"), () -> Block.OAK_FENCE);
 
-    public static final Item CARVED_PUMPKIN = new Item(345, NamespacedKey.parse("minecraft:carved_pumpkin"), () -> Block.CARVED_PUMPKIN);
+    public static final Item SPRUCE_FENCE = new Item(345, NamespacedKey.parse("minecraft:spruce_fence"), () -> Block.SPRUCE_FENCE);
 
-    public static final Item JACK_O_LANTERN = new Item(346, NamespacedKey.parse("minecraft:jack_o_lantern"), () -> Block.JACK_O_LANTERN);
+    public static final Item BIRCH_FENCE = new Item(346, NamespacedKey.parse("minecraft:birch_fence"), () -> Block.BIRCH_FENCE);
 
-    public static final Item NETHERRACK = new Item(347, NamespacedKey.parse("minecraft:netherrack"), () -> Block.NETHERRACK);
+    public static final Item JUNGLE_FENCE = new Item(347, NamespacedKey.parse("minecraft:jungle_fence"), () -> Block.JUNGLE_FENCE);
 
-    public static final Item SOUL_SAND = new Item(348, NamespacedKey.parse("minecraft:soul_sand"), () -> Block.SOUL_SAND);
+    public static final Item ACACIA_FENCE = new Item(348, NamespacedKey.parse("minecraft:acacia_fence"), () -> Block.ACACIA_FENCE);
 
-    public static final Item SOUL_SOIL = new Item(349, NamespacedKey.parse("minecraft:soul_soil"), () -> Block.SOUL_SOIL);
+    public static final Item CHERRY_FENCE = new Item(349, NamespacedKey.parse("minecraft:cherry_fence"), () -> Block.CHERRY_FENCE);
 
-    public static final Item BASALT = new Item(350, NamespacedKey.parse("minecraft:basalt"), () -> Block.BASALT);
+    public static final Item DARK_OAK_FENCE = new Item(350, NamespacedKey.parse("minecraft:dark_oak_fence"), () -> Block.DARK_OAK_FENCE);
 
-    public static final Item POLISHED_BASALT = new Item(351, NamespacedKey.parse("minecraft:polished_basalt"), () -> Block.POLISHED_BASALT);
+    public static final Item PALE_OAK_FENCE = new Item(351, NamespacedKey.parse("minecraft:pale_oak_fence"), () -> Block.PALE_OAK_FENCE);
 
-    public static final Item SMOOTH_BASALT = new Item(352, NamespacedKey.parse("minecraft:smooth_basalt"), () -> Block.SMOOTH_BASALT);
+    public static final Item MANGROVE_FENCE = new Item(352, NamespacedKey.parse("minecraft:mangrove_fence"), () -> Block.MANGROVE_FENCE);
 
-    public static final Item SOUL_TORCH = new Item(353, NamespacedKey.parse("minecraft:soul_torch"), () -> Block.SOUL_TORCH);
+    public static final Item BAMBOO_FENCE = new Item(353, NamespacedKey.parse("minecraft:bamboo_fence"), () -> Block.BAMBOO_FENCE);
 
-    public static final Item GLOWSTONE = new Item(354, NamespacedKey.parse("minecraft:glowstone"), () -> Block.GLOWSTONE);
+    public static final Item CRIMSON_FENCE = new Item(354, NamespacedKey.parse("minecraft:crimson_fence"), () -> Block.CRIMSON_FENCE);
 
-    public static final Item INFESTED_STONE = new Item(355, NamespacedKey.parse("minecraft:infested_stone"), () -> Block.INFESTED_STONE);
+    public static final Item WARPED_FENCE = new Item(355, NamespacedKey.parse("minecraft:warped_fence"), () -> Block.WARPED_FENCE);
 
-    public static final Item INFESTED_COBBLESTONE = new Item(356, NamespacedKey.parse("minecraft:infested_cobblestone"), () -> Block.INFESTED_COBBLESTONE);
+    public static final Item PUMPKIN = new Item(356, NamespacedKey.parse("minecraft:pumpkin"), () -> Block.PUMPKIN);
 
-    public static final Item INFESTED_STONE_BRICKS = new Item(357, NamespacedKey.parse("minecraft:infested_stone_bricks"), () -> Block.INFESTED_STONE_BRICKS);
+    public static final Item CARVED_PUMPKIN = new Item(357, NamespacedKey.parse("minecraft:carved_pumpkin"), () -> Block.CARVED_PUMPKIN);
 
-    public static final Item INFESTED_MOSSY_STONE_BRICKS = new Item(358, NamespacedKey.parse("minecraft:infested_mossy_stone_bricks"), () -> Block.INFESTED_MOSSY_STONE_BRICKS);
+    public static final Item JACK_O_LANTERN = new Item(358, NamespacedKey.parse("minecraft:jack_o_lantern"), () -> Block.JACK_O_LANTERN);
 
-    public static final Item INFESTED_CRACKED_STONE_BRICKS = new Item(359, NamespacedKey.parse("minecraft:infested_cracked_stone_bricks"), () -> Block.INFESTED_CRACKED_STONE_BRICKS);
+    public static final Item NETHERRACK = new Item(359, NamespacedKey.parse("minecraft:netherrack"), () -> Block.NETHERRACK);
 
-    public static final Item INFESTED_CHISELED_STONE_BRICKS = new Item(360, NamespacedKey.parse("minecraft:infested_chiseled_stone_bricks"), () -> Block.INFESTED_CHISELED_STONE_BRICKS);
+    public static final Item SOUL_SAND = new Item(360, NamespacedKey.parse("minecraft:soul_sand"), () -> Block.SOUL_SAND);
 
-    public static final Item INFESTED_DEEPSLATE = new Item(361, NamespacedKey.parse("minecraft:infested_deepslate"), () -> Block.INFESTED_DEEPSLATE);
+    public static final Item SOUL_SOIL = new Item(361, NamespacedKey.parse("minecraft:soul_soil"), () -> Block.SOUL_SOIL);
 
-    public static final Item STONE_BRICKS = new Item(362, NamespacedKey.parse("minecraft:stone_bricks"), () -> Block.STONE_BRICKS);
+    public static final Item BASALT = new Item(362, NamespacedKey.parse("minecraft:basalt"), () -> Block.BASALT);
 
-    public static final Item MOSSY_STONE_BRICKS = new Item(363, NamespacedKey.parse("minecraft:mossy_stone_bricks"), () -> Block.MOSSY_STONE_BRICKS);
+    public static final Item POLISHED_BASALT = new Item(363, NamespacedKey.parse("minecraft:polished_basalt"), () -> Block.POLISHED_BASALT);
 
-    public static final Item CRACKED_STONE_BRICKS = new Item(364, NamespacedKey.parse("minecraft:cracked_stone_bricks"), () -> Block.CRACKED_STONE_BRICKS);
+    public static final Item SMOOTH_BASALT = new Item(364, NamespacedKey.parse("minecraft:smooth_basalt"), () -> Block.SMOOTH_BASALT);
 
-    public static final Item CHISELED_STONE_BRICKS = new Item(365, NamespacedKey.parse("minecraft:chiseled_stone_bricks"), () -> Block.CHISELED_STONE_BRICKS);
+    public static final Item SOUL_TORCH = new Item(365, NamespacedKey.parse("minecraft:soul_torch"), () -> Block.SOUL_TORCH);
 
-    public static final Item PACKED_MUD = new Item(366, NamespacedKey.parse("minecraft:packed_mud"), () -> Block.PACKED_MUD);
+    public static final Item COPPER_TORCH = new Item(366, NamespacedKey.parse("minecraft:copper_torch"), () -> Block.COPPER_TORCH);
 
-    public static final Item MUD_BRICKS = new Item(367, NamespacedKey.parse("minecraft:mud_bricks"), () -> Block.MUD_BRICKS);
+    public static final Item GLOWSTONE = new Item(367, NamespacedKey.parse("minecraft:glowstone"), () -> Block.GLOWSTONE);
 
-    public static final Item DEEPSLATE_BRICKS = new Item(368, NamespacedKey.parse("minecraft:deepslate_bricks"), () -> Block.DEEPSLATE_BRICKS);
+    public static final Item INFESTED_STONE = new Item(368, NamespacedKey.parse("minecraft:infested_stone"), () -> Block.INFESTED_STONE);
 
-    public static final Item CRACKED_DEEPSLATE_BRICKS = new Item(369, NamespacedKey.parse("minecraft:cracked_deepslate_bricks"), () -> Block.CRACKED_DEEPSLATE_BRICKS);
+    public static final Item INFESTED_COBBLESTONE = new Item(369, NamespacedKey.parse("minecraft:infested_cobblestone"), () -> Block.INFESTED_COBBLESTONE);
 
-    public static final Item DEEPSLATE_TILES = new Item(370, NamespacedKey.parse("minecraft:deepslate_tiles"), () -> Block.DEEPSLATE_TILES);
+    public static final Item INFESTED_STONE_BRICKS = new Item(370, NamespacedKey.parse("minecraft:infested_stone_bricks"), () -> Block.INFESTED_STONE_BRICKS);
 
-    public static final Item CRACKED_DEEPSLATE_TILES = new Item(371, NamespacedKey.parse("minecraft:cracked_deepslate_tiles"), () -> Block.CRACKED_DEEPSLATE_TILES);
+    public static final Item INFESTED_MOSSY_STONE_BRICKS = new Item(371, NamespacedKey.parse("minecraft:infested_mossy_stone_bricks"), () -> Block.INFESTED_MOSSY_STONE_BRICKS);
 
-    public static final Item CHISELED_DEEPSLATE = new Item(372, NamespacedKey.parse("minecraft:chiseled_deepslate"), () -> Block.CHISELED_DEEPSLATE);
+    public static final Item INFESTED_CRACKED_STONE_BRICKS = new Item(372, NamespacedKey.parse("minecraft:infested_cracked_stone_bricks"), () -> Block.INFESTED_CRACKED_STONE_BRICKS);
 
-    public static final Item REINFORCED_DEEPSLATE = new Item(373, NamespacedKey.parse("minecraft:reinforced_deepslate"), () -> Block.REINFORCED_DEEPSLATE);
+    public static final Item INFESTED_CHISELED_STONE_BRICKS = new Item(373, NamespacedKey.parse("minecraft:infested_chiseled_stone_bricks"), () -> Block.INFESTED_CHISELED_STONE_BRICKS);
 
-    public static final Item BROWN_MUSHROOM_BLOCK = new Item(374, NamespacedKey.parse("minecraft:brown_mushroom_block"), () -> Block.BROWN_MUSHROOM_BLOCK);
+    public static final Item INFESTED_DEEPSLATE = new Item(374, NamespacedKey.parse("minecraft:infested_deepslate"), () -> Block.INFESTED_DEEPSLATE);
 
-    public static final Item RED_MUSHROOM_BLOCK = new Item(375, NamespacedKey.parse("minecraft:red_mushroom_block"), () -> Block.RED_MUSHROOM_BLOCK);
+    public static final Item STONE_BRICKS = new Item(375, NamespacedKey.parse("minecraft:stone_bricks"), () -> Block.STONE_BRICKS);
 
-    public static final Item MUSHROOM_STEM = new Item(376, NamespacedKey.parse("minecraft:mushroom_stem"), () -> Block.MUSHROOM_STEM);
+    public static final Item MOSSY_STONE_BRICKS = new Item(376, NamespacedKey.parse("minecraft:mossy_stone_bricks"), () -> Block.MOSSY_STONE_BRICKS);
 
-    public static final Item IRON_BARS = new Item(377, NamespacedKey.parse("minecraft:iron_bars"), () -> Block.IRON_BARS);
+    public static final Item CRACKED_STONE_BRICKS = new Item(377, NamespacedKey.parse("minecraft:cracked_stone_bricks"), () -> Block.CRACKED_STONE_BRICKS);
 
-    public static final Item CHAIN = new Item(378, NamespacedKey.parse("minecraft:chain"), () -> Block.CHAIN);
+    public static final Item CHISELED_STONE_BRICKS = new Item(378, NamespacedKey.parse("minecraft:chiseled_stone_bricks"), () -> Block.CHISELED_STONE_BRICKS);
 
-    public static final Item GLASS_PANE = new Item(379, NamespacedKey.parse("minecraft:glass_pane"), () -> Block.GLASS_PANE);
+    public static final Item PACKED_MUD = new Item(379, NamespacedKey.parse("minecraft:packed_mud"), () -> Block.PACKED_MUD);
 
-    public static final Item MELON = new Item(380, NamespacedKey.parse("minecraft:melon"), () -> Block.MELON);
+    public static final Item MUD_BRICKS = new Item(380, NamespacedKey.parse("minecraft:mud_bricks"), () -> Block.MUD_BRICKS);
 
-    public static final Item VINE = new Item(381, NamespacedKey.parse("minecraft:vine"), () -> Block.VINE);
+    public static final Item DEEPSLATE_BRICKS = new Item(381, NamespacedKey.parse("minecraft:deepslate_bricks"), () -> Block.DEEPSLATE_BRICKS);
 
-    public static final Item GLOW_LICHEN = new Item(382, NamespacedKey.parse("minecraft:glow_lichen"), () -> Block.GLOW_LICHEN);
+    public static final Item CRACKED_DEEPSLATE_BRICKS = new Item(382, NamespacedKey.parse("minecraft:cracked_deepslate_bricks"), () -> Block.CRACKED_DEEPSLATE_BRICKS);
 
-    public static final Item RESIN_CLUMP = new Item(383, NamespacedKey.parse("minecraft:resin_clump"), () -> Block.RESIN_CLUMP);
+    public static final Item DEEPSLATE_TILES = new Item(383, NamespacedKey.parse("minecraft:deepslate_tiles"), () -> Block.DEEPSLATE_TILES);
 
-    public static final Item RESIN_BLOCK = new Item(384, NamespacedKey.parse("minecraft:resin_block"), () -> Block.RESIN_BLOCK);
+    public static final Item CRACKED_DEEPSLATE_TILES = new Item(384, NamespacedKey.parse("minecraft:cracked_deepslate_tiles"), () -> Block.CRACKED_DEEPSLATE_TILES);
 
-    public static final Item RESIN_BRICKS = new Item(385, NamespacedKey.parse("minecraft:resin_bricks"), () -> Block.RESIN_BRICKS);
+    public static final Item CHISELED_DEEPSLATE = new Item(385, NamespacedKey.parse("minecraft:chiseled_deepslate"), () -> Block.CHISELED_DEEPSLATE);
 
-    public static final Item RESIN_BRICK_STAIRS = new Item(386, NamespacedKey.parse("minecraft:resin_brick_stairs"), () -> Block.RESIN_BRICK_STAIRS);
+    public static final Item REINFORCED_DEEPSLATE = new Item(386, NamespacedKey.parse("minecraft:reinforced_deepslate"), () -> Block.REINFORCED_DEEPSLATE);
 
-    public static final Item RESIN_BRICK_SLAB = new Item(387, NamespacedKey.parse("minecraft:resin_brick_slab"), () -> Block.RESIN_BRICK_SLAB);
+    public static final Item BROWN_MUSHROOM_BLOCK = new Item(387, NamespacedKey.parse("minecraft:brown_mushroom_block"), () -> Block.BROWN_MUSHROOM_BLOCK);
 
-    public static final Item RESIN_BRICK_WALL = new Item(388, NamespacedKey.parse("minecraft:resin_brick_wall"), () -> Block.RESIN_BRICK_WALL);
+    public static final Item RED_MUSHROOM_BLOCK = new Item(388, NamespacedKey.parse("minecraft:red_mushroom_block"), () -> Block.RED_MUSHROOM_BLOCK);
 
-    public static final Item CHISELED_RESIN_BRICKS = new Item(389, NamespacedKey.parse("minecraft:chiseled_resin_bricks"), () -> Block.CHISELED_RESIN_BRICKS);
+    public static final Item MUSHROOM_STEM = new Item(389, NamespacedKey.parse("minecraft:mushroom_stem"), () -> Block.MUSHROOM_STEM);
 
-    public static final Item BRICK_STAIRS = new Item(390, NamespacedKey.parse("minecraft:brick_stairs"), () -> Block.BRICK_STAIRS);
+    public static final Item IRON_BARS = new Item(390, NamespacedKey.parse("minecraft:iron_bars"), () -> Block.IRON_BARS);
 
-    public static final Item STONE_BRICK_STAIRS = new Item(391, NamespacedKey.parse("minecraft:stone_brick_stairs"), () -> Block.STONE_BRICK_STAIRS);
+    public static final Item COPPER_BARS = new Item(391, NamespacedKey.parse("minecraft:copper_bars"), () -> Block.COPPER_BARS);
 
-    public static final Item MUD_BRICK_STAIRS = new Item(392, NamespacedKey.parse("minecraft:mud_brick_stairs"), () -> Block.MUD_BRICK_STAIRS);
+    public static final Item EXPOSED_COPPER_BARS = new Item(392, NamespacedKey.parse("minecraft:exposed_copper_bars"), () -> Block.EXPOSED_COPPER_BARS);
 
-    public static final Item MYCELIUM = new Item(393, NamespacedKey.parse("minecraft:mycelium"), () -> Block.MYCELIUM);
+    public static final Item WEATHERED_COPPER_BARS = new Item(393, NamespacedKey.parse("minecraft:weathered_copper_bars"), () -> Block.WEATHERED_COPPER_BARS);
 
-    public static final Item LILY_PAD = new Item(394, NamespacedKey.parse("minecraft:lily_pad"), () -> Block.LILY_PAD);
+    public static final Item OXIDIZED_COPPER_BARS = new Item(394, NamespacedKey.parse("minecraft:oxidized_copper_bars"), () -> Block.OXIDIZED_COPPER_BARS);
 
-    public static final Item NETHER_BRICKS = new Item(395, NamespacedKey.parse("minecraft:nether_bricks"), () -> Block.NETHER_BRICKS);
+    public static final Item WAXED_COPPER_BARS = new Item(395, NamespacedKey.parse("minecraft:waxed_copper_bars"), () -> Block.WAXED_COPPER_BARS);
 
-    public static final Item CRACKED_NETHER_BRICKS = new Item(396, NamespacedKey.parse("minecraft:cracked_nether_bricks"), () -> Block.CRACKED_NETHER_BRICKS);
+    public static final Item WAXED_EXPOSED_COPPER_BARS = new Item(396, NamespacedKey.parse("minecraft:waxed_exposed_copper_bars"), () -> Block.WAXED_EXPOSED_COPPER_BARS);
 
-    public static final Item CHISELED_NETHER_BRICKS = new Item(397, NamespacedKey.parse("minecraft:chiseled_nether_bricks"), () -> Block.CHISELED_NETHER_BRICKS);
+    public static final Item WAXED_WEATHERED_COPPER_BARS = new Item(397, NamespacedKey.parse("minecraft:waxed_weathered_copper_bars"), () -> Block.WAXED_WEATHERED_COPPER_BARS);
 
-    public static final Item NETHER_BRICK_FENCE = new Item(398, NamespacedKey.parse("minecraft:nether_brick_fence"), () -> Block.NETHER_BRICK_FENCE);
+    public static final Item WAXED_OXIDIZED_COPPER_BARS = new Item(398, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bars"), () -> Block.WAXED_OXIDIZED_COPPER_BARS);
 
-    public static final Item NETHER_BRICK_STAIRS = new Item(399, NamespacedKey.parse("minecraft:nether_brick_stairs"), () -> Block.NETHER_BRICK_STAIRS);
+    public static final Item IRON_CHAIN = new Item(399, NamespacedKey.parse("minecraft:iron_chain"), () -> Block.IRON_CHAIN);
 
-    public static final Item SCULK = new Item(400, NamespacedKey.parse("minecraft:sculk"), () -> Block.SCULK);
+    public static final Item COPPER_CHAIN = new Item(400, NamespacedKey.parse("minecraft:copper_chain"), () -> Block.COPPER_CHAIN);
 
-    public static final Item SCULK_VEIN = new Item(401, NamespacedKey.parse("minecraft:sculk_vein"), () -> Block.SCULK_VEIN);
+    public static final Item EXPOSED_COPPER_CHAIN = new Item(401, NamespacedKey.parse("minecraft:exposed_copper_chain"), () -> Block.EXPOSED_COPPER_CHAIN);
 
-    public static final Item SCULK_CATALYST = new Item(402, NamespacedKey.parse("minecraft:sculk_catalyst"), () -> Block.SCULK_CATALYST);
+    public static final Item WEATHERED_COPPER_CHAIN = new Item(402, NamespacedKey.parse("minecraft:weathered_copper_chain"), () -> Block.WEATHERED_COPPER_CHAIN);
 
-    public static final Item SCULK_SHRIEKER = new Item(403, NamespacedKey.parse("minecraft:sculk_shrieker"), () -> Block.SCULK_SHRIEKER);
+    public static final Item OXIDIZED_COPPER_CHAIN = new Item(403, NamespacedKey.parse("minecraft:oxidized_copper_chain"), () -> Block.OXIDIZED_COPPER_CHAIN);
 
-    public static final Item ENCHANTING_TABLE = new Item(404, NamespacedKey.parse("minecraft:enchanting_table"), () -> Block.ENCHANTING_TABLE);
+    public static final Item WAXED_COPPER_CHAIN = new Item(404, NamespacedKey.parse("minecraft:waxed_copper_chain"), () -> Block.WAXED_COPPER_CHAIN);
 
-    public static final Item END_PORTAL_FRAME = new Item(405, NamespacedKey.parse("minecraft:end_portal_frame"), () -> Block.END_PORTAL_FRAME);
+    public static final Item WAXED_EXPOSED_COPPER_CHAIN = new Item(405, NamespacedKey.parse("minecraft:waxed_exposed_copper_chain"), () -> Block.WAXED_EXPOSED_COPPER_CHAIN);
 
-    public static final Item END_STONE = new Item(406, NamespacedKey.parse("minecraft:end_stone"), () -> Block.END_STONE);
+    public static final Item WAXED_WEATHERED_COPPER_CHAIN = new Item(406, NamespacedKey.parse("minecraft:waxed_weathered_copper_chain"), () -> Block.WAXED_WEATHERED_COPPER_CHAIN);
 
-    public static final Item END_STONE_BRICKS = new Item(407, NamespacedKey.parse("minecraft:end_stone_bricks"), () -> Block.END_STONE_BRICKS);
+    public static final Item WAXED_OXIDIZED_COPPER_CHAIN = new Item(407, NamespacedKey.parse("minecraft:waxed_oxidized_copper_chain"), () -> Block.WAXED_OXIDIZED_COPPER_CHAIN);
 
-    public static final Item DRAGON_EGG = new Item(408, NamespacedKey.parse("minecraft:dragon_egg"), () -> Block.DRAGON_EGG);
+    public static final Item GLASS_PANE = new Item(408, NamespacedKey.parse("minecraft:glass_pane"), () -> Block.GLASS_PANE);
 
-    public static final Item SANDSTONE_STAIRS = new Item(409, NamespacedKey.parse("minecraft:sandstone_stairs"), () -> Block.SANDSTONE_STAIRS);
+    public static final Item MELON = new Item(409, NamespacedKey.parse("minecraft:melon"), () -> Block.MELON);
 
-    public static final Item ENDER_CHEST = new Item(410, NamespacedKey.parse("minecraft:ender_chest"), () -> Block.ENDER_CHEST);
+    public static final Item VINE = new Item(410, NamespacedKey.parse("minecraft:vine"), () -> Block.VINE);
 
-    public static final Item EMERALD_BLOCK = new Item(411, NamespacedKey.parse("minecraft:emerald_block"), () -> Block.EMERALD_BLOCK);
+    public static final Item GLOW_LICHEN = new Item(411, NamespacedKey.parse("minecraft:glow_lichen"), () -> Block.GLOW_LICHEN);
 
-    public static final Item OAK_STAIRS = new Item(412, NamespacedKey.parse("minecraft:oak_stairs"), () -> Block.OAK_STAIRS);
+    public static final Item RESIN_CLUMP = new Item(412, NamespacedKey.parse("minecraft:resin_clump"), () -> Block.RESIN_CLUMP);
 
-    public static final Item SPRUCE_STAIRS = new Item(413, NamespacedKey.parse("minecraft:spruce_stairs"), () -> Block.SPRUCE_STAIRS);
+    public static final Item RESIN_BLOCK = new Item(413, NamespacedKey.parse("minecraft:resin_block"), () -> Block.RESIN_BLOCK);
 
-    public static final Item BIRCH_STAIRS = new Item(414, NamespacedKey.parse("minecraft:birch_stairs"), () -> Block.BIRCH_STAIRS);
+    public static final Item RESIN_BRICKS = new Item(414, NamespacedKey.parse("minecraft:resin_bricks"), () -> Block.RESIN_BRICKS);
 
-    public static final Item JUNGLE_STAIRS = new Item(415, NamespacedKey.parse("minecraft:jungle_stairs"), () -> Block.JUNGLE_STAIRS);
+    public static final Item RESIN_BRICK_STAIRS = new Item(415, NamespacedKey.parse("minecraft:resin_brick_stairs"), () -> Block.RESIN_BRICK_STAIRS);
 
-    public static final Item ACACIA_STAIRS = new Item(416, NamespacedKey.parse("minecraft:acacia_stairs"), () -> Block.ACACIA_STAIRS);
+    public static final Item RESIN_BRICK_SLAB = new Item(416, NamespacedKey.parse("minecraft:resin_brick_slab"), () -> Block.RESIN_BRICK_SLAB);
 
-    public static final Item CHERRY_STAIRS = new Item(417, NamespacedKey.parse("minecraft:cherry_stairs"), () -> Block.CHERRY_STAIRS);
+    public static final Item RESIN_BRICK_WALL = new Item(417, NamespacedKey.parse("minecraft:resin_brick_wall"), () -> Block.RESIN_BRICK_WALL);
 
-    public static final Item DARK_OAK_STAIRS = new Item(418, NamespacedKey.parse("minecraft:dark_oak_stairs"), () -> Block.DARK_OAK_STAIRS);
+    public static final Item CHISELED_RESIN_BRICKS = new Item(418, NamespacedKey.parse("minecraft:chiseled_resin_bricks"), () -> Block.CHISELED_RESIN_BRICKS);
 
-    public static final Item PALE_OAK_STAIRS = new Item(419, NamespacedKey.parse("minecraft:pale_oak_stairs"), () -> Block.PALE_OAK_STAIRS);
+    public static final Item BRICK_STAIRS = new Item(419, NamespacedKey.parse("minecraft:brick_stairs"), () -> Block.BRICK_STAIRS);
 
-    public static final Item MANGROVE_STAIRS = new Item(420, NamespacedKey.parse("minecraft:mangrove_stairs"), () -> Block.MANGROVE_STAIRS);
+    public static final Item STONE_BRICK_STAIRS = new Item(420, NamespacedKey.parse("minecraft:stone_brick_stairs"), () -> Block.STONE_BRICK_STAIRS);
 
-    public static final Item BAMBOO_STAIRS = new Item(421, NamespacedKey.parse("minecraft:bamboo_stairs"), () -> Block.BAMBOO_STAIRS);
+    public static final Item MUD_BRICK_STAIRS = new Item(421, NamespacedKey.parse("minecraft:mud_brick_stairs"), () -> Block.MUD_BRICK_STAIRS);
 
-    public static final Item BAMBOO_MOSAIC_STAIRS = new Item(422, NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"), () -> Block.BAMBOO_MOSAIC_STAIRS);
+    public static final Item MYCELIUM = new Item(422, NamespacedKey.parse("minecraft:mycelium"), () -> Block.MYCELIUM);
 
-    public static final Item CRIMSON_STAIRS = new Item(423, NamespacedKey.parse("minecraft:crimson_stairs"), () -> Block.CRIMSON_STAIRS);
+    public static final Item LILY_PAD = new Item(423, NamespacedKey.parse("minecraft:lily_pad"), () -> Block.LILY_PAD);
 
-    public static final Item WARPED_STAIRS = new Item(424, NamespacedKey.parse("minecraft:warped_stairs"), () -> Block.WARPED_STAIRS);
+    public static final Item NETHER_BRICKS = new Item(424, NamespacedKey.parse("minecraft:nether_bricks"), () -> Block.NETHER_BRICKS);
 
-    public static final Item COMMAND_BLOCK = new Item(425, NamespacedKey.parse("minecraft:command_block"), () -> Block.COMMAND_BLOCK);
+    public static final Item CRACKED_NETHER_BRICKS = new Item(425, NamespacedKey.parse("minecraft:cracked_nether_bricks"), () -> Block.CRACKED_NETHER_BRICKS);
 
-    public static final Item BEACON = new Item(426, NamespacedKey.parse("minecraft:beacon"), () -> Block.BEACON);
+    public static final Item CHISELED_NETHER_BRICKS = new Item(426, NamespacedKey.parse("minecraft:chiseled_nether_bricks"), () -> Block.CHISELED_NETHER_BRICKS);
 
-    public static final Item COBBLESTONE_WALL = new Item(427, NamespacedKey.parse("minecraft:cobblestone_wall"), () -> Block.COBBLESTONE_WALL);
+    public static final Item NETHER_BRICK_FENCE = new Item(427, NamespacedKey.parse("minecraft:nether_brick_fence"), () -> Block.NETHER_BRICK_FENCE);
 
-    public static final Item MOSSY_COBBLESTONE_WALL = new Item(428, NamespacedKey.parse("minecraft:mossy_cobblestone_wall"), () -> Block.MOSSY_COBBLESTONE_WALL);
+    public static final Item NETHER_BRICK_STAIRS = new Item(428, NamespacedKey.parse("minecraft:nether_brick_stairs"), () -> Block.NETHER_BRICK_STAIRS);
 
-    public static final Item BRICK_WALL = new Item(429, NamespacedKey.parse("minecraft:brick_wall"), () -> Block.BRICK_WALL);
+    public static final Item SCULK = new Item(429, NamespacedKey.parse("minecraft:sculk"), () -> Block.SCULK);
 
-    public static final Item PRISMARINE_WALL = new Item(430, NamespacedKey.parse("minecraft:prismarine_wall"), () -> Block.PRISMARINE_WALL);
+    public static final Item SCULK_VEIN = new Item(430, NamespacedKey.parse("minecraft:sculk_vein"), () -> Block.SCULK_VEIN);
 
-    public static final Item RED_SANDSTONE_WALL = new Item(431, NamespacedKey.parse("minecraft:red_sandstone_wall"), () -> Block.RED_SANDSTONE_WALL);
+    public static final Item SCULK_CATALYST = new Item(431, NamespacedKey.parse("minecraft:sculk_catalyst"), () -> Block.SCULK_CATALYST);
 
-    public static final Item MOSSY_STONE_BRICK_WALL = new Item(432, NamespacedKey.parse("minecraft:mossy_stone_brick_wall"), () -> Block.MOSSY_STONE_BRICK_WALL);
+    public static final Item SCULK_SHRIEKER = new Item(432, NamespacedKey.parse("minecraft:sculk_shrieker"), () -> Block.SCULK_SHRIEKER);
 
-    public static final Item GRANITE_WALL = new Item(433, NamespacedKey.parse("minecraft:granite_wall"), () -> Block.GRANITE_WALL);
+    public static final Item ENCHANTING_TABLE = new Item(433, NamespacedKey.parse("minecraft:enchanting_table"), () -> Block.ENCHANTING_TABLE);
 
-    public static final Item STONE_BRICK_WALL = new Item(434, NamespacedKey.parse("minecraft:stone_brick_wall"), () -> Block.STONE_BRICK_WALL);
+    public static final Item END_PORTAL_FRAME = new Item(434, NamespacedKey.parse("minecraft:end_portal_frame"), () -> Block.END_PORTAL_FRAME);
 
-    public static final Item MUD_BRICK_WALL = new Item(435, NamespacedKey.parse("minecraft:mud_brick_wall"), () -> Block.MUD_BRICK_WALL);
+    public static final Item END_STONE = new Item(435, NamespacedKey.parse("minecraft:end_stone"), () -> Block.END_STONE);
 
-    public static final Item NETHER_BRICK_WALL = new Item(436, NamespacedKey.parse("minecraft:nether_brick_wall"), () -> Block.NETHER_BRICK_WALL);
+    public static final Item END_STONE_BRICKS = new Item(436, NamespacedKey.parse("minecraft:end_stone_bricks"), () -> Block.END_STONE_BRICKS);
 
-    public static final Item ANDESITE_WALL = new Item(437, NamespacedKey.parse("minecraft:andesite_wall"), () -> Block.ANDESITE_WALL);
+    public static final Item DRAGON_EGG = new Item(437, NamespacedKey.parse("minecraft:dragon_egg"), () -> Block.DRAGON_EGG);
 
-    public static final Item RED_NETHER_BRICK_WALL = new Item(438, NamespacedKey.parse("minecraft:red_nether_brick_wall"), () -> Block.RED_NETHER_BRICK_WALL);
+    public static final Item SANDSTONE_STAIRS = new Item(438, NamespacedKey.parse("minecraft:sandstone_stairs"), () -> Block.SANDSTONE_STAIRS);
 
-    public static final Item SANDSTONE_WALL = new Item(439, NamespacedKey.parse("minecraft:sandstone_wall"), () -> Block.SANDSTONE_WALL);
+    public static final Item ENDER_CHEST = new Item(439, NamespacedKey.parse("minecraft:ender_chest"), () -> Block.ENDER_CHEST);
 
-    public static final Item END_STONE_BRICK_WALL = new Item(440, NamespacedKey.parse("minecraft:end_stone_brick_wall"), () -> Block.END_STONE_BRICK_WALL);
+    public static final Item EMERALD_BLOCK = new Item(440, NamespacedKey.parse("minecraft:emerald_block"), () -> Block.EMERALD_BLOCK);
 
-    public static final Item DIORITE_WALL = new Item(441, NamespacedKey.parse("minecraft:diorite_wall"), () -> Block.DIORITE_WALL);
+    public static final Item OAK_STAIRS = new Item(441, NamespacedKey.parse("minecraft:oak_stairs"), () -> Block.OAK_STAIRS);
 
-    public static final Item BLACKSTONE_WALL = new Item(442, NamespacedKey.parse("minecraft:blackstone_wall"), () -> Block.BLACKSTONE_WALL);
+    public static final Item SPRUCE_STAIRS = new Item(442, NamespacedKey.parse("minecraft:spruce_stairs"), () -> Block.SPRUCE_STAIRS);
 
-    public static final Item POLISHED_BLACKSTONE_WALL = new Item(443, NamespacedKey.parse("minecraft:polished_blackstone_wall"), () -> Block.POLISHED_BLACKSTONE_WALL);
+    public static final Item BIRCH_STAIRS = new Item(443, NamespacedKey.parse("minecraft:birch_stairs"), () -> Block.BIRCH_STAIRS);
 
-    public static final Item POLISHED_BLACKSTONE_BRICK_WALL = new Item(444, NamespacedKey.parse("minecraft:polished_blackstone_brick_wall"), () -> Block.POLISHED_BLACKSTONE_BRICK_WALL);
+    public static final Item JUNGLE_STAIRS = new Item(444, NamespacedKey.parse("minecraft:jungle_stairs"), () -> Block.JUNGLE_STAIRS);
 
-    public static final Item COBBLED_DEEPSLATE_WALL = new Item(445, NamespacedKey.parse("minecraft:cobbled_deepslate_wall"), () -> Block.COBBLED_DEEPSLATE_WALL);
+    public static final Item ACACIA_STAIRS = new Item(445, NamespacedKey.parse("minecraft:acacia_stairs"), () -> Block.ACACIA_STAIRS);
 
-    public static final Item POLISHED_DEEPSLATE_WALL = new Item(446, NamespacedKey.parse("minecraft:polished_deepslate_wall"), () -> Block.POLISHED_DEEPSLATE_WALL);
+    public static final Item CHERRY_STAIRS = new Item(446, NamespacedKey.parse("minecraft:cherry_stairs"), () -> Block.CHERRY_STAIRS);
 
-    public static final Item DEEPSLATE_BRICK_WALL = new Item(447, NamespacedKey.parse("minecraft:deepslate_brick_wall"), () -> Block.DEEPSLATE_BRICK_WALL);
+    public static final Item DARK_OAK_STAIRS = new Item(447, NamespacedKey.parse("minecraft:dark_oak_stairs"), () -> Block.DARK_OAK_STAIRS);
 
-    public static final Item DEEPSLATE_TILE_WALL = new Item(448, NamespacedKey.parse("minecraft:deepslate_tile_wall"), () -> Block.DEEPSLATE_TILE_WALL);
+    public static final Item PALE_OAK_STAIRS = new Item(448, NamespacedKey.parse("minecraft:pale_oak_stairs"), () -> Block.PALE_OAK_STAIRS);
 
-    public static final Item ANVIL = new Item(449, NamespacedKey.parse("minecraft:anvil"), () -> Block.ANVIL);
+    public static final Item MANGROVE_STAIRS = new Item(449, NamespacedKey.parse("minecraft:mangrove_stairs"), () -> Block.MANGROVE_STAIRS);
 
-    public static final Item CHIPPED_ANVIL = new Item(450, NamespacedKey.parse("minecraft:chipped_anvil"), () -> Block.CHIPPED_ANVIL);
+    public static final Item BAMBOO_STAIRS = new Item(450, NamespacedKey.parse("minecraft:bamboo_stairs"), () -> Block.BAMBOO_STAIRS);
 
-    public static final Item DAMAGED_ANVIL = new Item(451, NamespacedKey.parse("minecraft:damaged_anvil"), () -> Block.DAMAGED_ANVIL);
+    public static final Item BAMBOO_MOSAIC_STAIRS = new Item(451, NamespacedKey.parse("minecraft:bamboo_mosaic_stairs"), () -> Block.BAMBOO_MOSAIC_STAIRS);
 
-    public static final Item CHISELED_QUARTZ_BLOCK = new Item(452, NamespacedKey.parse("minecraft:chiseled_quartz_block"), () -> Block.CHISELED_QUARTZ_BLOCK);
+    public static final Item CRIMSON_STAIRS = new Item(452, NamespacedKey.parse("minecraft:crimson_stairs"), () -> Block.CRIMSON_STAIRS);
 
-    public static final Item QUARTZ_BLOCK = new Item(453, NamespacedKey.parse("minecraft:quartz_block"), () -> Block.QUARTZ_BLOCK);
+    public static final Item WARPED_STAIRS = new Item(453, NamespacedKey.parse("minecraft:warped_stairs"), () -> Block.WARPED_STAIRS);
 
-    public static final Item QUARTZ_BRICKS = new Item(454, NamespacedKey.parse("minecraft:quartz_bricks"), () -> Block.QUARTZ_BRICKS);
+    public static final Item COMMAND_BLOCK = new Item(454, NamespacedKey.parse("minecraft:command_block"), () -> Block.COMMAND_BLOCK);
 
-    public static final Item QUARTZ_PILLAR = new Item(455, NamespacedKey.parse("minecraft:quartz_pillar"), () -> Block.QUARTZ_PILLAR);
+    public static final Item BEACON = new Item(455, NamespacedKey.parse("minecraft:beacon"), () -> Block.BEACON);
 
-    public static final Item QUARTZ_STAIRS = new Item(456, NamespacedKey.parse("minecraft:quartz_stairs"), () -> Block.QUARTZ_STAIRS);
+    public static final Item COBBLESTONE_WALL = new Item(456, NamespacedKey.parse("minecraft:cobblestone_wall"), () -> Block.COBBLESTONE_WALL);
 
-    public static final Item WHITE_TERRACOTTA = new Item(457, NamespacedKey.parse("minecraft:white_terracotta"), () -> Block.WHITE_TERRACOTTA);
+    public static final Item MOSSY_COBBLESTONE_WALL = new Item(457, NamespacedKey.parse("minecraft:mossy_cobblestone_wall"), () -> Block.MOSSY_COBBLESTONE_WALL);
 
-    public static final Item ORANGE_TERRACOTTA = new Item(458, NamespacedKey.parse("minecraft:orange_terracotta"), () -> Block.ORANGE_TERRACOTTA);
+    public static final Item BRICK_WALL = new Item(458, NamespacedKey.parse("minecraft:brick_wall"), () -> Block.BRICK_WALL);
 
-    public static final Item MAGENTA_TERRACOTTA = new Item(459, NamespacedKey.parse("minecraft:magenta_terracotta"), () -> Block.MAGENTA_TERRACOTTA);
+    public static final Item PRISMARINE_WALL = new Item(459, NamespacedKey.parse("minecraft:prismarine_wall"), () -> Block.PRISMARINE_WALL);
 
-    public static final Item LIGHT_BLUE_TERRACOTTA = new Item(460, NamespacedKey.parse("minecraft:light_blue_terracotta"), () -> Block.LIGHT_BLUE_TERRACOTTA);
+    public static final Item RED_SANDSTONE_WALL = new Item(460, NamespacedKey.parse("minecraft:red_sandstone_wall"), () -> Block.RED_SANDSTONE_WALL);
 
-    public static final Item YELLOW_TERRACOTTA = new Item(461, NamespacedKey.parse("minecraft:yellow_terracotta"), () -> Block.YELLOW_TERRACOTTA);
+    public static final Item MOSSY_STONE_BRICK_WALL = new Item(461, NamespacedKey.parse("minecraft:mossy_stone_brick_wall"), () -> Block.MOSSY_STONE_BRICK_WALL);
 
-    public static final Item LIME_TERRACOTTA = new Item(462, NamespacedKey.parse("minecraft:lime_terracotta"), () -> Block.LIME_TERRACOTTA);
+    public static final Item GRANITE_WALL = new Item(462, NamespacedKey.parse("minecraft:granite_wall"), () -> Block.GRANITE_WALL);
 
-    public static final Item PINK_TERRACOTTA = new Item(463, NamespacedKey.parse("minecraft:pink_terracotta"), () -> Block.PINK_TERRACOTTA);
+    public static final Item STONE_BRICK_WALL = new Item(463, NamespacedKey.parse("minecraft:stone_brick_wall"), () -> Block.STONE_BRICK_WALL);
 
-    public static final Item GRAY_TERRACOTTA = new Item(464, NamespacedKey.parse("minecraft:gray_terracotta"), () -> Block.GRAY_TERRACOTTA);
+    public static final Item MUD_BRICK_WALL = new Item(464, NamespacedKey.parse("minecraft:mud_brick_wall"), () -> Block.MUD_BRICK_WALL);
 
-    public static final Item LIGHT_GRAY_TERRACOTTA = new Item(465, NamespacedKey.parse("minecraft:light_gray_terracotta"), () -> Block.LIGHT_GRAY_TERRACOTTA);
+    public static final Item NETHER_BRICK_WALL = new Item(465, NamespacedKey.parse("minecraft:nether_brick_wall"), () -> Block.NETHER_BRICK_WALL);
 
-    public static final Item CYAN_TERRACOTTA = new Item(466, NamespacedKey.parse("minecraft:cyan_terracotta"), () -> Block.CYAN_TERRACOTTA);
+    public static final Item ANDESITE_WALL = new Item(466, NamespacedKey.parse("minecraft:andesite_wall"), () -> Block.ANDESITE_WALL);
 
-    public static final Item PURPLE_TERRACOTTA = new Item(467, NamespacedKey.parse("minecraft:purple_terracotta"), () -> Block.PURPLE_TERRACOTTA);
+    public static final Item RED_NETHER_BRICK_WALL = new Item(467, NamespacedKey.parse("minecraft:red_nether_brick_wall"), () -> Block.RED_NETHER_BRICK_WALL);
 
-    public static final Item BLUE_TERRACOTTA = new Item(468, NamespacedKey.parse("minecraft:blue_terracotta"), () -> Block.BLUE_TERRACOTTA);
+    public static final Item SANDSTONE_WALL = new Item(468, NamespacedKey.parse("minecraft:sandstone_wall"), () -> Block.SANDSTONE_WALL);
 
-    public static final Item BROWN_TERRACOTTA = new Item(469, NamespacedKey.parse("minecraft:brown_terracotta"), () -> Block.BROWN_TERRACOTTA);
+    public static final Item END_STONE_BRICK_WALL = new Item(469, NamespacedKey.parse("minecraft:end_stone_brick_wall"), () -> Block.END_STONE_BRICK_WALL);
 
-    public static final Item GREEN_TERRACOTTA = new Item(470, NamespacedKey.parse("minecraft:green_terracotta"), () -> Block.GREEN_TERRACOTTA);
+    public static final Item DIORITE_WALL = new Item(470, NamespacedKey.parse("minecraft:diorite_wall"), () -> Block.DIORITE_WALL);
 
-    public static final Item RED_TERRACOTTA = new Item(471, NamespacedKey.parse("minecraft:red_terracotta"), () -> Block.RED_TERRACOTTA);
+    public static final Item BLACKSTONE_WALL = new Item(471, NamespacedKey.parse("minecraft:blackstone_wall"), () -> Block.BLACKSTONE_WALL);
 
-    public static final Item BLACK_TERRACOTTA = new Item(472, NamespacedKey.parse("minecraft:black_terracotta"), () -> Block.BLACK_TERRACOTTA);
+    public static final Item POLISHED_BLACKSTONE_WALL = new Item(472, NamespacedKey.parse("minecraft:polished_blackstone_wall"), () -> Block.POLISHED_BLACKSTONE_WALL);
 
-    public static final Item BARRIER = new Item(473, NamespacedKey.parse("minecraft:barrier"), () -> Block.BARRIER);
+    public static final Item POLISHED_BLACKSTONE_BRICK_WALL = new Item(473, NamespacedKey.parse("minecraft:polished_blackstone_brick_wall"), () -> Block.POLISHED_BLACKSTONE_BRICK_WALL);
 
-    public static final Item LIGHT = new Item(474, NamespacedKey.parse("minecraft:light"), () -> Block.LIGHT);
+    public static final Item COBBLED_DEEPSLATE_WALL = new Item(474, NamespacedKey.parse("minecraft:cobbled_deepslate_wall"), () -> Block.COBBLED_DEEPSLATE_WALL);
 
-    public static final Item HAY_BLOCK = new Item(475, NamespacedKey.parse("minecraft:hay_block"), () -> Block.HAY_BLOCK);
+    public static final Item POLISHED_DEEPSLATE_WALL = new Item(475, NamespacedKey.parse("minecraft:polished_deepslate_wall"), () -> Block.POLISHED_DEEPSLATE_WALL);
 
-    public static final Item WHITE_CARPET = new Item(476, NamespacedKey.parse("minecraft:white_carpet"), () -> Block.WHITE_CARPET);
+    public static final Item DEEPSLATE_BRICK_WALL = new Item(476, NamespacedKey.parse("minecraft:deepslate_brick_wall"), () -> Block.DEEPSLATE_BRICK_WALL);
 
-    public static final Item ORANGE_CARPET = new Item(477, NamespacedKey.parse("minecraft:orange_carpet"), () -> Block.ORANGE_CARPET);
+    public static final Item DEEPSLATE_TILE_WALL = new Item(477, NamespacedKey.parse("minecraft:deepslate_tile_wall"), () -> Block.DEEPSLATE_TILE_WALL);
 
-    public static final Item MAGENTA_CARPET = new Item(478, NamespacedKey.parse("minecraft:magenta_carpet"), () -> Block.MAGENTA_CARPET);
+    public static final Item ANVIL = new Item(478, NamespacedKey.parse("minecraft:anvil"), () -> Block.ANVIL);
 
-    public static final Item LIGHT_BLUE_CARPET = new Item(479, NamespacedKey.parse("minecraft:light_blue_carpet"), () -> Block.LIGHT_BLUE_CARPET);
+    public static final Item CHIPPED_ANVIL = new Item(479, NamespacedKey.parse("minecraft:chipped_anvil"), () -> Block.CHIPPED_ANVIL);
 
-    public static final Item YELLOW_CARPET = new Item(480, NamespacedKey.parse("minecraft:yellow_carpet"), () -> Block.YELLOW_CARPET);
+    public static final Item DAMAGED_ANVIL = new Item(480, NamespacedKey.parse("minecraft:damaged_anvil"), () -> Block.DAMAGED_ANVIL);
 
-    public static final Item LIME_CARPET = new Item(481, NamespacedKey.parse("minecraft:lime_carpet"), () -> Block.LIME_CARPET);
+    public static final Item CHISELED_QUARTZ_BLOCK = new Item(481, NamespacedKey.parse("minecraft:chiseled_quartz_block"), () -> Block.CHISELED_QUARTZ_BLOCK);
 
-    public static final Item PINK_CARPET = new Item(482, NamespacedKey.parse("minecraft:pink_carpet"), () -> Block.PINK_CARPET);
+    public static final Item QUARTZ_BLOCK = new Item(482, NamespacedKey.parse("minecraft:quartz_block"), () -> Block.QUARTZ_BLOCK);
 
-    public static final Item GRAY_CARPET = new Item(483, NamespacedKey.parse("minecraft:gray_carpet"), () -> Block.GRAY_CARPET);
+    public static final Item QUARTZ_BRICKS = new Item(483, NamespacedKey.parse("minecraft:quartz_bricks"), () -> Block.QUARTZ_BRICKS);
 
-    public static final Item LIGHT_GRAY_CARPET = new Item(484, NamespacedKey.parse("minecraft:light_gray_carpet"), () -> Block.LIGHT_GRAY_CARPET);
+    public static final Item QUARTZ_PILLAR = new Item(484, NamespacedKey.parse("minecraft:quartz_pillar"), () -> Block.QUARTZ_PILLAR);
 
-    public static final Item CYAN_CARPET = new Item(485, NamespacedKey.parse("minecraft:cyan_carpet"), () -> Block.CYAN_CARPET);
+    public static final Item QUARTZ_STAIRS = new Item(485, NamespacedKey.parse("minecraft:quartz_stairs"), () -> Block.QUARTZ_STAIRS);
 
-    public static final Item PURPLE_CARPET = new Item(486, NamespacedKey.parse("minecraft:purple_carpet"), () -> Block.PURPLE_CARPET);
+    public static final Item WHITE_TERRACOTTA = new Item(486, NamespacedKey.parse("minecraft:white_terracotta"), () -> Block.WHITE_TERRACOTTA);
 
-    public static final Item BLUE_CARPET = new Item(487, NamespacedKey.parse("minecraft:blue_carpet"), () -> Block.BLUE_CARPET);
+    public static final Item ORANGE_TERRACOTTA = new Item(487, NamespacedKey.parse("minecraft:orange_terracotta"), () -> Block.ORANGE_TERRACOTTA);
 
-    public static final Item BROWN_CARPET = new Item(488, NamespacedKey.parse("minecraft:brown_carpet"), () -> Block.BROWN_CARPET);
+    public static final Item MAGENTA_TERRACOTTA = new Item(488, NamespacedKey.parse("minecraft:magenta_terracotta"), () -> Block.MAGENTA_TERRACOTTA);
 
-    public static final Item GREEN_CARPET = new Item(489, NamespacedKey.parse("minecraft:green_carpet"), () -> Block.GREEN_CARPET);
+    public static final Item LIGHT_BLUE_TERRACOTTA = new Item(489, NamespacedKey.parse("minecraft:light_blue_terracotta"), () -> Block.LIGHT_BLUE_TERRACOTTA);
 
-    public static final Item RED_CARPET = new Item(490, NamespacedKey.parse("minecraft:red_carpet"), () -> Block.RED_CARPET);
+    public static final Item YELLOW_TERRACOTTA = new Item(490, NamespacedKey.parse("minecraft:yellow_terracotta"), () -> Block.YELLOW_TERRACOTTA);
 
-    public static final Item BLACK_CARPET = new Item(491, NamespacedKey.parse("minecraft:black_carpet"), () -> Block.BLACK_CARPET);
+    public static final Item LIME_TERRACOTTA = new Item(491, NamespacedKey.parse("minecraft:lime_terracotta"), () -> Block.LIME_TERRACOTTA);
 
-    public static final Item TERRACOTTA = new Item(492, NamespacedKey.parse("minecraft:terracotta"), () -> Block.TERRACOTTA);
+    public static final Item PINK_TERRACOTTA = new Item(492, NamespacedKey.parse("minecraft:pink_terracotta"), () -> Block.PINK_TERRACOTTA);
 
-    public static final Item PACKED_ICE = new Item(493, NamespacedKey.parse("minecraft:packed_ice"), () -> Block.PACKED_ICE);
+    public static final Item GRAY_TERRACOTTA = new Item(493, NamespacedKey.parse("minecraft:gray_terracotta"), () -> Block.GRAY_TERRACOTTA);
 
-    public static final Item DIRT_PATH = new Item(494, NamespacedKey.parse("minecraft:dirt_path"), () -> Block.DIRT_PATH);
+    public static final Item LIGHT_GRAY_TERRACOTTA = new Item(494, NamespacedKey.parse("minecraft:light_gray_terracotta"), () -> Block.LIGHT_GRAY_TERRACOTTA);
 
-    public static final Item SUNFLOWER = new Item(495, NamespacedKey.parse("minecraft:sunflower"), () -> Block.SUNFLOWER);
+    public static final Item CYAN_TERRACOTTA = new Item(495, NamespacedKey.parse("minecraft:cyan_terracotta"), () -> Block.CYAN_TERRACOTTA);
 
-    public static final Item LILAC = new Item(496, NamespacedKey.parse("minecraft:lilac"), () -> Block.LILAC);
+    public static final Item PURPLE_TERRACOTTA = new Item(496, NamespacedKey.parse("minecraft:purple_terracotta"), () -> Block.PURPLE_TERRACOTTA);
 
-    public static final Item ROSE_BUSH = new Item(497, NamespacedKey.parse("minecraft:rose_bush"), () -> Block.ROSE_BUSH);
+    public static final Item BLUE_TERRACOTTA = new Item(497, NamespacedKey.parse("minecraft:blue_terracotta"), () -> Block.BLUE_TERRACOTTA);
 
-    public static final Item PEONY = new Item(498, NamespacedKey.parse("minecraft:peony"), () -> Block.PEONY);
+    public static final Item BROWN_TERRACOTTA = new Item(498, NamespacedKey.parse("minecraft:brown_terracotta"), () -> Block.BROWN_TERRACOTTA);
 
-    public static final Item TALL_GRASS = new Item(499, NamespacedKey.parse("minecraft:tall_grass"), () -> Block.TALL_GRASS);
+    public static final Item GREEN_TERRACOTTA = new Item(499, NamespacedKey.parse("minecraft:green_terracotta"), () -> Block.GREEN_TERRACOTTA);
 
-    public static final Item LARGE_FERN = new Item(500, NamespacedKey.parse("minecraft:large_fern"), () -> Block.LARGE_FERN);
+    public static final Item RED_TERRACOTTA = new Item(500, NamespacedKey.parse("minecraft:red_terracotta"), () -> Block.RED_TERRACOTTA);
 
-    public static final Item WHITE_STAINED_GLASS = new Item(501, NamespacedKey.parse("minecraft:white_stained_glass"), () -> Block.WHITE_STAINED_GLASS);
+    public static final Item BLACK_TERRACOTTA = new Item(501, NamespacedKey.parse("minecraft:black_terracotta"), () -> Block.BLACK_TERRACOTTA);
 
-    public static final Item ORANGE_STAINED_GLASS = new Item(502, NamespacedKey.parse("minecraft:orange_stained_glass"), () -> Block.ORANGE_STAINED_GLASS);
+    public static final Item BARRIER = new Item(502, NamespacedKey.parse("minecraft:barrier"), () -> Block.BARRIER);
 
-    public static final Item MAGENTA_STAINED_GLASS = new Item(503, NamespacedKey.parse("minecraft:magenta_stained_glass"), () -> Block.MAGENTA_STAINED_GLASS);
+    public static final Item LIGHT = new Item(503, NamespacedKey.parse("minecraft:light"), () -> Block.LIGHT);
 
-    public static final Item LIGHT_BLUE_STAINED_GLASS = new Item(504, NamespacedKey.parse("minecraft:light_blue_stained_glass"), () -> Block.LIGHT_BLUE_STAINED_GLASS);
+    public static final Item HAY_BLOCK = new Item(504, NamespacedKey.parse("minecraft:hay_block"), () -> Block.HAY_BLOCK);
 
-    public static final Item YELLOW_STAINED_GLASS = new Item(505, NamespacedKey.parse("minecraft:yellow_stained_glass"), () -> Block.YELLOW_STAINED_GLASS);
+    public static final Item WHITE_CARPET = new Item(505, NamespacedKey.parse("minecraft:white_carpet"), () -> Block.WHITE_CARPET);
 
-    public static final Item LIME_STAINED_GLASS = new Item(506, NamespacedKey.parse("minecraft:lime_stained_glass"), () -> Block.LIME_STAINED_GLASS);
+    public static final Item ORANGE_CARPET = new Item(506, NamespacedKey.parse("minecraft:orange_carpet"), () -> Block.ORANGE_CARPET);
 
-    public static final Item PINK_STAINED_GLASS = new Item(507, NamespacedKey.parse("minecraft:pink_stained_glass"), () -> Block.PINK_STAINED_GLASS);
+    public static final Item MAGENTA_CARPET = new Item(507, NamespacedKey.parse("minecraft:magenta_carpet"), () -> Block.MAGENTA_CARPET);
 
-    public static final Item GRAY_STAINED_GLASS = new Item(508, NamespacedKey.parse("minecraft:gray_stained_glass"), () -> Block.GRAY_STAINED_GLASS);
+    public static final Item LIGHT_BLUE_CARPET = new Item(508, NamespacedKey.parse("minecraft:light_blue_carpet"), () -> Block.LIGHT_BLUE_CARPET);
 
-    public static final Item LIGHT_GRAY_STAINED_GLASS = new Item(509, NamespacedKey.parse("minecraft:light_gray_stained_glass"), () -> Block.LIGHT_GRAY_STAINED_GLASS);
+    public static final Item YELLOW_CARPET = new Item(509, NamespacedKey.parse("minecraft:yellow_carpet"), () -> Block.YELLOW_CARPET);
 
-    public static final Item CYAN_STAINED_GLASS = new Item(510, NamespacedKey.parse("minecraft:cyan_stained_glass"), () -> Block.CYAN_STAINED_GLASS);
+    public static final Item LIME_CARPET = new Item(510, NamespacedKey.parse("minecraft:lime_carpet"), () -> Block.LIME_CARPET);
 
-    public static final Item PURPLE_STAINED_GLASS = new Item(511, NamespacedKey.parse("minecraft:purple_stained_glass"), () -> Block.PURPLE_STAINED_GLASS);
+    public static final Item PINK_CARPET = new Item(511, NamespacedKey.parse("minecraft:pink_carpet"), () -> Block.PINK_CARPET);
 
-    public static final Item BLUE_STAINED_GLASS = new Item(512, NamespacedKey.parse("minecraft:blue_stained_glass"), () -> Block.BLUE_STAINED_GLASS);
+    public static final Item GRAY_CARPET = new Item(512, NamespacedKey.parse("minecraft:gray_carpet"), () -> Block.GRAY_CARPET);
 
-    public static final Item BROWN_STAINED_GLASS = new Item(513, NamespacedKey.parse("minecraft:brown_stained_glass"), () -> Block.BROWN_STAINED_GLASS);
+    public static final Item LIGHT_GRAY_CARPET = new Item(513, NamespacedKey.parse("minecraft:light_gray_carpet"), () -> Block.LIGHT_GRAY_CARPET);
 
-    public static final Item GREEN_STAINED_GLASS = new Item(514, NamespacedKey.parse("minecraft:green_stained_glass"), () -> Block.GREEN_STAINED_GLASS);
+    public static final Item CYAN_CARPET = new Item(514, NamespacedKey.parse("minecraft:cyan_carpet"), () -> Block.CYAN_CARPET);
 
-    public static final Item RED_STAINED_GLASS = new Item(515, NamespacedKey.parse("minecraft:red_stained_glass"), () -> Block.RED_STAINED_GLASS);
+    public static final Item PURPLE_CARPET = new Item(515, NamespacedKey.parse("minecraft:purple_carpet"), () -> Block.PURPLE_CARPET);
 
-    public static final Item BLACK_STAINED_GLASS = new Item(516, NamespacedKey.parse("minecraft:black_stained_glass"), () -> Block.BLACK_STAINED_GLASS);
+    public static final Item BLUE_CARPET = new Item(516, NamespacedKey.parse("minecraft:blue_carpet"), () -> Block.BLUE_CARPET);
 
-    public static final Item WHITE_STAINED_GLASS_PANE = new Item(517, NamespacedKey.parse("minecraft:white_stained_glass_pane"), () -> Block.WHITE_STAINED_GLASS_PANE);
+    public static final Item BROWN_CARPET = new Item(517, NamespacedKey.parse("minecraft:brown_carpet"), () -> Block.BROWN_CARPET);
 
-    public static final Item ORANGE_STAINED_GLASS_PANE = new Item(518, NamespacedKey.parse("minecraft:orange_stained_glass_pane"), () -> Block.ORANGE_STAINED_GLASS_PANE);
+    public static final Item GREEN_CARPET = new Item(518, NamespacedKey.parse("minecraft:green_carpet"), () -> Block.GREEN_CARPET);
 
-    public static final Item MAGENTA_STAINED_GLASS_PANE = new Item(519, NamespacedKey.parse("minecraft:magenta_stained_glass_pane"), () -> Block.MAGENTA_STAINED_GLASS_PANE);
+    public static final Item RED_CARPET = new Item(519, NamespacedKey.parse("minecraft:red_carpet"), () -> Block.RED_CARPET);
 
-    public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = new Item(520, NamespacedKey.parse("minecraft:light_blue_stained_glass_pane"), () -> Block.LIGHT_BLUE_STAINED_GLASS_PANE);
+    public static final Item BLACK_CARPET = new Item(520, NamespacedKey.parse("minecraft:black_carpet"), () -> Block.BLACK_CARPET);
 
-    public static final Item YELLOW_STAINED_GLASS_PANE = new Item(521, NamespacedKey.parse("minecraft:yellow_stained_glass_pane"), () -> Block.YELLOW_STAINED_GLASS_PANE);
+    public static final Item TERRACOTTA = new Item(521, NamespacedKey.parse("minecraft:terracotta"), () -> Block.TERRACOTTA);
 
-    public static final Item LIME_STAINED_GLASS_PANE = new Item(522, NamespacedKey.parse("minecraft:lime_stained_glass_pane"), () -> Block.LIME_STAINED_GLASS_PANE);
+    public static final Item PACKED_ICE = new Item(522, NamespacedKey.parse("minecraft:packed_ice"), () -> Block.PACKED_ICE);
 
-    public static final Item PINK_STAINED_GLASS_PANE = new Item(523, NamespacedKey.parse("minecraft:pink_stained_glass_pane"), () -> Block.PINK_STAINED_GLASS_PANE);
+    public static final Item DIRT_PATH = new Item(523, NamespacedKey.parse("minecraft:dirt_path"), () -> Block.DIRT_PATH);
 
-    public static final Item GRAY_STAINED_GLASS_PANE = new Item(524, NamespacedKey.parse("minecraft:gray_stained_glass_pane"), () -> Block.GRAY_STAINED_GLASS_PANE);
+    public static final Item SUNFLOWER = new Item(524, NamespacedKey.parse("minecraft:sunflower"), () -> Block.SUNFLOWER);
 
-    public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = new Item(525, NamespacedKey.parse("minecraft:light_gray_stained_glass_pane"), () -> Block.LIGHT_GRAY_STAINED_GLASS_PANE);
+    public static final Item LILAC = new Item(525, NamespacedKey.parse("minecraft:lilac"), () -> Block.LILAC);
 
-    public static final Item CYAN_STAINED_GLASS_PANE = new Item(526, NamespacedKey.parse("minecraft:cyan_stained_glass_pane"), () -> Block.CYAN_STAINED_GLASS_PANE);
+    public static final Item ROSE_BUSH = new Item(526, NamespacedKey.parse("minecraft:rose_bush"), () -> Block.ROSE_BUSH);
 
-    public static final Item PURPLE_STAINED_GLASS_PANE = new Item(527, NamespacedKey.parse("minecraft:purple_stained_glass_pane"), () -> Block.PURPLE_STAINED_GLASS_PANE);
+    public static final Item PEONY = new Item(527, NamespacedKey.parse("minecraft:peony"), () -> Block.PEONY);
 
-    public static final Item BLUE_STAINED_GLASS_PANE = new Item(528, NamespacedKey.parse("minecraft:blue_stained_glass_pane"), () -> Block.BLUE_STAINED_GLASS_PANE);
+    public static final Item TALL_GRASS = new Item(528, NamespacedKey.parse("minecraft:tall_grass"), () -> Block.TALL_GRASS);
 
-    public static final Item BROWN_STAINED_GLASS_PANE = new Item(529, NamespacedKey.parse("minecraft:brown_stained_glass_pane"), () -> Block.BROWN_STAINED_GLASS_PANE);
+    public static final Item LARGE_FERN = new Item(529, NamespacedKey.parse("minecraft:large_fern"), () -> Block.LARGE_FERN);
 
-    public static final Item GREEN_STAINED_GLASS_PANE = new Item(530, NamespacedKey.parse("minecraft:green_stained_glass_pane"), () -> Block.GREEN_STAINED_GLASS_PANE);
+    public static final Item WHITE_STAINED_GLASS = new Item(530, NamespacedKey.parse("minecraft:white_stained_glass"), () -> Block.WHITE_STAINED_GLASS);
 
-    public static final Item RED_STAINED_GLASS_PANE = new Item(531, NamespacedKey.parse("minecraft:red_stained_glass_pane"), () -> Block.RED_STAINED_GLASS_PANE);
+    public static final Item ORANGE_STAINED_GLASS = new Item(531, NamespacedKey.parse("minecraft:orange_stained_glass"), () -> Block.ORANGE_STAINED_GLASS);
 
-    public static final Item BLACK_STAINED_GLASS_PANE = new Item(532, NamespacedKey.parse("minecraft:black_stained_glass_pane"), () -> Block.BLACK_STAINED_GLASS_PANE);
+    public static final Item MAGENTA_STAINED_GLASS = new Item(532, NamespacedKey.parse("minecraft:magenta_stained_glass"), () -> Block.MAGENTA_STAINED_GLASS);
 
-    public static final Item PRISMARINE = new Item(533, NamespacedKey.parse("minecraft:prismarine"), () -> Block.PRISMARINE);
+    public static final Item LIGHT_BLUE_STAINED_GLASS = new Item(533, NamespacedKey.parse("minecraft:light_blue_stained_glass"), () -> Block.LIGHT_BLUE_STAINED_GLASS);
 
-    public static final Item PRISMARINE_BRICKS = new Item(534, NamespacedKey.parse("minecraft:prismarine_bricks"), () -> Block.PRISMARINE_BRICKS);
+    public static final Item YELLOW_STAINED_GLASS = new Item(534, NamespacedKey.parse("minecraft:yellow_stained_glass"), () -> Block.YELLOW_STAINED_GLASS);
 
-    public static final Item DARK_PRISMARINE = new Item(535, NamespacedKey.parse("minecraft:dark_prismarine"), () -> Block.DARK_PRISMARINE);
+    public static final Item LIME_STAINED_GLASS = new Item(535, NamespacedKey.parse("minecraft:lime_stained_glass"), () -> Block.LIME_STAINED_GLASS);
 
-    public static final Item PRISMARINE_STAIRS = new Item(536, NamespacedKey.parse("minecraft:prismarine_stairs"), () -> Block.PRISMARINE_STAIRS);
+    public static final Item PINK_STAINED_GLASS = new Item(536, NamespacedKey.parse("minecraft:pink_stained_glass"), () -> Block.PINK_STAINED_GLASS);
 
-    public static final Item PRISMARINE_BRICK_STAIRS = new Item(537, NamespacedKey.parse("minecraft:prismarine_brick_stairs"), () -> Block.PRISMARINE_BRICK_STAIRS);
+    public static final Item GRAY_STAINED_GLASS = new Item(537, NamespacedKey.parse("minecraft:gray_stained_glass"), () -> Block.GRAY_STAINED_GLASS);
 
-    public static final Item DARK_PRISMARINE_STAIRS = new Item(538, NamespacedKey.parse("minecraft:dark_prismarine_stairs"), () -> Block.DARK_PRISMARINE_STAIRS);
+    public static final Item LIGHT_GRAY_STAINED_GLASS = new Item(538, NamespacedKey.parse("minecraft:light_gray_stained_glass"), () -> Block.LIGHT_GRAY_STAINED_GLASS);
 
-    public static final Item SEA_LANTERN = new Item(539, NamespacedKey.parse("minecraft:sea_lantern"), () -> Block.SEA_LANTERN);
+    public static final Item CYAN_STAINED_GLASS = new Item(539, NamespacedKey.parse("minecraft:cyan_stained_glass"), () -> Block.CYAN_STAINED_GLASS);
 
-    public static final Item RED_SANDSTONE = new Item(540, NamespacedKey.parse("minecraft:red_sandstone"), () -> Block.RED_SANDSTONE);
+    public static final Item PURPLE_STAINED_GLASS = new Item(540, NamespacedKey.parse("minecraft:purple_stained_glass"), () -> Block.PURPLE_STAINED_GLASS);
 
-    public static final Item CHISELED_RED_SANDSTONE = new Item(541, NamespacedKey.parse("minecraft:chiseled_red_sandstone"), () -> Block.CHISELED_RED_SANDSTONE);
+    public static final Item BLUE_STAINED_GLASS = new Item(541, NamespacedKey.parse("minecraft:blue_stained_glass"), () -> Block.BLUE_STAINED_GLASS);
 
-    public static final Item CUT_RED_SANDSTONE = new Item(542, NamespacedKey.parse("minecraft:cut_red_sandstone"), () -> Block.CUT_RED_SANDSTONE);
+    public static final Item BROWN_STAINED_GLASS = new Item(542, NamespacedKey.parse("minecraft:brown_stained_glass"), () -> Block.BROWN_STAINED_GLASS);
 
-    public static final Item RED_SANDSTONE_STAIRS = new Item(543, NamespacedKey.parse("minecraft:red_sandstone_stairs"), () -> Block.RED_SANDSTONE_STAIRS);
+    public static final Item GREEN_STAINED_GLASS = new Item(543, NamespacedKey.parse("minecraft:green_stained_glass"), () -> Block.GREEN_STAINED_GLASS);
 
-    public static final Item REPEATING_COMMAND_BLOCK = new Item(544, NamespacedKey.parse("minecraft:repeating_command_block"), () -> Block.REPEATING_COMMAND_BLOCK);
+    public static final Item RED_STAINED_GLASS = new Item(544, NamespacedKey.parse("minecraft:red_stained_glass"), () -> Block.RED_STAINED_GLASS);
 
-    public static final Item CHAIN_COMMAND_BLOCK = new Item(545, NamespacedKey.parse("minecraft:chain_command_block"), () -> Block.CHAIN_COMMAND_BLOCK);
+    public static final Item BLACK_STAINED_GLASS = new Item(545, NamespacedKey.parse("minecraft:black_stained_glass"), () -> Block.BLACK_STAINED_GLASS);
 
-    public static final Item MAGMA_BLOCK = new Item(546, NamespacedKey.parse("minecraft:magma_block"), () -> Block.MAGMA_BLOCK);
+    public static final Item WHITE_STAINED_GLASS_PANE = new Item(546, NamespacedKey.parse("minecraft:white_stained_glass_pane"), () -> Block.WHITE_STAINED_GLASS_PANE);
 
-    public static final Item NETHER_WART_BLOCK = new Item(547, NamespacedKey.parse("minecraft:nether_wart_block"), () -> Block.NETHER_WART_BLOCK);
+    public static final Item ORANGE_STAINED_GLASS_PANE = new Item(547, NamespacedKey.parse("minecraft:orange_stained_glass_pane"), () -> Block.ORANGE_STAINED_GLASS_PANE);
 
-    public static final Item WARPED_WART_BLOCK = new Item(548, NamespacedKey.parse("minecraft:warped_wart_block"), () -> Block.WARPED_WART_BLOCK);
+    public static final Item MAGENTA_STAINED_GLASS_PANE = new Item(548, NamespacedKey.parse("minecraft:magenta_stained_glass_pane"), () -> Block.MAGENTA_STAINED_GLASS_PANE);
 
-    public static final Item RED_NETHER_BRICKS = new Item(549, NamespacedKey.parse("minecraft:red_nether_bricks"), () -> Block.RED_NETHER_BRICKS);
+    public static final Item LIGHT_BLUE_STAINED_GLASS_PANE = new Item(549, NamespacedKey.parse("minecraft:light_blue_stained_glass_pane"), () -> Block.LIGHT_BLUE_STAINED_GLASS_PANE);
 
-    public static final Item BONE_BLOCK = new Item(550, NamespacedKey.parse("minecraft:bone_block"), () -> Block.BONE_BLOCK);
+    public static final Item YELLOW_STAINED_GLASS_PANE = new Item(550, NamespacedKey.parse("minecraft:yellow_stained_glass_pane"), () -> Block.YELLOW_STAINED_GLASS_PANE);
 
-    public static final Item STRUCTURE_VOID = new Item(551, NamespacedKey.parse("minecraft:structure_void"), () -> Block.STRUCTURE_VOID);
+    public static final Item LIME_STAINED_GLASS_PANE = new Item(551, NamespacedKey.parse("minecraft:lime_stained_glass_pane"), () -> Block.LIME_STAINED_GLASS_PANE);
 
-    public static final Item SHULKER_BOX = new Item(552, NamespacedKey.parse("minecraft:shulker_box"), () -> Block.SHULKER_BOX);
+    public static final Item PINK_STAINED_GLASS_PANE = new Item(552, NamespacedKey.parse("minecraft:pink_stained_glass_pane"), () -> Block.PINK_STAINED_GLASS_PANE);
 
-    public static final Item WHITE_SHULKER_BOX = new Item(553, NamespacedKey.parse("minecraft:white_shulker_box"), () -> Block.WHITE_SHULKER_BOX);
+    public static final Item GRAY_STAINED_GLASS_PANE = new Item(553, NamespacedKey.parse("minecraft:gray_stained_glass_pane"), () -> Block.GRAY_STAINED_GLASS_PANE);
 
-    public static final Item ORANGE_SHULKER_BOX = new Item(554, NamespacedKey.parse("minecraft:orange_shulker_box"), () -> Block.ORANGE_SHULKER_BOX);
+    public static final Item LIGHT_GRAY_STAINED_GLASS_PANE = new Item(554, NamespacedKey.parse("minecraft:light_gray_stained_glass_pane"), () -> Block.LIGHT_GRAY_STAINED_GLASS_PANE);
 
-    public static final Item MAGENTA_SHULKER_BOX = new Item(555, NamespacedKey.parse("minecraft:magenta_shulker_box"), () -> Block.MAGENTA_SHULKER_BOX);
+    public static final Item CYAN_STAINED_GLASS_PANE = new Item(555, NamespacedKey.parse("minecraft:cyan_stained_glass_pane"), () -> Block.CYAN_STAINED_GLASS_PANE);
 
-    public static final Item LIGHT_BLUE_SHULKER_BOX = new Item(556, NamespacedKey.parse("minecraft:light_blue_shulker_box"), () -> Block.LIGHT_BLUE_SHULKER_BOX);
+    public static final Item PURPLE_STAINED_GLASS_PANE = new Item(556, NamespacedKey.parse("minecraft:purple_stained_glass_pane"), () -> Block.PURPLE_STAINED_GLASS_PANE);
 
-    public static final Item YELLOW_SHULKER_BOX = new Item(557, NamespacedKey.parse("minecraft:yellow_shulker_box"), () -> Block.YELLOW_SHULKER_BOX);
+    public static final Item BLUE_STAINED_GLASS_PANE = new Item(557, NamespacedKey.parse("minecraft:blue_stained_glass_pane"), () -> Block.BLUE_STAINED_GLASS_PANE);
 
-    public static final Item LIME_SHULKER_BOX = new Item(558, NamespacedKey.parse("minecraft:lime_shulker_box"), () -> Block.LIME_SHULKER_BOX);
+    public static final Item BROWN_STAINED_GLASS_PANE = new Item(558, NamespacedKey.parse("minecraft:brown_stained_glass_pane"), () -> Block.BROWN_STAINED_GLASS_PANE);
 
-    public static final Item PINK_SHULKER_BOX = new Item(559, NamespacedKey.parse("minecraft:pink_shulker_box"), () -> Block.PINK_SHULKER_BOX);
+    public static final Item GREEN_STAINED_GLASS_PANE = new Item(559, NamespacedKey.parse("minecraft:green_stained_glass_pane"), () -> Block.GREEN_STAINED_GLASS_PANE);
 
-    public static final Item GRAY_SHULKER_BOX = new Item(560, NamespacedKey.parse("minecraft:gray_shulker_box"), () -> Block.GRAY_SHULKER_BOX);
+    public static final Item RED_STAINED_GLASS_PANE = new Item(560, NamespacedKey.parse("minecraft:red_stained_glass_pane"), () -> Block.RED_STAINED_GLASS_PANE);
 
-    public static final Item LIGHT_GRAY_SHULKER_BOX = new Item(561, NamespacedKey.parse("minecraft:light_gray_shulker_box"), () -> Block.LIGHT_GRAY_SHULKER_BOX);
+    public static final Item BLACK_STAINED_GLASS_PANE = new Item(561, NamespacedKey.parse("minecraft:black_stained_glass_pane"), () -> Block.BLACK_STAINED_GLASS_PANE);
 
-    public static final Item CYAN_SHULKER_BOX = new Item(562, NamespacedKey.parse("minecraft:cyan_shulker_box"), () -> Block.CYAN_SHULKER_BOX);
+    public static final Item PRISMARINE = new Item(562, NamespacedKey.parse("minecraft:prismarine"), () -> Block.PRISMARINE);
 
-    public static final Item PURPLE_SHULKER_BOX = new Item(563, NamespacedKey.parse("minecraft:purple_shulker_box"), () -> Block.PURPLE_SHULKER_BOX);
+    public static final Item PRISMARINE_BRICKS = new Item(563, NamespacedKey.parse("minecraft:prismarine_bricks"), () -> Block.PRISMARINE_BRICKS);
 
-    public static final Item BLUE_SHULKER_BOX = new Item(564, NamespacedKey.parse("minecraft:blue_shulker_box"), () -> Block.BLUE_SHULKER_BOX);
+    public static final Item DARK_PRISMARINE = new Item(564, NamespacedKey.parse("minecraft:dark_prismarine"), () -> Block.DARK_PRISMARINE);
 
-    public static final Item BROWN_SHULKER_BOX = new Item(565, NamespacedKey.parse("minecraft:brown_shulker_box"), () -> Block.BROWN_SHULKER_BOX);
+    public static final Item PRISMARINE_STAIRS = new Item(565, NamespacedKey.parse("minecraft:prismarine_stairs"), () -> Block.PRISMARINE_STAIRS);
 
-    public static final Item GREEN_SHULKER_BOX = new Item(566, NamespacedKey.parse("minecraft:green_shulker_box"), () -> Block.GREEN_SHULKER_BOX);
+    public static final Item PRISMARINE_BRICK_STAIRS = new Item(566, NamespacedKey.parse("minecraft:prismarine_brick_stairs"), () -> Block.PRISMARINE_BRICK_STAIRS);
 
-    public static final Item RED_SHULKER_BOX = new Item(567, NamespacedKey.parse("minecraft:red_shulker_box"), () -> Block.RED_SHULKER_BOX);
+    public static final Item DARK_PRISMARINE_STAIRS = new Item(567, NamespacedKey.parse("minecraft:dark_prismarine_stairs"), () -> Block.DARK_PRISMARINE_STAIRS);
 
-    public static final Item BLACK_SHULKER_BOX = new Item(568, NamespacedKey.parse("minecraft:black_shulker_box"), () -> Block.BLACK_SHULKER_BOX);
+    public static final Item SEA_LANTERN = new Item(568, NamespacedKey.parse("minecraft:sea_lantern"), () -> Block.SEA_LANTERN);
 
-    public static final Item WHITE_GLAZED_TERRACOTTA = new Item(569, NamespacedKey.parse("minecraft:white_glazed_terracotta"), () -> Block.WHITE_GLAZED_TERRACOTTA);
+    public static final Item RED_SANDSTONE = new Item(569, NamespacedKey.parse("minecraft:red_sandstone"), () -> Block.RED_SANDSTONE);
 
-    public static final Item ORANGE_GLAZED_TERRACOTTA = new Item(570, NamespacedKey.parse("minecraft:orange_glazed_terracotta"), () -> Block.ORANGE_GLAZED_TERRACOTTA);
+    public static final Item CHISELED_RED_SANDSTONE = new Item(570, NamespacedKey.parse("minecraft:chiseled_red_sandstone"), () -> Block.CHISELED_RED_SANDSTONE);
 
-    public static final Item MAGENTA_GLAZED_TERRACOTTA = new Item(571, NamespacedKey.parse("minecraft:magenta_glazed_terracotta"), () -> Block.MAGENTA_GLAZED_TERRACOTTA);
+    public static final Item CUT_RED_SANDSTONE = new Item(571, NamespacedKey.parse("minecraft:cut_red_sandstone"), () -> Block.CUT_RED_SANDSTONE);
 
-    public static final Item LIGHT_BLUE_GLAZED_TERRACOTTA = new Item(572, NamespacedKey.parse("minecraft:light_blue_glazed_terracotta"), () -> Block.LIGHT_BLUE_GLAZED_TERRACOTTA);
+    public static final Item RED_SANDSTONE_STAIRS = new Item(572, NamespacedKey.parse("minecraft:red_sandstone_stairs"), () -> Block.RED_SANDSTONE_STAIRS);
 
-    public static final Item YELLOW_GLAZED_TERRACOTTA = new Item(573, NamespacedKey.parse("minecraft:yellow_glazed_terracotta"), () -> Block.YELLOW_GLAZED_TERRACOTTA);
+    public static final Item REPEATING_COMMAND_BLOCK = new Item(573, NamespacedKey.parse("minecraft:repeating_command_block"), () -> Block.REPEATING_COMMAND_BLOCK);
 
-    public static final Item LIME_GLAZED_TERRACOTTA = new Item(574, NamespacedKey.parse("minecraft:lime_glazed_terracotta"), () -> Block.LIME_GLAZED_TERRACOTTA);
+    public static final Item CHAIN_COMMAND_BLOCK = new Item(574, NamespacedKey.parse("minecraft:chain_command_block"), () -> Block.CHAIN_COMMAND_BLOCK);
 
-    public static final Item PINK_GLAZED_TERRACOTTA = new Item(575, NamespacedKey.parse("minecraft:pink_glazed_terracotta"), () -> Block.PINK_GLAZED_TERRACOTTA);
+    public static final Item MAGMA_BLOCK = new Item(575, NamespacedKey.parse("minecraft:magma_block"), () -> Block.MAGMA_BLOCK);
 
-    public static final Item GRAY_GLAZED_TERRACOTTA = new Item(576, NamespacedKey.parse("minecraft:gray_glazed_terracotta"), () -> Block.GRAY_GLAZED_TERRACOTTA);
+    public static final Item NETHER_WART_BLOCK = new Item(576, NamespacedKey.parse("minecraft:nether_wart_block"), () -> Block.NETHER_WART_BLOCK);
 
-    public static final Item LIGHT_GRAY_GLAZED_TERRACOTTA = new Item(577, NamespacedKey.parse("minecraft:light_gray_glazed_terracotta"), () -> Block.LIGHT_GRAY_GLAZED_TERRACOTTA);
+    public static final Item WARPED_WART_BLOCK = new Item(577, NamespacedKey.parse("minecraft:warped_wart_block"), () -> Block.WARPED_WART_BLOCK);
 
-    public static final Item CYAN_GLAZED_TERRACOTTA = new Item(578, NamespacedKey.parse("minecraft:cyan_glazed_terracotta"), () -> Block.CYAN_GLAZED_TERRACOTTA);
+    public static final Item RED_NETHER_BRICKS = new Item(578, NamespacedKey.parse("minecraft:red_nether_bricks"), () -> Block.RED_NETHER_BRICKS);
 
-    public static final Item PURPLE_GLAZED_TERRACOTTA = new Item(579, NamespacedKey.parse("minecraft:purple_glazed_terracotta"), () -> Block.PURPLE_GLAZED_TERRACOTTA);
+    public static final Item BONE_BLOCK = new Item(579, NamespacedKey.parse("minecraft:bone_block"), () -> Block.BONE_BLOCK);
 
-    public static final Item BLUE_GLAZED_TERRACOTTA = new Item(580, NamespacedKey.parse("minecraft:blue_glazed_terracotta"), () -> Block.BLUE_GLAZED_TERRACOTTA);
+    public static final Item STRUCTURE_VOID = new Item(580, NamespacedKey.parse("minecraft:structure_void"), () -> Block.STRUCTURE_VOID);
 
-    public static final Item BROWN_GLAZED_TERRACOTTA = new Item(581, NamespacedKey.parse("minecraft:brown_glazed_terracotta"), () -> Block.BROWN_GLAZED_TERRACOTTA);
+    public static final Item SHULKER_BOX = new Item(581, NamespacedKey.parse("minecraft:shulker_box"), () -> Block.SHULKER_BOX);
 
-    public static final Item GREEN_GLAZED_TERRACOTTA = new Item(582, NamespacedKey.parse("minecraft:green_glazed_terracotta"), () -> Block.GREEN_GLAZED_TERRACOTTA);
+    public static final Item WHITE_SHULKER_BOX = new Item(582, NamespacedKey.parse("minecraft:white_shulker_box"), () -> Block.WHITE_SHULKER_BOX);
 
-    public static final Item RED_GLAZED_TERRACOTTA = new Item(583, NamespacedKey.parse("minecraft:red_glazed_terracotta"), () -> Block.RED_GLAZED_TERRACOTTA);
+    public static final Item ORANGE_SHULKER_BOX = new Item(583, NamespacedKey.parse("minecraft:orange_shulker_box"), () -> Block.ORANGE_SHULKER_BOX);
 
-    public static final Item BLACK_GLAZED_TERRACOTTA = new Item(584, NamespacedKey.parse("minecraft:black_glazed_terracotta"), () -> Block.BLACK_GLAZED_TERRACOTTA);
+    public static final Item MAGENTA_SHULKER_BOX = new Item(584, NamespacedKey.parse("minecraft:magenta_shulker_box"), () -> Block.MAGENTA_SHULKER_BOX);
 
-    public static final Item WHITE_CONCRETE = new Item(585, NamespacedKey.parse("minecraft:white_concrete"), () -> Block.WHITE_CONCRETE);
+    public static final Item LIGHT_BLUE_SHULKER_BOX = new Item(585, NamespacedKey.parse("minecraft:light_blue_shulker_box"), () -> Block.LIGHT_BLUE_SHULKER_BOX);
 
-    public static final Item ORANGE_CONCRETE = new Item(586, NamespacedKey.parse("minecraft:orange_concrete"), () -> Block.ORANGE_CONCRETE);
+    public static final Item YELLOW_SHULKER_BOX = new Item(586, NamespacedKey.parse("minecraft:yellow_shulker_box"), () -> Block.YELLOW_SHULKER_BOX);
 
-    public static final Item MAGENTA_CONCRETE = new Item(587, NamespacedKey.parse("minecraft:magenta_concrete"), () -> Block.MAGENTA_CONCRETE);
+    public static final Item LIME_SHULKER_BOX = new Item(587, NamespacedKey.parse("minecraft:lime_shulker_box"), () -> Block.LIME_SHULKER_BOX);
 
-    public static final Item LIGHT_BLUE_CONCRETE = new Item(588, NamespacedKey.parse("minecraft:light_blue_concrete"), () -> Block.LIGHT_BLUE_CONCRETE);
+    public static final Item PINK_SHULKER_BOX = new Item(588, NamespacedKey.parse("minecraft:pink_shulker_box"), () -> Block.PINK_SHULKER_BOX);
 
-    public static final Item YELLOW_CONCRETE = new Item(589, NamespacedKey.parse("minecraft:yellow_concrete"), () -> Block.YELLOW_CONCRETE);
+    public static final Item GRAY_SHULKER_BOX = new Item(589, NamespacedKey.parse("minecraft:gray_shulker_box"), () -> Block.GRAY_SHULKER_BOX);
 
-    public static final Item LIME_CONCRETE = new Item(590, NamespacedKey.parse("minecraft:lime_concrete"), () -> Block.LIME_CONCRETE);
+    public static final Item LIGHT_GRAY_SHULKER_BOX = new Item(590, NamespacedKey.parse("minecraft:light_gray_shulker_box"), () -> Block.LIGHT_GRAY_SHULKER_BOX);
 
-    public static final Item PINK_CONCRETE = new Item(591, NamespacedKey.parse("minecraft:pink_concrete"), () -> Block.PINK_CONCRETE);
+    public static final Item CYAN_SHULKER_BOX = new Item(591, NamespacedKey.parse("minecraft:cyan_shulker_box"), () -> Block.CYAN_SHULKER_BOX);
 
-    public static final Item GRAY_CONCRETE = new Item(592, NamespacedKey.parse("minecraft:gray_concrete"), () -> Block.GRAY_CONCRETE);
+    public static final Item PURPLE_SHULKER_BOX = new Item(592, NamespacedKey.parse("minecraft:purple_shulker_box"), () -> Block.PURPLE_SHULKER_BOX);
 
-    public static final Item LIGHT_GRAY_CONCRETE = new Item(593, NamespacedKey.parse("minecraft:light_gray_concrete"), () -> Block.LIGHT_GRAY_CONCRETE);
+    public static final Item BLUE_SHULKER_BOX = new Item(593, NamespacedKey.parse("minecraft:blue_shulker_box"), () -> Block.BLUE_SHULKER_BOX);
 
-    public static final Item CYAN_CONCRETE = new Item(594, NamespacedKey.parse("minecraft:cyan_concrete"), () -> Block.CYAN_CONCRETE);
+    public static final Item BROWN_SHULKER_BOX = new Item(594, NamespacedKey.parse("minecraft:brown_shulker_box"), () -> Block.BROWN_SHULKER_BOX);
 
-    public static final Item PURPLE_CONCRETE = new Item(595, NamespacedKey.parse("minecraft:purple_concrete"), () -> Block.PURPLE_CONCRETE);
+    public static final Item GREEN_SHULKER_BOX = new Item(595, NamespacedKey.parse("minecraft:green_shulker_box"), () -> Block.GREEN_SHULKER_BOX);
 
-    public static final Item BLUE_CONCRETE = new Item(596, NamespacedKey.parse("minecraft:blue_concrete"), () -> Block.BLUE_CONCRETE);
+    public static final Item RED_SHULKER_BOX = new Item(596, NamespacedKey.parse("minecraft:red_shulker_box"), () -> Block.RED_SHULKER_BOX);
 
-    public static final Item BROWN_CONCRETE = new Item(597, NamespacedKey.parse("minecraft:brown_concrete"), () -> Block.BROWN_CONCRETE);
+    public static final Item BLACK_SHULKER_BOX = new Item(597, NamespacedKey.parse("minecraft:black_shulker_box"), () -> Block.BLACK_SHULKER_BOX);
 
-    public static final Item GREEN_CONCRETE = new Item(598, NamespacedKey.parse("minecraft:green_concrete"), () -> Block.GREEN_CONCRETE);
+    public static final Item WHITE_GLAZED_TERRACOTTA = new Item(598, NamespacedKey.parse("minecraft:white_glazed_terracotta"), () -> Block.WHITE_GLAZED_TERRACOTTA);
 
-    public static final Item RED_CONCRETE = new Item(599, NamespacedKey.parse("minecraft:red_concrete"), () -> Block.RED_CONCRETE);
+    public static final Item ORANGE_GLAZED_TERRACOTTA = new Item(599, NamespacedKey.parse("minecraft:orange_glazed_terracotta"), () -> Block.ORANGE_GLAZED_TERRACOTTA);
 
-    public static final Item BLACK_CONCRETE = new Item(600, NamespacedKey.parse("minecraft:black_concrete"), () -> Block.BLACK_CONCRETE);
+    public static final Item MAGENTA_GLAZED_TERRACOTTA = new Item(600, NamespacedKey.parse("minecraft:magenta_glazed_terracotta"), () -> Block.MAGENTA_GLAZED_TERRACOTTA);
 
-    public static final Item WHITE_CONCRETE_POWDER = new Item(601, NamespacedKey.parse("minecraft:white_concrete_powder"), () -> Block.WHITE_CONCRETE_POWDER);
+    public static final Item LIGHT_BLUE_GLAZED_TERRACOTTA = new Item(601, NamespacedKey.parse("minecraft:light_blue_glazed_terracotta"), () -> Block.LIGHT_BLUE_GLAZED_TERRACOTTA);
 
-    public static final Item ORANGE_CONCRETE_POWDER = new Item(602, NamespacedKey.parse("minecraft:orange_concrete_powder"), () -> Block.ORANGE_CONCRETE_POWDER);
+    public static final Item YELLOW_GLAZED_TERRACOTTA = new Item(602, NamespacedKey.parse("minecraft:yellow_glazed_terracotta"), () -> Block.YELLOW_GLAZED_TERRACOTTA);
 
-    public static final Item MAGENTA_CONCRETE_POWDER = new Item(603, NamespacedKey.parse("minecraft:magenta_concrete_powder"), () -> Block.MAGENTA_CONCRETE_POWDER);
+    public static final Item LIME_GLAZED_TERRACOTTA = new Item(603, NamespacedKey.parse("minecraft:lime_glazed_terracotta"), () -> Block.LIME_GLAZED_TERRACOTTA);
 
-    public static final Item LIGHT_BLUE_CONCRETE_POWDER = new Item(604, NamespacedKey.parse("minecraft:light_blue_concrete_powder"), () -> Block.LIGHT_BLUE_CONCRETE_POWDER);
+    public static final Item PINK_GLAZED_TERRACOTTA = new Item(604, NamespacedKey.parse("minecraft:pink_glazed_terracotta"), () -> Block.PINK_GLAZED_TERRACOTTA);
 
-    public static final Item YELLOW_CONCRETE_POWDER = new Item(605, NamespacedKey.parse("minecraft:yellow_concrete_powder"), () -> Block.YELLOW_CONCRETE_POWDER);
+    public static final Item GRAY_GLAZED_TERRACOTTA = new Item(605, NamespacedKey.parse("minecraft:gray_glazed_terracotta"), () -> Block.GRAY_GLAZED_TERRACOTTA);
 
-    public static final Item LIME_CONCRETE_POWDER = new Item(606, NamespacedKey.parse("minecraft:lime_concrete_powder"), () -> Block.LIME_CONCRETE_POWDER);
+    public static final Item LIGHT_GRAY_GLAZED_TERRACOTTA = new Item(606, NamespacedKey.parse("minecraft:light_gray_glazed_terracotta"), () -> Block.LIGHT_GRAY_GLAZED_TERRACOTTA);
 
-    public static final Item PINK_CONCRETE_POWDER = new Item(607, NamespacedKey.parse("minecraft:pink_concrete_powder"), () -> Block.PINK_CONCRETE_POWDER);
+    public static final Item CYAN_GLAZED_TERRACOTTA = new Item(607, NamespacedKey.parse("minecraft:cyan_glazed_terracotta"), () -> Block.CYAN_GLAZED_TERRACOTTA);
 
-    public static final Item GRAY_CONCRETE_POWDER = new Item(608, NamespacedKey.parse("minecraft:gray_concrete_powder"), () -> Block.GRAY_CONCRETE_POWDER);
+    public static final Item PURPLE_GLAZED_TERRACOTTA = new Item(608, NamespacedKey.parse("minecraft:purple_glazed_terracotta"), () -> Block.PURPLE_GLAZED_TERRACOTTA);
 
-    public static final Item LIGHT_GRAY_CONCRETE_POWDER = new Item(609, NamespacedKey.parse("minecraft:light_gray_concrete_powder"), () -> Block.LIGHT_GRAY_CONCRETE_POWDER);
+    public static final Item BLUE_GLAZED_TERRACOTTA = new Item(609, NamespacedKey.parse("minecraft:blue_glazed_terracotta"), () -> Block.BLUE_GLAZED_TERRACOTTA);
 
-    public static final Item CYAN_CONCRETE_POWDER = new Item(610, NamespacedKey.parse("minecraft:cyan_concrete_powder"), () -> Block.CYAN_CONCRETE_POWDER);
+    public static final Item BROWN_GLAZED_TERRACOTTA = new Item(610, NamespacedKey.parse("minecraft:brown_glazed_terracotta"), () -> Block.BROWN_GLAZED_TERRACOTTA);
 
-    public static final Item PURPLE_CONCRETE_POWDER = new Item(611, NamespacedKey.parse("minecraft:purple_concrete_powder"), () -> Block.PURPLE_CONCRETE_POWDER);
+    public static final Item GREEN_GLAZED_TERRACOTTA = new Item(611, NamespacedKey.parse("minecraft:green_glazed_terracotta"), () -> Block.GREEN_GLAZED_TERRACOTTA);
 
-    public static final Item BLUE_CONCRETE_POWDER = new Item(612, NamespacedKey.parse("minecraft:blue_concrete_powder"), () -> Block.BLUE_CONCRETE_POWDER);
+    public static final Item RED_GLAZED_TERRACOTTA = new Item(612, NamespacedKey.parse("minecraft:red_glazed_terracotta"), () -> Block.RED_GLAZED_TERRACOTTA);
 
-    public static final Item BROWN_CONCRETE_POWDER = new Item(613, NamespacedKey.parse("minecraft:brown_concrete_powder"), () -> Block.BROWN_CONCRETE_POWDER);
+    public static final Item BLACK_GLAZED_TERRACOTTA = new Item(613, NamespacedKey.parse("minecraft:black_glazed_terracotta"), () -> Block.BLACK_GLAZED_TERRACOTTA);
 
-    public static final Item GREEN_CONCRETE_POWDER = new Item(614, NamespacedKey.parse("minecraft:green_concrete_powder"), () -> Block.GREEN_CONCRETE_POWDER);
+    public static final Item WHITE_CONCRETE = new Item(614, NamespacedKey.parse("minecraft:white_concrete"), () -> Block.WHITE_CONCRETE);
 
-    public static final Item RED_CONCRETE_POWDER = new Item(615, NamespacedKey.parse("minecraft:red_concrete_powder"), () -> Block.RED_CONCRETE_POWDER);
+    public static final Item ORANGE_CONCRETE = new Item(615, NamespacedKey.parse("minecraft:orange_concrete"), () -> Block.ORANGE_CONCRETE);
 
-    public static final Item BLACK_CONCRETE_POWDER = new Item(616, NamespacedKey.parse("minecraft:black_concrete_powder"), () -> Block.BLACK_CONCRETE_POWDER);
+    public static final Item MAGENTA_CONCRETE = new Item(616, NamespacedKey.parse("minecraft:magenta_concrete"), () -> Block.MAGENTA_CONCRETE);
 
-    public static final Item TURTLE_EGG = new Item(617, NamespacedKey.parse("minecraft:turtle_egg"), () -> Block.TURTLE_EGG);
+    public static final Item LIGHT_BLUE_CONCRETE = new Item(617, NamespacedKey.parse("minecraft:light_blue_concrete"), () -> Block.LIGHT_BLUE_CONCRETE);
 
-    public static final Item SNIFFER_EGG = new Item(618, NamespacedKey.parse("minecraft:sniffer_egg"), () -> Block.SNIFFER_EGG);
+    public static final Item YELLOW_CONCRETE = new Item(618, NamespacedKey.parse("minecraft:yellow_concrete"), () -> Block.YELLOW_CONCRETE);
 
-    public static final Item DEAD_TUBE_CORAL_BLOCK = new Item(619, NamespacedKey.parse("minecraft:dead_tube_coral_block"), () -> Block.DEAD_TUBE_CORAL_BLOCK);
+    public static final Item LIME_CONCRETE = new Item(619, NamespacedKey.parse("minecraft:lime_concrete"), () -> Block.LIME_CONCRETE);
 
-    public static final Item DEAD_BRAIN_CORAL_BLOCK = new Item(620, NamespacedKey.parse("minecraft:dead_brain_coral_block"), () -> Block.DEAD_BRAIN_CORAL_BLOCK);
+    public static final Item PINK_CONCRETE = new Item(620, NamespacedKey.parse("minecraft:pink_concrete"), () -> Block.PINK_CONCRETE);
 
-    public static final Item DEAD_BUBBLE_CORAL_BLOCK = new Item(621, NamespacedKey.parse("minecraft:dead_bubble_coral_block"), () -> Block.DEAD_BUBBLE_CORAL_BLOCK);
+    public static final Item GRAY_CONCRETE = new Item(621, NamespacedKey.parse("minecraft:gray_concrete"), () -> Block.GRAY_CONCRETE);
 
-    public static final Item DEAD_FIRE_CORAL_BLOCK = new Item(622, NamespacedKey.parse("minecraft:dead_fire_coral_block"), () -> Block.DEAD_FIRE_CORAL_BLOCK);
+    public static final Item LIGHT_GRAY_CONCRETE = new Item(622, NamespacedKey.parse("minecraft:light_gray_concrete"), () -> Block.LIGHT_GRAY_CONCRETE);
 
-    public static final Item DEAD_HORN_CORAL_BLOCK = new Item(623, NamespacedKey.parse("minecraft:dead_horn_coral_block"), () -> Block.DEAD_HORN_CORAL_BLOCK);
+    public static final Item CYAN_CONCRETE = new Item(623, NamespacedKey.parse("minecraft:cyan_concrete"), () -> Block.CYAN_CONCRETE);
 
-    public static final Item TUBE_CORAL_BLOCK = new Item(624, NamespacedKey.parse("minecraft:tube_coral_block"), () -> Block.TUBE_CORAL_BLOCK);
+    public static final Item PURPLE_CONCRETE = new Item(624, NamespacedKey.parse("minecraft:purple_concrete"), () -> Block.PURPLE_CONCRETE);
 
-    public static final Item BRAIN_CORAL_BLOCK = new Item(625, NamespacedKey.parse("minecraft:brain_coral_block"), () -> Block.BRAIN_CORAL_BLOCK);
+    public static final Item BLUE_CONCRETE = new Item(625, NamespacedKey.parse("minecraft:blue_concrete"), () -> Block.BLUE_CONCRETE);
 
-    public static final Item BUBBLE_CORAL_BLOCK = new Item(626, NamespacedKey.parse("minecraft:bubble_coral_block"), () -> Block.BUBBLE_CORAL_BLOCK);
+    public static final Item BROWN_CONCRETE = new Item(626, NamespacedKey.parse("minecraft:brown_concrete"), () -> Block.BROWN_CONCRETE);
 
-    public static final Item FIRE_CORAL_BLOCK = new Item(627, NamespacedKey.parse("minecraft:fire_coral_block"), () -> Block.FIRE_CORAL_BLOCK);
+    public static final Item GREEN_CONCRETE = new Item(627, NamespacedKey.parse("minecraft:green_concrete"), () -> Block.GREEN_CONCRETE);
 
-    public static final Item HORN_CORAL_BLOCK = new Item(628, NamespacedKey.parse("minecraft:horn_coral_block"), () -> Block.HORN_CORAL_BLOCK);
+    public static final Item RED_CONCRETE = new Item(628, NamespacedKey.parse("minecraft:red_concrete"), () -> Block.RED_CONCRETE);
 
-    public static final Item TUBE_CORAL = new Item(629, NamespacedKey.parse("minecraft:tube_coral"), () -> Block.TUBE_CORAL);
+    public static final Item BLACK_CONCRETE = new Item(629, NamespacedKey.parse("minecraft:black_concrete"), () -> Block.BLACK_CONCRETE);
 
-    public static final Item BRAIN_CORAL = new Item(630, NamespacedKey.parse("minecraft:brain_coral"), () -> Block.BRAIN_CORAL);
+    public static final Item WHITE_CONCRETE_POWDER = new Item(630, NamespacedKey.parse("minecraft:white_concrete_powder"), () -> Block.WHITE_CONCRETE_POWDER);
 
-    public static final Item BUBBLE_CORAL = new Item(631, NamespacedKey.parse("minecraft:bubble_coral"), () -> Block.BUBBLE_CORAL);
+    public static final Item ORANGE_CONCRETE_POWDER = new Item(631, NamespacedKey.parse("minecraft:orange_concrete_powder"), () -> Block.ORANGE_CONCRETE_POWDER);
 
-    public static final Item FIRE_CORAL = new Item(632, NamespacedKey.parse("minecraft:fire_coral"), () -> Block.FIRE_CORAL);
+    public static final Item MAGENTA_CONCRETE_POWDER = new Item(632, NamespacedKey.parse("minecraft:magenta_concrete_powder"), () -> Block.MAGENTA_CONCRETE_POWDER);
 
-    public static final Item HORN_CORAL = new Item(633, NamespacedKey.parse("minecraft:horn_coral"), () -> Block.HORN_CORAL);
+    public static final Item LIGHT_BLUE_CONCRETE_POWDER = new Item(633, NamespacedKey.parse("minecraft:light_blue_concrete_powder"), () -> Block.LIGHT_BLUE_CONCRETE_POWDER);
 
-    public static final Item DEAD_BRAIN_CORAL = new Item(634, NamespacedKey.parse("minecraft:dead_brain_coral"), () -> Block.DEAD_BRAIN_CORAL);
+    public static final Item YELLOW_CONCRETE_POWDER = new Item(634, NamespacedKey.parse("minecraft:yellow_concrete_powder"), () -> Block.YELLOW_CONCRETE_POWDER);
 
-    public static final Item DEAD_BUBBLE_CORAL = new Item(635, NamespacedKey.parse("minecraft:dead_bubble_coral"), () -> Block.DEAD_BUBBLE_CORAL);
+    public static final Item LIME_CONCRETE_POWDER = new Item(635, NamespacedKey.parse("minecraft:lime_concrete_powder"), () -> Block.LIME_CONCRETE_POWDER);
 
-    public static final Item DEAD_FIRE_CORAL = new Item(636, NamespacedKey.parse("minecraft:dead_fire_coral"), () -> Block.DEAD_FIRE_CORAL);
+    public static final Item PINK_CONCRETE_POWDER = new Item(636, NamespacedKey.parse("minecraft:pink_concrete_powder"), () -> Block.PINK_CONCRETE_POWDER);
 
-    public static final Item DEAD_HORN_CORAL = new Item(637, NamespacedKey.parse("minecraft:dead_horn_coral"), () -> Block.DEAD_HORN_CORAL);
+    public static final Item GRAY_CONCRETE_POWDER = new Item(637, NamespacedKey.parse("minecraft:gray_concrete_powder"), () -> Block.GRAY_CONCRETE_POWDER);
 
-    public static final Item DEAD_TUBE_CORAL = new Item(638, NamespacedKey.parse("minecraft:dead_tube_coral"), () -> Block.DEAD_TUBE_CORAL);
+    public static final Item LIGHT_GRAY_CONCRETE_POWDER = new Item(638, NamespacedKey.parse("minecraft:light_gray_concrete_powder"), () -> Block.LIGHT_GRAY_CONCRETE_POWDER);
 
-    public static final Item TUBE_CORAL_FAN = new Item(639, NamespacedKey.parse("minecraft:tube_coral_fan"), () -> Block.TUBE_CORAL_FAN);
+    public static final Item CYAN_CONCRETE_POWDER = new Item(639, NamespacedKey.parse("minecraft:cyan_concrete_powder"), () -> Block.CYAN_CONCRETE_POWDER);
 
-    public static final Item BRAIN_CORAL_FAN = new Item(640, NamespacedKey.parse("minecraft:brain_coral_fan"), () -> Block.BRAIN_CORAL_FAN);
+    public static final Item PURPLE_CONCRETE_POWDER = new Item(640, NamespacedKey.parse("minecraft:purple_concrete_powder"), () -> Block.PURPLE_CONCRETE_POWDER);
 
-    public static final Item BUBBLE_CORAL_FAN = new Item(641, NamespacedKey.parse("minecraft:bubble_coral_fan"), () -> Block.BUBBLE_CORAL_FAN);
+    public static final Item BLUE_CONCRETE_POWDER = new Item(641, NamespacedKey.parse("minecraft:blue_concrete_powder"), () -> Block.BLUE_CONCRETE_POWDER);
 
-    public static final Item FIRE_CORAL_FAN = new Item(642, NamespacedKey.parse("minecraft:fire_coral_fan"), () -> Block.FIRE_CORAL_FAN);
+    public static final Item BROWN_CONCRETE_POWDER = new Item(642, NamespacedKey.parse("minecraft:brown_concrete_powder"), () -> Block.BROWN_CONCRETE_POWDER);
 
-    public static final Item HORN_CORAL_FAN = new Item(643, NamespacedKey.parse("minecraft:horn_coral_fan"), () -> Block.HORN_CORAL_FAN);
+    public static final Item GREEN_CONCRETE_POWDER = new Item(643, NamespacedKey.parse("minecraft:green_concrete_powder"), () -> Block.GREEN_CONCRETE_POWDER);
 
-    public static final Item DEAD_TUBE_CORAL_FAN = new Item(644, NamespacedKey.parse("minecraft:dead_tube_coral_fan"), () -> Block.DEAD_TUBE_CORAL_FAN);
+    public static final Item RED_CONCRETE_POWDER = new Item(644, NamespacedKey.parse("minecraft:red_concrete_powder"), () -> Block.RED_CONCRETE_POWDER);
 
-    public static final Item DEAD_BRAIN_CORAL_FAN = new Item(645, NamespacedKey.parse("minecraft:dead_brain_coral_fan"), () -> Block.DEAD_BRAIN_CORAL_FAN);
+    public static final Item BLACK_CONCRETE_POWDER = new Item(645, NamespacedKey.parse("minecraft:black_concrete_powder"), () -> Block.BLACK_CONCRETE_POWDER);
 
-    public static final Item DEAD_BUBBLE_CORAL_FAN = new Item(646, NamespacedKey.parse("minecraft:dead_bubble_coral_fan"), () -> Block.DEAD_BUBBLE_CORAL_FAN);
+    public static final Item TURTLE_EGG = new Item(646, NamespacedKey.parse("minecraft:turtle_egg"), () -> Block.TURTLE_EGG);
 
-    public static final Item DEAD_FIRE_CORAL_FAN = new Item(647, NamespacedKey.parse("minecraft:dead_fire_coral_fan"), () -> Block.DEAD_FIRE_CORAL_FAN);
+    public static final Item SNIFFER_EGG = new Item(647, NamespacedKey.parse("minecraft:sniffer_egg"), () -> Block.SNIFFER_EGG);
 
-    public static final Item DEAD_HORN_CORAL_FAN = new Item(648, NamespacedKey.parse("minecraft:dead_horn_coral_fan"), () -> Block.DEAD_HORN_CORAL_FAN);
+    public static final Item DRIED_GHAST = new Item(648, NamespacedKey.parse("minecraft:dried_ghast"), () -> Block.DRIED_GHAST);
 
-    public static final Item BLUE_ICE = new Item(649, NamespacedKey.parse("minecraft:blue_ice"), () -> Block.BLUE_ICE);
+    public static final Item DEAD_TUBE_CORAL_BLOCK = new Item(649, NamespacedKey.parse("minecraft:dead_tube_coral_block"), () -> Block.DEAD_TUBE_CORAL_BLOCK);
 
-    public static final Item CONDUIT = new Item(650, NamespacedKey.parse("minecraft:conduit"), () -> Block.CONDUIT);
+    public static final Item DEAD_BRAIN_CORAL_BLOCK = new Item(650, NamespacedKey.parse("minecraft:dead_brain_coral_block"), () -> Block.DEAD_BRAIN_CORAL_BLOCK);
 
-    public static final Item POLISHED_GRANITE_STAIRS = new Item(651, NamespacedKey.parse("minecraft:polished_granite_stairs"), () -> Block.POLISHED_GRANITE_STAIRS);
+    public static final Item DEAD_BUBBLE_CORAL_BLOCK = new Item(651, NamespacedKey.parse("minecraft:dead_bubble_coral_block"), () -> Block.DEAD_BUBBLE_CORAL_BLOCK);
 
-    public static final Item SMOOTH_RED_SANDSTONE_STAIRS = new Item(652, NamespacedKey.parse("minecraft:smooth_red_sandstone_stairs"), () -> Block.SMOOTH_RED_SANDSTONE_STAIRS);
+    public static final Item DEAD_FIRE_CORAL_BLOCK = new Item(652, NamespacedKey.parse("minecraft:dead_fire_coral_block"), () -> Block.DEAD_FIRE_CORAL_BLOCK);
 
-    public static final Item MOSSY_STONE_BRICK_STAIRS = new Item(653, NamespacedKey.parse("minecraft:mossy_stone_brick_stairs"), () -> Block.MOSSY_STONE_BRICK_STAIRS);
+    public static final Item DEAD_HORN_CORAL_BLOCK = new Item(653, NamespacedKey.parse("minecraft:dead_horn_coral_block"), () -> Block.DEAD_HORN_CORAL_BLOCK);
 
-    public static final Item POLISHED_DIORITE_STAIRS = new Item(654, NamespacedKey.parse("minecraft:polished_diorite_stairs"), () -> Block.POLISHED_DIORITE_STAIRS);
+    public static final Item TUBE_CORAL_BLOCK = new Item(654, NamespacedKey.parse("minecraft:tube_coral_block"), () -> Block.TUBE_CORAL_BLOCK);
 
-    public static final Item MOSSY_COBBLESTONE_STAIRS = new Item(655, NamespacedKey.parse("minecraft:mossy_cobblestone_stairs"), () -> Block.MOSSY_COBBLESTONE_STAIRS);
+    public static final Item BRAIN_CORAL_BLOCK = new Item(655, NamespacedKey.parse("minecraft:brain_coral_block"), () -> Block.BRAIN_CORAL_BLOCK);
 
-    public static final Item END_STONE_BRICK_STAIRS = new Item(656, NamespacedKey.parse("minecraft:end_stone_brick_stairs"), () -> Block.END_STONE_BRICK_STAIRS);
+    public static final Item BUBBLE_CORAL_BLOCK = new Item(656, NamespacedKey.parse("minecraft:bubble_coral_block"), () -> Block.BUBBLE_CORAL_BLOCK);
 
-    public static final Item STONE_STAIRS = new Item(657, NamespacedKey.parse("minecraft:stone_stairs"), () -> Block.STONE_STAIRS);
+    public static final Item FIRE_CORAL_BLOCK = new Item(657, NamespacedKey.parse("minecraft:fire_coral_block"), () -> Block.FIRE_CORAL_BLOCK);
 
-    public static final Item SMOOTH_SANDSTONE_STAIRS = new Item(658, NamespacedKey.parse("minecraft:smooth_sandstone_stairs"), () -> Block.SMOOTH_SANDSTONE_STAIRS);
+    public static final Item HORN_CORAL_BLOCK = new Item(658, NamespacedKey.parse("minecraft:horn_coral_block"), () -> Block.HORN_CORAL_BLOCK);
 
-    public static final Item SMOOTH_QUARTZ_STAIRS = new Item(659, NamespacedKey.parse("minecraft:smooth_quartz_stairs"), () -> Block.SMOOTH_QUARTZ_STAIRS);
+    public static final Item TUBE_CORAL = new Item(659, NamespacedKey.parse("minecraft:tube_coral"), () -> Block.TUBE_CORAL);
 
-    public static final Item GRANITE_STAIRS = new Item(660, NamespacedKey.parse("minecraft:granite_stairs"), () -> Block.GRANITE_STAIRS);
+    public static final Item BRAIN_CORAL = new Item(660, NamespacedKey.parse("minecraft:brain_coral"), () -> Block.BRAIN_CORAL);
 
-    public static final Item ANDESITE_STAIRS = new Item(661, NamespacedKey.parse("minecraft:andesite_stairs"), () -> Block.ANDESITE_STAIRS);
+    public static final Item BUBBLE_CORAL = new Item(661, NamespacedKey.parse("minecraft:bubble_coral"), () -> Block.BUBBLE_CORAL);
 
-    public static final Item RED_NETHER_BRICK_STAIRS = new Item(662, NamespacedKey.parse("minecraft:red_nether_brick_stairs"), () -> Block.RED_NETHER_BRICK_STAIRS);
+    public static final Item FIRE_CORAL = new Item(662, NamespacedKey.parse("minecraft:fire_coral"), () -> Block.FIRE_CORAL);
 
-    public static final Item POLISHED_ANDESITE_STAIRS = new Item(663, NamespacedKey.parse("minecraft:polished_andesite_stairs"), () -> Block.POLISHED_ANDESITE_STAIRS);
+    public static final Item HORN_CORAL = new Item(663, NamespacedKey.parse("minecraft:horn_coral"), () -> Block.HORN_CORAL);
 
-    public static final Item DIORITE_STAIRS = new Item(664, NamespacedKey.parse("minecraft:diorite_stairs"), () -> Block.DIORITE_STAIRS);
+    public static final Item DEAD_BRAIN_CORAL = new Item(664, NamespacedKey.parse("minecraft:dead_brain_coral"), () -> Block.DEAD_BRAIN_CORAL);
 
-    public static final Item COBBLED_DEEPSLATE_STAIRS = new Item(665, NamespacedKey.parse("minecraft:cobbled_deepslate_stairs"), () -> Block.COBBLED_DEEPSLATE_STAIRS);
+    public static final Item DEAD_BUBBLE_CORAL = new Item(665, NamespacedKey.parse("minecraft:dead_bubble_coral"), () -> Block.DEAD_BUBBLE_CORAL);
 
-    public static final Item POLISHED_DEEPSLATE_STAIRS = new Item(666, NamespacedKey.parse("minecraft:polished_deepslate_stairs"), () -> Block.POLISHED_DEEPSLATE_STAIRS);
+    public static final Item DEAD_FIRE_CORAL = new Item(666, NamespacedKey.parse("minecraft:dead_fire_coral"), () -> Block.DEAD_FIRE_CORAL);
 
-    public static final Item DEEPSLATE_BRICK_STAIRS = new Item(667, NamespacedKey.parse("minecraft:deepslate_brick_stairs"), () -> Block.DEEPSLATE_BRICK_STAIRS);
+    public static final Item DEAD_HORN_CORAL = new Item(667, NamespacedKey.parse("minecraft:dead_horn_coral"), () -> Block.DEAD_HORN_CORAL);
 
-    public static final Item DEEPSLATE_TILE_STAIRS = new Item(668, NamespacedKey.parse("minecraft:deepslate_tile_stairs"), () -> Block.DEEPSLATE_TILE_STAIRS);
+    public static final Item DEAD_TUBE_CORAL = new Item(668, NamespacedKey.parse("minecraft:dead_tube_coral"), () -> Block.DEAD_TUBE_CORAL);
 
-    public static final Item POLISHED_GRANITE_SLAB = new Item(669, NamespacedKey.parse("minecraft:polished_granite_slab"), () -> Block.POLISHED_GRANITE_SLAB);
+    public static final Item TUBE_CORAL_FAN = new Item(669, NamespacedKey.parse("minecraft:tube_coral_fan"), () -> Block.TUBE_CORAL_FAN);
 
-    public static final Item SMOOTH_RED_SANDSTONE_SLAB = new Item(670, NamespacedKey.parse("minecraft:smooth_red_sandstone_slab"), () -> Block.SMOOTH_RED_SANDSTONE_SLAB);
+    public static final Item BRAIN_CORAL_FAN = new Item(670, NamespacedKey.parse("minecraft:brain_coral_fan"), () -> Block.BRAIN_CORAL_FAN);
 
-    public static final Item MOSSY_STONE_BRICK_SLAB = new Item(671, NamespacedKey.parse("minecraft:mossy_stone_brick_slab"), () -> Block.MOSSY_STONE_BRICK_SLAB);
+    public static final Item BUBBLE_CORAL_FAN = new Item(671, NamespacedKey.parse("minecraft:bubble_coral_fan"), () -> Block.BUBBLE_CORAL_FAN);
 
-    public static final Item POLISHED_DIORITE_SLAB = new Item(672, NamespacedKey.parse("minecraft:polished_diorite_slab"), () -> Block.POLISHED_DIORITE_SLAB);
+    public static final Item FIRE_CORAL_FAN = new Item(672, NamespacedKey.parse("minecraft:fire_coral_fan"), () -> Block.FIRE_CORAL_FAN);
 
-    public static final Item MOSSY_COBBLESTONE_SLAB = new Item(673, NamespacedKey.parse("minecraft:mossy_cobblestone_slab"), () -> Block.MOSSY_COBBLESTONE_SLAB);
+    public static final Item HORN_CORAL_FAN = new Item(673, NamespacedKey.parse("minecraft:horn_coral_fan"), () -> Block.HORN_CORAL_FAN);
 
-    public static final Item END_STONE_BRICK_SLAB = new Item(674, NamespacedKey.parse("minecraft:end_stone_brick_slab"), () -> Block.END_STONE_BRICK_SLAB);
+    public static final Item DEAD_TUBE_CORAL_FAN = new Item(674, NamespacedKey.parse("minecraft:dead_tube_coral_fan"), () -> Block.DEAD_TUBE_CORAL_FAN);
 
-    public static final Item SMOOTH_SANDSTONE_SLAB = new Item(675, NamespacedKey.parse("minecraft:smooth_sandstone_slab"), () -> Block.SMOOTH_SANDSTONE_SLAB);
+    public static final Item DEAD_BRAIN_CORAL_FAN = new Item(675, NamespacedKey.parse("minecraft:dead_brain_coral_fan"), () -> Block.DEAD_BRAIN_CORAL_FAN);
 
-    public static final Item SMOOTH_QUARTZ_SLAB = new Item(676, NamespacedKey.parse("minecraft:smooth_quartz_slab"), () -> Block.SMOOTH_QUARTZ_SLAB);
+    public static final Item DEAD_BUBBLE_CORAL_FAN = new Item(676, NamespacedKey.parse("minecraft:dead_bubble_coral_fan"), () -> Block.DEAD_BUBBLE_CORAL_FAN);
 
-    public static final Item GRANITE_SLAB = new Item(677, NamespacedKey.parse("minecraft:granite_slab"), () -> Block.GRANITE_SLAB);
+    public static final Item DEAD_FIRE_CORAL_FAN = new Item(677, NamespacedKey.parse("minecraft:dead_fire_coral_fan"), () -> Block.DEAD_FIRE_CORAL_FAN);
 
-    public static final Item ANDESITE_SLAB = new Item(678, NamespacedKey.parse("minecraft:andesite_slab"), () -> Block.ANDESITE_SLAB);
+    public static final Item DEAD_HORN_CORAL_FAN = new Item(678, NamespacedKey.parse("minecraft:dead_horn_coral_fan"), () -> Block.DEAD_HORN_CORAL_FAN);
 
-    public static final Item RED_NETHER_BRICK_SLAB = new Item(679, NamespacedKey.parse("minecraft:red_nether_brick_slab"), () -> Block.RED_NETHER_BRICK_SLAB);
+    public static final Item BLUE_ICE = new Item(679, NamespacedKey.parse("minecraft:blue_ice"), () -> Block.BLUE_ICE);
 
-    public static final Item POLISHED_ANDESITE_SLAB = new Item(680, NamespacedKey.parse("minecraft:polished_andesite_slab"), () -> Block.POLISHED_ANDESITE_SLAB);
+    public static final Item CONDUIT = new Item(680, NamespacedKey.parse("minecraft:conduit"), () -> Block.CONDUIT);
 
-    public static final Item DIORITE_SLAB = new Item(681, NamespacedKey.parse("minecraft:diorite_slab"), () -> Block.DIORITE_SLAB);
+    public static final Item POLISHED_GRANITE_STAIRS = new Item(681, NamespacedKey.parse("minecraft:polished_granite_stairs"), () -> Block.POLISHED_GRANITE_STAIRS);
 
-    public static final Item COBBLED_DEEPSLATE_SLAB = new Item(682, NamespacedKey.parse("minecraft:cobbled_deepslate_slab"), () -> Block.COBBLED_DEEPSLATE_SLAB);
+    public static final Item SMOOTH_RED_SANDSTONE_STAIRS = new Item(682, NamespacedKey.parse("minecraft:smooth_red_sandstone_stairs"), () -> Block.SMOOTH_RED_SANDSTONE_STAIRS);
 
-    public static final Item POLISHED_DEEPSLATE_SLAB = new Item(683, NamespacedKey.parse("minecraft:polished_deepslate_slab"), () -> Block.POLISHED_DEEPSLATE_SLAB);
+    public static final Item MOSSY_STONE_BRICK_STAIRS = new Item(683, NamespacedKey.parse("minecraft:mossy_stone_brick_stairs"), () -> Block.MOSSY_STONE_BRICK_STAIRS);
 
-    public static final Item DEEPSLATE_BRICK_SLAB = new Item(684, NamespacedKey.parse("minecraft:deepslate_brick_slab"), () -> Block.DEEPSLATE_BRICK_SLAB);
+    public static final Item POLISHED_DIORITE_STAIRS = new Item(684, NamespacedKey.parse("minecraft:polished_diorite_stairs"), () -> Block.POLISHED_DIORITE_STAIRS);
 
-    public static final Item DEEPSLATE_TILE_SLAB = new Item(685, NamespacedKey.parse("minecraft:deepslate_tile_slab"), () -> Block.DEEPSLATE_TILE_SLAB);
+    public static final Item MOSSY_COBBLESTONE_STAIRS = new Item(685, NamespacedKey.parse("minecraft:mossy_cobblestone_stairs"), () -> Block.MOSSY_COBBLESTONE_STAIRS);
 
-    public static final Item SCAFFOLDING = new Item(686, NamespacedKey.parse("minecraft:scaffolding"), () -> Block.SCAFFOLDING);
+    public static final Item END_STONE_BRICK_STAIRS = new Item(686, NamespacedKey.parse("minecraft:end_stone_brick_stairs"), () -> Block.END_STONE_BRICK_STAIRS);
 
-    public static final Item REDSTONE = new Item(687, NamespacedKey.parse("minecraft:redstone"), null);
+    public static final Item STONE_STAIRS = new Item(687, NamespacedKey.parse("minecraft:stone_stairs"), () -> Block.STONE_STAIRS);
 
-    public static final Item REDSTONE_TORCH = new Item(688, NamespacedKey.parse("minecraft:redstone_torch"), () -> Block.REDSTONE_TORCH);
+    public static final Item SMOOTH_SANDSTONE_STAIRS = new Item(688, NamespacedKey.parse("minecraft:smooth_sandstone_stairs"), () -> Block.SMOOTH_SANDSTONE_STAIRS);
 
-    public static final Item REDSTONE_BLOCK = new Item(689, NamespacedKey.parse("minecraft:redstone_block"), () -> Block.REDSTONE_BLOCK);
+    public static final Item SMOOTH_QUARTZ_STAIRS = new Item(689, NamespacedKey.parse("minecraft:smooth_quartz_stairs"), () -> Block.SMOOTH_QUARTZ_STAIRS);
 
-    public static final Item REPEATER = new Item(690, NamespacedKey.parse("minecraft:repeater"), () -> Block.REPEATER);
+    public static final Item GRANITE_STAIRS = new Item(690, NamespacedKey.parse("minecraft:granite_stairs"), () -> Block.GRANITE_STAIRS);
 
-    public static final Item COMPARATOR = new Item(691, NamespacedKey.parse("minecraft:comparator"), () -> Block.COMPARATOR);
+    public static final Item ANDESITE_STAIRS = new Item(691, NamespacedKey.parse("minecraft:andesite_stairs"), () -> Block.ANDESITE_STAIRS);
 
-    public static final Item PISTON = new Item(692, NamespacedKey.parse("minecraft:piston"), () -> Block.PISTON);
+    public static final Item RED_NETHER_BRICK_STAIRS = new Item(692, NamespacedKey.parse("minecraft:red_nether_brick_stairs"), () -> Block.RED_NETHER_BRICK_STAIRS);
 
-    public static final Item STICKY_PISTON = new Item(693, NamespacedKey.parse("minecraft:sticky_piston"), () -> Block.STICKY_PISTON);
+    public static final Item POLISHED_ANDESITE_STAIRS = new Item(693, NamespacedKey.parse("minecraft:polished_andesite_stairs"), () -> Block.POLISHED_ANDESITE_STAIRS);
 
-    public static final Item SLIME_BLOCK = new Item(694, NamespacedKey.parse("minecraft:slime_block"), () -> Block.SLIME_BLOCK);
+    public static final Item DIORITE_STAIRS = new Item(694, NamespacedKey.parse("minecraft:diorite_stairs"), () -> Block.DIORITE_STAIRS);
 
-    public static final Item HONEY_BLOCK = new Item(695, NamespacedKey.parse("minecraft:honey_block"), () -> Block.HONEY_BLOCK);
+    public static final Item COBBLED_DEEPSLATE_STAIRS = new Item(695, NamespacedKey.parse("minecraft:cobbled_deepslate_stairs"), () -> Block.COBBLED_DEEPSLATE_STAIRS);
 
-    public static final Item OBSERVER = new Item(696, NamespacedKey.parse("minecraft:observer"), () -> Block.OBSERVER);
+    public static final Item POLISHED_DEEPSLATE_STAIRS = new Item(696, NamespacedKey.parse("minecraft:polished_deepslate_stairs"), () -> Block.POLISHED_DEEPSLATE_STAIRS);
 
-    public static final Item HOPPER = new Item(697, NamespacedKey.parse("minecraft:hopper"), () -> Block.HOPPER);
+    public static final Item DEEPSLATE_BRICK_STAIRS = new Item(697, NamespacedKey.parse("minecraft:deepslate_brick_stairs"), () -> Block.DEEPSLATE_BRICK_STAIRS);
 
-    public static final Item DISPENSER = new Item(698, NamespacedKey.parse("minecraft:dispenser"), () -> Block.DISPENSER);
+    public static final Item DEEPSLATE_TILE_STAIRS = new Item(698, NamespacedKey.parse("minecraft:deepslate_tile_stairs"), () -> Block.DEEPSLATE_TILE_STAIRS);
 
-    public static final Item DROPPER = new Item(699, NamespacedKey.parse("minecraft:dropper"), () -> Block.DROPPER);
+    public static final Item POLISHED_GRANITE_SLAB = new Item(699, NamespacedKey.parse("minecraft:polished_granite_slab"), () -> Block.POLISHED_GRANITE_SLAB);
 
-    public static final Item LECTERN = new Item(700, NamespacedKey.parse("minecraft:lectern"), () -> Block.LECTERN);
+    public static final Item SMOOTH_RED_SANDSTONE_SLAB = new Item(700, NamespacedKey.parse("minecraft:smooth_red_sandstone_slab"), () -> Block.SMOOTH_RED_SANDSTONE_SLAB);
 
-    public static final Item TARGET = new Item(701, NamespacedKey.parse("minecraft:target"), () -> Block.TARGET);
+    public static final Item MOSSY_STONE_BRICK_SLAB = new Item(701, NamespacedKey.parse("minecraft:mossy_stone_brick_slab"), () -> Block.MOSSY_STONE_BRICK_SLAB);
 
-    public static final Item LEVER = new Item(702, NamespacedKey.parse("minecraft:lever"), () -> Block.LEVER);
+    public static final Item POLISHED_DIORITE_SLAB = new Item(702, NamespacedKey.parse("minecraft:polished_diorite_slab"), () -> Block.POLISHED_DIORITE_SLAB);
 
-    public static final Item LIGHTNING_ROD = new Item(703, NamespacedKey.parse("minecraft:lightning_rod"), () -> Block.LIGHTNING_ROD);
+    public static final Item MOSSY_COBBLESTONE_SLAB = new Item(703, NamespacedKey.parse("minecraft:mossy_cobblestone_slab"), () -> Block.MOSSY_COBBLESTONE_SLAB);
 
-    public static final Item DAYLIGHT_DETECTOR = new Item(704, NamespacedKey.parse("minecraft:daylight_detector"), () -> Block.DAYLIGHT_DETECTOR);
+    public static final Item END_STONE_BRICK_SLAB = new Item(704, NamespacedKey.parse("minecraft:end_stone_brick_slab"), () -> Block.END_STONE_BRICK_SLAB);
 
-    public static final Item SCULK_SENSOR = new Item(705, NamespacedKey.parse("minecraft:sculk_sensor"), () -> Block.SCULK_SENSOR);
+    public static final Item SMOOTH_SANDSTONE_SLAB = new Item(705, NamespacedKey.parse("minecraft:smooth_sandstone_slab"), () -> Block.SMOOTH_SANDSTONE_SLAB);
 
-    public static final Item CALIBRATED_SCULK_SENSOR = new Item(706, NamespacedKey.parse("minecraft:calibrated_sculk_sensor"), () -> Block.CALIBRATED_SCULK_SENSOR);
+    public static final Item SMOOTH_QUARTZ_SLAB = new Item(706, NamespacedKey.parse("minecraft:smooth_quartz_slab"), () -> Block.SMOOTH_QUARTZ_SLAB);
 
-    public static final Item TRIPWIRE_HOOK = new Item(707, NamespacedKey.parse("minecraft:tripwire_hook"), () -> Block.TRIPWIRE_HOOK);
+    public static final Item GRANITE_SLAB = new Item(707, NamespacedKey.parse("minecraft:granite_slab"), () -> Block.GRANITE_SLAB);
 
-    public static final Item TRAPPED_CHEST = new Item(708, NamespacedKey.parse("minecraft:trapped_chest"), () -> Block.TRAPPED_CHEST);
+    public static final Item ANDESITE_SLAB = new Item(708, NamespacedKey.parse("minecraft:andesite_slab"), () -> Block.ANDESITE_SLAB);
 
-    public static final Item TNT = new Item(709, NamespacedKey.parse("minecraft:tnt"), () -> Block.TNT);
+    public static final Item RED_NETHER_BRICK_SLAB = new Item(709, NamespacedKey.parse("minecraft:red_nether_brick_slab"), () -> Block.RED_NETHER_BRICK_SLAB);
 
-    public static final Item REDSTONE_LAMP = new Item(710, NamespacedKey.parse("minecraft:redstone_lamp"), () -> Block.REDSTONE_LAMP);
+    public static final Item POLISHED_ANDESITE_SLAB = new Item(710, NamespacedKey.parse("minecraft:polished_andesite_slab"), () -> Block.POLISHED_ANDESITE_SLAB);
 
-    public static final Item NOTE_BLOCK = new Item(711, NamespacedKey.parse("minecraft:note_block"), () -> Block.NOTE_BLOCK);
+    public static final Item DIORITE_SLAB = new Item(711, NamespacedKey.parse("minecraft:diorite_slab"), () -> Block.DIORITE_SLAB);
 
-    public static final Item STONE_BUTTON = new Item(712, NamespacedKey.parse("minecraft:stone_button"), () -> Block.STONE_BUTTON);
+    public static final Item COBBLED_DEEPSLATE_SLAB = new Item(712, NamespacedKey.parse("minecraft:cobbled_deepslate_slab"), () -> Block.COBBLED_DEEPSLATE_SLAB);
 
-    public static final Item POLISHED_BLACKSTONE_BUTTON = new Item(713, NamespacedKey.parse("minecraft:polished_blackstone_button"), () -> Block.POLISHED_BLACKSTONE_BUTTON);
+    public static final Item POLISHED_DEEPSLATE_SLAB = new Item(713, NamespacedKey.parse("minecraft:polished_deepslate_slab"), () -> Block.POLISHED_DEEPSLATE_SLAB);
 
-    public static final Item OAK_BUTTON = new Item(714, NamespacedKey.parse("minecraft:oak_button"), () -> Block.OAK_BUTTON);
+    public static final Item DEEPSLATE_BRICK_SLAB = new Item(714, NamespacedKey.parse("minecraft:deepslate_brick_slab"), () -> Block.DEEPSLATE_BRICK_SLAB);
 
-    public static final Item SPRUCE_BUTTON = new Item(715, NamespacedKey.parse("minecraft:spruce_button"), () -> Block.SPRUCE_BUTTON);
+    public static final Item DEEPSLATE_TILE_SLAB = new Item(715, NamespacedKey.parse("minecraft:deepslate_tile_slab"), () -> Block.DEEPSLATE_TILE_SLAB);
 
-    public static final Item BIRCH_BUTTON = new Item(716, NamespacedKey.parse("minecraft:birch_button"), () -> Block.BIRCH_BUTTON);
+    public static final Item SCAFFOLDING = new Item(716, NamespacedKey.parse("minecraft:scaffolding"), () -> Block.SCAFFOLDING);
 
-    public static final Item JUNGLE_BUTTON = new Item(717, NamespacedKey.parse("minecraft:jungle_button"), () -> Block.JUNGLE_BUTTON);
+    public static final Item REDSTONE = new Item(717, NamespacedKey.parse("minecraft:redstone"), null);
 
-    public static final Item ACACIA_BUTTON = new Item(718, NamespacedKey.parse("minecraft:acacia_button"), () -> Block.ACACIA_BUTTON);
+    public static final Item REDSTONE_TORCH = new Item(718, NamespacedKey.parse("minecraft:redstone_torch"), () -> Block.REDSTONE_TORCH);
 
-    public static final Item CHERRY_BUTTON = new Item(719, NamespacedKey.parse("minecraft:cherry_button"), () -> Block.CHERRY_BUTTON);
+    public static final Item REDSTONE_BLOCK = new Item(719, NamespacedKey.parse("minecraft:redstone_block"), () -> Block.REDSTONE_BLOCK);
 
-    public static final Item DARK_OAK_BUTTON = new Item(720, NamespacedKey.parse("minecraft:dark_oak_button"), () -> Block.DARK_OAK_BUTTON);
+    public static final Item REPEATER = new Item(720, NamespacedKey.parse("minecraft:repeater"), () -> Block.REPEATER);
 
-    public static final Item PALE_OAK_BUTTON = new Item(721, NamespacedKey.parse("minecraft:pale_oak_button"), () -> Block.PALE_OAK_BUTTON);
+    public static final Item COMPARATOR = new Item(721, NamespacedKey.parse("minecraft:comparator"), () -> Block.COMPARATOR);
 
-    public static final Item MANGROVE_BUTTON = new Item(722, NamespacedKey.parse("minecraft:mangrove_button"), () -> Block.MANGROVE_BUTTON);
+    public static final Item PISTON = new Item(722, NamespacedKey.parse("minecraft:piston"), () -> Block.PISTON);
 
-    public static final Item BAMBOO_BUTTON = new Item(723, NamespacedKey.parse("minecraft:bamboo_button"), () -> Block.BAMBOO_BUTTON);
+    public static final Item STICKY_PISTON = new Item(723, NamespacedKey.parse("minecraft:sticky_piston"), () -> Block.STICKY_PISTON);
 
-    public static final Item CRIMSON_BUTTON = new Item(724, NamespacedKey.parse("minecraft:crimson_button"), () -> Block.CRIMSON_BUTTON);
+    public static final Item SLIME_BLOCK = new Item(724, NamespacedKey.parse("minecraft:slime_block"), () -> Block.SLIME_BLOCK);
 
-    public static final Item WARPED_BUTTON = new Item(725, NamespacedKey.parse("minecraft:warped_button"), () -> Block.WARPED_BUTTON);
+    public static final Item HONEY_BLOCK = new Item(725, NamespacedKey.parse("minecraft:honey_block"), () -> Block.HONEY_BLOCK);
 
-    public static final Item STONE_PRESSURE_PLATE = new Item(726, NamespacedKey.parse("minecraft:stone_pressure_plate"), () -> Block.STONE_PRESSURE_PLATE);
+    public static final Item OBSERVER = new Item(726, NamespacedKey.parse("minecraft:observer"), () -> Block.OBSERVER);
 
-    public static final Item POLISHED_BLACKSTONE_PRESSURE_PLATE = new Item(727, NamespacedKey.parse("minecraft:polished_blackstone_pressure_plate"), () -> Block.POLISHED_BLACKSTONE_PRESSURE_PLATE);
+    public static final Item HOPPER = new Item(727, NamespacedKey.parse("minecraft:hopper"), () -> Block.HOPPER);
 
-    public static final Item LIGHT_WEIGHTED_PRESSURE_PLATE = new Item(728, NamespacedKey.parse("minecraft:light_weighted_pressure_plate"), () -> Block.LIGHT_WEIGHTED_PRESSURE_PLATE);
+    public static final Item DISPENSER = new Item(728, NamespacedKey.parse("minecraft:dispenser"), () -> Block.DISPENSER);
 
-    public static final Item HEAVY_WEIGHTED_PRESSURE_PLATE = new Item(729, NamespacedKey.parse("minecraft:heavy_weighted_pressure_plate"), () -> Block.HEAVY_WEIGHTED_PRESSURE_PLATE);
+    public static final Item DROPPER = new Item(729, NamespacedKey.parse("minecraft:dropper"), () -> Block.DROPPER);
 
-    public static final Item OAK_PRESSURE_PLATE = new Item(730, NamespacedKey.parse("minecraft:oak_pressure_plate"), () -> Block.OAK_PRESSURE_PLATE);
+    public static final Item LECTERN = new Item(730, NamespacedKey.parse("minecraft:lectern"), () -> Block.LECTERN);
 
-    public static final Item SPRUCE_PRESSURE_PLATE = new Item(731, NamespacedKey.parse("minecraft:spruce_pressure_plate"), () -> Block.SPRUCE_PRESSURE_PLATE);
+    public static final Item TARGET = new Item(731, NamespacedKey.parse("minecraft:target"), () -> Block.TARGET);
 
-    public static final Item BIRCH_PRESSURE_PLATE = new Item(732, NamespacedKey.parse("minecraft:birch_pressure_plate"), () -> Block.BIRCH_PRESSURE_PLATE);
+    public static final Item LEVER = new Item(732, NamespacedKey.parse("minecraft:lever"), () -> Block.LEVER);
 
-    public static final Item JUNGLE_PRESSURE_PLATE = new Item(733, NamespacedKey.parse("minecraft:jungle_pressure_plate"), () -> Block.JUNGLE_PRESSURE_PLATE);
+    public static final Item LIGHTNING_ROD = new Item(733, NamespacedKey.parse("minecraft:lightning_rod"), () -> Block.LIGHTNING_ROD);
 
-    public static final Item ACACIA_PRESSURE_PLATE = new Item(734, NamespacedKey.parse("minecraft:acacia_pressure_plate"), () -> Block.ACACIA_PRESSURE_PLATE);
+    public static final Item EXPOSED_LIGHTNING_ROD = new Item(734, NamespacedKey.parse("minecraft:exposed_lightning_rod"), () -> Block.EXPOSED_LIGHTNING_ROD);
 
-    public static final Item CHERRY_PRESSURE_PLATE = new Item(735, NamespacedKey.parse("minecraft:cherry_pressure_plate"), () -> Block.CHERRY_PRESSURE_PLATE);
+    public static final Item WEATHERED_LIGHTNING_ROD = new Item(735, NamespacedKey.parse("minecraft:weathered_lightning_rod"), () -> Block.WEATHERED_LIGHTNING_ROD);
 
-    public static final Item DARK_OAK_PRESSURE_PLATE = new Item(736, NamespacedKey.parse("minecraft:dark_oak_pressure_plate"), () -> Block.DARK_OAK_PRESSURE_PLATE);
+    public static final Item OXIDIZED_LIGHTNING_ROD = new Item(736, NamespacedKey.parse("minecraft:oxidized_lightning_rod"), () -> Block.OXIDIZED_LIGHTNING_ROD);
 
-    public static final Item PALE_OAK_PRESSURE_PLATE = new Item(737, NamespacedKey.parse("minecraft:pale_oak_pressure_plate"), () -> Block.PALE_OAK_PRESSURE_PLATE);
+    public static final Item WAXED_LIGHTNING_ROD = new Item(737, NamespacedKey.parse("minecraft:waxed_lightning_rod"), () -> Block.WAXED_LIGHTNING_ROD);
 
-    public static final Item MANGROVE_PRESSURE_PLATE = new Item(738, NamespacedKey.parse("minecraft:mangrove_pressure_plate"), () -> Block.MANGROVE_PRESSURE_PLATE);
+    public static final Item WAXED_EXPOSED_LIGHTNING_ROD = new Item(738, NamespacedKey.parse("minecraft:waxed_exposed_lightning_rod"), () -> Block.WAXED_EXPOSED_LIGHTNING_ROD);
 
-    public static final Item BAMBOO_PRESSURE_PLATE = new Item(739, NamespacedKey.parse("minecraft:bamboo_pressure_plate"), () -> Block.BAMBOO_PRESSURE_PLATE);
+    public static final Item WAXED_WEATHERED_LIGHTNING_ROD = new Item(739, NamespacedKey.parse("minecraft:waxed_weathered_lightning_rod"), () -> Block.WAXED_WEATHERED_LIGHTNING_ROD);
 
-    public static final Item CRIMSON_PRESSURE_PLATE = new Item(740, NamespacedKey.parse("minecraft:crimson_pressure_plate"), () -> Block.CRIMSON_PRESSURE_PLATE);
+    public static final Item WAXED_OXIDIZED_LIGHTNING_ROD = new Item(740, NamespacedKey.parse("minecraft:waxed_oxidized_lightning_rod"), () -> Block.WAXED_OXIDIZED_LIGHTNING_ROD);
 
-    public static final Item WARPED_PRESSURE_PLATE = new Item(741, NamespacedKey.parse("minecraft:warped_pressure_plate"), () -> Block.WARPED_PRESSURE_PLATE);
+    public static final Item DAYLIGHT_DETECTOR = new Item(741, NamespacedKey.parse("minecraft:daylight_detector"), () -> Block.DAYLIGHT_DETECTOR);
 
-    public static final Item IRON_DOOR = new Item(742, NamespacedKey.parse("minecraft:iron_door"), () -> Block.IRON_DOOR);
+    public static final Item SCULK_SENSOR = new Item(742, NamespacedKey.parse("minecraft:sculk_sensor"), () -> Block.SCULK_SENSOR);
 
-    public static final Item OAK_DOOR = new Item(743, NamespacedKey.parse("minecraft:oak_door"), () -> Block.OAK_DOOR);
+    public static final Item CALIBRATED_SCULK_SENSOR = new Item(743, NamespacedKey.parse("minecraft:calibrated_sculk_sensor"), () -> Block.CALIBRATED_SCULK_SENSOR);
 
-    public static final Item SPRUCE_DOOR = new Item(744, NamespacedKey.parse("minecraft:spruce_door"), () -> Block.SPRUCE_DOOR);
+    public static final Item TRIPWIRE_HOOK = new Item(744, NamespacedKey.parse("minecraft:tripwire_hook"), () -> Block.TRIPWIRE_HOOK);
 
-    public static final Item BIRCH_DOOR = new Item(745, NamespacedKey.parse("minecraft:birch_door"), () -> Block.BIRCH_DOOR);
+    public static final Item TRAPPED_CHEST = new Item(745, NamespacedKey.parse("minecraft:trapped_chest"), () -> Block.TRAPPED_CHEST);
 
-    public static final Item JUNGLE_DOOR = new Item(746, NamespacedKey.parse("minecraft:jungle_door"), () -> Block.JUNGLE_DOOR);
+    public static final Item TNT = new Item(746, NamespacedKey.parse("minecraft:tnt"), () -> Block.TNT);
 
-    public static final Item ACACIA_DOOR = new Item(747, NamespacedKey.parse("minecraft:acacia_door"), () -> Block.ACACIA_DOOR);
+    public static final Item REDSTONE_LAMP = new Item(747, NamespacedKey.parse("minecraft:redstone_lamp"), () -> Block.REDSTONE_LAMP);
 
-    public static final Item CHERRY_DOOR = new Item(748, NamespacedKey.parse("minecraft:cherry_door"), () -> Block.CHERRY_DOOR);
+    public static final Item NOTE_BLOCK = new Item(748, NamespacedKey.parse("minecraft:note_block"), () -> Block.NOTE_BLOCK);
 
-    public static final Item DARK_OAK_DOOR = new Item(749, NamespacedKey.parse("minecraft:dark_oak_door"), () -> Block.DARK_OAK_DOOR);
+    public static final Item STONE_BUTTON = new Item(749, NamespacedKey.parse("minecraft:stone_button"), () -> Block.STONE_BUTTON);
 
-    public static final Item PALE_OAK_DOOR = new Item(750, NamespacedKey.parse("minecraft:pale_oak_door"), () -> Block.PALE_OAK_DOOR);
+    public static final Item POLISHED_BLACKSTONE_BUTTON = new Item(750, NamespacedKey.parse("minecraft:polished_blackstone_button"), () -> Block.POLISHED_BLACKSTONE_BUTTON);
 
-    public static final Item MANGROVE_DOOR = new Item(751, NamespacedKey.parse("minecraft:mangrove_door"), () -> Block.MANGROVE_DOOR);
+    public static final Item OAK_BUTTON = new Item(751, NamespacedKey.parse("minecraft:oak_button"), () -> Block.OAK_BUTTON);
 
-    public static final Item BAMBOO_DOOR = new Item(752, NamespacedKey.parse("minecraft:bamboo_door"), () -> Block.BAMBOO_DOOR);
+    public static final Item SPRUCE_BUTTON = new Item(752, NamespacedKey.parse("minecraft:spruce_button"), () -> Block.SPRUCE_BUTTON);
 
-    public static final Item CRIMSON_DOOR = new Item(753, NamespacedKey.parse("minecraft:crimson_door"), () -> Block.CRIMSON_DOOR);
+    public static final Item BIRCH_BUTTON = new Item(753, NamespacedKey.parse("minecraft:birch_button"), () -> Block.BIRCH_BUTTON);
 
-    public static final Item WARPED_DOOR = new Item(754, NamespacedKey.parse("minecraft:warped_door"), () -> Block.WARPED_DOOR);
+    public static final Item JUNGLE_BUTTON = new Item(754, NamespacedKey.parse("minecraft:jungle_button"), () -> Block.JUNGLE_BUTTON);
 
-    public static final Item COPPER_DOOR = new Item(755, NamespacedKey.parse("minecraft:copper_door"), () -> Block.COPPER_DOOR);
+    public static final Item ACACIA_BUTTON = new Item(755, NamespacedKey.parse("minecraft:acacia_button"), () -> Block.ACACIA_BUTTON);
 
-    public static final Item EXPOSED_COPPER_DOOR = new Item(756, NamespacedKey.parse("minecraft:exposed_copper_door"), () -> Block.EXPOSED_COPPER_DOOR);
+    public static final Item CHERRY_BUTTON = new Item(756, NamespacedKey.parse("minecraft:cherry_button"), () -> Block.CHERRY_BUTTON);
 
-    public static final Item WEATHERED_COPPER_DOOR = new Item(757, NamespacedKey.parse("minecraft:weathered_copper_door"), () -> Block.WEATHERED_COPPER_DOOR);
+    public static final Item DARK_OAK_BUTTON = new Item(757, NamespacedKey.parse("minecraft:dark_oak_button"), () -> Block.DARK_OAK_BUTTON);
 
-    public static final Item OXIDIZED_COPPER_DOOR = new Item(758, NamespacedKey.parse("minecraft:oxidized_copper_door"), () -> Block.OXIDIZED_COPPER_DOOR);
+    public static final Item PALE_OAK_BUTTON = new Item(758, NamespacedKey.parse("minecraft:pale_oak_button"), () -> Block.PALE_OAK_BUTTON);
 
-    public static final Item WAXED_COPPER_DOOR = new Item(759, NamespacedKey.parse("minecraft:waxed_copper_door"), () -> Block.WAXED_COPPER_DOOR);
+    public static final Item MANGROVE_BUTTON = new Item(759, NamespacedKey.parse("minecraft:mangrove_button"), () -> Block.MANGROVE_BUTTON);
 
-    public static final Item WAXED_EXPOSED_COPPER_DOOR = new Item(760, NamespacedKey.parse("minecraft:waxed_exposed_copper_door"), () -> Block.WAXED_EXPOSED_COPPER_DOOR);
+    public static final Item BAMBOO_BUTTON = new Item(760, NamespacedKey.parse("minecraft:bamboo_button"), () -> Block.BAMBOO_BUTTON);
 
-    public static final Item WAXED_WEATHERED_COPPER_DOOR = new Item(761, NamespacedKey.parse("minecraft:waxed_weathered_copper_door"), () -> Block.WAXED_WEATHERED_COPPER_DOOR);
+    public static final Item CRIMSON_BUTTON = new Item(761, NamespacedKey.parse("minecraft:crimson_button"), () -> Block.CRIMSON_BUTTON);
 
-    public static final Item WAXED_OXIDIZED_COPPER_DOOR = new Item(762, NamespacedKey.parse("minecraft:waxed_oxidized_copper_door"), () -> Block.WAXED_OXIDIZED_COPPER_DOOR);
+    public static final Item WARPED_BUTTON = new Item(762, NamespacedKey.parse("minecraft:warped_button"), () -> Block.WARPED_BUTTON);
 
-    public static final Item IRON_TRAPDOOR = new Item(763, NamespacedKey.parse("minecraft:iron_trapdoor"), () -> Block.IRON_TRAPDOOR);
+    public static final Item STONE_PRESSURE_PLATE = new Item(763, NamespacedKey.parse("minecraft:stone_pressure_plate"), () -> Block.STONE_PRESSURE_PLATE);
 
-    public static final Item OAK_TRAPDOOR = new Item(764, NamespacedKey.parse("minecraft:oak_trapdoor"), () -> Block.OAK_TRAPDOOR);
+    public static final Item POLISHED_BLACKSTONE_PRESSURE_PLATE = new Item(764, NamespacedKey.parse("minecraft:polished_blackstone_pressure_plate"), () -> Block.POLISHED_BLACKSTONE_PRESSURE_PLATE);
 
-    public static final Item SPRUCE_TRAPDOOR = new Item(765, NamespacedKey.parse("minecraft:spruce_trapdoor"), () -> Block.SPRUCE_TRAPDOOR);
+    public static final Item LIGHT_WEIGHTED_PRESSURE_PLATE = new Item(765, NamespacedKey.parse("minecraft:light_weighted_pressure_plate"), () -> Block.LIGHT_WEIGHTED_PRESSURE_PLATE);
 
-    public static final Item BIRCH_TRAPDOOR = new Item(766, NamespacedKey.parse("minecraft:birch_trapdoor"), () -> Block.BIRCH_TRAPDOOR);
+    public static final Item HEAVY_WEIGHTED_PRESSURE_PLATE = new Item(766, NamespacedKey.parse("minecraft:heavy_weighted_pressure_plate"), () -> Block.HEAVY_WEIGHTED_PRESSURE_PLATE);
 
-    public static final Item JUNGLE_TRAPDOOR = new Item(767, NamespacedKey.parse("minecraft:jungle_trapdoor"), () -> Block.JUNGLE_TRAPDOOR);
+    public static final Item OAK_PRESSURE_PLATE = new Item(767, NamespacedKey.parse("minecraft:oak_pressure_plate"), () -> Block.OAK_PRESSURE_PLATE);
 
-    public static final Item ACACIA_TRAPDOOR = new Item(768, NamespacedKey.parse("minecraft:acacia_trapdoor"), () -> Block.ACACIA_TRAPDOOR);
+    public static final Item SPRUCE_PRESSURE_PLATE = new Item(768, NamespacedKey.parse("minecraft:spruce_pressure_plate"), () -> Block.SPRUCE_PRESSURE_PLATE);
 
-    public static final Item CHERRY_TRAPDOOR = new Item(769, NamespacedKey.parse("minecraft:cherry_trapdoor"), () -> Block.CHERRY_TRAPDOOR);
+    public static final Item BIRCH_PRESSURE_PLATE = new Item(769, NamespacedKey.parse("minecraft:birch_pressure_plate"), () -> Block.BIRCH_PRESSURE_PLATE);
 
-    public static final Item DARK_OAK_TRAPDOOR = new Item(770, NamespacedKey.parse("minecraft:dark_oak_trapdoor"), () -> Block.DARK_OAK_TRAPDOOR);
+    public static final Item JUNGLE_PRESSURE_PLATE = new Item(770, NamespacedKey.parse("minecraft:jungle_pressure_plate"), () -> Block.JUNGLE_PRESSURE_PLATE);
 
-    public static final Item PALE_OAK_TRAPDOOR = new Item(771, NamespacedKey.parse("minecraft:pale_oak_trapdoor"), () -> Block.PALE_OAK_TRAPDOOR);
+    public static final Item ACACIA_PRESSURE_PLATE = new Item(771, NamespacedKey.parse("minecraft:acacia_pressure_plate"), () -> Block.ACACIA_PRESSURE_PLATE);
 
-    public static final Item MANGROVE_TRAPDOOR = new Item(772, NamespacedKey.parse("minecraft:mangrove_trapdoor"), () -> Block.MANGROVE_TRAPDOOR);
+    public static final Item CHERRY_PRESSURE_PLATE = new Item(772, NamespacedKey.parse("minecraft:cherry_pressure_plate"), () -> Block.CHERRY_PRESSURE_PLATE);
 
-    public static final Item BAMBOO_TRAPDOOR = new Item(773, NamespacedKey.parse("minecraft:bamboo_trapdoor"), () -> Block.BAMBOO_TRAPDOOR);
+    public static final Item DARK_OAK_PRESSURE_PLATE = new Item(773, NamespacedKey.parse("minecraft:dark_oak_pressure_plate"), () -> Block.DARK_OAK_PRESSURE_PLATE);
 
-    public static final Item CRIMSON_TRAPDOOR = new Item(774, NamespacedKey.parse("minecraft:crimson_trapdoor"), () -> Block.CRIMSON_TRAPDOOR);
+    public static final Item PALE_OAK_PRESSURE_PLATE = new Item(774, NamespacedKey.parse("minecraft:pale_oak_pressure_plate"), () -> Block.PALE_OAK_PRESSURE_PLATE);
 
-    public static final Item WARPED_TRAPDOOR = new Item(775, NamespacedKey.parse("minecraft:warped_trapdoor"), () -> Block.WARPED_TRAPDOOR);
+    public static final Item MANGROVE_PRESSURE_PLATE = new Item(775, NamespacedKey.parse("minecraft:mangrove_pressure_plate"), () -> Block.MANGROVE_PRESSURE_PLATE);
 
-    public static final Item COPPER_TRAPDOOR = new Item(776, NamespacedKey.parse("minecraft:copper_trapdoor"), () -> Block.COPPER_TRAPDOOR);
+    public static final Item BAMBOO_PRESSURE_PLATE = new Item(776, NamespacedKey.parse("minecraft:bamboo_pressure_plate"), () -> Block.BAMBOO_PRESSURE_PLATE);
 
-    public static final Item EXPOSED_COPPER_TRAPDOOR = new Item(777, NamespacedKey.parse("minecraft:exposed_copper_trapdoor"), () -> Block.EXPOSED_COPPER_TRAPDOOR);
+    public static final Item CRIMSON_PRESSURE_PLATE = new Item(777, NamespacedKey.parse("minecraft:crimson_pressure_plate"), () -> Block.CRIMSON_PRESSURE_PLATE);
 
-    public static final Item WEATHERED_COPPER_TRAPDOOR = new Item(778, NamespacedKey.parse("minecraft:weathered_copper_trapdoor"), () -> Block.WEATHERED_COPPER_TRAPDOOR);
+    public static final Item WARPED_PRESSURE_PLATE = new Item(778, NamespacedKey.parse("minecraft:warped_pressure_plate"), () -> Block.WARPED_PRESSURE_PLATE);
 
-    public static final Item OXIDIZED_COPPER_TRAPDOOR = new Item(779, NamespacedKey.parse("minecraft:oxidized_copper_trapdoor"), () -> Block.OXIDIZED_COPPER_TRAPDOOR);
+    public static final Item IRON_DOOR = new Item(779, NamespacedKey.parse("minecraft:iron_door"), () -> Block.IRON_DOOR);
 
-    public static final Item WAXED_COPPER_TRAPDOOR = new Item(780, NamespacedKey.parse("minecraft:waxed_copper_trapdoor"), () -> Block.WAXED_COPPER_TRAPDOOR);
+    public static final Item OAK_DOOR = new Item(780, NamespacedKey.parse("minecraft:oak_door"), () -> Block.OAK_DOOR);
 
-    public static final Item WAXED_EXPOSED_COPPER_TRAPDOOR = new Item(781, NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"), () -> Block.WAXED_EXPOSED_COPPER_TRAPDOOR);
+    public static final Item SPRUCE_DOOR = new Item(781, NamespacedKey.parse("minecraft:spruce_door"), () -> Block.SPRUCE_DOOR);
 
-    public static final Item WAXED_WEATHERED_COPPER_TRAPDOOR = new Item(782, NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"), () -> Block.WAXED_WEATHERED_COPPER_TRAPDOOR);
+    public static final Item BIRCH_DOOR = new Item(782, NamespacedKey.parse("minecraft:birch_door"), () -> Block.BIRCH_DOOR);
 
-    public static final Item WAXED_OXIDIZED_COPPER_TRAPDOOR = new Item(783, NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"), () -> Block.WAXED_OXIDIZED_COPPER_TRAPDOOR);
+    public static final Item JUNGLE_DOOR = new Item(783, NamespacedKey.parse("minecraft:jungle_door"), () -> Block.JUNGLE_DOOR);
 
-    public static final Item OAK_FENCE_GATE = new Item(784, NamespacedKey.parse("minecraft:oak_fence_gate"), () -> Block.OAK_FENCE_GATE);
+    public static final Item ACACIA_DOOR = new Item(784, NamespacedKey.parse("minecraft:acacia_door"), () -> Block.ACACIA_DOOR);
 
-    public static final Item SPRUCE_FENCE_GATE = new Item(785, NamespacedKey.parse("minecraft:spruce_fence_gate"), () -> Block.SPRUCE_FENCE_GATE);
+    public static final Item CHERRY_DOOR = new Item(785, NamespacedKey.parse("minecraft:cherry_door"), () -> Block.CHERRY_DOOR);
 
-    public static final Item BIRCH_FENCE_GATE = new Item(786, NamespacedKey.parse("minecraft:birch_fence_gate"), () -> Block.BIRCH_FENCE_GATE);
+    public static final Item DARK_OAK_DOOR = new Item(786, NamespacedKey.parse("minecraft:dark_oak_door"), () -> Block.DARK_OAK_DOOR);
 
-    public static final Item JUNGLE_FENCE_GATE = new Item(787, NamespacedKey.parse("minecraft:jungle_fence_gate"), () -> Block.JUNGLE_FENCE_GATE);
+    public static final Item PALE_OAK_DOOR = new Item(787, NamespacedKey.parse("minecraft:pale_oak_door"), () -> Block.PALE_OAK_DOOR);
 
-    public static final Item ACACIA_FENCE_GATE = new Item(788, NamespacedKey.parse("minecraft:acacia_fence_gate"), () -> Block.ACACIA_FENCE_GATE);
+    public static final Item MANGROVE_DOOR = new Item(788, NamespacedKey.parse("minecraft:mangrove_door"), () -> Block.MANGROVE_DOOR);
 
-    public static final Item CHERRY_FENCE_GATE = new Item(789, NamespacedKey.parse("minecraft:cherry_fence_gate"), () -> Block.CHERRY_FENCE_GATE);
+    public static final Item BAMBOO_DOOR = new Item(789, NamespacedKey.parse("minecraft:bamboo_door"), () -> Block.BAMBOO_DOOR);
 
-    public static final Item DARK_OAK_FENCE_GATE = new Item(790, NamespacedKey.parse("minecraft:dark_oak_fence_gate"), () -> Block.DARK_OAK_FENCE_GATE);
+    public static final Item CRIMSON_DOOR = new Item(790, NamespacedKey.parse("minecraft:crimson_door"), () -> Block.CRIMSON_DOOR);
 
-    public static final Item PALE_OAK_FENCE_GATE = new Item(791, NamespacedKey.parse("minecraft:pale_oak_fence_gate"), () -> Block.PALE_OAK_FENCE_GATE);
+    public static final Item WARPED_DOOR = new Item(791, NamespacedKey.parse("minecraft:warped_door"), () -> Block.WARPED_DOOR);
 
-    public static final Item MANGROVE_FENCE_GATE = new Item(792, NamespacedKey.parse("minecraft:mangrove_fence_gate"), () -> Block.MANGROVE_FENCE_GATE);
+    public static final Item COPPER_DOOR = new Item(792, NamespacedKey.parse("minecraft:copper_door"), () -> Block.COPPER_DOOR);
 
-    public static final Item BAMBOO_FENCE_GATE = new Item(793, NamespacedKey.parse("minecraft:bamboo_fence_gate"), () -> Block.BAMBOO_FENCE_GATE);
+    public static final Item EXPOSED_COPPER_DOOR = new Item(793, NamespacedKey.parse("minecraft:exposed_copper_door"), () -> Block.EXPOSED_COPPER_DOOR);
 
-    public static final Item CRIMSON_FENCE_GATE = new Item(794, NamespacedKey.parse("minecraft:crimson_fence_gate"), () -> Block.CRIMSON_FENCE_GATE);
+    public static final Item WEATHERED_COPPER_DOOR = new Item(794, NamespacedKey.parse("minecraft:weathered_copper_door"), () -> Block.WEATHERED_COPPER_DOOR);
 
-    public static final Item WARPED_FENCE_GATE = new Item(795, NamespacedKey.parse("minecraft:warped_fence_gate"), () -> Block.WARPED_FENCE_GATE);
+    public static final Item OXIDIZED_COPPER_DOOR = new Item(795, NamespacedKey.parse("minecraft:oxidized_copper_door"), () -> Block.OXIDIZED_COPPER_DOOR);
 
-    public static final Item POWERED_RAIL = new Item(796, NamespacedKey.parse("minecraft:powered_rail"), () -> Block.POWERED_RAIL);
+    public static final Item WAXED_COPPER_DOOR = new Item(796, NamespacedKey.parse("minecraft:waxed_copper_door"), () -> Block.WAXED_COPPER_DOOR);
 
-    public static final Item DETECTOR_RAIL = new Item(797, NamespacedKey.parse("minecraft:detector_rail"), () -> Block.DETECTOR_RAIL);
+    public static final Item WAXED_EXPOSED_COPPER_DOOR = new Item(797, NamespacedKey.parse("minecraft:waxed_exposed_copper_door"), () -> Block.WAXED_EXPOSED_COPPER_DOOR);
 
-    public static final Item RAIL = new Item(798, NamespacedKey.parse("minecraft:rail"), () -> Block.RAIL);
+    public static final Item WAXED_WEATHERED_COPPER_DOOR = new Item(798, NamespacedKey.parse("minecraft:waxed_weathered_copper_door"), () -> Block.WAXED_WEATHERED_COPPER_DOOR);
 
-    public static final Item ACTIVATOR_RAIL = new Item(799, NamespacedKey.parse("minecraft:activator_rail"), () -> Block.ACTIVATOR_RAIL);
+    public static final Item WAXED_OXIDIZED_COPPER_DOOR = new Item(799, NamespacedKey.parse("minecraft:waxed_oxidized_copper_door"), () -> Block.WAXED_OXIDIZED_COPPER_DOOR);
 
-    public static final Item SADDLE = new Item(800, NamespacedKey.parse("minecraft:saddle"), null);
+    public static final Item IRON_TRAPDOOR = new Item(800, NamespacedKey.parse("minecraft:iron_trapdoor"), () -> Block.IRON_TRAPDOOR);
 
-    public static final Item MINECART = new Item(801, NamespacedKey.parse("minecraft:minecart"), null);
+    public static final Item OAK_TRAPDOOR = new Item(801, NamespacedKey.parse("minecraft:oak_trapdoor"), () -> Block.OAK_TRAPDOOR);
 
-    public static final Item CHEST_MINECART = new Item(802, NamespacedKey.parse("minecraft:chest_minecart"), null);
+    public static final Item SPRUCE_TRAPDOOR = new Item(802, NamespacedKey.parse("minecraft:spruce_trapdoor"), () -> Block.SPRUCE_TRAPDOOR);
 
-    public static final Item FURNACE_MINECART = new Item(803, NamespacedKey.parse("minecraft:furnace_minecart"), null);
+    public static final Item BIRCH_TRAPDOOR = new Item(803, NamespacedKey.parse("minecraft:birch_trapdoor"), () -> Block.BIRCH_TRAPDOOR);
 
-    public static final Item TNT_MINECART = new Item(804, NamespacedKey.parse("minecraft:tnt_minecart"), null);
+    public static final Item JUNGLE_TRAPDOOR = new Item(804, NamespacedKey.parse("minecraft:jungle_trapdoor"), () -> Block.JUNGLE_TRAPDOOR);
 
-    public static final Item HOPPER_MINECART = new Item(805, NamespacedKey.parse("minecraft:hopper_minecart"), null);
+    public static final Item ACACIA_TRAPDOOR = new Item(805, NamespacedKey.parse("minecraft:acacia_trapdoor"), () -> Block.ACACIA_TRAPDOOR);
 
-    public static final Item CARROT_ON_A_STICK = new Item(806, NamespacedKey.parse("minecraft:carrot_on_a_stick"), null);
+    public static final Item CHERRY_TRAPDOOR = new Item(806, NamespacedKey.parse("minecraft:cherry_trapdoor"), () -> Block.CHERRY_TRAPDOOR);
 
-    public static final Item WARPED_FUNGUS_ON_A_STICK = new Item(807, NamespacedKey.parse("minecraft:warped_fungus_on_a_stick"), null);
+    public static final Item DARK_OAK_TRAPDOOR = new Item(807, NamespacedKey.parse("minecraft:dark_oak_trapdoor"), () -> Block.DARK_OAK_TRAPDOOR);
 
-    public static final Item PHANTOM_MEMBRANE = new Item(808, NamespacedKey.parse("minecraft:phantom_membrane"), null);
+    public static final Item PALE_OAK_TRAPDOOR = new Item(808, NamespacedKey.parse("minecraft:pale_oak_trapdoor"), () -> Block.PALE_OAK_TRAPDOOR);
 
-    public static final Item ELYTRA = new Item(809, NamespacedKey.parse("minecraft:elytra"), null);
+    public static final Item MANGROVE_TRAPDOOR = new Item(809, NamespacedKey.parse("minecraft:mangrove_trapdoor"), () -> Block.MANGROVE_TRAPDOOR);
 
-    public static final Item OAK_BOAT = new Item(810, NamespacedKey.parse("minecraft:oak_boat"), null);
+    public static final Item BAMBOO_TRAPDOOR = new Item(810, NamespacedKey.parse("minecraft:bamboo_trapdoor"), () -> Block.BAMBOO_TRAPDOOR);
 
-    public static final Item OAK_CHEST_BOAT = new Item(811, NamespacedKey.parse("minecraft:oak_chest_boat"), null);
+    public static final Item CRIMSON_TRAPDOOR = new Item(811, NamespacedKey.parse("minecraft:crimson_trapdoor"), () -> Block.CRIMSON_TRAPDOOR);
 
-    public static final Item SPRUCE_BOAT = new Item(812, NamespacedKey.parse("minecraft:spruce_boat"), null);
+    public static final Item WARPED_TRAPDOOR = new Item(812, NamespacedKey.parse("minecraft:warped_trapdoor"), () -> Block.WARPED_TRAPDOOR);
 
-    public static final Item SPRUCE_CHEST_BOAT = new Item(813, NamespacedKey.parse("minecraft:spruce_chest_boat"), null);
+    public static final Item COPPER_TRAPDOOR = new Item(813, NamespacedKey.parse("minecraft:copper_trapdoor"), () -> Block.COPPER_TRAPDOOR);
 
-    public static final Item BIRCH_BOAT = new Item(814, NamespacedKey.parse("minecraft:birch_boat"), null);
+    public static final Item EXPOSED_COPPER_TRAPDOOR = new Item(814, NamespacedKey.parse("minecraft:exposed_copper_trapdoor"), () -> Block.EXPOSED_COPPER_TRAPDOOR);
 
-    public static final Item BIRCH_CHEST_BOAT = new Item(815, NamespacedKey.parse("minecraft:birch_chest_boat"), null);
+    public static final Item WEATHERED_COPPER_TRAPDOOR = new Item(815, NamespacedKey.parse("minecraft:weathered_copper_trapdoor"), () -> Block.WEATHERED_COPPER_TRAPDOOR);
 
-    public static final Item JUNGLE_BOAT = new Item(816, NamespacedKey.parse("minecraft:jungle_boat"), null);
+    public static final Item OXIDIZED_COPPER_TRAPDOOR = new Item(816, NamespacedKey.parse("minecraft:oxidized_copper_trapdoor"), () -> Block.OXIDIZED_COPPER_TRAPDOOR);
 
-    public static final Item JUNGLE_CHEST_BOAT = new Item(817, NamespacedKey.parse("minecraft:jungle_chest_boat"), null);
+    public static final Item WAXED_COPPER_TRAPDOOR = new Item(817, NamespacedKey.parse("minecraft:waxed_copper_trapdoor"), () -> Block.WAXED_COPPER_TRAPDOOR);
 
-    public static final Item ACACIA_BOAT = new Item(818, NamespacedKey.parse("minecraft:acacia_boat"), null);
+    public static final Item WAXED_EXPOSED_COPPER_TRAPDOOR = new Item(818, NamespacedKey.parse("minecraft:waxed_exposed_copper_trapdoor"), () -> Block.WAXED_EXPOSED_COPPER_TRAPDOOR);
 
-    public static final Item ACACIA_CHEST_BOAT = new Item(819, NamespacedKey.parse("minecraft:acacia_chest_boat"), null);
+    public static final Item WAXED_WEATHERED_COPPER_TRAPDOOR = new Item(819, NamespacedKey.parse("minecraft:waxed_weathered_copper_trapdoor"), () -> Block.WAXED_WEATHERED_COPPER_TRAPDOOR);
 
-    public static final Item CHERRY_BOAT = new Item(820, NamespacedKey.parse("minecraft:cherry_boat"), null);
+    public static final Item WAXED_OXIDIZED_COPPER_TRAPDOOR = new Item(820, NamespacedKey.parse("minecraft:waxed_oxidized_copper_trapdoor"), () -> Block.WAXED_OXIDIZED_COPPER_TRAPDOOR);
 
-    public static final Item CHERRY_CHEST_BOAT = new Item(821, NamespacedKey.parse("minecraft:cherry_chest_boat"), null);
+    public static final Item OAK_FENCE_GATE = new Item(821, NamespacedKey.parse("minecraft:oak_fence_gate"), () -> Block.OAK_FENCE_GATE);
 
-    public static final Item DARK_OAK_BOAT = new Item(822, NamespacedKey.parse("minecraft:dark_oak_boat"), null);
+    public static final Item SPRUCE_FENCE_GATE = new Item(822, NamespacedKey.parse("minecraft:spruce_fence_gate"), () -> Block.SPRUCE_FENCE_GATE);
 
-    public static final Item DARK_OAK_CHEST_BOAT = new Item(823, NamespacedKey.parse("minecraft:dark_oak_chest_boat"), null);
+    public static final Item BIRCH_FENCE_GATE = new Item(823, NamespacedKey.parse("minecraft:birch_fence_gate"), () -> Block.BIRCH_FENCE_GATE);
 
-    public static final Item PALE_OAK_BOAT = new Item(824, NamespacedKey.parse("minecraft:pale_oak_boat"), null);
+    public static final Item JUNGLE_FENCE_GATE = new Item(824, NamespacedKey.parse("minecraft:jungle_fence_gate"), () -> Block.JUNGLE_FENCE_GATE);
 
-    public static final Item PALE_OAK_CHEST_BOAT = new Item(825, NamespacedKey.parse("minecraft:pale_oak_chest_boat"), null);
+    public static final Item ACACIA_FENCE_GATE = new Item(825, NamespacedKey.parse("minecraft:acacia_fence_gate"), () -> Block.ACACIA_FENCE_GATE);
 
-    public static final Item MANGROVE_BOAT = new Item(826, NamespacedKey.parse("minecraft:mangrove_boat"), null);
+    public static final Item CHERRY_FENCE_GATE = new Item(826, NamespacedKey.parse("minecraft:cherry_fence_gate"), () -> Block.CHERRY_FENCE_GATE);
 
-    public static final Item MANGROVE_CHEST_BOAT = new Item(827, NamespacedKey.parse("minecraft:mangrove_chest_boat"), null);
+    public static final Item DARK_OAK_FENCE_GATE = new Item(827, NamespacedKey.parse("minecraft:dark_oak_fence_gate"), () -> Block.DARK_OAK_FENCE_GATE);
 
-    public static final Item BAMBOO_RAFT = new Item(828, NamespacedKey.parse("minecraft:bamboo_raft"), null);
+    public static final Item PALE_OAK_FENCE_GATE = new Item(828, NamespacedKey.parse("minecraft:pale_oak_fence_gate"), () -> Block.PALE_OAK_FENCE_GATE);
 
-    public static final Item BAMBOO_CHEST_RAFT = new Item(829, NamespacedKey.parse("minecraft:bamboo_chest_raft"), null);
+    public static final Item MANGROVE_FENCE_GATE = new Item(829, NamespacedKey.parse("minecraft:mangrove_fence_gate"), () -> Block.MANGROVE_FENCE_GATE);
 
-    public static final Item STRUCTURE_BLOCK = new Item(830, NamespacedKey.parse("minecraft:structure_block"), () -> Block.STRUCTURE_BLOCK);
+    public static final Item BAMBOO_FENCE_GATE = new Item(830, NamespacedKey.parse("minecraft:bamboo_fence_gate"), () -> Block.BAMBOO_FENCE_GATE);
 
-    public static final Item JIGSAW = new Item(831, NamespacedKey.parse("minecraft:jigsaw"), () -> Block.JIGSAW);
+    public static final Item CRIMSON_FENCE_GATE = new Item(831, NamespacedKey.parse("minecraft:crimson_fence_gate"), () -> Block.CRIMSON_FENCE_GATE);
 
-    public static final Item TEST_BLOCK = new Item(832, NamespacedKey.parse("minecraft:test_block"), () -> Block.TEST_BLOCK);
+    public static final Item WARPED_FENCE_GATE = new Item(832, NamespacedKey.parse("minecraft:warped_fence_gate"), () -> Block.WARPED_FENCE_GATE);
 
-    public static final Item TEST_INSTANCE_BLOCK = new Item(833, NamespacedKey.parse("minecraft:test_instance_block"), () -> Block.TEST_INSTANCE_BLOCK);
+    public static final Item POWERED_RAIL = new Item(833, NamespacedKey.parse("minecraft:powered_rail"), () -> Block.POWERED_RAIL);
 
-    public static final Item TURTLE_HELMET = new Item(834, NamespacedKey.parse("minecraft:turtle_helmet"), null);
+    public static final Item DETECTOR_RAIL = new Item(834, NamespacedKey.parse("minecraft:detector_rail"), () -> Block.DETECTOR_RAIL);
 
-    public static final Item TURTLE_SCUTE = new Item(835, NamespacedKey.parse("minecraft:turtle_scute"), null);
+    public static final Item RAIL = new Item(835, NamespacedKey.parse("minecraft:rail"), () -> Block.RAIL);
 
-    public static final Item ARMADILLO_SCUTE = new Item(836, NamespacedKey.parse("minecraft:armadillo_scute"), null);
+    public static final Item ACTIVATOR_RAIL = new Item(836, NamespacedKey.parse("minecraft:activator_rail"), () -> Block.ACTIVATOR_RAIL);
 
-    public static final Item WOLF_ARMOR = new Item(837, NamespacedKey.parse("minecraft:wolf_armor"), null);
+    public static final Item SADDLE = new Item(837, NamespacedKey.parse("minecraft:saddle"), null);
 
-    public static final Item FLINT_AND_STEEL = new Item(838, NamespacedKey.parse("minecraft:flint_and_steel"), null);
+    public static final Item WHITE_HARNESS = new Item(838, NamespacedKey.parse("minecraft:white_harness"), null);
 
-    public static final Item BOWL = new Item(839, NamespacedKey.parse("minecraft:bowl"), null);
+    public static final Item ORANGE_HARNESS = new Item(839, NamespacedKey.parse("minecraft:orange_harness"), null);
 
-    public static final Item APPLE = new Item(840, NamespacedKey.parse("minecraft:apple"), null);
+    public static final Item MAGENTA_HARNESS = new Item(840, NamespacedKey.parse("minecraft:magenta_harness"), null);
 
-    public static final Item BOW = new Item(841, NamespacedKey.parse("minecraft:bow"), null);
+    public static final Item LIGHT_BLUE_HARNESS = new Item(841, NamespacedKey.parse("minecraft:light_blue_harness"), null);
 
-    public static final Item ARROW = new Item(842, NamespacedKey.parse("minecraft:arrow"), null);
+    public static final Item YELLOW_HARNESS = new Item(842, NamespacedKey.parse("minecraft:yellow_harness"), null);
 
-    public static final Item COAL = new Item(843, NamespacedKey.parse("minecraft:coal"), null);
+    public static final Item LIME_HARNESS = new Item(843, NamespacedKey.parse("minecraft:lime_harness"), null);
 
-    public static final Item CHARCOAL = new Item(844, NamespacedKey.parse("minecraft:charcoal"), null);
+    public static final Item PINK_HARNESS = new Item(844, NamespacedKey.parse("minecraft:pink_harness"), null);
 
-    public static final Item DIAMOND = new Item(845, NamespacedKey.parse("minecraft:diamond"), null);
+    public static final Item GRAY_HARNESS = new Item(845, NamespacedKey.parse("minecraft:gray_harness"), null);
 
-    public static final Item EMERALD = new Item(846, NamespacedKey.parse("minecraft:emerald"), null);
+    public static final Item LIGHT_GRAY_HARNESS = new Item(846, NamespacedKey.parse("minecraft:light_gray_harness"), null);
 
-    public static final Item LAPIS_LAZULI = new Item(847, NamespacedKey.parse("minecraft:lapis_lazuli"), null);
+    public static final Item CYAN_HARNESS = new Item(847, NamespacedKey.parse("minecraft:cyan_harness"), null);
 
-    public static final Item QUARTZ = new Item(848, NamespacedKey.parse("minecraft:quartz"), null);
+    public static final Item PURPLE_HARNESS = new Item(848, NamespacedKey.parse("minecraft:purple_harness"), null);
 
-    public static final Item AMETHYST_SHARD = new Item(849, NamespacedKey.parse("minecraft:amethyst_shard"), null);
+    public static final Item BLUE_HARNESS = new Item(849, NamespacedKey.parse("minecraft:blue_harness"), null);
 
-    public static final Item RAW_IRON = new Item(850, NamespacedKey.parse("minecraft:raw_iron"), null);
+    public static final Item BROWN_HARNESS = new Item(850, NamespacedKey.parse("minecraft:brown_harness"), null);
 
-    public static final Item IRON_INGOT = new Item(851, NamespacedKey.parse("minecraft:iron_ingot"), null);
+    public static final Item GREEN_HARNESS = new Item(851, NamespacedKey.parse("minecraft:green_harness"), null);
 
-    public static final Item RAW_COPPER = new Item(852, NamespacedKey.parse("minecraft:raw_copper"), null);
+    public static final Item RED_HARNESS = new Item(852, NamespacedKey.parse("minecraft:red_harness"), null);
 
-    public static final Item COPPER_INGOT = new Item(853, NamespacedKey.parse("minecraft:copper_ingot"), null);
+    public static final Item BLACK_HARNESS = new Item(853, NamespacedKey.parse("minecraft:black_harness"), null);
 
-    public static final Item RAW_GOLD = new Item(854, NamespacedKey.parse("minecraft:raw_gold"), null);
+    public static final Item MINECART = new Item(854, NamespacedKey.parse("minecraft:minecart"), null);
 
-    public static final Item GOLD_INGOT = new Item(855, NamespacedKey.parse("minecraft:gold_ingot"), null);
+    public static final Item CHEST_MINECART = new Item(855, NamespacedKey.parse("minecraft:chest_minecart"), null);
 
-    public static final Item NETHERITE_INGOT = new Item(856, NamespacedKey.parse("minecraft:netherite_ingot"), null);
+    public static final Item FURNACE_MINECART = new Item(856, NamespacedKey.parse("minecraft:furnace_minecart"), null);
 
-    public static final Item NETHERITE_SCRAP = new Item(857, NamespacedKey.parse("minecraft:netherite_scrap"), null);
+    public static final Item TNT_MINECART = new Item(857, NamespacedKey.parse("minecraft:tnt_minecart"), null);
 
-    public static final Item WOODEN_SWORD = new Item(858, NamespacedKey.parse("minecraft:wooden_sword"), null);
+    public static final Item HOPPER_MINECART = new Item(858, NamespacedKey.parse("minecraft:hopper_minecart"), null);
 
-    public static final Item WOODEN_SHOVEL = new Item(859, NamespacedKey.parse("minecraft:wooden_shovel"), null);
+    public static final Item CARROT_ON_A_STICK = new Item(859, NamespacedKey.parse("minecraft:carrot_on_a_stick"), null);
 
-    public static final Item WOODEN_PICKAXE = new Item(860, NamespacedKey.parse("minecraft:wooden_pickaxe"), null);
+    public static final Item WARPED_FUNGUS_ON_A_STICK = new Item(860, NamespacedKey.parse("minecraft:warped_fungus_on_a_stick"), null);
 
-    public static final Item WOODEN_AXE = new Item(861, NamespacedKey.parse("minecraft:wooden_axe"), null);
+    public static final Item PHANTOM_MEMBRANE = new Item(861, NamespacedKey.parse("minecraft:phantom_membrane"), null);
 
-    public static final Item WOODEN_HOE = new Item(862, NamespacedKey.parse("minecraft:wooden_hoe"), null);
+    public static final Item ELYTRA = new Item(862, NamespacedKey.parse("minecraft:elytra"), null);
 
-    public static final Item STONE_SWORD = new Item(863, NamespacedKey.parse("minecraft:stone_sword"), null);
+    public static final Item OAK_BOAT = new Item(863, NamespacedKey.parse("minecraft:oak_boat"), null);
 
-    public static final Item STONE_SHOVEL = new Item(864, NamespacedKey.parse("minecraft:stone_shovel"), null);
+    public static final Item OAK_CHEST_BOAT = new Item(864, NamespacedKey.parse("minecraft:oak_chest_boat"), null);
 
-    public static final Item STONE_PICKAXE = new Item(865, NamespacedKey.parse("minecraft:stone_pickaxe"), null);
+    public static final Item SPRUCE_BOAT = new Item(865, NamespacedKey.parse("minecraft:spruce_boat"), null);
 
-    public static final Item STONE_AXE = new Item(866, NamespacedKey.parse("minecraft:stone_axe"), null);
+    public static final Item SPRUCE_CHEST_BOAT = new Item(866, NamespacedKey.parse("minecraft:spruce_chest_boat"), null);
 
-    public static final Item STONE_HOE = new Item(867, NamespacedKey.parse("minecraft:stone_hoe"), null);
+    public static final Item BIRCH_BOAT = new Item(867, NamespacedKey.parse("minecraft:birch_boat"), null);
 
-    public static final Item GOLDEN_SWORD = new Item(868, NamespacedKey.parse("minecraft:golden_sword"), null);
+    public static final Item BIRCH_CHEST_BOAT = new Item(868, NamespacedKey.parse("minecraft:birch_chest_boat"), null);
 
-    public static final Item GOLDEN_SHOVEL = new Item(869, NamespacedKey.parse("minecraft:golden_shovel"), null);
+    public static final Item JUNGLE_BOAT = new Item(869, NamespacedKey.parse("minecraft:jungle_boat"), null);
 
-    public static final Item GOLDEN_PICKAXE = new Item(870, NamespacedKey.parse("minecraft:golden_pickaxe"), null);
+    public static final Item JUNGLE_CHEST_BOAT = new Item(870, NamespacedKey.parse("minecraft:jungle_chest_boat"), null);
 
-    public static final Item GOLDEN_AXE = new Item(871, NamespacedKey.parse("minecraft:golden_axe"), null);
+    public static final Item ACACIA_BOAT = new Item(871, NamespacedKey.parse("minecraft:acacia_boat"), null);
 
-    public static final Item GOLDEN_HOE = new Item(872, NamespacedKey.parse("minecraft:golden_hoe"), null);
+    public static final Item ACACIA_CHEST_BOAT = new Item(872, NamespacedKey.parse("minecraft:acacia_chest_boat"), null);
 
-    public static final Item IRON_SWORD = new Item(873, NamespacedKey.parse("minecraft:iron_sword"), null);
+    public static final Item CHERRY_BOAT = new Item(873, NamespacedKey.parse("minecraft:cherry_boat"), null);
 
-    public static final Item IRON_SHOVEL = new Item(874, NamespacedKey.parse("minecraft:iron_shovel"), null);
+    public static final Item CHERRY_CHEST_BOAT = new Item(874, NamespacedKey.parse("minecraft:cherry_chest_boat"), null);
 
-    public static final Item IRON_PICKAXE = new Item(875, NamespacedKey.parse("minecraft:iron_pickaxe"), null);
+    public static final Item DARK_OAK_BOAT = new Item(875, NamespacedKey.parse("minecraft:dark_oak_boat"), null);
 
-    public static final Item IRON_AXE = new Item(876, NamespacedKey.parse("minecraft:iron_axe"), null);
+    public static final Item DARK_OAK_CHEST_BOAT = new Item(876, NamespacedKey.parse("minecraft:dark_oak_chest_boat"), null);
 
-    public static final Item IRON_HOE = new Item(877, NamespacedKey.parse("minecraft:iron_hoe"), null);
+    public static final Item PALE_OAK_BOAT = new Item(877, NamespacedKey.parse("minecraft:pale_oak_boat"), null);
 
-    public static final Item DIAMOND_SWORD = new Item(878, NamespacedKey.parse("minecraft:diamond_sword"), null);
+    public static final Item PALE_OAK_CHEST_BOAT = new Item(878, NamespacedKey.parse("minecraft:pale_oak_chest_boat"), null);
 
-    public static final Item DIAMOND_SHOVEL = new Item(879, NamespacedKey.parse("minecraft:diamond_shovel"), null);
+    public static final Item MANGROVE_BOAT = new Item(879, NamespacedKey.parse("minecraft:mangrove_boat"), null);
 
-    public static final Item DIAMOND_PICKAXE = new Item(880, NamespacedKey.parse("minecraft:diamond_pickaxe"), null);
+    public static final Item MANGROVE_CHEST_BOAT = new Item(880, NamespacedKey.parse("minecraft:mangrove_chest_boat"), null);
 
-    public static final Item DIAMOND_AXE = new Item(881, NamespacedKey.parse("minecraft:diamond_axe"), null);
+    public static final Item BAMBOO_RAFT = new Item(881, NamespacedKey.parse("minecraft:bamboo_raft"), null);
 
-    public static final Item DIAMOND_HOE = new Item(882, NamespacedKey.parse("minecraft:diamond_hoe"), null);
+    public static final Item BAMBOO_CHEST_RAFT = new Item(882, NamespacedKey.parse("minecraft:bamboo_chest_raft"), null);
 
-    public static final Item NETHERITE_SWORD = new Item(883, NamespacedKey.parse("minecraft:netherite_sword"), null);
+    public static final Item STRUCTURE_BLOCK = new Item(883, NamespacedKey.parse("minecraft:structure_block"), () -> Block.STRUCTURE_BLOCK);
 
-    public static final Item NETHERITE_SHOVEL = new Item(884, NamespacedKey.parse("minecraft:netherite_shovel"), null);
+    public static final Item JIGSAW = new Item(884, NamespacedKey.parse("minecraft:jigsaw"), () -> Block.JIGSAW);
 
-    public static final Item NETHERITE_PICKAXE = new Item(885, NamespacedKey.parse("minecraft:netherite_pickaxe"), null);
+    public static final Item TEST_BLOCK = new Item(885, NamespacedKey.parse("minecraft:test_block"), () -> Block.TEST_BLOCK);
 
-    public static final Item NETHERITE_AXE = new Item(886, NamespacedKey.parse("minecraft:netherite_axe"), null);
+    public static final Item TEST_INSTANCE_BLOCK = new Item(886, NamespacedKey.parse("minecraft:test_instance_block"), () -> Block.TEST_INSTANCE_BLOCK);
 
-    public static final Item NETHERITE_HOE = new Item(887, NamespacedKey.parse("minecraft:netherite_hoe"), null);
+    public static final Item TURTLE_HELMET = new Item(887, NamespacedKey.parse("minecraft:turtle_helmet"), null);
 
-    public static final Item STICK = new Item(888, NamespacedKey.parse("minecraft:stick"), null);
+    public static final Item TURTLE_SCUTE = new Item(888, NamespacedKey.parse("minecraft:turtle_scute"), null);
 
-    public static final Item MUSHROOM_STEW = new Item(889, NamespacedKey.parse("minecraft:mushroom_stew"), null);
+    public static final Item ARMADILLO_SCUTE = new Item(889, NamespacedKey.parse("minecraft:armadillo_scute"), null);
 
-    public static final Item STRING = new Item(890, NamespacedKey.parse("minecraft:string"), null);
+    public static final Item WOLF_ARMOR = new Item(890, NamespacedKey.parse("minecraft:wolf_armor"), null);
 
-    public static final Item FEATHER = new Item(891, NamespacedKey.parse("minecraft:feather"), null);
+    public static final Item FLINT_AND_STEEL = new Item(891, NamespacedKey.parse("minecraft:flint_and_steel"), null);
 
-    public static final Item GUNPOWDER = new Item(892, NamespacedKey.parse("minecraft:gunpowder"), null);
+    public static final Item BOWL = new Item(892, NamespacedKey.parse("minecraft:bowl"), null);
 
-    public static final Item WHEAT_SEEDS = new Item(893, NamespacedKey.parse("minecraft:wheat_seeds"), null);
+    public static final Item APPLE = new Item(893, NamespacedKey.parse("minecraft:apple"), null);
 
-    public static final Item WHEAT = new Item(894, NamespacedKey.parse("minecraft:wheat"), () -> Block.WHEAT);
+    public static final Item BOW = new Item(894, NamespacedKey.parse("minecraft:bow"), null);
 
-    public static final Item BREAD = new Item(895, NamespacedKey.parse("minecraft:bread"), null);
+    public static final Item ARROW = new Item(895, NamespacedKey.parse("minecraft:arrow"), null);
 
-    public static final Item LEATHER_HELMET = new Item(896, NamespacedKey.parse("minecraft:leather_helmet"), null);
+    public static final Item COAL = new Item(896, NamespacedKey.parse("minecraft:coal"), null);
 
-    public static final Item LEATHER_CHESTPLATE = new Item(897, NamespacedKey.parse("minecraft:leather_chestplate"), null);
+    public static final Item CHARCOAL = new Item(897, NamespacedKey.parse("minecraft:charcoal"), null);
 
-    public static final Item LEATHER_LEGGINGS = new Item(898, NamespacedKey.parse("minecraft:leather_leggings"), null);
+    public static final Item DIAMOND = new Item(898, NamespacedKey.parse("minecraft:diamond"), null);
 
-    public static final Item LEATHER_BOOTS = new Item(899, NamespacedKey.parse("minecraft:leather_boots"), null);
+    public static final Item EMERALD = new Item(899, NamespacedKey.parse("minecraft:emerald"), null);
 
-    public static final Item CHAINMAIL_HELMET = new Item(900, NamespacedKey.parse("minecraft:chainmail_helmet"), null);
+    public static final Item LAPIS_LAZULI = new Item(900, NamespacedKey.parse("minecraft:lapis_lazuli"), null);
 
-    public static final Item CHAINMAIL_CHESTPLATE = new Item(901, NamespacedKey.parse("minecraft:chainmail_chestplate"), null);
+    public static final Item QUARTZ = new Item(901, NamespacedKey.parse("minecraft:quartz"), null);
 
-    public static final Item CHAINMAIL_LEGGINGS = new Item(902, NamespacedKey.parse("minecraft:chainmail_leggings"), null);
+    public static final Item AMETHYST_SHARD = new Item(902, NamespacedKey.parse("minecraft:amethyst_shard"), null);
 
-    public static final Item CHAINMAIL_BOOTS = new Item(903, NamespacedKey.parse("minecraft:chainmail_boots"), null);
+    public static final Item RAW_IRON = new Item(903, NamespacedKey.parse("minecraft:raw_iron"), null);
 
-    public static final Item IRON_HELMET = new Item(904, NamespacedKey.parse("minecraft:iron_helmet"), null);
+    public static final Item IRON_INGOT = new Item(904, NamespacedKey.parse("minecraft:iron_ingot"), null);
 
-    public static final Item IRON_CHESTPLATE = new Item(905, NamespacedKey.parse("minecraft:iron_chestplate"), null);
+    public static final Item RAW_COPPER = new Item(905, NamespacedKey.parse("minecraft:raw_copper"), null);
 
-    public static final Item IRON_LEGGINGS = new Item(906, NamespacedKey.parse("minecraft:iron_leggings"), null);
+    public static final Item COPPER_INGOT = new Item(906, NamespacedKey.parse("minecraft:copper_ingot"), null);
 
-    public static final Item IRON_BOOTS = new Item(907, NamespacedKey.parse("minecraft:iron_boots"), null);
+    public static final Item RAW_GOLD = new Item(907, NamespacedKey.parse("minecraft:raw_gold"), null);
 
-    public static final Item DIAMOND_HELMET = new Item(908, NamespacedKey.parse("minecraft:diamond_helmet"), null);
+    public static final Item GOLD_INGOT = new Item(908, NamespacedKey.parse("minecraft:gold_ingot"), null);
 
-    public static final Item DIAMOND_CHESTPLATE = new Item(909, NamespacedKey.parse("minecraft:diamond_chestplate"), null);
+    public static final Item NETHERITE_INGOT = new Item(909, NamespacedKey.parse("minecraft:netherite_ingot"), null);
 
-    public static final Item DIAMOND_LEGGINGS = new Item(910, NamespacedKey.parse("minecraft:diamond_leggings"), null);
+    public static final Item NETHERITE_SCRAP = new Item(910, NamespacedKey.parse("minecraft:netherite_scrap"), null);
 
-    public static final Item DIAMOND_BOOTS = new Item(911, NamespacedKey.parse("minecraft:diamond_boots"), null);
+    public static final Item WOODEN_SWORD = new Item(911, NamespacedKey.parse("minecraft:wooden_sword"), null);
 
-    public static final Item GOLDEN_HELMET = new Item(912, NamespacedKey.parse("minecraft:golden_helmet"), null);
+    public static final Item WOODEN_SHOVEL = new Item(912, NamespacedKey.parse("minecraft:wooden_shovel"), null);
 
-    public static final Item GOLDEN_CHESTPLATE = new Item(913, NamespacedKey.parse("minecraft:golden_chestplate"), null);
+    public static final Item WOODEN_PICKAXE = new Item(913, NamespacedKey.parse("minecraft:wooden_pickaxe"), null);
 
-    public static final Item GOLDEN_LEGGINGS = new Item(914, NamespacedKey.parse("minecraft:golden_leggings"), null);
+    public static final Item WOODEN_AXE = new Item(914, NamespacedKey.parse("minecraft:wooden_axe"), null);
 
-    public static final Item GOLDEN_BOOTS = new Item(915, NamespacedKey.parse("minecraft:golden_boots"), null);
+    public static final Item WOODEN_HOE = new Item(915, NamespacedKey.parse("minecraft:wooden_hoe"), null);
 
-    public static final Item NETHERITE_HELMET = new Item(916, NamespacedKey.parse("minecraft:netherite_helmet"), null);
+    public static final Item COPPER_SWORD = new Item(916, NamespacedKey.parse("minecraft:copper_sword"), null);
 
-    public static final Item NETHERITE_CHESTPLATE = new Item(917, NamespacedKey.parse("minecraft:netherite_chestplate"), null);
+    public static final Item COPPER_SHOVEL = new Item(917, NamespacedKey.parse("minecraft:copper_shovel"), null);
 
-    public static final Item NETHERITE_LEGGINGS = new Item(918, NamespacedKey.parse("minecraft:netherite_leggings"), null);
+    public static final Item COPPER_PICKAXE = new Item(918, NamespacedKey.parse("minecraft:copper_pickaxe"), null);
 
-    public static final Item NETHERITE_BOOTS = new Item(919, NamespacedKey.parse("minecraft:netherite_boots"), null);
+    public static final Item COPPER_AXE = new Item(919, NamespacedKey.parse("minecraft:copper_axe"), null);
 
-    public static final Item FLINT = new Item(920, NamespacedKey.parse("minecraft:flint"), null);
+    public static final Item COPPER_HOE = new Item(920, NamespacedKey.parse("minecraft:copper_hoe"), null);
 
-    public static final Item PORKCHOP = new Item(921, NamespacedKey.parse("minecraft:porkchop"), null);
+    public static final Item STONE_SWORD = new Item(921, NamespacedKey.parse("minecraft:stone_sword"), null);
 
-    public static final Item COOKED_PORKCHOP = new Item(922, NamespacedKey.parse("minecraft:cooked_porkchop"), null);
+    public static final Item STONE_SHOVEL = new Item(922, NamespacedKey.parse("minecraft:stone_shovel"), null);
 
-    public static final Item PAINTING = new Item(923, NamespacedKey.parse("minecraft:painting"), null);
+    public static final Item STONE_PICKAXE = new Item(923, NamespacedKey.parse("minecraft:stone_pickaxe"), null);
 
-    public static final Item GOLDEN_APPLE = new Item(924, NamespacedKey.parse("minecraft:golden_apple"), null);
+    public static final Item STONE_AXE = new Item(924, NamespacedKey.parse("minecraft:stone_axe"), null);
 
-    public static final Item ENCHANTED_GOLDEN_APPLE = new Item(925, NamespacedKey.parse("minecraft:enchanted_golden_apple"), null);
+    public static final Item STONE_HOE = new Item(925, NamespacedKey.parse("minecraft:stone_hoe"), null);
 
-    public static final Item OAK_SIGN = new Item(926, NamespacedKey.parse("minecraft:oak_sign"), () -> Block.OAK_SIGN);
+    public static final Item GOLDEN_SWORD = new Item(926, NamespacedKey.parse("minecraft:golden_sword"), null);
 
-    public static final Item SPRUCE_SIGN = new Item(927, NamespacedKey.parse("minecraft:spruce_sign"), () -> Block.SPRUCE_SIGN);
+    public static final Item GOLDEN_SHOVEL = new Item(927, NamespacedKey.parse("minecraft:golden_shovel"), null);
 
-    public static final Item BIRCH_SIGN = new Item(928, NamespacedKey.parse("minecraft:birch_sign"), () -> Block.BIRCH_SIGN);
+    public static final Item GOLDEN_PICKAXE = new Item(928, NamespacedKey.parse("minecraft:golden_pickaxe"), null);
 
-    public static final Item JUNGLE_SIGN = new Item(929, NamespacedKey.parse("minecraft:jungle_sign"), () -> Block.JUNGLE_SIGN);
+    public static final Item GOLDEN_AXE = new Item(929, NamespacedKey.parse("minecraft:golden_axe"), null);
 
-    public static final Item ACACIA_SIGN = new Item(930, NamespacedKey.parse("minecraft:acacia_sign"), () -> Block.ACACIA_SIGN);
+    public static final Item GOLDEN_HOE = new Item(930, NamespacedKey.parse("minecraft:golden_hoe"), null);
 
-    public static final Item CHERRY_SIGN = new Item(931, NamespacedKey.parse("minecraft:cherry_sign"), () -> Block.CHERRY_SIGN);
+    public static final Item IRON_SWORD = new Item(931, NamespacedKey.parse("minecraft:iron_sword"), null);
 
-    public static final Item DARK_OAK_SIGN = new Item(932, NamespacedKey.parse("minecraft:dark_oak_sign"), () -> Block.DARK_OAK_SIGN);
+    public static final Item IRON_SHOVEL = new Item(932, NamespacedKey.parse("minecraft:iron_shovel"), null);
 
-    public static final Item PALE_OAK_SIGN = new Item(933, NamespacedKey.parse("minecraft:pale_oak_sign"), () -> Block.PALE_OAK_SIGN);
+    public static final Item IRON_PICKAXE = new Item(933, NamespacedKey.parse("minecraft:iron_pickaxe"), null);
 
-    public static final Item MANGROVE_SIGN = new Item(934, NamespacedKey.parse("minecraft:mangrove_sign"), () -> Block.MANGROVE_SIGN);
+    public static final Item IRON_AXE = new Item(934, NamespacedKey.parse("minecraft:iron_axe"), null);
 
-    public static final Item BAMBOO_SIGN = new Item(935, NamespacedKey.parse("minecraft:bamboo_sign"), () -> Block.BAMBOO_SIGN);
+    public static final Item IRON_HOE = new Item(935, NamespacedKey.parse("minecraft:iron_hoe"), null);
 
-    public static final Item CRIMSON_SIGN = new Item(936, NamespacedKey.parse("minecraft:crimson_sign"), () -> Block.CRIMSON_SIGN);
+    public static final Item DIAMOND_SWORD = new Item(936, NamespacedKey.parse("minecraft:diamond_sword"), null);
 
-    public static final Item WARPED_SIGN = new Item(937, NamespacedKey.parse("minecraft:warped_sign"), () -> Block.WARPED_SIGN);
+    public static final Item DIAMOND_SHOVEL = new Item(937, NamespacedKey.parse("minecraft:diamond_shovel"), null);
 
-    public static final Item OAK_HANGING_SIGN = new Item(938, NamespacedKey.parse("minecraft:oak_hanging_sign"), () -> Block.OAK_HANGING_SIGN);
+    public static final Item DIAMOND_PICKAXE = new Item(938, NamespacedKey.parse("minecraft:diamond_pickaxe"), null);
 
-    public static final Item SPRUCE_HANGING_SIGN = new Item(939, NamespacedKey.parse("minecraft:spruce_hanging_sign"), () -> Block.SPRUCE_HANGING_SIGN);
+    public static final Item DIAMOND_AXE = new Item(939, NamespacedKey.parse("minecraft:diamond_axe"), null);
 
-    public static final Item BIRCH_HANGING_SIGN = new Item(940, NamespacedKey.parse("minecraft:birch_hanging_sign"), () -> Block.BIRCH_HANGING_SIGN);
+    public static final Item DIAMOND_HOE = new Item(940, NamespacedKey.parse("minecraft:diamond_hoe"), null);
 
-    public static final Item JUNGLE_HANGING_SIGN = new Item(941, NamespacedKey.parse("minecraft:jungle_hanging_sign"), () -> Block.JUNGLE_HANGING_SIGN);
+    public static final Item NETHERITE_SWORD = new Item(941, NamespacedKey.parse("minecraft:netherite_sword"), null);
 
-    public static final Item ACACIA_HANGING_SIGN = new Item(942, NamespacedKey.parse("minecraft:acacia_hanging_sign"), () -> Block.ACACIA_HANGING_SIGN);
+    public static final Item NETHERITE_SHOVEL = new Item(942, NamespacedKey.parse("minecraft:netherite_shovel"), null);
 
-    public static final Item CHERRY_HANGING_SIGN = new Item(943, NamespacedKey.parse("minecraft:cherry_hanging_sign"), () -> Block.CHERRY_HANGING_SIGN);
+    public static final Item NETHERITE_PICKAXE = new Item(943, NamespacedKey.parse("minecraft:netherite_pickaxe"), null);
 
-    public static final Item DARK_OAK_HANGING_SIGN = new Item(944, NamespacedKey.parse("minecraft:dark_oak_hanging_sign"), () -> Block.DARK_OAK_HANGING_SIGN);
+    public static final Item NETHERITE_AXE = new Item(944, NamespacedKey.parse("minecraft:netherite_axe"), null);
 
-    public static final Item PALE_OAK_HANGING_SIGN = new Item(945, NamespacedKey.parse("minecraft:pale_oak_hanging_sign"), () -> Block.PALE_OAK_HANGING_SIGN);
+    public static final Item NETHERITE_HOE = new Item(945, NamespacedKey.parse("minecraft:netherite_hoe"), null);
 
-    public static final Item MANGROVE_HANGING_SIGN = new Item(946, NamespacedKey.parse("minecraft:mangrove_hanging_sign"), () -> Block.MANGROVE_HANGING_SIGN);
+    public static final Item STICK = new Item(946, NamespacedKey.parse("minecraft:stick"), null);
 
-    public static final Item BAMBOO_HANGING_SIGN = new Item(947, NamespacedKey.parse("minecraft:bamboo_hanging_sign"), () -> Block.BAMBOO_HANGING_SIGN);
+    public static final Item MUSHROOM_STEW = new Item(947, NamespacedKey.parse("minecraft:mushroom_stew"), null);
 
-    public static final Item CRIMSON_HANGING_SIGN = new Item(948, NamespacedKey.parse("minecraft:crimson_hanging_sign"), () -> Block.CRIMSON_HANGING_SIGN);
+    public static final Item STRING = new Item(948, NamespacedKey.parse("minecraft:string"), null);
 
-    public static final Item WARPED_HANGING_SIGN = new Item(949, NamespacedKey.parse("minecraft:warped_hanging_sign"), () -> Block.WARPED_HANGING_SIGN);
+    public static final Item FEATHER = new Item(949, NamespacedKey.parse("minecraft:feather"), null);
 
-    public static final Item BUCKET = new Item(950, NamespacedKey.parse("minecraft:bucket"), null);
+    public static final Item GUNPOWDER = new Item(950, NamespacedKey.parse("minecraft:gunpowder"), null);
 
-    public static final Item WATER_BUCKET = new Item(951, NamespacedKey.parse("minecraft:water_bucket"), null);
+    public static final Item WHEAT_SEEDS = new Item(951, NamespacedKey.parse("minecraft:wheat_seeds"), null);
 
-    public static final Item LAVA_BUCKET = new Item(952, NamespacedKey.parse("minecraft:lava_bucket"), null);
+    public static final Item WHEAT = new Item(952, NamespacedKey.parse("minecraft:wheat"), () -> Block.WHEAT);
 
-    public static final Item POWDER_SNOW_BUCKET = new Item(953, NamespacedKey.parse("minecraft:powder_snow_bucket"), null);
+    public static final Item BREAD = new Item(953, NamespacedKey.parse("minecraft:bread"), null);
 
-    public static final Item SNOWBALL = new Item(954, NamespacedKey.parse("minecraft:snowball"), null);
+    public static final Item LEATHER_HELMET = new Item(954, NamespacedKey.parse("minecraft:leather_helmet"), null);
 
-    public static final Item LEATHER = new Item(955, NamespacedKey.parse("minecraft:leather"), null);
+    public static final Item LEATHER_CHESTPLATE = new Item(955, NamespacedKey.parse("minecraft:leather_chestplate"), null);
 
-    public static final Item MILK_BUCKET = new Item(956, NamespacedKey.parse("minecraft:milk_bucket"), null);
+    public static final Item LEATHER_LEGGINGS = new Item(956, NamespacedKey.parse("minecraft:leather_leggings"), null);
 
-    public static final Item PUFFERFISH_BUCKET = new Item(957, NamespacedKey.parse("minecraft:pufferfish_bucket"), null);
+    public static final Item LEATHER_BOOTS = new Item(957, NamespacedKey.parse("minecraft:leather_boots"), null);
 
-    public static final Item SALMON_BUCKET = new Item(958, NamespacedKey.parse("minecraft:salmon_bucket"), null);
+    public static final Item COPPER_HELMET = new Item(958, NamespacedKey.parse("minecraft:copper_helmet"), null);
 
-    public static final Item COD_BUCKET = new Item(959, NamespacedKey.parse("minecraft:cod_bucket"), null);
+    public static final Item COPPER_CHESTPLATE = new Item(959, NamespacedKey.parse("minecraft:copper_chestplate"), null);
 
-    public static final Item TROPICAL_FISH_BUCKET = new Item(960, NamespacedKey.parse("minecraft:tropical_fish_bucket"), null);
+    public static final Item COPPER_LEGGINGS = new Item(960, NamespacedKey.parse("minecraft:copper_leggings"), null);
 
-    public static final Item AXOLOTL_BUCKET = new Item(961, NamespacedKey.parse("minecraft:axolotl_bucket"), null);
+    public static final Item COPPER_BOOTS = new Item(961, NamespacedKey.parse("minecraft:copper_boots"), null);
 
-    public static final Item TADPOLE_BUCKET = new Item(962, NamespacedKey.parse("minecraft:tadpole_bucket"), null);
+    public static final Item CHAINMAIL_HELMET = new Item(962, NamespacedKey.parse("minecraft:chainmail_helmet"), null);
 
-    public static final Item BRICK = new Item(963, NamespacedKey.parse("minecraft:brick"), null);
+    public static final Item CHAINMAIL_CHESTPLATE = new Item(963, NamespacedKey.parse("minecraft:chainmail_chestplate"), null);
 
-    public static final Item CLAY_BALL = new Item(964, NamespacedKey.parse("minecraft:clay_ball"), null);
+    public static final Item CHAINMAIL_LEGGINGS = new Item(964, NamespacedKey.parse("minecraft:chainmail_leggings"), null);
 
-    public static final Item DRIED_KELP_BLOCK = new Item(965, NamespacedKey.parse("minecraft:dried_kelp_block"), () -> Block.DRIED_KELP_BLOCK);
+    public static final Item CHAINMAIL_BOOTS = new Item(965, NamespacedKey.parse("minecraft:chainmail_boots"), null);
 
-    public static final Item PAPER = new Item(966, NamespacedKey.parse("minecraft:paper"), null);
+    public static final Item IRON_HELMET = new Item(966, NamespacedKey.parse("minecraft:iron_helmet"), null);
 
-    public static final Item BOOK = new Item(967, NamespacedKey.parse("minecraft:book"), null);
+    public static final Item IRON_CHESTPLATE = new Item(967, NamespacedKey.parse("minecraft:iron_chestplate"), null);
 
-    public static final Item SLIME_BALL = new Item(968, NamespacedKey.parse("minecraft:slime_ball"), null);
+    public static final Item IRON_LEGGINGS = new Item(968, NamespacedKey.parse("minecraft:iron_leggings"), null);
 
-    public static final Item EGG = new Item(969, NamespacedKey.parse("minecraft:egg"), null);
+    public static final Item IRON_BOOTS = new Item(969, NamespacedKey.parse("minecraft:iron_boots"), null);
 
-    public static final Item BLUE_EGG = new Item(970, NamespacedKey.parse("minecraft:blue_egg"), null);
+    public static final Item DIAMOND_HELMET = new Item(970, NamespacedKey.parse("minecraft:diamond_helmet"), null);
 
-    public static final Item BROWN_EGG = new Item(971, NamespacedKey.parse("minecraft:brown_egg"), null);
+    public static final Item DIAMOND_CHESTPLATE = new Item(971, NamespacedKey.parse("minecraft:diamond_chestplate"), null);
 
-    public static final Item COMPASS = new Item(972, NamespacedKey.parse("minecraft:compass"), null);
+    public static final Item DIAMOND_LEGGINGS = new Item(972, NamespacedKey.parse("minecraft:diamond_leggings"), null);
 
-    public static final Item RECOVERY_COMPASS = new Item(973, NamespacedKey.parse("minecraft:recovery_compass"), null);
+    public static final Item DIAMOND_BOOTS = new Item(973, NamespacedKey.parse("minecraft:diamond_boots"), null);
 
-    public static final Item BUNDLE = new Item(974, NamespacedKey.parse("minecraft:bundle"), null);
+    public static final Item GOLDEN_HELMET = new Item(974, NamespacedKey.parse("minecraft:golden_helmet"), null);
 
-    public static final Item WHITE_BUNDLE = new Item(975, NamespacedKey.parse("minecraft:white_bundle"), null);
+    public static final Item GOLDEN_CHESTPLATE = new Item(975, NamespacedKey.parse("minecraft:golden_chestplate"), null);
 
-    public static final Item ORANGE_BUNDLE = new Item(976, NamespacedKey.parse("minecraft:orange_bundle"), null);
+    public static final Item GOLDEN_LEGGINGS = new Item(976, NamespacedKey.parse("minecraft:golden_leggings"), null);
 
-    public static final Item MAGENTA_BUNDLE = new Item(977, NamespacedKey.parse("minecraft:magenta_bundle"), null);
+    public static final Item GOLDEN_BOOTS = new Item(977, NamespacedKey.parse("minecraft:golden_boots"), null);
 
-    public static final Item LIGHT_BLUE_BUNDLE = new Item(978, NamespacedKey.parse("minecraft:light_blue_bundle"), null);
+    public static final Item NETHERITE_HELMET = new Item(978, NamespacedKey.parse("minecraft:netherite_helmet"), null);
 
-    public static final Item YELLOW_BUNDLE = new Item(979, NamespacedKey.parse("minecraft:yellow_bundle"), null);
+    public static final Item NETHERITE_CHESTPLATE = new Item(979, NamespacedKey.parse("minecraft:netherite_chestplate"), null);
 
-    public static final Item LIME_BUNDLE = new Item(980, NamespacedKey.parse("minecraft:lime_bundle"), null);
+    public static final Item NETHERITE_LEGGINGS = new Item(980, NamespacedKey.parse("minecraft:netherite_leggings"), null);
 
-    public static final Item PINK_BUNDLE = new Item(981, NamespacedKey.parse("minecraft:pink_bundle"), null);
+    public static final Item NETHERITE_BOOTS = new Item(981, NamespacedKey.parse("minecraft:netherite_boots"), null);
 
-    public static final Item GRAY_BUNDLE = new Item(982, NamespacedKey.parse("minecraft:gray_bundle"), null);
+    public static final Item FLINT = new Item(982, NamespacedKey.parse("minecraft:flint"), null);
 
-    public static final Item LIGHT_GRAY_BUNDLE = new Item(983, NamespacedKey.parse("minecraft:light_gray_bundle"), null);
+    public static final Item PORKCHOP = new Item(983, NamespacedKey.parse("minecraft:porkchop"), null);
 
-    public static final Item CYAN_BUNDLE = new Item(984, NamespacedKey.parse("minecraft:cyan_bundle"), null);
+    public static final Item COOKED_PORKCHOP = new Item(984, NamespacedKey.parse("minecraft:cooked_porkchop"), null);
 
-    public static final Item PURPLE_BUNDLE = new Item(985, NamespacedKey.parse("minecraft:purple_bundle"), null);
+    public static final Item PAINTING = new Item(985, NamespacedKey.parse("minecraft:painting"), null);
 
-    public static final Item BLUE_BUNDLE = new Item(986, NamespacedKey.parse("minecraft:blue_bundle"), null);
+    public static final Item GOLDEN_APPLE = new Item(986, NamespacedKey.parse("minecraft:golden_apple"), null);
 
-    public static final Item BROWN_BUNDLE = new Item(987, NamespacedKey.parse("minecraft:brown_bundle"), null);
+    public static final Item ENCHANTED_GOLDEN_APPLE = new Item(987, NamespacedKey.parse("minecraft:enchanted_golden_apple"), null);
 
-    public static final Item GREEN_BUNDLE = new Item(988, NamespacedKey.parse("minecraft:green_bundle"), null);
+    public static final Item OAK_SIGN = new Item(988, NamespacedKey.parse("minecraft:oak_sign"), () -> Block.OAK_SIGN);
 
-    public static final Item RED_BUNDLE = new Item(989, NamespacedKey.parse("minecraft:red_bundle"), null);
+    public static final Item SPRUCE_SIGN = new Item(989, NamespacedKey.parse("minecraft:spruce_sign"), () -> Block.SPRUCE_SIGN);
 
-    public static final Item BLACK_BUNDLE = new Item(990, NamespacedKey.parse("minecraft:black_bundle"), null);
+    public static final Item BIRCH_SIGN = new Item(990, NamespacedKey.parse("minecraft:birch_sign"), () -> Block.BIRCH_SIGN);
 
-    public static final Item FISHING_ROD = new Item(991, NamespacedKey.parse("minecraft:fishing_rod"), null);
+    public static final Item JUNGLE_SIGN = new Item(991, NamespacedKey.parse("minecraft:jungle_sign"), () -> Block.JUNGLE_SIGN);
 
-    public static final Item CLOCK = new Item(992, NamespacedKey.parse("minecraft:clock"), null);
+    public static final Item ACACIA_SIGN = new Item(992, NamespacedKey.parse("minecraft:acacia_sign"), () -> Block.ACACIA_SIGN);
 
-    public static final Item SPYGLASS = new Item(993, NamespacedKey.parse("minecraft:spyglass"), null);
+    public static final Item CHERRY_SIGN = new Item(993, NamespacedKey.parse("minecraft:cherry_sign"), () -> Block.CHERRY_SIGN);
 
-    public static final Item GLOWSTONE_DUST = new Item(994, NamespacedKey.parse("minecraft:glowstone_dust"), null);
+    public static final Item DARK_OAK_SIGN = new Item(994, NamespacedKey.parse("minecraft:dark_oak_sign"), () -> Block.DARK_OAK_SIGN);
 
-    public static final Item COD = new Item(995, NamespacedKey.parse("minecraft:cod"), null);
+    public static final Item PALE_OAK_SIGN = new Item(995, NamespacedKey.parse("minecraft:pale_oak_sign"), () -> Block.PALE_OAK_SIGN);
 
-    public static final Item SALMON = new Item(996, NamespacedKey.parse("minecraft:salmon"), null);
+    public static final Item MANGROVE_SIGN = new Item(996, NamespacedKey.parse("minecraft:mangrove_sign"), () -> Block.MANGROVE_SIGN);
 
-    public static final Item TROPICAL_FISH = new Item(997, NamespacedKey.parse("minecraft:tropical_fish"), null);
+    public static final Item BAMBOO_SIGN = new Item(997, NamespacedKey.parse("minecraft:bamboo_sign"), () -> Block.BAMBOO_SIGN);
 
-    public static final Item PUFFERFISH = new Item(998, NamespacedKey.parse("minecraft:pufferfish"), null);
+    public static final Item CRIMSON_SIGN = new Item(998, NamespacedKey.parse("minecraft:crimson_sign"), () -> Block.CRIMSON_SIGN);
 
-    public static final Item COOKED_COD = new Item(999, NamespacedKey.parse("minecraft:cooked_cod"), null);
+    public static final Item WARPED_SIGN = new Item(999, NamespacedKey.parse("minecraft:warped_sign"), () -> Block.WARPED_SIGN);
 
-    public static final Item COOKED_SALMON = new Item(1000, NamespacedKey.parse("minecraft:cooked_salmon"), null);
+    public static final Item OAK_HANGING_SIGN = new Item(1000, NamespacedKey.parse("minecraft:oak_hanging_sign"), () -> Block.OAK_HANGING_SIGN);
 
-    public static final Item INK_SAC = new Item(1001, NamespacedKey.parse("minecraft:ink_sac"), null);
+    public static final Item SPRUCE_HANGING_SIGN = new Item(1001, NamespacedKey.parse("minecraft:spruce_hanging_sign"), () -> Block.SPRUCE_HANGING_SIGN);
 
-    public static final Item GLOW_INK_SAC = new Item(1002, NamespacedKey.parse("minecraft:glow_ink_sac"), null);
+    public static final Item BIRCH_HANGING_SIGN = new Item(1002, NamespacedKey.parse("minecraft:birch_hanging_sign"), () -> Block.BIRCH_HANGING_SIGN);
 
-    public static final Item COCOA_BEANS = new Item(1003, NamespacedKey.parse("minecraft:cocoa_beans"), null);
+    public static final Item JUNGLE_HANGING_SIGN = new Item(1003, NamespacedKey.parse("minecraft:jungle_hanging_sign"), () -> Block.JUNGLE_HANGING_SIGN);
 
-    public static final Item WHITE_DYE = new Item(1004, NamespacedKey.parse("minecraft:white_dye"), null);
+    public static final Item ACACIA_HANGING_SIGN = new Item(1004, NamespacedKey.parse("minecraft:acacia_hanging_sign"), () -> Block.ACACIA_HANGING_SIGN);
 
-    public static final Item ORANGE_DYE = new Item(1005, NamespacedKey.parse("minecraft:orange_dye"), null);
+    public static final Item CHERRY_HANGING_SIGN = new Item(1005, NamespacedKey.parse("minecraft:cherry_hanging_sign"), () -> Block.CHERRY_HANGING_SIGN);
 
-    public static final Item MAGENTA_DYE = new Item(1006, NamespacedKey.parse("minecraft:magenta_dye"), null);
+    public static final Item DARK_OAK_HANGING_SIGN = new Item(1006, NamespacedKey.parse("minecraft:dark_oak_hanging_sign"), () -> Block.DARK_OAK_HANGING_SIGN);
 
-    public static final Item LIGHT_BLUE_DYE = new Item(1007, NamespacedKey.parse("minecraft:light_blue_dye"), null);
+    public static final Item PALE_OAK_HANGING_SIGN = new Item(1007, NamespacedKey.parse("minecraft:pale_oak_hanging_sign"), () -> Block.PALE_OAK_HANGING_SIGN);
 
-    public static final Item YELLOW_DYE = new Item(1008, NamespacedKey.parse("minecraft:yellow_dye"), null);
+    public static final Item MANGROVE_HANGING_SIGN = new Item(1008, NamespacedKey.parse("minecraft:mangrove_hanging_sign"), () -> Block.MANGROVE_HANGING_SIGN);
 
-    public static final Item LIME_DYE = new Item(1009, NamespacedKey.parse("minecraft:lime_dye"), null);
+    public static final Item BAMBOO_HANGING_SIGN = new Item(1009, NamespacedKey.parse("minecraft:bamboo_hanging_sign"), () -> Block.BAMBOO_HANGING_SIGN);
 
-    public static final Item PINK_DYE = new Item(1010, NamespacedKey.parse("minecraft:pink_dye"), null);
+    public static final Item CRIMSON_HANGING_SIGN = new Item(1010, NamespacedKey.parse("minecraft:crimson_hanging_sign"), () -> Block.CRIMSON_HANGING_SIGN);
 
-    public static final Item GRAY_DYE = new Item(1011, NamespacedKey.parse("minecraft:gray_dye"), null);
+    public static final Item WARPED_HANGING_SIGN = new Item(1011, NamespacedKey.parse("minecraft:warped_hanging_sign"), () -> Block.WARPED_HANGING_SIGN);
 
-    public static final Item LIGHT_GRAY_DYE = new Item(1012, NamespacedKey.parse("minecraft:light_gray_dye"), null);
+    public static final Item BUCKET = new Item(1012, NamespacedKey.parse("minecraft:bucket"), null);
 
-    public static final Item CYAN_DYE = new Item(1013, NamespacedKey.parse("minecraft:cyan_dye"), null);
+    public static final Item WATER_BUCKET = new Item(1013, NamespacedKey.parse("minecraft:water_bucket"), null);
 
-    public static final Item PURPLE_DYE = new Item(1014, NamespacedKey.parse("minecraft:purple_dye"), null);
+    public static final Item LAVA_BUCKET = new Item(1014, NamespacedKey.parse("minecraft:lava_bucket"), null);
 
-    public static final Item BLUE_DYE = new Item(1015, NamespacedKey.parse("minecraft:blue_dye"), null);
+    public static final Item POWDER_SNOW_BUCKET = new Item(1015, NamespacedKey.parse("minecraft:powder_snow_bucket"), null);
 
-    public static final Item BROWN_DYE = new Item(1016, NamespacedKey.parse("minecraft:brown_dye"), null);
+    public static final Item SNOWBALL = new Item(1016, NamespacedKey.parse("minecraft:snowball"), null);
 
-    public static final Item GREEN_DYE = new Item(1017, NamespacedKey.parse("minecraft:green_dye"), null);
+    public static final Item LEATHER = new Item(1017, NamespacedKey.parse("minecraft:leather"), null);
 
-    public static final Item RED_DYE = new Item(1018, NamespacedKey.parse("minecraft:red_dye"), null);
+    public static final Item MILK_BUCKET = new Item(1018, NamespacedKey.parse("minecraft:milk_bucket"), null);
 
-    public static final Item BLACK_DYE = new Item(1019, NamespacedKey.parse("minecraft:black_dye"), null);
+    public static final Item PUFFERFISH_BUCKET = new Item(1019, NamespacedKey.parse("minecraft:pufferfish_bucket"), null);
 
-    public static final Item BONE_MEAL = new Item(1020, NamespacedKey.parse("minecraft:bone_meal"), null);
+    public static final Item SALMON_BUCKET = new Item(1020, NamespacedKey.parse("minecraft:salmon_bucket"), null);
 
-    public static final Item BONE = new Item(1021, NamespacedKey.parse("minecraft:bone"), null);
+    public static final Item COD_BUCKET = new Item(1021, NamespacedKey.parse("minecraft:cod_bucket"), null);
 
-    public static final Item SUGAR = new Item(1022, NamespacedKey.parse("minecraft:sugar"), null);
+    public static final Item TROPICAL_FISH_BUCKET = new Item(1022, NamespacedKey.parse("minecraft:tropical_fish_bucket"), null);
 
-    public static final Item CAKE = new Item(1023, NamespacedKey.parse("minecraft:cake"), () -> Block.CAKE);
+    public static final Item AXOLOTL_BUCKET = new Item(1023, NamespacedKey.parse("minecraft:axolotl_bucket"), null);
 
-    public static final Item WHITE_BED = new Item(1024, NamespacedKey.parse("minecraft:white_bed"), () -> Block.WHITE_BED);
+    public static final Item TADPOLE_BUCKET = new Item(1024, NamespacedKey.parse("minecraft:tadpole_bucket"), null);
 
-    public static final Item ORANGE_BED = new Item(1025, NamespacedKey.parse("minecraft:orange_bed"), () -> Block.ORANGE_BED);
+    public static final Item BRICK = new Item(1025, NamespacedKey.parse("minecraft:brick"), null);
 
-    public static final Item MAGENTA_BED = new Item(1026, NamespacedKey.parse("minecraft:magenta_bed"), () -> Block.MAGENTA_BED);
+    public static final Item CLAY_BALL = new Item(1026, NamespacedKey.parse("minecraft:clay_ball"), null);
 
-    public static final Item LIGHT_BLUE_BED = new Item(1027, NamespacedKey.parse("minecraft:light_blue_bed"), () -> Block.LIGHT_BLUE_BED);
+    public static final Item DRIED_KELP_BLOCK = new Item(1027, NamespacedKey.parse("minecraft:dried_kelp_block"), () -> Block.DRIED_KELP_BLOCK);
 
-    public static final Item YELLOW_BED = new Item(1028, NamespacedKey.parse("minecraft:yellow_bed"), () -> Block.YELLOW_BED);
+    public static final Item PAPER = new Item(1028, NamespacedKey.parse("minecraft:paper"), null);
 
-    public static final Item LIME_BED = new Item(1029, NamespacedKey.parse("minecraft:lime_bed"), () -> Block.LIME_BED);
+    public static final Item BOOK = new Item(1029, NamespacedKey.parse("minecraft:book"), null);
 
-    public static final Item PINK_BED = new Item(1030, NamespacedKey.parse("minecraft:pink_bed"), () -> Block.PINK_BED);
+    public static final Item SLIME_BALL = new Item(1030, NamespacedKey.parse("minecraft:slime_ball"), null);
 
-    public static final Item GRAY_BED = new Item(1031, NamespacedKey.parse("minecraft:gray_bed"), () -> Block.GRAY_BED);
+    public static final Item EGG = new Item(1031, NamespacedKey.parse("minecraft:egg"), null);
 
-    public static final Item LIGHT_GRAY_BED = new Item(1032, NamespacedKey.parse("minecraft:light_gray_bed"), () -> Block.LIGHT_GRAY_BED);
+    public static final Item BLUE_EGG = new Item(1032, NamespacedKey.parse("minecraft:blue_egg"), null);
 
-    public static final Item CYAN_BED = new Item(1033, NamespacedKey.parse("minecraft:cyan_bed"), () -> Block.CYAN_BED);
+    public static final Item BROWN_EGG = new Item(1033, NamespacedKey.parse("minecraft:brown_egg"), null);
 
-    public static final Item PURPLE_BED = new Item(1034, NamespacedKey.parse("minecraft:purple_bed"), () -> Block.PURPLE_BED);
+    public static final Item COMPASS = new Item(1034, NamespacedKey.parse("minecraft:compass"), null);
 
-    public static final Item BLUE_BED = new Item(1035, NamespacedKey.parse("minecraft:blue_bed"), () -> Block.BLUE_BED);
+    public static final Item RECOVERY_COMPASS = new Item(1035, NamespacedKey.parse("minecraft:recovery_compass"), null);
 
-    public static final Item BROWN_BED = new Item(1036, NamespacedKey.parse("minecraft:brown_bed"), () -> Block.BROWN_BED);
+    public static final Item BUNDLE = new Item(1036, NamespacedKey.parse("minecraft:bundle"), null);
 
-    public static final Item GREEN_BED = new Item(1037, NamespacedKey.parse("minecraft:green_bed"), () -> Block.GREEN_BED);
+    public static final Item WHITE_BUNDLE = new Item(1037, NamespacedKey.parse("minecraft:white_bundle"), null);
 
-    public static final Item RED_BED = new Item(1038, NamespacedKey.parse("minecraft:red_bed"), () -> Block.RED_BED);
+    public static final Item ORANGE_BUNDLE = new Item(1038, NamespacedKey.parse("minecraft:orange_bundle"), null);
 
-    public static final Item BLACK_BED = new Item(1039, NamespacedKey.parse("minecraft:black_bed"), () -> Block.BLACK_BED);
+    public static final Item MAGENTA_BUNDLE = new Item(1039, NamespacedKey.parse("minecraft:magenta_bundle"), null);
 
-    public static final Item COOKIE = new Item(1040, NamespacedKey.parse("minecraft:cookie"), null);
+    public static final Item LIGHT_BLUE_BUNDLE = new Item(1040, NamespacedKey.parse("minecraft:light_blue_bundle"), null);
 
-    public static final Item CRAFTER = new Item(1041, NamespacedKey.parse("minecraft:crafter"), () -> Block.CRAFTER);
+    public static final Item YELLOW_BUNDLE = new Item(1041, NamespacedKey.parse("minecraft:yellow_bundle"), null);
 
-    public static final Item FILLED_MAP = new Item(1042, NamespacedKey.parse("minecraft:filled_map"), null);
+    public static final Item LIME_BUNDLE = new Item(1042, NamespacedKey.parse("minecraft:lime_bundle"), null);
 
-    public static final Item SHEARS = new Item(1043, NamespacedKey.parse("minecraft:shears"), null);
+    public static final Item PINK_BUNDLE = new Item(1043, NamespacedKey.parse("minecraft:pink_bundle"), null);
 
-    public static final Item MELON_SLICE = new Item(1044, NamespacedKey.parse("minecraft:melon_slice"), null);
+    public static final Item GRAY_BUNDLE = new Item(1044, NamespacedKey.parse("minecraft:gray_bundle"), null);
 
-    public static final Item DRIED_KELP = new Item(1045, NamespacedKey.parse("minecraft:dried_kelp"), null);
+    public static final Item LIGHT_GRAY_BUNDLE = new Item(1045, NamespacedKey.parse("minecraft:light_gray_bundle"), null);
 
-    public static final Item PUMPKIN_SEEDS = new Item(1046, NamespacedKey.parse("minecraft:pumpkin_seeds"), null);
+    public static final Item CYAN_BUNDLE = new Item(1046, NamespacedKey.parse("minecraft:cyan_bundle"), null);
 
-    public static final Item MELON_SEEDS = new Item(1047, NamespacedKey.parse("minecraft:melon_seeds"), null);
+    public static final Item PURPLE_BUNDLE = new Item(1047, NamespacedKey.parse("minecraft:purple_bundle"), null);
 
-    public static final Item BEEF = new Item(1048, NamespacedKey.parse("minecraft:beef"), null);
+    public static final Item BLUE_BUNDLE = new Item(1048, NamespacedKey.parse("minecraft:blue_bundle"), null);
 
-    public static final Item COOKED_BEEF = new Item(1049, NamespacedKey.parse("minecraft:cooked_beef"), null);
+    public static final Item BROWN_BUNDLE = new Item(1049, NamespacedKey.parse("minecraft:brown_bundle"), null);
 
-    public static final Item CHICKEN = new Item(1050, NamespacedKey.parse("minecraft:chicken"), null);
+    public static final Item GREEN_BUNDLE = new Item(1050, NamespacedKey.parse("minecraft:green_bundle"), null);
 
-    public static final Item COOKED_CHICKEN = new Item(1051, NamespacedKey.parse("minecraft:cooked_chicken"), null);
+    public static final Item RED_BUNDLE = new Item(1051, NamespacedKey.parse("minecraft:red_bundle"), null);
 
-    public static final Item ROTTEN_FLESH = new Item(1052, NamespacedKey.parse("minecraft:rotten_flesh"), null);
+    public static final Item BLACK_BUNDLE = new Item(1052, NamespacedKey.parse("minecraft:black_bundle"), null);
 
-    public static final Item ENDER_PEARL = new Item(1053, NamespacedKey.parse("minecraft:ender_pearl"), null);
+    public static final Item FISHING_ROD = new Item(1053, NamespacedKey.parse("minecraft:fishing_rod"), null);
 
-    public static final Item BLAZE_ROD = new Item(1054, NamespacedKey.parse("minecraft:blaze_rod"), null);
+    public static final Item CLOCK = new Item(1054, NamespacedKey.parse("minecraft:clock"), null);
 
-    public static final Item GHAST_TEAR = new Item(1055, NamespacedKey.parse("minecraft:ghast_tear"), null);
+    public static final Item SPYGLASS = new Item(1055, NamespacedKey.parse("minecraft:spyglass"), null);
 
-    public static final Item GOLD_NUGGET = new Item(1056, NamespacedKey.parse("minecraft:gold_nugget"), null);
+    public static final Item GLOWSTONE_DUST = new Item(1056, NamespacedKey.parse("minecraft:glowstone_dust"), null);
 
-    public static final Item NETHER_WART = new Item(1057, NamespacedKey.parse("minecraft:nether_wart"), () -> Block.NETHER_WART);
+    public static final Item COD = new Item(1057, NamespacedKey.parse("minecraft:cod"), null);
 
-    public static final Item GLASS_BOTTLE = new Item(1058, NamespacedKey.parse("minecraft:glass_bottle"), null);
+    public static final Item SALMON = new Item(1058, NamespacedKey.parse("minecraft:salmon"), null);
 
-    public static final Item POTION = new Item(1059, NamespacedKey.parse("minecraft:potion"), null);
+    public static final Item TROPICAL_FISH = new Item(1059, NamespacedKey.parse("minecraft:tropical_fish"), null);
 
-    public static final Item SPIDER_EYE = new Item(1060, NamespacedKey.parse("minecraft:spider_eye"), null);
+    public static final Item PUFFERFISH = new Item(1060, NamespacedKey.parse("minecraft:pufferfish"), null);
 
-    public static final Item FERMENTED_SPIDER_EYE = new Item(1061, NamespacedKey.parse("minecraft:fermented_spider_eye"), null);
+    public static final Item COOKED_COD = new Item(1061, NamespacedKey.parse("minecraft:cooked_cod"), null);
 
-    public static final Item BLAZE_POWDER = new Item(1062, NamespacedKey.parse("minecraft:blaze_powder"), null);
+    public static final Item COOKED_SALMON = new Item(1062, NamespacedKey.parse("minecraft:cooked_salmon"), null);
 
-    public static final Item MAGMA_CREAM = new Item(1063, NamespacedKey.parse("minecraft:magma_cream"), null);
+    public static final Item INK_SAC = new Item(1063, NamespacedKey.parse("minecraft:ink_sac"), null);
 
-    public static final Item BREWING_STAND = new Item(1064, NamespacedKey.parse("minecraft:brewing_stand"), () -> Block.BREWING_STAND);
+    public static final Item GLOW_INK_SAC = new Item(1064, NamespacedKey.parse("minecraft:glow_ink_sac"), null);
 
-    public static final Item CAULDRON = new Item(1065, NamespacedKey.parse("minecraft:cauldron"), () -> Block.CAULDRON);
+    public static final Item COCOA_BEANS = new Item(1065, NamespacedKey.parse("minecraft:cocoa_beans"), null);
 
-    public static final Item ENDER_EYE = new Item(1066, NamespacedKey.parse("minecraft:ender_eye"), null);
+    public static final Item WHITE_DYE = new Item(1066, NamespacedKey.parse("minecraft:white_dye"), null);
 
-    public static final Item GLISTERING_MELON_SLICE = new Item(1067, NamespacedKey.parse("minecraft:glistering_melon_slice"), null);
+    public static final Item ORANGE_DYE = new Item(1067, NamespacedKey.parse("minecraft:orange_dye"), null);
 
-    public static final Item ARMADILLO_SPAWN_EGG = new Item(1068, NamespacedKey.parse("minecraft:armadillo_spawn_egg"), null);
+    public static final Item MAGENTA_DYE = new Item(1068, NamespacedKey.parse("minecraft:magenta_dye"), null);
 
-    public static final Item ALLAY_SPAWN_EGG = new Item(1069, NamespacedKey.parse("minecraft:allay_spawn_egg"), null);
+    public static final Item LIGHT_BLUE_DYE = new Item(1069, NamespacedKey.parse("minecraft:light_blue_dye"), null);
 
-    public static final Item AXOLOTL_SPAWN_EGG = new Item(1070, NamespacedKey.parse("minecraft:axolotl_spawn_egg"), null);
+    public static final Item YELLOW_DYE = new Item(1070, NamespacedKey.parse("minecraft:yellow_dye"), null);
 
-    public static final Item BAT_SPAWN_EGG = new Item(1071, NamespacedKey.parse("minecraft:bat_spawn_egg"), null);
+    public static final Item LIME_DYE = new Item(1071, NamespacedKey.parse("minecraft:lime_dye"), null);
 
-    public static final Item BEE_SPAWN_EGG = new Item(1072, NamespacedKey.parse("minecraft:bee_spawn_egg"), null);
+    public static final Item PINK_DYE = new Item(1072, NamespacedKey.parse("minecraft:pink_dye"), null);
 
-    public static final Item BLAZE_SPAWN_EGG = new Item(1073, NamespacedKey.parse("minecraft:blaze_spawn_egg"), null);
+    public static final Item GRAY_DYE = new Item(1073, NamespacedKey.parse("minecraft:gray_dye"), null);
 
-    public static final Item BOGGED_SPAWN_EGG = new Item(1074, NamespacedKey.parse("minecraft:bogged_spawn_egg"), null);
+    public static final Item LIGHT_GRAY_DYE = new Item(1074, NamespacedKey.parse("minecraft:light_gray_dye"), null);
 
-    public static final Item BREEZE_SPAWN_EGG = new Item(1075, NamespacedKey.parse("minecraft:breeze_spawn_egg"), null);
+    public static final Item CYAN_DYE = new Item(1075, NamespacedKey.parse("minecraft:cyan_dye"), null);
 
-    public static final Item CAT_SPAWN_EGG = new Item(1076, NamespacedKey.parse("minecraft:cat_spawn_egg"), null);
+    public static final Item PURPLE_DYE = new Item(1076, NamespacedKey.parse("minecraft:purple_dye"), null);
 
-    public static final Item CAMEL_SPAWN_EGG = new Item(1077, NamespacedKey.parse("minecraft:camel_spawn_egg"), null);
+    public static final Item BLUE_DYE = new Item(1077, NamespacedKey.parse("minecraft:blue_dye"), null);
 
-    public static final Item CAVE_SPIDER_SPAWN_EGG = new Item(1078, NamespacedKey.parse("minecraft:cave_spider_spawn_egg"), null);
+    public static final Item BROWN_DYE = new Item(1078, NamespacedKey.parse("minecraft:brown_dye"), null);
 
-    public static final Item CHICKEN_SPAWN_EGG = new Item(1079, NamespacedKey.parse("minecraft:chicken_spawn_egg"), null);
+    public static final Item GREEN_DYE = new Item(1079, NamespacedKey.parse("minecraft:green_dye"), null);
 
-    public static final Item COD_SPAWN_EGG = new Item(1080, NamespacedKey.parse("minecraft:cod_spawn_egg"), null);
+    public static final Item RED_DYE = new Item(1080, NamespacedKey.parse("minecraft:red_dye"), null);
 
-    public static final Item COW_SPAWN_EGG = new Item(1081, NamespacedKey.parse("minecraft:cow_spawn_egg"), null);
+    public static final Item BLACK_DYE = new Item(1081, NamespacedKey.parse("minecraft:black_dye"), null);
 
-    public static final Item CREEPER_SPAWN_EGG = new Item(1082, NamespacedKey.parse("minecraft:creeper_spawn_egg"), null);
+    public static final Item BONE_MEAL = new Item(1082, NamespacedKey.parse("minecraft:bone_meal"), null);
 
-    public static final Item DOLPHIN_SPAWN_EGG = new Item(1083, NamespacedKey.parse("minecraft:dolphin_spawn_egg"), null);
+    public static final Item BONE = new Item(1083, NamespacedKey.parse("minecraft:bone"), null);
 
-    public static final Item DONKEY_SPAWN_EGG = new Item(1084, NamespacedKey.parse("minecraft:donkey_spawn_egg"), null);
+    public static final Item SUGAR = new Item(1084, NamespacedKey.parse("minecraft:sugar"), null);
 
-    public static final Item DROWNED_SPAWN_EGG = new Item(1085, NamespacedKey.parse("minecraft:drowned_spawn_egg"), null);
+    public static final Item CAKE = new Item(1085, NamespacedKey.parse("minecraft:cake"), () -> Block.CAKE);
 
-    public static final Item ELDER_GUARDIAN_SPAWN_EGG = new Item(1086, NamespacedKey.parse("minecraft:elder_guardian_spawn_egg"), null);
+    public static final Item WHITE_BED = new Item(1086, NamespacedKey.parse("minecraft:white_bed"), () -> Block.WHITE_BED);
 
-    public static final Item ENDER_DRAGON_SPAWN_EGG = new Item(1087, NamespacedKey.parse("minecraft:ender_dragon_spawn_egg"), null);
+    public static final Item ORANGE_BED = new Item(1087, NamespacedKey.parse("minecraft:orange_bed"), () -> Block.ORANGE_BED);
 
-    public static final Item ENDERMAN_SPAWN_EGG = new Item(1088, NamespacedKey.parse("minecraft:enderman_spawn_egg"), null);
+    public static final Item MAGENTA_BED = new Item(1088, NamespacedKey.parse("minecraft:magenta_bed"), () -> Block.MAGENTA_BED);
 
-    public static final Item ENDERMITE_SPAWN_EGG = new Item(1089, NamespacedKey.parse("minecraft:endermite_spawn_egg"), null);
+    public static final Item LIGHT_BLUE_BED = new Item(1089, NamespacedKey.parse("minecraft:light_blue_bed"), () -> Block.LIGHT_BLUE_BED);
 
-    public static final Item EVOKER_SPAWN_EGG = new Item(1090, NamespacedKey.parse("minecraft:evoker_spawn_egg"), null);
+    public static final Item YELLOW_BED = new Item(1090, NamespacedKey.parse("minecraft:yellow_bed"), () -> Block.YELLOW_BED);
 
-    public static final Item FOX_SPAWN_EGG = new Item(1091, NamespacedKey.parse("minecraft:fox_spawn_egg"), null);
+    public static final Item LIME_BED = new Item(1091, NamespacedKey.parse("minecraft:lime_bed"), () -> Block.LIME_BED);
 
-    public static final Item FROG_SPAWN_EGG = new Item(1092, NamespacedKey.parse("minecraft:frog_spawn_egg"), null);
+    public static final Item PINK_BED = new Item(1092, NamespacedKey.parse("minecraft:pink_bed"), () -> Block.PINK_BED);
 
-    public static final Item GHAST_SPAWN_EGG = new Item(1093, NamespacedKey.parse("minecraft:ghast_spawn_egg"), null);
+    public static final Item GRAY_BED = new Item(1093, NamespacedKey.parse("minecraft:gray_bed"), () -> Block.GRAY_BED);
 
-    public static final Item GLOW_SQUID_SPAWN_EGG = new Item(1094, NamespacedKey.parse("minecraft:glow_squid_spawn_egg"), null);
+    public static final Item LIGHT_GRAY_BED = new Item(1094, NamespacedKey.parse("minecraft:light_gray_bed"), () -> Block.LIGHT_GRAY_BED);
 
-    public static final Item GOAT_SPAWN_EGG = new Item(1095, NamespacedKey.parse("minecraft:goat_spawn_egg"), null);
+    public static final Item CYAN_BED = new Item(1095, NamespacedKey.parse("minecraft:cyan_bed"), () -> Block.CYAN_BED);
 
-    public static final Item GUARDIAN_SPAWN_EGG = new Item(1096, NamespacedKey.parse("minecraft:guardian_spawn_egg"), null);
+    public static final Item PURPLE_BED = new Item(1096, NamespacedKey.parse("minecraft:purple_bed"), () -> Block.PURPLE_BED);
 
-    public static final Item HOGLIN_SPAWN_EGG = new Item(1097, NamespacedKey.parse("minecraft:hoglin_spawn_egg"), null);
+    public static final Item BLUE_BED = new Item(1097, NamespacedKey.parse("minecraft:blue_bed"), () -> Block.BLUE_BED);
 
-    public static final Item HORSE_SPAWN_EGG = new Item(1098, NamespacedKey.parse("minecraft:horse_spawn_egg"), null);
+    public static final Item BROWN_BED = new Item(1098, NamespacedKey.parse("minecraft:brown_bed"), () -> Block.BROWN_BED);
 
-    public static final Item HUSK_SPAWN_EGG = new Item(1099, NamespacedKey.parse("minecraft:husk_spawn_egg"), null);
+    public static final Item GREEN_BED = new Item(1099, NamespacedKey.parse("minecraft:green_bed"), () -> Block.GREEN_BED);
 
-    public static final Item IRON_GOLEM_SPAWN_EGG = new Item(1100, NamespacedKey.parse("minecraft:iron_golem_spawn_egg"), null);
+    public static final Item RED_BED = new Item(1100, NamespacedKey.parse("minecraft:red_bed"), () -> Block.RED_BED);
 
-    public static final Item LLAMA_SPAWN_EGG = new Item(1101, NamespacedKey.parse("minecraft:llama_spawn_egg"), null);
+    public static final Item BLACK_BED = new Item(1101, NamespacedKey.parse("minecraft:black_bed"), () -> Block.BLACK_BED);
 
-    public static final Item MAGMA_CUBE_SPAWN_EGG = new Item(1102, NamespacedKey.parse("minecraft:magma_cube_spawn_egg"), null);
+    public static final Item COOKIE = new Item(1102, NamespacedKey.parse("minecraft:cookie"), null);
 
-    public static final Item MOOSHROOM_SPAWN_EGG = new Item(1103, NamespacedKey.parse("minecraft:mooshroom_spawn_egg"), null);
+    public static final Item CRAFTER = new Item(1103, NamespacedKey.parse("minecraft:crafter"), () -> Block.CRAFTER);
 
-    public static final Item MULE_SPAWN_EGG = new Item(1104, NamespacedKey.parse("minecraft:mule_spawn_egg"), null);
+    public static final Item FILLED_MAP = new Item(1104, NamespacedKey.parse("minecraft:filled_map"), null);
 
-    public static final Item OCELOT_SPAWN_EGG = new Item(1105, NamespacedKey.parse("minecraft:ocelot_spawn_egg"), null);
+    public static final Item SHEARS = new Item(1105, NamespacedKey.parse("minecraft:shears"), null);
 
-    public static final Item PANDA_SPAWN_EGG = new Item(1106, NamespacedKey.parse("minecraft:panda_spawn_egg"), null);
+    public static final Item MELON_SLICE = new Item(1106, NamespacedKey.parse("minecraft:melon_slice"), null);
 
-    public static final Item PARROT_SPAWN_EGG = new Item(1107, NamespacedKey.parse("minecraft:parrot_spawn_egg"), null);
+    public static final Item DRIED_KELP = new Item(1107, NamespacedKey.parse("minecraft:dried_kelp"), null);
 
-    public static final Item PHANTOM_SPAWN_EGG = new Item(1108, NamespacedKey.parse("minecraft:phantom_spawn_egg"), null);
+    public static final Item PUMPKIN_SEEDS = new Item(1108, NamespacedKey.parse("minecraft:pumpkin_seeds"), null);
 
-    public static final Item PIG_SPAWN_EGG = new Item(1109, NamespacedKey.parse("minecraft:pig_spawn_egg"), null);
+    public static final Item MELON_SEEDS = new Item(1109, NamespacedKey.parse("minecraft:melon_seeds"), null);
 
-    public static final Item PIGLIN_SPAWN_EGG = new Item(1110, NamespacedKey.parse("minecraft:piglin_spawn_egg"), null);
+    public static final Item BEEF = new Item(1110, NamespacedKey.parse("minecraft:beef"), null);
 
-    public static final Item PIGLIN_BRUTE_SPAWN_EGG = new Item(1111, NamespacedKey.parse("minecraft:piglin_brute_spawn_egg"), null);
+    public static final Item COOKED_BEEF = new Item(1111, NamespacedKey.parse("minecraft:cooked_beef"), null);
 
-    public static final Item PILLAGER_SPAWN_EGG = new Item(1112, NamespacedKey.parse("minecraft:pillager_spawn_egg"), null);
+    public static final Item CHICKEN = new Item(1112, NamespacedKey.parse("minecraft:chicken"), null);
 
-    public static final Item POLAR_BEAR_SPAWN_EGG = new Item(1113, NamespacedKey.parse("minecraft:polar_bear_spawn_egg"), null);
+    public static final Item COOKED_CHICKEN = new Item(1113, NamespacedKey.parse("minecraft:cooked_chicken"), null);
 
-    public static final Item PUFFERFISH_SPAWN_EGG = new Item(1114, NamespacedKey.parse("minecraft:pufferfish_spawn_egg"), null);
+    public static final Item ROTTEN_FLESH = new Item(1114, NamespacedKey.parse("minecraft:rotten_flesh"), null);
 
-    public static final Item RABBIT_SPAWN_EGG = new Item(1115, NamespacedKey.parse("minecraft:rabbit_spawn_egg"), null);
+    public static final Item ENDER_PEARL = new Item(1115, NamespacedKey.parse("minecraft:ender_pearl"), null);
 
-    public static final Item RAVAGER_SPAWN_EGG = new Item(1116, NamespacedKey.parse("minecraft:ravager_spawn_egg"), null);
+    public static final Item BLAZE_ROD = new Item(1116, NamespacedKey.parse("minecraft:blaze_rod"), null);
 
-    public static final Item SALMON_SPAWN_EGG = new Item(1117, NamespacedKey.parse("minecraft:salmon_spawn_egg"), null);
+    public static final Item GHAST_TEAR = new Item(1117, NamespacedKey.parse("minecraft:ghast_tear"), null);
 
-    public static final Item SHEEP_SPAWN_EGG = new Item(1118, NamespacedKey.parse("minecraft:sheep_spawn_egg"), null);
+    public static final Item GOLD_NUGGET = new Item(1118, NamespacedKey.parse("minecraft:gold_nugget"), null);
 
-    public static final Item SHULKER_SPAWN_EGG = new Item(1119, NamespacedKey.parse("minecraft:shulker_spawn_egg"), null);
+    public static final Item NETHER_WART = new Item(1119, NamespacedKey.parse("minecraft:nether_wart"), () -> Block.NETHER_WART);
 
-    public static final Item SILVERFISH_SPAWN_EGG = new Item(1120, NamespacedKey.parse("minecraft:silverfish_spawn_egg"), null);
+    public static final Item GLASS_BOTTLE = new Item(1120, NamespacedKey.parse("minecraft:glass_bottle"), null);
 
-    public static final Item SKELETON_SPAWN_EGG = new Item(1121, NamespacedKey.parse("minecraft:skeleton_spawn_egg"), null);
+    public static final Item POTION = new Item(1121, NamespacedKey.parse("minecraft:potion"), null);
 
-    public static final Item SKELETON_HORSE_SPAWN_EGG = new Item(1122, NamespacedKey.parse("minecraft:skeleton_horse_spawn_egg"), null);
+    public static final Item SPIDER_EYE = new Item(1122, NamespacedKey.parse("minecraft:spider_eye"), null);
 
-    public static final Item SLIME_SPAWN_EGG = new Item(1123, NamespacedKey.parse("minecraft:slime_spawn_egg"), null);
+    public static final Item FERMENTED_SPIDER_EYE = new Item(1123, NamespacedKey.parse("minecraft:fermented_spider_eye"), null);
 
-    public static final Item SNIFFER_SPAWN_EGG = new Item(1124, NamespacedKey.parse("minecraft:sniffer_spawn_egg"), null);
+    public static final Item BLAZE_POWDER = new Item(1124, NamespacedKey.parse("minecraft:blaze_powder"), null);
 
-    public static final Item SNOW_GOLEM_SPAWN_EGG = new Item(1125, NamespacedKey.parse("minecraft:snow_golem_spawn_egg"), null);
+    public static final Item MAGMA_CREAM = new Item(1125, NamespacedKey.parse("minecraft:magma_cream"), null);
 
-    public static final Item SPIDER_SPAWN_EGG = new Item(1126, NamespacedKey.parse("minecraft:spider_spawn_egg"), null);
+    public static final Item BREWING_STAND = new Item(1126, NamespacedKey.parse("minecraft:brewing_stand"), () -> Block.BREWING_STAND);
 
-    public static final Item SQUID_SPAWN_EGG = new Item(1127, NamespacedKey.parse("minecraft:squid_spawn_egg"), null);
+    public static final Item CAULDRON = new Item(1127, NamespacedKey.parse("minecraft:cauldron"), () -> Block.CAULDRON);
 
-    public static final Item STRAY_SPAWN_EGG = new Item(1128, NamespacedKey.parse("minecraft:stray_spawn_egg"), null);
+    public static final Item ENDER_EYE = new Item(1128, NamespacedKey.parse("minecraft:ender_eye"), null);
 
-    public static final Item STRIDER_SPAWN_EGG = new Item(1129, NamespacedKey.parse("minecraft:strider_spawn_egg"), null);
+    public static final Item GLISTERING_MELON_SLICE = new Item(1129, NamespacedKey.parse("minecraft:glistering_melon_slice"), null);
 
-    public static final Item TADPOLE_SPAWN_EGG = new Item(1130, NamespacedKey.parse("minecraft:tadpole_spawn_egg"), null);
+    public static final Item CHICKEN_SPAWN_EGG = new Item(1130, NamespacedKey.parse("minecraft:chicken_spawn_egg"), null);
 
-    public static final Item TRADER_LLAMA_SPAWN_EGG = new Item(1131, NamespacedKey.parse("minecraft:trader_llama_spawn_egg"), null);
+    public static final Item COW_SPAWN_EGG = new Item(1131, NamespacedKey.parse("minecraft:cow_spawn_egg"), null);
 
-    public static final Item TROPICAL_FISH_SPAWN_EGG = new Item(1132, NamespacedKey.parse("minecraft:tropical_fish_spawn_egg"), null);
+    public static final Item PIG_SPAWN_EGG = new Item(1132, NamespacedKey.parse("minecraft:pig_spawn_egg"), null);
 
-    public static final Item TURTLE_SPAWN_EGG = new Item(1133, NamespacedKey.parse("minecraft:turtle_spawn_egg"), null);
+    public static final Item SHEEP_SPAWN_EGG = new Item(1133, NamespacedKey.parse("minecraft:sheep_spawn_egg"), null);
 
-    public static final Item VEX_SPAWN_EGG = new Item(1134, NamespacedKey.parse("minecraft:vex_spawn_egg"), null);
+    public static final Item CAMEL_SPAWN_EGG = new Item(1134, NamespacedKey.parse("minecraft:camel_spawn_egg"), null);
 
-    public static final Item VILLAGER_SPAWN_EGG = new Item(1135, NamespacedKey.parse("minecraft:villager_spawn_egg"), null);
+    public static final Item DONKEY_SPAWN_EGG = new Item(1135, NamespacedKey.parse("minecraft:donkey_spawn_egg"), null);
 
-    public static final Item VINDICATOR_SPAWN_EGG = new Item(1136, NamespacedKey.parse("minecraft:vindicator_spawn_egg"), null);
+    public static final Item HORSE_SPAWN_EGG = new Item(1136, NamespacedKey.parse("minecraft:horse_spawn_egg"), null);
 
-    public static final Item WANDERING_TRADER_SPAWN_EGG = new Item(1137, NamespacedKey.parse("minecraft:wandering_trader_spawn_egg"), null);
+    public static final Item MULE_SPAWN_EGG = new Item(1137, NamespacedKey.parse("minecraft:mule_spawn_egg"), null);
 
-    public static final Item WARDEN_SPAWN_EGG = new Item(1138, NamespacedKey.parse("minecraft:warden_spawn_egg"), null);
+    public static final Item CAT_SPAWN_EGG = new Item(1138, NamespacedKey.parse("minecraft:cat_spawn_egg"), null);
 
-    public static final Item WITCH_SPAWN_EGG = new Item(1139, NamespacedKey.parse("minecraft:witch_spawn_egg"), null);
+    public static final Item PARROT_SPAWN_EGG = new Item(1139, NamespacedKey.parse("minecraft:parrot_spawn_egg"), null);
 
-    public static final Item WITHER_SPAWN_EGG = new Item(1140, NamespacedKey.parse("minecraft:wither_spawn_egg"), null);
+    public static final Item WOLF_SPAWN_EGG = new Item(1140, NamespacedKey.parse("minecraft:wolf_spawn_egg"), null);
 
-    public static final Item WITHER_SKELETON_SPAWN_EGG = new Item(1141, NamespacedKey.parse("minecraft:wither_skeleton_spawn_egg"), null);
+    public static final Item ARMADILLO_SPAWN_EGG = new Item(1141, NamespacedKey.parse("minecraft:armadillo_spawn_egg"), null);
 
-    public static final Item WOLF_SPAWN_EGG = new Item(1142, NamespacedKey.parse("minecraft:wolf_spawn_egg"), null);
+    public static final Item BAT_SPAWN_EGG = new Item(1142, NamespacedKey.parse("minecraft:bat_spawn_egg"), null);
 
-    public static final Item ZOGLIN_SPAWN_EGG = new Item(1143, NamespacedKey.parse("minecraft:zoglin_spawn_egg"), null);
+    public static final Item BEE_SPAWN_EGG = new Item(1143, NamespacedKey.parse("minecraft:bee_spawn_egg"), null);
 
-    public static final Item CREAKING_SPAWN_EGG = new Item(1144, NamespacedKey.parse("minecraft:creaking_spawn_egg"), null);
+    public static final Item FOX_SPAWN_EGG = new Item(1144, NamespacedKey.parse("minecraft:fox_spawn_egg"), null);
 
-    public static final Item ZOMBIE_SPAWN_EGG = new Item(1145, NamespacedKey.parse("minecraft:zombie_spawn_egg"), null);
+    public static final Item GOAT_SPAWN_EGG = new Item(1145, NamespacedKey.parse("minecraft:goat_spawn_egg"), null);
 
-    public static final Item ZOMBIE_HORSE_SPAWN_EGG = new Item(1146, NamespacedKey.parse("minecraft:zombie_horse_spawn_egg"), null);
+    public static final Item LLAMA_SPAWN_EGG = new Item(1146, NamespacedKey.parse("minecraft:llama_spawn_egg"), null);
 
-    public static final Item ZOMBIE_VILLAGER_SPAWN_EGG = new Item(1147, NamespacedKey.parse("minecraft:zombie_villager_spawn_egg"), null);
+    public static final Item OCELOT_SPAWN_EGG = new Item(1147, NamespacedKey.parse("minecraft:ocelot_spawn_egg"), null);
 
-    public static final Item ZOMBIFIED_PIGLIN_SPAWN_EGG = new Item(1148, NamespacedKey.parse("minecraft:zombified_piglin_spawn_egg"), null);
+    public static final Item PANDA_SPAWN_EGG = new Item(1148, NamespacedKey.parse("minecraft:panda_spawn_egg"), null);
 
-    public static final Item EXPERIENCE_BOTTLE = new Item(1149, NamespacedKey.parse("minecraft:experience_bottle"), null);
+    public static final Item POLAR_BEAR_SPAWN_EGG = new Item(1149, NamespacedKey.parse("minecraft:polar_bear_spawn_egg"), null);
 
-    public static final Item FIRE_CHARGE = new Item(1150, NamespacedKey.parse("minecraft:fire_charge"), null);
+    public static final Item RABBIT_SPAWN_EGG = new Item(1150, NamespacedKey.parse("minecraft:rabbit_spawn_egg"), null);
 
-    public static final Item WIND_CHARGE = new Item(1151, NamespacedKey.parse("minecraft:wind_charge"), null);
+    public static final Item AXOLOTL_SPAWN_EGG = new Item(1151, NamespacedKey.parse("minecraft:axolotl_spawn_egg"), null);
 
-    public static final Item WRITABLE_BOOK = new Item(1152, NamespacedKey.parse("minecraft:writable_book"), null);
+    public static final Item COD_SPAWN_EGG = new Item(1152, NamespacedKey.parse("minecraft:cod_spawn_egg"), null);
 
-    public static final Item WRITTEN_BOOK = new Item(1153, NamespacedKey.parse("minecraft:written_book"), null);
+    public static final Item DOLPHIN_SPAWN_EGG = new Item(1153, NamespacedKey.parse("minecraft:dolphin_spawn_egg"), null);
 
-    public static final Item BREEZE_ROD = new Item(1154, NamespacedKey.parse("minecraft:breeze_rod"), null);
+    public static final Item FROG_SPAWN_EGG = new Item(1154, NamespacedKey.parse("minecraft:frog_spawn_egg"), null);
 
-    public static final Item MACE = new Item(1155, NamespacedKey.parse("minecraft:mace"), null);
+    public static final Item GLOW_SQUID_SPAWN_EGG = new Item(1155, NamespacedKey.parse("minecraft:glow_squid_spawn_egg"), null);
 
-    public static final Item ITEM_FRAME = new Item(1156, NamespacedKey.parse("minecraft:item_frame"), null);
+    public static final Item NAUTILUS_SPAWN_EGG = new Item(1156, NamespacedKey.parse("minecraft:nautilus_spawn_egg"), null);
 
-    public static final Item GLOW_ITEM_FRAME = new Item(1157, NamespacedKey.parse("minecraft:glow_item_frame"), null);
+    public static final Item PUFFERFISH_SPAWN_EGG = new Item(1157, NamespacedKey.parse("minecraft:pufferfish_spawn_egg"), null);
 
-    public static final Item FLOWER_POT = new Item(1158, NamespacedKey.parse("minecraft:flower_pot"), () -> Block.FLOWER_POT);
+    public static final Item SALMON_SPAWN_EGG = new Item(1158, NamespacedKey.parse("minecraft:salmon_spawn_egg"), null);
 
-    public static final Item CARROT = new Item(1159, NamespacedKey.parse("minecraft:carrot"), null);
+    public static final Item SQUID_SPAWN_EGG = new Item(1159, NamespacedKey.parse("minecraft:squid_spawn_egg"), null);
 
-    public static final Item POTATO = new Item(1160, NamespacedKey.parse("minecraft:potato"), null);
+    public static final Item TADPOLE_SPAWN_EGG = new Item(1160, NamespacedKey.parse("minecraft:tadpole_spawn_egg"), null);
 
-    public static final Item BAKED_POTATO = new Item(1161, NamespacedKey.parse("minecraft:baked_potato"), null);
+    public static final Item TROPICAL_FISH_SPAWN_EGG = new Item(1161, NamespacedKey.parse("minecraft:tropical_fish_spawn_egg"), null);
 
-    public static final Item POISONOUS_POTATO = new Item(1162, NamespacedKey.parse("minecraft:poisonous_potato"), null);
+    public static final Item TURTLE_SPAWN_EGG = new Item(1162, NamespacedKey.parse("minecraft:turtle_spawn_egg"), null);
 
-    public static final Item MAP = new Item(1163, NamespacedKey.parse("minecraft:map"), null);
+    public static final Item ALLAY_SPAWN_EGG = new Item(1163, NamespacedKey.parse("minecraft:allay_spawn_egg"), null);
 
-    public static final Item GOLDEN_CARROT = new Item(1164, NamespacedKey.parse("minecraft:golden_carrot"), null);
+    public static final Item MOOSHROOM_SPAWN_EGG = new Item(1164, NamespacedKey.parse("minecraft:mooshroom_spawn_egg"), null);
 
-    public static final Item SKELETON_SKULL = new Item(1165, NamespacedKey.parse("minecraft:skeleton_skull"), () -> Block.SKELETON_SKULL);
+    public static final Item SNIFFER_SPAWN_EGG = new Item(1165, NamespacedKey.parse("minecraft:sniffer_spawn_egg"), null);
 
-    public static final Item WITHER_SKELETON_SKULL = new Item(1166, NamespacedKey.parse("minecraft:wither_skeleton_skull"), () -> Block.WITHER_SKELETON_SKULL);
+    public static final Item COPPER_GOLEM_SPAWN_EGG = new Item(1166, NamespacedKey.parse("minecraft:copper_golem_spawn_egg"), null);
 
-    public static final Item PLAYER_HEAD = new Item(1167, NamespacedKey.parse("minecraft:player_head"), () -> Block.PLAYER_HEAD);
+    public static final Item IRON_GOLEM_SPAWN_EGG = new Item(1167, NamespacedKey.parse("minecraft:iron_golem_spawn_egg"), null);
 
-    public static final Item ZOMBIE_HEAD = new Item(1168, NamespacedKey.parse("minecraft:zombie_head"), () -> Block.ZOMBIE_HEAD);
+    public static final Item SNOW_GOLEM_SPAWN_EGG = new Item(1168, NamespacedKey.parse("minecraft:snow_golem_spawn_egg"), null);
 
-    public static final Item CREEPER_HEAD = new Item(1169, NamespacedKey.parse("minecraft:creeper_head"), () -> Block.CREEPER_HEAD);
+    public static final Item TRADER_LLAMA_SPAWN_EGG = new Item(1169, NamespacedKey.parse("minecraft:trader_llama_spawn_egg"), null);
 
-    public static final Item DRAGON_HEAD = new Item(1170, NamespacedKey.parse("minecraft:dragon_head"), () -> Block.DRAGON_HEAD);
+    public static final Item VILLAGER_SPAWN_EGG = new Item(1170, NamespacedKey.parse("minecraft:villager_spawn_egg"), null);
 
-    public static final Item PIGLIN_HEAD = new Item(1171, NamespacedKey.parse("minecraft:piglin_head"), () -> Block.PIGLIN_HEAD);
+    public static final Item WANDERING_TRADER_SPAWN_EGG = new Item(1171, NamespacedKey.parse("minecraft:wandering_trader_spawn_egg"), null);
 
-    public static final Item NETHER_STAR = new Item(1172, NamespacedKey.parse("minecraft:nether_star"), null);
+    public static final Item BOGGED_SPAWN_EGG = new Item(1172, NamespacedKey.parse("minecraft:bogged_spawn_egg"), null);
 
-    public static final Item PUMPKIN_PIE = new Item(1173, NamespacedKey.parse("minecraft:pumpkin_pie"), null);
+    public static final Item CAMEL_HUSK_SPAWN_EGG = new Item(1173, NamespacedKey.parse("minecraft:camel_husk_spawn_egg"), null);
 
-    public static final Item FIREWORK_ROCKET = new Item(1174, NamespacedKey.parse("minecraft:firework_rocket"), null);
+    public static final Item DROWNED_SPAWN_EGG = new Item(1174, NamespacedKey.parse("minecraft:drowned_spawn_egg"), null);
 
-    public static final Item FIREWORK_STAR = new Item(1175, NamespacedKey.parse("minecraft:firework_star"), null);
+    public static final Item HUSK_SPAWN_EGG = new Item(1175, NamespacedKey.parse("minecraft:husk_spawn_egg"), null);
 
-    public static final Item ENCHANTED_BOOK = new Item(1176, NamespacedKey.parse("minecraft:enchanted_book"), null);
+    public static final Item PARCHED_SPAWN_EGG = new Item(1176, NamespacedKey.parse("minecraft:parched_spawn_egg"), null);
 
-    public static final Item NETHER_BRICK = new Item(1177, NamespacedKey.parse("minecraft:nether_brick"), null);
+    public static final Item SKELETON_SPAWN_EGG = new Item(1177, NamespacedKey.parse("minecraft:skeleton_spawn_egg"), null);
 
-    public static final Item RESIN_BRICK = new Item(1178, NamespacedKey.parse("minecraft:resin_brick"), null);
+    public static final Item SKELETON_HORSE_SPAWN_EGG = new Item(1178, NamespacedKey.parse("minecraft:skeleton_horse_spawn_egg"), null);
 
-    public static final Item PRISMARINE_SHARD = new Item(1179, NamespacedKey.parse("minecraft:prismarine_shard"), null);
+    public static final Item STRAY_SPAWN_EGG = new Item(1179, NamespacedKey.parse("minecraft:stray_spawn_egg"), null);
 
-    public static final Item PRISMARINE_CRYSTALS = new Item(1180, NamespacedKey.parse("minecraft:prismarine_crystals"), null);
+    public static final Item WITHER_SPAWN_EGG = new Item(1180, NamespacedKey.parse("minecraft:wither_spawn_egg"), null);
 
-    public static final Item RABBIT = new Item(1181, NamespacedKey.parse("minecraft:rabbit"), null);
+    public static final Item WITHER_SKELETON_SPAWN_EGG = new Item(1181, NamespacedKey.parse("minecraft:wither_skeleton_spawn_egg"), null);
 
-    public static final Item COOKED_RABBIT = new Item(1182, NamespacedKey.parse("minecraft:cooked_rabbit"), null);
+    public static final Item ZOMBIE_SPAWN_EGG = new Item(1182, NamespacedKey.parse("minecraft:zombie_spawn_egg"), null);
 
-    public static final Item RABBIT_STEW = new Item(1183, NamespacedKey.parse("minecraft:rabbit_stew"), null);
+    public static final Item ZOMBIE_HORSE_SPAWN_EGG = new Item(1183, NamespacedKey.parse("minecraft:zombie_horse_spawn_egg"), null);
 
-    public static final Item RABBIT_FOOT = new Item(1184, NamespacedKey.parse("minecraft:rabbit_foot"), null);
+    public static final Item ZOMBIE_NAUTILUS_SPAWN_EGG = new Item(1184, NamespacedKey.parse("minecraft:zombie_nautilus_spawn_egg"), null);
 
-    public static final Item RABBIT_HIDE = new Item(1185, NamespacedKey.parse("minecraft:rabbit_hide"), null);
+    public static final Item ZOMBIE_VILLAGER_SPAWN_EGG = new Item(1185, NamespacedKey.parse("minecraft:zombie_villager_spawn_egg"), null);
 
-    public static final Item ARMOR_STAND = new Item(1186, NamespacedKey.parse("minecraft:armor_stand"), null);
+    public static final Item CAVE_SPIDER_SPAWN_EGG = new Item(1186, NamespacedKey.parse("minecraft:cave_spider_spawn_egg"), null);
 
-    public static final Item IRON_HORSE_ARMOR = new Item(1187, NamespacedKey.parse("minecraft:iron_horse_armor"), null);
+    public static final Item SPIDER_SPAWN_EGG = new Item(1187, NamespacedKey.parse("minecraft:spider_spawn_egg"), null);
 
-    public static final Item GOLDEN_HORSE_ARMOR = new Item(1188, NamespacedKey.parse("minecraft:golden_horse_armor"), null);
+    public static final Item BREEZE_SPAWN_EGG = new Item(1188, NamespacedKey.parse("minecraft:breeze_spawn_egg"), null);
 
-    public static final Item DIAMOND_HORSE_ARMOR = new Item(1189, NamespacedKey.parse("minecraft:diamond_horse_armor"), null);
+    public static final Item CREAKING_SPAWN_EGG = new Item(1189, NamespacedKey.parse("minecraft:creaking_spawn_egg"), null);
 
-    public static final Item LEATHER_HORSE_ARMOR = new Item(1190, NamespacedKey.parse("minecraft:leather_horse_armor"), null);
+    public static final Item CREEPER_SPAWN_EGG = new Item(1190, NamespacedKey.parse("minecraft:creeper_spawn_egg"), null);
 
-    public static final Item LEAD = new Item(1191, NamespacedKey.parse("minecraft:lead"), null);
+    public static final Item ELDER_GUARDIAN_SPAWN_EGG = new Item(1191, NamespacedKey.parse("minecraft:elder_guardian_spawn_egg"), null);
 
-    public static final Item NAME_TAG = new Item(1192, NamespacedKey.parse("minecraft:name_tag"), null);
+    public static final Item GUARDIAN_SPAWN_EGG = new Item(1192, NamespacedKey.parse("minecraft:guardian_spawn_egg"), null);
 
-    public static final Item COMMAND_BLOCK_MINECART = new Item(1193, NamespacedKey.parse("minecraft:command_block_minecart"), null);
+    public static final Item PHANTOM_SPAWN_EGG = new Item(1193, NamespacedKey.parse("minecraft:phantom_spawn_egg"), null);
 
-    public static final Item MUTTON = new Item(1194, NamespacedKey.parse("minecraft:mutton"), null);
+    public static final Item SILVERFISH_SPAWN_EGG = new Item(1194, NamespacedKey.parse("minecraft:silverfish_spawn_egg"), null);
 
-    public static final Item COOKED_MUTTON = new Item(1195, NamespacedKey.parse("minecraft:cooked_mutton"), null);
+    public static final Item SLIME_SPAWN_EGG = new Item(1195, NamespacedKey.parse("minecraft:slime_spawn_egg"), null);
 
-    public static final Item WHITE_BANNER = new Item(1196, NamespacedKey.parse("minecraft:white_banner"), () -> Block.WHITE_BANNER);
+    public static final Item WARDEN_SPAWN_EGG = new Item(1196, NamespacedKey.parse("minecraft:warden_spawn_egg"), null);
 
-    public static final Item ORANGE_BANNER = new Item(1197, NamespacedKey.parse("minecraft:orange_banner"), () -> Block.ORANGE_BANNER);
+    public static final Item WITCH_SPAWN_EGG = new Item(1197, NamespacedKey.parse("minecraft:witch_spawn_egg"), null);
 
-    public static final Item MAGENTA_BANNER = new Item(1198, NamespacedKey.parse("minecraft:magenta_banner"), () -> Block.MAGENTA_BANNER);
+    public static final Item EVOKER_SPAWN_EGG = new Item(1198, NamespacedKey.parse("minecraft:evoker_spawn_egg"), null);
 
-    public static final Item LIGHT_BLUE_BANNER = new Item(1199, NamespacedKey.parse("minecraft:light_blue_banner"), () -> Block.LIGHT_BLUE_BANNER);
+    public static final Item PILLAGER_SPAWN_EGG = new Item(1199, NamespacedKey.parse("minecraft:pillager_spawn_egg"), null);
 
-    public static final Item YELLOW_BANNER = new Item(1200, NamespacedKey.parse("minecraft:yellow_banner"), () -> Block.YELLOW_BANNER);
+    public static final Item RAVAGER_SPAWN_EGG = new Item(1200, NamespacedKey.parse("minecraft:ravager_spawn_egg"), null);
 
-    public static final Item LIME_BANNER = new Item(1201, NamespacedKey.parse("minecraft:lime_banner"), () -> Block.LIME_BANNER);
+    public static final Item VINDICATOR_SPAWN_EGG = new Item(1201, NamespacedKey.parse("minecraft:vindicator_spawn_egg"), null);
 
-    public static final Item PINK_BANNER = new Item(1202, NamespacedKey.parse("minecraft:pink_banner"), () -> Block.PINK_BANNER);
+    public static final Item VEX_SPAWN_EGG = new Item(1202, NamespacedKey.parse("minecraft:vex_spawn_egg"), null);
 
-    public static final Item GRAY_BANNER = new Item(1203, NamespacedKey.parse("minecraft:gray_banner"), () -> Block.GRAY_BANNER);
+    public static final Item BLAZE_SPAWN_EGG = new Item(1203, NamespacedKey.parse("minecraft:blaze_spawn_egg"), null);
 
-    public static final Item LIGHT_GRAY_BANNER = new Item(1204, NamespacedKey.parse("minecraft:light_gray_banner"), () -> Block.LIGHT_GRAY_BANNER);
+    public static final Item GHAST_SPAWN_EGG = new Item(1204, NamespacedKey.parse("minecraft:ghast_spawn_egg"), null);
 
-    public static final Item CYAN_BANNER = new Item(1205, NamespacedKey.parse("minecraft:cyan_banner"), () -> Block.CYAN_BANNER);
+    public static final Item HAPPY_GHAST_SPAWN_EGG = new Item(1205, NamespacedKey.parse("minecraft:happy_ghast_spawn_egg"), null);
 
-    public static final Item PURPLE_BANNER = new Item(1206, NamespacedKey.parse("minecraft:purple_banner"), () -> Block.PURPLE_BANNER);
+    public static final Item HOGLIN_SPAWN_EGG = new Item(1206, NamespacedKey.parse("minecraft:hoglin_spawn_egg"), null);
 
-    public static final Item BLUE_BANNER = new Item(1207, NamespacedKey.parse("minecraft:blue_banner"), () -> Block.BLUE_BANNER);
+    public static final Item MAGMA_CUBE_SPAWN_EGG = new Item(1207, NamespacedKey.parse("minecraft:magma_cube_spawn_egg"), null);
 
-    public static final Item BROWN_BANNER = new Item(1208, NamespacedKey.parse("minecraft:brown_banner"), () -> Block.BROWN_BANNER);
+    public static final Item PIGLIN_SPAWN_EGG = new Item(1208, NamespacedKey.parse("minecraft:piglin_spawn_egg"), null);
 
-    public static final Item GREEN_BANNER = new Item(1209, NamespacedKey.parse("minecraft:green_banner"), () -> Block.GREEN_BANNER);
+    public static final Item PIGLIN_BRUTE_SPAWN_EGG = new Item(1209, NamespacedKey.parse("minecraft:piglin_brute_spawn_egg"), null);
 
-    public static final Item RED_BANNER = new Item(1210, NamespacedKey.parse("minecraft:red_banner"), () -> Block.RED_BANNER);
+    public static final Item STRIDER_SPAWN_EGG = new Item(1210, NamespacedKey.parse("minecraft:strider_spawn_egg"), null);
 
-    public static final Item BLACK_BANNER = new Item(1211, NamespacedKey.parse("minecraft:black_banner"), () -> Block.BLACK_BANNER);
+    public static final Item ZOGLIN_SPAWN_EGG = new Item(1211, NamespacedKey.parse("minecraft:zoglin_spawn_egg"), null);
 
-    public static final Item END_CRYSTAL = new Item(1212, NamespacedKey.parse("minecraft:end_crystal"), null);
+    public static final Item ZOMBIFIED_PIGLIN_SPAWN_EGG = new Item(1212, NamespacedKey.parse("minecraft:zombified_piglin_spawn_egg"), null);
 
-    public static final Item CHORUS_FRUIT = new Item(1213, NamespacedKey.parse("minecraft:chorus_fruit"), null);
+    public static final Item ENDER_DRAGON_SPAWN_EGG = new Item(1213, NamespacedKey.parse("minecraft:ender_dragon_spawn_egg"), null);
 
-    public static final Item POPPED_CHORUS_FRUIT = new Item(1214, NamespacedKey.parse("minecraft:popped_chorus_fruit"), null);
+    public static final Item ENDERMAN_SPAWN_EGG = new Item(1214, NamespacedKey.parse("minecraft:enderman_spawn_egg"), null);
 
-    public static final Item TORCHFLOWER_SEEDS = new Item(1215, NamespacedKey.parse("minecraft:torchflower_seeds"), null);
+    public static final Item ENDERMITE_SPAWN_EGG = new Item(1215, NamespacedKey.parse("minecraft:endermite_spawn_egg"), null);
 
-    public static final Item PITCHER_POD = new Item(1216, NamespacedKey.parse("minecraft:pitcher_pod"), null);
+    public static final Item SHULKER_SPAWN_EGG = new Item(1216, NamespacedKey.parse("minecraft:shulker_spawn_egg"), null);
 
-    public static final Item BEETROOT = new Item(1217, NamespacedKey.parse("minecraft:beetroot"), null);
+    public static final Item EXPERIENCE_BOTTLE = new Item(1217, NamespacedKey.parse("minecraft:experience_bottle"), null);
 
-    public static final Item BEETROOT_SEEDS = new Item(1218, NamespacedKey.parse("minecraft:beetroot_seeds"), null);
+    public static final Item FIRE_CHARGE = new Item(1218, NamespacedKey.parse("minecraft:fire_charge"), null);
 
-    public static final Item BEETROOT_SOUP = new Item(1219, NamespacedKey.parse("minecraft:beetroot_soup"), null);
+    public static final Item WIND_CHARGE = new Item(1219, NamespacedKey.parse("minecraft:wind_charge"), null);
 
-    public static final Item DRAGON_BREATH = new Item(1220, NamespacedKey.parse("minecraft:dragon_breath"), null);
+    public static final Item WRITABLE_BOOK = new Item(1220, NamespacedKey.parse("minecraft:writable_book"), null);
 
-    public static final Item SPLASH_POTION = new Item(1221, NamespacedKey.parse("minecraft:splash_potion"), null);
+    public static final Item WRITTEN_BOOK = new Item(1221, NamespacedKey.parse("minecraft:written_book"), null);
 
-    public static final Item SPECTRAL_ARROW = new Item(1222, NamespacedKey.parse("minecraft:spectral_arrow"), null);
+    public static final Item BREEZE_ROD = new Item(1222, NamespacedKey.parse("minecraft:breeze_rod"), null);
 
-    public static final Item TIPPED_ARROW = new Item(1223, NamespacedKey.parse("minecraft:tipped_arrow"), null);
+    public static final Item MACE = new Item(1223, NamespacedKey.parse("minecraft:mace"), null);
 
-    public static final Item LINGERING_POTION = new Item(1224, NamespacedKey.parse("minecraft:lingering_potion"), null);
+    public static final Item ITEM_FRAME = new Item(1224, NamespacedKey.parse("minecraft:item_frame"), null);
 
-    public static final Item SHIELD = new Item(1225, NamespacedKey.parse("minecraft:shield"), null);
+    public static final Item GLOW_ITEM_FRAME = new Item(1225, NamespacedKey.parse("minecraft:glow_item_frame"), null);
 
-    public static final Item TOTEM_OF_UNDYING = new Item(1226, NamespacedKey.parse("minecraft:totem_of_undying"), null);
+    public static final Item FLOWER_POT = new Item(1226, NamespacedKey.parse("minecraft:flower_pot"), () -> Block.FLOWER_POT);
 
-    public static final Item SHULKER_SHELL = new Item(1227, NamespacedKey.parse("minecraft:shulker_shell"), null);
+    public static final Item CARROT = new Item(1227, NamespacedKey.parse("minecraft:carrot"), null);
 
-    public static final Item IRON_NUGGET = new Item(1228, NamespacedKey.parse("minecraft:iron_nugget"), null);
+    public static final Item POTATO = new Item(1228, NamespacedKey.parse("minecraft:potato"), null);
 
-    public static final Item KNOWLEDGE_BOOK = new Item(1229, NamespacedKey.parse("minecraft:knowledge_book"), null);
+    public static final Item BAKED_POTATO = new Item(1229, NamespacedKey.parse("minecraft:baked_potato"), null);
 
-    public static final Item DEBUG_STICK = new Item(1230, NamespacedKey.parse("minecraft:debug_stick"), null);
+    public static final Item POISONOUS_POTATO = new Item(1230, NamespacedKey.parse("minecraft:poisonous_potato"), null);
 
-    public static final Item MUSIC_DISC_13 = new Item(1231, NamespacedKey.parse("minecraft:music_disc_13"), null);
+    public static final Item MAP = new Item(1231, NamespacedKey.parse("minecraft:map"), null);
 
-    public static final Item MUSIC_DISC_CAT = new Item(1232, NamespacedKey.parse("minecraft:music_disc_cat"), null);
+    public static final Item GOLDEN_CARROT = new Item(1232, NamespacedKey.parse("minecraft:golden_carrot"), null);
 
-    public static final Item MUSIC_DISC_BLOCKS = new Item(1233, NamespacedKey.parse("minecraft:music_disc_blocks"), null);
+    public static final Item SKELETON_SKULL = new Item(1233, NamespacedKey.parse("minecraft:skeleton_skull"), () -> Block.SKELETON_SKULL);
 
-    public static final Item MUSIC_DISC_CHIRP = new Item(1234, NamespacedKey.parse("minecraft:music_disc_chirp"), null);
+    public static final Item WITHER_SKELETON_SKULL = new Item(1234, NamespacedKey.parse("minecraft:wither_skeleton_skull"), () -> Block.WITHER_SKELETON_SKULL);
 
-    public static final Item MUSIC_DISC_CREATOR = new Item(1235, NamespacedKey.parse("minecraft:music_disc_creator"), null);
+    public static final Item PLAYER_HEAD = new Item(1235, NamespacedKey.parse("minecraft:player_head"), () -> Block.PLAYER_HEAD);
 
-    public static final Item MUSIC_DISC_CREATOR_MUSIC_BOX = new Item(1236, NamespacedKey.parse("minecraft:music_disc_creator_music_box"), null);
+    public static final Item ZOMBIE_HEAD = new Item(1236, NamespacedKey.parse("minecraft:zombie_head"), () -> Block.ZOMBIE_HEAD);
 
-    public static final Item MUSIC_DISC_FAR = new Item(1237, NamespacedKey.parse("minecraft:music_disc_far"), null);
+    public static final Item CREEPER_HEAD = new Item(1237, NamespacedKey.parse("minecraft:creeper_head"), () -> Block.CREEPER_HEAD);
 
-    public static final Item MUSIC_DISC_MALL = new Item(1238, NamespacedKey.parse("minecraft:music_disc_mall"), null);
+    public static final Item DRAGON_HEAD = new Item(1238, NamespacedKey.parse("minecraft:dragon_head"), () -> Block.DRAGON_HEAD);
 
-    public static final Item MUSIC_DISC_MELLOHI = new Item(1239, NamespacedKey.parse("minecraft:music_disc_mellohi"), null);
+    public static final Item PIGLIN_HEAD = new Item(1239, NamespacedKey.parse("minecraft:piglin_head"), () -> Block.PIGLIN_HEAD);
 
-    public static final Item MUSIC_DISC_STAL = new Item(1240, NamespacedKey.parse("minecraft:music_disc_stal"), null);
+    public static final Item NETHER_STAR = new Item(1240, NamespacedKey.parse("minecraft:nether_star"), null);
 
-    public static final Item MUSIC_DISC_STRAD = new Item(1241, NamespacedKey.parse("minecraft:music_disc_strad"), null);
+    public static final Item PUMPKIN_PIE = new Item(1241, NamespacedKey.parse("minecraft:pumpkin_pie"), null);
 
-    public static final Item MUSIC_DISC_WARD = new Item(1242, NamespacedKey.parse("minecraft:music_disc_ward"), null);
+    public static final Item FIREWORK_ROCKET = new Item(1242, NamespacedKey.parse("minecraft:firework_rocket"), null);
 
-    public static final Item MUSIC_DISC_11 = new Item(1243, NamespacedKey.parse("minecraft:music_disc_11"), null);
+    public static final Item FIREWORK_STAR = new Item(1243, NamespacedKey.parse("minecraft:firework_star"), null);
 
-    public static final Item MUSIC_DISC_WAIT = new Item(1244, NamespacedKey.parse("minecraft:music_disc_wait"), null);
+    public static final Item ENCHANTED_BOOK = new Item(1244, NamespacedKey.parse("minecraft:enchanted_book"), null);
 
-    public static final Item MUSIC_DISC_OTHERSIDE = new Item(1245, NamespacedKey.parse("minecraft:music_disc_otherside"), null);
+    public static final Item NETHER_BRICK = new Item(1245, NamespacedKey.parse("minecraft:nether_brick"), null);
 
-    public static final Item MUSIC_DISC_RELIC = new Item(1246, NamespacedKey.parse("minecraft:music_disc_relic"), null);
+    public static final Item RESIN_BRICK = new Item(1246, NamespacedKey.parse("minecraft:resin_brick"), null);
 
-    public static final Item MUSIC_DISC_5 = new Item(1247, NamespacedKey.parse("minecraft:music_disc_5"), null);
+    public static final Item PRISMARINE_SHARD = new Item(1247, NamespacedKey.parse("minecraft:prismarine_shard"), null);
 
-    public static final Item MUSIC_DISC_PIGSTEP = new Item(1248, NamespacedKey.parse("minecraft:music_disc_pigstep"), null);
+    public static final Item PRISMARINE_CRYSTALS = new Item(1248, NamespacedKey.parse("minecraft:prismarine_crystals"), null);
 
-    public static final Item MUSIC_DISC_PRECIPICE = new Item(1249, NamespacedKey.parse("minecraft:music_disc_precipice"), null);
+    public static final Item RABBIT = new Item(1249, NamespacedKey.parse("minecraft:rabbit"), null);
 
-    public static final Item DISC_FRAGMENT_5 = new Item(1250, NamespacedKey.parse("minecraft:disc_fragment_5"), null);
+    public static final Item COOKED_RABBIT = new Item(1250, NamespacedKey.parse("minecraft:cooked_rabbit"), null);
 
-    public static final Item TRIDENT = new Item(1251, NamespacedKey.parse("minecraft:trident"), null);
+    public static final Item RABBIT_STEW = new Item(1251, NamespacedKey.parse("minecraft:rabbit_stew"), null);
 
-    public static final Item NAUTILUS_SHELL = new Item(1252, NamespacedKey.parse("minecraft:nautilus_shell"), null);
+    public static final Item RABBIT_FOOT = new Item(1252, NamespacedKey.parse("minecraft:rabbit_foot"), null);
 
-    public static final Item HEART_OF_THE_SEA = new Item(1253, NamespacedKey.parse("minecraft:heart_of_the_sea"), null);
+    public static final Item RABBIT_HIDE = new Item(1253, NamespacedKey.parse("minecraft:rabbit_hide"), null);
 
-    public static final Item CROSSBOW = new Item(1254, NamespacedKey.parse("minecraft:crossbow"), null);
+    public static final Item ARMOR_STAND = new Item(1254, NamespacedKey.parse("minecraft:armor_stand"), null);
 
-    public static final Item SUSPICIOUS_STEW = new Item(1255, NamespacedKey.parse("minecraft:suspicious_stew"), null);
+    public static final Item COPPER_HORSE_ARMOR = new Item(1255, NamespacedKey.parse("minecraft:copper_horse_armor"), null);
 
-    public static final Item LOOM = new Item(1256, NamespacedKey.parse("minecraft:loom"), () -> Block.LOOM);
+    public static final Item IRON_HORSE_ARMOR = new Item(1256, NamespacedKey.parse("minecraft:iron_horse_armor"), null);
 
-    public static final Item FLOWER_BANNER_PATTERN = new Item(1257, NamespacedKey.parse("minecraft:flower_banner_pattern"), null);
+    public static final Item GOLDEN_HORSE_ARMOR = new Item(1257, NamespacedKey.parse("minecraft:golden_horse_armor"), null);
 
-    public static final Item CREEPER_BANNER_PATTERN = new Item(1258, NamespacedKey.parse("minecraft:creeper_banner_pattern"), null);
+    public static final Item DIAMOND_HORSE_ARMOR = new Item(1258, NamespacedKey.parse("minecraft:diamond_horse_armor"), null);
 
-    public static final Item SKULL_BANNER_PATTERN = new Item(1259, NamespacedKey.parse("minecraft:skull_banner_pattern"), null);
+    public static final Item NETHERITE_HORSE_ARMOR = new Item(1259, NamespacedKey.parse("minecraft:netherite_horse_armor"), null);
 
-    public static final Item MOJANG_BANNER_PATTERN = new Item(1260, NamespacedKey.parse("minecraft:mojang_banner_pattern"), null);
+    public static final Item LEATHER_HORSE_ARMOR = new Item(1260, NamespacedKey.parse("minecraft:leather_horse_armor"), null);
 
-    public static final Item GLOBE_BANNER_PATTERN = new Item(1261, NamespacedKey.parse("minecraft:globe_banner_pattern"), null);
+    public static final Item LEAD = new Item(1261, NamespacedKey.parse("minecraft:lead"), null);
 
-    public static final Item PIGLIN_BANNER_PATTERN = new Item(1262, NamespacedKey.parse("minecraft:piglin_banner_pattern"), null);
+    public static final Item NAME_TAG = new Item(1262, NamespacedKey.parse("minecraft:name_tag"), null);
 
-    public static final Item FLOW_BANNER_PATTERN = new Item(1263, NamespacedKey.parse("minecraft:flow_banner_pattern"), null);
+    public static final Item COMMAND_BLOCK_MINECART = new Item(1263, NamespacedKey.parse("minecraft:command_block_minecart"), null);
 
-    public static final Item GUSTER_BANNER_PATTERN = new Item(1264, NamespacedKey.parse("minecraft:guster_banner_pattern"), null);
+    public static final Item MUTTON = new Item(1264, NamespacedKey.parse("minecraft:mutton"), null);
 
-    public static final Item FIELD_MASONED_BANNER_PATTERN = new Item(1265, NamespacedKey.parse("minecraft:field_masoned_banner_pattern"), null);
+    public static final Item COOKED_MUTTON = new Item(1265, NamespacedKey.parse("minecraft:cooked_mutton"), null);
 
-    public static final Item BORDURE_INDENTED_BANNER_PATTERN = new Item(1266, NamespacedKey.parse("minecraft:bordure_indented_banner_pattern"), null);
+    public static final Item WHITE_BANNER = new Item(1266, NamespacedKey.parse("minecraft:white_banner"), () -> Block.WHITE_BANNER);
 
-    public static final Item GOAT_HORN = new Item(1267, NamespacedKey.parse("minecraft:goat_horn"), null);
+    public static final Item ORANGE_BANNER = new Item(1267, NamespacedKey.parse("minecraft:orange_banner"), () -> Block.ORANGE_BANNER);
 
-    public static final Item COMPOSTER = new Item(1268, NamespacedKey.parse("minecraft:composter"), () -> Block.COMPOSTER);
+    public static final Item MAGENTA_BANNER = new Item(1268, NamespacedKey.parse("minecraft:magenta_banner"), () -> Block.MAGENTA_BANNER);
 
-    public static final Item BARREL = new Item(1269, NamespacedKey.parse("minecraft:barrel"), () -> Block.BARREL);
+    public static final Item LIGHT_BLUE_BANNER = new Item(1269, NamespacedKey.parse("minecraft:light_blue_banner"), () -> Block.LIGHT_BLUE_BANNER);
 
-    public static final Item SMOKER = new Item(1270, NamespacedKey.parse("minecraft:smoker"), () -> Block.SMOKER);
+    public static final Item YELLOW_BANNER = new Item(1270, NamespacedKey.parse("minecraft:yellow_banner"), () -> Block.YELLOW_BANNER);
 
-    public static final Item BLAST_FURNACE = new Item(1271, NamespacedKey.parse("minecraft:blast_furnace"), () -> Block.BLAST_FURNACE);
+    public static final Item LIME_BANNER = new Item(1271, NamespacedKey.parse("minecraft:lime_banner"), () -> Block.LIME_BANNER);
 
-    public static final Item CARTOGRAPHY_TABLE = new Item(1272, NamespacedKey.parse("minecraft:cartography_table"), () -> Block.CARTOGRAPHY_TABLE);
+    public static final Item PINK_BANNER = new Item(1272, NamespacedKey.parse("minecraft:pink_banner"), () -> Block.PINK_BANNER);
 
-    public static final Item FLETCHING_TABLE = new Item(1273, NamespacedKey.parse("minecraft:fletching_table"), () -> Block.FLETCHING_TABLE);
+    public static final Item GRAY_BANNER = new Item(1273, NamespacedKey.parse("minecraft:gray_banner"), () -> Block.GRAY_BANNER);
 
-    public static final Item GRINDSTONE = new Item(1274, NamespacedKey.parse("minecraft:grindstone"), () -> Block.GRINDSTONE);
+    public static final Item LIGHT_GRAY_BANNER = new Item(1274, NamespacedKey.parse("minecraft:light_gray_banner"), () -> Block.LIGHT_GRAY_BANNER);
 
-    public static final Item SMITHING_TABLE = new Item(1275, NamespacedKey.parse("minecraft:smithing_table"), () -> Block.SMITHING_TABLE);
+    public static final Item CYAN_BANNER = new Item(1275, NamespacedKey.parse("minecraft:cyan_banner"), () -> Block.CYAN_BANNER);
 
-    public static final Item STONECUTTER = new Item(1276, NamespacedKey.parse("minecraft:stonecutter"), () -> Block.STONECUTTER);
+    public static final Item PURPLE_BANNER = new Item(1276, NamespacedKey.parse("minecraft:purple_banner"), () -> Block.PURPLE_BANNER);
 
-    public static final Item BELL = new Item(1277, NamespacedKey.parse("minecraft:bell"), () -> Block.BELL);
+    public static final Item BLUE_BANNER = new Item(1277, NamespacedKey.parse("minecraft:blue_banner"), () -> Block.BLUE_BANNER);
 
-    public static final Item LANTERN = new Item(1278, NamespacedKey.parse("minecraft:lantern"), () -> Block.LANTERN);
+    public static final Item BROWN_BANNER = new Item(1278, NamespacedKey.parse("minecraft:brown_banner"), () -> Block.BROWN_BANNER);
 
-    public static final Item SOUL_LANTERN = new Item(1279, NamespacedKey.parse("minecraft:soul_lantern"), () -> Block.SOUL_LANTERN);
+    public static final Item GREEN_BANNER = new Item(1279, NamespacedKey.parse("minecraft:green_banner"), () -> Block.GREEN_BANNER);
 
-    public static final Item SWEET_BERRIES = new Item(1280, NamespacedKey.parse("minecraft:sweet_berries"), null);
+    public static final Item RED_BANNER = new Item(1280, NamespacedKey.parse("minecraft:red_banner"), () -> Block.RED_BANNER);
 
-    public static final Item GLOW_BERRIES = new Item(1281, NamespacedKey.parse("minecraft:glow_berries"), null);
+    public static final Item BLACK_BANNER = new Item(1281, NamespacedKey.parse("minecraft:black_banner"), () -> Block.BLACK_BANNER);
 
-    public static final Item CAMPFIRE = new Item(1282, NamespacedKey.parse("minecraft:campfire"), () -> Block.CAMPFIRE);
+    public static final Item END_CRYSTAL = new Item(1282, NamespacedKey.parse("minecraft:end_crystal"), null);
 
-    public static final Item SOUL_CAMPFIRE = new Item(1283, NamespacedKey.parse("minecraft:soul_campfire"), () -> Block.SOUL_CAMPFIRE);
+    public static final Item CHORUS_FRUIT = new Item(1283, NamespacedKey.parse("minecraft:chorus_fruit"), null);
 
-    public static final Item SHROOMLIGHT = new Item(1284, NamespacedKey.parse("minecraft:shroomlight"), () -> Block.SHROOMLIGHT);
+    public static final Item POPPED_CHORUS_FRUIT = new Item(1284, NamespacedKey.parse("minecraft:popped_chorus_fruit"), null);
 
-    public static final Item HONEYCOMB = new Item(1285, NamespacedKey.parse("minecraft:honeycomb"), null);
+    public static final Item TORCHFLOWER_SEEDS = new Item(1285, NamespacedKey.parse("minecraft:torchflower_seeds"), null);
 
-    public static final Item BEE_NEST = new Item(1286, NamespacedKey.parse("minecraft:bee_nest"), () -> Block.BEE_NEST);
+    public static final Item PITCHER_POD = new Item(1286, NamespacedKey.parse("minecraft:pitcher_pod"), null);
 
-    public static final Item BEEHIVE = new Item(1287, NamespacedKey.parse("minecraft:beehive"), () -> Block.BEEHIVE);
+    public static final Item BEETROOT = new Item(1287, NamespacedKey.parse("minecraft:beetroot"), null);
 
-    public static final Item HONEY_BOTTLE = new Item(1288, NamespacedKey.parse("minecraft:honey_bottle"), null);
+    public static final Item BEETROOT_SEEDS = new Item(1288, NamespacedKey.parse("minecraft:beetroot_seeds"), null);
 
-    public static final Item HONEYCOMB_BLOCK = new Item(1289, NamespacedKey.parse("minecraft:honeycomb_block"), () -> Block.HONEYCOMB_BLOCK);
+    public static final Item BEETROOT_SOUP = new Item(1289, NamespacedKey.parse("minecraft:beetroot_soup"), null);
 
-    public static final Item LODESTONE = new Item(1290, NamespacedKey.parse("minecraft:lodestone"), () -> Block.LODESTONE);
+    public static final Item DRAGON_BREATH = new Item(1290, NamespacedKey.parse("minecraft:dragon_breath"), null);
 
-    public static final Item CRYING_OBSIDIAN = new Item(1291, NamespacedKey.parse("minecraft:crying_obsidian"), () -> Block.CRYING_OBSIDIAN);
+    public static final Item SPLASH_POTION = new Item(1291, NamespacedKey.parse("minecraft:splash_potion"), null);
 
-    public static final Item BLACKSTONE = new Item(1292, NamespacedKey.parse("minecraft:blackstone"), () -> Block.BLACKSTONE);
+    public static final Item SPECTRAL_ARROW = new Item(1292, NamespacedKey.parse("minecraft:spectral_arrow"), null);
 
-    public static final Item BLACKSTONE_SLAB = new Item(1293, NamespacedKey.parse("minecraft:blackstone_slab"), () -> Block.BLACKSTONE_SLAB);
+    public static final Item TIPPED_ARROW = new Item(1293, NamespacedKey.parse("minecraft:tipped_arrow"), null);
 
-    public static final Item BLACKSTONE_STAIRS = new Item(1294, NamespacedKey.parse("minecraft:blackstone_stairs"), () -> Block.BLACKSTONE_STAIRS);
+    public static final Item LINGERING_POTION = new Item(1294, NamespacedKey.parse("minecraft:lingering_potion"), null);
 
-    public static final Item GILDED_BLACKSTONE = new Item(1295, NamespacedKey.parse("minecraft:gilded_blackstone"), () -> Block.GILDED_BLACKSTONE);
+    public static final Item SHIELD = new Item(1295, NamespacedKey.parse("minecraft:shield"), null);
 
-    public static final Item POLISHED_BLACKSTONE = new Item(1296, NamespacedKey.parse("minecraft:polished_blackstone"), () -> Block.POLISHED_BLACKSTONE);
+    public static final Item WOODEN_SPEAR = new Item(1296, NamespacedKey.parse("minecraft:wooden_spear"), null);
 
-    public static final Item POLISHED_BLACKSTONE_SLAB = new Item(1297, NamespacedKey.parse("minecraft:polished_blackstone_slab"), () -> Block.POLISHED_BLACKSTONE_SLAB);
+    public static final Item STONE_SPEAR = new Item(1297, NamespacedKey.parse("minecraft:stone_spear"), null);
 
-    public static final Item POLISHED_BLACKSTONE_STAIRS = new Item(1298, NamespacedKey.parse("minecraft:polished_blackstone_stairs"), () -> Block.POLISHED_BLACKSTONE_STAIRS);
+    public static final Item COPPER_SPEAR = new Item(1298, NamespacedKey.parse("minecraft:copper_spear"), null);
 
-    public static final Item CHISELED_POLISHED_BLACKSTONE = new Item(1299, NamespacedKey.parse("minecraft:chiseled_polished_blackstone"), () -> Block.CHISELED_POLISHED_BLACKSTONE);
+    public static final Item IRON_SPEAR = new Item(1299, NamespacedKey.parse("minecraft:iron_spear"), null);
 
-    public static final Item POLISHED_BLACKSTONE_BRICKS = new Item(1300, NamespacedKey.parse("minecraft:polished_blackstone_bricks"), () -> Block.POLISHED_BLACKSTONE_BRICKS);
+    public static final Item GOLDEN_SPEAR = new Item(1300, NamespacedKey.parse("minecraft:golden_spear"), null);
 
-    public static final Item POLISHED_BLACKSTONE_BRICK_SLAB = new Item(1301, NamespacedKey.parse("minecraft:polished_blackstone_brick_slab"), () -> Block.POLISHED_BLACKSTONE_BRICK_SLAB);
+    public static final Item DIAMOND_SPEAR = new Item(1301, NamespacedKey.parse("minecraft:diamond_spear"), null);
 
-    public static final Item POLISHED_BLACKSTONE_BRICK_STAIRS = new Item(1302, NamespacedKey.parse("minecraft:polished_blackstone_brick_stairs"), () -> Block.POLISHED_BLACKSTONE_BRICK_STAIRS);
+    public static final Item NETHERITE_SPEAR = new Item(1302, NamespacedKey.parse("minecraft:netherite_spear"), null);
 
-    public static final Item CRACKED_POLISHED_BLACKSTONE_BRICKS = new Item(1303, NamespacedKey.parse("minecraft:cracked_polished_blackstone_bricks"), () -> Block.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+    public static final Item TOTEM_OF_UNDYING = new Item(1303, NamespacedKey.parse("minecraft:totem_of_undying"), null);
 
-    public static final Item RESPAWN_ANCHOR = new Item(1304, NamespacedKey.parse("minecraft:respawn_anchor"), () -> Block.RESPAWN_ANCHOR);
+    public static final Item SHULKER_SHELL = new Item(1304, NamespacedKey.parse("minecraft:shulker_shell"), null);
 
-    public static final Item CANDLE = new Item(1305, NamespacedKey.parse("minecraft:candle"), () -> Block.CANDLE);
+    public static final Item IRON_NUGGET = new Item(1305, NamespacedKey.parse("minecraft:iron_nugget"), null);
 
-    public static final Item WHITE_CANDLE = new Item(1306, NamespacedKey.parse("minecraft:white_candle"), () -> Block.WHITE_CANDLE);
+    public static final Item COPPER_NUGGET = new Item(1306, NamespacedKey.parse("minecraft:copper_nugget"), null);
 
-    public static final Item ORANGE_CANDLE = new Item(1307, NamespacedKey.parse("minecraft:orange_candle"), () -> Block.ORANGE_CANDLE);
+    public static final Item KNOWLEDGE_BOOK = new Item(1307, NamespacedKey.parse("minecraft:knowledge_book"), null);
 
-    public static final Item MAGENTA_CANDLE = new Item(1308, NamespacedKey.parse("minecraft:magenta_candle"), () -> Block.MAGENTA_CANDLE);
+    public static final Item DEBUG_STICK = new Item(1308, NamespacedKey.parse("minecraft:debug_stick"), null);
 
-    public static final Item LIGHT_BLUE_CANDLE = new Item(1309, NamespacedKey.parse("minecraft:light_blue_candle"), () -> Block.LIGHT_BLUE_CANDLE);
+    public static final Item MUSIC_DISC_13 = new Item(1309, NamespacedKey.parse("minecraft:music_disc_13"), null);
 
-    public static final Item YELLOW_CANDLE = new Item(1310, NamespacedKey.parse("minecraft:yellow_candle"), () -> Block.YELLOW_CANDLE);
+    public static final Item MUSIC_DISC_CAT = new Item(1310, NamespacedKey.parse("minecraft:music_disc_cat"), null);
 
-    public static final Item LIME_CANDLE = new Item(1311, NamespacedKey.parse("minecraft:lime_candle"), () -> Block.LIME_CANDLE);
+    public static final Item MUSIC_DISC_BLOCKS = new Item(1311, NamespacedKey.parse("minecraft:music_disc_blocks"), null);
 
-    public static final Item PINK_CANDLE = new Item(1312, NamespacedKey.parse("minecraft:pink_candle"), () -> Block.PINK_CANDLE);
+    public static final Item MUSIC_DISC_CHIRP = new Item(1312, NamespacedKey.parse("minecraft:music_disc_chirp"), null);
 
-    public static final Item GRAY_CANDLE = new Item(1313, NamespacedKey.parse("minecraft:gray_candle"), () -> Block.GRAY_CANDLE);
+    public static final Item MUSIC_DISC_CREATOR = new Item(1313, NamespacedKey.parse("minecraft:music_disc_creator"), null);
 
-    public static final Item LIGHT_GRAY_CANDLE = new Item(1314, NamespacedKey.parse("minecraft:light_gray_candle"), () -> Block.LIGHT_GRAY_CANDLE);
+    public static final Item MUSIC_DISC_CREATOR_MUSIC_BOX = new Item(1314, NamespacedKey.parse("minecraft:music_disc_creator_music_box"), null);
 
-    public static final Item CYAN_CANDLE = new Item(1315, NamespacedKey.parse("minecraft:cyan_candle"), () -> Block.CYAN_CANDLE);
+    public static final Item MUSIC_DISC_FAR = new Item(1315, NamespacedKey.parse("minecraft:music_disc_far"), null);
 
-    public static final Item PURPLE_CANDLE = new Item(1316, NamespacedKey.parse("minecraft:purple_candle"), () -> Block.PURPLE_CANDLE);
+    public static final Item MUSIC_DISC_LAVA_CHICKEN = new Item(1316, NamespacedKey.parse("minecraft:music_disc_lava_chicken"), null);
 
-    public static final Item BLUE_CANDLE = new Item(1317, NamespacedKey.parse("minecraft:blue_candle"), () -> Block.BLUE_CANDLE);
+    public static final Item MUSIC_DISC_MALL = new Item(1317, NamespacedKey.parse("minecraft:music_disc_mall"), null);
 
-    public static final Item BROWN_CANDLE = new Item(1318, NamespacedKey.parse("minecraft:brown_candle"), () -> Block.BROWN_CANDLE);
+    public static final Item MUSIC_DISC_MELLOHI = new Item(1318, NamespacedKey.parse("minecraft:music_disc_mellohi"), null);
 
-    public static final Item GREEN_CANDLE = new Item(1319, NamespacedKey.parse("minecraft:green_candle"), () -> Block.GREEN_CANDLE);
+    public static final Item MUSIC_DISC_STAL = new Item(1319, NamespacedKey.parse("minecraft:music_disc_stal"), null);
 
-    public static final Item RED_CANDLE = new Item(1320, NamespacedKey.parse("minecraft:red_candle"), () -> Block.RED_CANDLE);
+    public static final Item MUSIC_DISC_STRAD = new Item(1320, NamespacedKey.parse("minecraft:music_disc_strad"), null);
 
-    public static final Item BLACK_CANDLE = new Item(1321, NamespacedKey.parse("minecraft:black_candle"), () -> Block.BLACK_CANDLE);
+    public static final Item MUSIC_DISC_WARD = new Item(1321, NamespacedKey.parse("minecraft:music_disc_ward"), null);
 
-    public static final Item SMALL_AMETHYST_BUD = new Item(1322, NamespacedKey.parse("minecraft:small_amethyst_bud"), () -> Block.SMALL_AMETHYST_BUD);
+    public static final Item MUSIC_DISC_11 = new Item(1322, NamespacedKey.parse("minecraft:music_disc_11"), null);
 
-    public static final Item MEDIUM_AMETHYST_BUD = new Item(1323, NamespacedKey.parse("minecraft:medium_amethyst_bud"), () -> Block.MEDIUM_AMETHYST_BUD);
+    public static final Item MUSIC_DISC_WAIT = new Item(1323, NamespacedKey.parse("minecraft:music_disc_wait"), null);
 
-    public static final Item LARGE_AMETHYST_BUD = new Item(1324, NamespacedKey.parse("minecraft:large_amethyst_bud"), () -> Block.LARGE_AMETHYST_BUD);
+    public static final Item MUSIC_DISC_OTHERSIDE = new Item(1324, NamespacedKey.parse("minecraft:music_disc_otherside"), null);
 
-    public static final Item AMETHYST_CLUSTER = new Item(1325, NamespacedKey.parse("minecraft:amethyst_cluster"), () -> Block.AMETHYST_CLUSTER);
+    public static final Item MUSIC_DISC_RELIC = new Item(1325, NamespacedKey.parse("minecraft:music_disc_relic"), null);
 
-    public static final Item POINTED_DRIPSTONE = new Item(1326, NamespacedKey.parse("minecraft:pointed_dripstone"), () -> Block.POINTED_DRIPSTONE);
+    public static final Item MUSIC_DISC_5 = new Item(1326, NamespacedKey.parse("minecraft:music_disc_5"), null);
 
-    public static final Item OCHRE_FROGLIGHT = new Item(1327, NamespacedKey.parse("minecraft:ochre_froglight"), () -> Block.OCHRE_FROGLIGHT);
+    public static final Item MUSIC_DISC_PIGSTEP = new Item(1327, NamespacedKey.parse("minecraft:music_disc_pigstep"), null);
 
-    public static final Item VERDANT_FROGLIGHT = new Item(1328, NamespacedKey.parse("minecraft:verdant_froglight"), () -> Block.VERDANT_FROGLIGHT);
+    public static final Item MUSIC_DISC_PRECIPICE = new Item(1328, NamespacedKey.parse("minecraft:music_disc_precipice"), null);
 
-    public static final Item PEARLESCENT_FROGLIGHT = new Item(1329, NamespacedKey.parse("minecraft:pearlescent_froglight"), () -> Block.PEARLESCENT_FROGLIGHT);
+    public static final Item MUSIC_DISC_TEARS = new Item(1329, NamespacedKey.parse("minecraft:music_disc_tears"), null);
 
-    public static final Item FROGSPAWN = new Item(1330, NamespacedKey.parse("minecraft:frogspawn"), () -> Block.FROGSPAWN);
+    public static final Item DISC_FRAGMENT_5 = new Item(1330, NamespacedKey.parse("minecraft:disc_fragment_5"), null);
 
-    public static final Item ECHO_SHARD = new Item(1331, NamespacedKey.parse("minecraft:echo_shard"), null);
+    public static final Item TRIDENT = new Item(1331, NamespacedKey.parse("minecraft:trident"), null);
 
-    public static final Item BRUSH = new Item(1332, NamespacedKey.parse("minecraft:brush"), null);
+    public static final Item NAUTILUS_SHELL = new Item(1332, NamespacedKey.parse("minecraft:nautilus_shell"), null);
 
-    public static final Item NETHERITE_UPGRADE_SMITHING_TEMPLATE = new Item(1333, NamespacedKey.parse("minecraft:netherite_upgrade_smithing_template"), null);
+    public static final Item IRON_NAUTILUS_ARMOR = new Item(1333, NamespacedKey.parse("minecraft:iron_nautilus_armor"), null);
 
-    public static final Item SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1334, NamespacedKey.parse("minecraft:sentry_armor_trim_smithing_template"), null);
+    public static final Item GOLDEN_NAUTILUS_ARMOR = new Item(1334, NamespacedKey.parse("minecraft:golden_nautilus_armor"), null);
 
-    public static final Item DUNE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1335, NamespacedKey.parse("minecraft:dune_armor_trim_smithing_template"), null);
+    public static final Item DIAMOND_NAUTILUS_ARMOR = new Item(1335, NamespacedKey.parse("minecraft:diamond_nautilus_armor"), null);
 
-    public static final Item COAST_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1336, NamespacedKey.parse("minecraft:coast_armor_trim_smithing_template"), null);
+    public static final Item NETHERITE_NAUTILUS_ARMOR = new Item(1336, NamespacedKey.parse("minecraft:netherite_nautilus_armor"), null);
 
-    public static final Item WILD_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1337, NamespacedKey.parse("minecraft:wild_armor_trim_smithing_template"), null);
+    public static final Item COPPER_NAUTILUS_ARMOR = new Item(1337, NamespacedKey.parse("minecraft:copper_nautilus_armor"), null);
 
-    public static final Item WARD_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1338, NamespacedKey.parse("minecraft:ward_armor_trim_smithing_template"), null);
+    public static final Item HEART_OF_THE_SEA = new Item(1338, NamespacedKey.parse("minecraft:heart_of_the_sea"), null);
 
-    public static final Item EYE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1339, NamespacedKey.parse("minecraft:eye_armor_trim_smithing_template"), null);
+    public static final Item CROSSBOW = new Item(1339, NamespacedKey.parse("minecraft:crossbow"), null);
 
-    public static final Item VEX_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1340, NamespacedKey.parse("minecraft:vex_armor_trim_smithing_template"), null);
+    public static final Item SUSPICIOUS_STEW = new Item(1340, NamespacedKey.parse("minecraft:suspicious_stew"), null);
 
-    public static final Item TIDE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1341, NamespacedKey.parse("minecraft:tide_armor_trim_smithing_template"), null);
+    public static final Item LOOM = new Item(1341, NamespacedKey.parse("minecraft:loom"), () -> Block.LOOM);
 
-    public static final Item SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1342, NamespacedKey.parse("minecraft:snout_armor_trim_smithing_template"), null);
+    public static final Item FLOWER_BANNER_PATTERN = new Item(1342, NamespacedKey.parse("minecraft:flower_banner_pattern"), null);
 
-    public static final Item RIB_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1343, NamespacedKey.parse("minecraft:rib_armor_trim_smithing_template"), null);
+    public static final Item CREEPER_BANNER_PATTERN = new Item(1343, NamespacedKey.parse("minecraft:creeper_banner_pattern"), null);
 
-    public static final Item SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1344, NamespacedKey.parse("minecraft:spire_armor_trim_smithing_template"), null);
+    public static final Item SKULL_BANNER_PATTERN = new Item(1344, NamespacedKey.parse("minecraft:skull_banner_pattern"), null);
 
-    public static final Item WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1345, NamespacedKey.parse("minecraft:wayfinder_armor_trim_smithing_template"), null);
+    public static final Item MOJANG_BANNER_PATTERN = new Item(1345, NamespacedKey.parse("minecraft:mojang_banner_pattern"), null);
 
-    public static final Item SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1346, NamespacedKey.parse("minecraft:shaper_armor_trim_smithing_template"), null);
+    public static final Item GLOBE_BANNER_PATTERN = new Item(1346, NamespacedKey.parse("minecraft:globe_banner_pattern"), null);
 
-    public static final Item SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1347, NamespacedKey.parse("minecraft:silence_armor_trim_smithing_template"), null);
+    public static final Item PIGLIN_BANNER_PATTERN = new Item(1347, NamespacedKey.parse("minecraft:piglin_banner_pattern"), null);
 
-    public static final Item RAISER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1348, NamespacedKey.parse("minecraft:raiser_armor_trim_smithing_template"), null);
+    public static final Item FLOW_BANNER_PATTERN = new Item(1348, NamespacedKey.parse("minecraft:flow_banner_pattern"), null);
 
-    public static final Item HOST_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1349, NamespacedKey.parse("minecraft:host_armor_trim_smithing_template"), null);
+    public static final Item GUSTER_BANNER_PATTERN = new Item(1349, NamespacedKey.parse("minecraft:guster_banner_pattern"), null);
 
-    public static final Item FLOW_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1350, NamespacedKey.parse("minecraft:flow_armor_trim_smithing_template"), null);
+    public static final Item FIELD_MASONED_BANNER_PATTERN = new Item(1350, NamespacedKey.parse("minecraft:field_masoned_banner_pattern"), null);
 
-    public static final Item BOLT_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1351, NamespacedKey.parse("minecraft:bolt_armor_trim_smithing_template"), null);
+    public static final Item BORDURE_INDENTED_BANNER_PATTERN = new Item(1351, NamespacedKey.parse("minecraft:bordure_indented_banner_pattern"), null);
 
-    public static final Item ANGLER_POTTERY_SHERD = new Item(1352, NamespacedKey.parse("minecraft:angler_pottery_sherd"), null);
+    public static final Item GOAT_HORN = new Item(1352, NamespacedKey.parse("minecraft:goat_horn"), null);
 
-    public static final Item ARCHER_POTTERY_SHERD = new Item(1353, NamespacedKey.parse("minecraft:archer_pottery_sherd"), null);
+    public static final Item COMPOSTER = new Item(1353, NamespacedKey.parse("minecraft:composter"), () -> Block.COMPOSTER);
 
-    public static final Item ARMS_UP_POTTERY_SHERD = new Item(1354, NamespacedKey.parse("minecraft:arms_up_pottery_sherd"), null);
+    public static final Item BARREL = new Item(1354, NamespacedKey.parse("minecraft:barrel"), () -> Block.BARREL);
 
-    public static final Item BLADE_POTTERY_SHERD = new Item(1355, NamespacedKey.parse("minecraft:blade_pottery_sherd"), null);
+    public static final Item SMOKER = new Item(1355, NamespacedKey.parse("minecraft:smoker"), () -> Block.SMOKER);
 
-    public static final Item BREWER_POTTERY_SHERD = new Item(1356, NamespacedKey.parse("minecraft:brewer_pottery_sherd"), null);
+    public static final Item BLAST_FURNACE = new Item(1356, NamespacedKey.parse("minecraft:blast_furnace"), () -> Block.BLAST_FURNACE);
 
-    public static final Item BURN_POTTERY_SHERD = new Item(1357, NamespacedKey.parse("minecraft:burn_pottery_sherd"), null);
+    public static final Item CARTOGRAPHY_TABLE = new Item(1357, NamespacedKey.parse("minecraft:cartography_table"), () -> Block.CARTOGRAPHY_TABLE);
 
-    public static final Item DANGER_POTTERY_SHERD = new Item(1358, NamespacedKey.parse("minecraft:danger_pottery_sherd"), null);
+    public static final Item FLETCHING_TABLE = new Item(1358, NamespacedKey.parse("minecraft:fletching_table"), () -> Block.FLETCHING_TABLE);
 
-    public static final Item EXPLORER_POTTERY_SHERD = new Item(1359, NamespacedKey.parse("minecraft:explorer_pottery_sherd"), null);
+    public static final Item GRINDSTONE = new Item(1359, NamespacedKey.parse("minecraft:grindstone"), () -> Block.GRINDSTONE);
 
-    public static final Item FLOW_POTTERY_SHERD = new Item(1360, NamespacedKey.parse("minecraft:flow_pottery_sherd"), null);
+    public static final Item SMITHING_TABLE = new Item(1360, NamespacedKey.parse("minecraft:smithing_table"), () -> Block.SMITHING_TABLE);
 
-    public static final Item FRIEND_POTTERY_SHERD = new Item(1361, NamespacedKey.parse("minecraft:friend_pottery_sherd"), null);
+    public static final Item STONECUTTER = new Item(1361, NamespacedKey.parse("minecraft:stonecutter"), () -> Block.STONECUTTER);
 
-    public static final Item GUSTER_POTTERY_SHERD = new Item(1362, NamespacedKey.parse("minecraft:guster_pottery_sherd"), null);
+    public static final Item BELL = new Item(1362, NamespacedKey.parse("minecraft:bell"), () -> Block.BELL);
 
-    public static final Item HEART_POTTERY_SHERD = new Item(1363, NamespacedKey.parse("minecraft:heart_pottery_sherd"), null);
+    public static final Item LANTERN = new Item(1363, NamespacedKey.parse("minecraft:lantern"), () -> Block.LANTERN);
 
-    public static final Item HEARTBREAK_POTTERY_SHERD = new Item(1364, NamespacedKey.parse("minecraft:heartbreak_pottery_sherd"), null);
+    public static final Item SOUL_LANTERN = new Item(1364, NamespacedKey.parse("minecraft:soul_lantern"), () -> Block.SOUL_LANTERN);
 
-    public static final Item HOWL_POTTERY_SHERD = new Item(1365, NamespacedKey.parse("minecraft:howl_pottery_sherd"), null);
+    public static final Item COPPER_LANTERN = new Item(1365, NamespacedKey.parse("minecraft:copper_lantern"), () -> Block.COPPER_LANTERN);
 
-    public static final Item MINER_POTTERY_SHERD = new Item(1366, NamespacedKey.parse("minecraft:miner_pottery_sherd"), null);
+    public static final Item EXPOSED_COPPER_LANTERN = new Item(1366, NamespacedKey.parse("minecraft:exposed_copper_lantern"), () -> Block.EXPOSED_COPPER_LANTERN);
 
-    public static final Item MOURNER_POTTERY_SHERD = new Item(1367, NamespacedKey.parse("minecraft:mourner_pottery_sherd"), null);
+    public static final Item WEATHERED_COPPER_LANTERN = new Item(1367, NamespacedKey.parse("minecraft:weathered_copper_lantern"), () -> Block.WEATHERED_COPPER_LANTERN);
 
-    public static final Item PLENTY_POTTERY_SHERD = new Item(1368, NamespacedKey.parse("minecraft:plenty_pottery_sherd"), null);
+    public static final Item OXIDIZED_COPPER_LANTERN = new Item(1368, NamespacedKey.parse("minecraft:oxidized_copper_lantern"), () -> Block.OXIDIZED_COPPER_LANTERN);
 
-    public static final Item PRIZE_POTTERY_SHERD = new Item(1369, NamespacedKey.parse("minecraft:prize_pottery_sherd"), null);
+    public static final Item WAXED_COPPER_LANTERN = new Item(1369, NamespacedKey.parse("minecraft:waxed_copper_lantern"), () -> Block.WAXED_COPPER_LANTERN);
 
-    public static final Item SCRAPE_POTTERY_SHERD = new Item(1370, NamespacedKey.parse("minecraft:scrape_pottery_sherd"), null);
+    public static final Item WAXED_EXPOSED_COPPER_LANTERN = new Item(1370, NamespacedKey.parse("minecraft:waxed_exposed_copper_lantern"), () -> Block.WAXED_EXPOSED_COPPER_LANTERN);
 
-    public static final Item SHEAF_POTTERY_SHERD = new Item(1371, NamespacedKey.parse("minecraft:sheaf_pottery_sherd"), null);
+    public static final Item WAXED_WEATHERED_COPPER_LANTERN = new Item(1371, NamespacedKey.parse("minecraft:waxed_weathered_copper_lantern"), () -> Block.WAXED_WEATHERED_COPPER_LANTERN);
 
-    public static final Item SHELTER_POTTERY_SHERD = new Item(1372, NamespacedKey.parse("minecraft:shelter_pottery_sherd"), null);
+    public static final Item WAXED_OXIDIZED_COPPER_LANTERN = new Item(1372, NamespacedKey.parse("minecraft:waxed_oxidized_copper_lantern"), () -> Block.WAXED_OXIDIZED_COPPER_LANTERN);
 
-    public static final Item SKULL_POTTERY_SHERD = new Item(1373, NamespacedKey.parse("minecraft:skull_pottery_sherd"), null);
+    public static final Item SWEET_BERRIES = new Item(1373, NamespacedKey.parse("minecraft:sweet_berries"), null);
 
-    public static final Item SNORT_POTTERY_SHERD = new Item(1374, NamespacedKey.parse("minecraft:snort_pottery_sherd"), null);
+    public static final Item GLOW_BERRIES = new Item(1374, NamespacedKey.parse("minecraft:glow_berries"), null);
 
-    public static final Item COPPER_GRATE = new Item(1375, NamespacedKey.parse("minecraft:copper_grate"), () -> Block.COPPER_GRATE);
+    public static final Item CAMPFIRE = new Item(1375, NamespacedKey.parse("minecraft:campfire"), () -> Block.CAMPFIRE);
 
-    public static final Item EXPOSED_COPPER_GRATE = new Item(1376, NamespacedKey.parse("minecraft:exposed_copper_grate"), () -> Block.EXPOSED_COPPER_GRATE);
+    public static final Item SOUL_CAMPFIRE = new Item(1376, NamespacedKey.parse("minecraft:soul_campfire"), () -> Block.SOUL_CAMPFIRE);
 
-    public static final Item WEATHERED_COPPER_GRATE = new Item(1377, NamespacedKey.parse("minecraft:weathered_copper_grate"), () -> Block.WEATHERED_COPPER_GRATE);
+    public static final Item SHROOMLIGHT = new Item(1377, NamespacedKey.parse("minecraft:shroomlight"), () -> Block.SHROOMLIGHT);
 
-    public static final Item OXIDIZED_COPPER_GRATE = new Item(1378, NamespacedKey.parse("minecraft:oxidized_copper_grate"), () -> Block.OXIDIZED_COPPER_GRATE);
+    public static final Item HONEYCOMB = new Item(1378, NamespacedKey.parse("minecraft:honeycomb"), null);
 
-    public static final Item WAXED_COPPER_GRATE = new Item(1379, NamespacedKey.parse("minecraft:waxed_copper_grate"), () -> Block.WAXED_COPPER_GRATE);
+    public static final Item BEE_NEST = new Item(1379, NamespacedKey.parse("minecraft:bee_nest"), () -> Block.BEE_NEST);
 
-    public static final Item WAXED_EXPOSED_COPPER_GRATE = new Item(1380, NamespacedKey.parse("minecraft:waxed_exposed_copper_grate"), () -> Block.WAXED_EXPOSED_COPPER_GRATE);
+    public static final Item BEEHIVE = new Item(1380, NamespacedKey.parse("minecraft:beehive"), () -> Block.BEEHIVE);
 
-    public static final Item WAXED_WEATHERED_COPPER_GRATE = new Item(1381, NamespacedKey.parse("minecraft:waxed_weathered_copper_grate"), () -> Block.WAXED_WEATHERED_COPPER_GRATE);
+    public static final Item HONEY_BOTTLE = new Item(1381, NamespacedKey.parse("minecraft:honey_bottle"), null);
 
-    public static final Item WAXED_OXIDIZED_COPPER_GRATE = new Item(1382, NamespacedKey.parse("minecraft:waxed_oxidized_copper_grate"), () -> Block.WAXED_OXIDIZED_COPPER_GRATE);
+    public static final Item HONEYCOMB_BLOCK = new Item(1382, NamespacedKey.parse("minecraft:honeycomb_block"), () -> Block.HONEYCOMB_BLOCK);
 
-    public static final Item COPPER_BULB = new Item(1383, NamespacedKey.parse("minecraft:copper_bulb"), () -> Block.COPPER_BULB);
+    public static final Item LODESTONE = new Item(1383, NamespacedKey.parse("minecraft:lodestone"), () -> Block.LODESTONE);
 
-    public static final Item EXPOSED_COPPER_BULB = new Item(1384, NamespacedKey.parse("minecraft:exposed_copper_bulb"), () -> Block.EXPOSED_COPPER_BULB);
+    public static final Item CRYING_OBSIDIAN = new Item(1384, NamespacedKey.parse("minecraft:crying_obsidian"), () -> Block.CRYING_OBSIDIAN);
 
-    public static final Item WEATHERED_COPPER_BULB = new Item(1385, NamespacedKey.parse("minecraft:weathered_copper_bulb"), () -> Block.WEATHERED_COPPER_BULB);
+    public static final Item BLACKSTONE = new Item(1385, NamespacedKey.parse("minecraft:blackstone"), () -> Block.BLACKSTONE);
 
-    public static final Item OXIDIZED_COPPER_BULB = new Item(1386, NamespacedKey.parse("minecraft:oxidized_copper_bulb"), () -> Block.OXIDIZED_COPPER_BULB);
+    public static final Item BLACKSTONE_SLAB = new Item(1386, NamespacedKey.parse("minecraft:blackstone_slab"), () -> Block.BLACKSTONE_SLAB);
 
-    public static final Item WAXED_COPPER_BULB = new Item(1387, NamespacedKey.parse("minecraft:waxed_copper_bulb"), () -> Block.WAXED_COPPER_BULB);
+    public static final Item BLACKSTONE_STAIRS = new Item(1387, NamespacedKey.parse("minecraft:blackstone_stairs"), () -> Block.BLACKSTONE_STAIRS);
 
-    public static final Item WAXED_EXPOSED_COPPER_BULB = new Item(1388, NamespacedKey.parse("minecraft:waxed_exposed_copper_bulb"), () -> Block.WAXED_EXPOSED_COPPER_BULB);
+    public static final Item GILDED_BLACKSTONE = new Item(1388, NamespacedKey.parse("minecraft:gilded_blackstone"), () -> Block.GILDED_BLACKSTONE);
 
-    public static final Item WAXED_WEATHERED_COPPER_BULB = new Item(1389, NamespacedKey.parse("minecraft:waxed_weathered_copper_bulb"), () -> Block.WAXED_WEATHERED_COPPER_BULB);
+    public static final Item POLISHED_BLACKSTONE = new Item(1389, NamespacedKey.parse("minecraft:polished_blackstone"), () -> Block.POLISHED_BLACKSTONE);
 
-    public static final Item WAXED_OXIDIZED_COPPER_BULB = new Item(1390, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bulb"), () -> Block.WAXED_OXIDIZED_COPPER_BULB);
+    public static final Item POLISHED_BLACKSTONE_SLAB = new Item(1390, NamespacedKey.parse("minecraft:polished_blackstone_slab"), () -> Block.POLISHED_BLACKSTONE_SLAB);
 
-    public static final Item TRIAL_SPAWNER = new Item(1391, NamespacedKey.parse("minecraft:trial_spawner"), () -> Block.TRIAL_SPAWNER);
+    public static final Item POLISHED_BLACKSTONE_STAIRS = new Item(1391, NamespacedKey.parse("minecraft:polished_blackstone_stairs"), () -> Block.POLISHED_BLACKSTONE_STAIRS);
 
-    public static final Item TRIAL_KEY = new Item(1392, NamespacedKey.parse("minecraft:trial_key"), null);
+    public static final Item CHISELED_POLISHED_BLACKSTONE = new Item(1392, NamespacedKey.parse("minecraft:chiseled_polished_blackstone"), () -> Block.CHISELED_POLISHED_BLACKSTONE);
 
-    public static final Item OMINOUS_TRIAL_KEY = new Item(1393, NamespacedKey.parse("minecraft:ominous_trial_key"), null);
+    public static final Item POLISHED_BLACKSTONE_BRICKS = new Item(1393, NamespacedKey.parse("minecraft:polished_blackstone_bricks"), () -> Block.POLISHED_BLACKSTONE_BRICKS);
 
-    public static final Item VAULT = new Item(1394, NamespacedKey.parse("minecraft:vault"), () -> Block.VAULT);
+    public static final Item POLISHED_BLACKSTONE_BRICK_SLAB = new Item(1394, NamespacedKey.parse("minecraft:polished_blackstone_brick_slab"), () -> Block.POLISHED_BLACKSTONE_BRICK_SLAB);
 
-    public static final Item OMINOUS_BOTTLE = new Item(1395, NamespacedKey.parse("minecraft:ominous_bottle"), null);
+    public static final Item POLISHED_BLACKSTONE_BRICK_STAIRS = new Item(1395, NamespacedKey.parse("minecraft:polished_blackstone_brick_stairs"), () -> Block.POLISHED_BLACKSTONE_BRICK_STAIRS);
+
+    public static final Item CRACKED_POLISHED_BLACKSTONE_BRICKS = new Item(1396, NamespacedKey.parse("minecraft:cracked_polished_blackstone_bricks"), () -> Block.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+
+    public static final Item RESPAWN_ANCHOR = new Item(1397, NamespacedKey.parse("minecraft:respawn_anchor"), () -> Block.RESPAWN_ANCHOR);
+
+    public static final Item CANDLE = new Item(1398, NamespacedKey.parse("minecraft:candle"), () -> Block.CANDLE);
+
+    public static final Item WHITE_CANDLE = new Item(1399, NamespacedKey.parse("minecraft:white_candle"), () -> Block.WHITE_CANDLE);
+
+    public static final Item ORANGE_CANDLE = new Item(1400, NamespacedKey.parse("minecraft:orange_candle"), () -> Block.ORANGE_CANDLE);
+
+    public static final Item MAGENTA_CANDLE = new Item(1401, NamespacedKey.parse("minecraft:magenta_candle"), () -> Block.MAGENTA_CANDLE);
+
+    public static final Item LIGHT_BLUE_CANDLE = new Item(1402, NamespacedKey.parse("minecraft:light_blue_candle"), () -> Block.LIGHT_BLUE_CANDLE);
+
+    public static final Item YELLOW_CANDLE = new Item(1403, NamespacedKey.parse("minecraft:yellow_candle"), () -> Block.YELLOW_CANDLE);
+
+    public static final Item LIME_CANDLE = new Item(1404, NamespacedKey.parse("minecraft:lime_candle"), () -> Block.LIME_CANDLE);
+
+    public static final Item PINK_CANDLE = new Item(1405, NamespacedKey.parse("minecraft:pink_candle"), () -> Block.PINK_CANDLE);
+
+    public static final Item GRAY_CANDLE = new Item(1406, NamespacedKey.parse("minecraft:gray_candle"), () -> Block.GRAY_CANDLE);
+
+    public static final Item LIGHT_GRAY_CANDLE = new Item(1407, NamespacedKey.parse("minecraft:light_gray_candle"), () -> Block.LIGHT_GRAY_CANDLE);
+
+    public static final Item CYAN_CANDLE = new Item(1408, NamespacedKey.parse("minecraft:cyan_candle"), () -> Block.CYAN_CANDLE);
+
+    public static final Item PURPLE_CANDLE = new Item(1409, NamespacedKey.parse("minecraft:purple_candle"), () -> Block.PURPLE_CANDLE);
+
+    public static final Item BLUE_CANDLE = new Item(1410, NamespacedKey.parse("minecraft:blue_candle"), () -> Block.BLUE_CANDLE);
+
+    public static final Item BROWN_CANDLE = new Item(1411, NamespacedKey.parse("minecraft:brown_candle"), () -> Block.BROWN_CANDLE);
+
+    public static final Item GREEN_CANDLE = new Item(1412, NamespacedKey.parse("minecraft:green_candle"), () -> Block.GREEN_CANDLE);
+
+    public static final Item RED_CANDLE = new Item(1413, NamespacedKey.parse("minecraft:red_candle"), () -> Block.RED_CANDLE);
+
+    public static final Item BLACK_CANDLE = new Item(1414, NamespacedKey.parse("minecraft:black_candle"), () -> Block.BLACK_CANDLE);
+
+    public static final Item SMALL_AMETHYST_BUD = new Item(1415, NamespacedKey.parse("minecraft:small_amethyst_bud"), () -> Block.SMALL_AMETHYST_BUD);
+
+    public static final Item MEDIUM_AMETHYST_BUD = new Item(1416, NamespacedKey.parse("minecraft:medium_amethyst_bud"), () -> Block.MEDIUM_AMETHYST_BUD);
+
+    public static final Item LARGE_AMETHYST_BUD = new Item(1417, NamespacedKey.parse("minecraft:large_amethyst_bud"), () -> Block.LARGE_AMETHYST_BUD);
+
+    public static final Item AMETHYST_CLUSTER = new Item(1418, NamespacedKey.parse("minecraft:amethyst_cluster"), () -> Block.AMETHYST_CLUSTER);
+
+    public static final Item POINTED_DRIPSTONE = new Item(1419, NamespacedKey.parse("minecraft:pointed_dripstone"), () -> Block.POINTED_DRIPSTONE);
+
+    public static final Item OCHRE_FROGLIGHT = new Item(1420, NamespacedKey.parse("minecraft:ochre_froglight"), () -> Block.OCHRE_FROGLIGHT);
+
+    public static final Item VERDANT_FROGLIGHT = new Item(1421, NamespacedKey.parse("minecraft:verdant_froglight"), () -> Block.VERDANT_FROGLIGHT);
+
+    public static final Item PEARLESCENT_FROGLIGHT = new Item(1422, NamespacedKey.parse("minecraft:pearlescent_froglight"), () -> Block.PEARLESCENT_FROGLIGHT);
+
+    public static final Item FROGSPAWN = new Item(1423, NamespacedKey.parse("minecraft:frogspawn"), () -> Block.FROGSPAWN);
+
+    public static final Item ECHO_SHARD = new Item(1424, NamespacedKey.parse("minecraft:echo_shard"), null);
+
+    public static final Item BRUSH = new Item(1425, NamespacedKey.parse("minecraft:brush"), null);
+
+    public static final Item NETHERITE_UPGRADE_SMITHING_TEMPLATE = new Item(1426, NamespacedKey.parse("minecraft:netherite_upgrade_smithing_template"), null);
+
+    public static final Item SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1427, NamespacedKey.parse("minecraft:sentry_armor_trim_smithing_template"), null);
+
+    public static final Item DUNE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1428, NamespacedKey.parse("minecraft:dune_armor_trim_smithing_template"), null);
+
+    public static final Item COAST_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1429, NamespacedKey.parse("minecraft:coast_armor_trim_smithing_template"), null);
+
+    public static final Item WILD_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1430, NamespacedKey.parse("minecraft:wild_armor_trim_smithing_template"), null);
+
+    public static final Item WARD_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1431, NamespacedKey.parse("minecraft:ward_armor_trim_smithing_template"), null);
+
+    public static final Item EYE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1432, NamespacedKey.parse("minecraft:eye_armor_trim_smithing_template"), null);
+
+    public static final Item VEX_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1433, NamespacedKey.parse("minecraft:vex_armor_trim_smithing_template"), null);
+
+    public static final Item TIDE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1434, NamespacedKey.parse("minecraft:tide_armor_trim_smithing_template"), null);
+
+    public static final Item SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1435, NamespacedKey.parse("minecraft:snout_armor_trim_smithing_template"), null);
+
+    public static final Item RIB_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1436, NamespacedKey.parse("minecraft:rib_armor_trim_smithing_template"), null);
+
+    public static final Item SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1437, NamespacedKey.parse("minecraft:spire_armor_trim_smithing_template"), null);
+
+    public static final Item WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1438, NamespacedKey.parse("minecraft:wayfinder_armor_trim_smithing_template"), null);
+
+    public static final Item SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1439, NamespacedKey.parse("minecraft:shaper_armor_trim_smithing_template"), null);
+
+    public static final Item SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1440, NamespacedKey.parse("minecraft:silence_armor_trim_smithing_template"), null);
+
+    public static final Item RAISER_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1441, NamespacedKey.parse("minecraft:raiser_armor_trim_smithing_template"), null);
+
+    public static final Item HOST_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1442, NamespacedKey.parse("minecraft:host_armor_trim_smithing_template"), null);
+
+    public static final Item FLOW_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1443, NamespacedKey.parse("minecraft:flow_armor_trim_smithing_template"), null);
+
+    public static final Item BOLT_ARMOR_TRIM_SMITHING_TEMPLATE = new Item(1444, NamespacedKey.parse("minecraft:bolt_armor_trim_smithing_template"), null);
+
+    public static final Item ANGLER_POTTERY_SHERD = new Item(1445, NamespacedKey.parse("minecraft:angler_pottery_sherd"), null);
+
+    public static final Item ARCHER_POTTERY_SHERD = new Item(1446, NamespacedKey.parse("minecraft:archer_pottery_sherd"), null);
+
+    public static final Item ARMS_UP_POTTERY_SHERD = new Item(1447, NamespacedKey.parse("minecraft:arms_up_pottery_sherd"), null);
+
+    public static final Item BLADE_POTTERY_SHERD = new Item(1448, NamespacedKey.parse("minecraft:blade_pottery_sherd"), null);
+
+    public static final Item BREWER_POTTERY_SHERD = new Item(1449, NamespacedKey.parse("minecraft:brewer_pottery_sherd"), null);
+
+    public static final Item BURN_POTTERY_SHERD = new Item(1450, NamespacedKey.parse("minecraft:burn_pottery_sherd"), null);
+
+    public static final Item DANGER_POTTERY_SHERD = new Item(1451, NamespacedKey.parse("minecraft:danger_pottery_sherd"), null);
+
+    public static final Item EXPLORER_POTTERY_SHERD = new Item(1452, NamespacedKey.parse("minecraft:explorer_pottery_sherd"), null);
+
+    public static final Item FLOW_POTTERY_SHERD = new Item(1453, NamespacedKey.parse("minecraft:flow_pottery_sherd"), null);
+
+    public static final Item FRIEND_POTTERY_SHERD = new Item(1454, NamespacedKey.parse("minecraft:friend_pottery_sherd"), null);
+
+    public static final Item GUSTER_POTTERY_SHERD = new Item(1455, NamespacedKey.parse("minecraft:guster_pottery_sherd"), null);
+
+    public static final Item HEART_POTTERY_SHERD = new Item(1456, NamespacedKey.parse("minecraft:heart_pottery_sherd"), null);
+
+    public static final Item HEARTBREAK_POTTERY_SHERD = new Item(1457, NamespacedKey.parse("minecraft:heartbreak_pottery_sherd"), null);
+
+    public static final Item HOWL_POTTERY_SHERD = new Item(1458, NamespacedKey.parse("minecraft:howl_pottery_sherd"), null);
+
+    public static final Item MINER_POTTERY_SHERD = new Item(1459, NamespacedKey.parse("minecraft:miner_pottery_sherd"), null);
+
+    public static final Item MOURNER_POTTERY_SHERD = new Item(1460, NamespacedKey.parse("minecraft:mourner_pottery_sherd"), null);
+
+    public static final Item PLENTY_POTTERY_SHERD = new Item(1461, NamespacedKey.parse("minecraft:plenty_pottery_sherd"), null);
+
+    public static final Item PRIZE_POTTERY_SHERD = new Item(1462, NamespacedKey.parse("minecraft:prize_pottery_sherd"), null);
+
+    public static final Item SCRAPE_POTTERY_SHERD = new Item(1463, NamespacedKey.parse("minecraft:scrape_pottery_sherd"), null);
+
+    public static final Item SHEAF_POTTERY_SHERD = new Item(1464, NamespacedKey.parse("minecraft:sheaf_pottery_sherd"), null);
+
+    public static final Item SHELTER_POTTERY_SHERD = new Item(1465, NamespacedKey.parse("minecraft:shelter_pottery_sherd"), null);
+
+    public static final Item SKULL_POTTERY_SHERD = new Item(1466, NamespacedKey.parse("minecraft:skull_pottery_sherd"), null);
+
+    public static final Item SNORT_POTTERY_SHERD = new Item(1467, NamespacedKey.parse("minecraft:snort_pottery_sherd"), null);
+
+    public static final Item COPPER_GRATE = new Item(1468, NamespacedKey.parse("minecraft:copper_grate"), () -> Block.COPPER_GRATE);
+
+    public static final Item EXPOSED_COPPER_GRATE = new Item(1469, NamespacedKey.parse("minecraft:exposed_copper_grate"), () -> Block.EXPOSED_COPPER_GRATE);
+
+    public static final Item WEATHERED_COPPER_GRATE = new Item(1470, NamespacedKey.parse("minecraft:weathered_copper_grate"), () -> Block.WEATHERED_COPPER_GRATE);
+
+    public static final Item OXIDIZED_COPPER_GRATE = new Item(1471, NamespacedKey.parse("minecraft:oxidized_copper_grate"), () -> Block.OXIDIZED_COPPER_GRATE);
+
+    public static final Item WAXED_COPPER_GRATE = new Item(1472, NamespacedKey.parse("minecraft:waxed_copper_grate"), () -> Block.WAXED_COPPER_GRATE);
+
+    public static final Item WAXED_EXPOSED_COPPER_GRATE = new Item(1473, NamespacedKey.parse("minecraft:waxed_exposed_copper_grate"), () -> Block.WAXED_EXPOSED_COPPER_GRATE);
+
+    public static final Item WAXED_WEATHERED_COPPER_GRATE = new Item(1474, NamespacedKey.parse("minecraft:waxed_weathered_copper_grate"), () -> Block.WAXED_WEATHERED_COPPER_GRATE);
+
+    public static final Item WAXED_OXIDIZED_COPPER_GRATE = new Item(1475, NamespacedKey.parse("minecraft:waxed_oxidized_copper_grate"), () -> Block.WAXED_OXIDIZED_COPPER_GRATE);
+
+    public static final Item COPPER_BULB = new Item(1476, NamespacedKey.parse("minecraft:copper_bulb"), () -> Block.COPPER_BULB);
+
+    public static final Item EXPOSED_COPPER_BULB = new Item(1477, NamespacedKey.parse("minecraft:exposed_copper_bulb"), () -> Block.EXPOSED_COPPER_BULB);
+
+    public static final Item WEATHERED_COPPER_BULB = new Item(1478, NamespacedKey.parse("minecraft:weathered_copper_bulb"), () -> Block.WEATHERED_COPPER_BULB);
+
+    public static final Item OXIDIZED_COPPER_BULB = new Item(1479, NamespacedKey.parse("minecraft:oxidized_copper_bulb"), () -> Block.OXIDIZED_COPPER_BULB);
+
+    public static final Item WAXED_COPPER_BULB = new Item(1480, NamespacedKey.parse("minecraft:waxed_copper_bulb"), () -> Block.WAXED_COPPER_BULB);
+
+    public static final Item WAXED_EXPOSED_COPPER_BULB = new Item(1481, NamespacedKey.parse("minecraft:waxed_exposed_copper_bulb"), () -> Block.WAXED_EXPOSED_COPPER_BULB);
+
+    public static final Item WAXED_WEATHERED_COPPER_BULB = new Item(1482, NamespacedKey.parse("minecraft:waxed_weathered_copper_bulb"), () -> Block.WAXED_WEATHERED_COPPER_BULB);
+
+    public static final Item WAXED_OXIDIZED_COPPER_BULB = new Item(1483, NamespacedKey.parse("minecraft:waxed_oxidized_copper_bulb"), () -> Block.WAXED_OXIDIZED_COPPER_BULB);
+
+    public static final Item COPPER_CHEST = new Item(1484, NamespacedKey.parse("minecraft:copper_chest"), () -> Block.COPPER_CHEST);
+
+    public static final Item EXPOSED_COPPER_CHEST = new Item(1485, NamespacedKey.parse("minecraft:exposed_copper_chest"), () -> Block.EXPOSED_COPPER_CHEST);
+
+    public static final Item WEATHERED_COPPER_CHEST = new Item(1486, NamespacedKey.parse("minecraft:weathered_copper_chest"), () -> Block.WEATHERED_COPPER_CHEST);
+
+    public static final Item OXIDIZED_COPPER_CHEST = new Item(1487, NamespacedKey.parse("minecraft:oxidized_copper_chest"), () -> Block.OXIDIZED_COPPER_CHEST);
+
+    public static final Item WAXED_COPPER_CHEST = new Item(1488, NamespacedKey.parse("minecraft:waxed_copper_chest"), () -> Block.WAXED_COPPER_CHEST);
+
+    public static final Item WAXED_EXPOSED_COPPER_CHEST = new Item(1489, NamespacedKey.parse("minecraft:waxed_exposed_copper_chest"), () -> Block.WAXED_EXPOSED_COPPER_CHEST);
+
+    public static final Item WAXED_WEATHERED_COPPER_CHEST = new Item(1490, NamespacedKey.parse("minecraft:waxed_weathered_copper_chest"), () -> Block.WAXED_WEATHERED_COPPER_CHEST);
+
+    public static final Item WAXED_OXIDIZED_COPPER_CHEST = new Item(1491, NamespacedKey.parse("minecraft:waxed_oxidized_copper_chest"), () -> Block.WAXED_OXIDIZED_COPPER_CHEST);
+
+    public static final Item COPPER_GOLEM_STATUE = new Item(1492, NamespacedKey.parse("minecraft:copper_golem_statue"), () -> Block.COPPER_GOLEM_STATUE);
+
+    public static final Item EXPOSED_COPPER_GOLEM_STATUE = new Item(1493, NamespacedKey.parse("minecraft:exposed_copper_golem_statue"), () -> Block.EXPOSED_COPPER_GOLEM_STATUE);
+
+    public static final Item WEATHERED_COPPER_GOLEM_STATUE = new Item(1494, NamespacedKey.parse("minecraft:weathered_copper_golem_statue"), () -> Block.WEATHERED_COPPER_GOLEM_STATUE);
+
+    public static final Item OXIDIZED_COPPER_GOLEM_STATUE = new Item(1495, NamespacedKey.parse("minecraft:oxidized_copper_golem_statue"), () -> Block.OXIDIZED_COPPER_GOLEM_STATUE);
+
+    public static final Item WAXED_COPPER_GOLEM_STATUE = new Item(1496, NamespacedKey.parse("minecraft:waxed_copper_golem_statue"), () -> Block.WAXED_COPPER_GOLEM_STATUE);
+
+    public static final Item WAXED_EXPOSED_COPPER_GOLEM_STATUE = new Item(1497, NamespacedKey.parse("minecraft:waxed_exposed_copper_golem_statue"), () -> Block.WAXED_EXPOSED_COPPER_GOLEM_STATUE);
+
+    public static final Item WAXED_WEATHERED_COPPER_GOLEM_STATUE = new Item(1498, NamespacedKey.parse("minecraft:waxed_weathered_copper_golem_statue"), () -> Block.WAXED_WEATHERED_COPPER_GOLEM_STATUE);
+
+    public static final Item WAXED_OXIDIZED_COPPER_GOLEM_STATUE = new Item(1499, NamespacedKey.parse("minecraft:waxed_oxidized_copper_golem_statue"), () -> Block.WAXED_OXIDIZED_COPPER_GOLEM_STATUE);
+
+    public static final Item TRIAL_SPAWNER = new Item(1500, NamespacedKey.parse("minecraft:trial_spawner"), () -> Block.TRIAL_SPAWNER);
+
+    public static final Item TRIAL_KEY = new Item(1501, NamespacedKey.parse("minecraft:trial_key"), null);
+
+    public static final Item OMINOUS_TRIAL_KEY = new Item(1502, NamespacedKey.parse("minecraft:ominous_trial_key"), null);
+
+    public static final Item VAULT = new Item(1503, NamespacedKey.parse("minecraft:vault"), () -> Block.VAULT);
+
+    public static final Item OMINOUS_BOTTLE = new Item(1504, NamespacedKey.parse("minecraft:ominous_bottle"), null);
 
     private static final Item[] VALUES = {
             AIR,
@@ -3114,6 +3332,18 @@ sealed class Items permits Item {
             SMOOTH_SANDSTONE,
             SMOOTH_STONE,
             BRICKS,
+            ACACIA_SHELF,
+            BAMBOO_SHELF,
+            BIRCH_SHELF,
+            CHERRY_SHELF,
+            CRIMSON_SHELF,
+            DARK_OAK_SHELF,
+            JUNGLE_SHELF,
+            MANGROVE_SHELF,
+            OAK_SHELF,
+            PALE_OAK_SHELF,
+            SPRUCE_SHELF,
+            WARPED_SHELF,
             BOOKSHELF,
             CHISELED_BOOKSHELF,
             DECORATED_POT,
@@ -3163,6 +3393,7 @@ sealed class Items permits Item {
             POLISHED_BASALT,
             SMOOTH_BASALT,
             SOUL_TORCH,
+            COPPER_TORCH,
             GLOWSTONE,
             INFESTED_STONE,
             INFESTED_COBBLESTONE,
@@ -3187,7 +3418,23 @@ sealed class Items permits Item {
             RED_MUSHROOM_BLOCK,
             MUSHROOM_STEM,
             IRON_BARS,
-            CHAIN,
+            COPPER_BARS,
+            EXPOSED_COPPER_BARS,
+            WEATHERED_COPPER_BARS,
+            OXIDIZED_COPPER_BARS,
+            WAXED_COPPER_BARS,
+            WAXED_EXPOSED_COPPER_BARS,
+            WAXED_WEATHERED_COPPER_BARS,
+            WAXED_OXIDIZED_COPPER_BARS,
+            IRON_CHAIN,
+            COPPER_CHAIN,
+            EXPOSED_COPPER_CHAIN,
+            WEATHERED_COPPER_CHAIN,
+            OXIDIZED_COPPER_CHAIN,
+            WAXED_COPPER_CHAIN,
+            WAXED_EXPOSED_COPPER_CHAIN,
+            WAXED_WEATHERED_COPPER_CHAIN,
+            WAXED_OXIDIZED_COPPER_CHAIN,
             GLASS_PANE,
             MELON,
             VINE,
@@ -3428,6 +3675,7 @@ sealed class Items permits Item {
             BLACK_CONCRETE_POWDER,
             TURTLE_EGG,
             SNIFFER_EGG,
+            DRIED_GHAST,
             DEAD_TUBE_CORAL_BLOCK,
             DEAD_BRAIN_CORAL_BLOCK,
             DEAD_BUBBLE_CORAL_BLOCK,
@@ -3513,6 +3761,13 @@ sealed class Items permits Item {
             TARGET,
             LEVER,
             LIGHTNING_ROD,
+            EXPOSED_LIGHTNING_ROD,
+            WEATHERED_LIGHTNING_ROD,
+            OXIDIZED_LIGHTNING_ROD,
+            WAXED_LIGHTNING_ROD,
+            WAXED_EXPOSED_LIGHTNING_ROD,
+            WAXED_WEATHERED_LIGHTNING_ROD,
+            WAXED_OXIDIZED_LIGHTNING_ROD,
             DAYLIGHT_DETECTOR,
             SCULK_SENSOR,
             CALIBRATED_SCULK_SENSOR,
@@ -3610,6 +3865,22 @@ sealed class Items permits Item {
             RAIL,
             ACTIVATOR_RAIL,
             SADDLE,
+            WHITE_HARNESS,
+            ORANGE_HARNESS,
+            MAGENTA_HARNESS,
+            LIGHT_BLUE_HARNESS,
+            YELLOW_HARNESS,
+            LIME_HARNESS,
+            PINK_HARNESS,
+            GRAY_HARNESS,
+            LIGHT_GRAY_HARNESS,
+            CYAN_HARNESS,
+            PURPLE_HARNESS,
+            BLUE_HARNESS,
+            BROWN_HARNESS,
+            GREEN_HARNESS,
+            RED_HARNESS,
+            BLACK_HARNESS,
             MINECART,
             CHEST_MINECART,
             FURNACE_MINECART,
@@ -3672,6 +3943,11 @@ sealed class Items permits Item {
             WOODEN_PICKAXE,
             WOODEN_AXE,
             WOODEN_HOE,
+            COPPER_SWORD,
+            COPPER_SHOVEL,
+            COPPER_PICKAXE,
+            COPPER_AXE,
+            COPPER_HOE,
             STONE_SWORD,
             STONE_SHOVEL,
             STONE_PICKAXE,
@@ -3709,6 +3985,10 @@ sealed class Items permits Item {
             LEATHER_CHESTPLATE,
             LEATHER_LEGGINGS,
             LEATHER_BOOTS,
+            COPPER_HELMET,
+            COPPER_CHESTPLATE,
+            COPPER_LEGGINGS,
+            COPPER_BOOTS,
             CHAINMAIL_HELMET,
             CHAINMAIL_CHESTPLATE,
             CHAINMAIL_LEGGINGS,
@@ -3877,87 +4157,93 @@ sealed class Items permits Item {
             CAULDRON,
             ENDER_EYE,
             GLISTERING_MELON_SLICE,
+            CHICKEN_SPAWN_EGG,
+            COW_SPAWN_EGG,
+            PIG_SPAWN_EGG,
+            SHEEP_SPAWN_EGG,
+            CAMEL_SPAWN_EGG,
+            DONKEY_SPAWN_EGG,
+            HORSE_SPAWN_EGG,
+            MULE_SPAWN_EGG,
+            CAT_SPAWN_EGG,
+            PARROT_SPAWN_EGG,
+            WOLF_SPAWN_EGG,
             ARMADILLO_SPAWN_EGG,
-            ALLAY_SPAWN_EGG,
-            AXOLOTL_SPAWN_EGG,
             BAT_SPAWN_EGG,
             BEE_SPAWN_EGG,
-            BLAZE_SPAWN_EGG,
-            BOGGED_SPAWN_EGG,
-            BREEZE_SPAWN_EGG,
-            CAT_SPAWN_EGG,
-            CAMEL_SPAWN_EGG,
-            CAVE_SPIDER_SPAWN_EGG,
-            CHICKEN_SPAWN_EGG,
+            FOX_SPAWN_EGG,
+            GOAT_SPAWN_EGG,
+            LLAMA_SPAWN_EGG,
+            OCELOT_SPAWN_EGG,
+            PANDA_SPAWN_EGG,
+            POLAR_BEAR_SPAWN_EGG,
+            RABBIT_SPAWN_EGG,
+            AXOLOTL_SPAWN_EGG,
             COD_SPAWN_EGG,
-            COW_SPAWN_EGG,
-            CREEPER_SPAWN_EGG,
             DOLPHIN_SPAWN_EGG,
-            DONKEY_SPAWN_EGG,
+            FROG_SPAWN_EGG,
+            GLOW_SQUID_SPAWN_EGG,
+            NAUTILUS_SPAWN_EGG,
+            PUFFERFISH_SPAWN_EGG,
+            SALMON_SPAWN_EGG,
+            SQUID_SPAWN_EGG,
+            TADPOLE_SPAWN_EGG,
+            TROPICAL_FISH_SPAWN_EGG,
+            TURTLE_SPAWN_EGG,
+            ALLAY_SPAWN_EGG,
+            MOOSHROOM_SPAWN_EGG,
+            SNIFFER_SPAWN_EGG,
+            COPPER_GOLEM_SPAWN_EGG,
+            IRON_GOLEM_SPAWN_EGG,
+            SNOW_GOLEM_SPAWN_EGG,
+            TRADER_LLAMA_SPAWN_EGG,
+            VILLAGER_SPAWN_EGG,
+            WANDERING_TRADER_SPAWN_EGG,
+            BOGGED_SPAWN_EGG,
+            CAMEL_HUSK_SPAWN_EGG,
             DROWNED_SPAWN_EGG,
+            HUSK_SPAWN_EGG,
+            PARCHED_SPAWN_EGG,
+            SKELETON_SPAWN_EGG,
+            SKELETON_HORSE_SPAWN_EGG,
+            STRAY_SPAWN_EGG,
+            WITHER_SPAWN_EGG,
+            WITHER_SKELETON_SPAWN_EGG,
+            ZOMBIE_SPAWN_EGG,
+            ZOMBIE_HORSE_SPAWN_EGG,
+            ZOMBIE_NAUTILUS_SPAWN_EGG,
+            ZOMBIE_VILLAGER_SPAWN_EGG,
+            CAVE_SPIDER_SPAWN_EGG,
+            SPIDER_SPAWN_EGG,
+            BREEZE_SPAWN_EGG,
+            CREAKING_SPAWN_EGG,
+            CREEPER_SPAWN_EGG,
             ELDER_GUARDIAN_SPAWN_EGG,
+            GUARDIAN_SPAWN_EGG,
+            PHANTOM_SPAWN_EGG,
+            SILVERFISH_SPAWN_EGG,
+            SLIME_SPAWN_EGG,
+            WARDEN_SPAWN_EGG,
+            WITCH_SPAWN_EGG,
+            EVOKER_SPAWN_EGG,
+            PILLAGER_SPAWN_EGG,
+            RAVAGER_SPAWN_EGG,
+            VINDICATOR_SPAWN_EGG,
+            VEX_SPAWN_EGG,
+            BLAZE_SPAWN_EGG,
+            GHAST_SPAWN_EGG,
+            HAPPY_GHAST_SPAWN_EGG,
+            HOGLIN_SPAWN_EGG,
+            MAGMA_CUBE_SPAWN_EGG,
+            PIGLIN_SPAWN_EGG,
+            PIGLIN_BRUTE_SPAWN_EGG,
+            STRIDER_SPAWN_EGG,
+            ZOGLIN_SPAWN_EGG,
+            ZOMBIFIED_PIGLIN_SPAWN_EGG,
             ENDER_DRAGON_SPAWN_EGG,
             ENDERMAN_SPAWN_EGG,
             ENDERMITE_SPAWN_EGG,
-            EVOKER_SPAWN_EGG,
-            FOX_SPAWN_EGG,
-            FROG_SPAWN_EGG,
-            GHAST_SPAWN_EGG,
-            GLOW_SQUID_SPAWN_EGG,
-            GOAT_SPAWN_EGG,
-            GUARDIAN_SPAWN_EGG,
-            HOGLIN_SPAWN_EGG,
-            HORSE_SPAWN_EGG,
-            HUSK_SPAWN_EGG,
-            IRON_GOLEM_SPAWN_EGG,
-            LLAMA_SPAWN_EGG,
-            MAGMA_CUBE_SPAWN_EGG,
-            MOOSHROOM_SPAWN_EGG,
-            MULE_SPAWN_EGG,
-            OCELOT_SPAWN_EGG,
-            PANDA_SPAWN_EGG,
-            PARROT_SPAWN_EGG,
-            PHANTOM_SPAWN_EGG,
-            PIG_SPAWN_EGG,
-            PIGLIN_SPAWN_EGG,
-            PIGLIN_BRUTE_SPAWN_EGG,
-            PILLAGER_SPAWN_EGG,
-            POLAR_BEAR_SPAWN_EGG,
-            PUFFERFISH_SPAWN_EGG,
-            RABBIT_SPAWN_EGG,
-            RAVAGER_SPAWN_EGG,
-            SALMON_SPAWN_EGG,
-            SHEEP_SPAWN_EGG,
             SHULKER_SPAWN_EGG,
-            SILVERFISH_SPAWN_EGG,
-            SKELETON_SPAWN_EGG,
-            SKELETON_HORSE_SPAWN_EGG,
-            SLIME_SPAWN_EGG,
-            SNIFFER_SPAWN_EGG,
-            SNOW_GOLEM_SPAWN_EGG,
-            SPIDER_SPAWN_EGG,
-            SQUID_SPAWN_EGG,
-            STRAY_SPAWN_EGG,
-            STRIDER_SPAWN_EGG,
-            TADPOLE_SPAWN_EGG,
-            TRADER_LLAMA_SPAWN_EGG,
-            TROPICAL_FISH_SPAWN_EGG,
-            TURTLE_SPAWN_EGG,
-            VEX_SPAWN_EGG,
-            VILLAGER_SPAWN_EGG,
-            VINDICATOR_SPAWN_EGG,
-            WANDERING_TRADER_SPAWN_EGG,
-            WARDEN_SPAWN_EGG,
-            WITCH_SPAWN_EGG,
-            WITHER_SPAWN_EGG,
-            WITHER_SKELETON_SPAWN_EGG,
-            WOLF_SPAWN_EGG,
-            ZOGLIN_SPAWN_EGG,
-            CREAKING_SPAWN_EGG,
-            ZOMBIE_SPAWN_EGG,
-            ZOMBIE_HORSE_SPAWN_EGG,
-            ZOMBIE_VILLAGER_SPAWN_EGG,
-            ZOMBIFIED_PIGLIN_SPAWN_EGG,
             EXPERIENCE_BOTTLE,
             FIRE_CHARGE,
             WIND_CHARGE,
@@ -3996,9 +4282,11 @@ sealed class Items permits Item {
             RABBIT_FOOT,
             RABBIT_HIDE,
             ARMOR_STAND,
+            COPPER_HORSE_ARMOR,
             IRON_HORSE_ARMOR,
             GOLDEN_HORSE_ARMOR,
             DIAMOND_HORSE_ARMOR,
+            NETHERITE_HORSE_ARMOR,
             LEATHER_HORSE_ARMOR,
             LEAD,
             NAME_TAG,
@@ -4035,9 +4323,17 @@ sealed class Items permits Item {
             TIPPED_ARROW,
             LINGERING_POTION,
             SHIELD,
+            WOODEN_SPEAR,
+            STONE_SPEAR,
+            COPPER_SPEAR,
+            IRON_SPEAR,
+            GOLDEN_SPEAR,
+            DIAMOND_SPEAR,
+            NETHERITE_SPEAR,
             TOTEM_OF_UNDYING,
             SHULKER_SHELL,
             IRON_NUGGET,
+            COPPER_NUGGET,
             KNOWLEDGE_BOOK,
             DEBUG_STICK,
             MUSIC_DISC_13,
@@ -4047,6 +4343,7 @@ sealed class Items permits Item {
             MUSIC_DISC_CREATOR,
             MUSIC_DISC_CREATOR_MUSIC_BOX,
             MUSIC_DISC_FAR,
+            MUSIC_DISC_LAVA_CHICKEN,
             MUSIC_DISC_MALL,
             MUSIC_DISC_MELLOHI,
             MUSIC_DISC_STAL,
@@ -4059,9 +4356,15 @@ sealed class Items permits Item {
             MUSIC_DISC_5,
             MUSIC_DISC_PIGSTEP,
             MUSIC_DISC_PRECIPICE,
+            MUSIC_DISC_TEARS,
             DISC_FRAGMENT_5,
             TRIDENT,
             NAUTILUS_SHELL,
+            IRON_NAUTILUS_ARMOR,
+            GOLDEN_NAUTILUS_ARMOR,
+            DIAMOND_NAUTILUS_ARMOR,
+            NETHERITE_NAUTILUS_ARMOR,
+            COPPER_NAUTILUS_ARMOR,
             HEART_OF_THE_SEA,
             CROSSBOW,
             SUSPICIOUS_STEW,
@@ -4089,6 +4392,14 @@ sealed class Items permits Item {
             BELL,
             LANTERN,
             SOUL_LANTERN,
+            COPPER_LANTERN,
+            EXPOSED_COPPER_LANTERN,
+            WEATHERED_COPPER_LANTERN,
+            OXIDIZED_COPPER_LANTERN,
+            WAXED_COPPER_LANTERN,
+            WAXED_EXPOSED_COPPER_LANTERN,
+            WAXED_WEATHERED_COPPER_LANTERN,
+            WAXED_OXIDIZED_COPPER_LANTERN,
             SWEET_BERRIES,
             GLOW_BERRIES,
             CAMPFIRE,
@@ -4200,6 +4511,22 @@ sealed class Items permits Item {
             WAXED_EXPOSED_COPPER_BULB,
             WAXED_WEATHERED_COPPER_BULB,
             WAXED_OXIDIZED_COPPER_BULB,
+            COPPER_CHEST,
+            EXPOSED_COPPER_CHEST,
+            WEATHERED_COPPER_CHEST,
+            OXIDIZED_COPPER_CHEST,
+            WAXED_COPPER_CHEST,
+            WAXED_EXPOSED_COPPER_CHEST,
+            WAXED_WEATHERED_COPPER_CHEST,
+            WAXED_OXIDIZED_COPPER_CHEST,
+            COPPER_GOLEM_STATUE,
+            EXPOSED_COPPER_GOLEM_STATUE,
+            WEATHERED_COPPER_GOLEM_STATUE,
+            OXIDIZED_COPPER_GOLEM_STATUE,
+            WAXED_COPPER_GOLEM_STATUE,
+            WAXED_EXPOSED_COPPER_GOLEM_STATUE,
+            WAXED_WEATHERED_COPPER_GOLEM_STATUE,
+            WAXED_OXIDIZED_COPPER_GOLEM_STATUE,
             TRIAL_SPAWNER,
             TRIAL_KEY,
             OMINOUS_TRIAL_KEY,
@@ -4523,6 +4850,18 @@ sealed class Items permits Item {
             registry.register(Item.SMOOTH_SANDSTONE.key(), Item.SMOOTH_SANDSTONE);
             registry.register(Item.SMOOTH_STONE.key(), Item.SMOOTH_STONE);
             registry.register(Item.BRICKS.key(), Item.BRICKS);
+            registry.register(Item.ACACIA_SHELF.key(), Item.ACACIA_SHELF);
+            registry.register(Item.BAMBOO_SHELF.key(), Item.BAMBOO_SHELF);
+            registry.register(Item.BIRCH_SHELF.key(), Item.BIRCH_SHELF);
+            registry.register(Item.CHERRY_SHELF.key(), Item.CHERRY_SHELF);
+            registry.register(Item.CRIMSON_SHELF.key(), Item.CRIMSON_SHELF);
+            registry.register(Item.DARK_OAK_SHELF.key(), Item.DARK_OAK_SHELF);
+            registry.register(Item.JUNGLE_SHELF.key(), Item.JUNGLE_SHELF);
+            registry.register(Item.MANGROVE_SHELF.key(), Item.MANGROVE_SHELF);
+            registry.register(Item.OAK_SHELF.key(), Item.OAK_SHELF);
+            registry.register(Item.PALE_OAK_SHELF.key(), Item.PALE_OAK_SHELF);
+            registry.register(Item.SPRUCE_SHELF.key(), Item.SPRUCE_SHELF);
+            registry.register(Item.WARPED_SHELF.key(), Item.WARPED_SHELF);
             registry.register(Item.BOOKSHELF.key(), Item.BOOKSHELF);
             registry.register(Item.CHISELED_BOOKSHELF.key(), Item.CHISELED_BOOKSHELF);
             registry.register(Item.DECORATED_POT.key(), Item.DECORATED_POT);
@@ -4572,6 +4911,7 @@ sealed class Items permits Item {
             registry.register(Item.POLISHED_BASALT.key(), Item.POLISHED_BASALT);
             registry.register(Item.SMOOTH_BASALT.key(), Item.SMOOTH_BASALT);
             registry.register(Item.SOUL_TORCH.key(), Item.SOUL_TORCH);
+            registry.register(Item.COPPER_TORCH.key(), Item.COPPER_TORCH);
             registry.register(Item.GLOWSTONE.key(), Item.GLOWSTONE);
             registry.register(Item.INFESTED_STONE.key(), Item.INFESTED_STONE);
             registry.register(Item.INFESTED_COBBLESTONE.key(), Item.INFESTED_COBBLESTONE);
@@ -4596,7 +4936,23 @@ sealed class Items permits Item {
             registry.register(Item.RED_MUSHROOM_BLOCK.key(), Item.RED_MUSHROOM_BLOCK);
             registry.register(Item.MUSHROOM_STEM.key(), Item.MUSHROOM_STEM);
             registry.register(Item.IRON_BARS.key(), Item.IRON_BARS);
-            registry.register(Item.CHAIN.key(), Item.CHAIN);
+            registry.register(Item.COPPER_BARS.key(), Item.COPPER_BARS);
+            registry.register(Item.EXPOSED_COPPER_BARS.key(), Item.EXPOSED_COPPER_BARS);
+            registry.register(Item.WEATHERED_COPPER_BARS.key(), Item.WEATHERED_COPPER_BARS);
+            registry.register(Item.OXIDIZED_COPPER_BARS.key(), Item.OXIDIZED_COPPER_BARS);
+            registry.register(Item.WAXED_COPPER_BARS.key(), Item.WAXED_COPPER_BARS);
+            registry.register(Item.WAXED_EXPOSED_COPPER_BARS.key(), Item.WAXED_EXPOSED_COPPER_BARS);
+            registry.register(Item.WAXED_WEATHERED_COPPER_BARS.key(), Item.WAXED_WEATHERED_COPPER_BARS);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_BARS.key(), Item.WAXED_OXIDIZED_COPPER_BARS);
+            registry.register(Item.IRON_CHAIN.key(), Item.IRON_CHAIN);
+            registry.register(Item.COPPER_CHAIN.key(), Item.COPPER_CHAIN);
+            registry.register(Item.EXPOSED_COPPER_CHAIN.key(), Item.EXPOSED_COPPER_CHAIN);
+            registry.register(Item.WEATHERED_COPPER_CHAIN.key(), Item.WEATHERED_COPPER_CHAIN);
+            registry.register(Item.OXIDIZED_COPPER_CHAIN.key(), Item.OXIDIZED_COPPER_CHAIN);
+            registry.register(Item.WAXED_COPPER_CHAIN.key(), Item.WAXED_COPPER_CHAIN);
+            registry.register(Item.WAXED_EXPOSED_COPPER_CHAIN.key(), Item.WAXED_EXPOSED_COPPER_CHAIN);
+            registry.register(Item.WAXED_WEATHERED_COPPER_CHAIN.key(), Item.WAXED_WEATHERED_COPPER_CHAIN);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_CHAIN.key(), Item.WAXED_OXIDIZED_COPPER_CHAIN);
             registry.register(Item.GLASS_PANE.key(), Item.GLASS_PANE);
             registry.register(Item.MELON.key(), Item.MELON);
             registry.register(Item.VINE.key(), Item.VINE);
@@ -4837,6 +5193,7 @@ sealed class Items permits Item {
             registry.register(Item.BLACK_CONCRETE_POWDER.key(), Item.BLACK_CONCRETE_POWDER);
             registry.register(Item.TURTLE_EGG.key(), Item.TURTLE_EGG);
             registry.register(Item.SNIFFER_EGG.key(), Item.SNIFFER_EGG);
+            registry.register(Item.DRIED_GHAST.key(), Item.DRIED_GHAST);
             registry.register(Item.DEAD_TUBE_CORAL_BLOCK.key(), Item.DEAD_TUBE_CORAL_BLOCK);
             registry.register(Item.DEAD_BRAIN_CORAL_BLOCK.key(), Item.DEAD_BRAIN_CORAL_BLOCK);
             registry.register(Item.DEAD_BUBBLE_CORAL_BLOCK.key(), Item.DEAD_BUBBLE_CORAL_BLOCK);
@@ -4922,6 +5279,13 @@ sealed class Items permits Item {
             registry.register(Item.TARGET.key(), Item.TARGET);
             registry.register(Item.LEVER.key(), Item.LEVER);
             registry.register(Item.LIGHTNING_ROD.key(), Item.LIGHTNING_ROD);
+            registry.register(Item.EXPOSED_LIGHTNING_ROD.key(), Item.EXPOSED_LIGHTNING_ROD);
+            registry.register(Item.WEATHERED_LIGHTNING_ROD.key(), Item.WEATHERED_LIGHTNING_ROD);
+            registry.register(Item.OXIDIZED_LIGHTNING_ROD.key(), Item.OXIDIZED_LIGHTNING_ROD);
+            registry.register(Item.WAXED_LIGHTNING_ROD.key(), Item.WAXED_LIGHTNING_ROD);
+            registry.register(Item.WAXED_EXPOSED_LIGHTNING_ROD.key(), Item.WAXED_EXPOSED_LIGHTNING_ROD);
+            registry.register(Item.WAXED_WEATHERED_LIGHTNING_ROD.key(), Item.WAXED_WEATHERED_LIGHTNING_ROD);
+            registry.register(Item.WAXED_OXIDIZED_LIGHTNING_ROD.key(), Item.WAXED_OXIDIZED_LIGHTNING_ROD);
             registry.register(Item.DAYLIGHT_DETECTOR.key(), Item.DAYLIGHT_DETECTOR);
             registry.register(Item.SCULK_SENSOR.key(), Item.SCULK_SENSOR);
             registry.register(Item.CALIBRATED_SCULK_SENSOR.key(), Item.CALIBRATED_SCULK_SENSOR);
@@ -5019,6 +5383,22 @@ sealed class Items permits Item {
             registry.register(Item.RAIL.key(), Item.RAIL);
             registry.register(Item.ACTIVATOR_RAIL.key(), Item.ACTIVATOR_RAIL);
             registry.register(Item.SADDLE.key(), Item.SADDLE);
+            registry.register(Item.WHITE_HARNESS.key(), Item.WHITE_HARNESS);
+            registry.register(Item.ORANGE_HARNESS.key(), Item.ORANGE_HARNESS);
+            registry.register(Item.MAGENTA_HARNESS.key(), Item.MAGENTA_HARNESS);
+            registry.register(Item.LIGHT_BLUE_HARNESS.key(), Item.LIGHT_BLUE_HARNESS);
+            registry.register(Item.YELLOW_HARNESS.key(), Item.YELLOW_HARNESS);
+            registry.register(Item.LIME_HARNESS.key(), Item.LIME_HARNESS);
+            registry.register(Item.PINK_HARNESS.key(), Item.PINK_HARNESS);
+            registry.register(Item.GRAY_HARNESS.key(), Item.GRAY_HARNESS);
+            registry.register(Item.LIGHT_GRAY_HARNESS.key(), Item.LIGHT_GRAY_HARNESS);
+            registry.register(Item.CYAN_HARNESS.key(), Item.CYAN_HARNESS);
+            registry.register(Item.PURPLE_HARNESS.key(), Item.PURPLE_HARNESS);
+            registry.register(Item.BLUE_HARNESS.key(), Item.BLUE_HARNESS);
+            registry.register(Item.BROWN_HARNESS.key(), Item.BROWN_HARNESS);
+            registry.register(Item.GREEN_HARNESS.key(), Item.GREEN_HARNESS);
+            registry.register(Item.RED_HARNESS.key(), Item.RED_HARNESS);
+            registry.register(Item.BLACK_HARNESS.key(), Item.BLACK_HARNESS);
             registry.register(Item.MINECART.key(), Item.MINECART);
             registry.register(Item.CHEST_MINECART.key(), Item.CHEST_MINECART);
             registry.register(Item.FURNACE_MINECART.key(), Item.FURNACE_MINECART);
@@ -5081,6 +5461,11 @@ sealed class Items permits Item {
             registry.register(Item.WOODEN_PICKAXE.key(), Item.WOODEN_PICKAXE);
             registry.register(Item.WOODEN_AXE.key(), Item.WOODEN_AXE);
             registry.register(Item.WOODEN_HOE.key(), Item.WOODEN_HOE);
+            registry.register(Item.COPPER_SWORD.key(), Item.COPPER_SWORD);
+            registry.register(Item.COPPER_SHOVEL.key(), Item.COPPER_SHOVEL);
+            registry.register(Item.COPPER_PICKAXE.key(), Item.COPPER_PICKAXE);
+            registry.register(Item.COPPER_AXE.key(), Item.COPPER_AXE);
+            registry.register(Item.COPPER_HOE.key(), Item.COPPER_HOE);
             registry.register(Item.STONE_SWORD.key(), Item.STONE_SWORD);
             registry.register(Item.STONE_SHOVEL.key(), Item.STONE_SHOVEL);
             registry.register(Item.STONE_PICKAXE.key(), Item.STONE_PICKAXE);
@@ -5118,6 +5503,10 @@ sealed class Items permits Item {
             registry.register(Item.LEATHER_CHESTPLATE.key(), Item.LEATHER_CHESTPLATE);
             registry.register(Item.LEATHER_LEGGINGS.key(), Item.LEATHER_LEGGINGS);
             registry.register(Item.LEATHER_BOOTS.key(), Item.LEATHER_BOOTS);
+            registry.register(Item.COPPER_HELMET.key(), Item.COPPER_HELMET);
+            registry.register(Item.COPPER_CHESTPLATE.key(), Item.COPPER_CHESTPLATE);
+            registry.register(Item.COPPER_LEGGINGS.key(), Item.COPPER_LEGGINGS);
+            registry.register(Item.COPPER_BOOTS.key(), Item.COPPER_BOOTS);
             registry.register(Item.CHAINMAIL_HELMET.key(), Item.CHAINMAIL_HELMET);
             registry.register(Item.CHAINMAIL_CHESTPLATE.key(), Item.CHAINMAIL_CHESTPLATE);
             registry.register(Item.CHAINMAIL_LEGGINGS.key(), Item.CHAINMAIL_LEGGINGS);
@@ -5286,87 +5675,93 @@ sealed class Items permits Item {
             registry.register(Item.CAULDRON.key(), Item.CAULDRON);
             registry.register(Item.ENDER_EYE.key(), Item.ENDER_EYE);
             registry.register(Item.GLISTERING_MELON_SLICE.key(), Item.GLISTERING_MELON_SLICE);
+            registry.register(Item.CHICKEN_SPAWN_EGG.key(), Item.CHICKEN_SPAWN_EGG);
+            registry.register(Item.COW_SPAWN_EGG.key(), Item.COW_SPAWN_EGG);
+            registry.register(Item.PIG_SPAWN_EGG.key(), Item.PIG_SPAWN_EGG);
+            registry.register(Item.SHEEP_SPAWN_EGG.key(), Item.SHEEP_SPAWN_EGG);
+            registry.register(Item.CAMEL_SPAWN_EGG.key(), Item.CAMEL_SPAWN_EGG);
+            registry.register(Item.DONKEY_SPAWN_EGG.key(), Item.DONKEY_SPAWN_EGG);
+            registry.register(Item.HORSE_SPAWN_EGG.key(), Item.HORSE_SPAWN_EGG);
+            registry.register(Item.MULE_SPAWN_EGG.key(), Item.MULE_SPAWN_EGG);
+            registry.register(Item.CAT_SPAWN_EGG.key(), Item.CAT_SPAWN_EGG);
+            registry.register(Item.PARROT_SPAWN_EGG.key(), Item.PARROT_SPAWN_EGG);
+            registry.register(Item.WOLF_SPAWN_EGG.key(), Item.WOLF_SPAWN_EGG);
             registry.register(Item.ARMADILLO_SPAWN_EGG.key(), Item.ARMADILLO_SPAWN_EGG);
-            registry.register(Item.ALLAY_SPAWN_EGG.key(), Item.ALLAY_SPAWN_EGG);
-            registry.register(Item.AXOLOTL_SPAWN_EGG.key(), Item.AXOLOTL_SPAWN_EGG);
             registry.register(Item.BAT_SPAWN_EGG.key(), Item.BAT_SPAWN_EGG);
             registry.register(Item.BEE_SPAWN_EGG.key(), Item.BEE_SPAWN_EGG);
-            registry.register(Item.BLAZE_SPAWN_EGG.key(), Item.BLAZE_SPAWN_EGG);
-            registry.register(Item.BOGGED_SPAWN_EGG.key(), Item.BOGGED_SPAWN_EGG);
-            registry.register(Item.BREEZE_SPAWN_EGG.key(), Item.BREEZE_SPAWN_EGG);
-            registry.register(Item.CAT_SPAWN_EGG.key(), Item.CAT_SPAWN_EGG);
-            registry.register(Item.CAMEL_SPAWN_EGG.key(), Item.CAMEL_SPAWN_EGG);
-            registry.register(Item.CAVE_SPIDER_SPAWN_EGG.key(), Item.CAVE_SPIDER_SPAWN_EGG);
-            registry.register(Item.CHICKEN_SPAWN_EGG.key(), Item.CHICKEN_SPAWN_EGG);
+            registry.register(Item.FOX_SPAWN_EGG.key(), Item.FOX_SPAWN_EGG);
+            registry.register(Item.GOAT_SPAWN_EGG.key(), Item.GOAT_SPAWN_EGG);
+            registry.register(Item.LLAMA_SPAWN_EGG.key(), Item.LLAMA_SPAWN_EGG);
+            registry.register(Item.OCELOT_SPAWN_EGG.key(), Item.OCELOT_SPAWN_EGG);
+            registry.register(Item.PANDA_SPAWN_EGG.key(), Item.PANDA_SPAWN_EGG);
+            registry.register(Item.POLAR_BEAR_SPAWN_EGG.key(), Item.POLAR_BEAR_SPAWN_EGG);
+            registry.register(Item.RABBIT_SPAWN_EGG.key(), Item.RABBIT_SPAWN_EGG);
+            registry.register(Item.AXOLOTL_SPAWN_EGG.key(), Item.AXOLOTL_SPAWN_EGG);
             registry.register(Item.COD_SPAWN_EGG.key(), Item.COD_SPAWN_EGG);
-            registry.register(Item.COW_SPAWN_EGG.key(), Item.COW_SPAWN_EGG);
-            registry.register(Item.CREEPER_SPAWN_EGG.key(), Item.CREEPER_SPAWN_EGG);
             registry.register(Item.DOLPHIN_SPAWN_EGG.key(), Item.DOLPHIN_SPAWN_EGG);
-            registry.register(Item.DONKEY_SPAWN_EGG.key(), Item.DONKEY_SPAWN_EGG);
+            registry.register(Item.FROG_SPAWN_EGG.key(), Item.FROG_SPAWN_EGG);
+            registry.register(Item.GLOW_SQUID_SPAWN_EGG.key(), Item.GLOW_SQUID_SPAWN_EGG);
+            registry.register(Item.NAUTILUS_SPAWN_EGG.key(), Item.NAUTILUS_SPAWN_EGG);
+            registry.register(Item.PUFFERFISH_SPAWN_EGG.key(), Item.PUFFERFISH_SPAWN_EGG);
+            registry.register(Item.SALMON_SPAWN_EGG.key(), Item.SALMON_SPAWN_EGG);
+            registry.register(Item.SQUID_SPAWN_EGG.key(), Item.SQUID_SPAWN_EGG);
+            registry.register(Item.TADPOLE_SPAWN_EGG.key(), Item.TADPOLE_SPAWN_EGG);
+            registry.register(Item.TROPICAL_FISH_SPAWN_EGG.key(), Item.TROPICAL_FISH_SPAWN_EGG);
+            registry.register(Item.TURTLE_SPAWN_EGG.key(), Item.TURTLE_SPAWN_EGG);
+            registry.register(Item.ALLAY_SPAWN_EGG.key(), Item.ALLAY_SPAWN_EGG);
+            registry.register(Item.MOOSHROOM_SPAWN_EGG.key(), Item.MOOSHROOM_SPAWN_EGG);
+            registry.register(Item.SNIFFER_SPAWN_EGG.key(), Item.SNIFFER_SPAWN_EGG);
+            registry.register(Item.COPPER_GOLEM_SPAWN_EGG.key(), Item.COPPER_GOLEM_SPAWN_EGG);
+            registry.register(Item.IRON_GOLEM_SPAWN_EGG.key(), Item.IRON_GOLEM_SPAWN_EGG);
+            registry.register(Item.SNOW_GOLEM_SPAWN_EGG.key(), Item.SNOW_GOLEM_SPAWN_EGG);
+            registry.register(Item.TRADER_LLAMA_SPAWN_EGG.key(), Item.TRADER_LLAMA_SPAWN_EGG);
+            registry.register(Item.VILLAGER_SPAWN_EGG.key(), Item.VILLAGER_SPAWN_EGG);
+            registry.register(Item.WANDERING_TRADER_SPAWN_EGG.key(), Item.WANDERING_TRADER_SPAWN_EGG);
+            registry.register(Item.BOGGED_SPAWN_EGG.key(), Item.BOGGED_SPAWN_EGG);
+            registry.register(Item.CAMEL_HUSK_SPAWN_EGG.key(), Item.CAMEL_HUSK_SPAWN_EGG);
             registry.register(Item.DROWNED_SPAWN_EGG.key(), Item.DROWNED_SPAWN_EGG);
+            registry.register(Item.HUSK_SPAWN_EGG.key(), Item.HUSK_SPAWN_EGG);
+            registry.register(Item.PARCHED_SPAWN_EGG.key(), Item.PARCHED_SPAWN_EGG);
+            registry.register(Item.SKELETON_SPAWN_EGG.key(), Item.SKELETON_SPAWN_EGG);
+            registry.register(Item.SKELETON_HORSE_SPAWN_EGG.key(), Item.SKELETON_HORSE_SPAWN_EGG);
+            registry.register(Item.STRAY_SPAWN_EGG.key(), Item.STRAY_SPAWN_EGG);
+            registry.register(Item.WITHER_SPAWN_EGG.key(), Item.WITHER_SPAWN_EGG);
+            registry.register(Item.WITHER_SKELETON_SPAWN_EGG.key(), Item.WITHER_SKELETON_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_SPAWN_EGG.key(), Item.ZOMBIE_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_HORSE_SPAWN_EGG.key(), Item.ZOMBIE_HORSE_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_NAUTILUS_SPAWN_EGG.key(), Item.ZOMBIE_NAUTILUS_SPAWN_EGG);
+            registry.register(Item.ZOMBIE_VILLAGER_SPAWN_EGG.key(), Item.ZOMBIE_VILLAGER_SPAWN_EGG);
+            registry.register(Item.CAVE_SPIDER_SPAWN_EGG.key(), Item.CAVE_SPIDER_SPAWN_EGG);
+            registry.register(Item.SPIDER_SPAWN_EGG.key(), Item.SPIDER_SPAWN_EGG);
+            registry.register(Item.BREEZE_SPAWN_EGG.key(), Item.BREEZE_SPAWN_EGG);
+            registry.register(Item.CREAKING_SPAWN_EGG.key(), Item.CREAKING_SPAWN_EGG);
+            registry.register(Item.CREEPER_SPAWN_EGG.key(), Item.CREEPER_SPAWN_EGG);
             registry.register(Item.ELDER_GUARDIAN_SPAWN_EGG.key(), Item.ELDER_GUARDIAN_SPAWN_EGG);
+            registry.register(Item.GUARDIAN_SPAWN_EGG.key(), Item.GUARDIAN_SPAWN_EGG);
+            registry.register(Item.PHANTOM_SPAWN_EGG.key(), Item.PHANTOM_SPAWN_EGG);
+            registry.register(Item.SILVERFISH_SPAWN_EGG.key(), Item.SILVERFISH_SPAWN_EGG);
+            registry.register(Item.SLIME_SPAWN_EGG.key(), Item.SLIME_SPAWN_EGG);
+            registry.register(Item.WARDEN_SPAWN_EGG.key(), Item.WARDEN_SPAWN_EGG);
+            registry.register(Item.WITCH_SPAWN_EGG.key(), Item.WITCH_SPAWN_EGG);
+            registry.register(Item.EVOKER_SPAWN_EGG.key(), Item.EVOKER_SPAWN_EGG);
+            registry.register(Item.PILLAGER_SPAWN_EGG.key(), Item.PILLAGER_SPAWN_EGG);
+            registry.register(Item.RAVAGER_SPAWN_EGG.key(), Item.RAVAGER_SPAWN_EGG);
+            registry.register(Item.VINDICATOR_SPAWN_EGG.key(), Item.VINDICATOR_SPAWN_EGG);
+            registry.register(Item.VEX_SPAWN_EGG.key(), Item.VEX_SPAWN_EGG);
+            registry.register(Item.BLAZE_SPAWN_EGG.key(), Item.BLAZE_SPAWN_EGG);
+            registry.register(Item.GHAST_SPAWN_EGG.key(), Item.GHAST_SPAWN_EGG);
+            registry.register(Item.HAPPY_GHAST_SPAWN_EGG.key(), Item.HAPPY_GHAST_SPAWN_EGG);
+            registry.register(Item.HOGLIN_SPAWN_EGG.key(), Item.HOGLIN_SPAWN_EGG);
+            registry.register(Item.MAGMA_CUBE_SPAWN_EGG.key(), Item.MAGMA_CUBE_SPAWN_EGG);
+            registry.register(Item.PIGLIN_SPAWN_EGG.key(), Item.PIGLIN_SPAWN_EGG);
+            registry.register(Item.PIGLIN_BRUTE_SPAWN_EGG.key(), Item.PIGLIN_BRUTE_SPAWN_EGG);
+            registry.register(Item.STRIDER_SPAWN_EGG.key(), Item.STRIDER_SPAWN_EGG);
+            registry.register(Item.ZOGLIN_SPAWN_EGG.key(), Item.ZOGLIN_SPAWN_EGG);
+            registry.register(Item.ZOMBIFIED_PIGLIN_SPAWN_EGG.key(), Item.ZOMBIFIED_PIGLIN_SPAWN_EGG);
             registry.register(Item.ENDER_DRAGON_SPAWN_EGG.key(), Item.ENDER_DRAGON_SPAWN_EGG);
             registry.register(Item.ENDERMAN_SPAWN_EGG.key(), Item.ENDERMAN_SPAWN_EGG);
             registry.register(Item.ENDERMITE_SPAWN_EGG.key(), Item.ENDERMITE_SPAWN_EGG);
-            registry.register(Item.EVOKER_SPAWN_EGG.key(), Item.EVOKER_SPAWN_EGG);
-            registry.register(Item.FOX_SPAWN_EGG.key(), Item.FOX_SPAWN_EGG);
-            registry.register(Item.FROG_SPAWN_EGG.key(), Item.FROG_SPAWN_EGG);
-            registry.register(Item.GHAST_SPAWN_EGG.key(), Item.GHAST_SPAWN_EGG);
-            registry.register(Item.GLOW_SQUID_SPAWN_EGG.key(), Item.GLOW_SQUID_SPAWN_EGG);
-            registry.register(Item.GOAT_SPAWN_EGG.key(), Item.GOAT_SPAWN_EGG);
-            registry.register(Item.GUARDIAN_SPAWN_EGG.key(), Item.GUARDIAN_SPAWN_EGG);
-            registry.register(Item.HOGLIN_SPAWN_EGG.key(), Item.HOGLIN_SPAWN_EGG);
-            registry.register(Item.HORSE_SPAWN_EGG.key(), Item.HORSE_SPAWN_EGG);
-            registry.register(Item.HUSK_SPAWN_EGG.key(), Item.HUSK_SPAWN_EGG);
-            registry.register(Item.IRON_GOLEM_SPAWN_EGG.key(), Item.IRON_GOLEM_SPAWN_EGG);
-            registry.register(Item.LLAMA_SPAWN_EGG.key(), Item.LLAMA_SPAWN_EGG);
-            registry.register(Item.MAGMA_CUBE_SPAWN_EGG.key(), Item.MAGMA_CUBE_SPAWN_EGG);
-            registry.register(Item.MOOSHROOM_SPAWN_EGG.key(), Item.MOOSHROOM_SPAWN_EGG);
-            registry.register(Item.MULE_SPAWN_EGG.key(), Item.MULE_SPAWN_EGG);
-            registry.register(Item.OCELOT_SPAWN_EGG.key(), Item.OCELOT_SPAWN_EGG);
-            registry.register(Item.PANDA_SPAWN_EGG.key(), Item.PANDA_SPAWN_EGG);
-            registry.register(Item.PARROT_SPAWN_EGG.key(), Item.PARROT_SPAWN_EGG);
-            registry.register(Item.PHANTOM_SPAWN_EGG.key(), Item.PHANTOM_SPAWN_EGG);
-            registry.register(Item.PIG_SPAWN_EGG.key(), Item.PIG_SPAWN_EGG);
-            registry.register(Item.PIGLIN_SPAWN_EGG.key(), Item.PIGLIN_SPAWN_EGG);
-            registry.register(Item.PIGLIN_BRUTE_SPAWN_EGG.key(), Item.PIGLIN_BRUTE_SPAWN_EGG);
-            registry.register(Item.PILLAGER_SPAWN_EGG.key(), Item.PILLAGER_SPAWN_EGG);
-            registry.register(Item.POLAR_BEAR_SPAWN_EGG.key(), Item.POLAR_BEAR_SPAWN_EGG);
-            registry.register(Item.PUFFERFISH_SPAWN_EGG.key(), Item.PUFFERFISH_SPAWN_EGG);
-            registry.register(Item.RABBIT_SPAWN_EGG.key(), Item.RABBIT_SPAWN_EGG);
-            registry.register(Item.RAVAGER_SPAWN_EGG.key(), Item.RAVAGER_SPAWN_EGG);
-            registry.register(Item.SALMON_SPAWN_EGG.key(), Item.SALMON_SPAWN_EGG);
-            registry.register(Item.SHEEP_SPAWN_EGG.key(), Item.SHEEP_SPAWN_EGG);
             registry.register(Item.SHULKER_SPAWN_EGG.key(), Item.SHULKER_SPAWN_EGG);
-            registry.register(Item.SILVERFISH_SPAWN_EGG.key(), Item.SILVERFISH_SPAWN_EGG);
-            registry.register(Item.SKELETON_SPAWN_EGG.key(), Item.SKELETON_SPAWN_EGG);
-            registry.register(Item.SKELETON_HORSE_SPAWN_EGG.key(), Item.SKELETON_HORSE_SPAWN_EGG);
-            registry.register(Item.SLIME_SPAWN_EGG.key(), Item.SLIME_SPAWN_EGG);
-            registry.register(Item.SNIFFER_SPAWN_EGG.key(), Item.SNIFFER_SPAWN_EGG);
-            registry.register(Item.SNOW_GOLEM_SPAWN_EGG.key(), Item.SNOW_GOLEM_SPAWN_EGG);
-            registry.register(Item.SPIDER_SPAWN_EGG.key(), Item.SPIDER_SPAWN_EGG);
-            registry.register(Item.SQUID_SPAWN_EGG.key(), Item.SQUID_SPAWN_EGG);
-            registry.register(Item.STRAY_SPAWN_EGG.key(), Item.STRAY_SPAWN_EGG);
-            registry.register(Item.STRIDER_SPAWN_EGG.key(), Item.STRIDER_SPAWN_EGG);
-            registry.register(Item.TADPOLE_SPAWN_EGG.key(), Item.TADPOLE_SPAWN_EGG);
-            registry.register(Item.TRADER_LLAMA_SPAWN_EGG.key(), Item.TRADER_LLAMA_SPAWN_EGG);
-            registry.register(Item.TROPICAL_FISH_SPAWN_EGG.key(), Item.TROPICAL_FISH_SPAWN_EGG);
-            registry.register(Item.TURTLE_SPAWN_EGG.key(), Item.TURTLE_SPAWN_EGG);
-            registry.register(Item.VEX_SPAWN_EGG.key(), Item.VEX_SPAWN_EGG);
-            registry.register(Item.VILLAGER_SPAWN_EGG.key(), Item.VILLAGER_SPAWN_EGG);
-            registry.register(Item.VINDICATOR_SPAWN_EGG.key(), Item.VINDICATOR_SPAWN_EGG);
-            registry.register(Item.WANDERING_TRADER_SPAWN_EGG.key(), Item.WANDERING_TRADER_SPAWN_EGG);
-            registry.register(Item.WARDEN_SPAWN_EGG.key(), Item.WARDEN_SPAWN_EGG);
-            registry.register(Item.WITCH_SPAWN_EGG.key(), Item.WITCH_SPAWN_EGG);
-            registry.register(Item.WITHER_SPAWN_EGG.key(), Item.WITHER_SPAWN_EGG);
-            registry.register(Item.WITHER_SKELETON_SPAWN_EGG.key(), Item.WITHER_SKELETON_SPAWN_EGG);
-            registry.register(Item.WOLF_SPAWN_EGG.key(), Item.WOLF_SPAWN_EGG);
-            registry.register(Item.ZOGLIN_SPAWN_EGG.key(), Item.ZOGLIN_SPAWN_EGG);
-            registry.register(Item.CREAKING_SPAWN_EGG.key(), Item.CREAKING_SPAWN_EGG);
-            registry.register(Item.ZOMBIE_SPAWN_EGG.key(), Item.ZOMBIE_SPAWN_EGG);
-            registry.register(Item.ZOMBIE_HORSE_SPAWN_EGG.key(), Item.ZOMBIE_HORSE_SPAWN_EGG);
-            registry.register(Item.ZOMBIE_VILLAGER_SPAWN_EGG.key(), Item.ZOMBIE_VILLAGER_SPAWN_EGG);
-            registry.register(Item.ZOMBIFIED_PIGLIN_SPAWN_EGG.key(), Item.ZOMBIFIED_PIGLIN_SPAWN_EGG);
             registry.register(Item.EXPERIENCE_BOTTLE.key(), Item.EXPERIENCE_BOTTLE);
             registry.register(Item.FIRE_CHARGE.key(), Item.FIRE_CHARGE);
             registry.register(Item.WIND_CHARGE.key(), Item.WIND_CHARGE);
@@ -5405,9 +5800,11 @@ sealed class Items permits Item {
             registry.register(Item.RABBIT_FOOT.key(), Item.RABBIT_FOOT);
             registry.register(Item.RABBIT_HIDE.key(), Item.RABBIT_HIDE);
             registry.register(Item.ARMOR_STAND.key(), Item.ARMOR_STAND);
+            registry.register(Item.COPPER_HORSE_ARMOR.key(), Item.COPPER_HORSE_ARMOR);
             registry.register(Item.IRON_HORSE_ARMOR.key(), Item.IRON_HORSE_ARMOR);
             registry.register(Item.GOLDEN_HORSE_ARMOR.key(), Item.GOLDEN_HORSE_ARMOR);
             registry.register(Item.DIAMOND_HORSE_ARMOR.key(), Item.DIAMOND_HORSE_ARMOR);
+            registry.register(Item.NETHERITE_HORSE_ARMOR.key(), Item.NETHERITE_HORSE_ARMOR);
             registry.register(Item.LEATHER_HORSE_ARMOR.key(), Item.LEATHER_HORSE_ARMOR);
             registry.register(Item.LEAD.key(), Item.LEAD);
             registry.register(Item.NAME_TAG.key(), Item.NAME_TAG);
@@ -5444,9 +5841,17 @@ sealed class Items permits Item {
             registry.register(Item.TIPPED_ARROW.key(), Item.TIPPED_ARROW);
             registry.register(Item.LINGERING_POTION.key(), Item.LINGERING_POTION);
             registry.register(Item.SHIELD.key(), Item.SHIELD);
+            registry.register(Item.WOODEN_SPEAR.key(), Item.WOODEN_SPEAR);
+            registry.register(Item.STONE_SPEAR.key(), Item.STONE_SPEAR);
+            registry.register(Item.COPPER_SPEAR.key(), Item.COPPER_SPEAR);
+            registry.register(Item.IRON_SPEAR.key(), Item.IRON_SPEAR);
+            registry.register(Item.GOLDEN_SPEAR.key(), Item.GOLDEN_SPEAR);
+            registry.register(Item.DIAMOND_SPEAR.key(), Item.DIAMOND_SPEAR);
+            registry.register(Item.NETHERITE_SPEAR.key(), Item.NETHERITE_SPEAR);
             registry.register(Item.TOTEM_OF_UNDYING.key(), Item.TOTEM_OF_UNDYING);
             registry.register(Item.SHULKER_SHELL.key(), Item.SHULKER_SHELL);
             registry.register(Item.IRON_NUGGET.key(), Item.IRON_NUGGET);
+            registry.register(Item.COPPER_NUGGET.key(), Item.COPPER_NUGGET);
             registry.register(Item.KNOWLEDGE_BOOK.key(), Item.KNOWLEDGE_BOOK);
             registry.register(Item.DEBUG_STICK.key(), Item.DEBUG_STICK);
             registry.register(Item.MUSIC_DISC_13.key(), Item.MUSIC_DISC_13);
@@ -5456,6 +5861,7 @@ sealed class Items permits Item {
             registry.register(Item.MUSIC_DISC_CREATOR.key(), Item.MUSIC_DISC_CREATOR);
             registry.register(Item.MUSIC_DISC_CREATOR_MUSIC_BOX.key(), Item.MUSIC_DISC_CREATOR_MUSIC_BOX);
             registry.register(Item.MUSIC_DISC_FAR.key(), Item.MUSIC_DISC_FAR);
+            registry.register(Item.MUSIC_DISC_LAVA_CHICKEN.key(), Item.MUSIC_DISC_LAVA_CHICKEN);
             registry.register(Item.MUSIC_DISC_MALL.key(), Item.MUSIC_DISC_MALL);
             registry.register(Item.MUSIC_DISC_MELLOHI.key(), Item.MUSIC_DISC_MELLOHI);
             registry.register(Item.MUSIC_DISC_STAL.key(), Item.MUSIC_DISC_STAL);
@@ -5468,9 +5874,15 @@ sealed class Items permits Item {
             registry.register(Item.MUSIC_DISC_5.key(), Item.MUSIC_DISC_5);
             registry.register(Item.MUSIC_DISC_PIGSTEP.key(), Item.MUSIC_DISC_PIGSTEP);
             registry.register(Item.MUSIC_DISC_PRECIPICE.key(), Item.MUSIC_DISC_PRECIPICE);
+            registry.register(Item.MUSIC_DISC_TEARS.key(), Item.MUSIC_DISC_TEARS);
             registry.register(Item.DISC_FRAGMENT_5.key(), Item.DISC_FRAGMENT_5);
             registry.register(Item.TRIDENT.key(), Item.TRIDENT);
             registry.register(Item.NAUTILUS_SHELL.key(), Item.NAUTILUS_SHELL);
+            registry.register(Item.IRON_NAUTILUS_ARMOR.key(), Item.IRON_NAUTILUS_ARMOR);
+            registry.register(Item.GOLDEN_NAUTILUS_ARMOR.key(), Item.GOLDEN_NAUTILUS_ARMOR);
+            registry.register(Item.DIAMOND_NAUTILUS_ARMOR.key(), Item.DIAMOND_NAUTILUS_ARMOR);
+            registry.register(Item.NETHERITE_NAUTILUS_ARMOR.key(), Item.NETHERITE_NAUTILUS_ARMOR);
+            registry.register(Item.COPPER_NAUTILUS_ARMOR.key(), Item.COPPER_NAUTILUS_ARMOR);
             registry.register(Item.HEART_OF_THE_SEA.key(), Item.HEART_OF_THE_SEA);
             registry.register(Item.CROSSBOW.key(), Item.CROSSBOW);
             registry.register(Item.SUSPICIOUS_STEW.key(), Item.SUSPICIOUS_STEW);
@@ -5498,6 +5910,14 @@ sealed class Items permits Item {
             registry.register(Item.BELL.key(), Item.BELL);
             registry.register(Item.LANTERN.key(), Item.LANTERN);
             registry.register(Item.SOUL_LANTERN.key(), Item.SOUL_LANTERN);
+            registry.register(Item.COPPER_LANTERN.key(), Item.COPPER_LANTERN);
+            registry.register(Item.EXPOSED_COPPER_LANTERN.key(), Item.EXPOSED_COPPER_LANTERN);
+            registry.register(Item.WEATHERED_COPPER_LANTERN.key(), Item.WEATHERED_COPPER_LANTERN);
+            registry.register(Item.OXIDIZED_COPPER_LANTERN.key(), Item.OXIDIZED_COPPER_LANTERN);
+            registry.register(Item.WAXED_COPPER_LANTERN.key(), Item.WAXED_COPPER_LANTERN);
+            registry.register(Item.WAXED_EXPOSED_COPPER_LANTERN.key(), Item.WAXED_EXPOSED_COPPER_LANTERN);
+            registry.register(Item.WAXED_WEATHERED_COPPER_LANTERN.key(), Item.WAXED_WEATHERED_COPPER_LANTERN);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_LANTERN.key(), Item.WAXED_OXIDIZED_COPPER_LANTERN);
             registry.register(Item.SWEET_BERRIES.key(), Item.SWEET_BERRIES);
             registry.register(Item.GLOW_BERRIES.key(), Item.GLOW_BERRIES);
             registry.register(Item.CAMPFIRE.key(), Item.CAMPFIRE);
@@ -5609,6 +6029,22 @@ sealed class Items permits Item {
             registry.register(Item.WAXED_EXPOSED_COPPER_BULB.key(), Item.WAXED_EXPOSED_COPPER_BULB);
             registry.register(Item.WAXED_WEATHERED_COPPER_BULB.key(), Item.WAXED_WEATHERED_COPPER_BULB);
             registry.register(Item.WAXED_OXIDIZED_COPPER_BULB.key(), Item.WAXED_OXIDIZED_COPPER_BULB);
+            registry.register(Item.COPPER_CHEST.key(), Item.COPPER_CHEST);
+            registry.register(Item.EXPOSED_COPPER_CHEST.key(), Item.EXPOSED_COPPER_CHEST);
+            registry.register(Item.WEATHERED_COPPER_CHEST.key(), Item.WEATHERED_COPPER_CHEST);
+            registry.register(Item.OXIDIZED_COPPER_CHEST.key(), Item.OXIDIZED_COPPER_CHEST);
+            registry.register(Item.WAXED_COPPER_CHEST.key(), Item.WAXED_COPPER_CHEST);
+            registry.register(Item.WAXED_EXPOSED_COPPER_CHEST.key(), Item.WAXED_EXPOSED_COPPER_CHEST);
+            registry.register(Item.WAXED_WEATHERED_COPPER_CHEST.key(), Item.WAXED_WEATHERED_COPPER_CHEST);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_CHEST.key(), Item.WAXED_OXIDIZED_COPPER_CHEST);
+            registry.register(Item.COPPER_GOLEM_STATUE.key(), Item.COPPER_GOLEM_STATUE);
+            registry.register(Item.EXPOSED_COPPER_GOLEM_STATUE.key(), Item.EXPOSED_COPPER_GOLEM_STATUE);
+            registry.register(Item.WEATHERED_COPPER_GOLEM_STATUE.key(), Item.WEATHERED_COPPER_GOLEM_STATUE);
+            registry.register(Item.OXIDIZED_COPPER_GOLEM_STATUE.key(), Item.OXIDIZED_COPPER_GOLEM_STATUE);
+            registry.register(Item.WAXED_COPPER_GOLEM_STATUE.key(), Item.WAXED_COPPER_GOLEM_STATUE);
+            registry.register(Item.WAXED_EXPOSED_COPPER_GOLEM_STATUE.key(), Item.WAXED_EXPOSED_COPPER_GOLEM_STATUE);
+            registry.register(Item.WAXED_WEATHERED_COPPER_GOLEM_STATUE.key(), Item.WAXED_WEATHERED_COPPER_GOLEM_STATUE);
+            registry.register(Item.WAXED_OXIDIZED_COPPER_GOLEM_STATUE.key(), Item.WAXED_OXIDIZED_COPPER_GOLEM_STATUE);
             registry.register(Item.TRIAL_SPAWNER.key(), Item.TRIAL_SPAWNER);
             registry.register(Item.TRIAL_KEY.key(), Item.TRIAL_KEY);
             registry.register(Item.OMINOUS_TRIAL_KEY.key(), Item.OMINOUS_TRIAL_KEY);
@@ -5622,6 +6058,7 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("axolotl_food"), Tags.AXOLOTL_FOOD);
             registry.registerTag(NamespacedKey.minecraft("bamboo_blocks"), Tags.BAMBOO_BLOCKS);
             registry.registerTag(NamespacedKey.minecraft("banners"), Tags.BANNERS);
+            registry.registerTag(NamespacedKey.minecraft("bars"), Tags.BARS);
             registry.registerTag(NamespacedKey.minecraft("beacon_payment_items"), Tags.BEACON_PAYMENT_ITEMS);
             registry.registerTag(NamespacedKey.minecraft("beds"), Tags.BEDS);
             registry.registerTag(NamespacedKey.minecraft("bee_food"), Tags.BEE_FOOD);
@@ -5634,8 +6071,10 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("bundles"), Tags.BUNDLES);
             registry.registerTag(NamespacedKey.minecraft("buttons"), Tags.BUTTONS);
             registry.registerTag(NamespacedKey.minecraft("camel_food"), Tags.CAMEL_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("camel_husk_food"), Tags.CAMEL_HUSK_FOOD);
             registry.registerTag(NamespacedKey.minecraft("candles"), Tags.CANDLES);
             registry.registerTag(NamespacedKey.minecraft("cat_food"), Tags.CAT_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("chains"), Tags.CHAINS);
             registry.registerTag(NamespacedKey.minecraft("cherry_logs"), Tags.CHERRY_LOGS);
             registry.registerTag(NamespacedKey.minecraft("chest_armor"), Tags.CHEST_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("chest_boats"), Tags.CHEST_BOATS);
@@ -5645,7 +6084,11 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("coals"), Tags.COALS);
             registry.registerTag(NamespacedKey.minecraft("compasses"), Tags.COMPASSES);
             registry.registerTag(NamespacedKey.minecraft("completes_find_tree_tutorial"), Tags.COMPLETES_FIND_TREE_TUTORIAL);
+            registry.registerTag(NamespacedKey.minecraft("copper"), Tags.COPPER);
+            registry.registerTag(NamespacedKey.minecraft("copper_chests"), Tags.COPPER_CHESTS);
+            registry.registerTag(NamespacedKey.minecraft("copper_golem_statues"), Tags.COPPER_GOLEM_STATUES);
             registry.registerTag(NamespacedKey.minecraft("copper_ores"), Tags.COPPER_ORES);
+            registry.registerTag(NamespacedKey.minecraft("copper_tool_materials"), Tags.COPPER_TOOL_MATERIALS);
             registry.registerTag(NamespacedKey.minecraft("cow_food"), Tags.COW_FOOD);
             registry.registerTag(NamespacedKey.minecraft("creeper_drop_music_discs"), Tags.CREEPER_DROP_MUSIC_DISCS);
             registry.registerTag(NamespacedKey.minecraft("creeper_igniters"), Tags.CREEPER_IGNITERS);
@@ -5674,11 +6117,13 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("enchantable/foot_armor"), Tags.ENCHANTABLE_FOOT_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("enchantable/head_armor"), Tags.ENCHANTABLE_HEAD_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("enchantable/leg_armor"), Tags.ENCHANTABLE_LEG_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/lunge"), Tags.ENCHANTABLE_LUNGE);
             registry.registerTag(NamespacedKey.minecraft("enchantable/mace"), Tags.ENCHANTABLE_MACE);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/melee_weapon"), Tags.ENCHANTABLE_MELEE_WEAPON);
             registry.registerTag(NamespacedKey.minecraft("enchantable/mining"), Tags.ENCHANTABLE_MINING);
             registry.registerTag(NamespacedKey.minecraft("enchantable/mining_loot"), Tags.ENCHANTABLE_MINING_LOOT);
             registry.registerTag(NamespacedKey.minecraft("enchantable/sharp_weapon"), Tags.ENCHANTABLE_SHARP_WEAPON);
-            registry.registerTag(NamespacedKey.minecraft("enchantable/sword"), Tags.ENCHANTABLE_SWORD);
+            registry.registerTag(NamespacedKey.minecraft("enchantable/sweeping"), Tags.ENCHANTABLE_SWEEPING);
             registry.registerTag(NamespacedKey.minecraft("enchantable/trident"), Tags.ENCHANTABLE_TRIDENT);
             registry.registerTag(NamespacedKey.minecraft("enchantable/vanishing"), Tags.ENCHANTABLE_VANISHING);
             registry.registerTag(NamespacedKey.minecraft("enchantable/weapon"), Tags.ENCHANTABLE_WEAPON);
@@ -5696,6 +6141,9 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("gold_ores"), Tags.GOLD_ORES);
             registry.registerTag(NamespacedKey.minecraft("gold_tool_materials"), Tags.GOLD_TOOL_MATERIALS);
             registry.registerTag(NamespacedKey.minecraft("hanging_signs"), Tags.HANGING_SIGNS);
+            registry.registerTag(NamespacedKey.minecraft("happy_ghast_food"), Tags.HAPPY_GHAST_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("happy_ghast_tempt_items"), Tags.HAPPY_GHAST_TEMPT_ITEMS);
+            registry.registerTag(NamespacedKey.minecraft("harnesses"), Tags.HARNESSES);
             registry.registerTag(NamespacedKey.minecraft("head_armor"), Tags.HEAD_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("hoes"), Tags.HOES);
             registry.registerTag(NamespacedKey.minecraft("hoglin_food"), Tags.HOGLIN_FOOD);
@@ -5705,10 +6153,12 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("iron_ores"), Tags.IRON_ORES);
             registry.registerTag(NamespacedKey.minecraft("iron_tool_materials"), Tags.IRON_TOOL_MATERIALS);
             registry.registerTag(NamespacedKey.minecraft("jungle_logs"), Tags.JUNGLE_LOGS);
+            registry.registerTag(NamespacedKey.minecraft("lanterns"), Tags.LANTERNS);
             registry.registerTag(NamespacedKey.minecraft("lapis_ores"), Tags.LAPIS_ORES);
             registry.registerTag(NamespacedKey.minecraft("leaves"), Tags.LEAVES);
             registry.registerTag(NamespacedKey.minecraft("lectern_books"), Tags.LECTERN_BOOKS);
             registry.registerTag(NamespacedKey.minecraft("leg_armor"), Tags.LEG_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("lightning_rods"), Tags.LIGHTNING_RODS);
             registry.registerTag(NamespacedKey.minecraft("llama_food"), Tags.LLAMA_FOOD);
             registry.registerTag(NamespacedKey.minecraft("llama_tempt_items"), Tags.LLAMA_TEMPT_ITEMS);
             registry.registerTag(NamespacedKey.minecraft("logs"), Tags.LOGS);
@@ -5716,6 +6166,9 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("mangrove_logs"), Tags.MANGROVE_LOGS);
             registry.registerTag(NamespacedKey.minecraft("map_invisibility_equipment"), Tags.MAP_INVISIBILITY_EQUIPMENT);
             registry.registerTag(NamespacedKey.minecraft("meat"), Tags.MEAT);
+            registry.registerTag(NamespacedKey.minecraft("nautilus_bucket_food"), Tags.NAUTILUS_BUCKET_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("nautilus_food"), Tags.NAUTILUS_FOOD);
+            registry.registerTag(NamespacedKey.minecraft("nautilus_taming_items"), Tags.NAUTILUS_TAMING_ITEMS);
             registry.registerTag(NamespacedKey.minecraft("netherite_tool_materials"), Tags.NETHERITE_TOOL_MATERIALS);
             registry.registerTag(NamespacedKey.minecraft("non_flammable_wood"), Tags.NON_FLAMMABLE_WOOD);
             registry.registerTag(NamespacedKey.minecraft("noteblock_top_instruments"), Tags.NOTEBLOCK_TOP_INSTRUMENTS);
@@ -5739,6 +6192,7 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("rails"), Tags.RAILS);
             registry.registerTag(NamespacedKey.minecraft("redstone_ores"), Tags.REDSTONE_ORES);
             registry.registerTag(NamespacedKey.minecraft("repairs_chain_armor"), Tags.REPAIRS_CHAIN_ARMOR);
+            registry.registerTag(NamespacedKey.minecraft("repairs_copper_armor"), Tags.REPAIRS_COPPER_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("repairs_diamond_armor"), Tags.REPAIRS_DIAMOND_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("repairs_gold_armor"), Tags.REPAIRS_GOLD_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("repairs_iron_armor"), Tags.REPAIRS_IRON_ARMOR);
@@ -5748,6 +6202,7 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("repairs_wolf_armor"), Tags.REPAIRS_WOLF_ARMOR);
             registry.registerTag(NamespacedKey.minecraft("sand"), Tags.SAND);
             registry.registerTag(NamespacedKey.minecraft("saplings"), Tags.SAPLINGS);
+            registry.registerTag(NamespacedKey.minecraft("shearable_from_copper_golem"), Tags.SHEARABLE_FROM_COPPER_GOLEM);
             registry.registerTag(NamespacedKey.minecraft("sheep_food"), Tags.SHEEP_FOOD);
             registry.registerTag(NamespacedKey.minecraft("shovels"), Tags.SHOVELS);
             registry.registerTag(NamespacedKey.minecraft("shulker_boxes"), Tags.SHULKER_BOXES);
@@ -5759,6 +6214,7 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("smelts_to_glass"), Tags.SMELTS_TO_GLASS);
             registry.registerTag(NamespacedKey.minecraft("sniffer_food"), Tags.SNIFFER_FOOD);
             registry.registerTag(NamespacedKey.minecraft("soul_fire_base_blocks"), Tags.SOUL_FIRE_BASE_BLOCKS);
+            registry.registerTag(NamespacedKey.minecraft("spears"), Tags.SPEARS);
             registry.registerTag(NamespacedKey.minecraft("spruce_logs"), Tags.SPRUCE_LOGS);
             registry.registerTag(NamespacedKey.minecraft("stairs"), Tags.STAIRS);
             registry.registerTag(NamespacedKey.minecraft("stone_bricks"), Tags.STONE_BRICKS);
@@ -5784,12 +6240,14 @@ sealed class Items permits Item {
             registry.registerTag(NamespacedKey.minecraft("wooden_doors"), Tags.WOODEN_DOORS);
             registry.registerTag(NamespacedKey.minecraft("wooden_fences"), Tags.WOODEN_FENCES);
             registry.registerTag(NamespacedKey.minecraft("wooden_pressure_plates"), Tags.WOODEN_PRESSURE_PLATES);
+            registry.registerTag(NamespacedKey.minecraft("wooden_shelves"), Tags.WOODEN_SHELVES);
             registry.registerTag(NamespacedKey.minecraft("wooden_slabs"), Tags.WOODEN_SLABS);
             registry.registerTag(NamespacedKey.minecraft("wooden_stairs"), Tags.WOODEN_STAIRS);
             registry.registerTag(NamespacedKey.minecraft("wooden_tool_materials"), Tags.WOODEN_TOOL_MATERIALS);
             registry.registerTag(NamespacedKey.minecraft("wooden_trapdoors"), Tags.WOODEN_TRAPDOORS);
             registry.registerTag(NamespacedKey.minecraft("wool"), Tags.WOOL);
             registry.registerTag(NamespacedKey.minecraft("wool_carpets"), Tags.WOOL_CARPETS);
+            registry.registerTag(NamespacedKey.minecraft("zombie_horse_food"), Tags.ZOMBIE_HORSE_FOOD);
         });
     }
 
@@ -5824,6 +6282,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_axe"))
                 .resource(NamespacedKey.parse("minecraft:wooden_axe"))
                 .resource(NamespacedKey.parse("minecraft:iron_axe"))
+                .resource(NamespacedKey.parse("minecraft:copper_axe"))
                 .build();
 
         public static final Tag<Item> AXOLOTL_FOOD = Tag.builder(RegistryKey.ITEM)
@@ -5852,6 +6311,18 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:green_banner"))
                 .resource(NamespacedKey.parse("minecraft:red_banner"))
                 .resource(NamespacedKey.parse("minecraft:black_banner"))
+                .build();
+
+        public static final Tag<Item> BARS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_bars"))
+                .resource(NamespacedKey.parse("minecraft:copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_bars"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_bars"))
                 .build();
 
         public static final Tag<Item> BEACON_PAYMENT_ITEMS = Tag.builder(RegistryKey.ITEM)
@@ -5989,6 +6460,10 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:cactus"))
                 .build();
 
+        public static final Tag<Item> CAMEL_HUSK_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:rabbit_foot"))
+                .build();
+
         public static final Tag<Item> CANDLES = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:candle"))
                 .resource(NamespacedKey.parse("minecraft:white_candle"))
@@ -6014,6 +6489,18 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:salmon"))
                 .build();
 
+        public static final Tag<Item> CHAINS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:iron_chain"))
+                .resource(NamespacedKey.parse("minecraft:copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_chain"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_chain"))
+                .build();
+
         public static final Tag<Item> CHERRY_LOGS = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:cherry_log"))
                 .resource(NamespacedKey.parse("minecraft:cherry_wood"))
@@ -6023,6 +6510,7 @@ sealed class Items permits Item {
 
         public static final Tag<Item> CHEST_ARMOR = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:leather_chestplate"))
+                .resource(NamespacedKey.parse("minecraft:copper_chestplate"))
                 .resource(NamespacedKey.parse("minecraft:chainmail_chestplate"))
                 .resource(NamespacedKey.parse("minecraft:golden_chestplate"))
                 .resource(NamespacedKey.parse("minecraft:iron_chestplate"))
@@ -6059,6 +6547,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_pickaxe"))
                 .resource(NamespacedKey.parse("minecraft:stone_pickaxe"))
                 .resource(NamespacedKey.parse("minecraft:wooden_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:copper_pickaxe"))
                 .build();
 
         public static final Tag<Item> COAL_ORES = Tag.builder(RegistryKey.ITEM)
@@ -6082,9 +6571,46 @@ sealed class Items permits Item {
                 .tag(NamespacedKey.parse("minecraft:wart_blocks"))
                 .build();
 
+        public static final Tag<Item> COPPER = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_block"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_block"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper"))
+                .build();
+
+        public static final Tag<Item> COPPER_CHESTS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_chest"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_chest"))
+                .build();
+
+        public static final Tag<Item> COPPER_GOLEM_STATUES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_golem_statue"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_golem_statue"))
+                .build();
+
         public static final Tag<Item> COPPER_ORES = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:copper_ore"))
                 .resource(NamespacedKey.parse("minecraft:deepslate_copper_ore"))
+                .build();
+
+        public static final Tag<Item> COPPER_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_ingot"))
                 .build();
 
         public static final Tag<Item> COW_FOOD = Tag.builder(RegistryKey.ITEM)
@@ -6265,6 +6791,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:carrot_on_a_stick"))
                 .resource(NamespacedKey.parse("minecraft:warped_fungus_on_a_stick"))
                 .resource(NamespacedKey.parse("minecraft:mace"))
+                .tag(NamespacedKey.parse("minecraft:spears"))
                 .build();
 
         public static final Tag<Item> ENCHANTABLE_EQUIPPABLE = Tag.builder(RegistryKey.ITEM)
@@ -6278,7 +6805,7 @@ sealed class Items permits Item {
                 .build();
 
         public static final Tag<Item> ENCHANTABLE_FIRE_ASPECT = Tag.builder(RegistryKey.ITEM)
-                .tag(NamespacedKey.parse("minecraft:enchantable/sword"))
+                .tag(NamespacedKey.parse("minecraft:enchantable/melee_weapon"))
                 .resource(NamespacedKey.parse("minecraft:mace"))
                 .build();
 
@@ -6298,8 +6825,17 @@ sealed class Items permits Item {
                 .tag(NamespacedKey.parse("minecraft:leg_armor"))
                 .build();
 
+        public static final Tag<Item> ENCHANTABLE_LUNGE = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:spears"))
+                .build();
+
         public static final Tag<Item> ENCHANTABLE_MACE = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:mace"))
+                .build();
+
+        public static final Tag<Item> ENCHANTABLE_MELEE_WEAPON = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:swords"))
+                .tag(NamespacedKey.parse("minecraft:spears"))
                 .build();
 
         public static final Tag<Item> ENCHANTABLE_MINING = Tag.builder(RegistryKey.ITEM)
@@ -6318,11 +6854,11 @@ sealed class Items permits Item {
                 .build();
 
         public static final Tag<Item> ENCHANTABLE_SHARP_WEAPON = Tag.builder(RegistryKey.ITEM)
-                .tag(NamespacedKey.parse("minecraft:swords"))
+                .tag(NamespacedKey.parse("minecraft:enchantable/melee_weapon"))
                 .tag(NamespacedKey.parse("minecraft:axes"))
                 .build();
 
-        public static final Tag<Item> ENCHANTABLE_SWORD = Tag.builder(RegistryKey.ITEM)
+        public static final Tag<Item> ENCHANTABLE_SWEEPING = Tag.builder(RegistryKey.ITEM)
                 .tag(NamespacedKey.parse("minecraft:swords"))
                 .build();
 
@@ -6391,6 +6927,7 @@ sealed class Items permits Item {
 
         public static final Tag<Item> FOOT_ARMOR = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:leather_boots"))
+                .resource(NamespacedKey.parse("minecraft:copper_boots"))
                 .resource(NamespacedKey.parse("minecraft:chainmail_boots"))
                 .resource(NamespacedKey.parse("minecraft:golden_boots"))
                 .resource(NamespacedKey.parse("minecraft:iron_boots"))
@@ -6453,8 +6990,37 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:bamboo_hanging_sign"))
                 .build();
 
+        public static final Tag<Item> HAPPY_GHAST_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:snowball"))
+                .build();
+
+        public static final Tag<Item> HAPPY_GHAST_TEMPT_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:happy_ghast_food"))
+                .tag(NamespacedKey.parse("minecraft:harnesses"))
+                .build();
+
+        public static final Tag<Item> HARNESSES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:white_harness"))
+                .resource(NamespacedKey.parse("minecraft:orange_harness"))
+                .resource(NamespacedKey.parse("minecraft:magenta_harness"))
+                .resource(NamespacedKey.parse("minecraft:light_blue_harness"))
+                .resource(NamespacedKey.parse("minecraft:yellow_harness"))
+                .resource(NamespacedKey.parse("minecraft:lime_harness"))
+                .resource(NamespacedKey.parse("minecraft:pink_harness"))
+                .resource(NamespacedKey.parse("minecraft:gray_harness"))
+                .resource(NamespacedKey.parse("minecraft:light_gray_harness"))
+                .resource(NamespacedKey.parse("minecraft:cyan_harness"))
+                .resource(NamespacedKey.parse("minecraft:purple_harness"))
+                .resource(NamespacedKey.parse("minecraft:blue_harness"))
+                .resource(NamespacedKey.parse("minecraft:brown_harness"))
+                .resource(NamespacedKey.parse("minecraft:green_harness"))
+                .resource(NamespacedKey.parse("minecraft:red_harness"))
+                .resource(NamespacedKey.parse("minecraft:black_harness"))
+                .build();
+
         public static final Tag<Item> HEAD_ARMOR = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:leather_helmet"))
+                .resource(NamespacedKey.parse("minecraft:copper_helmet"))
                 .resource(NamespacedKey.parse("minecraft:chainmail_helmet"))
                 .resource(NamespacedKey.parse("minecraft:golden_helmet"))
                 .resource(NamespacedKey.parse("minecraft:iron_helmet"))
@@ -6470,6 +7036,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_hoe"))
                 .resource(NamespacedKey.parse("minecraft:wooden_hoe"))
                 .resource(NamespacedKey.parse("minecraft:iron_hoe"))
+                .resource(NamespacedKey.parse("minecraft:copper_hoe"))
                 .build();
 
         public static final Tag<Item> HOGLIN_FOOD = Tag.builder(RegistryKey.ITEM)
@@ -6481,6 +7048,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:sugar"))
                 .resource(NamespacedKey.parse("minecraft:hay_block"))
                 .resource(NamespacedKey.parse("minecraft:apple"))
+                .resource(NamespacedKey.parse("minecraft:carrot"))
                 .resource(NamespacedKey.parse("minecraft:golden_carrot"))
                 .resource(NamespacedKey.parse("minecraft:golden_apple"))
                 .resource(NamespacedKey.parse("minecraft:enchanted_golden_apple"))
@@ -6512,6 +7080,19 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:stripped_jungle_wood"))
                 .build();
 
+        public static final Tag<Item> LANTERNS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:lantern"))
+                .resource(NamespacedKey.parse("minecraft:soul_lantern"))
+                .resource(NamespacedKey.parse("minecraft:copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:exposed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:weathered_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_copper_lantern"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_copper_lantern"))
+                .build();
+
         public static final Tag<Item> LAPIS_ORES = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:lapis_ore"))
                 .resource(NamespacedKey.parse("minecraft:deepslate_lapis_ore"))
@@ -6538,11 +7119,23 @@ sealed class Items permits Item {
 
         public static final Tag<Item> LEG_ARMOR = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:leather_leggings"))
+                .resource(NamespacedKey.parse("minecraft:copper_leggings"))
                 .resource(NamespacedKey.parse("minecraft:chainmail_leggings"))
                 .resource(NamespacedKey.parse("minecraft:golden_leggings"))
                 .resource(NamespacedKey.parse("minecraft:iron_leggings"))
                 .resource(NamespacedKey.parse("minecraft:diamond_leggings"))
                 .resource(NamespacedKey.parse("minecraft:netherite_leggings"))
+                .build();
+
+        public static final Tag<Item> LIGHTNING_RODS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:exposed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:weathered_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:oxidized_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_exposed_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_weathered_lightning_rod"))
+                .resource(NamespacedKey.parse("minecraft:waxed_oxidized_lightning_rod"))
                 .build();
 
         public static final Tag<Item> LLAMA_FOOD = Tag.builder(RegistryKey.ITEM)
@@ -6597,6 +7190,23 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:rotten_flesh"))
                 .build();
 
+        public static final Tag<Item> NAUTILUS_BUCKET_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:pufferfish_bucket"))
+                .resource(NamespacedKey.parse("minecraft:cod_bucket"))
+                .resource(NamespacedKey.parse("minecraft:salmon_bucket"))
+                .resource(NamespacedKey.parse("minecraft:tropical_fish_bucket"))
+                .build();
+
+        public static final Tag<Item> NAUTILUS_FOOD = Tag.builder(RegistryKey.ITEM)
+                .tag(NamespacedKey.parse("minecraft:fishes"))
+                .tag(NamespacedKey.parse("minecraft:nautilus_bucket_food"))
+                .build();
+
+        public static final Tag<Item> NAUTILUS_TAMING_ITEMS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:pufferfish_bucket"))
+                .resource(NamespacedKey.parse("minecraft:pufferfish"))
+                .build();
+
         public static final Tag<Item> NETHERITE_TOOL_MATERIALS = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:netherite_ingot"))
                 .build();
@@ -6632,6 +7242,8 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:warped_sign"))
                 .resource(NamespacedKey.parse("minecraft:warped_hanging_sign"))
                 .resource(NamespacedKey.parse("minecraft:crimson_hanging_sign"))
+                .resource(NamespacedKey.parse("minecraft:warped_shelf"))
+                .resource(NamespacedKey.parse("minecraft:crimson_shelf"))
                 .build();
 
         public static final Tag<Item> NOTEBLOCK_TOP_INSTRUMENTS = Tag.builder(RegistryKey.ITEM)
@@ -6692,6 +7304,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_pickaxe"))
                 .resource(NamespacedKey.parse("minecraft:wooden_pickaxe"))
                 .resource(NamespacedKey.parse("minecraft:iron_pickaxe"))
+                .resource(NamespacedKey.parse("minecraft:copper_pickaxe"))
                 .build();
 
         public static final Tag<Item> PIG_FOOD = Tag.builder(RegistryKey.ITEM)
@@ -6722,7 +7335,9 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:golden_leggings"))
                 .resource(NamespacedKey.parse("minecraft:golden_boots"))
                 .resource(NamespacedKey.parse("minecraft:golden_horse_armor"))
+                .resource(NamespacedKey.parse("minecraft:golden_nautilus_armor"))
                 .resource(NamespacedKey.parse("minecraft:golden_sword"))
+                .resource(NamespacedKey.parse("minecraft:golden_spear"))
                 .resource(NamespacedKey.parse("minecraft:golden_pickaxe"))
                 .resource(NamespacedKey.parse("minecraft:golden_shovel"))
                 .resource(NamespacedKey.parse("minecraft:golden_axe"))
@@ -6733,6 +7348,7 @@ sealed class Items permits Item {
 
         public static final Tag<Item> PIGLIN_PREFERRED_WEAPONS = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:crossbow"))
+                .resource(NamespacedKey.parse("minecraft:golden_spear"))
                 .build();
 
         public static final Tag<Item> PIGLIN_REPELLENTS = Tag.builder(RegistryKey.ITEM)
@@ -6789,6 +7405,10 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:iron_ingot"))
                 .build();
 
+        public static final Tag<Item> REPAIRS_COPPER_ARMOR = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:copper_ingot"))
+                .build();
+
         public static final Tag<Item> REPAIRS_DIAMOND_ARMOR = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:diamond"))
                 .build();
@@ -6821,7 +7441,6 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:sand"))
                 .resource(NamespacedKey.parse("minecraft:red_sand"))
                 .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
-                .resource(NamespacedKey.parse("minecraft:suspicious_sand"))
                 .build();
 
         public static final Tag<Item> SAPLINGS = Tag.builder(RegistryKey.ITEM)
@@ -6838,6 +7457,10 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:cherry_sapling"))
                 .build();
 
+        public static final Tag<Item> SHEARABLE_FROM_COPPER_GOLEM = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:poppy"))
+                .build();
+
         public static final Tag<Item> SHEEP_FOOD = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:wheat"))
                 .build();
@@ -6849,6 +7472,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_shovel"))
                 .resource(NamespacedKey.parse("minecraft:wooden_shovel"))
                 .resource(NamespacedKey.parse("minecraft:iron_shovel"))
+                .resource(NamespacedKey.parse("minecraft:copper_shovel"))
                 .build();
 
         public static final Tag<Item> SHULKER_BOXES = Tag.builder(RegistryKey.ITEM)
@@ -6987,6 +7611,16 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:soul_soil"))
                 .build();
 
+        public static final Tag<Item> SPEARS = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:diamond_spear"))
+                .resource(NamespacedKey.parse("minecraft:stone_spear"))
+                .resource(NamespacedKey.parse("minecraft:golden_spear"))
+                .resource(NamespacedKey.parse("minecraft:netherite_spear"))
+                .resource(NamespacedKey.parse("minecraft:wooden_spear"))
+                .resource(NamespacedKey.parse("minecraft:iron_spear"))
+                .resource(NamespacedKey.parse("minecraft:copper_spear"))
+                .build();
+
         public static final Tag<Item> SPRUCE_LOGS = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:spruce_log"))
                 .resource(NamespacedKey.parse("minecraft:spruce_wood"))
@@ -7084,6 +7718,7 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:netherite_sword"))
                 .resource(NamespacedKey.parse("minecraft:wooden_sword"))
                 .resource(NamespacedKey.parse("minecraft:iron_sword"))
+                .resource(NamespacedKey.parse("minecraft:copper_sword"))
                 .build();
 
         public static final Tag<Item> TERRACOTTA = Tag.builder(RegistryKey.ITEM)
@@ -7277,6 +7912,21 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:cherry_pressure_plate"))
                 .build();
 
+        public static final Tag<Item> WOODEN_SHELVES = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:acacia_shelf"))
+                .resource(NamespacedKey.parse("minecraft:bamboo_shelf"))
+                .resource(NamespacedKey.parse("minecraft:birch_shelf"))
+                .resource(NamespacedKey.parse("minecraft:cherry_shelf"))
+                .resource(NamespacedKey.parse("minecraft:crimson_shelf"))
+                .resource(NamespacedKey.parse("minecraft:dark_oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:jungle_shelf"))
+                .resource(NamespacedKey.parse("minecraft:mangrove_shelf"))
+                .resource(NamespacedKey.parse("minecraft:oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:pale_oak_shelf"))
+                .resource(NamespacedKey.parse("minecraft:spruce_shelf"))
+                .resource(NamespacedKey.parse("minecraft:warped_shelf"))
+                .build();
+
         public static final Tag<Item> WOODEN_SLABS = Tag.builder(RegistryKey.ITEM)
                 .resource(NamespacedKey.parse("minecraft:oak_slab"))
                 .resource(NamespacedKey.parse("minecraft:spruce_slab"))
@@ -7362,6 +8012,10 @@ sealed class Items permits Item {
                 .resource(NamespacedKey.parse("minecraft:green_carpet"))
                 .resource(NamespacedKey.parse("minecraft:red_carpet"))
                 .resource(NamespacedKey.parse("minecraft:black_carpet"))
+                .build();
+
+        public static final Tag<Item> ZOMBIE_HORSE_FOOD = Tag.builder(RegistryKey.ITEM)
+                .resource(NamespacedKey.parse("minecraft:red_mushroom"))
                 .build();
 
         private Tags() {

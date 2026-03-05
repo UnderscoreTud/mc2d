@@ -14,7 +14,7 @@ import java.util.*;
 
 import static me.tud.mc2d.generators.instruction.Instructions.*;
 
-final class ComponentInstructions {
+public final class ComponentInstructions {
 
     private static final Map<String, String> KEY_TO_COMPONENT = new HashMap<>();
 
@@ -47,7 +47,7 @@ final class ComponentInstructions {
                     .instruction("action", (_, _, out) -> out.add("$T.SHOW_TEXT", HoverEvent.Action.class))
                     .instruction("value", (ctx, node, out) -> {
                         out.add("new $T(", HoverEvent.Text.class);
-                        Instructions.COMPONENT.apply(ctx, node, out);
+                        ComponentInstructions.COMPONENT.apply(ctx, node, out);
                         out.add(")");
                     })
                     .build())
@@ -56,11 +56,11 @@ final class ComponentInstructions {
                     .instruction("action", (_, _, out) -> out.add("$T.SHOW_ITEM", HoverEvent.Action.class))
                     .instruction("id", (ctx, node, out) -> {
                         out.add("new $T(", HoverEvent.Item.class);
-                        Instructions.STRING.apply(ctx, node, out);
+                        STRING.apply(ctx, node, out);
                     })
                     .instruction("count", INTEGER)
                     .instruction("components", (ctx, node, out) -> {
-                        Instructions.COMPONENT.apply(ctx, node, out);
+                        ComponentInstructions.COMPONENT.apply(ctx, node, out);
                         out.add(".toString())");
                     })
                     .build())
@@ -69,12 +69,12 @@ final class ComponentInstructions {
                     .instruction("action", (_, _, out) -> out.add("$T.SHOW_ENTITY", HoverEvent.Action.class))
                     .instruction("id", (ctx, node, out) -> {
                         out.add("new $T($T.fromString(", HoverEvent.Entity.class, UUID.class);
-                        Instructions.STRING.apply(ctx, node, out);
+                        STRING.apply(ctx, node, out);
                         out.add(")");
                     })
                     .instruction("type", STRING)
                     .instruction("name", (ctx, node, out) -> {
-                        Instructions.COMPONENT.apply(ctx, node, out);
+                        ComponentInstructions.COMPONENT.apply(ctx, node, out);
                         out.add(")");
                     })
                     .build())
@@ -93,9 +93,9 @@ final class ComponentInstructions {
             .instruction("clickEvent", CLICK_EVENT)
             .instruction("hoverEvent", HOVER_EVENT)
             .instruction("font", STRING)
-            .namelessInstruction("extra", () -> iterate((ctx, node, out) -> {
+            .namelessInstruction("extra", iterate((ctx, node, out) -> {
                 out.add(".append(");
-                Instructions.COMPONENT.apply(ctx, node, out);
+                ComponentInstructions.COMPONENT.apply(ctx, node, out);
                 out.add(")\n");
             }))
             .build();
@@ -121,7 +121,7 @@ final class ComponentInstructions {
                 out.add("$T.of($S).modify()\n", TranslationComponent.class, node.get("translate").asText()).indent().indent();
                 if (node.has("with")) {
                     out.add(".arguments(");
-                    list(Instructions.COMPONENT).apply(ctx, node.get("with"), out);
+                    list(ComponentInstructions.COMPONENT).apply(ctx, node.get("with"), out);
                     out.add(")\n");
                 }
                 if (node.has("fallback"))

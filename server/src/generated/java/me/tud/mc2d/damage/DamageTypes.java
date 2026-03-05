@@ -248,6 +248,12 @@ sealed class DamageTypes permits DamageType {
             .exhaustion(0.0f)
             .build();
 
+    public static final DamageType SPEAR = DamageType.builder()
+            .messageID("spear")
+            .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
+            .exhaustion(0.1f)
+            .build();
+
     public static final DamageType SPIT = DamageType.builder()
             .messageID("mob")
             .scaling(DamageType.Scaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER)
@@ -361,6 +367,7 @@ sealed class DamageTypes permits DamageType {
             PLAYER_ATTACK,
             PLAYER_EXPLOSION,
             SONIC_BOOM,
+            SPEAR,
             SPIT,
             STALAGMITE,
             STARVE,
@@ -423,6 +430,7 @@ sealed class DamageTypes permits DamageType {
             registry.register(NamespacedKey.minecraft("player_attack"), DamageType.PLAYER_ATTACK);
             registry.register(NamespacedKey.minecraft("player_explosion"), DamageType.PLAYER_EXPLOSION);
             registry.register(NamespacedKey.minecraft("sonic_boom"), DamageType.SONIC_BOOM);
+            registry.register(NamespacedKey.minecraft("spear"), DamageType.SPEAR);
             registry.register(NamespacedKey.minecraft("spit"), DamageType.SPIT);
             registry.register(NamespacedKey.minecraft("stalagmite"), DamageType.STALAGMITE);
             registry.register(NamespacedKey.minecraft("starve"), DamageType.STARVE);
@@ -629,6 +637,7 @@ sealed class DamageTypes permits DamageType {
 
         public static final Tag<DamageType> IS_PLAYER_ATTACK = Tag.builder(RegistryKey.DAMAGE_TYPE)
                 .resource(NamespacedKey.parse("minecraft:player_attack"))
+                .resource(NamespacedKey.parse("minecraft:spear"))
                 .resource(NamespacedKey.parse("minecraft:mace_smash"))
                 .build();
 
@@ -684,6 +693,7 @@ sealed class DamageTypes permits DamageType {
                 .resource(NamespacedKey.parse("minecraft:outside_border"))
                 .resource(NamespacedKey.parse("minecraft:generic_kill"))
                 .resource(NamespacedKey.parse("minecraft:campfire"))
+                .resource(NamespacedKey.parse("minecraft:spear"))
                 .build();
 
         public static final Tag<DamageType> PANIC_CAUSES = Tag.builder(RegistryKey.DAMAGE_TYPE)
