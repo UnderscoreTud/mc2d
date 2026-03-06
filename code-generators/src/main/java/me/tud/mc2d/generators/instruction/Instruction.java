@@ -6,6 +6,8 @@ import me.tud.mc2d.generators.instruction.exception.InstructionException;
 
 public interface Instruction {
 
+    Instruction IGNORE = (_, _, _) -> {};
+
     void apply(InstructionContext ctx, JsonNode node, CodeBlock.Builder out) throws InstructionException;
 
     default void pushAndApply(InstructionContext ctx, String key, JsonNode node, CodeBlock.Builder out) throws InstructionException {
@@ -17,8 +19,17 @@ public interface Instruction {
         }
     }
 
+    default Instruction omittable() {
+        return (Omittable) (ctx, node, out) -> {
+            try {
+                if (!node.isMissingNode())
+                    apply(ctx, node, out);
+            } catch (InstructionException _) {}
+        };
+    }
+
     default Instruction orElse(Instruction fallback) {
-        return (OptionalInstruction) (ctx, node, out) -> {
+        return (Fallback) (ctx, node, out) -> {
             try {
                 if (!node.isMissingNode()) {
                     apply(ctx, node, out);
@@ -46,5 +57,9 @@ public interface Instruction {
             out.add(format, args);
         };
     }
+
+    interface Omittable extends Instruction {}
+
+    interface Fallback extends Instruction {}
 
 }

@@ -14,12 +14,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class DataDrivenRegistryGenerator extends RegistryGenerator {
+public class DataDrivenRegistryGenerator extends RegistryGenerator<DataDrivenRegistryGenerator.Entry> {
 
     private final Structure structure;
 
     protected DataDrivenRegistryGenerator(String id, Structure structure) {
-        super(id, "/" + id, Imports.DATA_DRIVEN_REGISTRY, structure.source());
+        this(id, id, structure);
+    }
+
+    protected DataDrivenRegistryGenerator(String id, String resource, Structure structure) {
+        super(id, "/" + resource, Imports.DATA_DRIVEN_REGISTRY, structure.source());
         this.structure = structure;
     }
 

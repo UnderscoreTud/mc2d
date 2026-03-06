@@ -3,6 +3,7 @@ package me.tud.mc2d.generators.instruction;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
 import me.tud.mc2d.generators.instruction.exception.InstructionException;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -69,10 +70,14 @@ public final class InstructionContext {
         return new InstructionException(pointer(), contextString(), "Expected " + expected + ", got " + actual);
     }
 
-    public JsonNode expect(JsonNode node, JsonNodeType type) {
-        if (node.getNodeType() != type)
-            throw expected(type.name(), node);
-        return node;
+    public JsonNode expect(JsonNode node, JsonNodeType... types) {
+        for (JsonNodeType type : types) {
+            if (node.getNodeType() == type)
+                return node;
+        }
+        if (types.length == 1)
+            throw expected(types[0].name(), node);
+        throw expected(StringUtils.join(types, ", "), node);
     }
 
     private static String escape(String s) {

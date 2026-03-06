@@ -61,6 +61,11 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generateBiomes",
+        "me.tud.mc2d.generators.biomes.BiomesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateBlocks",
         "me.tud.mc2d.generators.blocks.BlocksGenerator",
         genOutDir

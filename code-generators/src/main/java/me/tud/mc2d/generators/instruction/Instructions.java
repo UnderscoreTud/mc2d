@@ -26,15 +26,27 @@ public final class Instructions {
             TAG_NAMESPACED_KEY = (ctx, node, out) -> out.add("$T.parse($S)", Imports.NAMESPACED_KEY, validateTag(ctx, node.asText())),
             ITEM = _enum(Imports.ITEM, node -> StringUtils.cleanNamespacedKey(node.asText().toUpperCase(Locale.ENGLISH)));
 
-    public static final Instruction COLOR = (ctx, node, out) -> {
-        if (!node.isTextual())
-            throw ctx.expected("text", node);
+    private static final Instruction COLOR_TEXT = (_, node, out) -> {
         String value = node.asText();
         if (value.charAt(0) == '#') {
             out.add("new $T($S)", HexColor.class, value);
             return;
         }
         out.add("$T.byName($S).get()", ChatColor.class, value);
+    };
+
+    private static final Instruction COLOR_NUM = (_, node, out) -> {
+        int value = node.asInt();
+        out.add("new $T($L)", HexColor.class, value);
+    };
+
+    public static final Instruction COLOR = (ctx, node, out) -> {
+        ctx.expect(node, JsonNodeType.NUMBER, JsonNodeType.STRING);
+        if (node.isTextual()) {
+            COLOR_TEXT.apply(ctx, node, out);
+        } else {
+            COLOR_NUM.apply(ctx, node, out);
+        }
     };
 
     public static final Instruction INT_PROVIDER = IntProviderInstructions.INT_PROVIDER;

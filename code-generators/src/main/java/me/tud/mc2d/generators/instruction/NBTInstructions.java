@@ -27,7 +27,7 @@ public final class NBTInstructions {
         (node.isInt() ? tag(NBTInt.class, INTEGER) : tag(NBTDouble.class, DOUBLE)).apply(ctx, node, out);
     };
 
-    public static final Instruction LIST_TAG = tag(NBTCompound.class, listOf(NBT));
+    public static final Instruction LIST_TAG = tag(NBTList.class, listOf(NBT));
 
     public static final Instruction COMPOUND_TAG = tag(NBTCompound.class, mapOf(STRING, NBT));
 

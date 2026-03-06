@@ -64,7 +64,7 @@ public class RegistryAccess {
         access.register(RegistryKey.ARMOR_TRIM_MATERIAL, ArmorTrimMaterial.createDefaultRegistry(server));
         access.register(RegistryKey.ARMOR_TRIM_PATTERN, ArmorTrimPattern.createDefaultRegistry(server));
         access.register(RegistryKey.BANNER_PATTERN, BannerPattern.createDefaultRegistry(server));
-        access.dataDriven(RegistryKey.BIOME, Map.entry(NamespacedKey.minecraft("plains"), Biome.PLAINS));
+        access.register(RegistryKey.BIOME, Biome.createDefaultRegistry(server));
         access.register(RegistryKey.DAMAGE_TYPE, DamageType.createDefaultRegistry(server));
         access.register(RegistryKey.DIMENSION_TYPE, DimensionType.createDefaultRegistry(server));
         access.dataDriven(RegistryKey.CAT_VARIANT, Map.entry(NamespacedKey.minecraft("tabby"), MobVariant.CAT_TABBY));

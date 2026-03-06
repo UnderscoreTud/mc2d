@@ -8,6 +8,7 @@ import me.tud.mc2d.generators.instruction.Structure;
 import org.machinemc.nbt.NBTCompound;
 
 import static me.tud.mc2d.generators.instruction.Instructions.*;
+import static me.tud.mc2d.generators.instruction.NBTInstructions.NBT;
 
 public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
 
@@ -26,7 +27,7 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("infiniburn", Instructions.tag("block"))
             .instruction("skybox", _enum(Imports.DIMENSION_TYPE.nestedClass("Skybox")))
             .instruction("cardinal_light", _enum(Imports.DIMENSION_TYPE.nestedClass("CardinalLight")))
-            .instruction("attributes", NBTInstructions.COMPOUND_TAG)
+            .instruction("attributes", NBT)
             .ignore("timelines")
             .build();
 
