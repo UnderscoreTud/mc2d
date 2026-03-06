@@ -18,7 +18,13 @@ import java.util.Set;
 public class PacketDecoder extends ByteToMessageDecoder {
 
     private static final Packet.Direction DIRECTION = Packet.Direction.SERVERBOUND;
-    private static final Set<Class<?>> LOG_IGNORE = Set.of(ServerboundPlayClientTickEnd.class);
+    private static final Set<Object> LOG_IGNORE = Set.of(
+            ServerboundPlayClientTickEnd.class,
+            0x1D, // move_player_pos
+            0x1E, // move_player_pos_rot
+            0x1F, // move_player_rot
+            0x2A  // player_input
+    );
 
     private final PacketFactory packetFactory;
     private final Supplier<ConnectionState> state;
@@ -35,21 +41,25 @@ public class PacketDecoder extends ByteToMessageDecoder {
                 System.out.println("INCOMING: " + packet);
             out.add(packet);
         } catch (Exception e) {
-            System.out.println(format(e.getMessage()));
+            int id = id(e.getMessage());
+            if (id == -1)
+                throw e;
+
+            if (!LOG_IGNORE.contains(id))
+                System.out.println("INCOMING: " + format(id) + " (unknown)");
         }
     }
 
-    private static String format(String message) {
+    private static int id(String message) {
         int from = message.indexOf("id ");
         if (from == -1)
-            return message;
+            return -1;
         from += 3;
         int to = message.indexOf(" ", from);
-        String id = id(Integer.parseInt(message.substring(from, to)));
-        return "INCOMING: " + id + " (unknown)";
+        return Integer.parseInt(message.substring(from, to));
     }
 
-    private static String id(int id) {
+    private static String format(int id) {
         return id + String.format(" (0x%02X)", id);
     }
 
