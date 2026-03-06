@@ -25,7 +25,7 @@ public class BlocksGenerator extends BuiltInRegistry<Blocks.Entry> {
     @Override
     protected List<Blocks.Entry> entries(String resource) throws IOException {
         Blocks blocks = MAPPER.readValue(stream(resource), Blocks.class);
-        return blocks.entries(this, MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
+        return blocks.entries(MAPPER.readTree(stream(REGISTRIES_RESOURCE_LOCATION)));
     }
 
     @Override

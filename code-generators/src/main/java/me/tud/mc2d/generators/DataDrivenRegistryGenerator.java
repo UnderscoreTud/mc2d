@@ -59,7 +59,7 @@ public class DataDrivenRegistryGenerator extends RegistryGenerator<DataDrivenReg
         }
 
         @Override
-        public void writeKey(CodeBlock.Builder out) {
+        public void writeKey(ClassName source, CodeBlock.Builder out) {
             out.add("$T.minecraft($S)", Imports.NAMESPACED_KEY, name);
         }
 

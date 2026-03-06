@@ -86,6 +86,11 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
+        "generateEntityTypes",
+        "me.tud.mc2d.generators.entitytypes.EntityTypesGenerator",
+        genOutDir
+    ),
+    registerGeneratorTask(
         "generateItems",
         "me.tud.mc2d.generators.items.ItemsGenerator",
         genOutDir

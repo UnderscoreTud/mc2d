@@ -18,18 +18,15 @@ public record Items(@JsonAnySetter Map<String, Object> items) {
 
     public static  final String REGISTRY_ID = "minecraft:item";
 
-    public List<Entry> entries(ItemsGenerator generator, JsonNode registry) {
+    public List<Entry> entries(JsonNode registry) {
         IDProvider provider = IDProvider.of(registry, REGISTRY_ID);
-        CodeBlock.Builder createRegistryCode = CodeBlock.builder();
-        createRegistryCode.add("return new $T<>(server, $T.ITEMS).modify(modifiable -> {\n", Imports.BUILT_IN_REGISTRY, Imports.REGISTRY_KEY).indent();
         return items.keySet().stream()
-                .map(key -> new Entry(generator, key, provider.get(key), registry))
+                .map(key -> new Entry(key, provider.get(key), registry))
                 .sorted(Comparator.comparingInt(entry -> entry.id))
                 .toList();
     }
 
     public record Entry(
-            ItemsGenerator generator,
             String name,
             int id,
             JsonNode registry
@@ -52,8 +49,8 @@ public record Items(@JsonAnySetter Map<String, Object> items) {
         }
 
         @Override
-        public void writeKey(CodeBlock.Builder out) {
-            out.add("$T.$N.key()", generator.registrySource(), fieldName());
+        public void writeKey(ClassName source, CodeBlock.Builder out) {
+            out.add("$T.$N.key()", source, fieldName());
         }
     }
 

@@ -2,6 +2,7 @@ package me.tud.mc2d.generators;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.StreamReadFeature;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -26,9 +27,11 @@ public abstract class Generator {
 
             .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .enable(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY)
-            
+
             .disable(DeserializationFeature.ACCEPT_FLOAT_AS_INT)
             .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+
+            .enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION)
 
             .defaultPropertyInclusion(JsonInclude.Value.ALL_NON_NULL)
             .build();

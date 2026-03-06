@@ -103,7 +103,7 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
             valuesArray.add("$N,\n", entry.fieldName());
 
             createDefaultMethodBlock.add("registry.register(");
-            entry.writeKey(createDefaultMethodBlock);
+            entry.writeKey(registrySource, createDefaultMethodBlock);
             createDefaultMethodBlock.addStatement(", $T.$L)", registrySource, fieldName);
         }
 
@@ -200,7 +200,7 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
         String fieldName();
         default @Nullable TypeName fieldType() { return null; }
         void writeField(CodeBlock.Builder out);
-        void writeKey(CodeBlock.Builder out);
+        void writeKey(ClassName source, CodeBlock.Builder out);
     }
 
 }

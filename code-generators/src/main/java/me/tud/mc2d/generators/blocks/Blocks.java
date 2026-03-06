@@ -17,11 +17,10 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
 
     public static final String REGISTRY_ID = "minecraft:block";
 
-    public List<Entry> entries(BlocksGenerator generator, JsonNode registry) {
+    public List<Entry> entries(JsonNode registry) {
         IDProvider provider = IDProvider.of(registry, REGISTRY_ID);
         return blocks.entrySet().stream()
                 .map(entry -> new Entry(
-                        generator,
                         entry.getKey(),
                         provider.get(entry.getKey()),
                         entry.getValue(),
@@ -33,7 +32,6 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
     }
 
     public record Entry(
-            BlocksGenerator generator, 
             String name, 
             int id, 
             Block block, 
@@ -64,8 +62,8 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
         }
 
         @Override
-        public void writeKey(CodeBlock.Builder out) {
-            out.add("$T.$N.key()", generator.registrySource(), fieldName());
+        public void writeKey(ClassName source, CodeBlock.Builder out) {
+            out.add("$T.$N.key()", source, fieldName());
         }
     }
 

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.chat.ChatType;
 import me.tud.mc2d.damage.DamageType;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.entity.EntityType;
 import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
@@ -28,6 +29,7 @@ public class RegistryKey<T, R extends Registry<T>> {
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
 
     public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCK = create("block");
+    public static final RegistryKey<EntityType, BuiltInRegistry<EntityType>> ENTITY_TYPE = create("entity_type");
     public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEM = create("item");
 
     public static final RegistryKey<ArmorTrimMaterial, DataDrivenRegistry<ArmorTrimMaterial>> ARMOR_TRIM_MATERIAL = create("trim_material");
