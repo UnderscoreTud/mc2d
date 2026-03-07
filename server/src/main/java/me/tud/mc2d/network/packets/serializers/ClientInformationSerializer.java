@@ -5,6 +5,7 @@ import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.entity.player.MainHand;
 import me.tud.mc2d.entity.player.SkinPart;
 import me.tud.mc2d.particle.ParticleStatus;
+import me.tud.mc2d.util.Packable;
 import org.machinemc.paklet.DataVisitor;
 import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerContext;
@@ -28,7 +29,7 @@ public class ClientInformationSerializer implements Serializer<ClientInformation
         visitor.write(context, byteSerializer, clientInformation.viewDistance());
         visitor.write(context, chatModeSerializer, clientInformation.chatMode());
         visitor.write(context, booleanSerializer, clientInformation.chatColors());
-        visitor.write(context, byteSerializer, SkinPart.toBitmask(clientInformation.skinParts()));
+        visitor.write(context, byteSerializer, (byte) Packable.pack(clientInformation.skinParts()));
         visitor.write(context, mainHandSerializer, clientInformation.mainHand());
         visitor.write(context, booleanSerializer, clientInformation.enableTextFiltering());
         visitor.write(context, booleanSerializer, clientInformation.enableServerListing());
@@ -46,7 +47,7 @@ public class ClientInformationSerializer implements Serializer<ClientInformation
                 visitor.read(context, byteSerializer), // View Distance
                 ChatMode.values()[visitor.read(context, intSerializer)], // Chat Mode
                 visitor.read(context, booleanSerializer), // Chat Colors
-                SkinPart.fromBitmask(visitor.read(context, byteSerializer)), // Skin Parts
+                SkinPart.unpack(visitor.read(context, byteSerializer)), // Skin Parts
                 MainHand.values()[visitor.read(context, intSerializer)], // Main Hand
                 visitor.read(context, booleanSerializer), // Text Filtering
                 visitor.read(context, booleanSerializer), // Allow Server Listing

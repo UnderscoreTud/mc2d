@@ -6,12 +6,12 @@ import java.util.Locale;
 import java.util.Map;
 
 public enum BlockFace {
+    DOWN,
+    UP,
     NORTH,
-    EAST,
     SOUTH,
     WEST,
-    UP,
-    DOWN;
+    EAST;
 
     private static final Map<String, BlockFace> STRING_TO_BLOCK_FACE;
 

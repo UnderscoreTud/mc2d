@@ -8,6 +8,14 @@ public interface Packable {
 
     int mask();
 
+    @SafeVarargs
+    static <T extends Packable> int pack(T... array) {
+        int packed = 0;
+        for (T value : array)
+            packed |= value.mask();
+        return packed;
+    }
+
     static <T extends Packable> int pack(Collection<T> collection) {
         int packed = 0;
         for (T value : collection)

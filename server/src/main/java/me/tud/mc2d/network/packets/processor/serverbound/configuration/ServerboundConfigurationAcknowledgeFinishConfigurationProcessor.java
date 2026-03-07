@@ -1,28 +1,31 @@
 package me.tud.mc2d.network.packets.processor.serverbound.configuration;
 
 import me.tud.mc2d.chunk.Chunk;
-import me.tud.mc2d.chunk.ChunkSection;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.entity.Entity;
+import me.tud.mc2d.entity.EntityType;
+import me.tud.mc2d.entity.TextDisplay;
+import me.tud.mc2d.entity.metadata.Metadata;
 import me.tud.mc2d.entity.player.GameMode;
 import me.tud.mc2d.gameevent.GameEventType;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
-import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
-import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayGameEvent;
-import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayLogin;
-import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySynchronizePosition;
+import me.tud.mc2d.network.packets.clientbound.play.*;
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.serverbound.configuration.ServerboundConfigurationAcknowledgeFinishConfiguration;
 import me.tud.mc2d.registry.RegistryAccess;
 import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.block.Block;
-import me.tud.mc2d.world.blockdata.BlockData;
-import me.tud.mc2d.world.blockdata.GrassData;
 import org.joml.Vector3d;
+import org.machinemc.scriptive.components.TextComponent;
+import org.machinemc.scriptive.style.ChatColor;
+import org.machinemc.scriptive.style.ChatStyle;
+import org.machinemc.scriptive.style.TextFormat;
 
+import java.awt.*;
 import java.util.Collections;
-import java.util.Random;
+import java.util.UUID;
 
 public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
         implements PacketProcessor<ServerboundConfigurationAcknowledgeFinishConfiguration> {
@@ -33,7 +36,7 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
         RegistryAccess registryAccess = connection.server().context().registryAccess();
         // TODO create and spawn player
         connection.sendPacket(new ClientboundPlayLogin(
-                0,
+                Entity.nextID(),
                 false,
                 registryAccess.get(RegistryKey.DIMENSION_TYPE).keys().toArray(new NamespacedKey[0]),
                 10,
@@ -99,6 +102,15 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
                 connection.sendPacket(chunkPacket);
             }
         }
+
+        Entity entity = new Entity(UUID.randomUUID(), EntityType.TEXT_DISPLAY);
+        entity.setMetadata(Metadata.TextDisplay.TEXT, TextComponent.of("_tud", new TextFormat(ChatColor.RED, ChatStyle.BOLD)).getProperties());
+        entity.setMetadata(Metadata.TextDisplay.HAS_SHADOW, true);
+
+        entity.position(new Vector3d(0, 32, 0));
+        connection.sendPacket(new ClientboundPlaySpawnEntity(entity));
+//        connection.sendPacket(new ClientboundPlaySetCamera(entity.entityID()));
+        connection.sendPacket(new ClientboundPlaySetEntityMetadata(entity.entityID(), entity.metadataContainer()));
     }
 
 }

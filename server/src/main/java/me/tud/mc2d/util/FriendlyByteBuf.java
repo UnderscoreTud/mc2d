@@ -2,13 +2,18 @@ package me.tud.mc2d.util;
 
 import io.netty.buffer.*;
 import io.netty.util.ReferenceCounted;
+import me.tud.mc2d.world.blockdata.BlockData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3d;
+import org.joml.Vector3f;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.serialization.ComponentProperties;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
+import org.machinemc.scriptive.serialization.NBTPropertiesSerializer;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -545,11 +550,18 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         return BitSet.valueOf(readLongArray());
     }
 
+    public FriendlyByteBuf writeBlockState(BlockData blockData) {
+        return writeVarInt(blockData.id());
+    }
+
+    public BlockData readBlockState() {
+        return BlockData.fromID(readVarInt());
+    }
+
     public FriendlyByteBuf writeBlockPosition(BlockPosition position) {
-        writeLong((((long) position.x() & BlockPosition.PACKED_X_MASK) << 38)
+        return writeLong((((long) position.x() & BlockPosition.PACKED_X_MASK) << 38)
                 | ((long) position.y() & BlockPosition.PACKED_Y_MASK)
                 | (((long) position.z() & BlockPosition.PACKED_Z_MASK) << 12));
-        return this;
     }
 
     public BlockPosition readBlockPosition() {
@@ -560,7 +572,47 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
                 (int) ((packedPos << 26) >> 38)
         );
     }
-    
+
+    public FriendlyByteBuf writePosition(Vector3d position) {
+        return writeDouble(position.x)
+                .writeDouble(position.y)
+                .writeDouble(position.z);
+    }
+
+    public Vector3d readPosition() {
+        return new Vector3d(readDouble(), readDouble(), readDouble());
+    }
+
+    public FriendlyByteBuf writeVector3f(Vector3f position) {
+        return writeFloat(position.x)
+                .writeFloat(position.y)
+                .writeFloat(position.z);
+    }
+
+    public Vector3f readVector3f() {
+        return new Vector3f(readFloat(), readFloat(), readFloat());
+    }
+
+    public FriendlyByteBuf writeLpVec3(Vector3d vector) {
+        LpVec3.write(this, vector);
+        return this;
+    }
+
+    public Vector3d readLpVec3() {
+        return LpVec3.read(this);
+    }
+
+    public FriendlyByteBuf writeQuaternionf(Quaternionf position) {
+        return writeFloat(position.x)
+                .writeFloat(position.y)
+                .writeFloat(position.z)
+                .writeFloat(position.w);
+    }
+
+    public Quaternionf readQuaternionf() {
+        return new Quaternionf(readFloat(), readFloat(), readFloat(), readFloat());
+    }
+
     public FriendlyByteBuf writeAngle(float angle) {
         writeByte((byte) (angle * 256.0f / 360.0f));
         return this;
@@ -648,10 +700,19 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
      * @return This buffer.
      */
     public FriendlyByteBuf writeComponent(Component component) {
-        JSONPropertiesSerializer serializer = new JSONPropertiesSerializer();
-        String json = serializer.serialize(component.getProperties());
-        writeString(json);
-        return this;
+        return writeComponent(component.getProperties());
+    }
+
+    /**
+     * Writes a component to the buffer.
+     *
+     * @param properties The component to write.
+     * @return This buffer.
+     */
+    public FriendlyByteBuf writeComponent(ComponentProperties properties) {
+        NBTPropertiesSerializer serializer = NBTPropertiesSerializer.get();
+        NBTCompound compound = serializer.serialize(properties);
+        return writeNBT(compound);
     }
 
     /**
@@ -670,9 +731,9 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
      * @return The serialized component read from the buffer.
      */
     public ComponentProperties readComponent() {
-        JSONPropertiesSerializer serializer = new JSONPropertiesSerializer();
-        String json = readString();
-        return serializer.deserialize(json);
+        NBTPropertiesSerializer serializer = NBTPropertiesSerializer.get();
+        NBTCompound compound = readNBT();
+        return serializer.deserialize(compound);
     }
 
     /**
@@ -832,6 +893,38 @@ public class FriendlyByteBuf implements ByteBufConvertible, ReferenceCounted {
         buf.readBytes(bytes);
         buf.readerIndex(reader);
         return bytes;
+    }
+
+    public int readerIndex() {
+        return buf.readerIndex();
+    }
+
+    public void readerIndex(int index) {
+        buf.readerIndex(index);
+    }
+
+    public void markReaderIndex() {
+        buf.markReaderIndex();
+    }
+
+    public void resetReaderIndex() {
+        buf.resetReaderIndex();
+    }
+
+    public int writerIndex() {
+        return buf.writerIndex();
+    }
+
+    public void writerIndex(int index) {
+        buf.writerIndex(index);
+    }
+
+    public void markWriterIndex() {
+        buf.markWriterIndex();
+    }
+
+    public void resetWriterIndex() {
+        buf.resetWriterIndex();
     }
 
     @Override

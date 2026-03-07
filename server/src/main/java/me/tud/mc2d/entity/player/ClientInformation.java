@@ -5,7 +5,12 @@ import lombok.With;
 import me.tud.mc2d.chat.ChatMode;
 import me.tud.mc2d.particle.ParticleStatus;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.Packable;
 import me.tud.mc2d.util.Writable;
+
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Set;
 
 @With
 public record ClientInformation(
@@ -13,7 +18,7 @@ public record ClientInformation(
         byte viewDistance,
         ChatMode chatMode,
         boolean chatColors,
-        @With(AccessLevel.NONE) SkinPart[] skinParts,
+        @With(AccessLevel.NONE) Set<SkinPart> skinParts,
         MainHand mainHand,
         boolean enableTextFiltering,
         boolean enableServerListing,
@@ -27,7 +32,7 @@ public record ClientInformation(
                 .writeByte(viewDistance)
                 .writeEnum(chatMode)
                 .writeBoolean(chatColors)
-                .writeByte(SkinPart.toBitmask(skinParts))
+                .writeByte((byte) Packable.pack(skinParts))
                 .writeEnum(mainHand)
                 .writeBoolean(enableTextFiltering)
                 .writeBoolean(enableServerListing)
@@ -35,12 +40,13 @@ public record ClientInformation(
     }
 
     public ClientInformation withSkinParts(SkinPart... skinParts) {
-        return this.skinParts == skinParts ? this : new ClientInformation(
+        Set<SkinPart> set = EnumSet.copyOf(Arrays.asList(skinParts));
+        return this.skinParts.equals(set) ? this : new ClientInformation(
                 locale,
                 viewDistance,
                 chatMode,
                 chatColors,
-                skinParts,
+                set,
                 mainHand,
                 enableTextFiltering,
                 enableServerListing,
@@ -53,7 +59,7 @@ public record ClientInformation(
         byte viewDistance = buf.readByte();
         ChatMode chatMode = buf.readEnum(ChatMode.class);
         boolean chatColors = buf.readBoolean();
-        SkinPart[] skinParts = SkinPart.fromBitmask(buf.readByte());
+        Set<SkinPart> skinParts = SkinPart.unpack(buf.readByte());
         MainHand mainHand = buf.readEnum(MainHand.class);
         boolean enableTextFiltering = buf.readBoolean();
         boolean enableServerListing = buf.readBoolean();

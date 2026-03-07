@@ -2,11 +2,13 @@ package me.tud.mc2d.entity.player;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import me.tud.mc2d.util.Packable;
 
 import java.util.Arrays;
+import java.util.Set;
 
 @RequiredArgsConstructor
-public enum SkinPart {
+public enum SkinPart implements Packable {
     CAPE(0x01),
     JACKET(0x02),
     LEFT_SLEEVE(0x04),
@@ -15,28 +17,10 @@ public enum SkinPart {
     RIGHT_PANT_LEG(0x20),
     HAT(0x40);
 
-    private final @Getter int id;
+    private final @Getter int mask;
 
-    public static SkinPart fromID(int id) {
-        for (SkinPart part : values()) {
-            if (part.id == id)
-                return part;
-        }
-        throw new IllegalArgumentException("Invalid skin part ID: " + id);
-    }
-
-    public static byte toBitmask(SkinPart... parts) {
-        int bitmask = 0;
-        for (SkinPart part : parts) {
-            bitmask |= part.id();
-        }
-        return (byte) bitmask;
-    }
-
-    public static SkinPart[] fromBitmask(int bitmask) {
-        return Arrays.stream(SkinPart.values())
-                .filter(part -> (bitmask & part.id()) != 0)
-                .toArray(SkinPart[]::new);
+    public static Set<SkinPart> unpack(int packed) {
+        return Packable.unpack(SkinPart.class, packed);
     }
 
 }
