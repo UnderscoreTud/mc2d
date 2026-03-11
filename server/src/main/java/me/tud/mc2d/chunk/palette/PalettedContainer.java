@@ -7,8 +7,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.IDProvider;
 import me.tud.mc2d.util.Writable;
 import me.tud.mc2d.world.Biome;
 import me.tud.mc2d.world.blockdata.BlockData;
@@ -131,12 +131,12 @@ public abstract class PalettedContainer<T> implements Writable {
         return new BlockContainer(initialSize);
     }
 
-    public static PalettedContainer<Biome> biomes(Registry<Biome> registry) {
-        return biomes(registry, 0);
+    public static PalettedContainer<Biome> biomes(IDProvider<Biome> idProvider) {
+        return biomes(idProvider, 0);
     }
 
-    public static PalettedContainer<Biome> biomes(Registry<Biome> registry, int initialSize) {
-        return new BiomeContainer(registry, initialSize);
+    public static PalettedContainer<Biome> biomes(IDProvider<Biome> idProvider, int initialSize) {
+        return new BiomeContainer(idProvider, initialSize);
     }
 
     private static class BlockContainer extends PalettedContainer<BlockData> {
@@ -159,21 +159,21 @@ public abstract class PalettedContainer<T> implements Writable {
 
     private static class BiomeContainer extends PalettedContainer<Biome> {
 
-        private final Registry<Biome> registry;
+        private final IDProvider<Biome> idProvider;
 
-        protected BiomeContainer(Registry<Biome> registry, int initialSize) {
+        protected BiomeContainer(IDProvider<Biome> idProvider, int initialSize) {
             super(4, new Palette(Palette.Type.BIOME, initialSize));
-            this.registry = registry;
+            this.idProvider = idProvider;
         }
 
         @Override
         protected int id(Biome biome) {
-            return registry.getID(biome);
+            return idProvider.getID(biome);
         }
 
         @Override
         protected Biome fromID(int id) {
-            return registry.getByID(id);
+            return idProvider.getByID(id);
         }
 
     }

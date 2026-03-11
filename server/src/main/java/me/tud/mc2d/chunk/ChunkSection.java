@@ -15,17 +15,15 @@ import me.tud.mc2d.world.blockdata.BlockData;
 @RequiredArgsConstructor
 public class ChunkSection implements Writable {
 
-    private final @ToString.Exclude Server server;
     private final @ToString.Exclude Chunk source;
 
     private final PalettedContainer<BlockData> blockStates;
     private final PalettedContainer<Biome> biomes;
 
     public ChunkSection(Chunk source) {
-        this.server = source.server();
         this.source = source;
         this.blockStates = PalettedContainer.blocks();
-        this.biomes = PalettedContainer.biomes(server.registryAccess().get(RegistryKey.BIOME));
+        this.biomes = PalettedContainer.biomes(source.biomeIDProvider());
     }
 
     @Override

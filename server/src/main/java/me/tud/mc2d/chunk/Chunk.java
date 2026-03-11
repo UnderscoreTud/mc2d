@@ -8,6 +8,9 @@ import me.tud.mc2d.chunk.data.LightData;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
 import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.registry.Registry;
+import me.tud.mc2d.util.IDProvider;
+import me.tud.mc2d.world.Biome;
 import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.BlockData;
 import org.jetbrains.annotations.Range;
@@ -22,24 +25,32 @@ public class Chunk {
 
     public static final int SECTION_DIMENSION = 16;
 
-    private final @ToString.Exclude Server server;
-
     private final int x, z;
     private final int minY, worldHeight;
+
+    private final IDProvider<Biome> biomeIDProvider;
 
     private final ChunkSection[] sections;
     private final LightSection[] lightSections;
 
-    public Chunk(Server server, DimensionType dimensionType, int x, int z) {
-        this.server = server;
+    public Chunk(DimensionType dimensionType, Biome biome, int x, int z) {
+        this(dimensionType.minY(), dimensionType.height(), biome, x, z);
+    }
+
+    public Chunk(int minY, int worldHeight, Biome biome, int x, int z) {
+        this(minY, worldHeight, IDProvider.singleton(biome), x, z);
+    }
+
+    public Chunk(int minY, int worldHeight, IDProvider<Biome> biomeIDProvider, int x, int z) {
         this.x = x;
         this.z = z;
-        this.minY = dimensionType.minY();
-        this.worldHeight = dimensionType.height();
+        this.biomeIDProvider = biomeIDProvider;
+        this.minY = minY;
+        this.worldHeight = worldHeight;
         this.sections = new ChunkSection[Math.ceilDiv(worldHeight, SECTION_DIMENSION)];
         for (int i = 0; i < sections.length; i++)
             sections[i] = new ChunkSection(this);
-        
+
         this.lightSections = new LightSection[sections.length + 2]; // 2 extra sections;
                                                                     // one section above the world
                                                                     // and one section below the world

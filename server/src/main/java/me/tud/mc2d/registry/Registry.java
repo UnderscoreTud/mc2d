@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.registry.tag.TagKey;
+import me.tud.mc2d.util.IDProvider;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Unmodifiable;
@@ -17,7 +18,7 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
-public sealed abstract class Registry<T> implements Iterable<T>
+public sealed abstract class Registry<T> implements IDProvider<T>, Iterable<T>
         permits BuiltInRegistry, DataDrivenRegistry {
 
     protected final @Getter Server server;
@@ -29,6 +30,7 @@ public sealed abstract class Registry<T> implements Iterable<T>
         return entries.get(key);
     }
 
+    @Override
     public T getByID(int id) {
         return getEntryByID(id).getValue();
     }
@@ -57,6 +59,7 @@ public sealed abstract class Registry<T> implements Iterable<T>
         throw new NoSuchElementException("No element found for ID: " + id);
     }
 
+    @Override
     public int getID(T value) {
         int currentID = 0;
         for (Map.Entry<NamespacedKey, T> entry : entries.entrySet()) {
