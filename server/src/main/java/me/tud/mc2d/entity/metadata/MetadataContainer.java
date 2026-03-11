@@ -8,7 +8,7 @@ import me.tud.mc2d.util.Writable;
 
 import java.util.function.Consumer;
 
-public class MetadataContainer implements MetadataHolder, Writable {
+public class MetadataContainer implements MetadataHolder, Writable, Cloneable {
 
     private static final byte END = (byte) 0xFF;
 
@@ -41,6 +41,14 @@ public class MetadataContainer implements MetadataHolder, Writable {
         consumer.accept(this);
     }
 
+    public void clear() {
+        metadata.clear();
+    }
+
+    public void copyAll(MetadataContainer container) {
+        metadata.putAll(container.metadata);
+    }
+
     @Override
     public void write(FriendlyByteBuf buf) {
         metadata.forEach((index, bytes) -> {
@@ -48,6 +56,15 @@ public class MetadataContainer implements MetadataHolder, Writable {
             buf.writeBytes(bytes);
         });
         buf.writeByte(END);
+    }
+
+    @Override
+    public MetadataContainer clone() {
+        try {
+            return (MetadataContainer) super.clone();
+        } catch (CloneNotSupportedException _) {
+            throw new AssertionError();
+        }
     }
 
 }

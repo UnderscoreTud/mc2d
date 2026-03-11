@@ -4,6 +4,10 @@ import java.util.UUID;
 
 public class BlockDisplay extends Display {
 
+    public BlockDisplay() {
+        this(UUID.randomUUID());
+    }
+
     public BlockDisplay(UUID uuid) {
         this(uuid, EntityType.BLOCK_DISPLAY);
     }

@@ -24,6 +24,10 @@ public class Entity implements MetadataHolder {
     private @NotNull Vector3d position = new Vector3d(), velocity = new Vector3d();
     private float pitch, yaw, headYaw;
 
+    public Entity() {
+        this(UUID.randomUUID());
+    }
+
     public Entity(UUID uuid) {
         this(uuid, EntityTypes.PIG);
     }

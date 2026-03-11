@@ -4,6 +4,10 @@ import java.util.UUID;
 
 public class ItemDisplay extends Display {
 
+    public ItemDisplay() {
+        this(UUID.randomUUID());
+    }
+
     public ItemDisplay(UUID uuid) {
         this(uuid, EntityType.ITEM_DISPLAY);
     }
