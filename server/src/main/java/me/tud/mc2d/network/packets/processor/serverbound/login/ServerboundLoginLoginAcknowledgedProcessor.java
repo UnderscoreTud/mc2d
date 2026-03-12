@@ -1,5 +1,7 @@
 package me.tud.mc2d.network.packets.processor.serverbound.login;
 
+import me.tud.mc2d.Main;
+import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.client.ClientConnection;
@@ -33,10 +35,13 @@ public class ServerboundLoginLoginAcknowledgedProcessor implements PacketProcess
             if (!(registry instanceof DataDrivenRegistry<?>))
                 return;
             knownPacks.add(new DataPack(key.key(), Server.VERSION_NAME));
+            if (key.equals(RegistryKey.DIMENSION_TYPE) || key.equals(RegistryKey.BIOME))
+                return; // handled by canvas
             //noinspection unchecked
             Registry<? extends NBTSerializable>.Entry[] entries = registry.entries().toArray(new Registry.Entry[0]);
             connection.sendPacket(new ClientboundConfigurationRegistryData(key.key(), entries));
         });
+        Main.CANVAS.attach(new ClientCanvasViewer(connection));
         connection.sendPacket(new ClientboundConfigurationKnownPacks(knownPacks.toArray(new DataPack[0])));
         // TODO Update Tags (Optional)
         connection.sendPacket(new ClientboundConfigurationFinishConfiguration());

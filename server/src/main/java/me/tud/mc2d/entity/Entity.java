@@ -4,6 +4,9 @@ import lombok.Data;
 import me.tud.mc2d.entity.metadata.MetadataContainer;
 import me.tud.mc2d.entity.metadata.MetadataEntry;
 import me.tud.mc2d.entity.metadata.MetadataHolder;
+import me.tud.mc2d.network.client.ClientConnection;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySpawnEntity;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3d;
 
@@ -36,6 +39,15 @@ public class Entity implements MetadataHolder {
         this.entityID = nextID();
         this.uuid = uuid;
         this.type = type;
+    }
+
+    public void spawn(ClientConnection... viewers) {
+        ClientboundPlaySpawnEntity spawnPacket = new ClientboundPlaySpawnEntity(this);
+        ClientboundPlaySetEntityMetadata metadataPacket = new ClientboundPlaySetEntityMetadata(this);
+        for (ClientConnection viewer : viewers) {
+            viewer.sendPacket(spawnPacket);
+            viewer.sendPacket(metadataPacket);
+        }
     }
 
     @Override

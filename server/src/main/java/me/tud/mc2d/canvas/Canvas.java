@@ -1,17 +1,32 @@
 package me.tud.mc2d.canvas;
 
-public interface Canvas<T> {
+import lombok.Getter;
 
-    int width();
+public interface Canvas extends ReadableCanvas, WritableCanvas {
 
-    int height();
+    @Getter
+    abstract class Builder<T, B extends Builder<T, B>> {
 
-    T getPixel(int x, int y);
+        protected int width, height;
 
-    void setPixel(int x, int y, T pixel);
+        public B width(int width) {
+            this.width = width;
+            return self();
+        }
 
-    void fill(T pixel);
+        public B height(int height) {
+            this.height = height;
+            return self();
+        }
 
-    void fill(T pixel, int x, int y, int width, int height);
+        public B size(int width, int height) {
+            return width(width).height(height);
+        }
+
+        protected abstract B self();
+
+        public abstract T build();
+
+    }
 
 }
