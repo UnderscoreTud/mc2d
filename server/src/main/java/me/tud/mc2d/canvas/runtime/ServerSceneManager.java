@@ -5,7 +5,7 @@ import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
 import me.tud.mc2d.canvas.view.CanvasViewer;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
-import me.tud.mc2d.network.packets.clientbound.configuration.ServerboundPlayStartConfiguration;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayStartConfiguration;
 import me.tud.mc2d.network.server.Server;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,7 +48,7 @@ public class ServerSceneManager implements SceneManager {
         if (!viewers.containsKey(viewer.identity()))
             throw new IllegalArgumentException("Viewer " + viewer + " is not handled by this scene manager. Use SceneManager#attach instead.");
         viewers.put(viewer.identity(), canvas);
-        ((ClientCanvasViewer) viewer).sendPacket(new ServerboundPlayStartConfiguration());
+        ((ClientCanvasViewer) viewer).sendPacket(new ClientboundPlayStartConfiguration());
         return canvas.attach(viewer);
     }
 

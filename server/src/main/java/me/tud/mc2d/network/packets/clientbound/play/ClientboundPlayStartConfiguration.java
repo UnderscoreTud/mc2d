@@ -1,4 +1,4 @@
-package me.tud.mc2d.network.packets.clientbound.configuration;
+package me.tud.mc2d.network.packets.clientbound.play;
 
 import lombok.Data;
 import me.tud.mc2d.network.packets.Packets;
@@ -11,4 +11,4 @@ import org.machinemc.paklet.Packet;
         group = Packets.Play.Clientbound.NAME,
         catalogue = Packets.Play.Clientbound.class
 )
-public class ServerboundPlayStartConfiguration implements ClientboundPacket {}
+public class ClientboundPlayStartConfiguration implements ClientboundPacket {}
