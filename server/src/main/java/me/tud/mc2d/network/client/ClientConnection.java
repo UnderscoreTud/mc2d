@@ -4,10 +4,10 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelPromise;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import me.tud.mc2d.Main;
 import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.datapack.DataPack;
@@ -16,6 +16,7 @@ import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationFinishConfiguration;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationKnownPacks;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayBundleDelimiter;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundDisconnect;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundKeepAlive;
 import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMessage;
@@ -33,13 +34,8 @@ import org.machinemc.paklet.netty.NettyDataVisitor;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.components.TranslationComponent;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 @ToString(onlyExplicitlyIncluded = true)
@@ -185,6 +181,30 @@ public class ClientConnection {
 
     public ChannelFuture sendPacket(Packet packet) {
         return channel.writeAndFlush(packet);
+    }
+
+    public ChannelFuture sendPackets(Packet... packets) {
+        return sendPackets(Arrays.asList(packets));
+    }
+
+    public ChannelFuture sendPackets(Collection<Packet> packets) {
+        if (packets.isEmpty())
+            throw new IllegalArgumentException("Cannot send empty packets");
+
+        ChannelPromise done = channel.newPromise();
+
+        channel.write(new ClientboundPlayBundleDelimiter());
+        int count = 0;
+        for (Packet packet : packets) {
+            if (count > 0 && count % ClientboundPlayBundleDelimiter.MAX_PACKETS == 0) {
+                channel.write(new ClientboundPlayBundleDelimiter()); // close current bundle
+                channel.write(new ClientboundPlayBundleDelimiter()); // open next bundle
+            }
+            channel.write(packet);
+            count++;
+        }
+        channel.writeAndFlush(new ClientboundPlayBundleDelimiter(), done);
+        return done;
     }
 
     public void cleanup() {

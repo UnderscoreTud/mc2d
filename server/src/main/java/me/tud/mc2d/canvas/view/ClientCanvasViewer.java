@@ -4,6 +4,8 @@ import io.netty.channel.ChannelFuture;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.Packet;
 
+import java.util.Collection;
+
 public record ClientCanvasViewer(ClientConnection connection, int assumedFOV, double assumedAspectRatio) implements CanvasViewer {
 
     private static final int DEFAULT_FOV = 70;
@@ -20,6 +22,14 @@ public record ClientCanvasViewer(ClientConnection connection, int assumedFOV, do
 
     public ChannelFuture sendPacket(Packet packet) {
         return connection.sendPacket(packet);
+    }
+
+    public ChannelFuture sendPackets(Packet... packets) {
+        return connection.sendPackets(packets);
+    }
+
+    public ChannelFuture sendPackets(Collection<Packet> packets) {
+        return connection.sendPackets(packets);
     }
 
 }

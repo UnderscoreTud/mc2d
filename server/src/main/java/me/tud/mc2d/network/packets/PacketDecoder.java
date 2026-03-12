@@ -37,16 +37,16 @@ public class PacketDecoder extends ByteToMessageDecoder {
             Packet packet = packetFactory.create(Packet.group(state.get(), DIRECTION), new NettyDataVisitor(in));
             Preconditions.checkState(packet.direction() == DIRECTION, "Decoded client-bound packet in server-bound context");
     
-            if (!LOG_IGNORE.contains(packet.getClass()))
-                System.out.println("INCOMING: " + packet);
+//            if (!LOG_IGNORE.contains(packet.getClass()))
+//                System.out.println("INCOMING: " + packet);
             out.add(packet);
         } catch (Exception e) {
             int id = id(e.getMessage());
             if (id == -1)
                 throw e;
 
-            if (!LOG_IGNORE.contains(id))
-                System.out.println("INCOMING: " + format(id) + " (unknown)");
+//            if (!LOG_IGNORE.contains(id))
+//                System.out.println("INCOMING: " + format(id) + " (unknown)");
         }
     }
 

@@ -12,6 +12,7 @@ import me.tud.mc2d.canvas.view.CanvasViewer;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.world.Biome;
 import org.jetbrains.annotations.UnmodifiableView;
@@ -91,6 +92,22 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
         for (CanvasSession session : sessions.values()) {
             if (session.active())
                 session.close();
+        }
+    }
+
+    protected void sendPackets(Packet... packets) {
+        for (WorldCanvasSession session : sessions()) {
+            if (!session.active()) {
+                detach(session.viewer());
+                continue;
+            }
+
+            if (!session.initialized() && !session.initialize())
+                continue;
+            if (!session.loaded() && !session.load())
+                continue;
+
+            session.viewer().sendPackets(packets);
         }
     }
 

@@ -6,6 +6,7 @@ import me.tud.mc2d.canvas.event.CanvasEvent;
 import me.tud.mc2d.canvas.event.CanvasObserver;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.world.Biome;
@@ -54,6 +55,7 @@ public class PhysicalBlockWorldCanvas extends AbstractWorldCanvas implements Blo
     public void present() {
         if (!isDirty())
             return;
+
         Set<Chunk> dirtyChunks = new HashSet<>();
         for (CanvasRegion region : dirtyRegions()) {
             for (int x = region.x(); x < region.maxX(); x++) {
@@ -61,22 +63,13 @@ public class PhysicalBlockWorldCanvas extends AbstractWorldCanvas implements Blo
                     dirtyChunks.add(chunk(global(x, y)));
             }
         }
-        for (Chunk chunk : dirtyChunks) {
-            ClientboundPlayChunkDataAndUpdateLight packet = chunk.createChunkPacket();
-            for (WorldCanvasSession session : sessions()) {
-                if (!session.active()) {
-                    detach(session.viewer());
-                    continue;
-                }
 
-                if (!session.initialized() && !session.initialize())
-                    continue;
-                if (!session.loaded() && !session.load())
-                    continue;
+        Packet[] packets = new Packet[dirtyChunks.size()];
+        int i = 0;
+        for (Chunk chunk : dirtyChunks)
+            packets[i++] = chunk.createChunkPacket();
 
-                session.viewer().sendPacket(packet);
-            }
-        }
+        sendPackets(packets);
         clearDirty();
     }
     

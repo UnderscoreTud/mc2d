@@ -15,12 +15,13 @@ import me.tud.mc2d.canvas.world.AbstractWorldCanvas;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.TextDisplay;
 import me.tud.mc2d.entity.metadata.Metadata;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
 import me.tud.mc2d.world.Biome;
 import org.jetbrains.annotations.UnmodifiableView;
 import org.joml.Vector3f;
+import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.components.TextComponent;
-import org.machinemc.scriptive.serialization.ComponentProperties;
 import org.machinemc.scriptive.style.ChatStyle;
 import org.machinemc.scriptive.style.HexColor;
 import org.machinemc.scriptive.style.TextFormat;
@@ -55,7 +56,7 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
             line.setMetadata(Metadata.TextDisplay.BACKGROUND_COLOR, 0x00000000);
             line.setMetadata(Metadata.TextDisplay.SCALE, new Vector3f(BASE_SCALE));
             line.setMetadata(Metadata.TextDisplay.LINE_WIDTH, width() * 100);
-            line.setMetadata(Metadata.TextDisplay.TEXT, line(i));
+            line.setText(line(i));
             lines[i] = line;
         }
     }
@@ -99,33 +100,23 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
                 dirtyLines.add(line);
         }
 
+        Packet[] packets = new Packet[dirtyLines.size()];
+        int i = 0;
         for (Integer dirtyLine : dirtyLines) {
-            TextDisplay display = lines[dirtyLine];
-            display.setMetadata(Metadata.TextDisplay.TEXT, line(dirtyLine));
-            ClientboundPlaySetEntityMetadata packet = new ClientboundPlaySetEntityMetadata(display);
-
-            for (TextDisplayCanvasSession session : sessions()) {
-                if (!session.active()) {
-                    detach(session.viewer());
-                    continue;
-                }
-    
-                if (!session.initialized() && !session.initialize())
-                    continue;
-                if (!session.loaded() && !session.load())
-                    continue;
-
-                session.viewer().sendPacket(packet);
-            }
+            TextDisplay line = lines[dirtyLine];
+            line.setText(line(dirtyLine));
+            packets[i++] = new ClientboundPlaySetEntityMetadata(line);
         }
+
+        sendPackets(packets);
         clearDirty();
     }
 
-    protected ComponentProperties line(int y) {
+    protected Component line(int y) {
         TextComponent component = TextComponent.empty();
         for (int x = 0; x < width(); x++)
             component.append(PIXEL_CHAR, new TextFormat(new HexColor(getRGB(x, y)), PIXEL_STYLE));
-        return component.getProperties();
+        return component;
     }
 
     public static Builder builder() {

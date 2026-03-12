@@ -3,21 +3,11 @@ package me.tud.mc2d.canvas.textdisplay;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.canvas.world.WorldCanvasSession;
 import me.tud.mc2d.entity.TextDisplay;
-import me.tud.mc2d.entity.metadata.Metadata;
-import me.tud.mc2d.network.client.ClientConnection;
+import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySpawnEntity;
 import me.tud.mc2d.util.LinearCalibration;
 import org.joml.Vector3d;
-import org.joml.Vector3f;
-import org.machinemc.scriptive.components.TextComponent;
-import org.machinemc.scriptive.serialization.ComponentProperties;
-import org.machinemc.scriptive.style.ChatColor;
-import org.machinemc.scriptive.style.ChatStyle;
-import org.machinemc.scriptive.style.HexColor;
-import org.machinemc.scriptive.style.TextFormat;
-
-import java.util.Map;
 
 import static me.tud.mc2d.canvas.textdisplay.TextDisplayCanvas.PIXEL_LENGTH;
 
@@ -42,11 +32,15 @@ public class TextDisplayCanvasSession extends WorldCanvasSession {
         boolean load = super.load();
         if (!load)
             return false;
-        ClientConnection connection = viewer().connection();
-        for (TextDisplay line : canvas().lines()) {
-            connection.sendPacket(new ClientboundPlaySpawnEntity(line));
-            connection.sendPacket(new ClientboundPlaySetEntityMetadata(line));
+
+        Packet[] packets = new Packet[canvas().height() * 2]; // 2 packets per line (spawn, metadata)
+        for (int i = 0; i < canvas().height(); i++) {
+            TextDisplay line = canvas().lines()[i];
+            packets[i * 2] = new ClientboundPlaySpawnEntity(line);
+            packets[i * 2 + 1] = new ClientboundPlaySetEntityMetadata(line);
         }
+        viewer().sendPackets(packets);
+
         return true;
     }
 

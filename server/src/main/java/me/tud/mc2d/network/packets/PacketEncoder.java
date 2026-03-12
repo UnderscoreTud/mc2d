@@ -20,7 +20,7 @@ public class PacketEncoder extends MessageToByteEncoder<Packet> {
 
     @Override
     protected void encode(ChannelHandlerContext ctx, Packet packet, ByteBuf out) {
-        System.out.println("OUTGOING: " + packet);
+//        System.out.println("OUTGOING: " + packet);
         processorRegistry.processPacket(packet, connection);
         try {
             factory.write(packet, Packet.group(connection.state(), DIRECTION), new NettyDataVisitor(out));
