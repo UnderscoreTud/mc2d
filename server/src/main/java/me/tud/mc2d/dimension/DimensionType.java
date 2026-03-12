@@ -30,6 +30,10 @@ public final class DimensionType extends DimensionTypes implements NBTSerializab
     private final @Builder.Default CardinalLight cardinalLight = CardinalLight.DEFAULT;
     private final @Builder.Default NBTCompound attributes = new NBTCompound(); // TODO maybe implement?
 
+    public int maxY() {
+        return height() + minY();
+    }
+
     @Override
     public NBTCompound toNBT() {
         NBTCompound compound = new NBTCompound();

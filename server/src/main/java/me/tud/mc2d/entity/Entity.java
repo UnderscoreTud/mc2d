@@ -35,6 +35,10 @@ public class Entity implements MetadataHolder {
         this(uuid, EntityTypes.PIG);
     }
 
+    public Entity(EntityType type) {
+        this(UUID.randomUUID(), type);
+    }
+
     public Entity(UUID uuid, EntityType type) {
         this.entityID = nextID();
         this.uuid = uuid;

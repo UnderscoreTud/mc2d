@@ -38,14 +38,12 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
     static final float PIXEL_LENGTH = 0.1f;
 
     private final @ToString.Exclude @Delegate MemoryCanvas base;
-    private final Direction direction;
 
     private final @ToString.Exclude TextDisplay[] lines;
 
     public TextDisplayCanvas(Builder builder) {
         super(builder);
         this.base = new MemoryCanvas(builder);
-        this.direction = builder.actualDirection;
 
         this.lines = new TextDisplay[height()];
         float x = (width() * PIXEL_LENGTH) / 2.0f;
@@ -59,6 +57,11 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
             line.setText(line(i));
             lines[i] = line;
         }
+    }
+
+    @Override
+    public Direction direction() {
+        return Direction.HORIZONTAL;
     }
 
     @Override
@@ -125,17 +128,7 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
 
     public static class Builder extends AbstractWorldCanvas.Builder<TextDisplayCanvas, Builder> {
 
-        private Direction actualDirection = Direction.HORIZONTAL;
-
-        protected Builder() {
-            this.direction = Direction.DOWN;
-        }
-
-        @Override
-        public Builder direction(Direction direction) {
-            this.actualDirection = direction;
-            return self();
-        }
+        protected Builder() {}
 
         @Override
         public Builder dimensionType(DimensionType dimensionType) {
@@ -156,6 +149,7 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
         public TextDisplayCanvas build() {
             this.worldWidth = 1;
             this.worldHeight = 1;
+            this.direction = Direction.DOWN;
             return new TextDisplayCanvas(this);
         }
 

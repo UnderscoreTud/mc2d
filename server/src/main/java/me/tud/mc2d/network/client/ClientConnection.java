@@ -10,13 +10,17 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
+import me.tud.mc2d.canvas.view.ViewableCanvas;
+import me.tud.mc2d.canvas.world.WorldCanvas;
 import me.tud.mc2d.datapack.DataPack;
+import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationFinishConfiguration;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationKnownPacks;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayBundleDelimiter;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetActionBarText;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundDisconnect;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundKeepAlive;
 import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMessage;
@@ -29,6 +33,7 @@ import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.ticker.Tick;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NBTSerializable;
+import org.jetbrains.annotations.Nullable;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
 import org.machinemc.scriptive.components.Component;
@@ -99,6 +104,10 @@ public class ClientConnection {
         this.username = name;
     }
 
+    public void sendActionBar(Component component) {
+        sendPacket(new ClientboundPlaySetActionBarText(component));
+    }
+
     public void disconnect() {
         disconnect(TranslationComponent.of("multiplayer.disconnect.generic"));
     }
@@ -134,6 +143,11 @@ public class ClientConnection {
         if (state != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
         this.knownPacks = knownPacks;
+    }
+
+    public @Nullable DimensionType dimensionType() {
+        ViewableCanvas scene = server().canvasContext().scenes().scene(new ClientCanvasViewer(this));
+        return scene instanceof WorldCanvas worldCanvas ? worldCanvas.dimensionType() : null;
     }
 
     public void configure() {

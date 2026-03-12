@@ -10,6 +10,7 @@ import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.Entity;
 import me.tud.mc2d.entity.EntityType;
+import me.tud.mc2d.entity.metadata.Metadata;
 import me.tud.mc2d.entity.player.GameMode;
 import me.tud.mc2d.gameevent.GameEventType;
 import me.tud.mc2d.network.ConnectionState;
@@ -23,6 +24,7 @@ import me.tud.mc2d.util.LinearCalibration;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.Biome;
 import org.joml.Vector3d;
+import org.machinemc.scriptive.components.TextComponent;
 
 import java.util.Collections;
 import java.util.UUID;
@@ -64,10 +66,11 @@ public class WorldCanvasSession implements CanvasSession {
         return true;
     }
 
-    private void spawnPlayer() {
+    private Entity spawnPlayer() {
         ClientConnection connection = viewer.connection();
+        Entity player = new Entity(connection.uuid(), EntityType.PLAYER);
         connection.sendPacket(new ClientboundPlayLogin(
-                Entity.nextID(),
+                player.entityID(),
                 false,
                 new NamespacedKey[]{WorldCanvas.DIMENSION_KEY},
                 10,
@@ -90,7 +93,9 @@ public class WorldCanvasSession implements CanvasSession {
                 0,
                 false
         ));
+
         connection.sendPacket(new ClientboundPlayGameEvent(GameEventType.START_WAITING_FOR_CHUNKS.create(null)));
+        return player;
     }
 
     @Override
@@ -103,7 +108,7 @@ public class WorldCanvasSession implements CanvasSession {
 
         loaded = true;
 
-        spawnPlayer();
+        Entity player = spawnPlayer();
 
         Vector3d position = cameraPosition();
         if (canvas.direction() == WorldCanvas.Direction.UP)
@@ -128,6 +133,13 @@ public class WorldCanvasSession implements CanvasSession {
         camera.pitch(canvas.direction().pitch());
         viewer.sendPacket(new ClientboundPlaySpawnEntity(camera));
         viewer.sendPacket(new ClientboundPlaySetCamera(camera.entityID()));
+
+        Entity boat = new Entity(EntityType.OAK_CHEST_BOAT);
+        boat.position(new Vector3d(0, canvas.dimensionType().maxY(), 0));
+        boat.setMetadata(Metadata.OakBoatWithChest.HAS_NO_GRAVITY, true);
+        boat.spawn(viewer.connection());
+        viewer.sendPacket(new ClientboundPlaySetPassengers(boat, player));
+        viewer.connection().sendActionBar(TextComponent.empty());
 
         Chunk[] chunks = canvas.chunks();
         Chunk maxChunk = chunks.length != 0 ? chunks[chunks.length - 1] : null;
