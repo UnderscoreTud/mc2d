@@ -45,6 +45,9 @@ public class WorldCanvasSession implements CanvasSession {
             throw new IllegalStateException("Session '" + this + "' has already been initialized");
 
         ClientConnection connection = viewer.connection();
+        if (connection.state() != ConnectionState.CONFIGURATION)
+            return false;
+
         connection.sendPacket(new ClientboundConfigurationRegistryData(
                 RegistryKey.DIMENSION_TYPE.key(),
                 new Entry[]{new Entry(WorldCanvas.DIMENSION_KEY, canvas.dimensionType().toNBT())}

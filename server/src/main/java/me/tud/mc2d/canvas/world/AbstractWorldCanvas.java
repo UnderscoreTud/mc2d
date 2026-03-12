@@ -74,9 +74,7 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
     protected CanvasSession createSession(CanvasViewer viewer) {
         if (!(viewer instanceof ClientCanvasViewer clientViewer))
             throw new IllegalArgumentException("Expected a client canvas viewer, but got: " + viewer);
-        WorldCanvasSession session = new WorldCanvasSession(this, clientViewer);
-        session.initialize();
-        return session;
+        return new WorldCanvasSession(this, clientViewer);
     }
 
     @Override

@@ -2,6 +2,7 @@ package me.tud.mc2d.network.server;
 
 import com.google.gson.Gson;
 import lombok.With;
+import me.tud.mc2d.canvas.runtime.CanvasContext;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.registry.RegistryAccess;
 import me.tud.mc2d.text.ComponentProcessor;
@@ -17,6 +18,7 @@ import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 
 @With
 public record ServerContext(
+        CanvasContext canvasContext,
         Gson gson,
         ConnectionManager connectionManager,
         Ticker ticker,
@@ -33,6 +35,7 @@ public record ServerContext(
         SerializerProvider provider = new SerializerProviderImpl();
         ComponentSerializer componentSerializer = new ComponentSerializer();
         this(
+                new CanvasContext(server),
                 new Gson(),
                 new ConnectionManager(),
                 new Ticker(

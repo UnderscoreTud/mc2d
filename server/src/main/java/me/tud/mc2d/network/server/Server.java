@@ -1,5 +1,6 @@
 package me.tud.mc2d.network.server;
 
+import com.google.common.base.Preconditions;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -19,20 +20,16 @@ import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMe
 import me.tud.mc2d.network.packets.processor.PacketProcessor;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
 import me.tud.mc2d.network.packets.serializers.MC2DNetworkSerializers;
-import me.tud.mc2d.network.packets.serializers.WritableSerializer;
 import me.tud.mc2d.util.ClassUtils;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.util.Writable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.paklet.PacketFactory;
-import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerProvider;
 import org.machinemc.paklet.serialization.Serializers;
 import org.machinemc.paklet.serialization.VarIntSerializer;
 import org.machinemc.paklet.serialization.catalogue.DefaultSerializationRules;
 import org.machinemc.paklet.serialization.catalogue.DefaultSerializers;
-import org.machinemc.paklet.serialization.catalogue.DynamicCatalogue;
-import org.machinemc.paklet.serialization.rule.SerializationRule;
 import org.machinemc.scriptive.components.TextComponent;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
 import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
@@ -41,10 +38,10 @@ import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
-import java.util.List;
 
 public class Server {
 
@@ -55,6 +52,7 @@ public class Server {
     public static final Duration READ_IDLE_TIMEOUT = Duration.of(30, ChronoUnit.SECONDS);
     public static final Duration KEEP_ALIVE_FREQ = Duration.of(20, ChronoUnit.SECONDS);
 
+    private final @Getter String hostname;
     private final @Getter int port;
     private final @Getter @Delegate ServerContext context;
     private final @Getter ServerProperties properties;
@@ -65,19 +63,20 @@ public class Server {
     private EventLoopGroup workerGroup;
     private ChannelFuture bindFuture;
 
-    public Server(int port) {
-        this(port, null, null);
+    public Server(String hostname, int port) {
+        this(hostname, port, null, null);
     }
 
-    public Server(int port, ServerContext context) {
-        this(port, context, null);
+    public Server(String hostname, int port, ServerContext context) {
+        this(hostname, port, context, null);
     }
 
-    public Server(int port, ServerProperties properties) {
-        this(port, null, properties);
+    public Server(String hostname, int port, ServerProperties properties) {
+        this(hostname, port, null, properties);
     }
 
-    public Server(int port, @Nullable ServerContext context, @Nullable ServerProperties properties) {
+    public Server(String hostname, int port, @Nullable ServerContext context, @Nullable ServerProperties properties) {
+        this.hostname = Preconditions.checkNotNull(hostname, "hostname");
         this.port = port;
         this.context = context != null ? context : new ServerContext(this);
         this.properties = properties != null ? properties : new ServerProperties();
@@ -163,25 +162,26 @@ public class Server {
                 .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childOption(ChannelOption.IP_TOS, 0b00011000); // 3 - throughput, 4 - low delay
-        bindFuture = bootstrap.bind(port).addListener(future -> {
+        return bindFuture = bootstrap.bind(hostname, port).addListener((ChannelFuture future) -> {
             if (future.isSuccess()) {
                 System.out.println("Server started on port " + port);
+
+                future.channel().closeFuture().addListener(_ -> {
+                    bossGroup.shutdownGracefully();
+                    workerGroup.shutdownGracefully();
+                    System.out.println("Server stopped");
+                    bindFuture = null;
+                });
             } else {
                 System.err.println("Failed to start server: " + future.cause());
             }
         });
-        return bindFuture;
     }
 
     public ChannelFuture shutdown() {
         if (!running())
             throw new IllegalStateException("Server is not running");
-        return bindFuture.channel().close().addListener(future -> {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
-            System.out.println("Server stopped");
-            bindFuture = null;
-        });
+        return bindFuture.channel().close();
     }
 
     private void registerPackets() {

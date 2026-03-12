@@ -36,10 +36,10 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
     static final Vector3f BASE_SCALE = new Vector3f(1, 4, 1);
     static final float PIXEL_LENGTH = 0.1f;
 
-    private final @Delegate MemoryCanvas base;
+    private final @ToString.Exclude @Delegate MemoryCanvas base;
     private final Direction direction;
 
-    private final TextDisplay[] lines;
+    private final @ToString.Exclude TextDisplay[] lines;
 
     public TextDisplayCanvas(Builder builder) {
         super(builder);
@@ -70,9 +70,7 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
     protected CanvasSession createSession(CanvasViewer viewer) {
         if (!(viewer instanceof ClientCanvasViewer clientViewer))
             throw new IllegalArgumentException("TextDisplayCanvas only supports ClientCanvasViewers");
-        TextDisplayCanvasSession session = new TextDisplayCanvasSession(this, clientViewer);
-        session.initialize();
-        return session;
+        return new TextDisplayCanvasSession(this, clientViewer);
     }
 
     @Override

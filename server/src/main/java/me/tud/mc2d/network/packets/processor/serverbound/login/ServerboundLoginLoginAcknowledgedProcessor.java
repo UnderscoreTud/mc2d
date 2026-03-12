@@ -26,25 +26,8 @@ public class ServerboundLoginLoginAcknowledgedProcessor implements PacketProcess
     @Override
     public void process(ServerboundLoginLoginAcknowledged packet, ClientConnection connection) {
         connection.state(ConnectionState.CONFIGURATION);
-        connection.sendPacket(ClientboundPluginMessage.brand(connection.server().brand()));
-        // TODO Feature Flags (Optional)
-        List<DataPack> knownPacks = new ArrayList<>();
-        knownPacks.add(Server.CORE_PACK);
-        RegistryAccess registryAccess = connection.server().context().registryAccess();
-        registryAccess.registries().forEach((key, registry) -> {
-            if (!(registry instanceof DataDrivenRegistry<?>))
-                return;
-            knownPacks.add(new DataPack(key.key(), Server.VERSION_NAME));
-            if (key.equals(RegistryKey.DIMENSION_TYPE) || key.equals(RegistryKey.BIOME))
-                return; // handled by canvas
-            //noinspection unchecked
-            Registry<? extends NBTSerializable>.Entry[] entries = registry.entries().toArray(new Registry.Entry[0]);
-            connection.sendPacket(new ClientboundConfigurationRegistryData(key.key(), entries));
-        });
-        Main.CANVAS.attach(new ClientCanvasViewer(connection));
-        connection.sendPacket(new ClientboundConfigurationKnownPacks(knownPacks.toArray(new DataPack[0])));
-        // TODO Update Tags (Optional)
-        connection.sendPacket(new ClientboundConfigurationFinishConfiguration());
+        connection.configure();
+        connection.finishConfiguration();
     }
 
 }

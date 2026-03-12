@@ -5,38 +5,56 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import me.tud.mc2d.Main;
+import me.tud.mc2d.canvas.view.CanvasSession;
+import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
+import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationFinishConfiguration;
+import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationKnownPacks;
+import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundDisconnect;
 import me.tud.mc2d.network.packets.lifecycle.clientbound.ClientboundKeepAlive;
+import me.tud.mc2d.network.packets.pluginmessage.clientbound.ClientboundPluginMessage;
 import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.entity.player.ClientInformation;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.Registry;
+import me.tud.mc2d.registry.RegistryAccess;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.ticker.Tick;
 import me.tud.mc2d.util.FriendlyByteBuf;
+import me.tud.mc2d.util.NBTSerializable;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.components.TranslationComponent;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Data
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ClientConnection {
 
     private final Server server;
-    private final Channel channel;
+    private final @EqualsAndHashCode.Include Channel channel;
     private ConnectionState state = ConnectionState.HANDSHAKE;
     private int protocolVersion = -1;
     private String serverAddress;
     private int serverPort = -1;
 
-    private UUID uuid;
-    private String username;
+    private @ToString.Include UUID uuid;
+    private @ToString.Include String username;
     private ClientInformation clientInformation;
 
     private long keepAliveID;
@@ -120,6 +138,35 @@ public class ClientConnection {
         if (state != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
         this.knownPacks = knownPacks;
+    }
+
+    public void configure() {
+        sendPacket(ClientboundPluginMessage.brand(server().brand()));
+        // TODO Feature Flags (Optional)
+        List<DataPack> knownPacks = new ArrayList<>();
+        knownPacks.add(Server.CORE_PACK);
+        RegistryAccess registryAccess = server().context().registryAccess();
+        registryAccess.registries().forEach((key, registry) -> {
+            if (!(registry instanceof DataDrivenRegistry<?>))
+                return;
+            knownPacks.add(new DataPack(key.key(), Server.VERSION_NAME));
+            if (key.equals(RegistryKey.DIMENSION_TYPE) || key.equals(RegistryKey.BIOME))
+                return; // handled by canvas
+            //noinspection unchecked
+            Registry<? extends NBTSerializable>.Entry[] entries = registry.entries().toArray(new Registry.Entry[0]);
+            sendPacket(new ClientboundConfigurationRegistryData(key.key(), entries));
+        });
+
+        ClientCanvasViewer viewer = new ClientCanvasViewer(this);
+        CanvasSession session = server().canvasContext().scenes().attach(viewer);
+        session.initialize();
+
+        sendPacket(new ClientboundConfigurationKnownPacks(knownPacks.toArray(new DataPack[0])));
+        // TODO Update Tags (Optional)
+    }
+
+    public void finishConfiguration() {
+        sendPacket(new ClientboundConfigurationFinishConfiguration());
     }
 
     public ChannelFuture sendPacket(byte[] data) {
