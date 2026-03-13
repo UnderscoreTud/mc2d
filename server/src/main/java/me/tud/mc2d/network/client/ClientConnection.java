@@ -218,7 +218,7 @@ public class ClientConnection {
 
     public ChannelFuture sendPacket(ByteBuf buf) {
         PacketFactory factory = server().context().packetFactory();
-        Packet packet = factory.create(Packet.group(incomingState, Packet.Direction.CLIENTBOUND), new NettyDataVisitor(buf));
+        Packet packet = factory.create(Packet.group(outgoingState, Packet.Direction.CLIENTBOUND), new NettyDataVisitor(buf));
         return sendPacket(packet);
     }
 

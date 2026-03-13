@@ -38,8 +38,6 @@ import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
@@ -146,7 +144,7 @@ public class Server {
                         ClientConnection connection = new ClientConnection(Server.this, ch);
                         ch.pipeline()
                                 .addLast("packet_length_decoder", new PacketLengthDecoder())
-                                .addLast("packet_decoder", new PacketDecoder(context.packetFactory(), connection::state))
+                                .addLast("packet_decoder", new PacketDecoder(context.packetFactory(), connection::incomingState))
                                 .addLast("packet_inbound_handler", new PacketInboundHandler(connection, context.packetProcessorRegistry()))
 
                                 .addLast("packet_length_encoder", new PacketLengthEncoder())
