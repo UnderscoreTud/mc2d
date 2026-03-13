@@ -45,6 +45,14 @@ public final class ChunkUtils {
         return (n % Chunk.SECTION_DIMENSION + Chunk.SECTION_DIMENSION) % Chunk.SECTION_DIMENSION;
     }
 
+    public static Vector3i sectionRelative(Vector3i global) {
+        return new Vector3i(
+                sectionRelativeCoord(global.x),
+                sectionRelativeCoord(global.y),
+                sectionRelativeCoord(global.z)
+        );
+    }
+
     public static Vector3i chunkRelative(Vector3i global) {
         return new Vector3i(sectionRelativeCoord(global.x), global.y, sectionRelativeCoord(global.z));
     }

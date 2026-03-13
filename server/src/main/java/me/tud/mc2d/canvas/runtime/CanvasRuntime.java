@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CanvasRuntime {
 
     private final @Builder.Default String hostname = "0.0.0.0";
-    private final int port;
+    private final @Builder.Default int port = 25565;
     private final @NotNull CanvasApp app;
 
     public void run() throws IOException {
