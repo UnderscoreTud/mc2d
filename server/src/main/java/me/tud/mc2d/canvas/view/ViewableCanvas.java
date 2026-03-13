@@ -10,6 +10,8 @@ public interface ViewableCanvas extends MutableCanvas, Presentable {
 
     @UnmodifiableView Collection<? extends CanvasSession> sessions();
 
+    boolean similarTo(ViewableCanvas other);
+
     CanvasSession attach(CanvasViewer viewer);
 
     boolean detach(CanvasViewer viewer);

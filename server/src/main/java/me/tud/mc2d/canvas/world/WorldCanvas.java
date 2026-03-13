@@ -6,6 +6,7 @@ import me.tud.mc2d.canvas.lifecycle.Disposable;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.util.NamespacedKey;
+import me.tud.mc2d.world.Biome;
 import org.jetbrains.annotations.UnmodifiableView;
 
 import java.util.Collection;
@@ -18,6 +19,8 @@ public interface WorldCanvas extends ViewableCanvas, Disposable {
     Direction direction();
 
     DimensionType dimensionType();
+
+    Biome biome();
 
     @Override
     @UnmodifiableView Collection<? extends WorldCanvasSession> sessions();

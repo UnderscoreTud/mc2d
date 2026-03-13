@@ -14,12 +14,10 @@ public interface SceneManager {
 
     default CanvasSession session(CanvasViewer viewer) {
         ViewableCanvas scene = scene(viewer);
-        System.out.println("FOUND SCENE " + scene + " FOR " + viewer);
         if (scene == null)
             return null;
         return scene.sessions().stream()
                 .filter(session -> session.viewer().identity().equals(viewer.identity()))
-                .filter(session -> !session.loaded())
                 .findFirst()
                 .orElse(null);
     }

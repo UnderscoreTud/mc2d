@@ -5,9 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelPromise;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
@@ -49,7 +47,9 @@ public class ClientConnection {
 
     private final Server server;
     private final @EqualsAndHashCode.Include Channel channel;
-    private ConnectionState state = ConnectionState.HANDSHAKE;
+    private ConnectionState outgoingState = ConnectionState.HANDSHAKE;
+    private ConnectionState incomingState = ConnectionState.HANDSHAKE;
+    private @Setter(AccessLevel.NONE) CompletableFuture<Void> enteredConfigurationFuture;
     private int protocolVersion = -1;
     private String serverAddress;
     private int serverPort = -1;
@@ -67,11 +67,22 @@ public class ClientConnection {
 
     private String brand;
 
+    public void outgoingState(ConnectionState state) {
+        System.out.println("Outgoing state changed from " + this.outgoingState + " to " + state);
+        this.outgoingState = state;
+        attemptStartKeepAliveLoop();
+    }
+
+    public void incomingState(ConnectionState state) {
+        System.out.println("Incoming state changed from " + this.incomingState + " to " + state);
+        this.incomingState = state;
+        attemptStartKeepAliveLoop();
+    }
+
     public void state(ConnectionState state) {
-        System.out.println("State changed from " + this.state + " to " + state);
-        if (keepAliveFuture == null && (state == ConnectionState.CONFIGURATION || state == ConnectionState.PLAY))
-            startKeepAliveLoop();
-        this.state = state;
+        System.out.println("State changed from " + this.incomingState + " to " + state);
+        outgoingState = incomingState = state;
+        attemptStartKeepAliveLoop();
     }
 
     public void protocolVersion(int protocolVersion) {
@@ -116,12 +127,25 @@ public class ClientConnection {
         sendPacket(new ClientboundDisconnect(reason));
     }
 
+    private void attemptStartKeepAliveLoop() {
+        if (keepAliveFuture == null && canKeepAlive())
+            startKeepAliveLoop();
+    }
+
+    private boolean canKeepAlive() {
+        return validKeepAliveState(outgoingState) && validKeepAliveState(incomingState);
+    }
+
+    private boolean validKeepAliveState(ConnectionState state) {
+        return state == ConnectionState.CONFIGURATION || state == ConnectionState.PLAY;
+    }
+
     public void startKeepAliveLoop() {
         if (keepAliveFuture != null)
             throw new IllegalStateException("Keep alive loop is already running.");
         Random random = new Random();
         keepAliveFuture = server.context().ticker().runRepeatedly(() -> {
-            if (state != ConnectionState.CONFIGURATION && state != ConnectionState.PLAY)
+            if (!canKeepAlive())
                 return;
             if (keepAliveRequest - keepAliveResponse > Server.READ_IDLE_TIMEOUT.toMillis())
                 disconnect();
@@ -132,7 +156,7 @@ public class ClientConnection {
     }
 
     public void keepAlive() {
-        if (state != ConnectionState.CONFIGURATION && state != ConnectionState.PLAY)
+        if (!canKeepAlive())
             throw new IllegalStateException("Keep alive is only supported in CONFIGURATION and PLAY connection states");
         if (keepAliveResponse > keepAliveRequest) // Client already responded
             return;
@@ -140,9 +164,13 @@ public class ClientConnection {
     }
 
     public void knownPacks(DataPack[] knownPacks) {
-        if (state != ConnectionState.CONFIGURATION)
+        if (incomingState != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
         this.knownPacks = knownPacks;
+    }
+
+    public @Nullable CanvasSession canvasSession() {
+        return server().canvasContext().scenes().session(new ClientCanvasViewer(this));
     }
 
     public @Nullable DimensionType dimensionType() {
@@ -169,7 +197,8 @@ public class ClientConnection {
 
         ClientCanvasViewer viewer = new ClientCanvasViewer(this);
         CanvasSession session = server().canvasContext().scenes().attach(viewer);
-        session.initialize();
+        if (!session.initialized())
+            session.initialize();
 
         sendPacket(new ClientboundConfigurationKnownPacks(knownPacks.toArray(new DataPack[0])));
         // TODO Update Tags (Optional)
@@ -189,7 +218,7 @@ public class ClientConnection {
 
     public ChannelFuture sendPacket(ByteBuf buf) {
         PacketFactory factory = server().context().packetFactory();
-        Packet packet = factory.create(Packet.group(state, Packet.Direction.CLIENTBOUND), new NettyDataVisitor(buf));
+        Packet packet = factory.create(Packet.group(incomingState, Packet.Direction.CLIENTBOUND), new NettyDataVisitor(buf));
         return sendPacket(packet);
     }
 

@@ -4,6 +4,7 @@ import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.canvas.world.WorldCanvasSession;
 import me.tud.mc2d.entity.TextDisplay;
 import me.tud.mc2d.network.packets.Packet;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayRemoveEntities;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySpawnEntity;
 import me.tud.mc2d.util.LinearCalibration;
@@ -42,6 +43,12 @@ public class TextDisplayCanvasSession extends WorldCanvasSession {
         viewer().sendPackets(packets);
 
         return true;
+    }
+
+    @Override
+    public void close() {
+        super.close();
+        viewer().sendPacket(new ClientboundPlayRemoveEntities(canvas().lines()));
     }
 
     private Vector3d global(int x, int y) {

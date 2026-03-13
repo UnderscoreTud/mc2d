@@ -1,5 +1,6 @@
 package me.tud.mc2d.network.packets;
 
+import com.google.common.base.Supplier;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -21,9 +22,9 @@ public class PacketEncoder extends MessageToByteEncoder<Packet> {
     @Override
     protected void encode(ChannelHandlerContext ctx, Packet packet, ByteBuf out) {
 //        System.out.println("OUTGOING: " + packet);
-        processorRegistry.processPacket(packet, connection);
         try {
-            factory.write(packet, Packet.group(connection.state(), DIRECTION), new NettyDataVisitor(out));
+            factory.write(packet, Packet.group(connection.outgoingState(), DIRECTION), new NettyDataVisitor(out));
+            processorRegistry.processPacket(packet, connection);
         } catch (Exception e) {
             e.printStackTrace();
         }

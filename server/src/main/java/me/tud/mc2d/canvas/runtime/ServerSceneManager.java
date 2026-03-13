@@ -37,8 +37,11 @@ public class ServerSceneManager implements SceneManager {
     public CanvasSession attach(CanvasViewer viewer) {
         if (!(viewer instanceof ClientCanvasViewer clientViewer))
             throw new IllegalArgumentException("Expected a ClientCanvasViewer, got " + viewer);
+        ViewableCanvas canvas = viewers.get(viewer.identity());
+        if (canvas != null)
+            return session(viewer);
+
         ViewableCanvas scene = sceneSelector.select(clientViewer);
-        System.out.println("ATTACHING " + viewer + " TO " + scene);
         viewers.put(clientViewer.identity(), scene);
         return scene.attach(clientViewer);
     }
@@ -47,9 +50,29 @@ public class ServerSceneManager implements SceneManager {
     public CanvasSession transitionScene(CanvasViewer viewer, ViewableCanvas canvas) {
         if (!viewers.containsKey(viewer.identity()))
             throw new IllegalArgumentException("Viewer " + viewer + " is not handled by this scene manager. Use SceneManager#attach instead.");
-        viewers.put(viewer.identity(), canvas);
-        ((ClientCanvasViewer) viewer).sendPacket(new ClientboundPlayStartConfiguration());
-        return canvas.attach(viewer);
+
+        ViewableCanvas previous = viewers.put(viewer.identity(), canvas);
+        if (canvas.equals(previous))
+            return session(viewer);
+
+        if (previous != null)
+            previous.detach(viewer);
+
+        boolean similar = canvas.similarTo(previous);
+        if (!similar)
+            ((ClientCanvasViewer) viewer).sendPacket(new ClientboundPlayStartConfiguration());
+
+        CanvasSession session = canvas.attach(viewer);
+
+        if (similar) {
+            if (!session.initialized())
+                session.initialize();
+
+            if (session.initialized() && !session.loaded())
+                session.load();
+        }
+
+        return session;
     }
 
 }

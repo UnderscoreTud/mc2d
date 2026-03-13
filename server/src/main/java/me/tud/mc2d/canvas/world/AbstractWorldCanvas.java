@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import me.tud.mc2d.canvas.Canvas;
 import me.tud.mc2d.canvas.CanvasRegion;
-import me.tud.mc2d.canvas.view.AbstractViewableCanvas;
-import me.tud.mc2d.canvas.view.CanvasSession;
-import me.tud.mc2d.canvas.view.CanvasViewer;
-import me.tud.mc2d.canvas.view.ClientCanvasViewer;
+import me.tud.mc2d.canvas.view.*;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.packets.Packet;
@@ -76,6 +73,14 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
         if (!(viewer instanceof ClientCanvasViewer clientViewer))
             throw new IllegalArgumentException("Expected a client canvas viewer, but got: " + viewer);
         return new WorldCanvasSession(this, clientViewer);
+    }
+
+    @Override
+    public boolean similarTo(ViewableCanvas other) {
+        if (!(other instanceof WorldCanvas worldCanvas))
+            return false;
+        return dimensionType().toNBT().equals(worldCanvas.dimensionType().toNBT())
+                && biome().equals(worldCanvas.biome());
     }
 
     @Override

@@ -39,7 +39,17 @@ public class WorldCanvasSession implements CanvasSession {
 
     private final @ToString.Exclude AbstractWorldCanvas canvas;
     private final ClientCanvasViewer viewer;
-    private @Setter(AccessLevel.NONE) boolean initialized, loaded, active = true;
+    private @Setter(AccessLevel.NONE) boolean initialized, spawnPlayer, loaded, active = true;
+
+    @Override
+    public boolean initialized() {
+        return initialized && active;
+    }
+
+    @Override
+    public boolean loaded() {
+        return initialized && loaded && active;
+    }
 
     @Override
     public boolean initialize() {
@@ -47,7 +57,12 @@ public class WorldCanvasSession implements CanvasSession {
             throw new IllegalStateException("Session '" + this + "' has already been initialized");
 
         ClientConnection connection = viewer.connection();
-        if (connection.state() != ConnectionState.CONFIGURATION)
+        if (connection.outgoingState() == ConnectionState.PLAY) {
+            spawnPlayer = false;
+            return initialized = true;
+        }
+
+        if (connection.outgoingState() != ConnectionState.CONFIGURATION)
             return false;
 
         connection.sendPacket(new ClientboundConfigurationRegistryData(
@@ -62,8 +77,8 @@ public class WorldCanvasSession implements CanvasSession {
                 }
         ));
 
-        initialized = true;
-        return true;
+        spawnPlayer = true;
+        return initialized = true;
     }
 
     private Entity spawnPlayer() {
@@ -103,12 +118,14 @@ public class WorldCanvasSession implements CanvasSession {
         if (loaded)
             throw new IllegalStateException("Session '" + this + "' has already been loaded");
 
-        if (viewer.connection().state() != ConnectionState.PLAY)
+        if (viewer.connection().outgoingState() != ConnectionState.PLAY)
             return false;
 
         loaded = true;
 
-        Entity player = spawnPlayer();
+        Entity player = null;
+        if (spawnPlayer)
+            player = spawnPlayer();
 
         Vector3d position = cameraPosition();
         if (canvas.direction() == WorldCanvas.Direction.UP)
@@ -138,8 +155,11 @@ public class WorldCanvasSession implements CanvasSession {
         boat.position(new Vector3d(0, canvas.dimensionType().maxY() + 50, 0));
         boat.setMetadata(Metadata.OakBoatWithChest.HAS_NO_GRAVITY, true);
         boat.spawn(viewer.connection());
-        viewer.sendPacket(new ClientboundPlaySetPassengers(boat, player));
-        viewer.connection().sendActionBar(TextComponent.empty());
+
+        if (player != null) {
+            viewer.sendPacket(new ClientboundPlaySetPassengers(boat, player));
+            viewer.connection().sendActionBar(TextComponent.empty());
+        }
 
         Chunk[] chunks = canvas.chunks();
         Chunk maxChunk = chunks.length != 0 ? chunks[chunks.length - 1] : null;
