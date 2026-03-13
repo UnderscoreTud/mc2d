@@ -135,7 +135,7 @@ public class WorldCanvasSession implements CanvasSession {
         viewer.sendPacket(new ClientboundPlaySetCamera(camera.entityID()));
 
         Entity boat = new Entity(EntityType.OAK_CHEST_BOAT);
-        boat.position(new Vector3d(0, canvas.dimensionType().maxY(), 0));
+        boat.position(new Vector3d(0, canvas.dimensionType().maxY() + 50, 0));
         boat.setMetadata(Metadata.OakBoatWithChest.HAS_NO_GRAVITY, true);
         boat.spawn(viewer.connection());
         viewer.sendPacket(new ClientboundPlaySetPassengers(boat, player));

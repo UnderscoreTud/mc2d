@@ -16,7 +16,7 @@ public class ServerboundPlayMoveVehicleProcessor implements PacketProcessor<Serv
             return;
 
         int maxY = dimensionType.maxY();
-        connection.sendPacket(new ClientboundPlayMoveVehicle(new Vector3d(0, maxY, 0), 0f, 0f));
+        connection.sendPacket(new ClientboundPlayMoveVehicle(new Vector3d(0, maxY + 50, 0), 0f, 0f));
     }
 
 }
