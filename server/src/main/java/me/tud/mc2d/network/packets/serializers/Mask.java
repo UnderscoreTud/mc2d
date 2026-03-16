@@ -12,6 +12,9 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.AnnotatedType;
+import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public final class Mask {
@@ -93,8 +96,14 @@ public final class Mask {
 
         @Override
         public Collection<? extends Packable> deserialize(SerializerContext context, DataVisitor visitor) {
+            SerializerContext paramContext = context.getContextForParameter(0);
+
+            AnnotatedType paramType = paramContext.annotatedType();
+            if (paramType == null)
+                throw new IllegalArgumentException("Could not determine mask type");
+
             //noinspection unchecked,rawtypes
-            return Packable.unpack((Class) ClassUtils.asClass(context.annotatedType().getType()), read(context, visitor));
+            return Packable.unpack((Class) ClassUtils.asClass(paramType.getType()), read(context, visitor));
         }
 
     }
