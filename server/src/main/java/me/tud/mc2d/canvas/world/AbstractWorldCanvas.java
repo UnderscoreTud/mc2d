@@ -42,7 +42,7 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
 
         this.direction = builder.direction();
 
-        int worldHeight = closestMultiple(worldHeight(), 16);
+        int worldHeight = ceilMultiple(worldHeight(), 16);
         this.dimensionType = builder.dimensionType().toBuilder()
                 .minY(0)
                 .height(worldHeight)
@@ -146,11 +146,8 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
         return chunks[cx + cz * chunkWidth];
     }
 
-    private int closestMultiple(int n, int x) {
-        if (x > n)
-            return x;
-        n += x / 2;
-        return n - (n % x);
+    private int ceilMultiple(int n, int x) {
+        return ((n + x - 1) / x) * x;
     }
 
     @Getter

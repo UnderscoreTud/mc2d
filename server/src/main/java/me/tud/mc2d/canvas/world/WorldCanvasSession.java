@@ -1,15 +1,14 @@
 package me.tud.mc2d.canvas.world;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.Entity;
 import me.tud.mc2d.entity.EntityType;
+import me.tud.mc2d.entity.attribute.Attribute;
+import me.tud.mc2d.entity.attribute.AttributeProperty;
 import me.tud.mc2d.entity.metadata.Metadata;
 import me.tud.mc2d.entity.player.GameMode;
 import me.tud.mc2d.gameevent.GameEventType;
@@ -39,7 +38,16 @@ public class WorldCanvasSession implements CanvasSession {
 
     private final @ToString.Exclude AbstractWorldCanvas canvas;
     private final ClientCanvasViewer viewer;
+    private final @Getter Vector3d cameraPosition;
     private @Setter(AccessLevel.NONE) boolean initialized, spawnPlayer, loaded, active = true;
+
+    public WorldCanvasSession(AbstractWorldCanvas canvas, ClientCanvasViewer viewer) {
+        this.canvas = canvas;
+        this.viewer = viewer;
+        this.cameraPosition = calculateCameraPosition();
+        if (canvas().direction() == WorldCanvas.Direction.UP)
+            this.cameraPosition.add(0, 1, 0);
+    }
 
     @Override
     public boolean initialized() {
@@ -109,6 +117,13 @@ public class WorldCanvasSession implements CanvasSession {
                 false
         ));
 
+        player.setMetadata(Metadata.Player.IS_INVISIBLE, true);
+        connection.sendPacket(new ClientboundPlaySetEntityMetadata(player));
+        connection.sendPacket(new ClientboundPlayUpdateAttributes(
+                player,
+                new AttributeProperty(Attribute.ENTITY_INTERACTION_RANGE, Attribute.ENTITY_INTERACTION_RANGE.max())
+        ));
+
         connection.sendPacket(new ClientboundPlayGameEvent(GameEventType.START_WAITING_FOR_CHUNKS.create(null)));
         return player;
     }
@@ -128,8 +143,6 @@ public class WorldCanvasSession implements CanvasSession {
             player = spawnPlayer();
 
         Vector3d position = cameraPosition();
-        if (canvas.direction() == WorldCanvas.Direction.UP)
-            position.add(0, 1, 0);
         viewer.sendPacket(new ClientboundPlaySynchronizePosition(
                 0,
                 position,
@@ -151,13 +164,15 @@ public class WorldCanvasSession implements CanvasSession {
         viewer.sendPacket(new ClientboundPlaySpawnEntity(camera));
         viewer.sendPacket(new ClientboundPlaySetCamera(camera.entityID()));
 
-        Entity boat = new Entity(EntityType.OAK_CHEST_BOAT);
-        boat.position(new Vector3d(0, canvas.dimensionType().maxY() + 50, 0));
-        boat.setMetadata(Metadata.OakBoatWithChest.HAS_NO_GRAVITY, true);
-        boat.spawn(viewer.connection());
+        Entity donkey = new Entity(EntityType.DONKEY);
+        donkey.position(position);
+        donkey.setMetadata(Metadata.Donkey.IS_INVISIBLE, true);
+        donkey.setMetadata(Metadata.Donkey.HAS_NO_GRAVITY, true);
+        donkey.setMetadata(Metadata.Donkey.HAS_CHEST, true);
+        donkey.spawn(viewer.connection());
 
         if (player != null) {
-            viewer.sendPacket(new ClientboundPlaySetPassengers(boat, player));
+            viewer.sendPacket(new ClientboundPlaySetPassengers(donkey, player));
             viewer.connection().sendActionBar(TextComponent.empty());
         }
 
@@ -194,7 +209,7 @@ public class WorldCanvasSession implements CanvasSession {
         active = false;
     }
 
-    protected Vector3d cameraPosition() {
+    protected Vector3d calculateCameraPosition() {
         return new Vector3d((double) canvas.worldWidth() / 2, (double) canvas.worldHeight() / 2, calculateZ(CALIBRATION));
     }
 

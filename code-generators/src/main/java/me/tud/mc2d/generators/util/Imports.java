@@ -6,6 +6,7 @@ public class Imports {
  
     public static final ClassName ARMOR_TRIM_MATERIAL = ClassName.get("me.tud.mc2d.item.armortrim", "ArmorTrimMaterial");
     public static final ClassName ARMOR_TRIM_PATTERN = ClassName.get("me.tud.mc2d.item.armortrim", "ArmorTrimPattern");
+    public static final ClassName ATTRIBUTE = ClassName.get("me.tud.mc2d.entity.attribute", "Attribute");
     public static final ClassName BANNER_PATTERN = ClassName.get("me.tud.mc2d.item.banner", "BannerPattern");
     public static final ClassName BIOME = ClassName.get("me.tud.mc2d.world", "Biome");
     public static final ClassName BLOCK = ClassName.get("me.tud.mc2d.world.block", "Block");

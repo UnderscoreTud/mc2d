@@ -10,6 +10,7 @@ import me.tud.mc2d.entity.EntityType;
 import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
+import me.tud.mc2d.entity.attribute.Attribute;
 import me.tud.mc2d.item.Item;
 import me.tud.mc2d.item.armortrim.ArmorTrimMaterial;
 import me.tud.mc2d.item.armortrim.ArmorTrimPattern;
@@ -28,6 +29,7 @@ public class RegistryKey<T, R extends Registry<T>> {
 
     private static final List<RegistryKey<?, ?>> REGISTRY_KEYS = new ArrayList<>();
 
+    public static final RegistryKey<Attribute, BuiltInRegistry<Attribute>> ATTRIBUTE = create("attribute");
     public static final RegistryKey<Block<?>, BuiltInRegistry<Block<?>>> BLOCK = create("block");
     public static final RegistryKey<EntityType, BuiltInRegistry<EntityType>> ENTITY_TYPE = create("entity_type");
     public static final RegistryKey<Item, BuiltInRegistry<Item>> ITEM = create("item");

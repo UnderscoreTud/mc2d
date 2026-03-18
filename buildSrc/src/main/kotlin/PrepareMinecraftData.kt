@@ -16,7 +16,7 @@ abstract class PrepareMinecraftData : DefaultTask() {
     abstract val mcVersion: Property<String>
 
     @get:Input
-    abstract val registries: ListProperty<String>
+    abstract val includedRegistries: ListProperty<String>
 
     @get:OutputDirectory
     abstract val destDir: DirectoryProperty
@@ -26,7 +26,7 @@ abstract class PrepareMinecraftData : DefaultTask() {
         val dest = destDir.get().asFile
         dest.deleteRecursively()
 
-        val included = registries.get()
+        val included = includedRegistries.get()
 
         val root = inputDir.get().asFile
         val extractedRoot = root.listFiles()?.singleOrNull()

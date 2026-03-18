@@ -22,7 +22,7 @@ public class Main implements CanvasApp {
     @Override
     public void setup(CanvasContext ctx) {
         ViewableCanvas scene = ctx.canvases().textDisplayCanvas()
-                .size(16 * 12, 9 * 12)
+                .size(16 * 4, 9 * 4)
                 .dimensionType(DimensionType.OVERWORLD.toBuilder()
                         .skybox(DimensionType.Skybox.NONE)
                         .attributes(new NBTCompound())
@@ -34,15 +34,17 @@ public class Main implements CanvasApp {
 
         ctx.scenes().defaultScene(scene);
 
-        ctx.ticker().scheduleAtFixedRate(() -> {
-            try {
-                animate(scene);
-                scene.present();
-                tickCount++;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }, 0, 25, TimeUnit.MILLISECONDS);
+        animate(scene);
+        scene.present();
+//        ctx.ticker().scheduleAtFixedRate(() -> {
+//            try {
+//                animate(scene);
+//                scene.present();
+//                tickCount++;
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }, 0, 25, TimeUnit.MILLISECONDS);
     }
 
     private void animate(Canvas scene) {

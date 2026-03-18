@@ -18,6 +18,13 @@ repositories {
 val minecraftVersion = "1.21.11"
 val prismarineRef = "3.105.0"
 
+val registries = listOf(
+    "attributes",
+    "blocks",
+    "items",
+    "entities"
+)
+
 val downloadedDir = layout.buildDirectory.dir("downloaded")
 val archiveFile = downloadedDir.map { it.file("minecraft-data.zip").asFile }
 val extractedDir = layout.buildDirectory.dir("extracted")
@@ -64,11 +71,7 @@ val prepareTask = tasks.register<PrepareMinecraftData>("prepareMinecraftData") {
 
     inputDir = extractedDir
     mcVersion = minecraftVersion
-    registries = listOf(
-        "blocks",
-        "items",
-        "entities"
-    )
+    includedRegistries = registries
     destDir = generatedResourcesDir.map { it.dir("minecraft-data") }
 }
 

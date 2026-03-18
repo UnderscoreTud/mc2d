@@ -19,6 +19,7 @@ public final class MC2DNetworkSerializers implements DynamicCatalogue.Serializer
     @Override
     public Collection<Serializer<?>> provideSerializers() {
         return List.of(
+                new BlockDataSerializer(),
                 new BlockPositionSerializer(),
                 new ClientInformationSerializer(),
                 new ComponentSerializer(context.componentProcessor()),

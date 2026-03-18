@@ -56,7 +56,7 @@ public class TextDisplayCanvasSession extends WorldCanvasSession {
     }
 
     @Override
-    protected Vector3d cameraPosition() {
+    protected Vector3d calculateCameraPosition() {
         return global(canvas().width() / 2, canvas().height() / 2).add(0, 0, calculateZ(CALIBRATION) * PIXEL_LENGTH);
     }
 

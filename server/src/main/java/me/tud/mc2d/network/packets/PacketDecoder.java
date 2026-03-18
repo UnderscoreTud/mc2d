@@ -8,7 +8,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlayClientTickEnd;
-import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlayMoveVehicle;
+import org.jetbrains.annotations.Nullable;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
 
@@ -21,7 +21,6 @@ public class PacketDecoder extends ByteToMessageDecoder {
     private static final Packet.Direction DIRECTION = Packet.Direction.SERVERBOUND;
     private static final Set<Object> LOG_IGNORE = Set.of(
             ServerboundPlayClientTickEnd.class,
-            ServerboundPlayMoveVehicle.class,
             0x1D, // move_player_pos
             0x1E, // move_player_pos_rot
             0x1F, // move_player_rot
@@ -53,7 +52,10 @@ public class PacketDecoder extends ByteToMessageDecoder {
         }
     }
 
-    private static int id(String message) {
+    private static int id(@Nullable String message) {
+        if (message == null)
+            return -1;
+
         int from = message.indexOf("id ");
         if (from == -1)
             return -1;

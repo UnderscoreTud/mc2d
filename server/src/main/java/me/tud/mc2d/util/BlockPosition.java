@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.With;
 import org.jetbrains.annotations.Contract;
+import org.joml.Vector3dc;
+import org.joml.Vector3ic;
 
 /**
  * Represents position of a block in the world.
@@ -38,6 +40,22 @@ public final class BlockPosition implements Writable, Cloneable {
      */
     public BlockPosition(EntityPosition position) {
         this(position.getBlockX(), position.getBlockY(), position.getBlockZ());
+    }
+
+    /**
+     * Position of a block in the world.
+     * @param position position of the block
+     */
+    public BlockPosition(Vector3ic position) {
+        this(position.x(), position.y(), position.z());
+    }
+
+    /**
+     * Position of a block in the world.
+     * @param position position of the block
+     */
+    public BlockPosition(Vector3dc position) {
+        this((int) position.x(), (int) position.y(), (int) position.z());
     }
 
     @Override
