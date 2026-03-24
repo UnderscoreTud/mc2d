@@ -6,8 +6,13 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelPromise;
 import lombok.*;
+import me.tud.mc2d.canvas.control.Control;
+import me.tud.mc2d.canvas.control.Controls;
+import me.tud.mc2d.canvas.control.InputEvent;
+import me.tud.mc2d.canvas.control.Interactive;
+import me.tud.mc2d.canvas.runtime.server.ServerCanvasContext;
 import me.tud.mc2d.canvas.view.CanvasSession;
-import me.tud.mc2d.canvas.view.ClientCanvasViewer;
+import me.tud.mc2d.canvas.view.CanvasViewer;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
 import me.tud.mc2d.canvas.world.WorldCanvas;
 import me.tud.mc2d.datapack.DataPack;
@@ -31,7 +36,9 @@ import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.ticker.Tick;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NBTSerializable;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector2d;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
 import org.machinemc.scriptive.components.Component;
@@ -43,13 +50,15 @@ import java.util.concurrent.CompletableFuture;
 @Data
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ClientConnection {
+public class ClientConnection implements CanvasViewer, Interactive<ClientConnection> {
+
+    private static final int DEFAULT_FOV = 70;
+    private static final double DEFAULT_ASPECT_RATIO = 16.0 / 9.0;
 
     private final Server server;
     private final @EqualsAndHashCode.Include Channel channel;
     private ConnectionState outgoingState = ConnectionState.HANDSHAKE;
     private ConnectionState incomingState = ConnectionState.HANDSHAKE;
-    private @Setter(AccessLevel.NONE) CompletableFuture<Void> enteredConfigurationFuture;
     private int protocolVersion = -1;
     private String serverAddress;
     private int serverPort = -1;
@@ -63,9 +72,21 @@ public class ClientConnection {
     private long keepAliveResponse;
     private CompletableFuture<Void> keepAliveFuture;
 
+    private @Getter Set<Control> pressedControls = EnumSet.noneOf(Control.class);
+    private Controls<ClientConnection> controls;
+
+    private @Getter @Setter int assumedFOV = DEFAULT_FOV;
+    private @Getter @Setter double assumedAspectRatio = DEFAULT_ASPECT_RATIO;
+
     private DataPack[] knownPacks;
 
     private String brand;
+
+    public ClientConnection(Server server, Channel channel) {
+        this.server = server;
+        this.channel = channel;
+        this.controls = new Controls<>(server.canvasContext().controls());
+    }
 
     public void outgoingState(ConnectionState state) {
         System.out.println("Outgoing state changed from " + this.outgoingState + " to " + state);
@@ -163,6 +184,48 @@ public class ClientConnection {
         keepAliveResponse = System.currentTimeMillis();
     }
 
+    @Override
+    public ServerCanvasContext context() {
+        return server().canvasContext();
+    }
+
+    @ApiStatus.Internal
+    public Set<Control> pressedControls(Set<Control> controls) {
+        Set<Control> previous = pressedControls;
+        pressedControls = controls;
+        return previous;
+    }
+
+    @ApiStatus.Internal
+    public void simulatePress(Control[] controls) {
+        for (Control control : controls)
+            simulatePress(control);
+    }
+
+    @ApiStatus.Internal
+    public void simulatePress(Control control) {
+        dispatch(new InputEvent.KeyPress<>(this, control));
+    }
+
+    @ApiStatus.Internal
+    public void simulateRelease(Control[] controls) {
+        for (Control control : controls)
+            simulateRelease(control);
+    }
+
+    @ApiStatus.Internal
+    public void simulateRelease(Control control) {
+        dispatch(new InputEvent.KeyRelease<>(this, control));
+    }
+
+    public void simulateMouseMove(Vector2d delta) {
+        controls.dispatch(new InputEvent.MouseMoveEvent<>(this, delta));
+    }
+
+    private void dispatch(InputEvent.KeyEvent<ClientConnection> event) {
+        controls.dispatch(event);
+    }
+
     public void knownPacks(DataPack[] knownPacks) {
         if (incomingState != ConnectionState.CONFIGURATION)
             throw new IllegalStateException("Known packs can only be set in CONFIGURATION state");
@@ -170,12 +233,17 @@ public class ClientConnection {
     }
 
     public @Nullable CanvasSession canvasSession() {
-        return server().canvasContext().scenes().session(new ClientCanvasViewer(this));
+        return server().canvasContext().scenes().session(this);
     }
 
     public @Nullable DimensionType dimensionType() {
-        ViewableCanvas scene = server().canvasContext().scenes().scene(new ClientCanvasViewer(this));
+        ViewableCanvas scene = server().canvasContext().scenes().scene(this);
         return scene instanceof WorldCanvas worldCanvas ? worldCanvas.dimensionType() : null;
+    }
+
+    @Override
+    public ClientConnection identity() {
+        return this;
     }
 
     public void configure() {
@@ -195,8 +263,7 @@ public class ClientConnection {
             sendPacket(new ClientboundConfigurationRegistryData(key.key(), entries));
         });
 
-        ClientCanvasViewer viewer = new ClientCanvasViewer(this);
-        CanvasSession session = server().canvasContext().scenes().attach(viewer);
+        CanvasSession session = server().canvasContext().scenes().attach(this);
         if (!session.initialized())
             session.initialize();
 

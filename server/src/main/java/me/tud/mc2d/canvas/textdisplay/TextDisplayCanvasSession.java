@@ -1,8 +1,8 @@
 package me.tud.mc2d.canvas.textdisplay;
 
-import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.canvas.world.WorldCanvasSession;
 import me.tud.mc2d.entity.TextDisplay;
+import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayRemoveEntities;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
@@ -19,7 +19,7 @@ public class TextDisplayCanvasSession extends WorldCanvasSession {
             calculateTheoreticalZ(64, 36, 70, 16.0 / 9.0), 25.7
     );
 
-    public TextDisplayCanvasSession(TextDisplayCanvas canvas, ClientCanvasViewer viewer) {
+    public TextDisplayCanvasSession(TextDisplayCanvas canvas, ClientConnection viewer) {
         super(canvas, viewer);
     }
 

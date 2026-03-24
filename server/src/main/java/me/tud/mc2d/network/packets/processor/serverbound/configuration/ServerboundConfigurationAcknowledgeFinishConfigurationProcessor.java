@@ -13,7 +13,7 @@ public class ServerboundConfigurationAcknowledgeFinishConfigurationProcessor
     public void process(ServerboundConfigurationAcknowledgeFinishConfiguration packet, ClientConnection connection) {
         connection.incomingState(ConnectionState.PLAY);
         CanvasSession session = connection.canvasSession();
-        if (session != null)
+        if (session != null && !session.loaded())
             session.load();
     }
 

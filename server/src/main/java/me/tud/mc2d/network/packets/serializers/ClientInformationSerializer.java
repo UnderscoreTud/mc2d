@@ -48,7 +48,7 @@ public class ClientInformationSerializer implements Serializer<ClientInformation
                 ChatMode.values()[visitor.read(context, intSerializer)], // Chat Mode
                 visitor.read(context, booleanSerializer), // Chat Colors
                 SkinPart.unpack(visitor.read(context, byteSerializer)), // Skin Parts
-                MainHand.values()[visitor.read(context, intSerializer)], // Main Hand
+                MainHand.values()[visitor.read(context, intSerializer)], // Demo Hand
                 visitor.read(context, booleanSerializer), // Text Filtering
                 visitor.read(context, booleanSerializer), // Allow Server Listing
                 ParticleStatus.values()[visitor.read(context, intSerializer)] // Particle Status

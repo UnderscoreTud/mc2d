@@ -1,9 +1,11 @@
 package me.tud.mc2d.canvas.runtime;
 
-public interface CanvasApp {
+import me.tud.mc2d.canvas.view.CanvasViewer;
 
-    void setup(CanvasContext ctx);
+public interface CanvasApp<C extends CanvasContext<V>, V extends CanvasViewer> {
 
-    void close(CanvasContext ctx);
+    void setup(C ctx);
+
+    void close(C ctx);
 
 }

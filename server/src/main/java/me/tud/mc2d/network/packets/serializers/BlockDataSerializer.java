@@ -6,9 +6,6 @@ import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerContext;
 import org.machinemc.paklet.serialization.Supports;
 
-/**
- * Network serializer for {@link BlockData}.
- */
 @Supports(BlockData.class)
 public class BlockDataSerializer implements Serializer<BlockData> {
 

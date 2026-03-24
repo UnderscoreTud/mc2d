@@ -21,12 +21,12 @@ buildscript {
 apply<PakletPlugin>()
 
 application {
-    mainClass.set("me.tud.mc2d.Main")
+    mainClass.set("me.tud.mc2d.Demo")
 }
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "me.tud.mc2d.Main"
+        attributes["Main-Class"] = "me.tud.mc2d.Demo"
     }
 }
 

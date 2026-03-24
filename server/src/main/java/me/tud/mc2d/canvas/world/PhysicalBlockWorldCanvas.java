@@ -7,7 +7,6 @@ import me.tud.mc2d.canvas.event.CanvasObserver;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.packets.Packet;
-import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.world.Biome;
 import me.tud.mc2d.world.blockdata.BlockData;

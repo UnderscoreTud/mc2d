@@ -2,6 +2,8 @@ package me.tud.mc2d.canvas.runtime;
 
 import io.netty.channel.ChannelFuture;
 import lombok.Builder;
+import me.tud.mc2d.canvas.runtime.server.ServerCanvasApp;
+import me.tud.mc2d.canvas.runtime.server.ServerCanvasContext;
 import me.tud.mc2d.network.server.Server;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,7 +14,7 @@ public class CanvasRuntime {
 
     private final @Builder.Default String hostname = "0.0.0.0";
     private final @Builder.Default int port = 25565;
-    private final @NotNull CanvasApp app;
+    private final @NotNull ServerCanvasApp app;
 
     public void run() throws IOException {
         Server server = new Server(hostname, port);
@@ -21,7 +23,7 @@ public class CanvasRuntime {
             if (!future.isSuccess())
                 throw new RuntimeException("Failed to bind server", future.cause());
 
-            CanvasContext ctx = server.canvasContext();
+            ServerCanvasContext ctx = server.canvasContext();
             app.setup(ctx);
 
             future.channel().closeFuture().addListener(_ -> {

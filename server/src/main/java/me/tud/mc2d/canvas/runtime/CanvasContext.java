@@ -1,25 +1,18 @@
 package me.tud.mc2d.canvas.runtime;
 
-import lombok.Data;
 import me.tud.mc2d.canvas.CanvasFactory;
-import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.canvas.control.Controls;
+import me.tud.mc2d.canvas.view.CanvasViewer;
 import me.tud.mc2d.ticker.Ticker;
 
-@Data
-public class CanvasContext {
+public interface CanvasContext<V extends CanvasViewer> {
 
-    private final Server server;
-    private final CanvasFactory canvases;
-    private final SceneManager scenes;
+    CanvasFactory canvases();
 
-    public CanvasContext(Server server) {
-        this.server = server;
-        this.scenes = new ServerSceneManager(server);
-        this.canvases = new CanvasFactory(server);
-    }
+    SceneManager<V> scenes();
 
-    public Ticker ticker() {
-        return server.ticker();
-    }
+    Controls<V> controls();
+
+    Ticker ticker();
 
 }

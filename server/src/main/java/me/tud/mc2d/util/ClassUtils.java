@@ -1,20 +1,6 @@
-/*
- * This file is part of Main.
- *
- * Main is free software: you can redistribute it and/or modify it under the terms of the
- * GNU General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * Main is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along with Main.
- * If not, see https://www.gnu.org/licenses/.
- */
 package me.tud.mc2d.util;
 
-import me.tud.mc2d.Main;
+import me.tud.mc2d.Demo;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +16,7 @@ import java.util.jar.JarFile;
 /**
  * Utility class for operations related to classes.
  * <p>
- * <a href="https://github.com/MachineMC/Main/blob/master/server/src/main/java/org/machinemc/server/utils/ClassUtils.java">Source</a>
+ * <a href="https://github.com/MachineMC/Demo/blob/master/server/src/main/java/org/machinemc/server/utils/ClassUtils.java">Source</a>
  */
 public final class ClassUtils {
 
@@ -45,7 +31,7 @@ public final class ClassUtils {
     public static void loadClass(final Class<?> classObject) {
         Objects.requireNonNull(classObject);
         try {
-            Class.forName(classObject.getName(), true, Main.CLASS_LOADER);
+            Class.forName(classObject.getName(), true, Demo.CLASS_LOADER);
         } catch (ClassNotFoundException ignored) { }
     }
 
@@ -68,7 +54,7 @@ public final class ClassUtils {
         final List<String> classNames = getClassNames(basePackage);
         for (final String className : classNames) {
             try {
-                consumer.accept(Class.forName(className, true, Main.CLASS_LOADER));
+                consumer.accept(Class.forName(className, true, Demo.CLASS_LOADER));
             } catch (ClassNotFoundException | ExceptionInInitializerError ignored) { }
         }
     }

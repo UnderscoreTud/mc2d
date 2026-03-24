@@ -9,6 +9,7 @@ import me.tud.mc2d.canvas.CanvasRegion;
 import me.tud.mc2d.canvas.view.*;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.world.Biome;
@@ -70,7 +71,7 @@ public abstract class AbstractWorldCanvas extends AbstractViewableCanvas impleme
 
     @Override
     protected CanvasSession createSession(CanvasViewer viewer) {
-        if (!(viewer instanceof ClientCanvasViewer clientViewer))
+        if (!(viewer instanceof ClientConnection clientViewer))
             throw new IllegalArgumentException("Expected a client canvas viewer, but got: " + viewer);
         return new WorldCanvasSession(this, clientViewer);
     }

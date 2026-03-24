@@ -2,7 +2,7 @@ package me.tud.mc2d.canvas.world;
 
 import lombok.*;
 import me.tud.mc2d.canvas.view.CanvasSession;
-import me.tud.mc2d.canvas.view.ClientCanvasViewer;
+import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.chunk.Chunk;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.Entity;
@@ -13,7 +13,6 @@ import me.tud.mc2d.entity.metadata.Metadata;
 import me.tud.mc2d.entity.player.GameMode;
 import me.tud.mc2d.gameevent.GameEventType;
 import me.tud.mc2d.network.ConnectionState;
-import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData.Entry;
 import me.tud.mc2d.network.packets.clientbound.play.*;
@@ -22,6 +21,7 @@ import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.util.LinearCalibration;
 import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.Biome;
+import org.apache.commons.lang3.ArrayUtils;
 import org.joml.Vector3d;
 import org.machinemc.scriptive.components.TextComponent;
 
@@ -37,11 +37,12 @@ public class WorldCanvasSession implements CanvasSession {
     );
 
     private final @ToString.Exclude AbstractWorldCanvas canvas;
-    private final ClientCanvasViewer viewer;
+    private final ClientConnection viewer;
     private final @Getter Vector3d cameraPosition;
-    private @Setter(AccessLevel.NONE) boolean initialized, spawnPlayer, loaded, active = true;
+    private @Setter(AccessLevel.NONE) volatile boolean initialized, spawnPlayer, loaded, active = true;
+    private int cameraID = -1, vehicleID = -1;
 
-    public WorldCanvasSession(AbstractWorldCanvas canvas, ClientCanvasViewer viewer) {
+    public WorldCanvasSession(AbstractWorldCanvas canvas, ClientConnection viewer) {
         this.canvas = canvas;
         this.viewer = viewer;
         this.cameraPosition = calculateCameraPosition();
@@ -64,20 +65,19 @@ public class WorldCanvasSession implements CanvasSession {
         if (initialized)
             throw new IllegalStateException("Session '" + this + "' has already been initialized");
 
-        ClientConnection connection = viewer.connection();
-        if (connection.outgoingState() == ConnectionState.PLAY) {
+        if (viewer.outgoingState() == ConnectionState.PLAY) {
             spawnPlayer = false;
             return initialized = true;
         }
 
-        if (connection.outgoingState() != ConnectionState.CONFIGURATION)
+        if (viewer.outgoingState() != ConnectionState.CONFIGURATION)
             return false;
 
-        connection.sendPacket(new ClientboundConfigurationRegistryData(
+        viewer.sendPacket(new ClientboundConfigurationRegistryData(
                 RegistryKey.DIMENSION_TYPE.key(),
                 new Entry[]{new Entry(WorldCanvas.DIMENSION_KEY, canvas.dimensionType().toNBT())}
         ));
-        connection.sendPacket(new ClientboundConfigurationRegistryData(
+        viewer.sendPacket(new ClientboundConfigurationRegistryData(
                 RegistryKey.BIOME.key(),
                 new Entry[]{
                         new Entry(WorldCanvas.BIOME_KEY, canvas.biome().toNBT()),
@@ -90,9 +90,8 @@ public class WorldCanvasSession implements CanvasSession {
     }
 
     private Entity spawnPlayer() {
-        ClientConnection connection = viewer.connection();
-        Entity player = new Entity(connection.uuid(), EntityType.PLAYER);
-        connection.sendPacket(new ClientboundPlayLogin(
+        Entity player = new Entity(viewer.uuid(), EntityType.PLAYER);
+        viewer.sendPacket(new ClientboundPlayLogin(
                 player.entityID(),
                 false,
                 new NamespacedKey[]{WorldCanvas.DIMENSION_KEY},
@@ -118,13 +117,13 @@ public class WorldCanvasSession implements CanvasSession {
         ));
 
         player.setMetadata(Metadata.Player.IS_INVISIBLE, true);
-        connection.sendPacket(new ClientboundPlaySetEntityMetadata(player));
-        connection.sendPacket(new ClientboundPlayUpdateAttributes(
+        viewer.sendPacket(new ClientboundPlaySetEntityMetadata(player));
+        viewer.sendPacket(new ClientboundPlayUpdateAttributes(
                 player,
                 new AttributeProperty(Attribute.ENTITY_INTERACTION_RANGE, Attribute.ENTITY_INTERACTION_RANGE.max())
         ));
 
-        connection.sendPacket(new ClientboundPlayGameEvent(GameEventType.START_WAITING_FOR_CHUNKS.create(null)));
+        viewer.sendPacket(new ClientboundPlayGameEvent(GameEventType.START_WAITING_FOR_CHUNKS.create(null)));
         return player;
     }
 
@@ -133,7 +132,7 @@ public class WorldCanvasSession implements CanvasSession {
         if (loaded)
             throw new IllegalStateException("Session '" + this + "' has already been loaded");
 
-        if (viewer.connection().outgoingState() != ConnectionState.PLAY)
+        if (viewer.outgoingState() != ConnectionState.PLAY)
             return false;
 
         loaded = true;
@@ -158,22 +157,24 @@ public class WorldCanvasSession implements CanvasSession {
         viewer.sendPacket(new ClientboundPlaySetChunkCenter(centerX, centerZ));
 
         Entity camera = new Entity(UUID.randomUUID(), EntityType.MARKER);
+        cameraID = camera.entityID();
         camera.position(position);
         camera.yaw(canvas.direction().yaw());
         camera.pitch(canvas.direction().pitch());
         viewer.sendPacket(new ClientboundPlaySpawnEntity(camera));
         viewer.sendPacket(new ClientboundPlaySetCamera(camera.entityID()));
 
-        Entity donkey = new Entity(EntityType.DONKEY);
-        donkey.position(position);
-        donkey.setMetadata(Metadata.Donkey.IS_INVISIBLE, true);
-        donkey.setMetadata(Metadata.Donkey.HAS_NO_GRAVITY, true);
-        donkey.setMetadata(Metadata.Donkey.HAS_CHEST, true);
-        donkey.spawn(viewer.connection());
+        Entity vehicle = new Entity(EntityType.DONKEY);
+        vehicleID = vehicle.entityID();
+        vehicle.position(position);
+        vehicle.setMetadata(Metadata.Donkey.IS_INVISIBLE, true);
+        vehicle.setMetadata(Metadata.Donkey.HAS_NO_GRAVITY, true);
+        vehicle.setMetadata(Metadata.Donkey.HAS_CHEST, true);
+        vehicle.spawn(viewer);
 
         if (player != null) {
-            viewer.sendPacket(new ClientboundPlaySetPassengers(donkey, player));
-            viewer.connection().sendActionBar(TextComponent.empty());
+            viewer.sendPacket(new ClientboundPlaySetPassengers(vehicle, player));
+            viewer.sendActionBar(TextComponent.empty());
         }
 
         Chunk[] chunks = canvas.chunks();
@@ -206,6 +207,13 @@ public class WorldCanvasSession implements CanvasSession {
             for (Chunk chunk : canvas.chunks())
                 viewer.sendPacket(new ClientboundPlayUnloadChunk(chunk.x(), chunk.z()));
         }
+        int[] entities = new int[0];
+        if (cameraID != -1)
+            entities = ArrayUtils.add(entities, cameraID);
+        if (vehicleID != -1)
+            entities = ArrayUtils.add(entities, vehicleID);
+        if (entities.length != 0)
+            viewer.sendPacket(new ClientboundPlayRemoveEntities(entities));
         active = false;
     }
 

@@ -8,7 +8,10 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlayClientTickEnd;
+import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlaySetPlayerRotation;
 import org.jetbrains.annotations.Nullable;
+import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlayPlayerInput;
+import me.tud.mc2d.network.packets.serverbound.play.ServerboundPlaySetHeldItem;
 import org.machinemc.paklet.PacketFactory;
 import org.machinemc.paklet.netty.NettyDataVisitor;
 
@@ -21,11 +24,12 @@ public class PacketDecoder extends ByteToMessageDecoder {
     private static final Packet.Direction DIRECTION = Packet.Direction.SERVERBOUND;
     private static final Set<Object> LOG_IGNORE = Set.of(
             ServerboundPlayClientTickEnd.class,
+            ServerboundPlayPlayerInput.class,
+            ServerboundPlaySetHeldItem.class,
+            ServerboundPlaySetPlayerRotation.class,
             0x1D, // move_player_pos
             0x1E, // move_player_pos_rot
-            0x1F, // move_player_rot
-            0x22, // paddle_boat
-            0x2A  // player_input
+            0x22 // paddle_boat
     );
 
     private final PacketFactory packetFactory;
@@ -40,7 +44,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
             Preconditions.checkState(packet.direction() == DIRECTION, "Decoded client-bound packet in server-bound context");
     
             if (!LOG_IGNORE.contains(packet.getClass()))
-                System.out.println("INCOMING: " + packet);
+                System.out.println("C->S: " + packet);
             out.add(packet);
         } catch (Exception e) {
             int id = id(e.getMessage());
@@ -48,7 +52,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
                 throw e;
 
             if (!LOG_IGNORE.contains(id))
-                System.out.println("INCOMING: " + format(id) + " (unknown)");
+                System.out.println("C->S: " + format(id) + " (unknown)");
         }
     }
 

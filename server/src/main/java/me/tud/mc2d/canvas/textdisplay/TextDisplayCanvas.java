@@ -10,11 +10,11 @@ import me.tud.mc2d.canvas.MemoryCanvas;
 import me.tud.mc2d.canvas.lifecycle.Disposable;
 import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.CanvasViewer;
-import me.tud.mc2d.canvas.view.ClientCanvasViewer;
 import me.tud.mc2d.canvas.world.AbstractWorldCanvas;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.entity.TextDisplay;
 import me.tud.mc2d.entity.metadata.Metadata;
+import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
 import me.tud.mc2d.world.Biome;
@@ -72,7 +72,7 @@ public class TextDisplayCanvas extends AbstractWorldCanvas implements Disposable
 
     @Override
     protected CanvasSession createSession(CanvasViewer viewer) {
-        if (!(viewer instanceof ClientCanvasViewer clientViewer))
+        if (!(viewer instanceof ClientConnection clientViewer))
             throw new IllegalArgumentException("TextDisplayCanvas only supports ClientCanvasViewers");
         return new TextDisplayCanvasSession(this, clientViewer);
     }

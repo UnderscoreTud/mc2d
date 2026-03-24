@@ -4,26 +4,22 @@ import me.tud.mc2d.canvas.view.CanvasSession;
 import me.tud.mc2d.canvas.view.CanvasViewer;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
 
-public interface SceneManager {
+public interface SceneManager<V extends CanvasViewer> {
 
     ViewableCanvas defaultScene();
 
     void defaultScene(ViewableCanvas canvas);
 
-    ViewableCanvas scene(CanvasViewer viewer);
+    SceneSelector<V> sceneSelector();
 
-    default CanvasSession session(CanvasViewer viewer) {
-        ViewableCanvas scene = scene(viewer);
-        if (scene == null)
-            return null;
-        return scene.sessions().stream()
-                .filter(session -> session.viewer().identity().equals(viewer.identity()))
-                .findFirst()
-                .orElse(null);
-    }
+    void sceneSelector(SceneSelector<V> sceneSelector);
 
-    CanvasSession attach(CanvasViewer viewer);
+    ViewableCanvas scene(V viewer);
 
-    CanvasSession transitionScene(CanvasViewer viewer, ViewableCanvas canvas);
+    CanvasSession session(V viewer);
+
+    CanvasSession attach(V viewer);
+
+    CanvasSession transitionScene(V viewer, ViewableCanvas canvas);
 
 }
