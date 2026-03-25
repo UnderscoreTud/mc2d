@@ -1,10 +1,12 @@
 package me.tud.mc2d.network.client;
 
+import com.google.common.base.Preconditions;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelPromise;
+import io.netty.util.concurrent.PromiseCombiner;
 import lombok.*;
 import me.tud.mc2d.canvas.control.Control;
 import me.tud.mc2d.canvas.control.Controls;
@@ -57,6 +59,8 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
 
     private final Server server;
     private final @EqualsAndHashCode.Include Channel channel;
+    private final Deque<QueuedPackets> queuedPackets = new ArrayDeque<>();
+
     private ConnectionState outgoingState = ConnectionState.HANDSHAKE;
     private ConnectionState incomingState = ConnectionState.HANDSHAKE;
     private int protocolVersion = -1;
@@ -88,22 +92,31 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
         this.controls = new Controls<>(server.canvasContext().controls());
     }
 
+    public boolean stable() {
+        return incomingState == outgoingState;
+    }
+
     public void outgoingState(ConnectionState state) {
         System.out.println("Outgoing state changed from " + this.outgoingState + " to " + state);
         this.outgoingState = state;
         attemptStartKeepAliveLoop();
+        if (stable())
+            flushQueuedPackets();
     }
 
     public void incomingState(ConnectionState state) {
         System.out.println("Incoming state changed from " + this.incomingState + " to " + state);
         this.incomingState = state;
         attemptStartKeepAliveLoop();
+        if (stable())
+            flushQueuedPackets();
     }
 
     public void state(ConnectionState state) {
         System.out.println("State changed from " + this.incomingState + " to " + state);
         outgoingState = incomingState = state;
         attemptStartKeepAliveLoop();
+        flushQueuedPackets();
     }
 
     public void protocolVersion(int protocolVersion) {
@@ -290,6 +303,11 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
     }
 
     public ChannelFuture sendPacket(Packet packet) {
+        if (!stable()) {
+            ChannelPromise done = channel.newPromise();
+            queuedPackets.add(new QueuedPackets(Collections.singleton(packet), done));
+            return done;
+        }
         return channel.writeAndFlush(packet);
     }
 
@@ -302,6 +320,11 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
             throw new IllegalArgumentException("Cannot send empty packets");
 
         ChannelPromise done = channel.newPromise();
+
+        if (!stable()) {
+            queuedPackets.add(new QueuedPackets(packets, done));
+            return done; 
+        }
 
         channel.write(new ClientboundPlayBundleDelimiter());
         int count = 0;
@@ -317,11 +340,37 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
         return done;
     }
 
+    private void flushQueuedPackets() {
+        if (queuedPackets.isEmpty())
+            return;
+        for (QueuedPackets queued : queuedPackets)
+            queued.flush(this);
+        queuedPackets.clear();
+    }
+
     public void cleanup() {
         if (keepAliveFuture != null) {
             keepAliveFuture.cancel(true);
             keepAliveFuture = null;
         }
+    }
+
+    private record QueuedPackets(Collection<Packet> packets, ChannelPromise promise) {
+
+        public QueuedPackets {
+            Preconditions.checkArgument(!packets.isEmpty(), "packets must not be empty");
+        }
+
+        public void flush(ClientConnection connection) {
+            PromiseCombiner combiner = new PromiseCombiner(connection.channel().eventLoop());
+            if (packets.size() == 1) {
+                combiner.add(connection.sendPacket(packets.iterator().next()));
+            } else {
+                combiner.add(connection.sendPackets(packets));
+            }
+            combiner.finish(promise);
+        }
+
     }
 
 }

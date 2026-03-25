@@ -185,13 +185,15 @@ public class WorldCanvasSession implements CanvasSession {
         int maxX = (maxChunk != null ? maxChunk.x() : 0) + 1;
         int maxZ = Math.max((maxChunk != null ? maxChunk.z() : 0), centerZ + 1) + 1;
 
-        ClientboundPlayChunkDataAndUpdateLight emptyChunkPacket = new Chunk(DimensionType.OVERWORLD, canvas.biome(), 0, 0).createChunkPacket();
+        ClientboundPlayChunkDataAndUpdateLight emptyChunkPacket = new Chunk(
+                canvas().dimensionType(),
+                canvas().biome(),
+                0, 0
+        ).createChunkPacket();
+
         for (int x = minX; x <= maxX; x++) {
-            emptyChunkPacket.x(x);
-            for (int z = minZ; z <= maxZ; z++) {
-                emptyChunkPacket.z(z);
-                viewer.sendPacket(emptyChunkPacket);
-            }
+            for (int z = minZ; z <= maxZ; z++)
+                viewer.sendPacket(emptyChunkPacket.withX(x).withZ(z));
         }
 
         for (Chunk chunk : chunks)
