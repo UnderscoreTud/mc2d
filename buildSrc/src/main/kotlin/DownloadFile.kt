@@ -4,7 +4,7 @@ import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
-import java.net.URL
+import java.net.URI
 
 abstract class DownloadFile : DefaultTask() {
     @get:Input
@@ -18,7 +18,7 @@ abstract class DownloadFile : DefaultTask() {
         val out = outputFile.get().asFile
         out.parentFile.mkdirs()
 
-        val url = sourceURL.map { URL(it) }.get()
+        val url = sourceURL.map { URI(it).toURL() }.get()
         url.openStream().use { input -> out.outputStream().use { output -> input.copyTo(output) } }
     }
 }
