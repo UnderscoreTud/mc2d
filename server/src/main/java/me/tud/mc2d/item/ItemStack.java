@@ -21,4 +21,11 @@ public record ItemStack(int count, Item item) implements Writable {
                 .writeVarInt(0); // Components to remove
     }
 
+    public static ItemStack read(FriendlyByteBuf buf) {
+        int count = buf.readVarInt();
+        int id = buf.readVarInt();
+        buf.finish();
+        return new ItemStack(count, Item.values().get(id));
+    }
+
 }

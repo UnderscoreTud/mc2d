@@ -9,6 +9,7 @@ import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
 import me.tud.mc2d.entity.player.MainHand;
+import me.tud.mc2d.item.ItemStack;
 import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.registry.RegistryKey;
@@ -117,8 +118,8 @@ public class MetadataEntry<T> {
         return optional(index, 6, FriendlyByteBuf::readComponent, FriendlyByteBuf::writeComponent);
     }
 
-    public static MetadataEntry<Object> slot(int index) { // TODO https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Metadata_type:Slot
-        return entry(index, 7, null, null);
+    public static MetadataEntry<ItemStack> slot(int index) {
+        return entry(index, 7, ItemStack::read, FriendlyByteBuf::write);
     }
 
     public static MetadataEntry<Boolean> _boolean(int index) {

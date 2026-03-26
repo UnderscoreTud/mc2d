@@ -6,6 +6,7 @@ import me.tud.mc2d.entity.ItemDisplay.DisplayType;
 import me.tud.mc2d.entity.TextDisplay.Alignment;
 import me.tud.mc2d.entity.player.MainHand;
 import me.tud.mc2d.entity.player.SkinPart;
+import me.tud.mc2d.item.ItemStack;
 import me.tud.mc2d.painting.PaintingVariant;
 import me.tud.mc2d.world.block.BlockFace;
 import me.tud.mc2d.world.blockdata.BlockData;
@@ -72,7 +73,7 @@ public class Metadata {
     public static class EyeOfEnder extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class FallingBlock extends Entity {
@@ -84,13 +85,13 @@ public class Metadata {
     public static class Fireball extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class FireworkRocket extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> FIREWORK_INFO = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> FIREWORK_INFO = slot(INDEX.incrementAndGet());
         public static final MetadataEntry<@Nullable Integer> USER_ID = optVarInt(INDEX.incrementAndGet());
         public static final MetadataEntry<Boolean> IS_SHOT_AT_ANGLE = _boolean(INDEX.incrementAndGet());
     }
@@ -106,14 +107,14 @@ public class Metadata {
     public static class Item extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class ItemFrame extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
         public static final MetadataEntry<BlockFace> DIRECTION = direction(INDEX.incrementAndGet());
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
         public static final MetadataEntry<Integer> ROTATION = varInt(INDEX.incrementAndGet());
     }
 
@@ -130,13 +131,13 @@ public class Metadata {
     public static class OminousItemSpawner extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class Painting extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
         public static final ServerAwareMetadataEntry<PaintingVariant> PAINTING_TYPE = paintingVariant(INDEX.incrementAndGet());
     }
 
@@ -145,7 +146,7 @@ public class Metadata {
     public static class SmallFireball extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class PrimedTNT extends Entity {
@@ -229,7 +230,7 @@ public class Metadata {
     public static class ItemDisplay extends Display {
         private static final AtomicInteger INDEX = new AtomicInteger(Display.INDEX.get());
 
-        public static final MetadataEntry<Object> DISPLAYED_ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> DISPLAYED_ITEM = slot(INDEX.incrementAndGet());
         public static final MetadataEntry<DisplayType> DISPLAY_TYPE = byteEnum(INDEX.incrementAndGet(), DisplayType.class);
     }
 
@@ -868,7 +869,7 @@ public class Metadata {
     public static class ThrownItemProjectile extends Entity {
         private static final AtomicInteger INDEX = new AtomicInteger(Entity.INDEX.get());
 
-        public static final MetadataEntry<Object> ITEM = slot(INDEX.incrementAndGet());
+        public static final MetadataEntry<ItemStack> ITEM = slot(INDEX.incrementAndGet());
     }
 
     public static class ThrownEgg extends ThrownItemProjectile {}
