@@ -10,6 +10,8 @@ public class ServerboundPlaySetPlayerRotationProcessor implements PacketProcesso
 
     @Override
     public void process(ServerboundPlaySetPlayerRotation packet, ClientConnection connection) {
+        if (!connection.stable())
+            return;
         Vector2d delta = new Vector2d(packet.yaw(), packet.pitch() * -1);
         if (delta.x() == 0 && delta.y() == 0)
             return;

@@ -7,6 +7,7 @@ import me.tud.mc2d.canvas.runtime.server.ServerCanvasContext;
 import me.tud.mc2d.canvas.runtime.CanvasRuntime;
 import me.tud.mc2d.canvas.runtime.server.ServerCanvasApp;
 import me.tud.mc2d.canvas.view.ViewableCanvas;
+import me.tud.mc2d.canvas.world.WorldCanvas;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.client.ClientConnection;
 import org.joml.Vector2d;
@@ -106,16 +107,12 @@ public class Demo implements ServerCanvasApp {
     @Override
     public void setup(ServerCanvasContext ctx) {
         ViewableCanvas[] scenes = {
+                ctx.canvases().physicalBlockCanvas()
+                        .size(16 * 12, 9 * 12)
+                        .direction(WorldCanvas.Direction.DOWN)
+                        .build(),
                 ctx.canvases().textDisplayCanvas()
                         .size(16 * 12, 9 * 12)
-                        .dimensionType(DimensionType.OVERWORLD.toBuilder()
-                                .skybox(DimensionType.Skybox.NONE)
-                                .attributes(new NBTCompound())
-                                .build())
-                        .build(),
-
-                ctx.canvases().textDisplayCanvas()
-                        .size(16 * 6, 9 * 6)
                         .dimensionType(DimensionType.OVERWORLD.toBuilder()
                                 .skybox(DimensionType.Skybox.NONE)
                                 .attributes(new NBTCompound())

@@ -44,9 +44,12 @@ public class WorldCanvasSession implements CanvasSession {
     public WorldCanvasSession(AbstractWorldCanvas canvas, ClientConnection viewer) {
         this.canvas = canvas;
         this.viewer = viewer;
-        this.cameraPosition = calculateCameraPosition();
-        if (canvas().direction() == WorldCanvas.Direction.UP)
-            this.cameraPosition.add(0, 1, 0);
+        Vector3d cameraPosition = calculateCameraPosition();
+        switch (canvas().direction()) {
+            case UP -> cameraPosition = new Vector3d(cameraPosition.x, -cameraPosition.z + 1, cameraPosition.y);
+            case DOWN -> cameraPosition = new Vector3d(cameraPosition.x, cameraPosition.z, cameraPosition.y);
+        }
+        this.cameraPosition = cameraPosition;
     }
 
     @Override

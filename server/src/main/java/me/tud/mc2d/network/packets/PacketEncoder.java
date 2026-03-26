@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.network.client.ClientConnection;
 import me.tud.mc2d.network.packets.clientbound.ClientboundPacket;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayBundleDelimiter;
+import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayPlayerRotation;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlaySetEntityMetadata;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
@@ -21,6 +22,7 @@ public class PacketEncoder extends MessageToByteEncoder<Packet> {
     private static final Packet.Direction DIRECTION = Packet.Direction.CLIENTBOUND;
     private static final Set<Class<? extends ClientboundPacket>> LOG_IGNORE = Set.of(
             ClientboundPlayBundleDelimiter.class,
+            ClientboundPlayChunkDataAndUpdateLight.class,
             ClientboundPlayPlayerRotation.class,
             ClientboundPlaySetEntityMetadata.class
     );

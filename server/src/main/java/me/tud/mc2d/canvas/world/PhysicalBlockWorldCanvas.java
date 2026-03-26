@@ -71,7 +71,6 @@ public class PhysicalBlockWorldCanvas extends AbstractWorldCanvas implements Blo
         sendPackets(packets);
         clearDirty();
     }
-    
 
     public static Builder builder() {
         return new Builder();
@@ -102,7 +101,7 @@ public class PhysicalBlockWorldCanvas extends AbstractWorldCanvas implements Blo
         @Override
         public PhysicalBlockWorldCanvas build() {
             this.worldWidth = width;
-            this.worldHeight = direction == Direction.HORIZONTAL ? 1 : height;
+            this.worldHeight = height;
             return new PhysicalBlockWorldCanvas(this);
         }
 

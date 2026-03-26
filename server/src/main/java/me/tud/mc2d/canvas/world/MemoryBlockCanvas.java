@@ -10,6 +10,7 @@ import me.tud.mc2d.world.block.Block;
 import me.tud.mc2d.world.blockdata.BlockData;
 import org.jetbrains.annotations.UnmodifiableView;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -39,7 +40,7 @@ public class MemoryBlockCanvas extends AbstractMutableCanvas implements BlockCan
 
     @Override
     public void setRGB(int x, int y, int rgb) {
-        if (rgb == 0) {
+        if ((rgb & 0x00FFFFFF) == 0) {
             setBlock(x, y, Block.BLACK_CONCRETE);
         } else {
             setBlock(x, y, Block.WHITE_CONCRETE);
@@ -49,7 +50,7 @@ public class MemoryBlockCanvas extends AbstractMutableCanvas implements BlockCan
 
     @Override
     public void fillRGB(int rgb) {
-        if (rgb == 0) {
+        if ((rgb & 0x00FFFFFF) == 0) {
             fillBlock(Block.BLACK_CONCRETE);
         } else {
             fillBlock(Block.WHITE_CONCRETE);
@@ -59,7 +60,8 @@ public class MemoryBlockCanvas extends AbstractMutableCanvas implements BlockCan
 
     @Override
     public void fillRectRGB(int x, int y, int width, int height, int rgb) {
-        throw new UnsupportedOperationException(); // TODO
+        fillRectBlock(x, y, width, height, (rgb & 0x00FFFFFF) == 0 ? Block.BLACK_CONCRETE : Block.WHITE_CONCRETE);
+//        throw new UnsupportedOperationException(); // TODO
     }
 
     @Override
