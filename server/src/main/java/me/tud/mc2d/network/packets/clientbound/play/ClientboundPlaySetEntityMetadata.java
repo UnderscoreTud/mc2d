@@ -4,6 +4,7 @@ import io.netty.buffer.Unpooled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import me.tud.mc2d.entity.Entity;
 import me.tud.mc2d.entity.metadata.MetadataContainer;
 import me.tud.mc2d.network.packets.Packets;
@@ -23,7 +24,7 @@ import org.machinemc.paklet.metadata.DoNotPrefix;
 public class ClientboundPlaySetEntityMetadata implements ClientboundPacket {
 
     private int entityID;
-    private byte @DoNotPrefix [] metadata;
+    private @ToString.Exclude byte @DoNotPrefix [] metadata;
 
     public ClientboundPlaySetEntityMetadata(Entity entity) {
         this(entity.entityID(), entity.metadataContainer());

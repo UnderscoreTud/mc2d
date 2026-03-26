@@ -9,12 +9,13 @@ import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.nbt.NBTList;
 import org.machinemc.scriptive.style.Colour;
-import org.machinemc.scriptive.style.HexColor;
 
 @Getter
 @ToString
 @Builder(toBuilder = true)
 public final class Biome extends Biomes implements NBTSerializable {
+
+    public static final NamespacedKey DEFAULT_KEY = NamespacedKey.mc2d("canvas");
 
     private final boolean hasPrecipitation;
     private final float temperature;

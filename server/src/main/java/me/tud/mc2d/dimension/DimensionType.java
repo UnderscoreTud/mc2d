@@ -7,6 +7,7 @@ import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NBTSerializable;
+import me.tud.mc2d.util.NamespacedKey;
 import me.tud.mc2d.world.block.Block;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.nbt.NBTList;
@@ -17,6 +18,8 @@ import java.util.Locale;
 @ToString
 @Builder(toBuilder = true)
 public final class DimensionType extends DimensionTypes implements NBTSerializable {
+
+    public static final NamespacedKey DEFAULT_KEY = NamespacedKey.mc2d("canvas");
 
     private final double coordinateScale;
     private final boolean hasSkylight, hasCeiling;

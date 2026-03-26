@@ -19,6 +19,7 @@ import me.tud.mc2d.canvas.view.ViewableCanvas;
 import me.tud.mc2d.canvas.world.WorldCanvas;
 import me.tud.mc2d.datapack.DataPack;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.entity.player.Player;
 import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationFinishConfiguration;
@@ -50,6 +51,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 @Data
+@Setter(AccessLevel.NONE)
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ClientConnection implements CanvasViewer, Interactive<ClientConnection> {
@@ -69,22 +71,24 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
 
     private @ToString.Include UUID uuid;
     private @ToString.Include String username;
-    private ClientInformation clientInformation;
+    private @Setter ClientInformation clientInformation;
 
     private long keepAliveID;
     private long keepAliveRequest;
     private long keepAliveResponse;
     private CompletableFuture<Void> keepAliveFuture;
 
-    private @Getter Set<Control> pressedControls = EnumSet.noneOf(Control.class);
+    private Player player;
+
+    private Set<Control> pressedControls = EnumSet.noneOf(Control.class);
     private Controls<ClientConnection> controls;
 
-    private @Getter @Setter int assumedFOV = DEFAULT_FOV;
-    private @Getter @Setter double assumedAspectRatio = DEFAULT_ASPECT_RATIO;
+    private int assumedFOV = DEFAULT_FOV;
+    private double assumedAspectRatio = DEFAULT_ASPECT_RATIO;
 
     private DataPack[] knownPacks;
 
-    private String brand;
+    private @Setter String brand;
 
     public ClientConnection(Server server, Channel channel) {
         this.server = server;
@@ -98,7 +102,14 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
 
     public void outgoingState(ConnectionState state) {
         System.out.println("Outgoing state changed from " + this.outgoingState + " to " + state);
+
+        if (player != null && state == ConnectionState.CONFIGURATION) {
+            player.remove();
+            player = null;
+        }
+
         this.outgoingState = state;
+
         attemptStartKeepAliveLoop();
         if (stable())
             flushQueuedPackets();
@@ -106,7 +117,14 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
 
     public void incomingState(ConnectionState state) {
         System.out.println("Incoming state changed from " + this.incomingState + " to " + state);
+
+        if (player != null && state == ConnectionState.CONFIGURATION) {
+            player.remove();
+            player = null;
+        }
+
         this.incomingState = state;
+
         attemptStartKeepAliveLoop();
         if (stable())
             flushQueuedPackets();
@@ -114,7 +132,14 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
 
     public void state(ConnectionState state) {
         System.out.println("State changed from " + this.incomingState + " to " + state);
+
+        if (player != null && state == ConnectionState.CONFIGURATION) {
+            player.remove();
+            player = null;
+        }
+
         outgoingState = incomingState = state;
+
         attemptStartKeepAliveLoop();
         flushQueuedPackets();
     }
@@ -147,6 +172,12 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
         if (this.username != null)
             throw new IllegalStateException("Name already set");
         this.username = name;
+    }
+
+    @ApiStatus.Internal
+    public void player(Player player) {
+        Preconditions.checkArgument(this.player == null, "Player is already set for this connection");
+        this.player = player;
     }
 
     public void sendActionBar(Component component) {

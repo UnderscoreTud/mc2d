@@ -39,12 +39,22 @@ public class MemoryBlockCanvas extends AbstractMutableCanvas implements BlockCan
 
     @Override
     public void setRGB(int x, int y, int rgb) {
-        throw new UnsupportedOperationException(); // TODO
+        if (rgb == 0) {
+            setBlock(x, y, Block.BLACK_CONCRETE);
+        } else {
+            setBlock(x, y, Block.WHITE_CONCRETE);
+        }
+//        throw new UnsupportedOperationException(); // TODO
     }
 
     @Override
     public void fillRGB(int rgb) {
-        throw new UnsupportedOperationException(); // TODO
+        if (rgb == 0) {
+            fillBlock(Block.BLACK_CONCRETE);
+        } else {
+            fillBlock(Block.WHITE_CONCRETE);
+        }
+//        throw new UnsupportedOperationException(); // TODO
     }
 
     @Override

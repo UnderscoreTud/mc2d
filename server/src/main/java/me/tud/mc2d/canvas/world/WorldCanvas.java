@@ -13,9 +13,6 @@ import java.util.Collection;
 
 public interface WorldCanvas extends ViewableCanvas, Disposable {
 
-    NamespacedKey DIMENSION_KEY = NamespacedKey.mc2d("canvas");
-    NamespacedKey BIOME_KEY = NamespacedKey.mc2d("canvas");
-
     Direction direction();
 
     DimensionType dimensionType();

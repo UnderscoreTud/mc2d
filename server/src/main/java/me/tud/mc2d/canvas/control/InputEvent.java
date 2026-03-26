@@ -5,16 +5,16 @@ import org.joml.Vector2d;
 
 public sealed interface InputEvent<V extends CanvasViewer> {
 
-    V source();
+    V viewer();
 
     sealed interface KeyEvent<V extends CanvasViewer> extends InputEvent<V> {
         Control control();
     }
 
-    record KeyPress<V extends CanvasViewer>(V source, Control control) implements KeyEvent<V> {}
+    record KeyPress<V extends CanvasViewer>(V viewer, Control control) implements KeyEvent<V> {}
 
-    record KeyRelease<V extends CanvasViewer>(V source, Control control) implements KeyEvent<V> {}
+    record KeyRelease<V extends CanvasViewer>(V viewer, Control control) implements KeyEvent<V> {}
 
-    record MouseMoveEvent<V extends CanvasViewer>(V source, Vector2d delta) implements InputEvent<V> {}
+    record MouseMoveEvent<V extends CanvasViewer>(V viewer, Vector2d delta) implements InputEvent<V> {}
 
 }
