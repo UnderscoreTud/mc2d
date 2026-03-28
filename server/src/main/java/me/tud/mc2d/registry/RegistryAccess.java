@@ -4,9 +4,11 @@ import lombok.Getter;
 import me.tud.mc2d.chat.ChatType;
 import me.tud.mc2d.damage.DamageType;
 import me.tud.mc2d.dimension.DimensionType;
+import me.tud.mc2d.entity.EntityType;
 import me.tud.mc2d.entity.MobVariant;
 import me.tud.mc2d.entity.WolfSoundVariant;
 import me.tud.mc2d.entity.WolfVariant;
+import me.tud.mc2d.entity.attribute.Attribute;
 import me.tud.mc2d.item.Item;
 import me.tud.mc2d.item.armortrim.ArmorTrimMaterial;
 import me.tud.mc2d.item.armortrim.ArmorTrimPattern;
@@ -58,7 +60,9 @@ public class RegistryAccess {
     public static RegistryAccess createDefault(Server server) {
         RegistryAccess access = new RegistryAccess(server);
 
+        access.register(RegistryKey.ATTRIBUTE, Attribute.createDefaultRegistry(server));
         access.register(RegistryKey.BLOCK, Block.createDefaultRegistry(server));
+        access.register(RegistryKey.ENTITY_TYPE, EntityType.createDefaultRegistry(server));
         access.register(RegistryKey.ITEM, Item.createDefaultRegistry(server));
 
         access.register(RegistryKey.ARMOR_TRIM_MATERIAL, ArmorTrimMaterial.createDefaultRegistry(server));
