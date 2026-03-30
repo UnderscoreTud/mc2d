@@ -1,11 +1,14 @@
 package me.tud.mc2d.item.map;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import me.tud.mc2d.util.color.LabColor;
 import org.machinemc.scriptive.style.HexColor;
 
 import java.awt.*;
+import java.util.Arrays;
 
 @Getter
 @RequiredArgsConstructor
@@ -73,7 +76,11 @@ public enum MapColor {
     RAW_IRON(216, 175, 147),
     GLOW_LICHEN(127, 167, 15);
 
-    private static final ColorInfo[] COLORS = new ColorInfo[(values().length << 2) - 3];
+    private static SearchMode DEFAULT_SEARCH_MODE = SearchMode.APPROXIMATE;
+    private static int APPROXIMATE_CANDIDATES = 5;
+
+    private static final ColorInfo[] COLORS = new ColorInfo[(values().length << 2) - 4]; // Exclude NONE and all its "shades"
+    private static final Int2ObjectMap<PreciseMapColor> BEST_COLOR_CACHE = new Int2ObjectOpenHashMap<>();
 
     static {
         populateColors();
@@ -94,7 +101,7 @@ public enum MapColor {
         );
     }
 
-    public byte id() {
+    public int id() {
         return new PreciseMapColor(this, Multiplier.x1).id();
     }
 
@@ -126,37 +133,135 @@ public enum MapColor {
         return new HexColor(rgb());
     }
 
+    public PreciseMapColor precise() {
+        return precise(Multiplier.x1);
+    }
+
     public PreciseMapColor precise(Multiplier multiplier) {
         return new PreciseMapColor(this, multiplier);
     }
 
     public static PreciseMapColor closestColor(int rgb) {
+        return closestColor(rgb, defaultSearchMode());
+    }
+
+    public static PreciseMapColor closestColor(int rgb, SearchMode searchMode) {
+        rgb &= 0xFFFFFF;
+        return BEST_COLOR_CACHE.computeIfAbsent(rgb, value -> switch (searchMode) {
+            case BEST -> closestColorCIEDE2000(value);
+            case APPROXIMATE -> closestColorApproximate(value);
+            case FAST -> closestColorEuclidean(value);
+        });
+    }
+
+    private static PreciseMapColor closestColorEuclidean(int rgb) {
         LabColor base = LabColor.fromRGB(rgb);
-        double closestDifference = Double.MAX_VALUE;
-        PreciseMapColor closestColor = null;
+        double best = Double.MAX_VALUE;
+        PreciseMapColor bestColor = null;
         for (ColorInfo colorInfo : COLORS) {
-            double diff = base.difference(colorInfo.lab());
-            if (diff < closestDifference) {
-                closestDifference = diff;
-                closestColor = colorInfo.color();
+            if (colorInfo.color().rgb() == rgb)
+                return colorInfo.color();
+
+            double diff = base.euclideanDistanceSquared(colorInfo.lab());
+            if (diff < best) {
+                best = diff;
+                bestColor = colorInfo.color();
             }
         }
-        return closestColor;
+        return bestColor;
+    }
+
+    private static PreciseMapColor closestColorApproximate(int rgb) {
+        return closestColorApproximate(rgb, approximateCandidates());
+    }
+
+    private static PreciseMapColor closestColorApproximate(int rgb, int k) {
+        if (k == 1) {
+            return closestColorEuclidean(rgb);
+        } else if (k >= COLORS.length) {
+            return closestColorCIEDE2000(rgb);
+        }
+
+        LabColor base = LabColor.fromRGB(rgb);
+        double[] topDist = new double[k];
+        int[] topIdx = new int[k];
+        Arrays.fill(topDist, Double.MAX_VALUE);
+        Arrays.fill(topIdx, -1);
+
+        for (int i = 0, length = COLORS.length; i < length; i++) {
+            ColorInfo colorInfo = COLORS[i];
+            if (colorInfo.color().rgb() == rgb)
+                return colorInfo.color();
+
+            double diff = base.euclideanDistanceSquared(colorInfo.lab());
+            if (diff < topDist[k - 1]) {
+                int j = k - 1;
+                while (j > 0 && diff < topDist[j - 1]) {
+                    topDist[j] = topDist[j - 1];
+                    topIdx[j] = topIdx[j - 1];
+                    j--;
+                }
+                topDist[j] = diff;
+                topIdx[j] = i;
+            }
+        }
+
+        int bestIdx = topIdx[0];
+        double bestDiff = base.differenceSquared(COLORS[bestIdx].lab());
+        for (int i = 1; i < k; i++) {
+            int idx = topIdx[i];
+            double diff = base.differenceSquared(COLORS[idx].lab());
+            if (diff < bestDiff) {
+                bestDiff = diff;
+                bestIdx = idx;
+            }
+        }
+
+        return COLORS[bestIdx].color();
+    }
+
+    private static PreciseMapColor closestColorCIEDE2000(int rgb) {
+        LabColor base = LabColor.fromRGB(rgb);
+        double best = Double.MAX_VALUE;
+        PreciseMapColor bestColor = null;
+        for (ColorInfo colorInfo : COLORS) {
+            if (colorInfo.color().rgb() == rgb)
+                return colorInfo.color();
+
+            double diff = base.difference(colorInfo.lab());
+            if (diff < best) {
+                best = diff;
+                bestColor = colorInfo.color();
+            }
+        }
+        return bestColor;
     }
 
     private static void populateColors() {
         MapColor[] colors = values();
         Multiplier[] multipliers = Multiplier.values();
-        for (int x = 0; x < colors.length; x++) {
-            if (x == 0) {
-                COLORS[0] = new ColorInfo(NONE.precise(Multiplier.x1));
-                continue;
-            }
+        for (int x = 1; x < colors.length; x++) {
             for (int y = 0; y < multipliers.length; y++) {
-                int index = (x * multipliers.length) + y - 3;
+                int index = (x * multipliers.length) + y - 4;
                 COLORS[index] = new ColorInfo(colors[x].precise(multipliers[y]));
             }
         }
+    }
+
+    public static SearchMode defaultSearchMode() {
+        return DEFAULT_SEARCH_MODE;
+    }
+
+    public static void defaultSearchMode(SearchMode defaultSearchMode) {
+        DEFAULT_SEARCH_MODE = defaultSearchMode;
+    }
+
+    public static int approximateCandidates() {
+        return APPROXIMATE_CANDIDATES;
+    }
+
+    public static void approximateCandidates(int approximateCandidates) {
+        APPROXIMATE_CANDIDATES = approximateCandidates;
     }
 
     @Getter
@@ -169,6 +274,12 @@ public enum MapColor {
         
         private final double value;
 
+    }
+
+    public enum SearchMode {
+        BEST,
+        APPROXIMATE,
+        FAST,
     }
 
     private record ColorInfo(PreciseMapColor color, LabColor lab) {

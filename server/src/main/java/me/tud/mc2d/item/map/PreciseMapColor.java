@@ -25,8 +25,8 @@ public final class PreciseMapColor {
                 ((int) (base.blue() * multiplier.value())); 
     }
 
-    public byte id() {
-        return (byte) (base.ordinal() << 2 + multiplier.ordinal());
+    public int id() {
+        return (base.ordinal() << 2) + multiplier.ordinal();
     }
 
     public int alpha() {
@@ -55,6 +55,13 @@ public final class PreciseMapColor {
 
     public HexColor asScriptiveColor() {
         return new HexColor(rgb());
+    }
+
+    public static PreciseMapColor fromID(int id) {
+        int multipliers = MapColor.Multiplier.values().length;
+        MapColor.Multiplier multiplier = MapColor.Multiplier.values()[id % multipliers];
+        MapColor base = MapColor.values()[id / multipliers];
+        return new PreciseMapColor(base, multiplier);
     }
 
 }

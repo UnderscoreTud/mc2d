@@ -33,6 +33,8 @@ public record LabColor(
     private static final double K_0 = 903.3;
     private static final double K_1 = 7.787;
 
+    private static final double POW25_7 = 6103515625.0;
+
     public int toRGB() {
         double fy = (L + 16) / 116;
         double fx = a / 500 + fy;
@@ -56,24 +58,38 @@ public record LabColor(
         return ri << 16 | gi << 8 | bi;
     }
 
-    public double difference(LabColor other) {
-        return difference(other, 1, 1, 1);
+    public double euclideanDistanceSquared(LabColor other) {
+        double L = other.L() - L();
+        double a = other.a() - a();
+        double b = other.b() - b();
+        return L * L + a * a + b * b;
+    }
+
+    public double euclideanDistance(LabColor other) {
+        return Math.sqrt(euclideanDistanceSquared(other));
+    }
+
+    public double differenceSquared(LabColor other) {
+        return differenceSquared(other, 1, 1, 1);
     }
 
     // https://hajim.rochester.edu/ece/sites/gsharma/papers/CIEDE2000CRNAFeb05.pdf
-    public double difference(LabColor other, double k_L, double k_C, double k_H) {
+    public double differenceSquared(LabColor other, double k_L, double k_C, double k_H) {
         double L_1 = L(), a_1 = a(), b_1 = b(), L_2 = other.L(), a_2 = other.a(), b_2 = other.b();
 
         double C_1 = c(), C_2 = other.c();
         double CBar = (C_1 + C_2) / 2;
 
-        double C7 = Math.pow(CBar, 7);
-        double p25_7 = Math.pow(25, 7);
-        double G = (1 - Math.sqrt(C7 / (C7 + p25_7))) / 2;
+        double C2 = CBar * CBar;
+        double C4 = C2 * C2;
+        double C7 = C4 * C2 * CBar;
+        double G = (1 - Math.sqrt(C7 / (C7 + POW25_7))) / 2;
 
-        double ap_1 = (1 + G) * a_1, ap_2 = (1 + G) * a_2;
+        double ap_1 = (1 + G) * a_1;
+        double ap_2 = (1 + G) * a_2;
 
-        double Cp_1 = Math.sqrt(ap_1 * ap_1 + b_1 * b_1), Cp_2 = Math.sqrt(ap_2 * ap_2 + b_2 * b_2);
+        double Cp_1 = Math.sqrt(ap_1 * ap_1 + b_1 * b_1);
+        double Cp_2 = Math.sqrt(ap_2 * ap_2 + b_2 * b_2);
 
         double hp_1 = h(ap_1, b_1), hp_2 = h(ap_2, b_2);
 
@@ -92,7 +108,7 @@ public record LabColor(
         double Cp = (Cp_1 + Cp_2) / 2;
 
         double hp;
-        if (C_1 == 0 || C_2 == 0) {
+        if (Cp_1 == 0 || Cp_2 == 0) {
             hp = hp_1 + hp_2;
         } else if (Math.abs(hp_1 - hp_2) <= 180) {
             hp = (hp_1 + hp_2) / 2;
@@ -108,11 +124,16 @@ public record LabColor(
                 + 0.32 * Math.cos(Math.toRadians(3 * hp + 6)) 
                 - 0.20 * Math.cos(Math.toRadians(4 * hp - 63));
 
-        double dTheta = 30 * Math.exp(-Math.pow((hp - 275) / 25, 2));
-        double Cp7 = Math.pow(Cp, 7);
-        double R_C = 2 * Math.sqrt(Cp7 / (Cp7 + p25_7));
+        double hpTerm = (hp - 275) / 25;
+        double dTheta = 30 * Math.exp(-(hpTerm * hpTerm));
+        double Cp2 = Cp * Cp;
+        double Cp4 = Cp2 * Cp2;
+        double Cp7 = Cp4 * Cp2 * Cp;
+        double R_C = 2 * Math.sqrt(Cp7 / (Cp7 + POW25_7));
 
-        double S_L = 1 + (0.015 * Math.pow(Lp - 50, 2) / Math.sqrt(20 + Math.pow(Lp - 50, 2)));
+        double LpTerm = Lp - 50;
+        double LpTerm2 = LpTerm * LpTerm;
+        double S_L = 1 + (0.015 * LpTerm2 / Math.sqrt(20 + LpTerm2));
         double S_C = 1 + 0.045 * Cp;
         double S_H = 1 + 0.015 * Cp * T;
         double R_T = -Math.sin(Math.toRadians(2 * dTheta)) * R_C;
@@ -120,7 +141,15 @@ public record LabColor(
         double lTerm = dLp / (k_L * S_L);
         double cTerm = dCp / (k_C * S_C);
         double hTerm = dHp / (k_H * S_H);
-        return Math.sqrt(lTerm * lTerm + cTerm * cTerm + hTerm * hTerm + R_T * cTerm * hTerm);
+        return lTerm * lTerm + cTerm * cTerm + hTerm * hTerm + R_T * cTerm * hTerm;
+    }
+
+    public double difference(LabColor other) {
+        return Math.sqrt(differenceSquared(other));
+    }
+
+    public double difference(LabColor other, double k_L, double k_C, double k_H) {
+        return Math.sqrt(differenceSquared(other, k_L, k_C, k_H));
     }
 
     private double c() {
@@ -176,8 +205,24 @@ public record LabColor(
     private static double h(double a, double b) {
         if (a == 0 && b == 0)
             return 0;
-        double h = Math.toDegrees(Math.atan2(b, a));
+        double h = Math.toDegrees(atan2(b, a));
         return h >= 0 ? h : h + 360;
+    }
+
+    // https://math.stackexchange.com/questions/1098487/atan2-faster-approximation
+    private static double atan2(double y, double x) {
+        double absX = Math.abs(x);
+        double absY = Math.abs(y);
+        double a = Math.min(absX, absY) / Math.max(absX, absY);
+        double s = a * a;
+        double r = ((-0.0464964749 * s + 0.15931422) * s - 0.327622764) * s * a + a;
+        if (absY > absX)
+            r = 1.57079637 - r;
+        if (x < 0)
+            r = 3.14159274 - r;
+        if (y < 0)
+            r = -r;
+        return r;
     }
 
 }
