@@ -3,6 +3,8 @@ package me.tud.mc2d.painting;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTCompound;
@@ -15,6 +17,8 @@ import org.machinemc.scriptive.style.ChatColor;
 @Builder(toBuilder = true)
 @EqualsAndHashCode(callSuper = false)
 public final class PaintingVariant extends PaintingVariants implements NBTSerializable {
+
+    public static final RegistryKey<PaintingVariant, DataDrivenRegistry<PaintingVariant>> KEY = RegistryKey.minecraft("painting_variant");
 
     private final NamespacedKey assetID;
     private final Component author, title;

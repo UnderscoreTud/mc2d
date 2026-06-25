@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import lombok.With;
 import me.tud.mc2d.canvas.runtime.server.ServerCanvasContext;
 import me.tud.mc2d.network.packets.processor.PacketProcessorRegistry;
+import me.tud.mc2d.registry.DefaultRegistries;
 import me.tud.mc2d.registry.RegistryAccess;
 import me.tud.mc2d.text.ComponentProcessor;
 import me.tud.mc2d.ticker.Tick;
@@ -45,7 +46,7 @@ public record ServerContext(
                 provider,
                 new PacketFactoryImpl(PacketEncoder.varInt(), provider),
                 new PacketProcessorRegistry(),
-                RegistryAccess.createDefault(server),
+                DefaultRegistries.create(),
                 new ComponentProcessor(componentSerializer),
                 componentSerializer
         );

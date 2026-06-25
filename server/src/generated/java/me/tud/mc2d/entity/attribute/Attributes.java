@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.BuiltInRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 
 /**
@@ -131,8 +129,8 @@ sealed class Attributes permits Attribute {
         return VALUES_LIST;
     }
 
-    public static BuiltInRegistry<Attribute> createDefaultRegistry(Server server) {
-        return new BuiltInRegistry<>(server, RegistryKey.ATTRIBUTE).modify(registry -> {
+    public static BuiltInRegistry<Attribute> createDefaultRegistry() {
+        return new BuiltInRegistry<>(Attribute.KEY).modify(registry -> {
             registry.register(Attribute.ARMOR.key(), Attribute.ARMOR);
             registry.register(Attribute.ARMOR_TOUGHNESS.key(), Attribute.ARMOR_TOUGHNESS);
             registry.register(Attribute.ATTACK_DAMAGE.key(), Attribute.ATTACK_DAMAGE);

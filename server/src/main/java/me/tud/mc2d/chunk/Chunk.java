@@ -7,12 +7,10 @@ import me.tud.mc2d.chunk.data.ChunkData;
 import me.tud.mc2d.chunk.data.LightData;
 import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.packets.clientbound.play.ClientboundPlayChunkDataAndUpdateLight;
-import me.tud.mc2d.network.server.Server;
-import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.util.IDProvider;
 import me.tud.mc2d.world.Biome;
-import me.tud.mc2d.world.block.Block;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.jetbrains.annotations.Range;
 
 import java.util.ArrayList;

@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.components.TranslationComponent;
 import org.machinemc.scriptive.style.HexColor;
@@ -132,8 +130,8 @@ sealed class ArmorTrimMaterials permits ArmorTrimMaterial {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<ArmorTrimMaterial> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.ARMOR_TRIM_MATERIAL).modify(registry -> {
+    public static DataDrivenRegistry<ArmorTrimMaterial> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(ArmorTrimMaterial.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("amethyst"), ArmorTrimMaterial.AMETHYST);
             registry.register(NamespacedKey.minecraft("copper"), ArmorTrimMaterial.COPPER);
             registry.register(NamespacedKey.minecraft("diamond"), ArmorTrimMaterial.DIAMOND);

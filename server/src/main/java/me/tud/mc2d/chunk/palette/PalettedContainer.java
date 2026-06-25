@@ -11,7 +11,7 @@ import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.IDProvider;
 import me.tud.mc2d.util.Writable;
 import me.tud.mc2d.world.Biome;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.blockdata.BlockData;
 
 @Getter
 @ToString

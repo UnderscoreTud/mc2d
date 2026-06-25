@@ -35,10 +35,10 @@ import me.tud.mc2d.entity.player.ClientInformation;
 import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.registry.RegistryAccess;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.ticker.Tick;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.NBTSerializable;
+import me.tud.mc2d.world.Biome;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector2d;
@@ -300,7 +300,7 @@ public class ClientConnection implements CanvasViewer, Interactive<ClientConnect
             if (!(registry instanceof DataDrivenRegistry<?>))
                 return;
             knownPacks.add(new DataPack(key.key(), Server.VERSION_NAME));
-            if (key.equals(RegistryKey.DIMENSION_TYPE) || key.equals(RegistryKey.BIOME))
+            if (key.equals(DimensionType.KEY) || key.equals(Biome.KEY))
                 return; // handled by canvas
             //noinspection unchecked
             Registry<? extends NBTSerializable>.Entry[] entries = registry.entries().toArray(new Registry.Entry[0]);

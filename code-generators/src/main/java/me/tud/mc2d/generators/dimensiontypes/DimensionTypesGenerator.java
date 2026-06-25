@@ -24,7 +24,7 @@ public class DimensionTypesGenerator extends DataDrivenRegistryGenerator {
             .instruction("logical_height", INTEGER)
             .instruction("height", INTEGER)
             .instruction("min_y", INTEGER)
-            .instruction("infiniburn", Instructions.tag("block"))
+            .instruction("infiniburn", Instructions.tag(Imports.BLOCK))
             .instruction("skybox", _enum(Imports.DIMENSION_TYPE.nestedClass("Skybox")))
             .instruction("cardinal_light", _enum(Imports.DIMENSION_TYPE.nestedClass("CardinalLight")))
             .instruction("attributes", NBT)

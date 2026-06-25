@@ -3,12 +3,14 @@ package me.tud.mc2d.dimension;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.registry.DataDrivenRegistry;
 import me.tud.mc2d.registry.Registry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
-import me.tud.mc2d.world.block.Block;
 import org.machinemc.nbt.NBTCompound;
 import org.machinemc.nbt.NBTList;
 
@@ -19,6 +21,7 @@ import java.util.Locale;
 @Builder(toBuilder = true)
 public final class DimensionType extends DimensionTypes implements NBTSerializable {
 
+    public static final RegistryKey<DimensionType, DataDrivenRegistry<DimensionType>> KEY = RegistryKey.minecraft("dimension_type");
     public static final NamespacedKey DEFAULT_KEY = NamespacedKey.mc2d("canvas");
 
     private final double coordinateScale;

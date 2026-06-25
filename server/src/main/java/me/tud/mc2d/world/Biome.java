@@ -3,6 +3,8 @@ package me.tud.mc2d.world;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
@@ -15,6 +17,7 @@ import org.machinemc.scriptive.style.Colour;
 @Builder(toBuilder = true)
 public final class Biome extends Biomes implements NBTSerializable {
 
+    public static final RegistryKey<Biome, DataDrivenRegistry<Biome>> KEY = RegistryKey.minecraft("worldgen/biome");
     public static final NamespacedKey DEFAULT_KEY = NamespacedKey.mc2d("canvas");
 
     private final boolean hasPrecipitation;

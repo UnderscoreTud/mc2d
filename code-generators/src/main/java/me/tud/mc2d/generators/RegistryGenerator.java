@@ -46,7 +46,7 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
         this.className = registrySource.peerClass(registrySource.simpleName() + "s");
         this.tagClassName = className.nestedClass("Tags");
         this.tagStructure = Structure.builder(Imports.TAG)
-                .initializer("$T.$N", Imports.REGISTRY_KEY, id.toUpperCase(Locale.ENGLISH))
+                .initializer("$T.$N", registrySource, "KEY")
                 .namelessInstruction("values",Instructions.iterate(DynamicInstruction.builder()
                         .basedOn(node -> {
                             if (node.isTextual())
@@ -82,10 +82,10 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
 
         CodeBlock.Builder createDefaultMethodBlock = CodeBlock.builder()
                 .add(
-                        "return new $T<>(server, $T.$N).modify(registry -> {\n",
+                        "return new $T<>($T.$N).modify(registry -> {\n",
                         registryType,
-                        Imports.REGISTRY_KEY,
-                        StringUtils.camelToScreamingSnake(registrySource.simpleName())
+                        registrySource,
+                        "KEY"
                 )
                 .indent();
 
@@ -134,7 +134,6 @@ public abstract class RegistryGenerator<E extends RegistryGenerator.Entry> exten
                 .addMethod(MethodSpec.methodBuilder("createDefaultRegistry")
                         .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                         .returns(ParameterizedTypeName.get(registryType, exactRegistrySource))
-                        .addParameter(Imports.SERVER, "server")
                         .addCode(createDefaultMethodBlock.build())
                         .build());
 

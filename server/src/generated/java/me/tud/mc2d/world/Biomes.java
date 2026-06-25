@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTByte;
 import org.machinemc.nbt.NBTCompound;
@@ -1394,8 +1392,8 @@ sealed class Biomes permits Biome {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<Biome> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.BIOME).modify(registry -> {
+    public static DataDrivenRegistry<Biome> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(Biome.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("badlands"), Biome.BADLANDS);
             registry.register(NamespacedKey.minecraft("bamboo_jungle"), Biome.BAMBOO_JUNGLE);
             registry.register(NamespacedKey.minecraft("basalt_deltas"), Biome.BASALT_DELTAS);

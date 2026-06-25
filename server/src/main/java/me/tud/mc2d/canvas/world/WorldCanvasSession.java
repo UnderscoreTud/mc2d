@@ -15,7 +15,6 @@ import me.tud.mc2d.network.ConnectionState;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData;
 import me.tud.mc2d.network.packets.clientbound.configuration.ClientboundConfigurationRegistryData.Entry;
 import me.tud.mc2d.network.packets.clientbound.play.*;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.util.LinearCalibration;
 import me.tud.mc2d.util.NamespacedKey;
@@ -74,11 +73,11 @@ public class WorldCanvasSession implements CanvasSession {
             return false;
 
         viewer.sendPacket(new ClientboundConfigurationRegistryData(
-                RegistryKey.DIMENSION_TYPE.key(),
+                DimensionType.KEY.key(),
                 new Entry[]{new Entry(DimensionType.DEFAULT_KEY, canvas.dimensionType().toNBT())}
         ));
         viewer.sendPacket(new ClientboundConfigurationRegistryData(
-                RegistryKey.BIOME.key(),
+                Biome.KEY.key(),
                 new Entry[]{
                         new Entry(Biome.DEFAULT_KEY, canvas.biome().toNBT()),
                         new Entry(NamespacedKey.minecraft("plains"), Biome.PLAINS.toNBT()) // apparently it's required?

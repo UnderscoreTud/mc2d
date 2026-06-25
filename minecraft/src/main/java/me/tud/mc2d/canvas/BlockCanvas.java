@@ -1,0 +1,24 @@
+package me.tud.mc2d.canvas;
+
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.block.blockdata.BlockData;
+
+public interface BlockCanvas extends Canvas {
+
+    Block<?> getBlock(int x, int y);
+
+    BlockData getBlockData(int x, int y);
+
+    void setBlock(int x, int y, Block<?> block);
+
+    void setBlockData(int x, int y, BlockData blockData);
+
+    void fillBlock(Block<?> block);
+
+    void fillBlockData(BlockData blockData);
+
+    void fillRectBlock(int x, int y, int width, int height, Block<?> block);
+
+    void fillRectBlockData(int x, int y, int width, int height, BlockData blockData);
+
+}

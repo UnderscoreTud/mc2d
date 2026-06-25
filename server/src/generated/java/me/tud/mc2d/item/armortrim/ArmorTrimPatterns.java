@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.components.TranslationComponent;
 
@@ -171,8 +169,8 @@ sealed class ArmorTrimPatterns permits ArmorTrimPattern {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<ArmorTrimPattern> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.ARMOR_TRIM_PATTERN).modify(registry -> {
+    public static DataDrivenRegistry<ArmorTrimPattern> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(ArmorTrimPattern.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("bolt"), ArmorTrimPattern.BOLT);
             registry.register(NamespacedKey.minecraft("coast"), ArmorTrimPattern.COAST);
             registry.register(NamespacedKey.minecraft("dune"), ArmorTrimPattern.DUNE);

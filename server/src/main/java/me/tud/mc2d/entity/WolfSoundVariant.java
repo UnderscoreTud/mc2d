@@ -1,6 +1,8 @@
 package me.tud.mc2d.entity;
 
 import lombok.Builder;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
@@ -8,7 +10,9 @@ import org.machinemc.nbt.NBTCompound;
 
 @Builder(toBuilder = true)
 public class WolfSoundVariant implements NBTSerializable {
-    
+
+    public static final RegistryKey<WolfSoundVariant, DataDrivenRegistry<WolfSoundVariant>> KEY = RegistryKey.minecraft("wolf_sound_variant");
+
     public static final WolfSoundVariant CLASSIC = variant(null);
 
     private final NamespacedKey ambientSound, deathSound, growlSound, hurtSound, pantSound, whineSound;

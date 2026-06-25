@@ -1,8 +1,10 @@
 package me.tud.mc2d.item;
 
 import lombok.*;
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.registry.BuiltInRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
-import me.tud.mc2d.world.block.Block;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
@@ -11,6 +13,8 @@ import java.util.function.Supplier;
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public final class Item extends Items {
+
+    public static final RegistryKey<Item, BuiltInRegistry<Item>> KEY = RegistryKey.minecraft("item");
 
     private final int id;
     private final NamespacedKey key;

@@ -5,9 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
+import me.tud.mc2d.block.Block;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.registry.tag.TagKey;
 import me.tud.mc2d.util.IntProvider;
 import me.tud.mc2d.util.NamespacedKey;
@@ -32,7 +31,7 @@ sealed class DimensionTypes permits DimensionType {
             .logicalHeight(384)
             .height(384)
             .minY(-64)
-            .infiniburn(TagKey.of(RegistryKey.BLOCK, NamespacedKey.parse("minecraft:infiniburn_overworld")))
+            .infiniburn(TagKey.of(Block.KEY, NamespacedKey.parse("minecraft:infiniburn_overworld")))
             .attributes(new NBTCompound(Map.of(
                     "minecraft:audio/ambient_sounds", new NBTCompound(Map.of(
                             "mood", new NBTCompound(Map.of(
@@ -80,7 +79,7 @@ sealed class DimensionTypes permits DimensionType {
             .logicalHeight(384)
             .height(384)
             .minY(-64)
-            .infiniburn(TagKey.of(RegistryKey.BLOCK, NamespacedKey.parse("minecraft:infiniburn_overworld")))
+            .infiniburn(TagKey.of(Block.KEY, NamespacedKey.parse("minecraft:infiniburn_overworld")))
             .attributes(new NBTCompound(Map.of(
                     "minecraft:audio/ambient_sounds", new NBTCompound(Map.of(
                             "mood", new NBTCompound(Map.of(
@@ -129,7 +128,7 @@ sealed class DimensionTypes permits DimensionType {
             .logicalHeight(256)
             .height(256)
             .minY(0)
-            .infiniburn(TagKey.of(RegistryKey.BLOCK, NamespacedKey.parse("minecraft:infiniburn_end")))
+            .infiniburn(TagKey.of(Block.KEY, NamespacedKey.parse("minecraft:infiniburn_end")))
             .skybox(DimensionType.Skybox.END)
             .attributes(new NBTCompound(Map.of(
                     "minecraft:audio/ambient_sounds", new NBTCompound(Map.of(
@@ -172,7 +171,7 @@ sealed class DimensionTypes permits DimensionType {
             .logicalHeight(128)
             .height(256)
             .minY(0)
-            .infiniburn(TagKey.of(RegistryKey.BLOCK, NamespacedKey.parse("minecraft:infiniburn_nether")))
+            .infiniburn(TagKey.of(Block.KEY, NamespacedKey.parse("minecraft:infiniburn_nether")))
             .skybox(DimensionType.Skybox.NONE)
             .cardinalLight(DimensionType.CardinalLight.NETHER)
             .attributes(new NBTCompound(Map.ofEntries(
@@ -214,8 +213,8 @@ sealed class DimensionTypes permits DimensionType {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<DimensionType> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.DIMENSION_TYPE).modify(registry -> {
+    public static DataDrivenRegistry<DimensionType> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(DimensionType.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("overworld"), DimensionType.OVERWORLD);
             registry.register(NamespacedKey.minecraft("overworld_caves"), DimensionType.OVERWORLD_CAVES);
             registry.register(NamespacedKey.minecraft("the_end"), DimensionType.THE_END);

@@ -3,6 +3,8 @@ package me.tud.mc2d.item.armortrim;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTCompound;
@@ -13,6 +15,8 @@ import org.machinemc.scriptive.serialization.NBTPropertiesSerializer;
 @Builder(toBuilder = true)
 @EqualsAndHashCode(callSuper = false)
 public final class ArmorTrimPattern extends ArmorTrimPatterns implements NBTSerializable {
+
+    public static final RegistryKey<ArmorTrimPattern, DataDrivenRegistry<ArmorTrimPattern>> KEY = RegistryKey.minecraft("armor_trim_pattern");
 
     private final NamespacedKey assetID;
     private final boolean decal;

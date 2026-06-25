@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.components.TranslationComponent;
@@ -677,8 +675,8 @@ sealed class PaintingVariants permits PaintingVariant {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<PaintingVariant> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.PAINTING_VARIANT).modify(registry -> {
+    public static DataDrivenRegistry<PaintingVariant> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(PaintingVariant.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("alban"), PaintingVariant.ALBAN);
             registry.register(NamespacedKey.minecraft("aztec"), PaintingVariant.AZTEC);
             registry.register(NamespacedKey.minecraft("aztec2"), PaintingVariant.AZTEC2);
@@ -735,7 +733,7 @@ sealed class PaintingVariants permits PaintingVariant {
     }
 
     public static final class Tags {
-        public static final Tag<PaintingVariant> PLACEABLE = Tag.builder(RegistryKey.PAINTING_VARIANT)
+        public static final Tag<PaintingVariant> PLACEABLE = Tag.builder(PaintingVariant.KEY)
                 .resource(NamespacedKey.parse("minecraft:kebab"))
                 .resource(NamespacedKey.parse("minecraft:aztec"))
                 .resource(NamespacedKey.parse("minecraft:alban"))

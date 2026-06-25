@@ -32,6 +32,8 @@ tasks.withType<Jar> {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":api"))
+    implementation(project(":minecraft"))
 
     implementation(libs.fastutil)
 
@@ -45,6 +47,11 @@ dependencies {
 val genOutDir: Directory = layout.projectDirectory.dir("src/generated/java")
 
 val generationTasks = arrayOf(
+    registerGeneratorTask(
+        "generatePacketIDs",
+        "me.tud.mc2d.generators.packets.PacketsGenerator",
+        genOutDir
+    ),
     registerGeneratorTask(
         "generateArmorTrimMaterials",
         "me.tud.mc2d.generators.armortrims.ArmorTrimMaterialsGenerator",
@@ -71,11 +78,6 @@ val generationTasks = arrayOf(
         genOutDir
     ),
     registerGeneratorTask(
-        "generateBlocks",
-        "me.tud.mc2d.generators.blocks.BlocksGenerator",
-        genOutDir
-    ),
-    registerGeneratorTask(
         "generateChatTypes",
         "me.tud.mc2d.generators.chattypes.ChatTypesGenerator",
         genOutDir
@@ -98,11 +100,6 @@ val generationTasks = arrayOf(
     registerGeneratorTask(
         "generateItems",
         "me.tud.mc2d.generators.items.ItemsGenerator",
-        genOutDir
-    ),
-    registerGeneratorTask(
-        "generatePacketIDs",
-        "me.tud.mc2d.generators.packets.PacketsGenerator",
         genOutDir
     ),
     registerGeneratorTask(

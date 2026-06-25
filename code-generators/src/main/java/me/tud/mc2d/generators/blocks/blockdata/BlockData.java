@@ -16,7 +16,7 @@ public record BlockData(String name, ClassName className, String[] properties, M
 
     private static final Map<String, BlockData> BLOCK_DATA = new HashMap<>();
 
-    public static final String PACKAGE = "me.tud.mc2d.world.blockdata";
+    public static final String PACKAGE = "me.tud.mc2d.block.blockdata";
 
     public BlockData(String name, String[] properties, Map<String, String> defaultValues) {
         this(

@@ -7,7 +7,6 @@ import me.tud.mc2d.entity.player.Hand;
 import me.tud.mc2d.network.packets.Packets;
 import me.tud.mc2d.network.packets.serverbound.ServerboundPacket;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3d;
 import org.joml.Vector3f;
 import org.machinemc.paklet.CustomPacket;
 import org.machinemc.paklet.DataVisitor;

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.palantir.javapoet.*;
 import me.tud.mc2d.generators.RegistryGenerator;
 import me.tud.mc2d.generators.blocks.blockdata.BlockData;
-import me.tud.mc2d.generators.items.Items;
 import me.tud.mc2d.generators.util.IDProvider;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.util.StringUtils;
@@ -51,14 +50,8 @@ public record Blocks(@JsonAnySetter Map<String, Block> blocks) {
 
         @Override
         public void writeField(CodeBlock.Builder out) {
-            out.add("new $1T<>($4L, $7L, $3T.parse($5S), () -> new $2T($1T.$6N, $7L), ",
+            out.add("new $1T<>($4L, $7L, $3T.parse($5S), () -> new $2T($1T.$6N, $7L))",
                     Imports.BLOCK, blockData.className(), Imports.NAMESPACED_KEY, id, name, fieldName(), block.states[0].id());
-            if (registry.path(Items.REGISTRY_ID).path("entries").has(name)) {
-                out.add("() -> $T.$N", Imports.ITEM, fieldName());
-            } else {
-                out.add("null");
-            }
-            out.add(")");
         }
 
         @Override

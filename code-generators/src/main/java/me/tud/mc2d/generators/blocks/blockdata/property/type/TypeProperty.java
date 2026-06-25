@@ -1,9 +1,9 @@
 package me.tud.mc2d.generators.blocks.blockdata.property.type;
 
-import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.TypeName;
 import lombok.Getter;
 import me.tud.mc2d.generators.blocks.blockdata.property.Property;
+import me.tud.mc2d.generators.util.Imports;
 
 @Getter
 public abstract class TypeProperty extends Property {
@@ -30,7 +30,7 @@ public abstract class TypeProperty extends Property {
             return property;
 
         if (name.equalsIgnoreCase("facing"))
-            return new EnumProperty(name, ClassName.get("me.tud.mc2d.world.block", "BlockFace"), possibleValues);
+            return new EnumProperty(name, Imports.BLOCK_FACE, possibleValues);
 
         return null;
     }

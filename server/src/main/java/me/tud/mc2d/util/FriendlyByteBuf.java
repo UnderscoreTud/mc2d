@@ -2,7 +2,7 @@ package me.tud.mc2d.util;
 
 import io.netty.buffer.*;
 import io.netty.util.ReferenceCounted;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
@@ -12,7 +12,6 @@ import org.machinemc.nbt.NBTCompound;
 import org.machinemc.scriptive.components.Component;
 import org.machinemc.scriptive.serialization.ComponentProperties;
 import org.machinemc.scriptive.serialization.ComponentSerializer;
-import org.machinemc.scriptive.serialization.JSONPropertiesSerializer;
 import org.machinemc.scriptive.serialization.NBTPropertiesSerializer;
 
 import java.io.IOException;

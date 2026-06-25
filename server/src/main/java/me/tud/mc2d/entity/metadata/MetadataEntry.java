@@ -15,8 +15,8 @@ import me.tud.mc2d.registry.Registry;
 import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.FriendlyByteBuf;
 import me.tud.mc2d.util.Packable;
-import me.tud.mc2d.world.block.BlockFace;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.BlockFace;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaternionf;
 import org.joml.Vector3d;
@@ -47,7 +47,7 @@ public class MetadataEntry<T> {
     public static MetadataEntry<Byte> _byte(int index, int mask) {
         return bitmask(index, b -> (byte) (b & mask), (b, value) -> (byte) ((b & ~mask) | value));
     }
-    
+
     public static <E extends Enum<E>> MetadataEntry<E> byteEnum(int index, Class<E> type) {
         return entry(index, 0, buf -> type.getEnumConstants()[buf.readByte()], (buf, e) -> buf.writeByte((byte) e.ordinal()));
     }
@@ -178,35 +178,35 @@ public class MetadataEntry<T> {
     }
 
     public static ServerAwareMetadataEntry<MobVariant> catVariant(int index) {
-        return registry(index, 21, RegistryKey.CAT_VARIANT);
+        return registry(index, 21, MobVariant.CAT_VARIANT_KEY);
     }
 
     public static ServerAwareMetadataEntry<MobVariant> cowVariant(int index) {
-        return registry(index, 22, RegistryKey.COW_VARIANT);
+        return registry(index, 22, MobVariant.COW_VARIANT_KEY);
     }
 
     public static ServerAwareMetadataEntry<WolfVariant> wolfVariant(int index) {
-        return registry(index, 23, RegistryKey.WOLF_VARIANT);
+        return registry(index, 23, WolfVariant.KEY);
     }
 
     public static ServerAwareMetadataEntry<WolfSoundVariant> wolfSoundVariant(int index) {
-        return registry(index, 24, RegistryKey.WOLF_SOUND_VARIANT);
+        return registry(index, 24, WolfSoundVariant.KEY);
     }
 
     public static ServerAwareMetadataEntry<MobVariant> frogVariant(int index) {
-        return registry(index, 25, RegistryKey.FROG_VARIANT);
+        return registry(index, 25, MobVariant.FROG_VARIANT_KEY);
     }
 
     public static ServerAwareMetadataEntry<MobVariant> pigVariant(int index) {
-        return registry(index, 26, RegistryKey.PIG_VARIANT);
+        return registry(index, 26, MobVariant.PIG_VARIANT_KEY);
     }
 
     public static ServerAwareMetadataEntry<MobVariant> chickenVariant(int index) {
-        return registry(index, 27, RegistryKey.CHICKEN_VARIANT);
+        return registry(index, 27, MobVariant.CHICKEN_VARIANT_KEY);
     }
 
     public static ServerAwareMetadataEntry<MobVariant> zombieNautilusVariant(int index) {
-        return registry(index, 28, RegistryKey.ZOMBIE_NAUTILUS_VARIANT);
+        return registry(index, 28, MobVariant.ZOMBIE_NAUTILUS_VARIANT_KEY);
     }
 
     public static MetadataEntry<Object> optGlobalPosition(int index) { // TODO https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Metadata_type:Optional_Global_Position
@@ -214,7 +214,7 @@ public class MetadataEntry<T> {
     }
 
     public static ServerAwareMetadataEntry<PaintingVariant> paintingVariant(int index) {
-        return registry(index, 30, RegistryKey.PAINTING_VARIANT);
+        return registry(index, 30, PaintingVariant.KEY);
     }
 
     public static MetadataEntry<Object> snifferState(int index) { // TODO https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Metadata_type:Sniffer_State

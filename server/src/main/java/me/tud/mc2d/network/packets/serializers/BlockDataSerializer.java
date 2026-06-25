@@ -1,6 +1,6 @@
 package me.tud.mc2d.network.packets.serializers;
 
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.machinemc.paklet.DataVisitor;
 import org.machinemc.paklet.serialization.Serializer;
 import org.machinemc.paklet.serialization.SerializerContext;

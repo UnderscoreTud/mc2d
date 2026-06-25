@@ -6,11 +6,10 @@ import me.tud.mc2d.canvas.AbstractMutableCanvas;
 import me.tud.mc2d.canvas.event.CanvasEvent;
 import me.tud.mc2d.canvas.event.CanvasObserver;
 import me.tud.mc2d.canvas.event.ObservableCanvas;
-import me.tud.mc2d.world.block.Block;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

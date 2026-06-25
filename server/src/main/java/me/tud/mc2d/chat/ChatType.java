@@ -3,6 +3,8 @@ package me.tud.mc2d.chat;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import org.jetbrains.annotations.Nullable;
 import org.machinemc.nbt.NBTCompound;
@@ -15,6 +17,8 @@ import java.util.List;
 @Builder(toBuilder = true)
 @EqualsAndHashCode(callSuper = false)
 public final class ChatType extends ChatTypes implements NBTSerializable {
+
+    public static final RegistryKey<ChatType, DataDrivenRegistry<ChatType>> KEY = RegistryKey.minecraft("chat_type");
 
     private final Element chat, narration;
 

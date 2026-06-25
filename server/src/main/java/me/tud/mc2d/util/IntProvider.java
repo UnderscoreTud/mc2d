@@ -3,7 +3,6 @@ package me.tud.mc2d.util;
 import org.machinemc.nbt.NBTCompound;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public interface IntProvider extends NBTSerializable {

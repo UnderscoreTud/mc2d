@@ -9,7 +9,7 @@ import me.tud.mc2d.dimension.DimensionType;
 import me.tud.mc2d.network.packets.Packet;
 import me.tud.mc2d.util.ChunkUtils;
 import me.tud.mc2d.world.Biome;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.blockdata.BlockData;
 import org.jetbrains.annotations.UnmodifiableView;
 import org.joml.Vector3i;
 

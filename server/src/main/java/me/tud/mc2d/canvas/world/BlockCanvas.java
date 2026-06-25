@@ -1,8 +1,8 @@
 package me.tud.mc2d.canvas.world;
 
 import me.tud.mc2d.canvas.MutableCanvas;
-import me.tud.mc2d.world.block.Block;
-import me.tud.mc2d.world.blockdata.BlockData;
+import me.tud.mc2d.block.Block;
+import me.tud.mc2d.block.blockdata.BlockData;
 
 public interface BlockCanvas extends MutableCanvas {
 

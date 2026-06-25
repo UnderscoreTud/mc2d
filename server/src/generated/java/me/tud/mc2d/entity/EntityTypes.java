@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.BuiltInRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.registry.tag.Tag;
 import me.tud.mc2d.util.NamespacedKey;
 
@@ -498,8 +496,8 @@ sealed class EntityTypes permits EntityType {
         return VALUES_LIST;
     }
 
-    public static BuiltInRegistry<EntityType> createDefaultRegistry(Server server) {
-        return new BuiltInRegistry<>(server, RegistryKey.ENTITY_TYPE).modify(registry -> {
+    public static BuiltInRegistry<EntityType> createDefaultRegistry() {
+        return new BuiltInRegistry<>(EntityType.KEY).modify(registry -> {
             registry.register(EntityType.ACACIA_BOAT.key(), EntityType.ACACIA_BOAT);
             registry.register(EntityType.ACACIA_CHEST_BOAT.key(), EntityType.ACACIA_CHEST_BOAT);
             registry.register(EntityType.ALLAY.key(), EntityType.ALLAY);
@@ -707,11 +705,11 @@ sealed class EntityTypes permits EntityType {
     }
 
     public static final class Tags {
-        public static final Tag<EntityType> ACCEPTS_IRON_GOLEM_GIFT = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ACCEPTS_IRON_GOLEM_GIFT = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:copper_golem"))
                 .build();
 
-        public static final Tag<EntityType> AQUATIC = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> AQUATIC = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:turtle"))
                 .resource(NamespacedKey.parse("minecraft:axolotl"))
                 .resource(NamespacedKey.parse("minecraft:guardian"))
@@ -728,12 +726,12 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:zombie_nautilus"))
                 .build();
 
-        public static final Tag<EntityType> ARROWS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ARROWS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:arrow"))
                 .resource(NamespacedKey.parse("minecraft:spectral_arrow"))
                 .build();
 
-        public static final Tag<EntityType> ARTHROPOD = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ARTHROPOD = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:bee"))
                 .resource(NamespacedKey.parse("minecraft:endermite"))
                 .resource(NamespacedKey.parse("minecraft:silverfish"))
@@ -741,13 +739,13 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:cave_spider"))
                 .build();
 
-        public static final Tag<EntityType> AXOLOTL_ALWAYS_HOSTILES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> AXOLOTL_ALWAYS_HOSTILES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:drowned"))
                 .resource(NamespacedKey.parse("minecraft:guardian"))
                 .resource(NamespacedKey.parse("minecraft:elder_guardian"))
                 .build();
 
-        public static final Tag<EntityType> AXOLOTL_HUNT_TARGETS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> AXOLOTL_HUNT_TARGETS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:tropical_fish"))
                 .resource(NamespacedKey.parse("minecraft:pufferfish"))
                 .resource(NamespacedKey.parse("minecraft:salmon"))
@@ -757,11 +755,11 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:tadpole"))
                 .build();
 
-        public static final Tag<EntityType> BEEHIVE_INHABITORS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> BEEHIVE_INHABITORS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:bee"))
                 .build();
 
-        public static final Tag<EntityType> BOAT = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> BOAT = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:oak_boat"))
                 .resource(NamespacedKey.parse("minecraft:spruce_boat"))
                 .resource(NamespacedKey.parse("minecraft:birch_boat"))
@@ -774,7 +772,7 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:bamboo_raft"))
                 .build();
 
-        public static final Tag<EntityType> BURN_IN_DAYLIGHT = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> BURN_IN_DAYLIGHT = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:skeleton"))
                 .resource(NamespacedKey.parse("minecraft:stray"))
                 .resource(NamespacedKey.parse("minecraft:wither_skeleton"))
@@ -787,7 +785,7 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:phantom"))
                 .build();
 
-        public static final Tag<EntityType> CAN_BREATHE_UNDER_WATER = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_BREATHE_UNDER_WATER = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:undead"))
                 .resource(NamespacedKey.parse("minecraft:axolotl"))
                 .resource(NamespacedKey.parse("minecraft:frog"))
@@ -806,11 +804,11 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:nautilus"))
                 .build();
 
-        public static final Tag<EntityType> CAN_EQUIP_HARNESS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_EQUIP_HARNESS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:happy_ghast"))
                 .build();
 
-        public static final Tag<EntityType> CAN_EQUIP_SADDLE = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_EQUIP_SADDLE = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:horse"))
                 .resource(NamespacedKey.parse("minecraft:skeleton_horse"))
                 .resource(NamespacedKey.parse("minecraft:zombie_horse"))
@@ -824,7 +822,7 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:zombie_nautilus"))
                 .build();
 
-        public static final Tag<EntityType> CAN_FLOAT_WHILE_RIDDEN = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_FLOAT_WHILE_RIDDEN = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:horse"))
                 .resource(NamespacedKey.parse("minecraft:zombie_horse"))
                 .resource(NamespacedKey.parse("minecraft:mule"))
@@ -833,26 +831,26 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:camel_husk"))
                 .build();
 
-        public static final Tag<EntityType> CAN_TURN_IN_BOATS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_TURN_IN_BOATS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:breeze"))
                 .build();
 
-        public static final Tag<EntityType> CAN_WEAR_HORSE_ARMOR = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_WEAR_HORSE_ARMOR = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:horse"))
                 .resource(NamespacedKey.parse("minecraft:zombie_horse"))
                 .build();
 
-        public static final Tag<EntityType> CAN_WEAR_NAUTILUS_ARMOR = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CAN_WEAR_NAUTILUS_ARMOR = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:nautilus"))
                 .resource(NamespacedKey.parse("minecraft:zombie_nautilus"))
                 .build();
 
-        public static final Tag<EntityType> CANDIDATE_FOR_IRON_GOLEM_GIFT = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CANDIDATE_FOR_IRON_GOLEM_GIFT = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:villager"))
                 .tag(NamespacedKey.parse("minecraft:accepts_iron_golem_gift"))
                 .build();
 
-        public static final Tag<EntityType> CANNOT_BE_PUSHED_ONTO_BOATS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> CANNOT_BE_PUSHED_ONTO_BOATS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:player"))
                 .resource(NamespacedKey.parse("minecraft:elder_guardian"))
                 .resource(NamespacedKey.parse("minecraft:cod"))
@@ -868,11 +866,11 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:zombie_nautilus"))
                 .build();
 
-        public static final Tag<EntityType> DEFLECTS_PROJECTILES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> DEFLECTS_PROJECTILES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:breeze"))
                 .build();
 
-        public static final Tag<EntityType> DISMOUNTS_UNDERWATER = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> DISMOUNTS_UNDERWATER = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:camel"))
                 .resource(NamespacedKey.parse("minecraft:chicken"))
                 .resource(NamespacedKey.parse("minecraft:donkey"))
@@ -888,7 +886,7 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:zombie_horse"))
                 .build();
 
-        public static final Tag<EntityType> FALL_DAMAGE_IMMUNE = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> FALL_DAMAGE_IMMUNE = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:copper_golem"))
                 .resource(NamespacedKey.parse("minecraft:iron_golem"))
                 .resource(NamespacedKey.parse("minecraft:snow_golem"))
@@ -909,7 +907,7 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:breeze"))
                 .build();
 
-        public static final Tag<EntityType> FOLLOWABLE_FRIENDLY_MOBS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> FOLLOWABLE_FRIENDLY_MOBS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:armadillo"))
                 .resource(NamespacedKey.parse("minecraft:bee"))
                 .resource(NamespacedKey.parse("minecraft:camel"))
@@ -937,48 +935,48 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:wolf"))
                 .build();
 
-        public static final Tag<EntityType> FREEZE_HURTS_EXTRA_TYPES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> FREEZE_HURTS_EXTRA_TYPES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:strider"))
                 .resource(NamespacedKey.parse("minecraft:blaze"))
                 .resource(NamespacedKey.parse("minecraft:magma_cube"))
                 .build();
 
-        public static final Tag<EntityType> FREEZE_IMMUNE_ENTITY_TYPES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> FREEZE_IMMUNE_ENTITY_TYPES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:stray"))
                 .resource(NamespacedKey.parse("minecraft:polar_bear"))
                 .resource(NamespacedKey.parse("minecraft:snow_golem"))
                 .resource(NamespacedKey.parse("minecraft:wither"))
                 .build();
 
-        public static final Tag<EntityType> FROG_FOOD = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> FROG_FOOD = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:slime"))
                 .resource(NamespacedKey.parse("minecraft:magma_cube"))
                 .build();
 
-        public static final Tag<EntityType> IGNORES_POISON_AND_REGEN = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> IGNORES_POISON_AND_REGEN = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:undead"))
                 .build();
 
-        public static final Tag<EntityType> ILLAGER = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ILLAGER = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:evoker"))
                 .resource(NamespacedKey.parse("minecraft:illusioner"))
                 .resource(NamespacedKey.parse("minecraft:pillager"))
                 .resource(NamespacedKey.parse("minecraft:vindicator"))
                 .build();
 
-        public static final Tag<EntityType> ILLAGER_FRIENDS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ILLAGER_FRIENDS = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:illager"))
                 .build();
 
-        public static final Tag<EntityType> IMMUNE_TO_INFESTED = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> IMMUNE_TO_INFESTED = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:silverfish"))
                 .build();
 
-        public static final Tag<EntityType> IMMUNE_TO_OOZING = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> IMMUNE_TO_OOZING = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:slime"))
                 .build();
 
-        public static final Tag<EntityType> IMPACT_PROJECTILES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> IMPACT_PROJECTILES = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:arrows"))
                 .resource(NamespacedKey.parse("minecraft:firework_rocket"))
                 .resource(NamespacedKey.parse("minecraft:snowball"))
@@ -992,15 +990,15 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:breeze_wind_charge"))
                 .build();
 
-        public static final Tag<EntityType> INVERTED_HEALING_AND_HARM = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> INVERTED_HEALING_AND_HARM = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:undead"))
                 .build();
 
-        public static final Tag<EntityType> NAUTILUS_HOSTILES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> NAUTILUS_HOSTILES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:pufferfish"))
                 .build();
 
-        public static final Tag<EntityType> NO_ANGER_FROM_WIND_CHARGE = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> NO_ANGER_FROM_WIND_CHARGE = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:breeze"))
                 .resource(NamespacedKey.parse("minecraft:skeleton"))
                 .resource(NamespacedKey.parse("minecraft:bogged"))
@@ -1012,12 +1010,12 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:slime"))
                 .build();
 
-        public static final Tag<EntityType> NON_CONTROLLING_RIDER = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> NON_CONTROLLING_RIDER = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:slime"))
                 .resource(NamespacedKey.parse("minecraft:magma_cube"))
                 .build();
 
-        public static final Tag<EntityType> NOT_SCARY_FOR_PUFFERFISH = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> NOT_SCARY_FOR_PUFFERFISH = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:turtle"))
                 .resource(NamespacedKey.parse("minecraft:guardian"))
                 .resource(NamespacedKey.parse("minecraft:elder_guardian"))
@@ -1033,14 +1031,14 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:zombie_nautilus"))
                 .build();
 
-        public static final Tag<EntityType> POWDER_SNOW_WALKABLE_MOBS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> POWDER_SNOW_WALKABLE_MOBS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:rabbit"))
                 .resource(NamespacedKey.parse("minecraft:endermite"))
                 .resource(NamespacedKey.parse("minecraft:silverfish"))
                 .resource(NamespacedKey.parse("minecraft:fox"))
                 .build();
 
-        public static final Tag<EntityType> RAIDERS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> RAIDERS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:evoker"))
                 .resource(NamespacedKey.parse("minecraft:pillager"))
                 .resource(NamespacedKey.parse("minecraft:ravager"))
@@ -1049,25 +1047,25 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:witch"))
                 .build();
 
-        public static final Tag<EntityType> REDIRECTABLE_PROJECTILE = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> REDIRECTABLE_PROJECTILE = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:fireball"))
                 .resource(NamespacedKey.parse("minecraft:wind_charge"))
                 .resource(NamespacedKey.parse("minecraft:breeze_wind_charge"))
                 .build();
 
-        public static final Tag<EntityType> SENSITIVE_TO_BANE_OF_ARTHROPODS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> SENSITIVE_TO_BANE_OF_ARTHROPODS = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:arthropod"))
                 .build();
 
-        public static final Tag<EntityType> SENSITIVE_TO_IMPALING = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> SENSITIVE_TO_IMPALING = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:aquatic"))
                 .build();
 
-        public static final Tag<EntityType> SENSITIVE_TO_SMITE = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> SENSITIVE_TO_SMITE = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:undead"))
                 .build();
 
-        public static final Tag<EntityType> SKELETONS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> SKELETONS = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:skeleton"))
                 .resource(NamespacedKey.parse("minecraft:stray"))
                 .resource(NamespacedKey.parse("minecraft:wither_skeleton"))
@@ -1076,18 +1074,18 @@ sealed class EntityTypes permits EntityType {
                 .resource(NamespacedKey.parse("minecraft:parched"))
                 .build();
 
-        public static final Tag<EntityType> UNDEAD = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> UNDEAD = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:skeletons"))
                 .tag(NamespacedKey.parse("minecraft:zombies"))
                 .resource(NamespacedKey.parse("minecraft:wither"))
                 .resource(NamespacedKey.parse("minecraft:phantom"))
                 .build();
 
-        public static final Tag<EntityType> WITHER_FRIENDS = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> WITHER_FRIENDS = Tag.builder(EntityType.KEY)
                 .tag(NamespacedKey.parse("minecraft:undead"))
                 .build();
 
-        public static final Tag<EntityType> ZOMBIES = Tag.builder(RegistryKey.ENTITY_TYPE)
+        public static final Tag<EntityType> ZOMBIES = Tag.builder(EntityType.KEY)
                 .resource(NamespacedKey.parse("minecraft:zombie_horse"))
                 .resource(NamespacedKey.parse("minecraft:camel_husk"))
                 .resource(NamespacedKey.parse("minecraft:zombie"))

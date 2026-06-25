@@ -3,6 +3,8 @@ package me.tud.mc2d.item.banner;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTCompound;
@@ -13,6 +15,8 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @EqualsAndHashCode(callSuper = false)
 public final class BannerPattern extends BannerPatterns implements NBTSerializable {
+
+    public static final RegistryKey<BannerPattern, DataDrivenRegistry<BannerPattern>> KEY = RegistryKey.minecraft("banner_pattern");
 
     private final NamespacedKey assetID;
     private final String translationKey;

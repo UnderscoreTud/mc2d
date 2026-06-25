@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import me.tud.mc2d.network.server.Server;
 import me.tud.mc2d.registry.DataDrivenRegistry;
-import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.scriptive.style.ChatColor;
 import org.machinemc.scriptive.style.ChatStyle;
@@ -115,8 +113,8 @@ sealed class ChatTypes permits ChatType {
         return VALUES_LIST;
     }
 
-    public static DataDrivenRegistry<ChatType> createDefaultRegistry(Server server) {
-        return new DataDrivenRegistry<>(server, RegistryKey.CHAT_TYPE).modify(registry -> {
+    public static DataDrivenRegistry<ChatType> createDefaultRegistry() {
+        return new DataDrivenRegistry<>(ChatType.KEY).modify(registry -> {
             registry.register(NamespacedKey.minecraft("chat"), ChatType.CHAT);
             registry.register(NamespacedKey.minecraft("emote_command"), ChatType.EMOTE_COMMAND);
             registry.register(NamespacedKey.minecraft("msg_command_incoming"), ChatType.MSG_COMMAND_INCOMING);

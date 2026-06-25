@@ -3,6 +3,7 @@ package me.tud.mc2d.generators.instruction;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
 import com.fasterxml.jackson.databind.node.TextNode;
+import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.TypeName;
 import me.tud.mc2d.generators.util.Imports;
 import me.tud.mc2d.generators.util.StringUtils;
@@ -55,12 +56,12 @@ public final class Instructions {
         return (_, _, out) -> out.add(format, args);
     }
 
-    public static Instruction tag(String registry) {
+    public static Instruction tag(ClassName registry) {
         return (ctx, node, out) -> out.add(
                 "$T.of($T.$N, $T.parse($S))",
                 Imports.TAG_KEY,
-                Imports.REGISTRY_KEY,
-                registry.toUpperCase(Locale.ENGLISH),
+                registry,
+                "KEY",
                 Imports.NAMESPACED_KEY,
                 validateTag(ctx, node.asText())
         );

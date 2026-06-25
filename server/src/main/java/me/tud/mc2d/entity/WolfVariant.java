@@ -1,6 +1,8 @@
 package me.tud.mc2d.entity;
 
 import lombok.Builder;
+import me.tud.mc2d.registry.DataDrivenRegistry;
+import me.tud.mc2d.registry.RegistryKey;
 import me.tud.mc2d.util.NBTSerializable;
 import me.tud.mc2d.util.NamespacedKey;
 import org.machinemc.nbt.NBTCompound;
@@ -10,7 +12,9 @@ import java.util.Map;
 
 @Builder(toBuilder = true)
 public class WolfVariant implements NBTSerializable {
-    
+
+    public static final RegistryKey<WolfVariant, DataDrivenRegistry<WolfVariant>> KEY = RegistryKey.minecraft("wolf_variant");
+
     public static final WolfVariant ASHEN = WolfVariant.builder()
             .assets(Assets.of(NamespacedKey.minecraft("entity/wolf/wolf_ashen")))
             .build();
